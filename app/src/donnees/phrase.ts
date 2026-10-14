@@ -1,23 +1,30 @@
 import type { Match, Resultat } from './types';
 
-const MINUSCULES = new Set(['de', 'du', 'des', 'la', 'le', 'les', 'et', 'sur', 'en', 'd', 'l', 'a', 'au', 'aux']);
+const MINUSCULES = new Set(['de', 'du', 'des', 'la', 'le', 'les', 'et', 'sur', 'en', 'au', 'aux']);
+/** Articles élidés : minuscule seulement devant une apostrophe (D'ISSY, L'HAY). */
+const ELISIONS = new Set(['d', 'l']);
 const ABREVIATIONS = new Set(['st', 'ste']);
-const SIGLES = new Set(['AC', 'AS', 'ASV', 'ASM', 'US', 'USM', 'UC', 'ES', 'CA', 'CO', 'OC', 'SO', 'CSM', 'AAS']);
-const SEPARATEUR = /^[\s\-/.'’]+$/;
+const SIGLES = new Set([
+  'AC', 'AS', 'ASV', 'ASM', 'US', 'USM', 'UC', 'ES', 'CA', 'CO', 'OC', 'SO', 'CSM', 'AAS',
+  'SCUF', 'COM', 'ASPTT', 'ASC', 'USO', 'USMT', 'PUC', 'CSA', 'ACBB',
+]);
+const ROMAINS = new Set(['I', 'II', 'III', 'IV']);
+const SEPARATEUR = /^[\s\-/.'’()]+$/;
 
-/** Nom FFHB en capitales → nom lisible. Sigles (SC, HB, ASV…) et numéros conservés. */
+/** Nom FFHB en capitales → nom lisible. Sigles (SC, HB, ASV…), numéros et chiffres romains conservés. */
 export function nomLisible(brut: string): string {
+  const morceaux = brut.trim().split(/([\s\-/.'’()]+)/);
   let premier = true;
-  return brut
-    .trim()
-    .split(/([\s\-/.'’]+)/)
-    .map((morceau) => {
+  return morceaux
+    .map((morceau, i) => {
       if (!morceau || SEPARATEUR.test(morceau)) return morceau;
       const estPremier = premier;
       premier = false;
-      if (/\d/.test(morceau)) return morceau;
+      if (/\d/.test(morceau) || ROMAINS.has(morceau)) return morceau;
       const bas = morceau.toLowerCase();
       if (!estPremier && MINUSCULES.has(bas)) return bas;
+      const elision = /^['’]/.test(morceaux[i + 1] ?? '');
+      if (!estPremier && elision && ELISIONS.has(bas)) return bas;
       const capitale = bas.charAt(0).toUpperCase() + bas.slice(1);
       if (ABREVIATIONS.has(bas)) return capitale;
       const enCapitales = morceau === morceau.toUpperCase();
@@ -44,7 +51,7 @@ export function phraseResultat(
     m.resultat === 'N'
       ? `Match nul contre ${adversaire}`
       : `${m.resultat === 'V' ? 'Victoire' : 'Défaite'}${dUnBut} contre ${adversaire}`;
-  if (serie?.resultat === 'V' && serie.longueur >= 3) {
+  if (m.resultat === 'V' && serie?.resultat === 'V' && serie.longueur >= 3) {
     return { titre, sousTitre: `${serie.longueur}e victoire de suite` };
   }
   return { titre };
