@@ -1,7 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+# Node / Expo
 node_modules/
 .expo/
+dist/
 *.log
+# Secrets et machines
+.env*
+!.env.example
+.DS_Store
+# Outils
+.superpowers/
 .impeccable/config.local.json
 .impeccable/mocks/decision/src/
-__pycache__/
-.env*
