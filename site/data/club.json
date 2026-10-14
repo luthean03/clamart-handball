@@ -1,4 +1,5 @@
 {
+ "version_schema": 2,
  "club": {
   "nom": "Clamart Handball",
   "id_ffhb": "3309"
@@ -10,8 +11,112 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-13T14:41:53+00:00",
+ "mis_a_jour": "2026-10-14T13:41:16+00:00",
  "source": "https://www.ffhandball.fr",
+ "collectifs": [
+  {
+   "id": "seniors-f-1",
+   "nom": "Seniors F 1",
+   "categorie": "seniors",
+   "genre": "F",
+   "equipes": [
+    "32542-clamart-handball-1",
+    "33243-clamart-handball-1"
+   ]
+  },
+  {
+   "id": "seniors-f-1b",
+   "nom": "Seniors F 1B",
+   "categorie": "seniors",
+   "genre": "F",
+   "equipes": [
+    "32543-clamart-handball-1b"
+   ]
+  },
+  {
+   "id": "seniors-m",
+   "nom": "Seniors M",
+   "categorie": "seniors",
+   "genre": "M",
+   "equipes": [
+    "32546-clamart-handball",
+    "33403-clamart-handball",
+    "33244-clamart-handball"
+   ]
+  },
+  {
+   "id": "u18-f",
+   "nom": "U18 F",
+   "categorie": "U18",
+   "genre": "F",
+   "equipes": [
+    "33458-clamart-hb"
+   ]
+  },
+  {
+   "id": "u18-m",
+   "nom": "U18 M",
+   "categorie": "U18",
+   "genre": "M",
+   "equipes": [
+    "33470-clamart-handball"
+   ]
+  },
+  {
+   "id": "u15-m",
+   "nom": "U15 M",
+   "categorie": "U15",
+   "genre": "M",
+   "equipes": [
+    "33472-clamart-hb"
+   ]
+  },
+  {
+   "id": "u13-f",
+   "nom": "U13 F",
+   "categorie": "U13",
+   "genre": "F",
+   "equipes": [
+    "33004-clamart-handball"
+   ]
+  },
+  {
+   "id": "u13-m",
+   "nom": "U13 M",
+   "categorie": "U13",
+   "genre": "M",
+   "equipes": [
+    "33052-clamart-hb"
+   ]
+  },
+  {
+   "id": "u11-f-2",
+   "nom": "U11 F 2",
+   "categorie": "U11",
+   "genre": "F",
+   "equipes": [
+    "33056-clamart-handball-2-filles"
+   ]
+  },
+  {
+   "id": "u11-mixte-1",
+   "nom": "U11 Mixte 1",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "equipes": [
+    "33056-clamart-handball-1"
+   ]
+  },
+  {
+   "id": "u11-mixte-3",
+   "nom": "U11 Mixte 3",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "equipes": [
+    "33056-clamart-handball-3"
+   ]
+  }
+ ],
  "equipes": [
   {
    "id": "32542-clamart-handball-1",
@@ -763,7 +868,8 @@
    },
    "forme": "VDVVV",
    "place": 3,
-   "nb_equipes": 11
+   "nb_equipes": 11,
+   "collectif": "seniors-f-1"
   },
   {
    "id": "32543-clamart-handball-1b",
@@ -1332,7 +1438,8 @@
    },
    "forme": "VDDDV",
    "place": 5,
-   "nb_equipes": 7
+   "nb_equipes": 7,
+   "collectif": "seniors-f-1b"
   },
   {
    "id": "32546-clamart-handball",
@@ -1849,7 +1956,8 @@
    },
    "forme": "VVVD",
    "place": 3,
-   "nb_equipes": 7
+   "nb_equipes": 7,
+   "collectif": "seniors-m"
   },
   {
    "id": "33403-clamart-handball",
@@ -1890,7 +1998,8 @@
     "bp": 0,
     "bc": 0
    },
-   "forme": ""
+   "forme": "",
+   "collectif": "seniors-m"
   },
   {
    "id": "33243-clamart-handball-1",
@@ -1935,7 +2044,8 @@
     "bp": 0,
     "bc": 0
    },
-   "forme": ""
+   "forme": "",
+   "collectif": "seniors-f-1"
   },
   {
    "id": "33244-clamart-handball",
@@ -1980,7 +2090,8 @@
     "bp": 0,
     "bc": 0
    },
-   "forme": ""
+   "forme": "",
+   "collectif": "seniors-m"
   },
   {
    "id": "33458-clamart-hb",
@@ -2162,7 +2273,8 @@
    },
    "forme": "DD",
    "place": 4,
-   "nb_equipes": 6
+   "nb_equipes": 6,
+   "collectif": "u18-f"
   },
   {
    "id": "33470-clamart-handball",
@@ -2340,7 +2452,8 @@
    },
    "forme": "DD",
    "place": 5,
-   "nb_equipes": 6
+   "nb_equipes": 6,
+   "collectif": "u18-m"
   },
   {
    "id": "33472-clamart-hb",
@@ -2452,6 +2565,24 @@
      "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPXN.pdf"
     },
     {
+     "id": "2740593",
+     "date": "2026-11-08T12:30:00+01:00",
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "PARIS ST-GERMAIN HB 4",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740593/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE ALAIN-MIMOUN",
+      "adresse": "15 RUE DE LA NOUVELLE-CALEDONIE 75012 PARIS 12e"
+     }
+    },
+    {
      "id": "2740588",
      "date": "2026-11-21T14:00:00+01:00",
      "journee": 1,
@@ -2463,24 +2594,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740588/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "GYMNASE DU PETIT CLAMART",
-      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
-    },
-    {
-     "id": "2740593",
-     "date": null,
-     "journee": 3,
-     "domicile": false,
-     "adversaire": "PARIS ST-GERMAIN HB 4",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740593/",
      "feuille_de_match": null
     },
     {
@@ -2522,7 +2635,8 @@
    },
    "forme": "V",
    "place": 4,
-   "nb_equipes": 6
+   "nb_equipes": 6,
+   "collectif": "u15-m"
   },
   {
    "id": "33004-clamart-handball",
@@ -2542,24 +2656,24 @@
     {
      "place": 1,
      "equipe": "AC BOULOGNE-BILLANCOURT",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
      "nuls": 0,
      "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "bp": 23,
+     "bc": 6,
+     "diff": 17,
      "nous": false
     },
     {
      "place": 2,
      "equipe": "CLAMART HANDBALL",
-     "points": 0,
-     "joues": 0,
+     "points": 1,
+     "joues": 1,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 0,
+     "perdus": 1,
      "bp": 6,
      "bc": 23,
      "diff": -17,
@@ -2648,7 +2762,8 @@
    },
    "forme": "DDDDD",
    "place": 2,
-   "nb_equipes": 2
+   "nb_equipes": 2,
+   "collectif": "u13-f"
   },
   {
    "id": "33052-clamart-hb",
@@ -2787,7 +2902,8 @@
    },
    "forme": "DDNDD",
    "place": 3,
-   "nb_equipes": 3
+   "nb_equipes": 3,
+   "collectif": "u13-m"
   },
   {
    "id": "33056-clamart-handball-2-filles",
@@ -2953,7 +3069,8 @@
    },
    "forme": "D",
    "place": 4,
-   "nb_equipes": 4
+   "nb_equipes": 4,
+   "collectif": "u11-f-2"
   },
   {
    "id": "33056-clamart-handball-1",
@@ -3123,7 +3240,8 @@
    },
    "forme": "V",
    "place": 2,
-   "nb_equipes": 4
+   "nb_equipes": 4,
+   "collectif": "u11-mixte-1"
   },
   {
    "id": "33056-clamart-handball-3",
@@ -3330,7 +3448,8 @@
    },
    "forme": "",
    "place": 5,
-   "nb_equipes": 5
+   "nb_equipes": 5,
+   "collectif": "u11-mixte-3"
   }
  ],
  "buteurs_club": [

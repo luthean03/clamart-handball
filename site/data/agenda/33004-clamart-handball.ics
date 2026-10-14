@@ -1,47 +1,47 @@
-BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//clamart-handball//FR
-CALSCALE:GREGORIAN
-X-WR-CALNAME:Clamart Handball - U13 F
-X-WR-TIMEZONE:Europe/Paris
-BEGIN:VEVENT
-UID:ffhb-2702666-33004-clamart-handball@clamart-handball
-DTSTAMP:20261013T144153Z
-DTSTART:20260926T124500Z
-DTEND:20260926T141500Z
-SUMMARY:COURBEVOIE HB - Clamart Handball U13 F (3-19)
-DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702666/
-END:VEVENT
-BEGIN:VEVENT
-UID:ffhb-2702667-33004-clamart-handball@clamart-handball
-DTSTAMP:20261013T144153Z
-DTSTART:20260926T124500Z
-DTEND:20260926T141500Z
-SUMMARY:STADE DE VANVES - Clamart Handball U13 F (1-7)
-DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702667/
-END:VEVENT
-BEGIN:VEVENT
-UID:ffhb-2739518-33004-clamart-handball@clamart-handball
-DTSTAMP:20261013T144153Z
-DTSTART:20261003T133000Z
-DTEND:20261003T150000Z
-SUMMARY:ISSY-PARIS HAND 1 - Clamart Handball U13 F (0-32)
-DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739518/
-END:VEVENT
-BEGIN:VEVENT
-UID:ffhb-2739519-33004-clamart-handball@clamart-handball
-DTSTAMP:20261013T144153Z
-DTSTART:20261003T133000Z
-DTEND:20261003T150000Z
-SUMMARY:BOIS-COLOMBES SP. - Clamart Handball U13 F (0-19)
-DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739519/
-END:VEVENT
-BEGIN:VEVENT
-UID:ffhb-2743439-33004-clamart-handball@clamart-handball
-DTSTAMP:20261013T144153Z
-DTSTART:20261011T093000Z
-DTEND:20261011T110000Z
-SUMMARY:Clamart Handball U13 F - AC BOULOGNE-BILLANCOURT (6-23)
-DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-198316/rencontre-2743439/
-END:VEVENT
-END:VCALENDAR
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//clamart-handball//FR
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Clamart Handball - U13 F
+X-WR-TIMEZONE:Europe/Paris
+BEGIN:VEVENT
+UID:ffhb-2702666-33004-clamart-handball@clamart-handball
+DTSTAMP:20261014T134159Z
+DTSTART:20260926T124500Z
+DTEND:20260926T141500Z
+SUMMARY:COURBEVOIE HB - Clamart Handball U13 F (3-19)
+DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702666/
+END:VEVENT
+BEGIN:VEVENT
+UID:ffhb-2702667-33004-clamart-handball@clamart-handball
+DTSTAMP:20261014T134159Z
+DTSTART:20260926T124500Z
+DTEND:20260926T141500Z
+SUMMARY:STADE DE VANVES - Clamart Handball U13 F (1-7)
+DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702667/
+END:VEVENT
+BEGIN:VEVENT
+UID:ffhb-2739518-33004-clamart-handball@clamart-handball
+DTSTAMP:20261014T134159Z
+DTSTART:20261003T133000Z
+DTEND:20261003T150000Z
+SUMMARY:ISSY-PARIS HAND 1 - Clamart Handball U13 F (0-32)
+DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739518/
+END:VEVENT
+BEGIN:VEVENT
+UID:ffhb-2739519-33004-clamart-handball@clamart-handball
+DTSTAMP:20261014T134159Z
+DTSTART:20261003T133000Z
+DTEND:20261003T150000Z
+SUMMARY:BOIS-COLOMBES SP. - Clamart Handball U13 F (0-19)
+DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739519/
+END:VEVENT
+BEGIN:VEVENT
+UID:ffhb-2743439-33004-clamart-handball@clamart-handball
+DTSTAMP:20261014T134159Z
+DTSTART:20261011T093000Z
+DTEND:20261011T110000Z
+SUMMARY:Clamart Handball U13 F - AC BOULOGNE-BILLANCOURT (6-23)
+DESCRIPTION:U13F - DELAYAGES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-198316/rencontre-2743439/
+END:VEVENT
+END:VCALENDAR
