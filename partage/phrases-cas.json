@@ -1,0 +1,54 @@
+{
+  "commentaire": "Cas partagés app (Jest) et notifieur (pytest). Règle : jamais d'adjectif sur une défaite.",
+  "noms": [
+    { "brut": "ENT. SURESNES / NANTERRE", "attendu": "Ent. Suresnes / Nanterre" },
+    { "brut": "PARIS SC 1D", "attendu": "Paris SC 1D" },
+    { "brut": "ASSOCIATION SPORTIVE ST-CYR/FONTENAY HANDBALL 78", "attendu": "Association Sportive St-Cyr/Fontenay Handball 78" },
+    { "brut": "PARIS ST-GERMAIN HB 3", "attendu": "Paris St-Germain HB 3" },
+    { "brut": "AC BOULOGNE-BILLANCOURT", "attendu": "AC Boulogne-Billancourt" },
+    { "brut": "ASV CHATENAY-MALABRY 2", "attendu": "ASV Chatenay-Malabry 2" },
+    { "brut": "STADE DE VANVES 1", "attendu": "Stade de Vanves 1" },
+    { "brut": "MARTIGUA SCL", "attendu": "Martigua SCL" },
+    { "brut": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 3", "attendu": "Union Sportive Municipale de Malakoff 3" },
+    { "brut": "GYMNASE DU PETIT CLAMART", "attendu": "Gymnase du Petit Clamart" },
+    { "brut": "salle jacques duclos", "attendu": "Salle Jacques Duclos" },
+    { "brut": "HANDBALL CLUB D'ISSY", "attendu": "Handball Club d'Issy" }
+  ],
+  "phrases": [
+    {
+      "match": { "resultat": "V", "score_nous": 32, "score_eux": 22, "adversaire": "ENT. SURESNES / NANTERRE" },
+      "serie": { "resultat": "V", "longueur": 3 },
+      "attendu": { "titre": "Victoire contre Ent. Suresnes / Nanterre", "sousTitre": "3e victoire de suite" }
+    },
+    {
+      "match": { "resultat": "D", "score_nous": 21, "score_eux": 22, "adversaire": "LEVALLOIS SC 1D" },
+      "serie": { "resultat": "D", "longueur": 1 },
+      "attendu": { "titre": "Défaite d'un but contre Levallois SC 1D" }
+    },
+    {
+      "match": { "resultat": "V", "score_nous": 20, "score_eux": 19, "adversaire": "PARIS SC 1D" },
+      "serie": null,
+      "attendu": { "titre": "Victoire d'un but contre Paris SC 1D" }
+    },
+    {
+      "match": { "resultat": "N", "score_nous": 25, "score_eux": 25, "adversaire": "CELLOIS HB" },
+      "serie": null,
+      "attendu": { "titre": "Match nul contre Cellois HB" }
+    },
+    {
+      "match": { "resultat": "D", "score_nous": 6, "score_eux": 23, "adversaire": "AC BOULOGNE-BILLANCOURT" },
+      "serie": { "resultat": "D", "longueur": 5 },
+      "attendu": { "titre": "Défaite contre AC Boulogne-Billancourt" }
+    },
+    {
+      "match": { "resultat": "V", "score_nous": 27, "score_eux": 24, "adversaire": "PARIS UNIVERSITE CLUB 3" },
+      "serie": { "resultat": "V", "longueur": 2 },
+      "attendu": { "titre": "Victoire contre Paris Universite Club 3" }
+    },
+    {
+      "match": { "resultat": null, "score_nous": null, "score_eux": null, "adversaire": "CELLOIS HB" },
+      "serie": null,
+      "attendu": null
+    }
+  ]
+}
