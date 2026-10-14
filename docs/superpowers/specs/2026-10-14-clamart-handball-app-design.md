@@ -74,7 +74,8 @@ change. On ne peut donc pas suivre un `id`.
 - **`equipes[].collectif`** : l'id du collectif de rattachement.
 - **`version_schema`** : `2` (l'app refuse proprement un schéma inconnu, §5.6).
 
-Le regroupement se fait par nom affiché (après `noms_equipes`), surchargeable par
+Le regroupement se fait par le nom construit depuis les libellés FFHB (**avant** `noms_equipes` :
+un renommage change le nom affiché, jamais l'id, pour ne désabonner personne), surchargeable par
 `config.json → collectifs` (§3.3) si deux équipes distinctes portent le même nom.
 
 ### 3.3 Ajouts à `config.json`
