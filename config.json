@@ -1,0 +1,28 @@
+{
+  "club": {
+    "nom": "Clamart Handball",
+    "recherche_ffhb": "clamart",
+    "id_ffhb": "3309",
+    "motifs_nom_equipe": [
+      "CLAMART"
+    ]
+  },
+  "site": {
+    "titre": "Clamart Handball",
+    "sous_titre": "Résultats, classements et stats de toutes nos équipes",
+    "couleur_principale": "#123a6b",
+    "couleur_accent": "#e8b200"
+  },
+  "stats_joueurs": {
+    "categories": [
+      "seniors"
+    ],
+    "commentaire": "Noms et buts des joueurs publiés uniquement pour ces catégories (pas pour les jeunes, mineurs).",
+    "joueurs_masques": [],
+    "commentaire_masques": "Joueurs à ne jamais afficher, tel qu'écrit sur le site (ex. \"Marie DUPONT\")."
+  },
+  "noms_equipes": {
+    "commentaire": "Optionnel : renommer une équipe. Clé = equipe_id (voir site/data/club.json), valeur = nom affiché.",
+    "exemple_2126402": "Seniors Filles 1"
+  }
+}

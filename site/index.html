@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Clamart Handball – Résultats et classements</title>
+  <meta name="description" content="Prochains matchs, résultats, classements et buteurs de toutes les équipes du Clamart Handball.">
+  <meta name="theme-color" content="#123a6b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="evitement" href="#contenu">Aller au contenu</a>
+  <header class="entete">
+    <div class="entete__int">
+      <a class="marque" href="#/">
+        <svg class="marque__ballon" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M4 13c6 3 18 3 24 0M5 21c6-3 16-3 22 0M16 2c-5 7-5 21 0 28" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span id="nom-club">Clamart Handball</span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#/" data-nav="accueil">Ce week-end</a>
+        <a href="#/equipes" data-nav="equipes">Équipes</a>
+        <a href="#/buteurs" data-nav="buteurs">Buteurs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+    <div id="app" aria-live="polite">
+      <p class="chargement">Chargement des résultats…</p>
+    </div>
+  </main>
+
+  <footer class="pied">
+    <p>Données issues du site de la <a href="https://www.ffhandball.fr/competitions/" rel="noopener">Fédération française de handball</a>.</p>
+    <p id="maj"></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
