@@ -101,8 +101,11 @@ def detail_de(libelle_comp: str) -> str:
 
 
 def nom_equipe(libelle_comp: str, libelle_equipe: str, equipe_id: str) -> str:
-    if equipe_id in NOMS:
-        return NOMS[equipe_id]
+    return NOMS.get(equipe_id) or nom_ffhb(libelle_comp, libelle_equipe)
+
+
+def nom_ffhb(libelle_comp: str, libelle_equipe: str) -> str:
+    """Nom construit depuis les libellés FFHB, sans les renommages de config.json."""
     cat = categorie_de(libelle_comp)
     cat = "Seniors" if cat == "seniors" else cat
     numero = re.search(r"\s(\d[A-Z]?)(?=\s|$|\()", (libelle_equipe or "").upper())
@@ -350,11 +353,17 @@ def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]])
 
 # ============================================================================ main
 
-def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: list[str]) -> dict:
-    """Contenu complet de club.json (contrat v2). Les équipes reçoivent leur 'collectif'."""
+def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: list[str],
+              surcharges: dict[str, str] | None = None) -> dict:
+    """Contenu complet de club.json (contrat v2). Les équipes reçoivent leur 'collectif'.
+
+    surcharges : par défaut celles de config.json (paramètre explicite pour les tests).
+    """
     if not equipes:
         raise ValueError("aucune équipe : club.json ne doit pas être remplacé")
-    collectifs = construire_collectifs(equipes, SURCHARGES_COLLECTIFS)
+    collectifs = construire_collectifs(
+        equipes, SURCHARGES_COLLECTIFS if surcharges is None else surcharges,
+        base=lambda e: nom_ffhb(e["competition"], e["libelle_ffhb"]))
     return {
         "version_schema": VERSION_SCHEMA,
         "club": {"nom": CONFIG["club"]["nom"], "id_ffhb": CLUB_ID},

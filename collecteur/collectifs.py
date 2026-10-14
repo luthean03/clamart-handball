@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from typing import Callable
 
 
 def slug(texte: str) -> str:
@@ -18,15 +19,19 @@ def slug(texte: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", ascii_.lower()).strip("-")
 
 
-def construire_collectifs(equipes: list[dict], surcharges: dict[str, str] | None = None) -> list[dict]:
+def construire_collectifs(equipes: list[dict], surcharges: dict[str, str] | None = None,
+                          base: Callable[[dict], str] | None = None) -> list[dict]:
     """Ajoute equipe['collectif'] à chaque équipe et renvoie les collectifs (ordre d'apparition).
 
-    surcharges : {equipe_id: collectif_id} pour séparer deux équipes de même nom.
+    surcharges : {equipe_id: collectif_id} pour séparer deux équipes de même nom (valeur normalisée).
+    base : nom dont dérive l'id (par défaut le nom affiché). La collecte passe le nom FFHB d'avant
+           renommage, pour qu'un renommage dans config.json ne change pas l'id (et n'abonne/désabonne personne).
     """
     surcharges = surcharges or {}
+    base = base or (lambda e: e["nom"])
     collectifs: dict[str, dict] = {}
     for equipe in equipes:
-        cid = surcharges.get(equipe["id"]) or slug(equipe["nom"])
+        cid = slug(surcharges.get(equipe["id"]) or "") or slug(base(equipe))
         equipe["collectif"] = cid
         collectif = collectifs.setdefault(cid, {
             "id": cid, "nom": equipe["nom"], "categorie": equipe["categorie"],
