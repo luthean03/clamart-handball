@@ -26,6 +26,7 @@ export default function Onglets() {
   return (
     <Tabs screenOptions={{ headerShown: false }} tabBar={(props) => <BarreOnglets {...props} />}>
       <Tabs.Screen name="index" options={{ title: 'Accueil', tabBarIcon: icone('home-variant', 'home-variant-outline') }} />
+      <Tabs.Screen name="matchs" options={{ title: 'Matchs', tabBarIcon: icone('calendar-month', 'calendar-month-outline') }} />
     </Tabs>
   );
 }
