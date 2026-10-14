@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useState } from 'react';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -9,6 +8,8 @@ interface EtatSuivi {
   bienvenueFaite: boolean;
   /** Collectifs retirés car absents des données, à signaler dans Réglages. */
   retires: string[];
+  /** Non persisté : vrai une fois la relecture terminée, succès ou échec. */
+  pret: boolean;
   basculer: (id: string) => void;
   definirSuivis: (ids: string[]) => void;
   terminerBienvenue: () => void;
@@ -22,6 +23,7 @@ export const useSuivi = create<EtatSuivi>()(
       suivis: [],
       bienvenueFaite: false,
       retires: [],
+      pret: false,
       basculer: (id) =>
         set(({ suivis }) => ({ suivis: suivis.includes(id) ? suivis.filter((s) => s !== id) : [...suivis, id] })),
       definirSuivis: (ids) => set({ suivis: [...new Set(ids)] }),
@@ -39,17 +41,13 @@ export const useSuivi = create<EtatSuivi>()(
       version: 1,
       storage: createJSONStorage(() => AsyncStorage),
       partialize: ({ suivis, bienvenueFaite, retires }) => ({ suivis, bienvenueFaite, retires }),
+      // Appelé aussi en cas d'échec de lecture (stockage illisible, JSON corrompu) : sans cela, pret resterait faux.
+      onRehydrateStorage: () => () => useSuivi.setState({ pret: true }),
     },
   ),
 );
 
-/** Vrai quand les équipes suivies ont été relues depuis le téléphone. */
+/** Vrai quand les équipes suivies ont été relues depuis le téléphone (ou que la relecture a échoué). */
 export function useSuiviPret(): boolean {
-  const [pret, setPret] = useState(() => useSuivi.persist.hasHydrated());
-  useEffect(() => {
-    const arreter = useSuivi.persist.onFinishHydration(() => setPret(true));
-    if (useSuivi.persist.hasHydrated()) setPret(true);
-    return arreter;
-  }, []);
-  return pret;
+  return useSuivi((s) => s.pret);
 }
