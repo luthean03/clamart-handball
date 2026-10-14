@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Clamart Handball",
+    "slug": "clamart-handball",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo-clamart.png",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "fr.clamarthandball.app",
+      "edgeToEdgeEnabled": true,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo-clamart.png",
+        "backgroundColor": "#DB0000"
+      },
+      "blockedPermissions": [
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/logo-clamart.png",
+          "imageWidth": 160,
+          "backgroundColor": "#DB0000"
+        }
+      ]
+    ],
+    "scheme": "clamart",
+    "extra": {
+      "urlDonnees": "https://luthean03.github.io/clamart-handball/data/club.json"
+    }
+  }
+}
