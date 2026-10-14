@@ -34,6 +34,18 @@ test('match joué senior : les buteurs du club', () => {
   expect(screen.getByText(premier.joueur)).toBeOnTheScreen();
 });
 
+test('le score est lu en une phrase par les lecteurs d’écran', () => {
+  vue('2644292');
+  expect(screen.getByLabelText('Clamart Seniors F 1 32, Ent. Suresnes / Nanterre 22, victoire')).toBeOnTheScreen();
+});
+
+test('match à venir : le score est lu « contre »', () => {
+  vue('2734038');
+  const m = matchParId(club, '2734038')!;
+  expect(m.domicile).toBe(true);
+  expect(screen.getByLabelText(`Clamart ${m.equipe.nom} contre Association Sportive St-Cyr/Fontenay Handball 78`)).toBeOnTheScreen();
+});
+
 test('match de jeunes : aucun nom de joueur', () => {
   vue('2740456');
   expect(screen.getByText('Défaite contre Paris St-Germain HB 3')).toBeOnTheScreen();
