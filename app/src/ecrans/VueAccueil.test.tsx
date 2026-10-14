@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import { fireEvent, screen } from '@testing-library/react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
 import { rendu } from '../../test/rendu';
@@ -69,4 +70,11 @@ test('hors ligne et réglages', () => {
   expect(screen.getByText('Hors ligne · résultats mis à jour à 16:41')).toBeOnTheScreen();
   fireEvent.press(screen.getByLabelText('Réglages'));
   expect(p.onReglages).toHaveBeenCalled();
+});
+
+test('le bouton Réglages a une cible tactile de 48 dp', () => {
+  accueil();
+  const style = StyleSheet.flatten(screen.getByTestId('icon-button-container-outer-layer').props.style);
+  expect(style.width).toBeGreaterThanOrEqual(48);
+  expect(style.height).toBeGreaterThanOrEqual(48);
 });

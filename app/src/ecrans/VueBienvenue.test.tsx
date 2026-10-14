@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import { fireEvent, screen } from '@testing-library/react-native';
 import { club } from '../../test/donnees';
 import { rendu } from '../../test/rendu';
@@ -27,4 +28,10 @@ test('passer', () => {
   rendu(<VueBienvenue club={club} onTerminer={jest.fn()} onPasser={onPasser} />);
   fireEvent.press(screen.getByText('Passer'));
   expect(onPasser).toHaveBeenCalled();
+});
+
+test('chaque équipe a une cible tactile d’au moins 48 dp', () => {
+  rendu(<VueBienvenue club={club} onTerminer={jest.fn()} onPasser={jest.fn()} />);
+  const style = StyleSheet.flatten(screen.getByRole('checkbox', { name: 'Seniors F 1' }).props.style);
+  expect(style.minHeight ?? style.height).toBeGreaterThanOrEqual(48);
 });
