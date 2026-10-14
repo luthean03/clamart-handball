@@ -1,0 +1,7 @@
+node_modules/
+.expo/
+*.log
+.impeccable/config.local.json
+.impeccable/mocks/decision/src/
+__pycache__/
+.env*
