@@ -1,11 +1,12 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import { Appbar, Text } from 'react-native-paper';
+import { buteursClubAffichables } from '../donnees/selecteurs';
 import type { Club } from '../donnees/types';
 import { useThemeClub } from '../theme/theme';
 
 export function VueButeurs({ club }: { club: Club }) {
   const t = useThemeClub();
-  const buteurs = club.buteurs_club;
+  const buteurs = buteursClubAffichables(club);
   return (
     <View style={[styles.page, { backgroundColor: t.colors.background }]}>
       <Appbar.Header style={{ backgroundColor: t.colors.background }}>
@@ -18,7 +19,7 @@ export function VueButeurs({ club }: { club: Club }) {
         ListHeaderComponent={
           buteurs.length ? (
             <Text variant="bodyMedium" style={[styles.note, { color: t.colors.onSurfaceVariant }]}>
-              {`Seniors uniquement · ${buteurs.length} joueurs et joueuses`}
+              {`Seniors uniquement · ${buteurs.length === 1 ? '1 joueur ou joueuse' : `${buteurs.length} joueurs et joueuses`}`}
             </Text>
           ) : null
         }

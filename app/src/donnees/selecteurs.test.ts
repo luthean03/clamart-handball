@@ -1,7 +1,7 @@
 import { club, DIM_SOIR, MAR_SOIR } from '../../test/donnees';
 import { weekendDeReference } from './dates';
 import {
-  buteursDuCollectif, collectifsParCategorie, dernierResultat, equipePrincipale, equipesDuCollectif,
+  buteursClubAffichables, buteursDuCollectif, collectifsParCategorie, dernierResultat, equipePrincipale, equipesDuCollectif,
   grouperParCategorie, jourParDefaut, joursAvecMatchs, matchParId, matchsDuCollectif, matchsDuJour,
   matchsDuWeekend, prochainMatch, scoreEnAttente, serieEnCours,
 } from './selecteurs';
@@ -81,4 +81,32 @@ test('buteurs d’un collectif : seniors seulement', () => {
   const buteurs = buteursDuCollectif(club, 'seniors-f-1');
   expect(buteurs[0]).toEqual({ joueur: 'Diara DORILAS', buts: 38, matchs: 5 });
   expect(buteursDuCollectif(club, 'u18-f')).toEqual([]);
+});
+
+describe('buteursClubAffichables', () => {
+  const avec = (equipes: string[]) => ({ ...club, buteurs_club: [{ ...club.buteurs_club[0], equipes }, ...club.buteurs_club.slice(1)] });
+
+  test('données réelles : tous les buteurs du club sont conservés', () => {
+    expect(buteursClubAffichables(club)).toHaveLength(42);
+  });
+
+  test('une équipe sans statistiques de joueurs exclut le buteur', () => {
+    const liste = buteursClubAffichables(avec(['U18 F']));
+    expect(liste).toHaveLength(41);
+    expect(liste.map((b) => b.joueur)).not.toContain(club.buteurs_club[0].joueur);
+  });
+
+  test('une équipe inconnue exclut le buteur', () => {
+    expect(buteursClubAffichables(avec(['Équipe inconnue']))).toHaveLength(41);
+  });
+
+  test('toutes les équipes citées doivent être sûres', () => {
+    expect(buteursClubAffichables(avec(['Seniors M', 'U18 F']))).toHaveLength(41);
+  });
+
+  test('un nom partagé par une équipe sans statistiques n’est pas de confiance', () => {
+    const premiere = club.equipes.findIndex((e) => e.nom === 'Seniors M');
+    const equipes = club.equipes.map((e, i) => (i === premiere ? { ...e, stats_joueurs: false } : e));
+    expect(buteursClubAffichables({ ...club, equipes }).every((b) => !b.equipes.includes('Seniors M'))).toBe(true);
+  });
 });

@@ -1,5 +1,5 @@
 import { jourDuMatch, type Weekend } from './dates';
-import type { Club, Collectif, Equipe, Match, MatchAvecEquipe, Resultat } from './types';
+import type { ButeurClub, Club, Collectif, Equipe, Match, MatchAvecEquipe, Resultat } from './types';
 
 const instant = (m: Match) => (m.date ? Date.parse(m.date) : Number.POSITIVE_INFINITY);
 
@@ -113,4 +113,15 @@ export function buteursDuCollectif(club: Club, id: string): ButeurEquipe[] {
   return [...parJoueur.values()]
     .filter((b) => b.buts > 0)
     .sort((a, b) => b.buts - a.buts || a.joueur.localeCompare(b.joueur));
+}
+
+/**
+ * Buteurs du club à afficher : un joueur n'est gardé que si chaque équipe citée existe dans les données
+ * et que toutes les équipes de ce nom ont des statistiques de joueurs (seniors). Garde-fou côté app :
+ * les mineurs ne sont jamais nommés, même si la collecte les laisse passer.
+ */
+export function buteursClubAffichables(club: Club): ButeurClub[] {
+  const sures = new Set(club.equipes.filter((e) => e.stats_joueurs).map((e) => e.nom));
+  for (const e of club.equipes) if (!e.stats_joueurs) sures.delete(e.nom);
+  return club.buteurs_club.filter((b) => b.equipes.length > 0 && b.equipes.every((nom) => sures.has(nom)));
 }
