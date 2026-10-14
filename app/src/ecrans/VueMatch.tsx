@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, Surface, Text } from 'react-native-paper';
 import { EnTeteSection } from '../composants/EnTeteSection';
+import { libelleScoreLu } from '../composants/LigneMatch';
 import { heureDuMatch, jourDuMatch, libelleJour } from '../donnees/dates';
 import { nomLisible, phraseResultat } from '../donnees/phrase';
 import { matchParId, matchsDuCollectif, scoreEnAttente, serieEnCours } from '../donnees/selecteurs';
@@ -71,7 +72,7 @@ export function VueMatch({ club, matchId, maintenant, onRetour, onItineraire, on
             {phrase?.titre ?? `Contre ${adversaire}`}
           </Text>
           {phrase?.sousTitre ? <Text variant="bodyMedium" style={{ color: t.club.victoire.texte }}>{phrase.sousTitre}</Text> : null}
-          <View style={styles.camps}>
+          <View style={styles.camps} accessible accessibilityLabel={libelleScoreLu(m)}>
             {camps.map((c) => (
               <View key={c.nom} style={styles.camp}>
                 {c.club ? <Image source={LOGO} style={styles.logo} accessibilityIgnoresInvertColors /> : <View style={[styles.logo, { backgroundColor: t.colors.outlineVariant }]} />}

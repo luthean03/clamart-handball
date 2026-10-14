@@ -16,19 +16,29 @@ interface Props {
   afficherCompetition?: boolean;
 }
 
-/** Une ligne façon app de scores : statut, deux équipes (celle qui reçoit en premier), scores. */
-export function LigneMatch({ match, maintenant, onPress, afficherCompetition = false }: Props) {
-  const t = useThemeClub();
+/** Les deux camps dans l'ordre d'affichage (celui qui reçoit en premier) et leurs scores. */
+export function campsDuMatch(match: MatchAvecEquipe) {
   const nous = `Clamart ${match.equipe.nom}`;
   const eux = nomLisible(match.adversaire);
   const [dom, ext] = match.domicile ? [nous, eux] : [eux, nous];
   const [sDom, sExt] = match.domicile ? [match.score_nous, match.score_eux] : [match.score_eux, match.score_nous];
   const joue = match.resultat !== null && sDom !== null && sExt !== null;
+  return { dom, ext, sDom, sExt, joue };
+}
+
+/** Le score lu en une phrase par les lecteurs d'écran, sans dépendre de la couleur. */
+export function libelleScoreLu(match: MatchAvecEquipe): string {
+  const { dom, ext, sDom, sExt, joue } = campsDuMatch(match);
+  return joue ? `${dom} ${sDom}, ${ext} ${sExt}, ${LIBELLES[match.resultat!]}` : `${dom} contre ${ext}`;
+}
+
+/** Une ligne façon app de scores : statut, deux équipes (celle qui reçoit en premier), scores. */
+export function LigneMatch({ match, maintenant, onPress, afficherCompetition = false }: Props) {
+  const t = useThemeClub();
+  const { dom, ext, sDom, sExt, joue } = campsDuMatch(match);
   const attente = !joue && scoreEnAttente(match, maintenant);
   const statut = joue ? 'Fin' : match.date === null ? 'À fixer' : attente ? 'Attente' : heureDuMatch(match.date);
-  const lu = joue
-    ? `${dom} ${sDom}, ${ext} ${sExt}, ${LIBELLES[match.resultat!]}`
-    : `${dom} contre ${ext}, ${attente ? 'score pas encore publié' : statut}`;
+  const lu = joue ? libelleScoreLu(match) : `${libelleScoreLu(match)}, ${attente ? 'score pas encore publié' : statut}`;
   const domGagne = joue && sDom! > sExt!;
   const extGagne = joue && sExt! > sDom!;
 
