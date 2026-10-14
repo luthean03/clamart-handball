@@ -78,3 +78,20 @@ installer `truststore` (déjà dans requirements.txt) ou définir
   de l'association ; un joueur qui le demande est retiré en ajoutant son nom à
   `stats_joueurs.joueurs_masques`.
 - Le collecteur fait quelques dizaines de requêtes par passage, espacées d'une seconde.
+
+## App mobile
+
+L'app (`app/`) lit `site/data/club.json` publié sur GitHub Pages :
+`https://<compte>.github.io/clamart-handball/data/club.json`.
+
+Contrat de données : `version_schema` = 2. Chaque équipe FFHB porte un `collectif`
+(ex. `seniors-m`) qui regroupe toutes ses compétitions ; la liste est dans `collectifs`.
+Deux équipes de même nom ? Les séparer dans `config.json → collectifs`
+(`"<equipe_id>": "<autre-id>"`).
+
+Tests du collecteur :
+
+```bash
+pip install -r collecteur/requirements-dev.txt
+python -m pytest collecteur/tests -q
+```
