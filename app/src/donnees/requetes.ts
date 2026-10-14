@@ -9,9 +9,17 @@ import type { Club } from './types';
 export const CLE_CLUB = ['club'] as const;
 export const UN_MOIS = 1000 * 60 * 60 * 24 * 30;
 
+/** setTimeout plafonne à 2^31-1 ms (~24,8 jours) : au-delà, le minuteur de ramasse-miettes se déclenche aussitôt. */
+const GC_MAX = 2 ** 31 - 1;
+
 export function creerClientRequetes(): QueryClient {
   return new QueryClient({
-    defaultOptions: { queries: { gcTime: UN_MOIS, staleTime: 5 * 60 * 1000, retry: 1 } },
+    defaultOptions: {
+      queries: { gcTime: Math.min(UN_MOIS, GC_MAX), staleTime: 5 * 60 * 1000, retry: 1 },
+      // Une requête en erreur qui garde ses données (rafraîchissement raté) reste persistée : sinon le cache
+      // hors ligne serait écrasé par un cache vide au premier échec réseau.
+      dehydrate: { shouldDehydrateQuery: (q) => q.state.data !== undefined },
+    },
   });
 }
 
@@ -29,8 +37,8 @@ export function useClub() {
     club: q.data,
     chargement: q.isPending,
     erreur: q.error,
-    /** Le dernier rafraîchissement a échoué mais des données en cache sont affichées. */
-    horsLigne: q.isError && q.data !== undefined,
+    /** Le dernier rafraîchissement a échoué (et aucun n'est en cours) mais des données en cache sont affichées. */
+    horsLigne: q.isError && q.data !== undefined && !q.isFetching,
     rafraichir: () => q.refetch(),
     rafraichissement: q.isRefetching,
   };
