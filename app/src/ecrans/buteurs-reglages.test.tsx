@@ -17,6 +17,18 @@ test('buteurs : aucun en début de saison', () => {
   expect(screen.getByText('Pas encore de buteurs cette saison.')).toBeOnTheScreen();
 });
 
+test('buteurs : jamais un joueur d’une équipe sans statistiques de joueurs', () => {
+  const mineur = { ...club.buteurs_club[0], joueur: 'Élève MINEUR', equipes: ['U18 F'] };
+  rendu(<VueButeurs club={{ ...club, buteurs_club: [mineur, ...club.buteurs_club] }} />);
+  expect(screen.queryByText('Élève MINEUR')).not.toBeOnTheScreen();
+  expect(screen.getByText('Seniors uniquement · 42 joueurs et joueuses')).toBeOnTheScreen();
+});
+
+test('buteurs : légende au singulier pour un seul joueur', () => {
+  rendu(<VueButeurs club={{ ...club, buteurs_club: [club.buteurs_club[0]] }} />);
+  expect(screen.getByText('Seniors uniquement · 1 joueur ou joueuse')).toBeOnTheScreen();
+});
+
 function reglages(props: Partial<Parameters<typeof VueReglages>[0]> = {}) {
   const p = {
     club, maintenant: MAR_SOIR, suivis: ['seniors-m'], retires: [] as string[], version: '1.0.0',
