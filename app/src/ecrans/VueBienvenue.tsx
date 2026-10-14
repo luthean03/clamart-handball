@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
-import { Button, Chip, Text } from 'react-native-paper';
+import { Button, Icon, Text, TouchableRipple } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { collectifsParCategorie } from '../donnees/selecteurs';
 import type { Club } from '../donnees/types';
@@ -12,6 +12,34 @@ interface Props {
   club: Club;
   onTerminer: (ids: string[]) => void;
   onPasser: () => void;
+}
+
+/** Puce de choix : pastille de 32 dp au minimum, dans une cible tactile de 48 dp. L'état choisi est aussi marqué par une coche. */
+function ChoixEquipe({ nom, choisie, onPress }: { nom: string; choisie: boolean; onPress: () => void }) {
+  const t = useThemeClub();
+  const couleur = choisie ? t.colors.onSecondaryContainer : t.colors.onSurface;
+  return (
+    <TouchableRipple
+      borderless
+      onPress={onPress}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked: choisie }}
+      style={styles.cible}
+    >
+      <View
+        style={[
+          styles.pastille,
+          { borderColor: choisie ? t.colors.secondaryContainer : t.colors.outline },
+          choisie && { backgroundColor: t.colors.secondaryContainer },
+        ]}
+      >
+        {choisie ? <Icon source="check" size={18} color={couleur} /> : null}
+        <Text variant="labelLarge" style={{ color: couleur }}>
+          {nom}
+        </Text>
+      </View>
+    </TouchableRipple>
+  );
 }
 
 export function VueBienvenue({ club, onTerminer, onPasser }: Props) {
@@ -37,9 +65,7 @@ export function VueBienvenue({ club, onTerminer, onPasser }: Props) {
             </Text>
             <View style={styles.puces}>
               {g.collectifs.map((c) => (
-                <Chip key={c.id} selected={choisis.includes(c.id)} showSelectedOverlay onPress={() => basculer(c.id)}>
-                  {c.nom}
-                </Chip>
+                <ChoixEquipe key={c.id} nom={c.nom} choisie={choisis.includes(c.id)} onPress={() => basculer(c.id)} />
               ))}
             </View>
           </View>
@@ -63,6 +89,8 @@ const styles = StyleSheet.create({
   logo: { width: 96, height: 96, borderRadius: 48, alignSelf: 'center' },
   centrer: { textAlign: 'center' },
   groupe: { gap: 8 },
-  puces: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  puces: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 8 },
+  cible: { minHeight: 48, minWidth: 48, justifyContent: 'center', borderRadius: 24 },
+  pastille: { minHeight: 32, borderRadius: 16, borderWidth: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingHorizontal: 12 },
   actions: { gap: 4 },
 });

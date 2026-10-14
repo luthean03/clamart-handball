@@ -50,7 +50,7 @@ export function VueAccueil(p: PropsAccueil) {
             {`Week-end du ${libelleWeekend(weekend)} · ${libelleMiseAJour(p.club.mis_a_jour, p.maintenant)}`}
           </Text>
         </View>
-        <IconButton icon="cog-outline" accessibilityLabel="Réglages" onPress={p.onReglages} />
+        <IconButton icon="cog-outline" accessibilityLabel="Réglages" style={styles.reglages} onPress={p.onReglages} />
       </View>
 
       <BandeauEtat horsLigne={p.horsLigne} miseAJour={p.club.mis_a_jour} maintenant={p.maintenant} />
@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
   entete: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   logo: { width: 48, height: 48, borderRadius: 24 },
   titres: { flex: 1 },
+  reglages: { width: 48, height: 48, margin: 0, borderRadius: 24 },
   invitation: { padding: 16, gap: 6 },
   bouton: { alignSelf: 'flex-start', marginTop: 8 },
   liste: { overflow: 'hidden' },
