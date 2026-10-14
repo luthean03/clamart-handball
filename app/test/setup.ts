@@ -1,5 +1,9 @@
 import '@testing-library/react-native/matchers';
 
+// Node 26 affiche un avertissement à chaque accès à globalThis.localStorage ; zustand (persist, storage par défaut)
+// y accède. Le stockage réel est fourni par AsyncStorage (mocké ci-dessous), donc on masque la propriété.
+Object.defineProperty(globalThis, 'localStorage', { value: undefined, configurable: true, writable: true });
+
 jest.mock('@react-native-async-storage/async-storage', () =>
   require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
 );
