@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, SegmentedButtons, Surface, Text } from 'react-native-paper';
 import { EnTeteSection } from '../composants/EnTeteSection';
@@ -30,7 +30,16 @@ const SEGMENTS = [
 export function VueMatchs({ club, maintenant, suivis, onOuvrirMatch, rafraichir, rafraichissement = false }: Props) {
   const t = useThemeClub();
   const jours = useMemo(() => joursAvecMatchs(club), [club]);
-  const [jour, setJour] = useState(() => jourParDefaut(jours, jourLocal(maintenant)));
+  // On ne retient que le choix de l'utilisateur : le jour affiché suit toujours les données.
+  const [jourChoisi, setJourChoisi] = useState<string>();
+  const jour = jourChoisi && jours.includes(jourChoisi) ? jourChoisi : jourParDefaut(jours, jourLocal(maintenant));
+  const barreJours = useRef<ScrollView>(null);
+  const positions = useRef<Record<string, number>>({});
+  const amener = useCallback((j: string | undefined) => {
+    const x = j === undefined ? undefined : positions.current[j];
+    if (x !== undefined) barreJours.current?.scrollTo({ x: Math.max(0, x - 16), animated: false });
+  }, []);
+  useEffect(() => amener(jour), [jour, amener]);
   const [filtre, setFiltre] = useState<Filtre>(suivis.length ? 'mes' : 'tous');
   const matchs = jour
     ? matchsDuJour(club, jour).filter((m) => filtre === 'tous' || suivis.includes(m.equipe.collectif))
@@ -45,14 +54,25 @@ export function VueMatchs({ club, maintenant, suivis, onOuvrirMatch, rafraichir,
       {jours.length > 0 ? (
         <>
           <ScrollView
+            ref={barreJours}
             horizontal
             showsHorizontalScrollIndicator={false}
             accessibilityRole="radiogroup"
+            accessibilityLabel="Jour du match"
             style={styles.barreJours}
             contentContainerStyle={styles.jours}
           >
             {jours.map((j) => (
-              <PastilleChoix key={j} role="radio" libelle={libelleJour(j)} choisie={j === jour} onPress={() => setJour(j)} />
+              <View
+                key={j}
+                testID={`jour-${j}`}
+                onLayout={(e) => {
+                  positions.current[j] = e.nativeEvent.layout.x;
+                  if (j === jour) amener(j);
+                }}
+              >
+                <PastilleChoix role="radio" libelle={libelleJour(j)} choisie={j === jour} onPress={() => setJourChoisi(j)} />
+              </View>
             ))}
           </ScrollView>
           <SegmentedButtons
