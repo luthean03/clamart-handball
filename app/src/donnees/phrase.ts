@@ -1,0 +1,54 @@
+import type { Match, Resultat } from './types';
+
+const MINUSCULES = new Set(['de', 'du', 'des', 'la', 'le', 'les', 'et', 'sur', 'en', 'd', 'l', 'a', 'au', 'aux']);
+const ABREVIATIONS = new Set(['st', 'ste']);
+const SIGLES = new Set(['AC', 'AS', 'ASV', 'ASM', 'US', 'USM', 'UC', 'ES', 'CA', 'CO', 'OC', 'SO', 'CSM', 'AAS']);
+const SEPARATEUR = /^[\s\-/.'’]+$/;
+
+/** Nom FFHB en capitales → nom lisible. Sigles (SC, HB, ASV…) et numéros conservés. */
+export function nomLisible(brut: string): string {
+  let premier = true;
+  return brut
+    .trim()
+    .split(/([\s\-/.'’]+)/)
+    .map((morceau) => {
+      if (!morceau || SEPARATEUR.test(morceau)) return morceau;
+      const estPremier = premier;
+      premier = false;
+      if (/\d/.test(morceau)) return morceau;
+      const bas = morceau.toLowerCase();
+      if (!estPremier && MINUSCULES.has(bas)) return bas;
+      const capitale = bas.charAt(0).toUpperCase() + bas.slice(1);
+      if (ABREVIATIONS.has(bas)) return capitale;
+      const enCapitales = morceau === morceau.toUpperCase();
+      if (enCapitales && (SIGLES.has(morceau) || (morceau.length <= 3 && !/[AEIOUY]/.test(morceau)))) return morceau;
+      return capitale;
+    })
+    .join('');
+}
+
+export interface Phrase {
+  titre: string;
+  sousTitre?: string;
+}
+
+/** Signature de l'app : le résultat dit en une phrase. Jamais d'adjectif sur une défaite. */
+export function phraseResultat(
+  m: Pick<Match, 'resultat' | 'score_nous' | 'score_eux' | 'adversaire'>,
+  serie?: { resultat: Resultat; longueur: number } | null,
+): Phrase | undefined {
+  if (!m.resultat || m.score_nous === null || m.score_eux === null) return undefined;
+  const adversaire = nomLisible(m.adversaire);
+  const dUnBut = Math.abs(m.score_nous - m.score_eux) === 1 ? " d'un but" : '';
+  const titre =
+    m.resultat === 'N'
+      ? `Match nul contre ${adversaire}`
+      : `${m.resultat === 'V' ? 'Victoire' : 'Défaite'}${dUnBut} contre ${adversaire}`;
+  if (serie?.resultat === 'V' && serie.longueur >= 3) {
+    return { titre, sousTitre: `${serie.longueur}e victoire de suite` };
+  }
+  return { titre };
+}
+
+export const scoreTexte = (m: Pick<Match, 'score_nous' | 'score_eux'>) => `${m.score_nous}–${m.score_eux}`;
+export const ordinal = (n: number) => (n === 1 ? '1er' : `${n}e`);
