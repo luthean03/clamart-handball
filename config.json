@@ -24,5 +24,13 @@
   "noms_equipes": {
     "commentaire": "Optionnel : renommer une équipe. Clé = equipe_id (voir site/data/club.json), valeur = nom affiché.",
     "exemple_2126402": "Seniors Filles 1"
+  },
+  "collectifs": {
+    "commentaire": "Optionnel : forcer le collectif d'une équipe. Clé = equipe_id, valeur = id de collectif (minuscules, chiffres, tirets)."
+  },
+  "notifications": {
+    "fuseau": "Europe/Paris",
+    "max_par_passage": 40,
+    "rappels_a_partir_de": "16:30"
   }
 }
