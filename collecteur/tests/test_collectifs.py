@@ -40,12 +40,20 @@ def test_surcharge_separe_deux_equipes(club_v1):
     assert ids["seniors-m-region"]["nom"] == "Seniors M"
 
 
-def test_collectif_suit_le_nom_affiche(club_v1):
+def test_collectif_stable_si_une_equipe_est_renommee(club_v1):
+    base = {e["id"]: e["nom"] for e in club_v1["equipes"]}      # nom FFHB, avant noms_equipes
     for e in club_v1["equipes"]:
-        if e["nom"] == "Seniors F 1":
-            e["nom"] = "Seniors Filles 1"       # effet de config.json → noms_equipes
-    ids = [c["id"] for c in construire_collectifs(club_v1["equipes"])]
-    assert "seniors-filles-1" in ids and "seniors-f-1" not in ids
+        if e["id"] == "32542-clamart-handball-1":
+            e["nom"] = "Seniors Filles 1"                          # effet de config.json → noms_equipes
+    collectifs = {c["id"]: c for c in construire_collectifs(club_v1["equipes"], base=lambda e: base[e["id"]])}
+    assert "seniors-filles-1" not in collectifs
+    assert collectifs["seniors-f-1"]["equipes"] == ["32542-clamart-handball-1", "33243-clamart-handball-1"]
+    assert collectifs["seniors-f-1"]["nom"] == "Seniors Filles 1"
+
+
+def test_surcharge_est_normalisee(club_v1):
+    collectifs = construire_collectifs(club_v1["equipes"], {"33403-clamart-handball": "Seniors M Région"})
+    assert "seniors-m-region" in [c["id"] for c in collectifs]
 
 
 def test_ids_valides_pour_sujets_fcm(club_v1):

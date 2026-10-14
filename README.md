@@ -86,8 +86,12 @@ L'app (`app/`) lit `site/data/club.json` publié sur GitHub Pages :
 
 Contrat de données : `version_schema` = 2. Chaque équipe FFHB porte un `collectif`
 (ex. `seniors-m`) qui regroupe toutes ses compétitions ; la liste est dans `collectifs`.
+L'id d'un collectif vient du nom construit depuis la FFHB : un renommage dans
+`noms_equipes` change le nom affiché, pas l'id (les abonnés aux notifications ne le perdent pas).
 Deux équipes de même nom ? Les séparer dans `config.json → collectifs`
-(`"<equipe_id>": "<autre-id>"`).
+(`"<equipe_id>": "<autre-id>"`, la valeur est mise en minuscules-tirets). Une surcharge vise
+un `equipe_id`, qui change avec chaque nouvelle compétition ou phase : l'ajouter aussi pour
+les nouveaux identifiants de l'équipe en cours de saison.
 
 Tests du collecteur :
 

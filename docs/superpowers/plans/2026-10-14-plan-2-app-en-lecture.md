@@ -2888,7 +2888,8 @@ export default function Onglets() {
   const { club } = useClub();
 
   useEffect(() => {
-    if (club) useSuivi.getState().retirerInconnus(club.collectifs.map((c) => c.id));
+    // Collecte partielle (une compétition en échec) : ne pas désabonner les équipes absentes.
+    if (club && club.erreurs.length === 0) useSuivi.getState().retirerInconnus(club.collectifs.map((c) => c.id));
   }, [club]);
 
   if (!pret) return null;
