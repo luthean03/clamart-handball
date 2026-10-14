@@ -1,0 +1,3883 @@
+{
+ "version_schema": 2,
+ "club": {
+  "nom": "Clamart Handball",
+  "id_ffhb": "3309"
+ },
+ "site": {
+  "titre": "Clamart Handball",
+  "sous_titre": "Résultats, classements et stats de toutes nos équipes",
+  "couleur_principale": "#123a6b",
+  "couleur_accent": "#e8b200"
+ },
+ "saison": "2026-2027",
+ "mis_a_jour": "2026-10-13T14:41:53+00:00",
+ "source": "https://www.ffhandball.fr",
+ "collectifs": [
+  {
+   "id": "seniors-f-1",
+   "nom": "Seniors F 1",
+   "categorie": "seniors",
+   "genre": "F",
+   "equipes": [
+    "32542-clamart-handball-1",
+    "33243-clamart-handball-1"
+   ]
+  },
+  {
+   "id": "seniors-f-1b",
+   "nom": "Seniors F 1B",
+   "categorie": "seniors",
+   "genre": "F",
+   "equipes": [
+    "32543-clamart-handball-1b"
+   ]
+  },
+  {
+   "id": "seniors-m",
+   "nom": "Seniors M",
+   "categorie": "seniors",
+   "genre": "M",
+   "equipes": [
+    "32546-clamart-handball",
+    "33403-clamart-handball",
+    "33244-clamart-handball"
+   ]
+  },
+  {
+   "id": "u18-f",
+   "nom": "U18 F",
+   "categorie": "U18",
+   "genre": "F",
+   "equipes": [
+    "33458-clamart-hb"
+   ]
+  },
+  {
+   "id": "u18-m",
+   "nom": "U18 M",
+   "categorie": "U18",
+   "genre": "M",
+   "equipes": [
+    "33470-clamart-handball"
+   ]
+  },
+  {
+   "id": "u15-m",
+   "nom": "U15 M",
+   "categorie": "U15",
+   "genre": "M",
+   "equipes": [
+    "33472-clamart-hb"
+   ]
+  },
+  {
+   "id": "u13-f",
+   "nom": "U13 F",
+   "categorie": "U13",
+   "genre": "F",
+   "equipes": [
+    "33004-clamart-handball"
+   ]
+  },
+  {
+   "id": "u13-m",
+   "nom": "U13 M",
+   "categorie": "U13",
+   "genre": "M",
+   "equipes": [
+    "33052-clamart-hb"
+   ]
+  },
+  {
+   "id": "u11-f-2",
+   "nom": "U11 F 2",
+   "categorie": "U11",
+   "genre": "F",
+   "equipes": [
+    "33056-clamart-handball-2-filles"
+   ]
+  },
+  {
+   "id": "u11-mixte-1",
+   "nom": "U11 Mixte 1",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "equipes": [
+    "33056-clamart-handball-1"
+   ]
+  },
+  {
+   "id": "u11-mixte-3",
+   "nom": "U11 Mixte 3",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "equipes": [
+    "33056-clamart-handball-3"
+   ]
+  }
+ ],
+ "equipes": [
+  {
+   "id": "32542-clamart-handball-1",
+   "nom": "Seniors F 1",
+   "libelle_ffhb": "CLAMART HANDBALL 1",
+   "competition": "+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75",
+   "detail": "D1 territoriale",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "seniors",
+   "genre": "F",
+   "phase": "+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75 / POULE UNIQUE",
+   "poule": "POULE UNIQUE",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/equipe-2126402/",
+   "stats_joueurs": true,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "MARTIGUA SCL",
+     "points": 15,
+     "joues": 5,
+     "gagnes": 5,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 140,
+     "bc": 90,
+     "diff": 50,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "AC BOULOGNE-BILLANCOURT 1B",
+     "points": 13,
+     "joues": 5,
+     "gagnes": 4,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 131,
+     "bc": 121,
+     "diff": 10,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HANDBALL 1",
+     "points": 13,
+     "joues": 5,
+     "gagnes": 4,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 142,
+     "bc": 100,
+     "diff": 42,
+     "nous": true
+    },
+    {
+     "place": 4,
+     "equipe": "BOIS-COLOMBES SP. 1B",
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 107,
+     "bc": 97,
+     "diff": 10,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "ES COLOMBIENNE 1C",
+     "points": 7,
+     "joues": 5,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 4,
+     "bp": 105,
+     "bc": 128,
+     "diff": -23,
+     "nous": false
+    },
+    {
+     "place": 6,
+     "equipe": "PARIS SC 1C",
+     "points": 7,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 79,
+     "bc": 50,
+     "diff": 29,
+     "nous": false
+    },
+    {
+     "place": 7,
+     "equipe": "CLUB OLYMPIQUE MULTISPORT DE BAGNEUX 1",
+     "points": 7,
+     "joues": 4,
+     "gagnes": 1,
+     "nuls": 1,
+     "perdus": 2,
+     "bp": 91,
+     "bc": 94,
+     "diff": -3,
+     "nous": false
+    },
+    {
+     "place": 8,
+     "equipe": "ENT. SURESNES / NANTERRE",
+     "points": 6,
+     "joues": 5,
+     "gagnes": 1,
+     "nuls": 1,
+     "perdus": 1,
+     "bp": 82,
+     "bc": 76,
+     "diff": 6,
+     "nous": false
+    },
+    {
+     "place": 9,
+     "equipe": "STADE FRANCAIS",
+     "points": 6,
+     "joues": 5,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 4,
+     "bp": 75,
+     "bc": 124,
+     "diff": -49,
+     "nous": false
+    },
+    {
+     "place": 10,
+     "equipe": "PARIS UC 1C",
+     "points": 5,
+     "joues": 4,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 70,
+     "bc": 69,
+     "diff": 1,
+     "nous": false
+    },
+    {
+     "place": 11,
+     "equipe": "PARIS ST-GERMAIN HB",
+     "points": 4,
+     "joues": 4,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 4,
+     "bp": 48,
+     "bc": 121,
+     "diff": -73,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2644268",
+     "date": "2026-09-13T16:30:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "CLUB OLYMPIQUE MULTISPORT DE BAGNEUX 1",
+     "score_nous": 27,
+     "score_eux": 22,
+     "mt_nous": 13,
+     "mt_eux": 10,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644268/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVRBF.pdf",
+     "salle": {
+      "nom": "HENRI-WALLON",
+      "adresse": "1 AVENUE DE STALINGRAD 92220 BAGNEUX"
+     },
+     "buteurs": [
+      {
+       "joueur": "Diara DORILAS",
+       "numero": 41,
+       "buts": 8
+      },
+      {
+       "joueur": "Zoe GEORGE",
+       "numero": 4,
+       "buts": 5
+      },
+      {
+       "joueur": "Eva NDIAYE",
+       "numero": 9,
+       "buts": 3
+      },
+      {
+       "joueur": "Azza MSAKNI",
+       "numero": 16,
+       "buts": 3
+      },
+      {
+       "joueur": "Lisa LADJEL",
+       "numero": 46,
+       "buts": 3
+      },
+      {
+       "joueur": "Aurelie FRUGIER",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "Stephanie BAY",
+       "numero": 6,
+       "buts": 2
+      },
+      {
+       "joueur": "Claire COSTES",
+       "numero": 10,
+       "buts": 1
+      },
+      {
+       "joueur": "Haquima ES-SALEMY",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "Michelore EDOUARD",
+       "numero": 92,
+       "buts": 0
+      },
+      {
+       "joueur": "Melina KOBZILI",
+       "numero": 97,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644274",
+     "date": "2026-09-19T18:00:00+02:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "AC BOULOGNE-BILLANCOURT 1B",
+     "score_nous": 22,
+     "score_eux": 25,
+     "mt_nous": 15,
+     "mt_eux": 13,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644274/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRVWG.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Eva NDIAYE",
+       "numero": 9,
+       "buts": 6
+      },
+      {
+       "joueur": "Diara DORILAS",
+       "numero": 41,
+       "buts": 4
+      },
+      {
+       "joueur": "Aurelie FRUGIER",
+       "numero": 5,
+       "buts": 3
+      },
+      {
+       "joueur": "Haquima ES-SALEMY",
+       "numero": 8,
+       "buts": 3
+      },
+      {
+       "joueur": "Azza MSAKNI",
+       "numero": 16,
+       "buts": 2
+      },
+      {
+       "joueur": "Lisa LADJEL",
+       "numero": 46,
+       "buts": 2
+      },
+      {
+       "joueur": "Zoe GEORGE",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "Hanane ALEXANDRE",
+       "numero": 12,
+       "buts": 1
+      },
+      {
+       "joueur": "Michelore EDOUARD",
+       "numero": 92,
+       "buts": 0
+      },
+      {
+       "joueur": "Melina KOBZILI",
+       "numero": 97,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644280",
+     "date": "2026-09-26T18:00:00+02:00",
+     "journee": 3,
+     "domicile": true,
+     "adversaire": "STADE FRANCAIS",
+     "score_nous": 31,
+     "score_eux": 20,
+     "mt_nous": 20,
+     "mt_eux": 10,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644280/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRVWM.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Diara DORILAS",
+       "numero": 41,
+       "buts": 9
+      },
+      {
+       "joueur": "Aurelie FRUGIER",
+       "numero": 5,
+       "buts": 4
+      },
+      {
+       "joueur": "Stephanie BAY",
+       "numero": 6,
+       "buts": 4
+      },
+      {
+       "joueur": "Lisa LADJEL",
+       "numero": 46,
+       "buts": 4
+      },
+      {
+       "joueur": "Lisa FERRIER",
+       "numero": 63,
+       "buts": 4
+      },
+      {
+       "joueur": "Eva NDIAYE",
+       "numero": 9,
+       "buts": 3
+      },
+      {
+       "joueur": "Haquima ES-SALEMY",
+       "numero": 59,
+       "buts": 2
+      },
+      {
+       "joueur": "Zoe GEORGE",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "Camille LEPRINCE",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "Michelore EDOUARD",
+       "numero": 92,
+       "buts": 0
+      },
+      {
+       "joueur": "Melina KOBZILI",
+       "numero": 97,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644286",
+     "date": "2026-10-04T16:00:00+02:00",
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "PARIS ST-GERMAIN HB",
+     "score_nous": 30,
+     "score_eux": 11,
+     "mt_nous": 16,
+     "mt_eux": 6,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644286/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRVWS.pdf",
+     "salle": {
+      "nom": "REUILLY",
+      "adresse": "11 RUE ANTOINE-JULIEN-HENARD 75012 PARIS 12e"
+     },
+     "buteurs": [
+      {
+       "joueur": "Diara DORILAS",
+       "numero": 2,
+       "buts": 8
+      },
+      {
+       "joueur": "Lisa LADJEL",
+       "numero": 46,
+       "buts": 8
+      },
+      {
+       "joueur": "Aurelie FRUGIER",
+       "numero": 5,
+       "buts": 5
+      },
+      {
+       "joueur": "Eva NDIAYE",
+       "numero": 9,
+       "buts": 2
+      },
+      {
+       "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
+       "numero": 11,
+       "buts": 2
+      },
+      {
+       "joueur": "Haquima ES-SALEMY",
+       "numero": 59,
+       "buts": 2
+      },
+      {
+       "joueur": "Zoe GEORGE",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "Stephanie BAY",
+       "numero": 6,
+       "buts": 1
+      },
+      {
+       "joueur": "Azza MSAKNI",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "Michelore EDOUARD",
+       "numero": 92,
+       "buts": 0
+      },
+      {
+       "joueur": "Melina KOBZILI",
+       "numero": 97,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644292",
+     "date": "2026-10-11T16:15:00+02:00",
+     "journee": 5,
+     "domicile": true,
+     "adversaire": "ENT. SURESNES / NANTERRE",
+     "score_nous": 32,
+     "score_eux": 22,
+     "mt_nous": 16,
+     "mt_eux": 9,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644292/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRVWY.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Diara DORILAS",
+       "numero": 19,
+       "buts": 9
+      },
+      {
+       "joueur": "Haquima ES-SALEMY",
+       "numero": 8,
+       "buts": 6
+      },
+      {
+       "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
+       "numero": 13,
+       "buts": 6
+      },
+      {
+       "joueur": "Eva NDIAYE",
+       "numero": 9,
+       "buts": 4
+      },
+      {
+       "joueur": "Lisa LADJEL",
+       "numero": 64,
+       "buts": 4
+      },
+      {
+       "joueur": "Lisa FERRIER",
+       "numero": 24,
+       "buts": 2
+      },
+      {
+       "joueur": "Aurelie FRUGIER",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "Melina KOBZILI",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "Juliette AUFFRET",
+       "numero": 29,
+       "buts": 0
+      },
+      {
+       "joueur": "Michelore EDOUARD",
+       "numero": 96,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644298",
+     "date": "2026-11-08T16:15:00+01:00",
+     "journee": 6,
+     "domicile": false,
+     "adversaire": "BOIS-COLOMBES SP. 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644298/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "ALBERT-SMIRLIAN",
+      "adresse": "11 AVENUE RENEE 92270 BOIS COLOMBES"
+     }
+    },
+    {
+     "id": "2644304",
+     "date": null,
+     "journee": 7,
+     "domicile": true,
+     "adversaire": "ES COLOMBIENNE 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644304/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644310",
+     "date": null,
+     "journee": 8,
+     "domicile": false,
+     "adversaire": "PARIS UC 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644310/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644322",
+     "date": null,
+     "journee": 10,
+     "domicile": false,
+     "adversaire": "PARIS SC 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644322/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644328",
+     "date": null,
+     "journee": 11,
+     "domicile": true,
+     "adversaire": "MARTIGUA SCL",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644328/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644334",
+     "date": null,
+     "journee": 12,
+     "domicile": true,
+     "adversaire": "CLUB OLYMPIQUE MULTISPORT DE BAGNEUX 1",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644334/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644340",
+     "date": null,
+     "journee": 13,
+     "domicile": false,
+     "adversaire": "AC BOULOGNE-BILLANCOURT 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644340/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644346",
+     "date": null,
+     "journee": 14,
+     "domicile": false,
+     "adversaire": "STADE FRANCAIS",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644346/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644352",
+     "date": null,
+     "journee": 15,
+     "domicile": true,
+     "adversaire": "PARIS ST-GERMAIN HB",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644352/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644358",
+     "date": null,
+     "journee": 16,
+     "domicile": false,
+     "adversaire": "ENT. SURESNES / NANTERRE",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644358/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644364",
+     "date": null,
+     "journee": 17,
+     "domicile": true,
+     "adversaire": "BOIS-COLOMBES SP. 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644364/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644370",
+     "date": null,
+     "journee": 18,
+     "domicile": false,
+     "adversaire": "ES COLOMBIENNE 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644370/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644376",
+     "date": null,
+     "journee": 19,
+     "domicile": true,
+     "adversaire": "PARIS UC 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644376/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644388",
+     "date": null,
+     "journee": 21,
+     "domicile": true,
+     "adversaire": "PARIS SC 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644388/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644394",
+     "date": null,
+     "journee": 22,
+     "domicile": false,
+     "adversaire": "MARTIGUA SCL",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644394/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 5,
+    "victoires": 4,
+    "nuls": 0,
+    "defaites": 1,
+    "bp": 142,
+    "bc": 100
+   },
+   "forme": "VDVVV",
+   "place": 3,
+   "nb_equipes": 11,
+   "collectif": "seniors-f-1"
+  },
+  {
+   "id": "32543-clamart-handball-1b",
+   "nom": "Seniors F 1B",
+   "libelle_ffhb": "CLAMART HANDBALL 1B",
+   "competition": "+16 ANS FEMININES - DIVISION 2 TERRITORIALE 92-75",
+   "detail": "D2 territoriale",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "seniors",
+   "genre": "F",
+   "phase": "1RE PHASE",
+   "poule": "POULE B",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/equipe-2126426/",
+   "stats_joueurs": true,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "LA CLICHOISE HANDBALL",
+     "points": 11,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 134,
+     "bc": 93,
+     "diff": 41,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "LEVALLOIS SC",
+     "points": 11,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 96,
+     "bc": 79,
+     "diff": 17,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "STADE DE VANVES 1B",
+     "points": 10,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 93,
+     "bc": 79,
+     "diff": 14,
+     "nous": false
+    },
+    {
+     "place": 4,
+     "equipe": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 104,
+     "bc": 87,
+     "diff": 17,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "CLAMART HANDBALL 1B",
+     "points": 9,
+     "joues": 5,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 91,
+     "bc": 114,
+     "diff": -23,
+     "nous": true
+    },
+    {
+     "place": 6,
+     "equipe": "PARIS SC 1D",
+     "points": 7,
+     "joues": 5,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 4,
+     "bp": 107,
+     "bc": 119,
+     "diff": -12,
+     "nous": false
+    },
+    {
+     "place": 7,
+     "equipe": "PARIS UC 1D",
+     "points": 4,
+     "joues": 4,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 4,
+     "bp": 70,
+     "bc": 124,
+     "diff": -54,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2644459",
+     "date": "2026-09-12T20:00:00+02:00",
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "PARIS UC 1D",
+     "score_nous": 24,
+     "score_eux": 12,
+     "mt_nous": 11,
+     "mt_eux": 5,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644459/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRWDL.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Hanane ALEXANDRE",
+       "numero": 2,
+       "buts": 8
+      },
+      {
+       "joueur": "Juliette AUFFRET",
+       "numero": 15,
+       "buts": 7
+      },
+      {
+       "joueur": "Amelys DEBIOL",
+       "numero": 17,
+       "buts": 3
+      },
+      {
+       "joueur": "Camille LEPRINCE",
+       "numero": 21,
+       "buts": 2
+      },
+      {
+       "joueur": "Alice GOUBILL",
+       "numero": 22,
+       "buts": 2
+      },
+      {
+       "joueur": "Joey ANTONIOS",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "Violaine HOUIN",
+       "numero": 19,
+       "buts": 1
+      },
+      {
+       "joueur": "Bisse Marthe MFOULA ESSONO",
+       "numero": 1,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644462",
+     "date": "2026-09-20T10:45:00+02:00",
+     "journee": 2,
+     "domicile": false,
+     "adversaire": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
+     "score_nous": 17,
+     "score_eux": 33,
+     "mt_nous": 8,
+     "mt_eux": 20,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644462/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRWDO.pdf",
+     "salle": {
+      "nom": "MATHIS",
+      "adresse": "11 RUE MATHIS 75019 PARIS 19e"
+     },
+     "buteurs": [
+      {
+       "joueur": "Claire COSTES",
+       "numero": 10,
+       "buts": 6
+      },
+      {
+       "joueur": "Juliette AUFFRET",
+       "numero": 15,
+       "buts": 4
+      },
+      {
+       "joueur": "Amelys DEBIOL",
+       "numero": 17,
+       "buts": 4
+      },
+      {
+       "joueur": "Camille LEPRINCE",
+       "numero": 2,
+       "buts": 2
+      },
+      {
+       "joueur": "Clara PASQUIER",
+       "numero": 78,
+       "buts": 1
+      },
+      {
+       "joueur": "Bisse Marthe MFOULA ESSONO",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "Claire EUCHER",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "Joey ANTONIOS",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "Violaine HOUIN",
+       "numero": 19,
+       "buts": 0
+      },
+      {
+       "joueur": "Alice GOUBILL",
+       "numero": 22,
+       "buts": 0
+      },
+      {
+       "joueur": "Mariam HINI",
+       "numero": 69,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644465",
+     "date": "2026-09-27T16:00:00+02:00",
+     "journee": 3,
+     "domicile": true,
+     "adversaire": "STADE DE VANVES 1B",
+     "score_nous": 16,
+     "score_eux": 31,
+     "mt_nous": 8,
+     "mt_eux": 14,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644465/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRWDR.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Hind BAIT",
+       "numero": 37,
+       "buts": 7
+      },
+      {
+       "joueur": "Claire COSTES",
+       "numero": 10,
+       "buts": 3
+      },
+      {
+       "joueur": "Hanane ALEXANDRE",
+       "numero": 2,
+       "buts": 2
+      },
+      {
+       "joueur": "Juliette AUFFRET",
+       "numero": 15,
+       "buts": 2
+      },
+      {
+       "joueur": "Claire EUCHER",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "Alice GOUBILL",
+       "numero": 22,
+       "buts": 1
+      },
+      {
+       "joueur": "Bisse Marthe MFOULA ESSONO",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "Joey ANTONIOS",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "Mariam HINI",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "Clara PASQUIER",
+       "numero": 78,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644468",
+     "date": "2026-10-03T18:00:00+02:00",
+     "journee": 4,
+     "domicile": true,
+     "adversaire": "LEVALLOIS SC",
+     "score_nous": 14,
+     "score_eux": 21,
+     "mt_nous": 4,
+     "mt_eux": 11,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644468/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRWDU.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Claire COSTES",
+       "numero": 10,
+       "buts": 4
+      },
+      {
+       "joueur": "Alice GOUBILL",
+       "numero": 22,
+       "buts": 4
+      },
+      {
+       "joueur": "Carla DAELMAN",
+       "numero": 43,
+       "buts": 3
+      },
+      {
+       "joueur": "Hanane ALEXANDRE",
+       "numero": 2,
+       "buts": 2
+      },
+      {
+       "joueur": "Clara PASQUIER",
+       "numero": 78,
+       "buts": 1
+      },
+      {
+       "joueur": "Bisse Marthe MFOULA ESSONO",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "Claire EUCHER",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "Joey ANTONIOS",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "Juliette AUFFRET",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "Amelys DEBIOL",
+       "numero": 17,
+       "buts": 0
+      },
+      {
+       "joueur": "Camille LEPRINCE",
+       "numero": 21,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644473",
+     "date": "2026-10-10T18:30:00+02:00",
+     "journee": 5,
+     "domicile": false,
+     "adversaire": "PARIS SC 1D",
+     "score_nous": 20,
+     "score_eux": 17,
+     "mt_nous": 13,
+     "mt_eux": 11,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644473/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRWDZ.pdf",
+     "salle": {
+      "nom": "VIGNOLES",
+      "adresse": "87 RUE DES HAIES 75020 PARIS 20e"
+     },
+     "buteurs": [
+      {
+       "joueur": "Claire COSTES",
+       "numero": 10,
+       "buts": 5
+      },
+      {
+       "joueur": "Hanane ALEXANDRE",
+       "numero": 12,
+       "buts": 5
+      },
+      {
+       "joueur": "Zoe GEORGE",
+       "numero": 4,
+       "buts": 3
+      },
+      {
+       "joueur": "Amelys DEBIOL",
+       "numero": 17,
+       "buts": 2
+      },
+      {
+       "joueur": "Alicia TRIPOLI--LONGET",
+       "numero": 72,
+       "buts": 2
+      },
+      {
+       "joueur": "Joey ANTONIOS",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "Camille LEPRINCE",
+       "numero": 70,
+       "buts": 1
+      },
+      {
+       "joueur": "Clara PASQUIER",
+       "numero": 78,
+       "buts": 1
+      },
+      {
+       "joueur": "Claire EUCHER",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "Bisse Marthe MFOULA ESSONO",
+       "numero": 99,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2644483",
+     "date": null,
+     "journee": 7,
+     "domicile": false,
+     "adversaire": "LA CLICHOISE HANDBALL",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644483/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644487",
+     "date": null,
+     "journee": 8,
+     "domicile": false,
+     "adversaire": "PARIS UC 1D",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644487/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644490",
+     "date": null,
+     "journee": 9,
+     "domicile": true,
+     "adversaire": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644490/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644493",
+     "date": null,
+     "journee": 10,
+     "domicile": false,
+     "adversaire": "STADE DE VANVES 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644493/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644496",
+     "date": null,
+     "journee": 11,
+     "domicile": false,
+     "adversaire": "LEVALLOIS SC",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644496/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644501",
+     "date": null,
+     "journee": 12,
+     "domicile": true,
+     "adversaire": "PARIS SC 1D",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644501/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2644511",
+     "date": null,
+     "journee": 14,
+     "domicile": true,
+     "adversaire": "LA CLICHOISE HANDBALL",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644511/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 5,
+    "victoires": 2,
+    "nuls": 0,
+    "defaites": 3,
+    "bp": 91,
+    "bc": 114
+   },
+   "forme": "VDDDV",
+   "place": 5,
+   "nb_equipes": 7,
+   "collectif": "seniors-f-1b"
+  },
+  {
+   "id": "32546-clamart-handball",
+   "nom": "Seniors M",
+   "libelle_ffhb": "CLAMART HANDBALL",
+   "competition": "+16 ANS MASCULINS - DIVISION 2 TERRITORIALE 92-75",
+   "detail": "D2 territoriale",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "seniors",
+   "genre": "M",
+   "phase": "1RE PHASE",
+   "poule": "POULE B",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/equipe-2126472/",
+   "stats_joueurs": true,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "COURBEVOIE HB 1C",
+     "points": 13,
+     "joues": 5,
+     "gagnes": 4,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 132,
+     "bc": 113,
+     "diff": 19,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "SCUF 1B",
+     "points": 10,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 121,
+     "bc": 85,
+     "diff": 36,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HANDBALL",
+     "points": 10,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 112,
+     "bc": 82,
+     "diff": 30,
+     "nous": true
+    },
+    {
+     "place": 4,
+     "equipe": "PARIS UC 1C",
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 106,
+     "bc": 114,
+     "diff": -8,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "LEVALLOIS SC 1D",
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 88,
+     "bc": 93,
+     "diff": -5,
+     "nous": false
+    },
+    {
+     "place": 6,
+     "equipe": "MARTIGUA SCL 1B",
+     "points": 6,
+     "joues": 4,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 98,
+     "bc": 120,
+     "diff": -22,
+     "nous": false
+    },
+    {
+     "place": 7,
+     "equipe": "ISSY HBM 1C",
+     "points": 4,
+     "joues": 5,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 5,
+     "bp": 89,
+     "bc": 139,
+     "diff": -50,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2673780",
+     "date": "2026-09-19T20:00:00+02:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "MARTIGUA SCL 1B",
+     "score_nous": 29,
+     "score_eux": 19,
+     "mt_nous": 16,
+     "mt_eux": 8,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673780/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/T/WAGTOTH.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Enzo LEPRETRE SILVA",
+       "numero": 54,
+       "buts": 14
+      },
+      {
+       "joueur": "Cedric MEYER",
+       "numero": 23,
+       "buts": 9
+      },
+      {
+       "joueur": "Yohann ESCALA",
+       "numero": 97,
+       "buts": 4
+      },
+      {
+       "joueur": "Damien GOMEZ",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "Samy OULD BRAHAM",
+       "numero": 53,
+       "buts": 1
+      },
+      {
+       "joueur": "Lucas PONTES",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "Ryan NACTO",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "Tivio GANDON-TALOUARN",
+       "numero": 31,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2673784",
+     "date": "2026-09-26T20:00:00+02:00",
+     "journee": 3,
+     "domicile": true,
+     "adversaire": "PARIS UC 1C",
+     "score_nous": 30,
+     "score_eux": 22,
+     "mt_nous": 13,
+     "mt_eux": 12,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673784/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/T/WAGTOTL.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Samy OULD BRAHAM",
+       "numero": 53,
+       "buts": 9
+      },
+      {
+       "joueur": "Cedric MEYER",
+       "numero": 23,
+       "buts": 8
+      },
+      {
+       "joueur": "Enzo LEPRETRE SILVA",
+       "numero": 54,
+       "buts": 6
+      },
+      {
+       "joueur": "Lucas PONTES",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "Nourane NIMRI",
+       "numero": 17,
+       "buts": 2
+      },
+      {
+       "joueur": "Tivio GANDON-TALOUARN",
+       "numero": 31,
+       "buts": 2
+      },
+      {
+       "joueur": "Yohann ESCALA",
+       "numero": 97,
+       "buts": 1
+      },
+      {
+       "joueur": "Matheo GRONDIN",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "Ryad KOUAR",
+       "numero": 19,
+       "buts": 0
+      },
+      {
+       "joueur": "Ryan NACTO",
+       "numero": 21,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2673788",
+     "date": "2026-10-04T16:00:00+02:00",
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "ISSY HBM 1C",
+     "score_nous": 32,
+     "score_eux": 19,
+     "mt_nous": 18,
+     "mt_eux": 12,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673788/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/T/WAGTOTP.pdf",
+     "salle": {
+      "nom": "CITE DES SPORTS SALLE 1",
+      "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
+     },
+     "buteurs": [
+      {
+       "joueur": "Samy OULD BRAHAM",
+       "numero": 53,
+       "buts": 6
+      },
+      {
+       "joueur": "Enzo LEPRETRE SILVA",
+       "numero": 54,
+       "buts": 6
+      },
+      {
+       "joueur": "Cedric MEYER",
+       "numero": 23,
+       "buts": 4
+      },
+      {
+       "joueur": "Nourane NIMRI",
+       "numero": 55,
+       "buts": 4
+      },
+      {
+       "joueur": "Kevin NEVERS",
+       "numero": 60,
+       "buts": 4
+      },
+      {
+       "joueur": "Zineddine STAMBOULI",
+       "numero": 11,
+       "buts": 3
+      },
+      {
+       "joueur": "Yohann ESCALA",
+       "numero": 97,
+       "buts": 3
+      },
+      {
+       "joueur": "Ryan NACTO",
+       "numero": 21,
+       "buts": 1
+      },
+      {
+       "joueur": "Tivio GANDON-TALOUARN",
+       "numero": 31,
+       "buts": 1
+      },
+      {
+       "joueur": "Matheo GRONDIN",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "Lucas PONTES",
+       "numero": 5,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2673792",
+     "date": "2026-10-11T14:00:00+02:00",
+     "journee": 5,
+     "domicile": true,
+     "adversaire": "LEVALLOIS SC 1D",
+     "score_nous": 21,
+     "score_eux": 22,
+     "mt_nous": 8,
+     "mt_eux": 10,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673792/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/T/WAGTOTT.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Enzo LEPRETRE SILVA",
+       "numero": 54,
+       "buts": 11
+      },
+      {
+       "joueur": "Nourane NIMRI",
+       "numero": 66,
+       "buts": 3
+      },
+      {
+       "joueur": "Cedric MEYER",
+       "numero": 73,
+       "buts": 3
+      },
+      {
+       "joueur": "Yohann ESCALA",
+       "numero": 11,
+       "buts": 2
+      },
+      {
+       "joueur": "Samy OULD BRAHAM",
+       "numero": 65,
+       "buts": 2
+      },
+      {
+       "joueur": "Ryan NACTO",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "Alex RIGNAULT",
+       "numero": 12,
+       "buts": 0
+      },
+      {
+       "joueur": "Raphael ARNAUD",
+       "numero": 64,
+       "buts": 0
+      },
+      {
+       "joueur": "Tivio GANDON-TALOUARN",
+       "numero": 69,
+       "buts": 0
+      },
+      {
+       "joueur": "Lucas PONTES",
+       "numero": 70,
+       "buts": 0
+      },
+      {
+       "joueur": "Matheo GRONDIN",
+       "numero": 99,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2673808",
+     "date": "2026-12-06T14:30:00+01:00",
+     "journee": 9,
+     "domicile": false,
+     "adversaire": "MARTIGUA SCL 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673808/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "HAUTPOUL",
+      "adresse": "48 RUE D'HAUTPOUL 75019 PARIS 19e"
+     }
+    },
+    {
+     "id": "2673828",
+     "date": "2027-02-27T18:45:00+01:00",
+     "journee": 14,
+     "domicile": false,
+     "adversaire": "SCUF 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673828/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2673796",
+     "date": null,
+     "journee": 6,
+     "domicile": false,
+     "adversaire": "COURBEVOIE HB 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673796/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2673800",
+     "date": null,
+     "journee": 7,
+     "domicile": true,
+     "adversaire": "SCUF 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673800/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2673812",
+     "date": null,
+     "journee": 10,
+     "domicile": false,
+     "adversaire": "PARIS UC 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673812/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2673816",
+     "date": null,
+     "journee": 11,
+     "domicile": true,
+     "adversaire": "ISSY HBM 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673816/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2673820",
+     "date": null,
+     "journee": 12,
+     "domicile": false,
+     "adversaire": "LEVALLOIS SC 1D",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673820/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2673824",
+     "date": null,
+     "journee": 13,
+     "domicile": true,
+     "adversaire": "COURBEVOIE HB 1C",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673824/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 4,
+    "victoires": 3,
+    "nuls": 0,
+    "defaites": 1,
+    "bp": 112,
+    "bc": 82
+   },
+   "forme": "VVVD",
+   "place": 3,
+   "nb_equipes": 7,
+   "collectif": "seniors-m"
+  },
+  {
+   "id": "33403-clamart-handball",
+   "nom": "Seniors M",
+   "libelle_ffhb": "CLAMART HANDBALL",
+   "competition": "COUPE LIGUE MASCULINE",
+   "detail": "Coupe de Ligue",
+   "organisateur": "LIGUE ILE-DE-FRANCE",
+   "niveau": "regional",
+   "categorie": "seniors",
+   "genre": "M",
+   "phase": "1/32 FINALES",
+   "poule": "1/32 MASC",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/equipe-2204480/",
+   "stats_joueurs": true,
+   "classement": null,
+   "matchs": [
+    {
+     "id": "2735241",
+     "date": null,
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "ENTENTE PLESSEENNE HB 1B",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/poule-197360/rencontre-2735241/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "collectif": "seniors-m"
+  },
+  {
+   "id": "33243-clamart-handball-1",
+   "nom": "Seniors F 1",
+   "libelle_ffhb": "CLAMART HANDBALL 1",
+   "competition": "COUPE DE FRANCE DEPARTEMENTALE FEMININE 2026-2027",
+   "detail": "Coupe de France départementale",
+   "organisateur": "FEDERATION FRANCAISE DE HANDBALL",
+   "niveau": "coupe-de-france",
+   "categorie": "seniors",
+   "genre": "F",
+   "phase": "CDF DEP FEM (1° TOUR)",
+   "poule": "1ER TOUR",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/equipe-2196002/",
+   "stats_joueurs": true,
+   "classement": null,
+   "matchs": [
+    {
+     "id": "2729291",
+     "date": "2026-10-18T15:30:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "CELLOIS HB",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-196378/rencontre-2729291/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "VICTOR HUGO",
+      "adresse": "52 , AVENUE DES ETANGS 78170 LA CELLE ST CLOUD"
+     }
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "collectif": "seniors-f-1"
+  },
+  {
+   "id": "33244-clamart-handball",
+   "nom": "Seniors M",
+   "libelle_ffhb": "CLAMART HANDBALL",
+   "competition": "COUPE DE FRANCE DEPARTEMENTALE MASCULINE 2026-2027",
+   "detail": "Coupe de France départementale",
+   "organisateur": "FEDERATION FRANCAISE DE HANDBALL",
+   "niveau": "coupe-de-france",
+   "categorie": "seniors",
+   "genre": "M",
+   "phase": "CDF DEP MAS (1° TOUR)",
+   "poule": "1ER TOUR",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/equipe-2203162/",
+   "stats_joueurs": true,
+   "classement": null,
+   "matchs": [
+    {
+     "id": "2734038",
+     "date": "2026-10-17T18:00:00+02:00",
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "ASSOCIATION SPORTIVE ST-CYR/FONTENAY HANDBALL 78",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-196380/rencontre-2734038/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "collectif": "seniors-m"
+  },
+  {
+   "id": "33458-clamart-hb",
+   "nom": "U18 F",
+   "libelle_ffhb": "CLAMART HB",
+   "competition": "U18F CHAMPIONNAT 92-75",
+   "detail": "Championnat",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U18",
+   "genre": "F",
+   "phase": "U18F - 1ERE PHASE 92-75",
+   "poule": "POULE B",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/equipe-2207050/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "LEVALLOIS SC",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 47,
+     "bc": 37,
+     "diff": 10,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "USM MALAKOFF",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 53,
+     "bc": 6,
+     "diff": 47,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "ENT COLOMBES / ASNIERES",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 44,
+     "bc": 21,
+     "diff": 23,
+     "nous": false
+    },
+    {
+     "place": 4,
+     "equipe": "CLAMART HB",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 24,
+     "bc": 74,
+     "diff": -50,
+     "nous": true
+    },
+    {
+     "place": 5,
+     "equipe": "ENT PARIS GALAXY NORD U18F 3",
+     "points": 1,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 19,
+     "bc": 26,
+     "diff": -7,
+     "nous": false
+    },
+    {
+     "place": 6,
+     "equipe": "STADE FRANCAIS",
+     "points": 1,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 21,
+     "bc": 44,
+     "diff": -23,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2739597",
+     "date": "2026-10-03T14:00:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "USM MALAKOFF",
+     "score_nous": 6,
+     "score_eux": 53,
+     "mt_nous": 4,
+     "mt_eux": 28,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739597/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXOBI.pdf"
+    },
+    {
+     "id": "2739601",
+     "date": "2026-10-10T16:00:00+02:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "LEVALLOIS SC",
+     "score_nous": 18,
+     "score_eux": 21,
+     "mt_nous": 10,
+     "mt_eux": 11,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739601/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXXMB.pdf"
+    },
+    {
+     "id": "2739604",
+     "date": "2026-11-07T18:30:00+01:00",
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "STADE FRANCAIS",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739604/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "STADE PIERRE DE COUBERTIN",
+      "adresse": "82 AVENUE GEORGES-LAFONT 75016 PARIS 16e"
+     }
+    },
+    {
+     "id": "2739607",
+     "date": null,
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "ENT PARIS GALAXY NORD U18F 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739607/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2739610",
+     "date": null,
+     "journee": 5,
+     "domicile": true,
+     "adversaire": "ENT COLOMBES / ASNIERES",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739610/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 2,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 2,
+    "bp": 24,
+    "bc": 74
+   },
+   "forme": "DD",
+   "place": 4,
+   "nb_equipes": 6,
+   "collectif": "u18-f"
+  },
+  {
+   "id": "33470-clamart-handball",
+   "nom": "U18 M",
+   "libelle_ffhb": "CLAMART HANDBALL",
+   "competition": "U18M CHAMPIONNAT 92-75",
+   "detail": "Championnat",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U18",
+   "genre": "M",
+   "phase": "U18M - 1RE PHASE - CHAMPIONNAT 92-75",
+   "poule": "NIVEAU HAUT - POULE A",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/equipe-2207565/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "ENT. SEINE NORD 92 U18M-1",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 96,
+     "bc": 51,
+     "diff": 45,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "PARIS ST-GERMAIN HB 3",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 90,
+     "bc": 60,
+     "diff": 30,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "COURBEVOIE HB 1",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 73,
+     "bc": 56,
+     "diff": 17,
+     "nous": false
+    },
+    {
+     "place": 4,
+     "equipe": "BOIS-COLOMBES SP. 3",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 58,
+     "bc": 75,
+     "diff": -17,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "CLAMART HANDBALL",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 50,
+     "bc": 84,
+     "diff": -34,
+     "nous": true
+    },
+    {
+     "place": 6,
+     "equipe": "LEVALLOIS SC 2",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 59,
+     "bc": 100,
+     "diff": -41,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2740452",
+     "date": "2026-10-03T14:00:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "ENT. SEINE NORD 92 U18M-1",
+     "score_nous": 24,
+     "score_eux": 39,
+     "mt_nous": 12,
+     "mt_eux": 19,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740452/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPRE.pdf"
+    },
+    {
+     "id": "2740456",
+     "date": "2026-10-10T18:00:00+02:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "PARIS ST-GERMAIN HB 3",
+     "score_nous": 26,
+     "score_eux": 45,
+     "mt_nous": 13,
+     "mt_eux": 25,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740456/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPRI.pdf"
+    },
+    {
+     "id": "2740459",
+     "date": null,
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "LEVALLOIS SC 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740459/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2740462",
+     "date": null,
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "BOIS-COLOMBES SP. 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740462/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2740465",
+     "date": null,
+     "journee": 5,
+     "domicile": true,
+     "adversaire": "COURBEVOIE HB 1",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740465/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 2,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 2,
+    "bp": 50,
+    "bc": 84
+   },
+   "forme": "DD",
+   "place": 5,
+   "nb_equipes": 6,
+   "collectif": "u18-m"
+  },
+  {
+   "id": "33472-clamart-hb",
+   "nom": "U15 M",
+   "libelle_ffhb": "CLAMART HB",
+   "competition": "U15M - CHAMPIONNAT 92-75",
+   "detail": "Championnat",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U15",
+   "genre": "M",
+   "phase": "U15M - 1RE PHASE - CHAMPIONNAT 92-75",
+   "poule": "NIVEAU BAS - POULE A",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/equipe-2207672/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "ENTENTE FONTENAY-MALAKOFF U15 M 3",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 63,
+     "bc": 35,
+     "diff": 28,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "RUEIL AC 3",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 46,
+     "bc": 47,
+     "diff": -1,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "PARIS ST-GERMAIN HB 4",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 63,
+     "bc": 47,
+     "diff": 16,
+     "nous": false
+    },
+    {
+     "place": 4,
+     "equipe": "CLAMART HB",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 27,
+     "bc": 24,
+     "diff": 3,
+     "nous": true
+    },
+    {
+     "place": 5,
+     "equipe": "PARIS UNIVERSITE CLUB 3",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 44,
+     "bc": 64,
+     "diff": -20,
+     "nous": false
+    },
+    {
+     "place": 6,
+     "equipe": "ASNIERES HBC 3",
+     "points": 1,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 16,
+     "bc": 42,
+     "diff": -26,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2740592",
+     "date": "2026-10-10T16:30:00+02:00",
+     "journee": 2,
+     "domicile": false,
+     "adversaire": "PARIS UNIVERSITE CLUB 3",
+     "score_nous": 27,
+     "score_eux": 24,
+     "mt_nous": 14,
+     "mt_eux": 14,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740592/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPXN.pdf"
+    },
+    {
+     "id": "2740588",
+     "date": "2026-11-21T14:00:00+01:00",
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "ASNIERES HBC 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740588/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
+     "id": "2740593",
+     "date": null,
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "PARIS ST-GERMAIN HB 4",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740593/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2740596",
+     "date": null,
+     "journee": 4,
+     "domicile": true,
+     "adversaire": "ENTENTE FONTENAY-MALAKOFF U15 M 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740596/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2740600",
+     "date": null,
+     "journee": 5,
+     "domicile": false,
+     "adversaire": "RUEIL AC 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740600/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 1,
+    "victoires": 1,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 27,
+    "bc": 24
+   },
+   "forme": "V",
+   "place": 4,
+   "nb_equipes": 6,
+   "collectif": "u15-m"
+  },
+  {
+   "id": "33004-clamart-handball",
+   "nom": "U13 F",
+   "libelle_ffhb": "CLAMART HANDBALL",
+   "competition": "U13F - DELAYAGES",
+   "detail": "Délayages",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U13",
+   "genre": "F",
+   "phase": "U13F - DELAYAGES J3",
+   "poule": "POULE R",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/equipe-2173683/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "AC BOULOGNE-BILLANCOURT",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "CLAMART HANDBALL",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 6,
+     "bc": 23,
+     "diff": -17,
+     "nous": true
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2702666",
+     "date": "2026-09-26T14:45:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "COURBEVOIE HB",
+     "score_nous": 3,
+     "score_eux": 19,
+     "mt_nous": 2,
+     "mt_eux": 11,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702666/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVHGJ.pdf"
+    },
+    {
+     "id": "2702667",
+     "date": "2026-09-26T14:45:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "STADE DE VANVES",
+     "score_nous": 1,
+     "score_eux": 7,
+     "mt_nous": 0,
+     "mt_eux": 4,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702667/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVHGK.pdf"
+    },
+    {
+     "id": "2739518",
+     "date": "2026-10-03T15:30:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "ISSY-PARIS HAND 1",
+     "score_nous": 0,
+     "score_eux": 32,
+     "mt_nous": 0,
+     "mt_eux": 17,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739518/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXNYG.pdf"
+    },
+    {
+     "id": "2739519",
+     "date": "2026-10-03T15:30:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "BOIS-COLOMBES SP.",
+     "score_nous": 0,
+     "score_eux": 19,
+     "mt_nous": 0,
+     "mt_eux": 10,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739519/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXNYH.pdf"
+    },
+    {
+     "id": "2743439",
+     "date": "2026-10-11T11:30:00+02:00",
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "AC BOULOGNE-BILLANCOURT",
+     "score_nous": 6,
+     "score_eux": 23,
+     "mt_nous": 2,
+     "mt_eux": 9,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-198316/rencontre-2743439/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXVUP.pdf"
+    }
+   ],
+   "bilan": {
+    "joues": 5,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 5,
+    "bp": 10,
+    "bc": 100
+   },
+   "forme": "DDDDD",
+   "place": 2,
+   "nb_equipes": 2,
+   "collectif": "u13-f"
+  },
+  {
+   "id": "33052-clamart-hb",
+   "nom": "U13 M",
+   "libelle_ffhb": "CLAMART HB",
+   "competition": "U13M DELAYAGES",
+   "detail": "Délayages",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U13",
+   "genre": "M",
+   "phase": "U13 M - DELAYAGES J4",
+   "poule": "POULE N - TOURNOI 1",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/equipe-2175513/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "STADE DE VANVES 1",
+     "points": 5,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 34,
+     "bc": 29,
+     "diff": 5,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "HBC SURESNES 1",
+     "points": 5,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 32,
+     "bc": 27,
+     "diff": 5,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HB",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 26,
+     "bc": 36,
+     "diff": -10,
+     "nous": true
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2706480",
+     "date": "2026-09-19T16:00:00+02:00",
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 2",
+     "score_nous": 26,
+     "score_eux": 34,
+     "mt_nous": 14,
+     "mt_eux": 16,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-195205/rencontre-2706480/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSHI.pdf"
+    },
+    {
+     "id": "2706481",
+     "date": "2026-09-26T16:00:00+02:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "BOIS-COLOMBES SP. 1",
+     "score_nous": 17,
+     "score_eux": 44,
+     "mt_nous": 8,
+     "mt_eux": 23,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-195205/rencontre-2706481/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVNFO.pdf"
+    },
+    {
+     "id": "2706484",
+     "date": "2026-10-03T16:00:00+02:00",
+     "journee": 3,
+     "domicile": true,
+     "adversaire": "AC BOULOGNE-BILLANCOURT 2",
+     "score_nous": 17,
+     "score_eux": 17,
+     "mt_nous": 9,
+     "mt_eux": 12,
+     "resultat": "N",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-195205/rencontre-2706484/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVNFR.pdf"
+    },
+    {
+     "id": "2743683",
+     "date": "2026-10-10T14:00:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "HBC SURESNES 1",
+     "score_nous": 12,
+     "score_eux": 17,
+     "mt_nous": 9,
+     "mt_eux": 9,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-198384/rencontre-2743683/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXWVJ.pdf"
+    },
+    {
+     "id": "2743684",
+     "date": "2026-10-10T14:00:00+02:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "STADE DE VANVES 1",
+     "score_nous": 14,
+     "score_eux": 19,
+     "mt_nous": 7,
+     "mt_eux": 8,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-198384/rencontre-2743684/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXWVK.pdf"
+    }
+   ],
+   "bilan": {
+    "joues": 5,
+    "victoires": 0,
+    "nuls": 1,
+    "defaites": 4,
+    "bp": 86,
+    "bc": 131
+   },
+   "forme": "DDNDD",
+   "place": 3,
+   "nb_equipes": 3,
+   "collectif": "u13-m"
+  },
+  {
+   "id": "33056-clamart-handball-2-filles",
+   "nom": "U11 F 2",
+   "libelle_ffhb": "CLAMART HANDBALL 2 (FILLES)",
+   "competition": "U11 MIXTE",
+   "detail": "Championnat",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U11",
+   "genre": "F",
+   "phase": "1RE PHASE - SECTEUR SUD",
+   "poule": "HONNEUR SUD B",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "ISSY HANDBALL MASCULIN 2",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 38,
+     "bc": 3,
+     "diff": 35,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "COM BAGNEUX",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 24,
+     "bc": 2,
+     "diff": 22,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "ISSY-PARIS HAND 2 (FILLES)",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 2,
+     "bc": 51,
+     "diff": -49,
+     "nous": false
+    },
+    {
+     "place": 4,
+     "equipe": "CLAMART HANDBALL 2 (FILLES)",
+     "points": 1,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 3,
+     "bc": 11,
+     "diff": -8,
+     "nous": true
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2710039",
+     "date": "2026-10-11T09:00:00+02:00",
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "ISSY HANDBALL MASCULIN 2",
+     "score_nous": 3,
+     "score_eux": 11,
+     "mt_nous": 2,
+     "mt_eux": 5,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710039/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUB.pdf"
+    },
+    {
+     "id": "2710040",
+     "date": null,
+     "journee": 4,
+     "domicile": true,
+     "adversaire": "COM BAGNEUX",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710040/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710044",
+     "date": null,
+     "journee": 5,
+     "domicile": false,
+     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710044/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710054",
+     "date": null,
+     "journee": 8,
+     "domicile": true,
+     "adversaire": "ISSY HANDBALL MASCULIN 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710054/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710055",
+     "date": null,
+     "journee": 9,
+     "domicile": false,
+     "adversaire": "COM BAGNEUX",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710055/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710059",
+     "date": null,
+     "journee": 10,
+     "domicile": true,
+     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710059/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 1,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 1,
+    "bp": 3,
+    "bc": 11
+   },
+   "forme": "D",
+   "place": 4,
+   "nb_equipes": 4,
+   "collectif": "u11-f-2"
+  },
+  {
+   "id": "33056-clamart-handball-1",
+   "nom": "U11 Mixte 1",
+   "libelle_ffhb": "CLAMART HANDBALL 1",
+   "competition": "U11 MIXTE",
+   "detail": "Championnat",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "phase": "1RE PHASE - SECTEUR SUD",
+   "poule": "HONNEUR SUD C",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "HANDBALL CLUB ANTONY 2",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 39,
+     "bc": 8,
+     "diff": 31,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "CLAMART HANDBALL 1",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 36,
+     "bc": 3,
+     "diff": 33,
+     "nous": true
+    },
+    {
+     "place": 3,
+     "equipe": "STADE DE VANVES HANDBALL 2",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 5,
+     "bc": 56,
+     "diff": -51,
+     "nous": false
+    },
+    {
+     "place": 4,
+     "equipe": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 3",
+     "points": 1,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 6,
+     "bc": 19,
+     "diff": -13,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2710062",
+     "date": "2026-09-27T14:00:00+02:00",
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "STADE DE VANVES HANDBALL 2",
+     "score_nous": 36,
+     "score_eux": 3,
+     "mt_nous": 19,
+     "mt_eux": 1,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710062/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUY.pdf"
+    },
+    {
+     "id": "2710070",
+     "date": "2026-11-07T14:00:00+01:00",
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710070/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "salle jacques duclos",
+      "adresse": "place de la republique 92240 MALAKOFF"
+     }
+    },
+    {
+     "id": "2710088",
+     "date": "2027-01-09T15:00:00+01:00",
+     "journee": 10,
+     "domicile": false,
+     "adversaire": "HANDBALL CLUB ANTONY 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710088/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710073",
+     "date": null,
+     "journee": 5,
+     "domicile": true,
+     "adversaire": "HANDBALL CLUB ANTONY 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710073/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710077",
+     "date": null,
+     "journee": 6,
+     "domicile": false,
+     "adversaire": "STADE DE VANVES HANDBALL 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710077/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710085",
+     "date": null,
+     "journee": 9,
+     "domicile": true,
+     "adversaire": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710085/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 1,
+    "victoires": 1,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 36,
+    "bc": 3
+   },
+   "forme": "V",
+   "place": 2,
+   "nb_equipes": 4,
+   "collectif": "u11-mixte-1"
+  },
+  {
+   "id": "33056-clamart-handball-3",
+   "nom": "U11 Mixte 3",
+   "libelle_ffhb": "CLAMART HANDBALL 3",
+   "competition": "U11 MIXTE",
+   "detail": "Championnat",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "phase": "1RE PHASE - SECTEUR SUD",
+   "poule": "HONNEUR SUD A",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
+   "stats_joueurs": false,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "AS FONTENAY-AUX-ROSES 2",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 15,
+     "bc": 23,
+     "diff": -8,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "USM MALAKOFF 2",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 30,
+     "bc": 3,
+     "diff": 27,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "AC BOULOGNE-BILLANCOURT 3",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 19,
+     "bc": 5,
+     "diff": 14,
+     "nous": false
+    },
+    {
+     "place": 4,
+     "equipe": "ASV CHATENAY-MALABRY 2",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 7,
+     "bc": 40,
+     "diff": -33,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "CLAMART HANDBALL 3",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": true
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2710993",
+     "date": "2026-10-10T14:00:00+02:00",
+     "journee": 3,
+     "domicile": true,
+     "adversaire": "ASV CHATENAY-MALABRY 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710993/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710989",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "AC BOULOGNE-BILLANCOURT 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710989/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710992",
+     "date": null,
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "USM MALAKOFF 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710992/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710997",
+     "date": null,
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "AS FONTENAY-AUX-ROSES 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710997/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2711004",
+     "date": null,
+     "journee": 6,
+     "domicile": true,
+     "adversaire": "AC BOULOGNE-BILLANCOURT 3",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711004/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2711007",
+     "date": null,
+     "journee": 7,
+     "domicile": false,
+     "adversaire": "USM MALAKOFF 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711007/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2711008",
+     "date": null,
+     "journee": 8,
+     "domicile": false,
+     "adversaire": "ASV CHATENAY-MALABRY 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711008/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2711012",
+     "date": null,
+     "journee": 9,
+     "domicile": true,
+     "adversaire": "AS FONTENAY-AUX-ROSES 2",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711012/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "place": 5,
+   "nb_equipes": 5,
+   "collectif": "u11-mixte-3"
+  }
+ ],
+ "buteurs_club": [
+  {
+   "joueur": "Diara DORILAS",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 5,
+   "buts": 38,
+   "record": 9,
+   "moyenne": 7.6
+  },
+  {
+   "joueur": "Enzo LEPRETRE SILVA",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 37,
+   "record": 14,
+   "moyenne": 9.2
+  },
+  {
+   "joueur": "Cedric MEYER",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 24,
+   "record": 9,
+   "moyenne": 6.0
+  },
+  {
+   "joueur": "Lisa LADJEL",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 5,
+   "buts": 21,
+   "record": 8,
+   "moyenne": 4.2
+  },
+  {
+   "joueur": "Claire COSTES",
+   "equipes": [
+    "Seniors F 1",
+    "Seniors F 1B"
+   ],
+   "matchs": 5,
+   "buts": 19,
+   "record": 6,
+   "moyenne": 3.8
+  },
+  {
+   "joueur": "Eva NDIAYE",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 5,
+   "buts": 18,
+   "record": 6,
+   "moyenne": 3.6
+  },
+  {
+   "joueur": "Hanane ALEXANDRE",
+   "equipes": [
+    "Seniors F 1",
+    "Seniors F 1B"
+   ],
+   "matchs": 5,
+   "buts": 18,
+   "record": 8,
+   "moyenne": 3.6
+  },
+  {
+   "joueur": "Samy OULD BRAHAM",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 18,
+   "record": 9,
+   "moyenne": 4.5
+  },
+  {
+   "joueur": "Aurelie FRUGIER",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 5,
+   "buts": 15,
+   "record": 5,
+   "moyenne": 3.0
+  },
+  {
+   "joueur": "Haquima ES-SALEMY",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 5,
+   "buts": 13,
+   "record": 6,
+   "moyenne": 2.6
+  },
+  {
+   "joueur": "Juliette AUFFRET",
+   "equipes": [
+    "Seniors F 1",
+    "Seniors F 1B"
+   ],
+   "matchs": 5,
+   "buts": 13,
+   "record": 7,
+   "moyenne": 2.6
+  },
+  {
+   "joueur": "Zoe GEORGE",
+   "equipes": [
+    "Seniors F 1",
+    "Seniors F 1B"
+   ],
+   "matchs": 5,
+   "buts": 11,
+   "record": 5,
+   "moyenne": 2.2
+  },
+  {
+   "joueur": "Yohann ESCALA",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 10,
+   "record": 4,
+   "moyenne": 2.5
+  },
+  {
+   "joueur": "Amelys DEBIOL",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 4,
+   "buts": 9,
+   "record": 4,
+   "moyenne": 2.2
+  },
+  {
+   "joueur": "Nourane NIMRI",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 3,
+   "buts": 9,
+   "record": 4,
+   "moyenne": 3.0
+  },
+  {
+   "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 2,
+   "buts": 8,
+   "record": 6,
+   "moyenne": 4.0
+  },
+  {
+   "joueur": "Alice GOUBILL",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 4,
+   "buts": 7,
+   "record": 4,
+   "moyenne": 1.8
+  },
+  {
+   "joueur": "Hind BAIT",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 1,
+   "buts": 7,
+   "record": 7,
+   "moyenne": 7.0
+  },
+  {
+   "joueur": "Stephanie BAY",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 3,
+   "buts": 7,
+   "record": 4,
+   "moyenne": 2.3
+  },
+  {
+   "joueur": "Azza MSAKNI",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 3,
+   "buts": 6,
+   "record": 3,
+   "moyenne": 2.0
+  },
+  {
+   "joueur": "Lisa FERRIER",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 2,
+   "buts": 6,
+   "record": 4,
+   "moyenne": 3.0
+  },
+  {
+   "joueur": "Camille LEPRINCE",
+   "equipes": [
+    "Seniors F 1",
+    "Seniors F 1B"
+   ],
+   "matchs": 5,
+   "buts": 5,
+   "record": 2,
+   "moyenne": 1.0
+  },
+  {
+   "joueur": "Kevin NEVERS",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 1,
+   "buts": 4,
+   "record": 4,
+   "moyenne": 4.0
+  },
+  {
+   "joueur": "Carla DAELMAN",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 1,
+   "buts": 3,
+   "record": 3,
+   "moyenne": 3.0
+  },
+  {
+   "joueur": "Clara PASQUIER",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 4,
+   "buts": 3,
+   "record": 1,
+   "moyenne": 0.8
+  },
+  {
+   "joueur": "Tivio GANDON-TALOUARN",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 3,
+   "record": 2,
+   "moyenne": 0.8
+  },
+  {
+   "joueur": "Zineddine STAMBOULI",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 1,
+   "buts": 3,
+   "record": 3,
+   "moyenne": 3.0
+  },
+  {
+   "joueur": "Alicia TRIPOLI--LONGET",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 1,
+   "buts": 2,
+   "record": 2,
+   "moyenne": 2.0
+  },
+  {
+   "joueur": "Joey ANTONIOS",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 5,
+   "buts": 2,
+   "record": 1,
+   "moyenne": 0.4
+  },
+  {
+   "joueur": "Lucas PONTES",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 2,
+   "record": 2,
+   "moyenne": 0.5
+  },
+  {
+   "joueur": "Claire EUCHER",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 4,
+   "buts": 1,
+   "record": 1,
+   "moyenne": 0.2
+  },
+  {
+   "joueur": "Damien GOMEZ",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 1,
+   "buts": 1,
+   "record": 1,
+   "moyenne": 1.0
+  },
+  {
+   "joueur": "Ryan NACTO",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 1,
+   "record": 1,
+   "moyenne": 0.2
+  },
+  {
+   "joueur": "Violaine HOUIN",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 2,
+   "buts": 1,
+   "record": 1,
+   "moyenne": 0.5
+  },
+  {
+   "joueur": "Alex RIGNAULT",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 1,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  },
+  {
+   "joueur": "Bisse Marthe MFOULA ESSONO",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 5,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  },
+  {
+   "joueur": "Mariam HINI",
+   "equipes": [
+    "Seniors F 1B"
+   ],
+   "matchs": 2,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  },
+  {
+   "joueur": "Matheo GRONDIN",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 3,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  },
+  {
+   "joueur": "Melina KOBZILI",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 5,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  },
+  {
+   "joueur": "Michelore EDOUARD",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 5,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  },
+  {
+   "joueur": "Raphael ARNAUD",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 1,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  },
+  {
+   "joueur": "Ryad KOUAR",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 1,
+   "buts": 0,
+   "record": 0,
+   "moyenne": 0.0
+  }
+ ],
+ "erreurs": []
+}

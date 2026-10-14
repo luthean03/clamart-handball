@@ -25,6 +25,7 @@ from urllib.parse import quote
 ICI = Path(__file__).resolve().parent
 sys.path.insert(0, str(ICI))
 import ffhandball as ff  # noqa: E402
+from collectifs import construire_collectifs  # noqa: E402
 
 RACINE = ICI.parent
 CONFIG = json.loads((RACINE / "config.json").read_text(encoding="utf-8"))
@@ -35,6 +36,8 @@ CATEGORIES_STATS = set(CONFIG.get("stats_joueurs", {}).get("categories", ["senio
 NOMS = {k: v for k, v in CONFIG.get("noms_equipes", {}).items() if k not in ("commentaire",) and not k.startswith("exemple")}
 MOTIFS = CONFIG["club"].get("motifs_nom_equipe") or [CONFIG["club"]["recherche_ffhb"]]
 MASQUES = {" ".join(n.upper().split()) for n in CONFIG.get("stats_joueurs", {}).get("joueurs_masques", [])}
+SURCHARGES_COLLECTIFS = {k: v for k, v in CONFIG.get("collectifs", {}).items() if k != "commentaire"}
+VERSION_SCHEMA = 2
 
 
 def masque(nom: str) -> bool:
@@ -347,6 +350,25 @@ def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]])
 
 # ============================================================================ main
 
+def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: list[str]) -> dict:
+    """Contenu complet de club.json (contrat v2). Les équipes reçoivent leur 'collectif'."""
+    if not equipes:
+        raise ValueError("aucune équipe : club.json ne doit pas être remplacé")
+    collectifs = construire_collectifs(equipes, SURCHARGES_COLLECTIFS)
+    return {
+        "version_schema": VERSION_SCHEMA,
+        "club": {"nom": CONFIG["club"]["nom"], "id_ffhb": CLUB_ID},
+        "site": CONFIG.get("site", {}),
+        "saison": annees,
+        "mis_a_jour": maintenant.isoformat(timespec="seconds"),
+        "source": "https://www.ffhandball.fr",
+        "collectifs": collectifs,
+        "equipes": equipes,
+        "buteurs_club": stats_club(equipes),
+        "erreurs": erreurs,
+    }
+
+
 def main() -> int:
     debut = datetime.now(timezone.utc)
     maintenant = datetime.now(timezone.utc)
@@ -374,16 +396,7 @@ def main() -> int:
     equipes.sort(key=lambda e: (ordre_cat(e["categorie"]), e["niveau"] == "coupe-de-france",
                                 "coupe" in e["detail"].lower(), e["genre"], e["nom"]))
 
-    donnees = {
-        "club": {"nom": CONFIG["club"]["nom"], "id_ffhb": CLUB_ID},
-        "site": CONFIG.get("site", {}),
-        "saison": annees,
-        "mis_a_jour": maintenant.isoformat(timespec="seconds"),
-        "source": "https://www.ffhandball.fr",
-        "equipes": equipes,
-        "buteurs_club": stats_club(equipes),
-        "erreurs": ERREURS,
-    }
+    donnees = assembler(equipes, maintenant, annees, ERREURS)
     SORTIE.mkdir(parents=True, exist_ok=True)
     tmp = SORTIE / "club.json.tmp"
     tmp.write_text(json.dumps(donnees, ensure_ascii=False, indent=1), encoding="utf-8")
