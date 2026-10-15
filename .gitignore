@@ -16,3 +16,4 @@ dist/
 .superpowers/
 .impeccable/config.local.json
 .impeccable/mocks/decision/src/
+.idea/
