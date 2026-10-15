@@ -9,9 +9,13 @@ sur des sujets par collectif. Voir docs/superpowers/specs (§4).
 """
 from __future__ import annotations
 
+import argparse
+import json
+import os
+import re
 import sys
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -107,3 +111,104 @@ def planifier(club: dict, registre: dict | None, maintenant: datetime, reglages:
     registre = purger(registre, maintenant)
     a_envoyer = [m for m in resultats + rappels if m.cle not in registre]
     return a_envoyer[: reglages["max_par_passage"]], registre
+
+
+RACINE = ICI.parent
+DONNEES = RACINE / "site" / "data" / "club.json"
+REGISTRE = ICI / "etat" / "notifications.json"
+PORTEE_FCM = "https://www.googleapis.com/auth/firebase.messaging"
+
+
+def log(*a):
+    print(*a, file=sys.stderr, flush=True)
+
+
+def corps_requete(m: Message) -> dict:
+    return {"message": {
+        "topic": m.sujet,
+        "notification": {"title": m.titre, "body": m.corps},
+        "data": {k: str(v) for k, v in m.donnees.items()},
+        "android": {"priority": "high"},
+    }}
+
+
+class EnvoyeurFCM:
+    """Envoi par l'API FCM HTTP v1 avec un compte de service (secret FIREBASE_SERVICE_ACCOUNT)."""
+
+    def __init__(self, compte: dict, session=None):
+        import requests
+        from google.oauth2 import service_account
+        self.projet = compte["project_id"]
+        self._credentials = service_account.Credentials.from_service_account_info(compte, scopes=[PORTEE_FCM])
+        self._session = session or requests.Session()
+
+    def envoyer(self, m: Message) -> None:
+        import google.auth.transport.requests
+        if not self._credentials.valid:
+            self._credentials.refresh(google.auth.transport.requests.Request())
+        reponse = self._session.post(
+            f"https://fcm.googleapis.com/v1/projects/{self.projet}/messages:send",
+            headers={"Authorization": f"Bearer {self._credentials.token}"},
+            json=corps_requete(m), timeout=20)
+        reponse.raise_for_status()
+
+
+def executer(club: dict, registre: dict | None, maintenant: datetime, reglages: dict, envoyeur) -> tuple[dict, dict]:
+    a_envoyer, registre = planifier(club, registre, maintenant, reglages)
+    rapport = {"prevus": len(a_envoyer), "envoyes": 0, "echecs": 0}
+    if envoyeur is None:
+        for m in a_envoyer:
+            log(f"[essai] {m.sujet} : {m.titre} — {m.corps}")
+        return {}, rapport
+    for m in a_envoyer:
+        try:
+            envoyeur.envoyer(m)
+        except Exception as err:  # un échec n'arrête pas les autres ; le message repartira au passage suivant
+            rapport["echecs"] += 1
+            log(f"[!] {m.cle} : {err}")
+            continue
+        registre[m.cle] = maintenant.isoformat(timespec="seconds")
+        rapport["envoyes"] += 1
+    return registre, rapport
+
+
+def message_test(collectif: str) -> Message:
+    if not re.fullmatch(r"[a-z0-9-]+", collectif or ""):
+        raise ValueError(f"id de collectif invalide : {collectif!r}")
+    return Message(f"test:{collectif}", f"resultats-{collectif}", "Test · Clamart Handball",
+                   "Ceci est une notification de test.", {"type": "test", "collectif": collectif}, "")
+
+
+def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime | None = None) -> int:
+    parseur = argparse.ArgumentParser(description="Notifications FCM du Clamart Handball")
+    parseur.add_argument("--essai", action="store_true")
+    parseur.add_argument("--test", metavar="COLLECTIF")
+    args = parseur.parse_args(argv)
+    maintenant = maintenant or datetime.now(timezone.utc)
+    secret = environ.get("FIREBASE_SERVICE_ACCOUNT", "").strip()
+    envoyeur = None if args.essai or not secret else EnvoyeurFCM(json.loads(secret))
+    if envoyeur is None:
+        log("Mode essai : aucun envoi, registre inchangé.")
+
+    if args.test:
+        m = message_test(args.test)
+        if envoyeur:
+            envoyeur.envoyer(m)
+        log(f"Test {'envoyé' if envoyeur else '(essai)'} : {m.sujet}")
+        return 0
+
+    club = json.loads(DONNEES.read_text(encoding="utf-8"))
+    registre = json.loads(REGISTRE.read_text(encoding="utf-8")) if REGISTRE.exists() else None
+    config = json.loads((RACINE / "config.json").read_text(encoding="utf-8"))
+    final, rapport = executer(club, registre, maintenant, config["notifications"], envoyeur)
+    log(f"Notifications : {rapport['envoyes']} envoyée(s), {rapport['echecs']} échec(s), {rapport['prevus']} prévue(s)")
+    if envoyeur is not None:
+        REGISTRE.parent.mkdir(parents=True, exist_ok=True)
+        tmp = REGISTRE.with_suffix(".tmp")
+        tmp.write_text(json.dumps(final, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+        tmp.replace(REGISTRE)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
