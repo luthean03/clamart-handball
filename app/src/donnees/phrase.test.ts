@@ -1,5 +1,5 @@
 import cas from '../../../partage/phrases-cas.json';
-import { initiales, lierNumero, nomAffiche, nomLisible, ordinal, phraseResultat, rangAffiche, scoreTexte } from './phrase';
+import { initiales, lierNumero, permettreCesure, nomAffiche, nomLisible, ordinal, phraseResultat, rangAffiche, scoreTexte } from './phrase';
 import type { Match, Resultat } from './types';
 
 type CasPhrase = {
@@ -56,4 +56,12 @@ test('monogramme : deux initiales en capitales', () => {
   expect(initiales('Nanterre')).toBe('NA');
   expect(initiales('Stade de France')).toBe('SF');
   expect(initiales('')).toBe('');
+});
+
+test('affichage : une coupure de ligne possible après chaque trait d’union, jamais en plein mot', () => {
+  const zwsp = '\u200B';
+  expect(permettreCesure('AC Boulogne-Billancourt 1B')).toBe(`AC Boulogne-${zwsp}Billancourt 1B`);
+  expect(permettreCesure('Paris St-Germain HB')).toBe(`Paris St-${zwsp}Germain HB`);
+  expect(permettreCesure('Ent. Suresnes / Nanterre')).toBe('Ent. Suresnes / Nanterre');
+  expect(permettreCesure('Seniors F 1 - ')).toBe('Seniors F 1 - ');
 });

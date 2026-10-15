@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import { heureDuMatch } from '../donnees/dates';
-import { lierNumero, nomLisible } from '../donnees/phrase';
+import { lierNumero, nomLisible, permettreCesure } from '../donnees/phrase';
 import { scoreEnAttente } from '../donnees/selecteurs';
 import type { MatchAvecEquipe } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
@@ -90,11 +90,11 @@ function Nom({ texte, gras, club }: { texte: string; gras: boolean; club: boolea
       )}
       <Text
         variant="bodyLarge"
-        numberOfLines={2}
+        numberOfLines={3}
         {...NOM_SANS_COUPURE}
         style={[styles.texteNom, { color: t.colors.onSurface }, gras && { fontFamily: POLICES.gras }]}
       >
-        {lierNumero(texte)}
+        {lierNumero(permettreCesure(texte))}
       </Text>
     </View>
   );

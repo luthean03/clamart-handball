@@ -38,9 +38,9 @@ test('ligne : score pas encore publié, puis match à venir', () => {
   expect(screen.getByText(/Coupe de France départementale/)).toBeOnTheScreen();
 });
 
-test('limite un nom long à deux lignes', () => {
+test('un nom long peut tenir sur trois lignes : le nom de l’équipe ne se perd jamais', () => {
   rendu(<LigneMatch match={m('2734038')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
-  expect(screen.getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toHaveProp('numberOfLines', 2);
+  expect(screen.getByText(/^Association Sportive St-.?Cyr\/Fontenay Handball 78$/)).toHaveProp('numberOfLines', 3);
 });
 
 test('adversaire sans écusson : un monogramme décoratif, pas un disque vide', () => {
@@ -82,6 +82,15 @@ test('noms d’équipes : pas de coupure en plein mot, numéro final lié au mot
   expect(nom).toHaveProp('textBreakStrategy', 'simple');
   expect(nom.props.children).toBe('Paris SC\u00A01D');
   expect(screen.getByText('Clamart Seniors F 1B').props.children).toBe('Clamart Seniors F\u00A01B');
+});
+
+test('un nom à trait d’union peut se couper après le trait d’union, sans changer le libellé lu', () => {
+  rendu(<LigneMatch match={m('2644274')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  const nom = screen.getByText(/^AC Boulogne-.?Billancourt 1B$/);
+  expect(nom.props.children).toBe('AC Boulogne-\u200BBillancourt\u00A01B');
+  expect(nom).toHaveProp('numberOfLines', 3);
+  expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
+  expect(screen.getByLabelText('Clamart Seniors F 1 22, AC Boulogne-Billancourt 1B 25, défaite')).toBeOnTheScreen();
 });
 
 test('forme : lettres et libellé lu', () => {
