@@ -99,3 +99,19 @@ Tests du collecteur :
 pip install -r collecteur/requirements-dev.txt
 python -m pytest collecteur/tests -q
 ```
+
+## Notifications
+
+Après chaque collecte, `collecteur/notifieur.py` envoie une notification aux téléphones abonnés
+au sujet `resultats-<équipe>` quand un résultat est publié, et (rappel la veille, option de l'app)
+au sujet `rappels-<équipe>` à partir de 16 h 30. Le registre `collecteur/etat/notifications.json`
+évite les doublons. Sans le secret `FIREBASE_SERVICE_ACCOUNT`, le notifieur tourne en mode essai.
+
+Mise en place (une fois) : projet Firebase, app Android `fr.clamarthandball.app`, fichier
+`app/google-services.json` (ne pas le commiter), compte de service → secret GitHub
+`FIREBASE_SERVICE_ACCOUNT` (contenu JSON complet). Notification de test :
+*Actions → Mise à jour des résultats → Run workflow → test_sujet = seniors-f-1*.
+
+```bash
+python collecteur/notifieur.py --essai
+```
