@@ -6,6 +6,7 @@ import { EtatSansDonnees } from '../composants/EtatSansDonnees';
 import { useMaintenant } from '../donnees/maintenant';
 import { useClub } from '../donnees/requetes';
 import { VueReglages } from '../ecrans/VueReglages';
+import { demanderAutorisation } from '../notifications/fcm';
 import { useSuivi } from '../suivi/suivi';
 
 export default function Reglages() {
@@ -32,6 +33,9 @@ export default function Reglages() {
       onNotifResultats={setNotifResultats}
       onRappels={setRappels}
       onOuvrirReglagesSysteme={() => sansRejet(() => Linking.openSettings())}
+      onDemanderAutorisation={() =>
+        sansRejet(() => demanderAutorisation().then((a) => useSuivi.getState().setAutorisation(a)))
+      }
       onRetirer={basculer}
       onGererEquipes={() => routeur.push('/gerer-equipes')}
       onEffacerRetires={effacerRetires}

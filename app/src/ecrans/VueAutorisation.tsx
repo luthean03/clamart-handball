@@ -17,7 +17,7 @@ export function VueAutorisation({ onActiver, onPlusTard }: { onActiver: () => vo
           Recevoir les résultats de vos équipes ?
         </Text>
         <Text variant="bodyLarge" style={[styles.centrer, { color: t.colors.onSurfaceVariant }]}>
-          Une notification dès que le score est publié. Le rappel la veille du match peut s'activer dans les réglages.
+          Une notification dès que le score est publié. Le rappel la veille du match peut s’activer dans les réglages.
         </Text>
       </View>
       <View style={styles.actions}>
