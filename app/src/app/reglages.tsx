@@ -28,7 +28,7 @@ export default function Reglages() {
       retires={retires}
       version={Constants.expoConfig?.version ?? ''}
       onRetirer={basculer}
-      onGererEquipes={() => routeur.push('/equipes')}
+      onGererEquipes={() => routeur.push('/gerer-equipes')}
       onEffacerRetires={effacerRetires}
       onOuvrirLien={(url) => sansRejet(() => ouvrirLien(url))}
       onRetour={() => (routeur.canGoBack() ? routeur.back() : routeur.replace('/'))}

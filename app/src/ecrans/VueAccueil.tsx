@@ -1,10 +1,11 @@
 import { Image, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, IconButton, Surface, Text } from 'react-native-paper';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BandeauEtat } from '../composants/BandeauEtat';
 import { CarteEquipe } from '../composants/CarteEquipe';
+import { CONTENU_BOUTON } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
+import { ProtectionBarreEtat } from '../composants/ProtectionBarreEtat';
 import { jourLocal, libelleMiseAJour, libelleWeekend, salutation, weekendDeReference } from '../donnees/dates';
 import { resumeCarte } from '../donnees/resume';
 import { equipePrincipale, formeRecente, matchsDuCollectif, matchsDuWeekend } from '../donnees/selecteurs';
@@ -29,83 +30,86 @@ export interface PropsAccueil {
 
 export function VueAccueil(p: PropsAccueil) {
   const t = useThemeClub();
-  const haut = useSafeAreaInsets().top;
   const weekend = weekendDeReference(jourLocal(p.maintenant));
   const miens = p.club.collectifs.filter((c) => p.suivis.includes(c.id));
   const duClub = matchsDuWeekend(p.club, weekend);
 
   return (
-    <ScrollView
-      style={{ backgroundColor: t.colors.background }}
-      contentContainerStyle={[styles.contenu, { paddingTop: haut + 12 }]}
-      refreshControl={<RefreshControl refreshing={p.rafraichissement} onRefresh={p.rafraichir} colors={[t.colors.primary]} />}
-    >
-      <View style={styles.entete}>
-        <Image source={LOGO} style={styles.logo} accessible accessibilityLabel="Écusson du Clamart Handball" accessibilityIgnoresInvertColors />
-        <View style={styles.titres}>
-          <Text variant="headlineSmall" style={{ color: t.club.titre }} accessibilityRole="header">
-            {salutation(p.maintenant)}
-          </Text>
-          <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
-            {`Week-end du ${libelleWeekend(weekend)} · ${libelleMiseAJour(p.club.mis_a_jour, p.maintenant)}`}
-          </Text>
-        </View>
-        <IconButton icon="cog-outline" accessibilityLabel="Réglages" style={styles.reglages} onPress={p.onReglages} />
-      </View>
-
-      <BandeauEtat horsLigne={p.horsLigne} miseAJour={p.club.mis_a_jour} maintenant={p.maintenant} />
-
-      <EnTeteSection titre="Mes équipes" />
-      {miens.length === 0 ? (
-        <Surface style={[styles.invitation, { borderRadius: t.rayonCarte }]} elevation={1}>
-          <Text variant="titleMedium" style={{ color: t.club.titre }}>
-            Suivez vos équipes
-          </Text>
-          <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
-            Leurs résultats et leurs prochains matchs s'afficheront ici en premier.
-          </Text>
-          <Button mode="contained" style={styles.bouton} onPress={p.onChoisirEquipes}>
-            Choisir mes équipes
-          </Button>
-        </Surface>
-      ) : (
-        miens.map((c) => (
-          <CarteEquipe
-            key={c.id}
-            collectif={c}
-            resume={resumeCarte(p.club, c.id, weekend, p.maintenant)}
-            equipe={equipePrincipale(p.club, c.id)}
-            forme={formeRecente(matchsDuCollectif(p.club, c.id))}
-            onOuvrirEquipe={() => p.onOuvrirEquipe(c.id)}
-            onOuvrirMatch={p.onOuvrirMatch}
-            onAgenda={p.onAgenda}
-          />
-        ))
-      )}
-
-      <EnTeteSection
-        titre="Tout le club ce week-end"
-        detail={duClub.length ? `${duClub.length} match${duClub.length > 1 ? 's' : ''}` : undefined}
-      />
-      <Surface style={{ borderRadius: t.rayonCarte }} elevation={1}>
-        <View style={[styles.liste, { borderRadius: t.rayonCarte }]}>
-          {duClub.length === 0 ? (
-            <Text variant="bodyMedium" style={[styles.vide, { color: t.colors.onSurfaceVariant }]}>
-              Aucun match au club ce week-end.
+    <View style={[styles.page, { backgroundColor: t.colors.background }]}>
+      <ProtectionBarreEtat />
+      <ScrollView
+        testID="defilement-accueil"
+        contentContainerStyle={styles.contenu}
+        refreshControl={<RefreshControl refreshing={p.rafraichissement} onRefresh={p.rafraichir} colors={[t.colors.primary]} />}
+      >
+        <View style={styles.entete}>
+          <Image source={LOGO} style={styles.logo} accessible accessibilityLabel="Écusson du Clamart Handball" accessibilityIgnoresInvertColors />
+          <View style={styles.titres}>
+            <Text variant="headlineSmall" style={{ color: t.club.titre }} accessibilityRole="header">
+              {salutation(p.maintenant)}
             </Text>
-          ) : (
-            duClub.map((m) => (
-              <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={p.maintenant} onPress={() => p.onOuvrirMatch(m.id)} />
-            ))
-          )}
+            <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
+              {`Week-end du ${libelleWeekend(weekend)} · ${libelleMiseAJour(p.club.mis_a_jour, p.maintenant)}`}
+            </Text>
+          </View>
+          <IconButton icon="cog-outline" accessibilityLabel="Réglages" style={styles.reglages} onPress={p.onReglages} />
         </View>
-      </Surface>
-    </ScrollView>
+  
+        <BandeauEtat horsLigne={p.horsLigne} miseAJour={p.club.mis_a_jour} maintenant={p.maintenant} />
+  
+        <EnTeteSection titre="Mes équipes" />
+        {miens.length === 0 ? (
+          <Surface style={[styles.invitation, { borderRadius: t.rayonCarte }]} elevation={1}>
+            <Text variant="titleMedium" style={{ color: t.club.titre }}>
+              Suivez vos équipes
+            </Text>
+            <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
+              Leurs résultats et leurs prochains matchs s'afficheront ici en premier.
+            </Text>
+            <Button mode="contained" contentStyle={CONTENU_BOUTON} style={styles.bouton} onPress={p.onChoisirEquipes}>
+              Choisir mes équipes
+            </Button>
+          </Surface>
+        ) : (
+          miens.map((c) => (
+            <CarteEquipe
+              key={c.id}
+              collectif={c}
+              resume={resumeCarte(p.club, c.id, weekend, p.maintenant)}
+              equipe={equipePrincipale(p.club, c.id)}
+              forme={formeRecente(matchsDuCollectif(p.club, c.id))}
+              onOuvrirEquipe={() => p.onOuvrirEquipe(c.id)}
+              onOuvrirMatch={p.onOuvrirMatch}
+              onAgenda={p.onAgenda}
+            />
+          ))
+        )}
+  
+        <EnTeteSection
+          titre="Tout le club ce week-end"
+          detail={duClub.length ? `${duClub.length} match${duClub.length > 1 ? 's' : ''}` : undefined}
+        />
+        <Surface style={{ borderRadius: t.rayonCarte }} elevation={1}>
+          <View style={[styles.liste, { borderRadius: t.rayonCarte }]}>
+            {duClub.length === 0 ? (
+              <Text variant="bodyMedium" style={[styles.vide, { color: t.colors.onSurfaceVariant }]}>
+                Aucun match au club ce week-end.
+              </Text>
+            ) : (
+              duClub.map((m) => (
+                <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={p.maintenant} onPress={() => p.onOuvrirMatch(m.id)} />
+              ))
+            )}
+          </View>
+        </Surface>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  contenu: { paddingHorizontal: 16, paddingBottom: 32 },
+  page: { flex: 1 },
+  contenu: { paddingHorizontal: 16, paddingTop: 12, paddingBottom: 32 },
   entete: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   logo: { width: 48, height: 48, borderRadius: 24 },
   titres: { flex: 1 },

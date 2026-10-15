@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { fireEvent, screen } from '@testing-library/react-native';
 import { club } from '../../test/donnees';
+import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
+import { themeClair } from '../theme/theme';
 import { VueBienvenue } from './VueBienvenue';
 
 test('choisir ses équipes puis continuer', () => {
@@ -34,4 +36,22 @@ test('chaque équipe a une cible tactile d’au moins 48 dp', () => {
   rendu(<VueBienvenue club={club} onTerminer={jest.fn()} onPasser={jest.fn()} />);
   const style = StyleSheet.flatten(screen.getByRole('checkbox', { name: 'Seniors F 1' }).props.style);
   expect(style.minHeight ?? style.height).toBeGreaterThanOrEqual(48);
+});
+
+describe('bord à bord', () => {
+  afterEach(() => jest.restoreAllMocks());
+
+  test('une protection de barre d’état fixe, de la hauteur de l’encart, au-dessus du contenu défilant', () => {
+    jest.spyOn(require('react-native-safe-area-context'), 'useSafeAreaInsets').mockReturnValue({ top: 32, bottom: 0, left: 0, right: 0 });
+    rendu(<VueBienvenue club={club} onTerminer={jest.fn()} onPasser={jest.fn()} />);
+    const style = StyleSheet.flatten(screen.getByTestId('protection-barre-etat').props.style);
+    expect(style.height).toBe(32);
+    expect(style.backgroundColor).toBe(themeClair.colors.background);
+  });
+});
+
+test('les boutons de bienvenue ont une zone tactile d’au moins 48 dp (hauteur minimale sur le contenu)', () => {
+  rendu(<VueBienvenue club={club} onTerminer={jest.fn()} onPasser={jest.fn()} />);
+  for (const bouton of screen.getAllByTestId('button')) expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
+  expect(screen.getAllByTestId('button')).toHaveLength(2);
 });

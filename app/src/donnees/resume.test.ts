@@ -37,3 +37,24 @@ test('le jour du match, avant le coup d’envoi', () => {
   const r = pour('seniors-f-1', new Date('2026-10-11T15:00:00+02:00'));
   expect(r.type === 'a-venir' && r.match.id).toBe('2644292');
 });
+
+test('à venir : le dernier match joué est donné avec sa phrase', () => {
+  const r = pour('seniors-f-1', MER_MIDI);
+  expect(r.type).toBe('a-venir');
+  if (r.type !== 'a-venir') return;
+  expect(r.match.id).toBe('2729291');
+  expect(r.dernier?.match.id).toBe('2644292');
+  expect(r.dernier?.phrase.titre).toBe('Victoire contre Ent. Suresnes / Nanterre');
+});
+
+test('à venir : le dernier match joué précède le match à venir', () => {
+  const r = pour('seniors-f-1', new Date('2026-10-11T15:00:00+02:00')); // avant le coup d'envoi du 11 oct.
+  expect(r.type === 'a-venir' && r.match.id).toBe('2644292');
+  expect(r.type === 'a-venir' && r.dernier?.match.id).toBe('2644286');
+});
+
+test('à venir : pas de dernier résultat en début de saison', () => {
+  const debut = pour('seniors-f-1', new Date('2026-09-10T12:00:00+02:00'));
+  expect(debut.type === 'a-venir' && debut.match.id).toBe('2644268');
+  expect(debut.type === 'a-venir' && debut.dernier).toBeUndefined();
+});

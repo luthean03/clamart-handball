@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, IconButton, List, Surface, Text } from 'react-native-paper';
+import { CONTENU_BOUTON } from '../composants/commun';
 import { libelleMiseAJour } from '../donnees/dates';
 import type { Club } from '../donnees/types';
 import { useThemeClub } from '../theme/theme';
@@ -46,7 +47,7 @@ export function VueReglages(p: Props) {
                 ? '1 équipe suivie ne figure plus dans les résultats de la saison et a été retirée.'
                 : `${n} équipes suivies ne figurent plus dans les résultats de la saison et ont été retirées.`}
             </Text>
-            <Button mode="text" style={styles.bouton} onPress={p.onEffacerRetires}>OK</Button>
+            <Button mode="text" contentStyle={CONTENU_BOUTON} onPress={p.onEffacerRetires}>OK</Button>
           </Surface>
         ) : null}
 
@@ -62,7 +63,7 @@ export function VueReglages(p: Props) {
               )}
             />
           ))}
-          <Button mode="text" style={[styles.bouton, styles.gerer]} onPress={p.onGererEquipes}>Gérer mes équipes</Button>
+          <Button mode="text" contentStyle={CONTENU_BOUTON} style={styles.gerer} onPress={p.onGererEquipes}>Gérer mes équipes</Button>
         </Bloc>
 
         <List.Subheader style={{ color: t.club.titre }}>Données</List.Subheader>
@@ -96,6 +97,5 @@ const styles = StyleSheet.create({
   message: { flexDirection: 'row', alignItems: 'center', padding: 12, marginTop: 8 },
   texteMessage: { flex: 1 },
   action: { width: 48, height: 48, margin: 0, borderRadius: 24 },
-  bouton: { minHeight: 48, justifyContent: 'center' },
   gerer: { alignSelf: 'flex-start', margin: 8 },
 });

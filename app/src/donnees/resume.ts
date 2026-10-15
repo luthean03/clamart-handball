@@ -5,13 +5,14 @@ import type { Club, MatchAvecEquipe } from './types';
 
 export type ResumeCarte =
   | { type: 'resultat'; match: MatchAvecEquipe; phrase: Phrase }
-  | { type: 'a-venir'; match: MatchAvecEquipe }
+  | { type: 'a-venir'; match: MatchAvecEquipe; dernier?: { match: MatchAvecEquipe; phrase: Phrase } }
   | { type: 'en-attente'; match: MatchAvecEquipe }
   | { type: 'sans-match'; prochain?: MatchAvecEquipe };
 
 /**
  * Ce que la carte d'une équipe montre pour ce week-end : le dernier match commencé
- * (résultat ou score en attente), sinon le prochain match du week-end, sinon le prochain match connu.
+ * (résultat ou score en attente), sinon le prochain match du week-end (avec le dernier match joué avant lui),
+ * sinon le prochain match connu.
  */
 export function resumeCarte(club: Club, collectifId: string, weekend: Weekend, maintenant: Date): ResumeCarte {
   const tous = matchsDuCollectif(club, collectifId);
@@ -25,6 +26,15 @@ export function resumeCarte(club: Club, collectifId: string, weekend: Weekend, m
     const jusquIci = tous.slice(0, tous.indexOf(courant) + 1);
     return { type: 'resultat', match: courant, phrase: phraseResultat(courant, serieEnCours(jusquIci))! };
   }
-  if (duWeekend[0]) return { type: 'a-venir', match: duWeekend[0] };
+  if (duWeekend[0]) {
+    const avant = Date.parse(duWeekend[0].date!);
+    const joues = tous.filter((m) => m.resultat !== null && m.date !== null && Date.parse(m.date) < avant);
+    const dernier = joues[joues.length - 1];
+    return {
+      type: 'a-venir',
+      match: duWeekend[0],
+      dernier: dernier ? { match: dernier, phrase: phraseResultat(dernier)! } : undefined,
+    };
+  }
   return { type: 'sans-match', prochain: prochainMatch(club, collectifId, maintenant) };
 }

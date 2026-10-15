@@ -43,6 +43,9 @@ function construire(socle: MD3Theme, p: Palette, dark: boolean): ThemeClub {
       onSurfaceVariant: p.texteDoux,
       outline: p.texteDoux,
       outlineVariant: p.ligne,
+      inverseSurface: p.inverse.fond,
+      inverseOnSurface: p.inverse.texte,
+      inversePrimary: p.inverse.accent,
       elevation: { level0: 'transparent', level1: p.carte, level2: p.carte, level3: p.carte, level4: p.carte, level5: p.carte },
     },
   };
