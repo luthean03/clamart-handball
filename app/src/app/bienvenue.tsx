@@ -12,7 +12,7 @@ export default function Bienvenue() {
   const terminer = (ids: string[]) => {
     definirSuivis(ids);
     terminerBienvenue();
-    routeur.replace('/');
+    routeur.replace(ids.length ? '/autorisation' : '/');
   };
   return <VueBienvenue club={club} onTerminer={terminer} onPasser={() => terminer([])} />;
 }

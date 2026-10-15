@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Appbar, Button, IconButton, List, Surface, Text } from 'react-native-paper';
+import { Appbar, Button, IconButton, List, Surface, Switch, Text } from 'react-native-paper';
 import { CONTENU_BOUTON } from '../composants/commun';
 import { libelleMiseAJour } from '../donnees/dates';
 import type { Club } from '../donnees/types';
+import type { Autorisation } from '../notifications/sujets';
 import { useThemeClub } from '../theme/theme';
 
 interface Props {
@@ -16,6 +17,12 @@ interface Props {
   onGererEquipes: () => void;
   onEffacerRetires: () => void;
   onOuvrirLien: (url: string) => void;
+  notifResultats: boolean;
+  rappels: boolean;
+  autorisation: Autorisation;
+  onNotifResultats: (b: boolean) => void;
+  onRappels: (b: boolean) => void;
+  onOuvrirReglagesSysteme: () => void;
   onRetour: () => void;
 }
 
@@ -66,6 +73,32 @@ export function VueReglages(p: Props) {
           <Button mode="text" contentStyle={CONTENU_BOUTON} style={styles.gerer} onPress={p.onGererEquipes}>Gérer mes équipes</Button>
         </Bloc>
 
+        <List.Subheader style={{ color: t.club.titre }}>Notifications</List.Subheader>
+        <Bloc>
+          {p.autorisation === 'refusee' ? (
+            <View style={styles.bloque}>
+              <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
+                Les notifications sont bloquées dans les réglages d’Android.
+              </Text>
+              <Button mode="text" contentStyle={CONTENU_BOUTON} onPress={p.onOuvrirReglagesSysteme}>Ouvrir les réglages</Button>
+            </View>
+          ) : null}
+          <List.Item
+            title="Résultats de mes équipes"
+            description="Dès que le score est publié"
+            onPress={() => p.onNotifResultats(!p.notifResultats)}
+            right={() => (
+              <Switch value={p.notifResultats} onValueChange={p.onNotifResultats} accessibilityLabel="Résultats de mes équipes" />
+            )}
+          />
+          <List.Item
+            title="Rappel la veille du match"
+            description="Désactivé par défaut"
+            onPress={() => p.onRappels(!p.rappels)}
+            right={() => <Switch value={p.rappels} onValueChange={p.onRappels} accessibilityLabel="Rappel la veille du match" />}
+          />
+        </Bloc>
+
         <List.Subheader style={{ color: t.club.titre }}>Données</List.Subheader>
         <Bloc>
           <List.Item
@@ -97,5 +130,6 @@ const styles = StyleSheet.create({
   message: { flexDirection: 'row', alignItems: 'center', padding: 12, marginTop: 8 },
   texteMessage: { flex: 1 },
   action: { width: 48, height: 48, margin: 0, borderRadius: 24 },
+  bloque: { padding: 16, gap: 4 },
   gerer: { alignSelf: 'flex-start', margin: 8 },
 });
