@@ -12,6 +12,15 @@ test('renvoie le club au format v2', async () => {
   expect(club.collectifs).toHaveLength(11);
 });
 
+test('demande une revalidation au serveur (Cache-Control: no-cache) en gardant Accept', async () => {
+  const chercher = reponse(fixtureBrute);
+  await chargerClub('https://exemple/club.json', chercher);
+  expect(chercher).toHaveBeenCalledWith(
+    'https://exemple/club.json',
+    expect.objectContaining({ headers: { Accept: 'application/json', 'Cache-Control': 'no-cache' } }),
+  );
+});
+
 test('refuse un schéma plus récent que l’app', async () => {
   await expect(chargerClub('u', reponse({ ...fixtureBrute, version_schema: 3 }))).rejects.toMatchObject({
     name: 'SchemaInconnu',
