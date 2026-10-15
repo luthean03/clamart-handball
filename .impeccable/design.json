@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-15T00:00:00Z",
+  "title": "Design System: Clamart Handball",
+  "extensions": {
+    "colorMeta": {
+      "rouge-club": { "role": "primary", "displayName": "Rouge club", "canonical": "#DB0000", "tonalRamp": ["#3A0000", "#5C0000", "#7A1005", "#A80000", "#DB0000", "#FF6B5E", "#FFB4A8", "#FADAD3"] },
+      "bleu-nuit": { "role": "neutral", "displayName": "Bleu nuit", "canonical": "#142A3D", "tonalRamp": ["#0B1823", "#142A3D", "#1E3549", "#2C4256", "#4A6075", "#7A8E9F", "#B4C0CC", "#E3E9EF"] },
+      "creme-fond": { "role": "neutral", "displayName": "Crème fond", "canonical": "#FAF6E6", "tonalRamp": ["#2A2622", "#6E655D", "#B8AFA3", "#EFE7DC", "#F4EFE6", "#FAF6E6", "#FFF1E0", "#FFFFFF"] },
+      "victoire-texte": { "role": "state", "displayName": "Victoire", "canonical": "#1B5E3B", "tonalRamp": ["#0F3A24", "#1B5E3B", "#21483A", "#4C8A68", "#86B99D", "#BFE8CF", "#E3F1E8", "#F2F9F5"] },
+      "defaite-texte": { "role": "state", "displayName": "Défaite (brun sourd)", "canonical": "#6B4A3E", "tonalRamp": ["#3A261E", "#4A3430", "#6B4A3E", "#947565", "#C2A596", "#F0D2C6", "#F1E9E4", "#FAF6F3"] }
+    },
+    "typographyMeta": {
+      "headline-small": { "displayName": "Headline small", "purpose": "Salutation et score de carte." },
+      "title-large": { "displayName": "Title large", "purpose": "Nom d'équipe en tête de carte." },
+      "title-medium": { "displayName": "Title medium", "purpose": "Phrase-résultat, en-têtes de section, chiffres de ligne." },
+      "body-large": { "displayName": "Body large", "purpose": "Noms d'équipes dans une ligne de match." },
+      "body-medium": { "displayName": "Body medium", "purpose": "Métadonnées : jour, salle, dernier match." },
+      "label-large": { "displayName": "Label large", "purpose": "Rang, détail de section, puces." },
+      "label-medium": { "displayName": "Label medium", "purpose": "Statut de ligne, lettres V/N/D." }
+    },
+    "shadows": [
+      { "name": "carte-elevation-1", "value": "Paper Surface elevation={1}", "purpose": "Seule ombre du système : ombre douce sous chaque carte. Les teintes tonales d'élévation sont neutralisées." }
+    ],
+    "motion": [],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "Bouton plein",
+      "kind": "button",
+      "refersTo": "bouton-plein",
+      "description": "Action principale d'une carte, rouge du club, 48 dp.",
+      "html": "<button class=\"ds-btn\">Ajouter à l'agenda</button>",
+      "css": ".ds-btn { background: #DB0000; color: #FFFFFF; min-height: 48px; padding: 0 24px; border: none; border-radius: 24px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; } .ds-btn:hover { background: #C21100; } .ds-btn:focus-visible { outline: 2px solid #142A3D; outline-offset: 2px; }"
+    },
+    {
+      "name": "Carte équipe",
+      "kind": "card",
+      "refersTo": "carte-equipe",
+      "description": "Carte « Mes équipes » : nom, phrase-résultat, score bleu nuit, forme.",
+      "html": "<div class=\"ds-carte\"><div class=\"ds-rang\"><span class=\"ds-nom\">Seniors M</span><span class=\"ds-meta\">3e sur 7</span></div><div class=\"ds-rang\"><span class=\"ds-phrase\">Victoire contre Levallois SC</span><span class=\"ds-score\">32–22</span></div><span class=\"ds-meta\">dimanche 11 oct. · Gymnase du Petit Clamart · domicile</span></div>",
+      "css": ".ds-carte { background: #FFFFFF; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 3px rgba(20,42,61,.18); font-family: 'Nunito', sans-serif; width: 320px; } .ds-rang { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; } .ds-nom { color: #142A3D; font-weight: 800; font-size: 22px; line-height: 28px; } .ds-phrase { color: #2A2622; font-weight: 700; font-size: 16px; line-height: 24px; } .ds-score { color: #142A3D; font-weight: 800; font-size: 24px; line-height: 32px; font-variant-numeric: tabular-nums; } .ds-meta { color: #6E655D; font-size: 14px; line-height: 20px; }"
+    },
+    {
+      "name": "Ligne de match",
+      "kind": "custom",
+      "refersTo": "ligne-match",
+      "description": "Statut, deux équipes, deux scores tabulaires ; le vainqueur en gras.",
+      "html": "<div class=\"ds-ligne\"><span class=\"ds-statut\">Fin</span><div class=\"ds-equipes\"><span class=\"ds-gagne\">Clamart Seniors M</span><span>Levallois SC</span></div><div class=\"ds-scores\"><span class=\"ds-gagne\">32</span><span>22</span></div></div>",
+      "css": ".ds-ligne { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #FFFFFF; border-bottom: 1px solid #EFE7DC; font-family: 'Nunito', sans-serif; color: #2A2622; width: 320px; } .ds-statut { min-width: 56px; text-align: center; font-size: 12px; color: #6E655D; } .ds-equipes { flex: 1; display: flex; flex-direction: column; gap: 4px; font-size: 16px; font-weight: 500; } .ds-scores { display: flex; flex-direction: column; gap: 4px; min-width: 32px; text-align: right; font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-gagne { font-weight: 700; }"
+    },
+    {
+      "name": "Pastilles de forme",
+      "kind": "chip",
+      "refersTo": "pastille-victoire",
+      "description": "V, N, D en carrés arrondis de 24 dp ; la lettre porte le sens, pas la couleur.",
+      "html": "<div class=\"ds-forme\"><span class=\"ds-p ds-v\">V</span><span class=\"ds-p ds-d\">D</span><span class=\"ds-p ds-n\">N</span></div>",
+      "css": ".ds-forme { display: flex; gap: 4px; font-family: 'Nunito', sans-serif; } .ds-p { min-width: 24px; min-height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; padding: 0 4px; font-size: 12px; box-sizing: border-box; } .ds-v { background: #E3F1E8; color: #1B5E3B; } .ds-n { background: #EBEEF2; color: #3D4A57; } .ds-d { background: #F1E9E4; color: #6B4A3E; }"
+    },
+    {
+      "name": "Pastille de choix",
+      "kind": "chip",
+      "refersTo": "pastille-choix-choisie",
+      "description": "Puce de 32 dp dans une cible de 48 dp ; l'état choisi ajoute une coche.",
+      "html": "<span class=\"ds-cible\"><span class=\"ds-choix ds-on\">&#10003; Sam. 17 oct.</span></span><span class=\"ds-cible\"><span class=\"ds-choix\">Dim. 18 oct.</span></span>",
+      "css": ".ds-cible { display: inline-flex; align-items: center; min-height: 48px; min-width: 48px; } .ds-choix { min-height: 32px; box-sizing: border-box; border: 1px solid #6E655D; border-radius: 16px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; color: #2A2622; cursor: pointer; } .ds-on { background: #FADAD3; border-color: #FADAD3; color: #7A1005; } .ds-choix:focus-visible { outline: 2px solid #142A3D; }"
+    },
+    {
+      "name": "Bandeau d'état",
+      "kind": "custom",
+      "refersTo": "bandeau-etat",
+      "description": "Signale hors ligne ou données anciennes, en neutre.",
+      "html": "<div class=\"ds-bandeau\" role=\"alert\">Hors ligne · résultats mis à jour hier à 22:40</div>",
+      "css": ".ds-bandeau { background: #FFF1E0; color: #6E655D; border-radius: 12px; padding: 12px; font-family: 'Nunito', sans-serif; font-size: 14px; line-height: 20px; width: 320px; box-sizing: border-box; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le bénévole au bord du terrain",
+    "overview": "L'app parle comme un bénévole du club : chaleureuse, simple, jamais moqueuse. Elle est consultée en quelques secondes, samedi soir ou dimanche, en salle ou en voiture. Le fond est un crème chaud, les cartes sont blanches à grands rayons, le texte est un noir chaud, et le bleu nuit de l'écusson porte les scores et les titres. L'onglet Matchs garde la rigueur d'une app de scores ; l'Accueil raconte.\n\nLe système est Material 3 (react-native-paper) habillé aux couleurs du club, Android d'abord, identique sur iOS. Le mode sombre garde le même monde : fond bleu nuit, cartes plus claires, rouge éclairci.",
+    "keyCharacteristics": [
+      "Crème chaud, cartes blanches, bleu nuit pour les chiffres, rouge uniquement pour l'actionnable.",
+      "Nunito arrondie, chiffres tabulaires pour tous les scores.",
+      "Un résultat = une phrase, jamais un adjectif sur une défaite.",
+      "Cibles tactiles de 48 dp minimum.",
+      "Information jamais portée par la couleur seule."
+    ],
+    "rules": [
+      { "name": "The Red Is Actionable Rule", "body": "Le rouge n'apparaît que sur ce qu'on peut toucher : bouton plein, texte de bouton, onglet actif, étoile « suivre » active. Jamais sur un score, un titre, une défaite ou une décoration.", "section": "colors" },
+      { "name": "The Navy Speaks Rule", "body": "Scores et titres en bleu nuit ; tout ce qui informe est bleu nuit ou encre, tout ce qui invite est rouge.", "section": "colors" },
+      { "name": "The Never Color Alone Rule", "body": "V, N, D sont écrits ; l'état choisi porte une coche ; l'étoile change de forme.", "section": "colors" },
+      { "name": "The Tabular Score Rule", "body": "Tout nombre qui se compare porte fontVariant tabular-nums.", "section": "typography" },
+      { "name": "The Plain Weight Rule", "body": "fontWeight reste à normal ; le poids se choisit par la famille Nunito.", "section": "typography" },
+      { "name": "The Scale Respect Rule", "body": "La taille de police système est suivie ; la barre d'onglets plafonne à 1,5×.", "section": "typography" },
+      { "name": "The Surface + Inner View Rule", "body": "Une carte = une Surface (ombre, rayon 20) contenant une vue au même rayon, avec overflow hidden pour une liste.", "section": "elevation" },
+      { "name": "The One Level Rule", "body": "Un seul niveau d'élévation (1) ; le reste est à plat, séparé par des filets hairline.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do lire les couleurs via useThemeClub() ; aucun hex hors de theme/couleurs.ts.",
+      "Do réserver le rouge (primary) à l'actionnable et le bleu nuit aux scores et titres.",
+      "Do construire toute carte en Surface elevation={1} + vue intérieure au rayon rayonCarte (20).",
+      "Do donner 48 dp à toute cible : CONTENU_BOUTON sur les Button, 48 × 48 sur les IconButton, hitSlop sur les SegmentedButtons.",
+      "Do passer les scores en tabular-nums et choisir le poids par famille Nunito.",
+      "Do dire un résultat en une phrase simple, et toujours afficher de quand datent les données.",
+      "Do doubler chaque couleur d'état d'un texte, d'une coche ou d'une forme."
+    ],
+    "donts": [
+      "Don't utiliser le rouge pour une défaite, un score, un titre ou une décoration.",
+      "Don't redessiner, déformer ou recolorer l'écusson.",
+      "Don't nommer un joueur mineur ni inventer des photos ou partenaires.",
+      "Don't poser un fontWeight explicite sur du texte Nunito.",
+      "Don't laisser un nom d'équipe se couper en plein mot.",
+      "Don't empiler les niveaux d'élévation ni teinter les surfaces par élévation.",
+      "Don't décrire une défaite avec un adjectif."
+    ]
+  }
+}
