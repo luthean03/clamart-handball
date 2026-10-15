@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { fireEvent, screen } from '@testing-library/react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
+import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import type { Club } from '../donnees/types';
 import { matchParId } from '../donnees/selecteurs';
@@ -89,19 +90,19 @@ test('fiche match : retour et boutons ont une cible tactile d’au moins 48 dp',
   const retour = StyleSheet.flatten(screen.getByTestId('icon-button-container-outer-layer').props.style);
   expect(retour.width).toBeGreaterThanOrEqual(48);
   expect(retour.height).toBeGreaterThanOrEqual(48);
-  const boutons = screen.getAllByTestId('button-container');
+  const boutons = screen.getAllByTestId('button');
   expect(boutons).toHaveLength(3);
   for (const bouton of boutons) {
-    expect(StyleSheet.flatten(bouton.props.style).minHeight).toBeGreaterThanOrEqual(48);
+    expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
   }
 });
 
 test('fiche match à venir : le bouton agenda a une cible tactile d’au moins 48 dp', () => {
   vue('2734038');
-  for (const bouton of screen.getAllByTestId('button-container')) {
-    expect(StyleSheet.flatten(bouton.props.style).minHeight).toBeGreaterThanOrEqual(48);
+  for (const bouton of screen.getAllByTestId('button')) {
+    expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
   }
-  expect(screen.getAllByTestId('button-container')).toHaveLength(3);
+  expect(screen.getAllByTestId('button')).toHaveLength(3);
 });
 
 test('fiche match introuvable : le retour a une cible tactile d’au moins 48 dp', () => {
@@ -109,4 +110,11 @@ test('fiche match introuvable : le retour a une cible tactile d’au moins 48 dp
   const style = StyleSheet.flatten(screen.getByTestId('icon-button-container-outer-layer').props.style);
   expect(style.width).toBeGreaterThanOrEqual(48);
   expect(style.height).toBeGreaterThanOrEqual(48);
+});
+
+test('adversaire sans écusson : un monogramme décoratif', () => {
+  vue('2644292');
+  const monogramme = screen.getByTestId('monogramme', { includeHiddenElements: true });
+  expect(monogramme.props.importantForAccessibility).toBe('no-hide-descendants');
+  expect(screen.getByText('Ent. Suresnes / Nanterre')).toHaveProp('android_hyphenationFrequency', 'none');
 });

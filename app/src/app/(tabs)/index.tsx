@@ -24,7 +24,7 @@ export default function Accueil() {
       onOuvrirMatch={(id) => routeur.push(`/match/${id}`)}
       onAgenda={ajouterAgenda}
       onReglages={() => routeur.push('/reglages')}
-      onChoisirEquipes={() => routeur.push('/equipes')}
+      onChoisirEquipes={() => routeur.push('/gerer-equipes')}
     />
   );
 }

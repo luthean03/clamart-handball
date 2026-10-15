@@ -1,10 +1,12 @@
 import { Image, StyleSheet, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
 import { heureDuMatch } from '../donnees/dates';
-import { nomLisible } from '../donnees/phrase';
+import { lierNumero, nomLisible } from '../donnees/phrase';
 import { scoreEnAttente } from '../donnees/selecteurs';
 import type { MatchAvecEquipe } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
+import { NOM_SANS_COUPURE } from './commun';
+import { Monogramme } from './Monogramme';
 import { LIBELLES } from './PastilleResultat';
 
 const LOGO = require('../../assets/logo-clamart.png');
@@ -45,12 +47,12 @@ export function LigneMatch({ match, maintenant, onPress, afficherCompetition = f
   return (
     <TouchableRipple onPress={onPress} accessibilityRole="button" accessibilityLabel={lu} testID="ligne-match">
       <View style={[styles.ligne, { borderBottomColor: t.colors.outlineVariant }]}>
-        <View style={styles.statut}>
-          <Text variant="labelMedium" style={{ color: t.colors.onSurfaceVariant }}>
+        <View style={styles.statut} testID="statut">
+          <Text variant="labelMedium" numberOfLines={1} style={{ color: t.colors.onSurfaceVariant }}>
             {statut}
           </Text>
           {joue && match.date ? (
-            <Text variant="labelSmall" style={{ color: t.colors.onSurfaceVariant }}>
+            <Text variant="labelSmall" numberOfLines={1} style={{ color: t.colors.onSurfaceVariant }}>
               {heureDuMatch(match.date)}
             </Text>
           ) : null}
@@ -65,10 +67,10 @@ export function LigneMatch({ match, maintenant, onPress, afficherCompetition = f
           <Nom texte={ext} gras={extGagne} club={!match.domicile} />
         </View>
         <View style={styles.scores}>
-          <Text variant="titleMedium" style={[styles.chiffre, { color: t.colors.onSurface }, !domGagne && styles.leger]}>
+          <Text variant="titleMedium" testID="score-dom" style={[styles.chiffre, { color: t.colors.onSurface }, !domGagne && styles.leger]}>
             {joue ? sDom : '–'}
           </Text>
-          <Text variant="titleMedium" style={[styles.chiffre, { color: t.colors.onSurface }, !extGagne && styles.leger]}>
+          <Text variant="titleMedium" testID="score-ext" style={[styles.chiffre, { color: t.colors.onSurface }, !extGagne && styles.leger]}>
             {joue ? sExt : '–'}
           </Text>
         </View>
@@ -84,14 +86,15 @@ function Nom({ texte, gras, club }: { texte: string; gras: boolean; club: boolea
       {club ? (
         <Image source={LOGO} style={styles.logo} accessibilityIgnoresInvertColors />
       ) : (
-        <View style={[styles.logo, { backgroundColor: t.colors.outlineVariant }]} />
+        <Monogramme nom={texte} taille={24} />
       )}
       <Text
         variant="bodyLarge"
         numberOfLines={2}
+        {...NOM_SANS_COUPURE}
         style={[styles.texteNom, { color: t.colors.onSurface }, gras && { fontFamily: POLICES.gras }]}
       >
-        {texte}
+        {lierNumero(texte)}
       </Text>
     </View>
   );
@@ -99,12 +102,12 @@ function Nom({ texte, gras, club }: { texte: string; gras: boolean; club: boolea
 
 const styles = StyleSheet.create({
   ligne: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: StyleSheet.hairlineWidth },
-  statut: { width: 56, alignItems: 'center' },
+  statut: { minWidth: 56, alignItems: 'center' },
   equipes: { flex: 1, gap: 4 },
   nom: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  logo: { width: 18, height: 18, borderRadius: 9 },
+  logo: { width: 24, height: 24, borderRadius: 12 },
   texteNom: { flexShrink: 1 },
-  scores: { alignItems: 'flex-end', gap: 4, minWidth: 32 },
-  chiffre: { fontVariant: ['tabular-nums'] },
+  scores: { gap: 4, minWidth: 32 },
+  chiffre: { minWidth: 32, textAlign: 'right', fontVariant: ['tabular-nums'] },
   leger: { fontFamily: POLICES.normal },
 });

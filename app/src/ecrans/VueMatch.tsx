@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, Surface, Text } from 'react-native-paper';
+import { CONTENU_BOUTON, NOM_SANS_COUPURE } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { libelleScoreLu } from '../composants/LigneMatch';
+import { Monogramme } from '../composants/Monogramme';
 import { heureDuMatch, jourDuMatch, libelleJour } from '../donnees/dates';
-import { nomLisible, phraseResultat } from '../donnees/phrase';
+import { lierNumero, nomLisible, phraseResultat } from '../donnees/phrase';
 import { matchParId, matchsDuCollectif, scoreEnAttente, serieEnCours } from '../donnees/selecteurs';
 import type { Club, MatchAvecEquipe, Salle } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
@@ -69,14 +71,14 @@ export function VueMatch({ club, matchId, maintenant, onRetour, onItineraire, on
       <ScrollView contentContainerStyle={styles.contenu}>
         <Carte>
           <Text variant="titleLarge" style={{ color: t.club.titre }} accessibilityRole="header">
-            {phrase?.titre ?? `Contre ${adversaire}`}
+            {lierNumero(phrase?.titre ?? `Contre ${adversaire}`)}
           </Text>
           {phrase?.sousTitre ? <Text variant="bodyMedium" style={{ color: t.club.victoire.texte }}>{phrase.sousTitre}</Text> : null}
           <View style={styles.camps} accessible accessibilityLabel={libelleScoreLu(m)}>
             {camps.map((c) => (
               <View key={c.nom} style={styles.camp}>
-                {c.club ? <Image source={LOGO} style={styles.logo} accessibilityIgnoresInvertColors /> : <View style={[styles.logo, { backgroundColor: t.colors.outlineVariant }]} />}
-                <Text variant="bodyLarge" numberOfLines={2} style={[styles.nomCamp, { color: t.colors.onSurface }]}>{c.nom}</Text>
+                {c.club ? <Image source={LOGO} style={styles.logo} accessibilityIgnoresInvertColors /> : <Monogramme nom={c.nom} taille={28} />}
+                <Text variant="bodyLarge" numberOfLines={2} {...NOM_SANS_COUPURE} style={[styles.nomCamp, { color: t.colors.onSurface }]}>{lierNumero(c.nom)}</Text>
                 <Text variant="headlineSmall" style={[styles.score, { color: t.club.titre }]}>{c.score ?? '–'}</Text>
               </View>
             ))}
@@ -101,15 +103,15 @@ export function VueMatch({ club, matchId, maintenant, onRetour, onItineraire, on
                 {m.salle.nom ? <Text variant="titleMedium" style={{ color: t.club.titre }}>{nomLisible(m.salle.nom)}</Text> : null}
                 {m.salle.adresse ? <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>{m.salle.adresse}</Text> : null}
               </View>
-              <Button mode="contained-tonal" icon="map-marker-radius" style={styles.bouton} onPress={() => onItineraire(m.salle!)}>Itinéraire</Button>
+              <Button mode="contained-tonal" icon="map-marker-radius" contentStyle={CONTENU_BOUTON} onPress={() => onItineraire(m.salle!)}>Itinéraire</Button>
             </View>
           ) : null}
         </Carte>
 
         <View style={styles.actions}>
-          {aVenir ? <Button mode="contained" icon="calendar-plus" style={styles.bouton} onPress={() => onAgenda(m)}>Ajouter à l'agenda</Button> : null}
-          {m.feuille_de_match ? <Button mode="outlined" icon="file-document-outline" style={styles.bouton} onPress={() => onOuvrirLien(m.feuille_de_match!)}>Feuille de match</Button> : null}
-          <Button mode="text" icon="open-in-new" style={styles.bouton} onPress={() => onOuvrirLien(m.url_ffhb)}>Voir sur ffhandball.fr</Button>
+          {aVenir ? <Button mode="contained" icon="calendar-plus" contentStyle={CONTENU_BOUTON} onPress={() => onAgenda(m)}>Ajouter à l'agenda</Button> : null}
+          {m.feuille_de_match ? <Button mode="outlined" icon="file-document-outline" contentStyle={CONTENU_BOUTON} onPress={() => onOuvrirLien(m.feuille_de_match!)}>Feuille de match</Button> : null}
+          <Button mode="text" icon="open-in-new" contentStyle={CONTENU_BOUTON} onPress={() => onOuvrirLien(m.url_ffhb)}>Voir sur ffhandball.fr</Button>
         </View>
 
         {buteurs.length ? (
@@ -134,7 +136,6 @@ export function VueMatch({ club, matchId, maintenant, onRetour, onItineraire, on
 const styles = StyleSheet.create({
   page: { flex: 1 },
   action: { width: 48, height: 48, margin: 0, borderRadius: 24 },
-  bouton: { minHeight: 48, justifyContent: 'center' },
   contenu: { paddingHorizontal: 16, paddingBottom: 32 },
   carte: { padding: 16, gap: 8 },
   camps: { gap: 10, marginTop: 8 },

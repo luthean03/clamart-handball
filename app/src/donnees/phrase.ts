@@ -59,3 +59,28 @@ export function phraseResultat(
 
 export const scoreTexte = (m: Pick<Match, 'score_nous' | 'score_eux'>) => `${m.score_nous}–${m.score_eux}`;
 export const ordinal = (n: number) => (n === 1 ? '1er' : `${n}e`);
+
+const INSECABLE = ' ';
+
+/**
+ * Affichage seulement : lie le dernier jeton numérique (« 1 », « 1B », « 3 ») au mot qui le précède par une
+ * espace insécable, pour qu'un numéro d'équipe ne reste jamais seul en début de ligne.
+ */
+export function lierNumero(texte: string): string {
+  return texte.replace(/ (\d+[A-Za-z]?)$/, `${INSECABLE}$1`);
+}
+
+/** `nomLisible` prêt à afficher. Le contrat de `nomLisible` (partagé avec le notifieur) ne change pas. */
+export const nomAffiche = (brut: string) => lierNumero(nomLisible(brut));
+
+/** « 3e sur 11 » sans coupure possible. */
+export const rangAffiche = (place: number, nbEquipes: number) =>
+  `${ordinal(place)}${INSECABLE}sur${INSECABLE}${nbEquipes}`;
+
+/** Monogramme décoratif d'un adversaire sans écusson : initiales des deux premiers mots significatifs. */
+export function initiales(nom: string): string {
+  const mots = nom.split(/[\s\-/.'’()]+/).filter((m) => /^\p{Lu}/u.test(m));
+  if (mots.length === 0) return '';
+  const lettres = mots.length === 1 ? mots[0].slice(0, 2) : mots[0][0] + mots[1][0];
+  return lettres.toUpperCase();
+}

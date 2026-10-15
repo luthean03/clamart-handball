@@ -1,9 +1,10 @@
 import { useState, type ReactNode } from 'react';
 import { ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { Appbar, Button, List, SegmentedButtons, Snackbar, Surface, Text } from 'react-native-paper';
+import { CONTENU_BOUTON } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
-import { nomLisible, ordinal } from '../donnees/phrase';
+import { lierNumero, nomLisible, ordinal, rangAffiche } from '../donnees/phrase';
 import { buteursDuCollectif, equipePrincipale, equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
 import type { Club, Equipe } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
@@ -22,9 +23,8 @@ interface Props {
 type Onglet = 'matchs' | 'classement' | 'buteurs';
 type Retour = 'copie' | 'echec';
 
-/** Les segments (40 dp) et le bouton texte (40 dp) de Paper gagnent 6 dp et 4 dp de marge de toucher : 52 et 48 dp. */
+/** Les segments de Paper (40 dp) gagnent 6 dp de marge de toucher de chaque côté : 52 dp. */
 const MARGE_SEGMENT = { top: 6, bottom: 6 };
-const MARGE_BOUTON = { top: 4, bottom: 4 };
 
 function Carte({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
   const t = useThemeClub();
@@ -78,9 +78,9 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
     <View style={[styles.page, { backgroundColor: t.colors.background }]}>
       <Appbar.Header style={{ backgroundColor: t.colors.background }}>
         <Appbar.BackAction onPress={onRetour} accessibilityLabel="Retour" style={styles.action} />
-        <Appbar.Content title={collectif.nom} titleStyle={{ color: t.club.titre }} />
+        <Appbar.Content title={lierNumero(collectif.nom)} titleStyle={{ color: t.club.titre }} />
         <Appbar.Action
-          icon={suivi ? 'bell' : 'bell-outline'}
+          icon={suivi ? 'star' : 'star-outline'}
           color={suivi ? t.colors.primary : t.colors.onSurfaceVariant}
           accessibilityLabel={suivi ? `Ne plus suivre ${collectif.nom}` : `Suivre ${collectif.nom}`}
           style={styles.action}
@@ -90,7 +90,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
       <ScrollView contentContainerStyle={styles.contenu}>
         <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
           {[...new Set(equipes.map((e) => e.detail))].join(' · ')}
-          {principale?.place ? ` · ${ordinal(principale.place)} sur ${principale.nb_equipes}` : ''}
+          {principale?.place && principale.nb_equipes ? ` · ${rangAffiche(principale.place, principale.nb_equipes)}` : ''}
         </Text>
         <SegmentedButtons style={styles.onglets} value={onglet} onValueChange={(v) => setOngletChoisi(v as Onglet)} buttons={onglets} />
 
@@ -109,7 +109,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
                   title={e.detail}
                   description="Lien .ics, à coller dans votre application d'agenda"
                   right={() => (
-                    <Button mode="text" hitSlop={MARGE_BOUTON} onPress={() => copier(e)}>
+                    <Button mode="text" contentStyle={CONTENU_BOUTON} onPress={() => copier(e)}>
                       Copier le lien
                     </Button>
                   )}

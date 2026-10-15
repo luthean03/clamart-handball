@@ -1,6 +1,7 @@
-import { fireEvent, screen } from '@testing-library/react-native';
-import { Linking } from 'react-native';
+import { fireEvent, screen, within } from '@testing-library/react-native';
+import { Linking, StyleSheet } from 'react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
+import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { matchParId } from '../donnees/selecteurs';
 import { themeSombre } from '../theme/theme';
@@ -42,6 +43,47 @@ test('limite un nom long à deux lignes', () => {
   expect(screen.getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toHaveProp('numberOfLines', 2);
 });
 
+test('adversaire sans écusson : un monogramme décoratif, pas un disque vide', () => {
+  rendu(<LigneMatch match={m('2644473')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  const monogramme = screen.getByTestId('monogramme', { includeHiddenElements: true });
+  expect(within(monogramme).getByText('PS', { includeHiddenElements: true })).toBeOnTheScreen();
+  expect(monogramme.props.importantForAccessibility).toBe('no-hide-descendants');
+  expect(monogramme.props.accessibilityElementsHidden).toBe(true);
+  // décoratif : ni lu ni exposé par la ligne
+  expect(screen.queryByText('PS')).toBeNull();
+  expect(screen.getAllByTestId('monogramme', { includeHiddenElements: true })).toHaveLength(1);
+});
+
+test('les scores sont alignés à droite sur une colonne de largeur minimale fixe', () => {
+  rendu(<LigneMatch match={m('2644292')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  for (const score of [screen.getByTestId('score-dom'), screen.getByTestId('score-ext')]) {
+    const style = StyleSheet.flatten(score.props.style);
+    expect(style.textAlign).toBe('right');
+    expect(style.minWidth).toBeGreaterThanOrEqual(32);
+    expect(style.fontVariant).toEqual(['tabular-nums']);
+  }
+});
+
+test('police agrandie : la colonne de statut grandit et ne coupe jamais « Attente »', () => {
+  const enAttente = club.equipes.find((e) => e.collectif === 'u11-mixte-3')!.matchs.find((x) => x.date?.startsWith('2026-10-10'))!;
+  rendu(<LigneMatch match={m(enAttente.id)} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  const statut = screen.getByTestId('statut');
+  const style = StyleSheet.flatten(statut.props.style);
+  expect(style.width).toBeUndefined();
+  expect(style.minWidth).toBeGreaterThanOrEqual(56);
+  expect(screen.getByText('Attente')).toHaveProp('numberOfLines', 1);
+  expect(screen.getByText('Attente')).not.toHaveProp('adjustsFontSizeToFit', true);
+});
+
+test('noms d’équipes : pas de coupure en plein mot, numéro final lié au mot précédent', () => {
+  rendu(<LigneMatch match={m('2644473')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  const nom = screen.getByText('Paris SC 1D');
+  expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
+  expect(nom).toHaveProp('textBreakStrategy', 'simple');
+  expect(nom.props.children).toBe('Paris SC\u00A01D');
+  expect(screen.getByText('Clamart Seniors F 1B').props.children).toBe('Clamart Seniors F\u00A01B');
+});
+
 test('forme : lettres et libellé lu', () => {
   rendu(<Forme resultats={['V', 'D', 'V']} />);
   expect(screen.getAllByText('V')).toHaveLength(2);
@@ -79,4 +121,12 @@ test('état sans données : chargement, erreur réseau, nouvelle version', () =>
   expect(screen.getByText("Une nouvelle version de l'app est nécessaire")).toBeOnTheScreen();
   fireEvent.press(screen.getByText('Mettre à jour'));
   expect(ouvrir).toHaveBeenCalledWith('market://details?id=fr.clamarthandball.app');
+});
+
+test('les boutons de l’état sans données ont une zone tactile d’au moins 48 dp', () => {
+  rendu(<EtatSansDonnees chargement={false} erreur={null} reessayer={jest.fn()} />);
+  expect(contenuDuBouton(screen.getByText('Réessayer')).minHeight).toBeGreaterThanOrEqual(48);
+  screen.unmount();
+  rendu(<EtatSansDonnees chargement={false} erreur={Object.assign(new Error('x'), { name: 'SchemaInconnu' })} reessayer={jest.fn()} />);
+  expect(contenuDuBouton(screen.getByText('Mettre à jour')).minHeight).toBeGreaterThanOrEqual(48);
 });

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 import { club, DIM_SOIR } from '../../test/donnees';
+import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import type { Club } from '../donnees/types';
 import { VueMatchs } from './VueMatchs';
@@ -127,4 +128,16 @@ test('le jour affiché est amené dans la zone visible', () => {
 test('la liste des jours est nommée pour les lecteurs d’écran', () => {
   matchs();
   expect(screen.getByLabelText('Jour du match')).toBeOnTheScreen();
+});
+
+test('le bandeau des jours ne rétrécit jamais, même avec une longue liste en dessous', () => {
+  matchs();
+  const barre = screen.getByLabelText('Jour du match');
+  expect(StyleSheet.flatten(barre.props.style).flexShrink).toBe(0);
+  expect(StyleSheet.flatten(barre.props.contentContainerStyle).minHeight).toBeGreaterThanOrEqual(48);
+});
+
+test('« Voir tout le club » a une zone tactile d’au moins 48 dp (hauteur minimale sur le contenu)', () => {
+  matchs({ suivis: ['u18-m'] });
+  expect(contenuDuBouton(screen.getByText('Voir tout le club')).minHeight).toBeGreaterThanOrEqual(48);
 });

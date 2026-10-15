@@ -1,12 +1,13 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
+import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { matchsDuCollectif } from '../donnees/selecteurs';
 import { VueEquipe } from './VueEquipe';
 import { VueEquipes } from './VueEquipes';
 
-test('liste des équipes par catégorie, avec la cloche suivre', () => {
+test('liste des équipes par catégorie, avec l’étoile suivre', () => {
   const onBasculer = jest.fn();
   const onOuvrirEquipe = jest.fn();
   rendu(<VueEquipes club={club} suivis={['seniors-f-1']} onBasculer={onBasculer} onOuvrirEquipe={onOuvrirEquipe} />);
@@ -28,6 +29,42 @@ test('chaque cloche de la liste a une cible tactile d’au moins 48 dp', () => {
     expect(style.width).toBeGreaterThanOrEqual(48);
     expect(style.height).toBeGreaterThanOrEqual(48);
   }
+});
+
+test('le suivi est une étoile, jamais une cloche (pas de notifications avant le Plan 3)', () => {
+  rendu(<VueEquipes club={club} suivis={['seniors-f-1']} onBasculer={jest.fn()} onOuvrirEquipe={jest.fn()} />);
+  const icones = { includeHiddenElements: true };
+  expect(screen.getAllByText('star', icones)).toHaveLength(1);
+  expect(screen.getAllByText('star-outline', icones)).toHaveLength(club.collectifs.length - 1);
+  expect(screen.queryByText(/bell/, icones)).toBeNull();
+});
+
+test('liste des équipes : noms sans coupure en plein mot, rang en espaces insécables', () => {
+  rendu(<VueEquipes club={club} suivis={[]} onBasculer={jest.fn()} onOuvrirEquipe={jest.fn()} />);
+  const nom = screen.getByText('Seniors F 1');
+  expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
+  expect(nom).toHaveProp('textBreakStrategy', 'simple');
+  expect(nom.props.children).toBe('Seniors F\u00A01');
+  expect(screen.getByText(/3e sur 11/).props.children).toContain('3e\u00A0sur\u00A011');
+});
+
+test('liste ouverte depuis Réglages ou l’Accueil : bouton retour et titre « Mes équipes »', () => {
+  const onRetour = jest.fn();
+  rendu(<VueEquipes club={club} suivis={[]} onBasculer={jest.fn()} onOuvrirEquipe={jest.fn()} onRetour={onRetour} />);
+  expect(screen.getByText('Mes équipes')).toBeOnTheScreen();
+  expect(screen.queryByText('Équipes')).toBeNull();
+  fireEvent.press(screen.getByLabelText('Retour'));
+  expect(onRetour).toHaveBeenCalled();
+  const retour = screen.getAllByTestId('icon-button-container-outer-layer');
+  const style = StyleSheet.flatten(retour[0].props.style);
+  expect(style.width).toBeGreaterThanOrEqual(48);
+  expect(style.height).toBeGreaterThanOrEqual(48);
+});
+
+test('liste dans l’onglet Équipes : pas de bouton retour', () => {
+  rendu(<VueEquipes club={club} suivis={[]} onBasculer={jest.fn()} onOuvrirEquipe={jest.fn()} />);
+  expect(screen.getByText('Équipes')).toBeOnTheScreen();
+  expect(screen.queryByLabelText('Retour')).toBeNull();
 });
 
 function fiche(collectifId: string, props: Partial<Parameters<typeof VueEquipe>[0]> = {}) {
@@ -73,6 +110,17 @@ test('fiche équipe : suivre, copier l’agenda, retour', async () => {
   expect(p.onRetour).toHaveBeenCalled();
 });
 
+test('fiche équipe : le suivi est une étoile et le rang ne se coupe pas', () => {
+  fiche('seniors-f-1', { suivi: true });
+  const icones = { includeHiddenElements: true };
+  expect(screen.getByText('star', icones)).toBeOnTheScreen();
+  expect(screen.queryByText(/bell/, icones)).toBeNull();
+  expect(screen.getByText(/· 3e sur 11$/).props.children.join('')).toMatch(/· 3e\u00A0sur\u00A011$/);
+  screen.unmount();
+  fiche('seniors-f-1', { suivi: false });
+  expect(screen.getByText('star-outline', { includeHiddenElements: true })).toBeOnTheScreen();
+});
+
 test('fiche équipe : si la copie échoue, on ne dit pas que le lien est copié', async () => {
   fiche('seniors-m', { onCopierAgenda: jest.fn(() => Promise.reject(new Error('presse-papiers'))) });
   fireEvent.press(screen.getAllByText('Copier le lien')[0]);
@@ -96,9 +144,10 @@ test('fiche équipe : onglets et « Copier le lien » ont une cible tactile d’
   // Les segments de Paper mesurent 40 dp : la marge de toucher complète à 48 dp.
   const segment = screen.getByRole('button', { name: 'Classement' }).props.hitSlop;
   expect(40 + segment.top + segment.bottom).toBeGreaterThanOrEqual(48);
-  // Le bouton texte de Paper mesure 40 dp.
-  const copier = screen.getAllByRole('button', { name: 'Copier le lien' })[0].props.hitSlop;
-  expect(40 + copier.top + copier.bottom).toBeGreaterThanOrEqual(48);
+  // Le bouton texte de Paper mesure 40 dp : la hauteur minimale est sur son contenu, qui porte la zone tactile.
+  const copier = screen.getAllByRole('button', { name: 'Copier le lien' })[0];
+  expect(contenuDuBouton(copier).minHeight).toBeGreaterThanOrEqual(48);
+  expect(copier.props.hitSlop).toBeUndefined();
 });
 
 test('fiche équipe introuvable', () => {

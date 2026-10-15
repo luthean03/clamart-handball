@@ -18,13 +18,15 @@ export interface Palette {
   indicateur: string;
   surIndicateur: string;
   surligne: string;
+  /** Snackbar : fond, texte et couleur de l'action. */
+  inverse: { fond: string; texte: string; accent: string };
   victoire: Paire;
   nul: Paire;
   defaite: Paire;
 }
 
 export const clair: Palette = {
-  fond: '#FBF6EE',
+  fond: '#FAF6E6',
   carte: '#FFFFFF',
   texte: '#2A2622',
   texteDoux: '#6E655D',
@@ -35,6 +37,7 @@ export const clair: Palette = {
   indicateur: '#FADAD3',
   surIndicateur: '#7A1005',
   surligne: '#FFF1E0',
+  inverse: { fond: '#142A3D', texte: '#FFFEF0', accent: '#FFB4A8' },
   victoire: { fond: '#E3F1E8', texte: '#1B5E3B' },
   nul: { fond: '#EBEEF2', texte: '#3D4A57' },
   defaite: { fond: '#F1E9E4', texte: '#6B4A3E' },
@@ -52,6 +55,7 @@ export const sombre: Palette = {
   indicateur: '#5A1D18',
   surIndicateur: '#FFDAD4',
   surligne: '#26425A',
+  inverse: { fond: '#FFFEF0', texte: '#142A3D', accent: '#DB0000' },
   victoire: { fond: '#21483A', texte: '#BFE8CF' },
   nul: { fond: '#2C4256', texte: '#D5DCE3' },
   defaite: { fond: '#4A3430', texte: '#F0D2C6' },

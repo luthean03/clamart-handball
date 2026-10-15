@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, SegmentedButtons, Surface, Text } from 'react-native-paper';
+import { CONTENU_BOUTON } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
 import { PastilleChoix } from '../composants/PastilleChoix';
@@ -94,7 +95,7 @@ export function VueMatchs({ club, maintenant, suivis, onOuvrirMatch, rafraichir,
               {jours.length === 0 ? 'Aucun match programmé pour le moment.' : 'Aucun match de vos équipes ce jour-là.'}
             </Text>
             {jours.length > 0 && filtre === 'mes' ? (
-              <Button mode="text" onPress={() => setFiltre('tous')}>
+              <Button mode="text" contentStyle={CONTENU_BOUTON} onPress={() => setFiltre('tous')}>
                 Voir tout le club
               </Button>
             ) : null}
@@ -120,8 +121,9 @@ export function VueMatchs({ club, maintenant, suivis, onOuvrirMatch, rafraichir,
 
 const styles = StyleSheet.create({
   page: { flex: 1 },
-  barreJours: { flexGrow: 0 },
-  jours: { gap: 8, paddingHorizontal: 16 },
+  // Le bandeau ne rétrécit jamais : sans cela, une longue liste en dessous le rogne et réduit la zone tactile.
+  barreJours: { flexGrow: 0, flexShrink: 0 },
+  jours: { gap: 8, paddingHorizontal: 16, minHeight: 48 },
   filtre: { marginHorizontal: 16, marginTop: 8, marginBottom: 4 },
   contenu: { paddingHorizontal: 16, paddingBottom: 32 },
   liste: { overflow: 'hidden' },

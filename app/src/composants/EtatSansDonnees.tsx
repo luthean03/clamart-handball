@@ -3,6 +3,7 @@ import { Button, Text } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { URL_PLAY_STORE } from '../config';
 import { useThemeClub } from '../theme/theme';
+import { CONTENU_BOUTON } from './commun';
 
 interface Props {
   chargement: boolean;
@@ -35,11 +36,11 @@ export function EtatSansDonnees({ chargement, erreur, reessayer }: Props) {
           : 'Vérifiez votre connexion internet, puis réessayez.'}
       </Text>
       {majRequise ? (
-        <Button mode="contained" onPress={() => Linking.openURL(URL_PLAY_STORE)}>
+        <Button mode="contained" contentStyle={CONTENU_BOUTON} onPress={() => Linking.openURL(URL_PLAY_STORE)}>
           Mettre à jour
         </Button>
       ) : (
-        <Button mode="contained" onPress={reessayer}>
+        <Button mode="contained" contentStyle={CONTENU_BOUTON} onPress={reessayer}>
           Réessayer
         </Button>
       )}

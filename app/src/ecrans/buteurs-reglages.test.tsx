@@ -1,6 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
+import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { VueButeurs } from './VueButeurs';
 import { VueReglages } from './VueReglages';
@@ -80,9 +81,9 @@ test('réglages : retour et « Ne plus suivre » ont une cible tactile d’au mo
 
 test('réglages : « Gérer mes équipes » et « OK » ont une cible tactile d’au moins 48 dp', () => {
   reglages({ retires: ['u11-mixte-3'] });
-  const boutons = screen.getAllByTestId('button-container');
+  const boutons = screen.getAllByTestId('button');
   expect(boutons).toHaveLength(2);
   for (const bouton of boutons) {
-    expect(StyleSheet.flatten(bouton.props.style).minHeight).toBeGreaterThanOrEqual(48);
+    expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
   }
 });
