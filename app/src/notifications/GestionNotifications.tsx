@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Portal, Snackbar } from 'react-native-paper';
+import { CONTENU_BOUTON } from '../composants/commun';
 import { ecouterOuverture, ecouterPremierPlan, notificationInitiale, type NotifRecue } from './fcm';
 import { lienNotification } from './liens';
 
@@ -27,9 +28,9 @@ export function GestionNotifications() {
         visible={affichee !== null}
         onDismiss={() => setAffichee(null)}
         duration={6000}
-        action={lien ? { label: 'Voir', onPress: () => routeur.push(lien as never) } : undefined}
+        action={lien ? { label: 'Voir', contentStyle: CONTENU_BOUTON, onPress: () => routeur.push(lien as never) } : undefined}
       >
-        {affichee?.titre ?? ''}
+        {affichee?.titre ?? affichee?.corps ?? ''}
       </Snackbar>
     </Portal>
   );
