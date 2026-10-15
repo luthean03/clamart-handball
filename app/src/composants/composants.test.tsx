@@ -93,6 +93,20 @@ test('un nom à trait d’union peut se couper après le trait d’union, sans c
   expect(screen.getByLabelText('Clamart Seniors F 1 22, AC Boulogne-Billancourt 1B 25, défaite')).toBeOnTheScreen();
 });
 
+test('un nom sans numéro : espace normale après le sigle, coupure seulement après le trait d’union', () => {
+  rendu(<LigneMatch match={{ ...m('2644274'), adversaire: 'AC BOULOGNE-BILLANCOURT' }} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  const affiche = screen.getByText(/^AC Boulogne-.?Billancourt$/).props.children as string;
+  expect([...affiche].map((c) => c.codePointAt(0)!.toString(16))).toEqual(
+    [...'AC'].map((c) => c.codePointAt(0)!.toString(16)).concat(
+      '20',
+      ...[...'Boulogne-'].map((c) => c.codePointAt(0)!.toString(16)),
+      '200b',
+      ...[...'Billancourt'].map((c) => c.codePointAt(0)!.toString(16)),
+    ),
+  );
+  expect(affiche).not.toContain(' ');
+});
+
 test('forme : lettres et libellé lu', () => {
   rendu(<Forme resultats={['V', 'D', 'V']} />);
   expect(screen.getAllByText('V')).toHaveLength(2);
