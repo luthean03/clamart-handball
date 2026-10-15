@@ -16,7 +16,7 @@
 
 - Sujets FCM : `resultats-<collectif>` et `rappels-<collectif>`, `<collectif>` = id de collectif `[a-z0-9-]+`.
 - Rappel la veille : **désactivé par défaut** ; notifications de résultats activées par défaut pour une équipe suivie (si Android l'autorise).
-- Textes : titre résultat `<équipe> · Victoire 32–22` / `<équipe> · Défaite 21–22` / `<équipe> · Match nul 25–25` ; corps = la phrase de résultat (signature, cas partagés `partage/phrases-cas.json`) + ` · ` + compétition (`detail`). Rappel : titre `Demain 16:15 · <équipe>`, corps `Contre <adversaire> · <salle> (domicile|extérieur)` (sans salle : `Contre <adversaire> · domicile|extérieur`). Données : `{type, collectif, equipe_id, match_id}` (chaînes).
+- Textes résultat, façon banderole (choix de l'utilisateur, 15/10/2026 — pas de phrase) : titre = `<domicile> <score domicile> – <score extérieur> <extérieur>`, Clamart écrit « Clamart », l'adversaire via `nom_lisible` (ex. `Clamart 32 – 22 Ent. Suresnes / Nanterre`, à l'extérieur `Paris SC 1D 17 – 20 Clamart`) ; corps = `<équipe> · <compétition>` (ex. `Seniors F 1 · D1 territoriale`). Rappel : titre `Demain 16:15 · <équipe>`, corps `Contre <adversaire> · <salle> (domicile|extérieur)` (sans salle : `Contre <adversaire> · domicile|extérieur`). Données : `{type, collectif, equipe_id, match_id}` (chaînes).
 - **Jamais de nom de joueur** dans une notification ; jamais d'adjectif dévalorisant.
 - Registre : clé `resultat:<collectif>:<match_id>` ou `rappel:<collectif>:<match_id>` → horodatage ISO de l'envoi ; écrite **seulement après un envoi réussi** ; entrées de plus de 60 jours purgées ; registre absent = premier déploiement : les résultats de la fenêtre sont marqués sans rien envoyer.
 - Résultat notifié seulement si le match date de moins de 3 jours ; au plus `max_par_passage` (40) messages par passage ; rappels seulement à partir de `rappels_a_partir_de` (16:30) heure de Paris, pour les matchs du lendemain (date de Paris).
@@ -39,7 +39,7 @@
 
 ```
 collecteur/
-  textes.py                 NOUVEAU : nom_lisible, phrase_resultat (portage du TS, contrat partage/phrases-cas.json)
+  textes.py                 NOUVEAU : nom_lisible (portage du TS, contrat partage/phrases-cas.json)
   notifieur.py              NOUVEAU : planification (pur), envoi FCM, CLI
   etat/notifications.json   NOUVEAU (écrit par le workflow) : registre des envois
   requirements.txt          + google-auth, tzdata
@@ -65,14 +65,14 @@ app/
 
 ---
 
-### Task 1: Textes Python partagés avec l'app
+### Task 1: Noms lisibles en Python (partagés avec l'app)
 
 **Files:**
 - Create: `collecteur/textes.py`, `collecteur/tests/test_textes.py`
 
 **Interfaces:**
-- Consumes: `partage/phrases-cas.json` (contrat existant, 23 noms + 8 phrases au 15/10/2026).
-- Produces: `textes.nom_lisible(brut: str) -> str`, `textes.phrase_resultat(match: dict, serie: dict | None = None) -> dict | None` (`{"titre": str, "sousTitre"?: str}` — mêmes règles que `app/src/donnees/phrase.ts`).
+- Consumes: `partage/phrases-cas.json` (contrat existant, section `noms` : 23 cas au 15/10/2026).
+- Produces: `textes.nom_lisible(brut: str) -> str` — mêmes règles que `nomLisible` dans `app/src/donnees/phrase.ts`.
 
 - [ ] **Step 1: Écrire les tests (les cas partagés font foi)**
 
@@ -84,7 +84,7 @@ from pathlib import Path
 
 import pytest
 
-from textes import nom_lisible, phrase_resultat
+from textes import nom_lisible
 
 CAS = json.loads((Path(__file__).resolve().parents[2] / "partage" / "phrases-cas.json").read_text(encoding="utf-8"))
 
@@ -93,15 +93,6 @@ CAS = json.loads((Path(__file__).resolve().parents[2] / "partage" / "phrases-cas
 def test_nom_lisible_cas_partages(cas):
     assert nom_lisible(cas["brut"]) == cas["attendu"]
 
-
-@pytest.mark.parametrize("cas", CAS["phrases"], ids=lambda c: str(c["match"]))
-def test_phrase_resultat_cas_partages(cas):
-    assert phrase_resultat(cas["match"], cas["serie"]) == cas["attendu"]
-
-
-def test_jamais_d_adjectif_sur_une_defaite():
-    p = phrase_resultat({"resultat": "D", "score_nous": 26, "score_eux": 45, "adversaire": "PARIS ST-GERMAIN HB 3"})
-    assert p == {"titre": "Défaite contre Paris St-Germain HB 3"}
 ```
 
 - [ ] **Step 2: Lancer pour vérifier l'échec**
@@ -111,7 +102,7 @@ Expected: FAIL, `ModuleNotFoundError: No module named 'textes'`
 
 - [ ] **Step 3: Implémenter `collecteur/textes.py`**
 
-Portage ligne à ligne de `nomLisible` / `phraseResultat` (`app/src/donnees/phrase.ts`). Les deux implémentations doivent toujours passer les mêmes cas.
+Portage ligne à ligne de `nomLisible` (`app/src/donnees/phrase.ts`). Les deux implémentations doivent toujours passer les mêmes cas.
 
 ```python
 """
@@ -162,33 +153,18 @@ def nom_lisible(brut: str) -> str:
         sortie.append(capitale)
     return "".join(sortie)
 
-
-def phrase_resultat(match: dict, serie: dict | None = None) -> dict | None:
-    """Le résultat dit en une phrase. Jamais d'adjectif sur une défaite."""
-    resultat, nous, eux = match.get("resultat"), match.get("score_nous"), match.get("score_eux")
-    if not resultat or nous is None or eux is None:
-        return None
-    adversaire = nom_lisible(match["adversaire"])
-    d_un_but = " d'un but" if abs(nous - eux) == 1 else ""
-    if resultat == "N":
-        titre = f"Match nul contre {adversaire}"
-    else:
-        titre = f"{'Victoire' if resultat == 'V' else 'Défaite'}{d_un_but} contre {adversaire}"
-    if resultat == "V" and serie and serie.get("resultat") == "V" and serie.get("longueur", 0) >= 3:
-        return {"titre": titre, "sousTitre": f"{serie['longueur']}e victoire de suite"}
-    return {"titre": titre}
 ```
 
 - [ ] **Step 4: Lancer les tests**
 
 Run: `.venv/Scripts/python -m pytest collecteur/tests -q`
-Expected: tous PASS (23 noms + 8 phrases + 1 + les 18 existants). Si un cas partagé échoue, comparer ligne à ligne avec `app/src/donnees/phrase.ts` : c'est le portage qui est faux, jamais le JSON.
+Expected: tous PASS (23 noms + les 18 existants). Si un cas partagé échoue, comparer ligne à ligne avec `app/src/donnees/phrase.ts` : c'est le portage qui est faux, jamais le JSON.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add collecteur/textes.py collecteur/tests/test_textes.py
-git commit -m "Collecteur : textes partagés avec l'app (noms lisibles, phrase de résultat)
+git commit -m "Collecteur : noms lisibles partagés avec l'app
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ```
@@ -202,7 +178,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - Modify: `collecteur/requirements.txt` (+ `tzdata` : Windows n'a pas de base de fuseaux pour `zoneinfo`)
 
 **Interfaces:**
-- Consumes: `textes.nom_lisible`, `textes.phrase_resultat` (Task 1) ; `config.json → notifications` (Plan 1).
+- Consumes: `textes.nom_lisible` (Task 1) ; `config.json → notifications` (Plan 1).
 - Produces (dans `notifieur.py`) :
   - `@dataclass(frozen=True) class Message: cle: str; sujet: str; titre: str; corps: str; donnees: dict[str, str]; instant: str` (`instant` = date ISO du match, pour l'ordre)
   - `messages_resultats(club: dict, maintenant: datetime) -> list[Message]`
@@ -247,10 +223,16 @@ def test_resultats_des_3_derniers_jours():
 
 def test_texte_d_un_resultat():
     m = next(m for m in messages_resultats(club_v2(), PARIS_LUNDI_MATIN) if m.cle == "resultat:seniors-m:2673792")
-    assert m.titre == "Seniors M · Défaite 21–22"
-    assert m.corps == "Défaite d'un but contre Levallois SC 1D · D2 territoriale"
+    assert m.titre == "Clamart 21 – 22 Levallois SC 1D"          # domicile à gauche
+    assert m.corps == "Seniors M · D2 territoriale"
     assert m.donnees == {"type": "resultat", "collectif": "seniors-m", "equipe_id": "32546-clamart-handball",
                          "match_id": "2673792"}
+
+
+def test_banderole_d_un_match_a_l_exterieur():
+    m = next(m for m in messages_resultats(club_v2(), PARIS_LUNDI_MATIN) if m.cle == "resultat:seniors-f-1b:2644473")
+    assert m.titre == "Paris SC 1D 17 – 20 Clamart"               # l'équipe qui reçoit à gauche
+    assert m.corps == "Seniors F 1B · D2 territoriale"
 
 
 def test_jamais_de_nom_de_joueur():
@@ -341,11 +323,10 @@ from zoneinfo import ZoneInfo
 
 ICI = Path(__file__).resolve().parent
 sys.path.insert(0, str(ICI))
-from textes import nom_lisible, phrase_resultat  # noqa: E402
+from textes import nom_lisible  # noqa: E402
 
 FENETRE_RESULTATS = timedelta(days=3)
 CONSERVATION = timedelta(days=60)
-MOTS = {"V": "Victoire", "N": "Match nul", "D": "Défaite"}
 
 
 @dataclass(frozen=True)
@@ -373,12 +354,16 @@ def messages_resultats(club: dict, maintenant: datetime) -> list[Message]:
         instant = datetime.fromisoformat(m["date"])
         if not (maintenant - FENETRE_RESULTATS <= instant <= maintenant):
             continue
-        phrase = phrase_resultat(m)["titre"]
+        adversaire = nom_lisible(m["adversaire"])
+        if m["domicile"]:
+            banderole = f"Clamart {m['score_nous']} – {m['score_eux']} {adversaire}"
+        else:
+            banderole = f"{adversaire} {m['score_eux']} – {m['score_nous']} Clamart"
         sortie.append(Message(
             cle=f"resultat:{eq['collectif']}:{m['id']}",
             sujet=f"resultats-{eq['collectif']}",
-            titre=f"{eq['nom']} · {MOTS[m['resultat']]} {m['score_nous']}–{m['score_eux']}",
-            corps=f"{phrase} · {eq['detail']}",
+            titre=banderole,
+            corps=f"{eq['nom']} · {eq['detail']}",
             donnees={"type": "resultat", "collectif": eq["collectif"], "equipe_id": eq["id"], "match_id": str(m["id"])},
             instant=m["date"],
         ))
@@ -1396,7 +1381,7 @@ import * as fcm from './fcm';
 import { GestionNotifications } from './GestionNotifications';
 
 const { __routeur } = jest.requireMock('expo-router');
-const notif = { titre: 'Seniors M · Défaite 21–22', corps: '…', donnees: { match_id: '2673792', equipe_id: '32546-clamart-handball' } };
+const notif = { titre: 'Clamart 21 – 22 Levallois SC 1D', corps: 'Seniors M · D2 territoriale', donnees: { match_id: '2673792', equipe_id: '32546-clamart-handball' } };
 
 beforeEach(() => jest.clearAllMocks());
 
@@ -1405,7 +1390,7 @@ test('au premier plan : snackbar avec « Voir »', () => {
   jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
   rendu(<GestionNotifications />);
   act(() => recevoir(notif));
-  expect(screen.getByText('Seniors M · Défaite 21–22')).toBeOnTheScreen();
+  expect(screen.getByText('Clamart 21 – 22 Levallois SC 1D')).toBeOnTheScreen();
   fireEvent.press(screen.getByText('Voir'));
   expect(__routeur.push).toHaveBeenCalledWith('/match/2673792?equipe=32546-clamart-handball');
 });

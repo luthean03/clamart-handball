@@ -98,9 +98,14 @@ Après chaque collecte, comparer l'état publié et le registre, puis envoyer :
   lendemain (heure de Paris) → sujet `rappels-<collectif>`, envoyé par le premier passage
   à partir de 16 h 30 heure de Paris (`rappels_a_partir_de`).
 
-### 4.2 Textes (signature « le résultat en une phrase », §6.2)
-- Résultat : titre `Seniors F 1 · Victoire 32–22`, corps `Contre Ent. Suresnes / Nanterre ·
-  D1 territoriale`. Données : `{type:"resultat", collectif, equipe_id, match_id}`.
+### 4.2 Textes
+- Résultat, façon banderole (choix de l'utilisateur du 15/10/2026 : pas de phrase, juste le score) :
+  titre = équipe à domicile à gauche, score au centre, équipe à l'extérieur à droite —
+  `Clamart 32 – 22 Ent. Suresnes / Nanterre` (à l'extérieur : `Paris SC 1D 17 – 20 Clamart`) ;
+  corps = catégorie · compétition — `Seniors F 1 · D1 territoriale`.
+  Données : `{type:"resultat", collectif, equipe_id, match_id}`.
+  (Une notification FCM s'affiche avec la mise en page du système : pas d'écusson ni de banderole
+  graphique sans une notification native sur mesure.)
 - Rappel : titre `Demain 16:15 · Seniors F 1`, corps `Contre Cellois HB · Gymnase Victor Hugo
   (extérieur)`. Données : `{type:"rappel", collectif, equipe_id, match_id}`.
 - Jamais de nom de joueur dans une notification.
