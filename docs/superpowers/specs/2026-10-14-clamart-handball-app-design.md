@@ -113,8 +113,8 @@ Après chaque collecte, comparer l'état publié et le registre, puis envoyer :
 - Jamais de nom de joueur dans une notification.
 
 ### 4.3 Fiabilité
-- **Registre** `collecteur/etat/notifications.json` : clés `resultat:<match_id>` et
-  `rappel:<match_id>` avec la date d'envoi. Une clé n'est écrite qu'après un envoi réussi →
+- **Registre** `collecteur/etat/notifications.json` : clés `resultat:<collectif>:<match_id>` et
+  `rappel:<collectif>:<match_id>` avec la date d'envoi. Une clé n'est écrite qu'après un envoi réussi →
   pas de doublon, réessai automatique au passage suivant. Entrées purgées après 60 jours.
 - **Premier déploiement** : registre absent → tous les résultats existants sont marqués
   « déjà envoyés » sans rien envoyer (pas de rafale de vieux scores).
