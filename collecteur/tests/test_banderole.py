@@ -1,0 +1,55 @@
+import io
+
+from PIL import Image
+
+import banderole
+
+
+def faux_png(couleur="#00AA00") -> bytes:
+    tampon = io.BytesIO()
+    Image.new("RGBA", (128, 128), couleur).save(tampon, "PNG")
+    return tampon.getvalue()
+
+
+def test_dimensions_et_mode():
+    img = banderole.dessiner(banderole.ecusson_club(), banderole.monogramme("LS"), "Clamart", "Levallois SC 1D",
+                             "21 – 22", "Seniors M · D2 territoriale")
+    assert img.size == (1024, 512) and img.mode == "RGB"
+    assert img.getpixel((512, 5)) == (219, 0, 0)          # filet rouge
+    assert img.getpixel((512, 480)) == (20, 42, 61)       # fond bleu nuit
+
+
+def test_ecusson_du_club_detoure_en_disque():
+    e = banderole.ecusson_club()
+    assert e.mode == "RGBA" and e.getpixel((0, 0))[3] == 0   # coin transparent : plus de carré rouge
+
+
+def test_nom_long_tient_dans_300_px():
+    texte, taille = banderole.ajuster("Association Sportive St-Cyr/Fontenay Handball 78", 300)
+    assert banderole.police(700, taille).getlength(texte) <= 300
+    assert 22 <= taille <= 30
+    assert banderole.ajuster("Clamart", 300) == ("Clamart", 30)
+
+
+def test_ecusson_adversaire_monogramme_sans_logo(tmp_path):
+    appels = []
+    img = banderole.ecusson_adversaire(None, "Ent. Suresnes / Nanterre", tmp_path, telecharger=lambda u: appels.append(u))
+    assert appels == [] and img.size == (256, 256)
+
+
+def test_ecusson_adversaire_echec_de_telechargement(tmp_path):
+    def echoue(url):
+        raise OSError("réseau")
+    img = banderole.ecusson_adversaire("https://x/128/a.webp", "Levallois SC 1D", tmp_path, telecharger=echoue)
+    assert img.size == (256, 256)
+
+
+def test_ecusson_adversaire_mis_en_cache(tmp_path):
+    appels = []
+    def telecharger(url):
+        appels.append(url)
+        return faux_png()
+    for _ in range(2):
+        banderole.ecusson_adversaire("https://x/128/a.webp", "Levallois SC 1D", tmp_path, telecharger=telecharger)
+    assert appels == ["https://x/128/a.webp"]
+    assert (tmp_path / "a.webp").exists()

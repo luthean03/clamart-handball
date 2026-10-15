@@ -6,6 +6,7 @@ sur des sujets par collectif. Voir docs/superpowers/specs (§4).
   python collecteur/notifieur.py            # envoie (si FIREBASE_SERVICE_ACCOUNT est défini), sinon mode essai
   python collecteur/notifieur.py --essai    # n'envoie rien, n'écrit rien, affiche ce qui partirait
   python collecteur/notifieur.py --test seniors-f-1   # une notification de test sur resultats-seniors-f-1
+  python collecteur/notifieur.py --images   # produit (et purge) les images banderole de site/notifs/ ; n'envoie rien
 """
 from __future__ import annotations
 
@@ -35,6 +36,7 @@ class Message:
     corps: str
     donnees: dict
     instant: str
+    image: str | None = None
 
 
 def _matchs(club: dict):
@@ -116,6 +118,8 @@ def planifier(club: dict, registre: dict | None, maintenant: datetime, reglages:
 RACINE = ICI.parent
 DONNEES = RACINE / "site" / "data" / "club.json"
 REGISTRE = ICI / "etat" / "notifications.json"
+DOSSIER_IMAGES = RACINE / "site" / "notifs"
+CACHE_LOGOS = ICI / "cache" / "logos"
 PORTEE_FCM = "https://www.googleapis.com/auth/firebase.messaging"
 
 
@@ -124,11 +128,14 @@ def log(*a):
 
 
 def corps_requete(m: Message) -> dict:
+    android = {"priority": "high"}
+    if m.image:
+        android["notification"] = {"image": m.image}
     return {"message": {
         "topic": m.sujet,
         "notification": {"title": m.titre, "body": m.corps},
         "data": {k: str(v) for k, v in m.donnees.items()},
-        "android": {"priority": "high"},
+        "android": android,
     }}
 
 
@@ -153,8 +160,79 @@ class EnvoyeurFCM:
         reponse.raise_for_status()
 
 
-def executer(club: dict, registre: dict | None, maintenant: datetime, reglages: dict, envoyeur) -> tuple[dict, dict]:
+def nom_image(m: Message) -> str:
+    if m.donnees.get("type") == "test":
+        return f"test-{m.donnees['collectif']}.png"
+    return f"{m.instant[:10].replace('-', '')}-{m.donnees['collectif']}-{m.donnees['match_id']}.png"
+
+
+def _image_resultat(club: dict, m: Message, cache: Path, telecharger) -> "Image.Image":
+    import banderole
+    eq = next(e for e in club["equipes"] if e["id"] == m.donnees["equipe_id"])
+    match = next(x for x in eq["matchs"] if str(x["id"]) == m.donnees["match_id"])
+    adversaire = nom_lisible(match["adversaire"])
+    club_img = banderole.ecusson_club()
+    adv_img = banderole.ecusson_adversaire(match.get("logo_adversaire"), adversaire, cache, telecharger=telecharger)
+    if match["domicile"]:
+        return banderole.dessiner(club_img, adv_img, "Clamart", adversaire,
+                                  f"{match['score_nous']} – {match['score_eux']}", f"{eq['nom']} · {eq['detail']}")
+    return banderole.dessiner(adv_img, club_img, adversaire, "Clamart",
+                              f"{match['score_eux']} – {match['score_nous']}", f"{eq['nom']} · {eq['detail']}")
+
+
+def produire_images(club, registre, maintenant, dossier: Path, cache: Path, telecharger=None) -> list[Path]:
+    import banderole
+    telecharger = telecharger or banderole.telecharger
+    if registre is None:          # premier déploiement : rien ne partira, donc aucune image
+        return []
+    deja = purger(registre, maintenant)
+    chemins = []
+    for m in messages_resultats(club, maintenant):
+        if m.cle in deja:
+            continue
+        chemin = dossier / nom_image(m)
+        if not chemin.exists():
+            dossier.mkdir(parents=True, exist_ok=True)
+            _image_resultat(club, m, cache, telecharger).save(chemin, "PNG", optimize=True)
+        chemins.append(chemin)
+    return chemins
+
+
+def image_de_test(club: dict, collectif: str, dossier: Path, cache: Path, telecharger=None) -> Path | None:
+    """test-<collectif>.png : même dessin que pour le dernier résultat connu de ce collectif (None s'il n'y en a pas)."""
+    import banderole
+    telecharger = telecharger or banderole.telecharger
+    candidats = [(eq, m) for eq, m in _matchs(club)
+                 if eq["collectif"] == collectif and m.get("resultat")
+                 and m.get("score_nous") is not None and m.get("score_eux") is not None]
+    if not candidats:
+        return None
+    eq, m = max(candidats, key=lambda c: datetime.fromisoformat(c[1]["date"]))
+    modele = Message(f"test:{collectif}", f"resultats-{collectif}", "", "",
+                     {"type": "test", "collectif": collectif, "equipe_id": eq["id"], "match_id": str(m["id"])}, "")
+    dossier.mkdir(parents=True, exist_ok=True)
+    chemin = dossier / nom_image(modele)
+    _image_resultat(club, modele, cache, telecharger).save(chemin, "PNG", optimize=True)
+    return chemin
+
+
+def purger_images(dossier: Path, maintenant: datetime) -> list[Path]:
+    limite = (maintenant - CONSERVATION).strftime("%Y%m%d")
+    supprimees = [p for p in sorted(dossier.glob("[0-9]*.png")) if p.name[:8] < limite]
+    for p in supprimees:
+        p.unlink()
+    return supprimees
+
+
+def avec_images(messages: list[Message], dossier: Path, url_base: str) -> list[Message]:
+    from dataclasses import replace
+    return [replace(m, image=url_base + nom_image(m)) if (dossier / nom_image(m)).exists() else m for m in messages]
+
+
+def executer(club: dict, registre: dict | None, maintenant: datetime, reglages: dict, envoyeur,
+             habiller=lambda messages: messages) -> tuple[dict, dict]:
     a_envoyer, registre = planifier(club, registre, maintenant, reglages)
+    a_envoyer = habiller(a_envoyer)
     rapport = {"prevus": len(a_envoyer), "envoyes": 0, "echecs": 0}
     if envoyeur is None:
         for m in a_envoyer:
@@ -183,15 +261,36 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
     parseur = argparse.ArgumentParser(description="Notifications FCM du Clamart Handball")
     parseur.add_argument("--essai", action="store_true")
     parseur.add_argument("--test", metavar="COLLECTIF")
+    parseur.add_argument("--images", action="store_true",
+                         help="produit et purge les images des notifications ; n'envoie rien, n'écrit pas le registre")
     args = parseur.parse_args(argv)
     maintenant = maintenant or datetime.now(timezone.utc)
+
+    if args.images:
+        club = json.loads(DONNEES.read_text(encoding="utf-8"))
+        registre = json.loads(REGISTRE.read_text(encoding="utf-8")) if REGISTRE.exists() else None
+        chemins = produire_images(club, registre, maintenant, DOSSIER_IMAGES, CACHE_LOGOS)
+        if args.test:
+            message_test(args.test)       # valide l'id du collectif avant de l'utiliser
+            image = image_de_test(club, args.test, DOSSIER_IMAGES, CACHE_LOGOS)
+            if image:
+                chemins.append(image)
+            else:
+                log(f"Aucun résultat connu pour {args.test} : pas d'image de test.")
+        supprimees = purger_images(DOSSIER_IMAGES, maintenant)
+        log(f"Images : {len(chemins)} produite(s), {len(supprimees)} supprimée(s).")
+        return 0
+
     secret = environ.get("FIREBASE_SERVICE_ACCOUNT", "").strip()
     envoyeur = None if args.essai or not secret else EnvoyeurFCM(json.loads(secret))
     if envoyeur is None:
         log("Mode essai : aucun envoi, registre inchangé.")
 
+    config = json.loads((RACINE / "config.json").read_text(encoding="utf-8"))
+    url_images = config["notifications"]["url_images"]
+
     if args.test:
-        m = message_test(args.test)
+        m = avec_images([message_test(args.test)], DOSSIER_IMAGES, url_images)[0]
         if envoyeur:
             envoyeur.envoyer(m)
         log(f"Test {'envoyé' if envoyeur else '(essai)'} : {m.sujet}")
@@ -199,8 +298,8 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
 
     club = json.loads(DONNEES.read_text(encoding="utf-8"))
     registre = json.loads(REGISTRE.read_text(encoding="utf-8")) if REGISTRE.exists() else None
-    config = json.loads((RACINE / "config.json").read_text(encoding="utf-8"))
-    final, rapport = executer(club, registre, maintenant, config["notifications"], envoyeur)
+    final, rapport = executer(club, registre, maintenant, config["notifications"], envoyeur,
+                              habiller=lambda ms: avec_images(ms, DOSSIER_IMAGES, url_images))
     log(f"Notifications : {rapport['envoyes']} envoyée(s), {rapport['echecs']} échec(s), {rapport['prevus']} prévue(s)")
     if envoyeur is not None:
         REGISTRE.parent.mkdir(parents=True, exist_ok=True)

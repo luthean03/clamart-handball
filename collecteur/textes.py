@@ -45,3 +45,11 @@ def nom_lisible(brut: str) -> str:
             continue
         sortie.append(capitale)
     return "".join(sortie)
+
+
+def initiales(nom: str) -> str:
+    """Monogramme d'un club sans écusson : initiales des deux premiers mots en majuscule (comme l'app)."""
+    mots = [m for m in re.split(_SEP, nom or "") if m and m[0].isupper()]
+    if not mots:
+        return ""
+    return (mots[0][:2] if len(mots) == 1 else mots[0][0] + mots[1][0]).upper()
