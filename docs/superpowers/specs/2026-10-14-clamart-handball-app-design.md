@@ -59,7 +59,7 @@ Conservé tel quel : `club`, `site`, `saison`, `mis_a_jour` (ISO UTC), `source`,
 `equipes[]` (id, nom, competition, detail, niveau, categorie, genre, poule, url_ffhb,
 stats_joueurs, classement[], matchs[], bilan, forme, place, nb_equipes), `buteurs_club[]`,
 `erreurs[]`. Un match : id, date (ISO avec fuseau, ou `null` si non programmé), journee,
-domicile, adversaire, score_nous/score_eux, mt_nous/mt_eux, resultat (`V`/`N`/`D`/`null`),
+domicile, adversaire, logo_adversaire (URL de l'écusson FFHB, ou `null`), score_nous/score_eux, mt_nous/mt_eux, resultat (`V`/`N`/`D`/`null`),
 url_ffhb, feuille_de_match, salle {nom, adresse}, buteurs[] (seniors uniquement).
 
 ### 3.2 Ajouts au contrat
