@@ -115,3 +115,17 @@ Mise en place (une fois) : projet Firebase, app Android `fr.clamarthandball.app`
 ```bash
 python collecteur/notifieur.py --essai
 ```
+
+### Lancer l'app avec les notifications (build de développement)
+
+Depuis l'ajout des notifications (Firebase / FCM natif), **Expo Go ne charge plus l'app** : il faut
+un build de développement installé sur le téléphone ou l'émulateur Android.
+
+```bash
+cd app
+npx expo run:android      # JAVA_HOME doit pointer vers le jbr d'Android Studio
+```
+
+`JAVA_HOME` = le dossier `jbr` d'Android Studio (ex. `C:\Program Files\Android\Android Studio\jbr`).
+Le build exige `app/google-services.json` (fichier Firebase de l'app Android) ; il n'est **pas commité**,
+à récupérer dans la console Firebase et à déposer dans `app/`.
