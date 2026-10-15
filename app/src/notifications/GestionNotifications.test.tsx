@@ -1,4 +1,5 @@
 import { act, fireEvent, screen } from '@testing-library/react-native';
+import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import * as fcm from './fcm';
 import { GestionNotifications } from './GestionNotifications';
@@ -31,4 +32,20 @@ test('app lancée par une notification', async () => {
   rendu(<GestionNotifications />);
   await act(async () => {});
   expect(__routeur.push).toHaveBeenCalledWith('/match/2673792?equipe=32546-clamart-handball');
+});
+
+test('« Voir » est une cible de 48 dp au moins', () => {
+  let recevoir: (n: typeof notif) => void = () => {};
+  jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
+  rendu(<GestionNotifications />);
+  act(() => recevoir(notif));
+  expect(contenuDuBouton(screen.getByText('Voir')).minHeight).toBeGreaterThanOrEqual(48);
+});
+
+test('sans titre, le snackbar affiche le corps', () => {
+  let recevoir: (n: { corps: string; donnees: Record<string, string> }) => void = () => {};
+  jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
+  rendu(<GestionNotifications />);
+  act(() => recevoir({ corps: 'Seniors M · D2 territoriale', donnees: {} }));
+  expect(screen.getByText('Seniors M · D2 territoriale')).toBeOnTheScreen();
 });
