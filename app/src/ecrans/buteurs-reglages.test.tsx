@@ -36,7 +36,7 @@ function reglages(props: Partial<Parameters<typeof VueReglages>[0]> = {}) {
     club, maintenant: MAR_SOIR, suivis: ['seniors-m'], retires: [] as string[], version: '1.0.0',
     onRetirer: jest.fn(), onGererEquipes: jest.fn(), onEffacerRetires: jest.fn(), onOuvrirLien: jest.fn(), onRetour: jest.fn(),
     notifResultats: true, rappels: false, autorisation: 'accordee' as Autorisation,
-    onNotifResultats: jest.fn(), onRappels: jest.fn(), onOuvrirReglagesSysteme: jest.fn(),
+    onNotifResultats: jest.fn(), onRappels: jest.fn(), onOuvrirReglagesSysteme: jest.fn(), onDemanderAutorisation: jest.fn(),
     ...props,
   };
   rendu(<VueReglages {...p} />);
@@ -106,4 +106,18 @@ test('notifications bloquées dans Android', () => {
   expect(screen.getByText('Les notifications sont bloquées dans les réglages d’Android.')).toBeOnTheScreen();
   fireEvent.press(screen.getByText('Ouvrir les réglages'));
   expect(p.onOuvrirReglagesSysteme).toHaveBeenCalled();
+});
+
+test('notifications pas encore autorisées : bouton pour demander l’autorisation', () => {
+  const p = reglages({ autorisation: 'inconnue' });
+  expect(screen.getByText('Autorisez les notifications pour recevoir les résultats de vos équipes.')).toBeOnTheScreen();
+  expect(screen.queryByText('Les notifications sont bloquées dans les réglages d’Android.')).not.toBeOnTheScreen();
+  fireEvent.press(screen.getByText('Activer les notifications'));
+  expect(p.onDemanderAutorisation).toHaveBeenCalled();
+});
+
+test('notifications autorisées : aucun message d’autorisation', () => {
+  reglages({ autorisation: 'accordee' });
+  expect(screen.queryByText('Autorisez les notifications pour recevoir les résultats de vos équipes.')).not.toBeOnTheScreen();
+  expect(screen.queryByText('Les notifications sont bloquées dans les réglages d’Android.')).not.toBeOnTheScreen();
 });

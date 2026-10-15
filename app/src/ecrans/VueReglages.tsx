@@ -23,6 +23,7 @@ interface Props {
   onNotifResultats: (b: boolean) => void;
   onRappels: (b: boolean) => void;
   onOuvrirReglagesSysteme: () => void;
+  onDemanderAutorisation: () => void;
   onRetour: () => void;
 }
 
@@ -81,6 +82,14 @@ export function VueReglages(p: Props) {
                 Les notifications sont bloquées dans les réglages d’Android.
               </Text>
               <Button mode="text" contentStyle={CONTENU_BOUTON} onPress={p.onOuvrirReglagesSysteme}>Ouvrir les réglages</Button>
+            </View>
+          ) : null}
+          {p.autorisation === 'inconnue' ? (
+            <View style={styles.bloque}>
+              <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
+                Autorisez les notifications pour recevoir les résultats de vos équipes.
+              </Text>
+              <Button mode="text" contentStyle={CONTENU_BOUTON} onPress={p.onDemanderAutorisation}>Activer les notifications</Button>
             </View>
           ) : null}
           <List.Item
