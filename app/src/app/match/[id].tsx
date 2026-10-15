@@ -4,9 +4,12 @@ import { EtatSansDonnees } from '../../composants/EtatSansDonnees';
 import { useMaintenant } from '../../donnees/maintenant';
 import { useClub } from '../../donnees/requetes';
 import { VueMatch } from '../../ecrans/VueMatch';
+import { parametre } from '../../notifications/liens';
 
 export default function Match() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const p = useLocalSearchParams<{ id: string | string[]; equipe?: string | string[] }>();
+  const id = parametre(p.id) ?? '';
+  const equipe = parametre(p.equipe);
   const { club, chargement, erreur, rafraichir } = useClub();
   const maintenant = useMaintenant();
   const routeur = useRouter();
@@ -15,6 +18,7 @@ export default function Match() {
     <VueMatch
       club={club}
       matchId={id}
+      equipeId={equipe}
       maintenant={maintenant}
       onRetour={() => (routeur.canGoBack() ? routeur.back() : routeur.replace('/'))}
       onItineraire={(salle) => sansRejet(() => ouvrirItineraire(salle))}
