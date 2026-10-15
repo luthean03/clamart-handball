@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}      # la tête de branche, pas le SHA du déclenchement (un passage en file pousserait sur une base périmée)
 
       - uses: actions/setup-python@v5
         with:
@@ -51,6 +53,7 @@ jobs:
 
       - name: Images des notifications
         if: github.event_name != 'push'
+        continue-on-error: true      # un échec du notifieur ne bloque pas la publication des scores
         env:
           TEST_SUJET: ${{ inputs.test_sujet }}
         run: |
@@ -71,6 +74,7 @@ jobs:
             echo "Aucun changement."
           else
             git commit -m "Données FFHB du $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase origin "$GITHUB_REF_NAME"
             git push
           fi
 
@@ -124,10 +128,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p collecteur/etat
           git add collecteur/etat
           if git diff --cached --quiet; then
             echo "Registre inchangé."
           else
             git commit -m "Notifications du $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase origin "$GITHUB_REF_NAME"
             git push
           fi
