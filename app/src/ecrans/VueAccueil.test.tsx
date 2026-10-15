@@ -8,7 +8,7 @@ import { VueAccueil, type PropsAccueil } from './VueAccueil';
 
 function accueil(props: Partial<PropsAccueil> = {}) {
   const p: PropsAccueil = {
-    club, maintenant: MAR_SOIR, suivis: ['seniors-f-1', 'seniors-m'], horsLigne: false, rafraichissement: false,
+    club, maintenant: MAR_SOIR, suivis: ['seniors-f-1', 'seniors-m'], horsLigne: false, majRequise: false, rafraichissement: false,
     rafraichir: jest.fn(), onOuvrirEquipe: jest.fn(), onOuvrirMatch: jest.fn(), onAgenda: jest.fn(),
     onReglages: jest.fn(), onChoisirEquipes: jest.fn(), ...props,
   };
@@ -157,7 +157,13 @@ describe('bord à bord', () => {
 
   test('la protection prend la couleur du thème sombre', () => {
     jest.spyOn(require('react-native-safe-area-context'), 'useSafeAreaInsets').mockReturnValue({ top: 24, bottom: 0, left: 0, right: 0 });
-    rendu(<VueAccueil {...({ club, maintenant: MAR_SOIR, suivis: [], horsLigne: false, rafraichissement: false, rafraichir: jest.fn(), onOuvrirEquipe: jest.fn(), onOuvrirMatch: jest.fn(), onAgenda: jest.fn(), onReglages: jest.fn(), onChoisirEquipes: jest.fn() } as PropsAccueil)} />, themeSombre);
+    rendu(<VueAccueil {...({ club, maintenant: MAR_SOIR, suivis: [], horsLigne: false, majRequise: false, rafraichissement: false, rafraichir: jest.fn(), onOuvrirEquipe: jest.fn(), onOuvrirMatch: jest.fn(), onAgenda: jest.fn(), onReglages: jest.fn(), onChoisirEquipes: jest.fn() } as PropsAccueil)} />, themeSombre);
     expect(StyleSheet.flatten(screen.getByTestId('protection-barre-etat').props.style).backgroundColor).toBe(themeSombre.colors.background);
   });
+});
+
+test('mise à jour requise : le bandeau de l’Accueil demande la mise à jour de l’app', () => {
+  accueil({ majRequise: true, horsLigne: false });
+  expect(screen.getByText("Une nouvelle version de l'app est nécessaire pour voir les derniers résultats.")).toBeOnTheScreen();
+  expect(screen.getByText('Mettre à jour')).toBeOnTheScreen();
 });

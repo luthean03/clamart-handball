@@ -4,7 +4,7 @@ import type { ColorValue } from 'react-native';
 import { Icon } from 'react-native-paper';
 import { BarreOnglets } from '../../composants/BarreOnglets';
 import { useClub } from '../../donnees/requetes';
-import { useSuivi, useSuiviPret } from '../../suivi/suivi';
+import { nettoyerSuivis, useSuivi, useSuiviPret } from '../../suivi/suivi';
 
 const icone = (plein: string, vide: string) =>
   ({ focused, color, size }: { focused: boolean; color: ColorValue; size: number }) => (
@@ -16,10 +16,7 @@ export default function Onglets() {
   const bienvenueFaite = useSuivi((s) => s.bienvenueFaite);
   const { club } = useClub();
 
-  useEffect(() => {
-    // Collecte partielle (une compétition en échec) : ne pas désabonner les équipes absentes.
-    if (club && club.erreurs.length === 0) useSuivi.getState().retirerInconnus(club.collectifs.map((c) => c.id));
-  }, [club]);
+  useEffect(() => nettoyerSuivis(club, pret), [club, pret]);
 
   if (!pret) return null;
   if (!bienvenueFaite) return <Redirect href="/bienvenue" />;

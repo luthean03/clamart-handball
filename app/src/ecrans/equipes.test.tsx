@@ -1,9 +1,14 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { themeClair } from '../theme/theme';
 import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
+import { nomLisible } from '../donnees/phrase';
 import { matchsDuCollectif } from '../donnees/selecteurs';
+import type { Club } from '../donnees/types';
 import { VueEquipe } from './VueEquipe';
 import { VueEquipes } from './VueEquipes';
 
@@ -87,6 +92,69 @@ test('fiche équipe : classement avec la ligne du club', () => {
   fireEvent.press(screen.getByText('Classement'));
   expect(screen.getByText('Martigua SCL')).toBeOnTheScreen();
   expect(screen.getByLabelText(/^3e, Clamart Handball 1, 13 points/)).toBeOnTheScreen();
+});
+
+test('classement : les noms d’équipe suivent les règles des lignes de match (pas de coupure en plein mot)', () => {
+  fiche('seniors-f-1');
+  fireEvent.press(screen.getByText('Classement'));
+  const nom = screen.getByText(/^AC Boulogne-.?Billancourt.1B$/);
+  expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
+  expect(nom).toHaveProp('textBreakStrategy', 'simple');
+  expect(nom).toHaveProp('numberOfLines', 3);
+  // espace de césure après le trait d'union, numéro lié par une espace insécable
+  expect(nom.props.children).toBe('AC Boulogne-​Billancourt 1B');
+  // le libellé lu garde le nom d'origine
+  expect(screen.getByLabelText(/^2e, AC Boulogne-Billancourt 1B, /)).toBeOnTheScreen();
+  expect(nomLisible('AC BOULOGNE-BILLANCOURT 1B')).toBe('AC Boulogne-Billancourt 1B');
+});
+
+test('classement : les colonnes numériques s’élargissent (minWidth) plutôt que de couper « -73 »', () => {
+  fiche('seniors-f-1');
+  fireEvent.press(screen.getByText('Classement'));
+  const cellules = [screen.getByText('#'), screen.getByText('Pts'), screen.getByText('Diff'), screen.getAllByText('-73')[0], screen.getAllByText('1')[0]];
+  for (const cellule of cellules) {
+    const style = StyleSheet.flatten(cellule.props.style);
+    expect(style.minWidth).toBeGreaterThan(0);
+    expect(style.width).toBeUndefined();
+  }
+});
+
+function sansClassement(): Club {
+  return { ...club, equipes: club.equipes.map((e) => (e.collectif === 'seniors-m' ? { ...e, classement: null } : e)) };
+}
+
+test('fiche équipe sans aucun classement (coupe seule) : pas d’onglet Classement', () => {
+  fiche('seniors-m', { club: sansClassement() });
+  expect(screen.queryByText('Classement')).toBeNull();
+  expect(screen.getByText('Matchs')).toBeOnTheScreen();
+  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
+});
+
+test('fiche équipe : avec un classement, l’onglet Classement est proposé', () => {
+  fiche('seniors-m');
+  expect(screen.getByText('Classement')).toBeOnTheScreen();
+});
+
+test('fiche équipe : l’onglet Classement choisi retombe sur Matchs quand le classement disparaît', () => {
+  const p = { club, collectifId: 'seniors-m', maintenant: MAR_SOIR, suivi: false, onBasculer: jest.fn(), onOuvrirMatch: jest.fn(), onRetour: jest.fn(), onCopierAgenda: jest.fn(() => Promise.resolve(true)) };
+  const enveloppe = (c: Club) => (
+    <SafeAreaProvider>
+      <PaperProvider theme={themeClair}>
+        <VueEquipe {...p} club={c} />
+      </PaperProvider>
+    </SafeAreaProvider>
+  );
+  const { rerender } = render(enveloppe(club));
+  fireEvent.press(screen.getByText('Classement'));
+  expect(screen.queryAllByTestId('ligne-match')).toHaveLength(0);
+  rerender(enveloppe(sansClassement()));
+  expect(screen.getAllByTestId('ligne-match').length).toBeGreaterThan(0);
+});
+
+test('fiche équipe : buteurs seulement avec stats_joueurs strictement vrai', () => {
+  const douteux: Club = { ...club, equipes: club.equipes.map((e) => ({ ...e, stats_joueurs: 'false' as unknown as boolean })) };
+  fiche('seniors-f-1', { club: douteux });
+  expect(screen.queryByText('Buteurs')).toBeNull();
 });
 
 test('fiche équipe : buteurs pour les seniors, jamais pour les jeunes', () => {

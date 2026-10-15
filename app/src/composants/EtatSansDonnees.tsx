@@ -36,7 +36,7 @@ export function EtatSansDonnees({ chargement, erreur, reessayer }: Props) {
           : 'Vérifiez votre connexion internet, puis réessayez.'}
       </Text>
       {majRequise ? (
-        <Button mode="contained" contentStyle={CONTENU_BOUTON} onPress={() => Linking.openURL(URL_PLAY_STORE)}>
+        <Button mode="contained" contentStyle={CONTENU_BOUTON} onPress={() => Linking.openURL(URL_PLAY_STORE).catch(() => {})}>
           Mettre à jour
         </Button>
       ) : (

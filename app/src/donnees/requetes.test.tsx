@@ -126,3 +126,31 @@ test('le délai de conservation du cache tient dans un setTimeout (pas de dépas
   expect(gcTime).toBeGreaterThan(1000 * 60 * 60 * 24 * 7);
   expect(gcTime).toBeLessThanOrEqual(2 ** 31 - 1);
 });
+
+test('format trop récent avec des données en cache : mise à jour requise, pas « hors ligne »', async () => {
+  const client = nouveauClient();
+  client.setQueryData(CLE_CLUB, fixtureBrute);
+  globalThis.fetch = jest.fn(() =>
+    Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({ ...fixtureBrute, version_schema: 3 }) }),
+  ) as unknown as typeof fetch;
+  const { result } = renderHook(() => useClub(), { wrapper: enveloppe(client) });
+  expect(result.current.majRequise).toBe(false);
+  await act(async () => {
+    await result.current.rafraichir();
+  });
+  await waitFor(() => expect(result.current.majRequise).toBe(true));
+  expect(result.current.horsLigne).toBe(false);
+  expect(result.current.club?.saison).toBe('2026-2027');
+});
+
+test('une simple erreur réseau ne demande pas de mise à jour', async () => {
+  const client = nouveauClient();
+  client.setQueryData(CLE_CLUB, fixtureBrute);
+  reseauKO();
+  const { result } = renderHook(() => useClub(), { wrapper: enveloppe(client) });
+  await act(async () => {
+    await result.current.rafraichir();
+  });
+  await waitFor(() => expect(result.current.horsLigne).toBe(true));
+  expect(result.current.majRequise).toBe(false);
+});

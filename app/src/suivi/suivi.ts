@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import type { Club } from '../donnees/types';
 
 interface EtatSuivi {
   /** Ids de collectifs suivis (ex. 'seniors-m'). */
@@ -50,4 +51,17 @@ export const useSuivi = create<EtatSuivi>()(
 /** Vrai quand les équipes suivies ont été relues depuis le téléphone (ou que la relecture a échoué). */
 export function useSuiviPret(): boolean {
   return useSuivi((s) => s.pret);
+}
+
+/**
+ * Retire des équipes suivies celles qui ont disparu des données. N'agit que si les suivis sont relus (`pret`) et que
+ * la collecte est complète : avec une compétition en échec, des équipes absentes ne sont pas pour autant disparues.
+ */
+export function nettoyerSuivis(
+  club: Club | undefined,
+  pret: boolean,
+  retirer: (valides: string[]) => unknown = (valides) => useSuivi.getState().retirerInconnus(valides),
+): void {
+  if (!club || !pret || club.erreurs.length > 0) return;
+  retirer(club.collectifs.map((c) => c.id));
 }

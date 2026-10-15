@@ -41,3 +41,8 @@ export const ajouterAgenda = (m: MatchAvecEquipe) => Calendar.createEventInCalen
 export const ouvrirLien = (url: string) => WebBrowser.openBrowserAsync(url);
 export const urlAgenda = (base: string, equipeId: string) => `${base}${equipeId}.ics`;
 export const copier = (texte: string) => Clipboard.setStringAsync(texte);
+
+/** Les actions rendent une promesse : un refus (pas de navigateur, pas d'agenda) ne doit jamais devenir une rejection non gérée. */
+export const sansRejet = (action: () => Promise<unknown>) => {
+  action().catch(() => {});
+};

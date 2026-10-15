@@ -1,14 +1,9 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { ajouterAgenda, ouvrirItineraire, ouvrirLien } from '../../actions/actions';
+import { ajouterAgenda, ouvrirItineraire, ouvrirLien, sansRejet } from '../../actions/actions';
 import { EtatSansDonnees } from '../../composants/EtatSansDonnees';
 import { useMaintenant } from '../../donnees/maintenant';
 import { useClub } from '../../donnees/requetes';
 import { VueMatch } from '../../ecrans/VueMatch';
-
-/** Les actions rendent une promesse : un refus (pas de navigateur, pas d'agenda) ne doit jamais devenir une rejection non gérée. */
-const sansRejet = (action: () => Promise<unknown>) => {
-  action().catch(() => {});
-};
 
 export default function Match() {
   const { id } = useLocalSearchParams<{ id: string }>();

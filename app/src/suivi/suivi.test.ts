@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useSuivi } from './suivi';
+import type { Club } from '../donnees/types';
+import { nettoyerSuivis, useSuivi } from './suivi';
 
 beforeEach(() => useSuivi.setState({ suivis: [], bienvenueFaite: false, retires: [], pret: false }));
 const etat = () => useSuivi.getState();
@@ -55,4 +56,39 @@ test('une relecture normale rend le store prêt', async () => {
   await useSuivi.persist.rehydrate();
   expect(etat().pret).toBe(true);
   expect(etat().suivis).toEqual(['u13-m']);
+});
+
+describe('nettoyerSuivis (garde « collecte complète »)', () => {
+  const complet = { collectifs: [{ id: 'seniors-m' }, { id: 'u18-f' }], erreurs: [] } as unknown as Club;
+
+  test('cas nominal : relecture terminée et collecte complète → les collectifs inconnus sont retirés', () => {
+    const retirer = jest.fn(() => []);
+    nettoyerSuivis(complet, true, retirer);
+    expect(retirer).toHaveBeenCalledWith(['seniors-m', 'u18-f']);
+  });
+
+  test('collecte partielle (erreurs non vides) → rien n’est retiré', () => {
+    const retirer = jest.fn(() => []);
+    nettoyerSuivis({ ...complet, erreurs: [{ competition: 'x', message: 'échec' }] } as unknown as Club, true, retirer);
+    expect(retirer).not.toHaveBeenCalled();
+  });
+
+  test('suivis pas encore relus (pret faux) → rien n’est retiré', () => {
+    const retirer = jest.fn(() => []);
+    nettoyerSuivis(complet, false, retirer);
+    expect(retirer).not.toHaveBeenCalled();
+  });
+
+  test('pas de données → rien n’est retiré', () => {
+    const retirer = jest.fn(() => []);
+    nettoyerSuivis(undefined, true, retirer);
+    expect(retirer).not.toHaveBeenCalled();
+  });
+
+  test('par défaut, agit sur le magasin des équipes suivies', () => {
+    useSuivi.setState({ suivis: ['seniors-m', 'disparue'], retires: [] });
+    nettoyerSuivis(complet, true);
+    expect(useSuivi.getState().suivis).toEqual(['seniors-m']);
+    expect(useSuivi.getState().retires).toEqual(['disparue']);
+  });
 });
