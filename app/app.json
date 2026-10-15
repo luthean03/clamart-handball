@@ -9,6 +9,7 @@
     "android": {
       "package": "fr.clamarthandball.app",
       "edgeToEdgeEnabled": true,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo-clamart.png",
         "backgroundColor": "#DB0000"
@@ -21,6 +22,9 @@
     "plugins": [
       "expo-router",
       "expo-font",
+      "@react-native-firebase/app",
+      "expo-dev-client",
+      ["expo-build-properties", { "ios": { "useFrameworks": "static" } }],
       [
         "expo-splash-screen",
         {
