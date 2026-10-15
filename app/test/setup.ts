@@ -29,3 +29,11 @@ jest.mock('@expo/vector-icons/MaterialCommunityIcons', () => {
   const { Text } = require('react-native');
   return { __esModule: true, default: ({ name }: { name: string }) => createElement(Text, null, name) };
 });
+jest.mock('../src/notifications/fcm', () => ({
+  clientFcm: { abonner: jest.fn(() => Promise.resolve()), desabonner: jest.fn(() => Promise.resolve()) },
+  demanderAutorisation: jest.fn(() => Promise.resolve('accordee')),
+  lireAutorisation: jest.fn(() => Promise.resolve('accordee')),
+  ecouterPremierPlan: jest.fn(() => () => {}),
+  ecouterOuverture: jest.fn(() => () => {}),
+  notificationInitiale: jest.fn(() => Promise.resolve(null)),
+}));
