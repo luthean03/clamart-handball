@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-15T07:32:55+00:00",
+ "mis_a_jour": "2026-10-15T09:55:01+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2110,6 +2110,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "ENT COLOMBES / ASNIERES",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 90,
+     "bc": 40,
+     "diff": 50,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "LEVALLOIS SC",
      "points": 6,
      "joues": 2,
@@ -2122,7 +2135,7 @@
      "nous": false
     },
     {
-     "place": 2,
+     "place": 3,
      "equipe": "USM MALAKOFF",
      "points": 3,
      "joues": 1,
@@ -2135,20 +2148,20 @@
      "nous": false
     },
     {
-     "place": 3,
-     "equipe": "ENT COLOMBES / ASNIERES",
-     "points": 3,
-     "joues": 1,
-     "gagnes": 1,
+     "place": 4,
+     "equipe": "ENT PARIS GALAXY NORD U18F 3",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 44,
-     "bc": 21,
-     "diff": 23,
+     "perdus": 2,
+     "bp": 38,
+     "bc": 72,
+     "diff": -34,
      "nous": false
     },
     {
-     "place": 4,
+     "place": 5,
      "equipe": "CLAMART HB",
      "points": 2,
      "joues": 2,
@@ -2159,19 +2172,6 @@
      "bc": 74,
      "diff": -50,
      "nous": true
-    },
-    {
-     "place": 5,
-     "equipe": "ENT PARIS GALAXY NORD U18F 3",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 19,
-     "bc": 26,
-     "diff": -7,
-     "nous": false
     },
     {
      "place": 6,
@@ -2272,7 +2272,7 @@
     "bc": 74
    },
    "forme": "DD",
-   "place": 4,
+   "place": 5,
    "nb_equipes": 6,
    "collectif": "u18-f"
   },
