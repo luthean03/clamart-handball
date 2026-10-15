@@ -157,7 +157,11 @@ class EnvoyeurFCM:
             f"https://fcm.googleapis.com/v1/projects/{self.projet}/messages:send",
             headers={"Authorization": f"Bearer {self._credentials.token}"},
             json=corps_requete(m), timeout=20)
-        reponse.raise_for_status()
+        try:
+            reponse.raise_for_status()
+        except Exception as err:
+            # le corps de la réponse (ex. PERMISSION_DENIED) dit pourquoi FCM refuse ; jamais le jeton ni les en-têtes
+            raise RuntimeError(f"{err} — {(reponse.text or '')[:300]}") from err
 
 
 def nom_image(m: Message) -> str:
