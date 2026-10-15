@@ -84,3 +84,11 @@ export function initiales(nom: string): string {
   const lettres = mots.length === 1 ? mots[0].slice(0, 2) : mots[0][0] + mots[1][0];
   return lettres.toUpperCase();
 }
+
+/**
+ * Affichage seulement : espace de largeur nulle après chaque trait d'union entre deux lettres. Android ne coupe pas
+ * une ligne après un trait d'union quand la césure automatique est désactivée : sans cela, « Boulogne-Billancourt »
+ * est coupé en plein mot. Les libellés lus (lecteurs d'écran) gardent le texte d'origine.
+ */
+export const permettreCesure = (texte: string) =>
+  texte.replace(/([A-Za-z\u00C0-\u00FF])-(?=[A-Za-z\u00C0-\u00FF])/g, '$1-\u200B');
