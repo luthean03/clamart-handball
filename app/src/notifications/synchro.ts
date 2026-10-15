@@ -21,6 +21,23 @@ export async function synchroniser(attendus: string[], actuels: string[], client
   return [...etat];
 }
 
+let file: Promise<unknown> = Promise.resolve();
+
+/**
+ * Met un cycle de synchronisation en file : les cycles s'exécutent un par un, et chacun relit l'état courant du
+ * store à son démarrage (équipes suivies, préférences, sujets réellement abonnés). Sans cela, deux cycles
+ * qui se chevauchent pourraient laisser un abonnement FCM absent du store, donc jamais désabonné.
+ */
+export function planifierSynchro(client: ClientSujets = clientFcm): Promise<void> {
+  const cycle = file.then(async () => {
+    const { suivis, notifResultats, rappels, autorisation, sujets } = useSuivi.getState();
+    const attendus = sujetsAttendus(suivis, { notifResultats, rappels, autorisation });
+    useSuivi.getState().setSujets(await synchroniser(attendus, sujets, client));
+  });
+  file = cycle.catch(() => {});
+  return cycle;
+}
+
 /** Garde les abonnements FCM alignés sur les équipes suivies et les préférences (au lancement et à chaque changement). */
 export function useSynchroAbonnements(): void {
   const pret = useSuivi((s) => s.pret);
@@ -30,6 +47,8 @@ export function useSynchroAbonnements(): void {
   const autorisation = useSuivi((s) => s.autorisation);
 
   useEffect(() => {
+    // Avant `pret`, la réhydratation du store écraserait le résultat : on attend que les réglages soient relus.
+    if (!pret) return;
     // L'utilisateur peut changer l'autorisation dans les réglages Android : la relire au retour dans l'app.
     const relire = () => lireAutorisation().then((a) => {
       const actuelle = useSuivi.getState().autorisation;
@@ -39,13 +58,10 @@ export function useSynchroAbonnements(): void {
     relire();
     const abonnement = AppState.addEventListener('change', (e) => e === 'active' && relire());
     return () => abonnement.remove();
-  }, []);
+  }, [pret]);
 
   useEffect(() => {
     if (!pret) return;
-    const attendus = sujetsAttendus(suivis, { notifResultats, rappels, autorisation });
-    synchroniser(attendus, useSuivi.getState().sujets, clientFcm)
-      .then((sujets) => useSuivi.getState().setSujets(sujets))
-      .catch(() => {});
+    planifierSynchro().catch(() => {});
   }, [pret, suivis, notifResultats, rappels, autorisation]);
 }
