@@ -3,6 +3,7 @@ import { Linking, StyleSheet } from 'react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
+import { URL_PLAY_STORE } from '../config';
 import { matchParId } from '../donnees/selecteurs';
 import { themeSombre } from '../theme/theme';
 import { BandeauEtat } from './BandeauEtat';
@@ -114,16 +115,29 @@ test('forme : lettres et libellé lu', () => {
 });
 
 test('bandeau : rien si les données sont fraîches', () => {
-  rendu(<BandeauEtat horsLigne={false} miseAJour={club.mis_a_jour} maintenant={MAR_SOIR} />);
+  rendu(<BandeauEtat majRequise={false} horsLigne={false} miseAJour={club.mis_a_jour} maintenant={MAR_SOIR} />);
   expect(screen.queryByRole('alert')).toBeNull();
 });
 
 test('bandeau hors ligne et bandeau données anciennes', () => {
-  rendu(<BandeauEtat horsLigne miseAJour={club.mis_a_jour} maintenant={MAR_SOIR} />);
+  rendu(<BandeauEtat majRequise={false} horsLigne miseAJour={club.mis_a_jour} maintenant={MAR_SOIR} />);
   expect(screen.getByText('Hors ligne · résultats mis à jour à 16:41')).toBeOnTheScreen();
   screen.unmount();
-  rendu(<BandeauEtat horsLigne={false} miseAJour={club.mis_a_jour} maintenant={new Date('2026-10-16T09:00:00+02:00')} />);
+  rendu(<BandeauEtat majRequise={false} horsLigne={false} miseAJour={club.mis_a_jour} maintenant={new Date('2026-10-16T09:00:00+02:00')} />);
   expect(screen.getByText("Les résultats n'ont pas été mis à jour depuis le mar. 13 oct.")).toBeOnTheScreen();
+});
+
+test('bandeau mise à jour requise : prime sur hors ligne et données anciennes, bouton vers le Play Store', () => {
+  const ouvrir = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+  rendu(<BandeauEtat majRequise horsLigne miseAJour={club.mis_a_jour} maintenant={new Date('2026-10-16T09:00:00+02:00')} />);
+  expect(screen.getByText("Une nouvelle version de l'app est nécessaire pour voir les derniers résultats.")).toBeOnTheScreen();
+  expect(screen.queryByText(/Hors ligne/)).toBeNull();
+  expect(screen.queryByText(/n'ont pas été mis à jour/)).toBeNull();
+  const bouton = screen.getByRole('button', { name: 'Mettre à jour' });
+  expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
+  fireEvent.press(screen.getByText('Mettre à jour'));
+  expect(ouvrir).toHaveBeenCalledWith(URL_PLAY_STORE);
+  ouvrir.mockRestore();
 });
 
 test('état sans données : chargement, erreur réseau, nouvelle version', () => {

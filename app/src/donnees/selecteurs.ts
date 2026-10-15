@@ -102,7 +102,7 @@ export interface ButeurEquipe {
 export function buteursDuCollectif(club: Club, id: string): ButeurEquipe[] {
   const parJoueur = new Map<string, ButeurEquipe>();
   for (const m of matchsDuCollectif(club, id)) {
-    if (!m.equipe.stats_joueurs) continue;
+    if (m.equipe.stats_joueurs !== true) continue;
     for (const b of m.buteurs ?? []) {
       const e = parJoueur.get(b.joueur) ?? { joueur: b.joueur, buts: 0, matchs: 0 };
       e.buts += b.buts;
@@ -121,7 +121,7 @@ export function buteursDuCollectif(club: Club, id: string): ButeurEquipe[] {
  * les mineurs ne sont jamais nommés, même si la collecte les laisse passer.
  */
 export function buteursClubAffichables(club: Club): ButeurClub[] {
-  const sures = new Set(club.equipes.filter((e) => e.stats_joueurs).map((e) => e.nom));
-  for (const e of club.equipes) if (!e.stats_joueurs) sures.delete(e.nom);
+  const sures = new Set(club.equipes.filter((e) => e.stats_joueurs === true).map((e) => e.nom));
+  for (const e of club.equipes) if (e.stats_joueurs !== true) sures.delete(e.nom);
   return club.buteurs_club.filter((b) => b.equipes.length > 0 && b.equipes.every((nom) => sures.has(nom)));
 }

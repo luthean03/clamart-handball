@@ -33,12 +33,15 @@ export function brancherPremierPlan(): () => void {
 
 export function useClub() {
   const q = useQuery<Club, Error>({ queryKey: CLE_CLUB, queryFn: () => chargerClub(URL_DONNEES) });
+  const majRequise = q.error?.name === 'SchemaInconnu';
   return {
     club: q.data,
     chargement: q.isPending,
     erreur: q.error,
+    /** Le fichier publié a un format plus récent que l'app : seule une mise à jour de l'app aide (même avec un cache). */
+    majRequise,
     /** Le dernier rafraîchissement a échoué (et aucun n'est en cours) mais des données en cache sont affichées. */
-    horsLigne: q.isError && q.data !== undefined && !q.isFetching,
+    horsLigne: q.isError && q.data !== undefined && !q.isFetching && !majRequise,
     rafraichir: () => q.refetch(),
     rafraichissement: q.isRefetching,
   };

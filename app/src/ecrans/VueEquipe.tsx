@@ -1,10 +1,10 @@
 import { useState, type ReactNode } from 'react';
 import { ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { Appbar, Button, List, SegmentedButtons, Snackbar, Surface, Text } from 'react-native-paper';
-import { CONTENU_BOUTON } from '../composants/commun';
+import { CONTENU_BOUTON, NOM_SANS_COUPURE } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
-import { lierNumero, nomLisible, ordinal, rangAffiche } from '../donnees/phrase';
+import { lierNumero, nomLisible, ordinal, permettreCesure, rangAffiche } from '../donnees/phrase';
 import { buteursDuCollectif, equipePrincipale, equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
 import type { Club, Equipe } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
@@ -58,13 +58,16 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
 
   const equipes = equipesDuCollectif(club, collectifId);
   const principale = equipePrincipale(club, collectifId);
-  const avecButeurs = equipes.some((e) => e.stats_joueurs);
+  const avecButeurs = equipes.some((e) => e.stats_joueurs === true);
+  const classements = equipes.filter((e) => (e.classement?.length ?? 0) > 0);
+  const avecClassement = classements.length > 0;
   const onglets = [
     { value: 'matchs', label: 'Matchs', hitSlop: MARGE_SEGMENT },
-    { value: 'classement', label: 'Classement', hitSlop: MARGE_SEGMENT },
+    ...(avecClassement ? [{ value: 'classement', label: 'Classement', hitSlop: MARGE_SEGMENT }] : []),
     ...(avecButeurs ? [{ value: 'buteurs', label: 'Buteurs', hitSlop: MARGE_SEGMENT }] : []),
   ];
-  const onglet = ongletChoisi === 'buteurs' && !avecButeurs ? 'matchs' : ongletChoisi;
+  const onglet =
+    (ongletChoisi === 'buteurs' && !avecButeurs) || (ongletChoisi === 'classement' && !avecClassement) ? 'matchs' : ongletChoisi;
   const copier = async (e: Equipe) => {
     try {
       await onCopierAgenda(e);
@@ -119,13 +122,8 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
           </>
         ) : null}
 
-        {onglet === 'classement' ? (
-          equipes.filter((e) => e.classement).length === 0 ? (
-            <Text variant="bodyMedium" style={[styles.message, { color: t.colors.onSurfaceVariant }]}>
-              Pas de classement pour cette compétition.
-            </Text>
-          ) : (
-            equipes.filter((e) => e.classement).map((e) => (
+        {onglet === 'classement'
+          ? classements.map((e) => (
               <View key={e.id}>
                 <EnTeteSection titre={e.poule ? `${e.detail} · ${nomLisible(e.poule)}` : e.detail} />
                 <Carte>
@@ -146,7 +144,9 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
                         accessibilityLabel={`${ordinal(l.place ?? 0)}, ${nomLisible(l.equipe)}, ${l.points} points, ${l.joues} matchs joués, différence ${l.diff}`}
                       >
                         <Text variant="bodyMedium" style={[styles.place, gras]}>{l.place}</Text>
-                        <Text variant="bodyMedium" numberOfLines={2} style={[styles.nomClassement, gras]}>{nomLisible(l.equipe)}</Text>
+                        <Text variant="bodyMedium" numberOfLines={3} {...NOM_SANS_COUPURE} style={[styles.nomClassement, gras]}>
+                          {lierNumero(permettreCesure(nomLisible(l.equipe)))}
+                        </Text>
                         <Text variant="bodyMedium" style={[styles.nombre, gras]}>{l.points}</Text>
                         <Text variant="bodyMedium" style={[styles.nombre, gras]}>{l.joues}</Text>
                         <Text variant="bodyMedium" style={[styles.nombre, gras]}>{l.diff}</Text>
@@ -156,8 +156,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
                 </Carte>
               </View>
             ))
-          )
-        ) : null}
+          : null}
 
         {onglet === 'buteurs' ? (
           <Carte style={styles.margeHaut}>
@@ -189,9 +188,8 @@ const styles = StyleSheet.create({
   action: { width: 48, height: 48, margin: 0, borderRadius: 24 },
   margeHaut: { marginTop: 4 },
   rangee: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: StyleSheet.hairlineWidth },
-  place: { width: 24, fontVariant: ['tabular-nums'] },
+  place: { minWidth: 24, fontVariant: ['tabular-nums'] },
   nomClassement: { flex: 1 },
-  nombre: { width: 36, textAlign: 'right', fontVariant: ['tabular-nums'] },
-  message: { paddingVertical: 24, textAlign: 'center' },
+  nombre: { minWidth: 36, textAlign: 'right', fontVariant: ['tabular-nums'] },
   vide: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8, padding: 24 },
 });

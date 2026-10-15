@@ -41,3 +41,41 @@ test('refuse une réponse illisible (portail wi-fi)', async () => {
   ) as unknown as typeof fetch;
   await expect(chargerClub('u', html)).rejects.toMatchObject({ name: 'ErreurReseau' });
 });
+
+describe('délai maximal', () => {
+  afterEach(() => jest.useRealTimers());
+
+  test('un téléchargement qui ne répond jamais devient une ErreurReseau « Délai dépassé » après 15 s', async () => {
+    jest.useFakeTimers();
+    let signal: AbortSignal | null | undefined;
+    const silencieux = jest.fn((_url: unknown, init?: RequestInit) => {
+      signal = init?.signal;
+      return new Promise<Response>(() => {});
+    }) as unknown as typeof fetch;
+    let resultat: unknown = 'en attente';
+    chargerClub('u', silencieux).catch((e) => (resultat = e));
+    await jest.advanceTimersByTimeAsync(14_999);
+    expect(resultat).toBe('en attente');
+    await jest.advanceTimersByTimeAsync(1);
+    expect(resultat).toMatchObject({ name: 'ErreurReseau', message: 'Délai dépassé' });
+    expect(signal?.aborted).toBe(true);
+  });
+
+  test('une réponse à temps ne laisse aucun minuteur actif', async () => {
+    jest.useFakeTimers();
+    await chargerClub('u', reponse(fixtureBrute));
+    expect(jest.getTimerCount()).toBe(0);
+  });
+
+  test('un fetch interrompu par le signal (vrai comportement de fetch) donne aussi « Délai dépassé »', async () => {
+    jest.useFakeTimers();
+    const honnete = jest.fn(
+      (_url: unknown, init?: RequestInit) =>
+        new Promise<Response>((_ok, ko) => init?.signal?.addEventListener('abort', () => ko(new Error('Aborted')))),
+    ) as unknown as typeof fetch;
+    let resultat: unknown;
+    chargerClub('u', honnete).catch((e) => (resultat = e));
+    await jest.advanceTimersByTimeAsync(15_000);
+    expect(resultat).toMatchObject({ name: 'ErreurReseau', message: 'Délai dépassé' });
+  });
+});

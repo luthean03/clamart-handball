@@ -1,7 +1,7 @@
 import * as Calendar from 'expo-calendar/legacy';
 import { club } from '../../test/donnees';
 import { matchParId } from '../donnees/selecteurs';
-import { ajouterAgenda, evenementAgenda, urlAgenda, urlItineraire } from './actions';
+import { ajouterAgenda, evenementAgenda, sansRejet, urlAgenda, urlItineraire } from './actions';
 
 // SDK 57 : l'export racine de expo-calendar lève une erreur à l'exécution ; l'API utilisable est dans /legacy.
 jest.mock('expo-calendar/legacy', () => ({ createEventInCalendarAsync: jest.fn(() => Promise.resolve({ action: 'saved' })) }));
@@ -38,4 +38,11 @@ test('url de l’agenda d’une équipe', () => {
   expect(urlAgenda('https://x.github.io/clamart-handball/data/agenda/', '32542-clamart-handball-1')).toBe(
     'https://x.github.io/clamart-handball/data/agenda/32542-clamart-handball-1.ics',
   );
+});
+
+test('sansRejet : lance l’action et avale son refus (jamais de rejection non gérée)', async () => {
+  const action = jest.fn(() => Promise.reject(new Error('pas d’agenda')));
+  expect(() => sansRejet(action)).not.toThrow();
+  expect(action).toHaveBeenCalledTimes(1);
+  await new Promise<void>((resoudre) => setImmediate(() => resoudre())); // une rejection non gérée ferait échouer ce test
 });

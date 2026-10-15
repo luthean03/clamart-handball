@@ -7,10 +7,14 @@ import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { EcranErreur } from '../composants/EcranErreur';
 import { brancherPremierPlan, creerClientRequetes, persisteur, UN_MOIS } from '../donnees/requetes';
 import { themeClair, themeSombre } from '../theme/theme';
 
 SplashScreen.preventAutoHideAsync();
+
+/** Une erreur d'affichage non rattrapée montre un écran de secours avec « Réessayer » au lieu de fermer l'app. */
+export const ErrorBoundary = EcranErreur;
 
 export default function Racine() {
   const [client] = useState(creerClientRequetes);

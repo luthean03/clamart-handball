@@ -19,6 +19,7 @@ export interface PropsAccueil {
   maintenant: Date;
   suivis: string[];
   horsLigne: boolean;
+  majRequise: boolean;
   rafraichissement: boolean;
   rafraichir: () => void;
   onOuvrirEquipe: (id: string) => void;
@@ -55,7 +56,7 @@ export function VueAccueil(p: PropsAccueil) {
           <IconButton icon="cog-outline" accessibilityLabel="Réglages" style={styles.reglages} onPress={p.onReglages} />
         </View>
   
-        <BandeauEtat horsLigne={p.horsLigne} miseAJour={p.club.mis_a_jour} maintenant={p.maintenant} />
+        <BandeauEtat majRequise={p.majRequise} horsLigne={p.horsLigne} miseAJour={p.club.mis_a_jour} maintenant={p.maintenant} />
   
         <EnTeteSection titre="Mes équipes" />
         {miens.length === 0 ? (

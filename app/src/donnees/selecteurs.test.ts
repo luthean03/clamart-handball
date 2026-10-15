@@ -83,6 +83,23 @@ test('buteurs d’un collectif : seniors seulement', () => {
   expect(buteursDuCollectif(club, 'u18-f')).toEqual([]);
 });
 
+// Comparaison stricte : seule la valeur booléenne `true` ouvre l'affichage des noms (jamais une valeur « truthy »).
+const sansConfiance = (valeur: unknown) => ({
+  ...club,
+  equipes: club.equipes.map((e) => ({ ...e, stats_joueurs: valeur as boolean })),
+});
+
+test('buteurs d’un collectif : stats_joueurs doit valoir exactement true', () => {
+  expect(buteursDuCollectif(sansConfiance('false'), 'seniors-f-1')).toEqual([]);
+  expect(buteursDuCollectif(sansConfiance(1), 'seniors-f-1')).toEqual([]);
+  expect(buteursDuCollectif(sansConfiance(undefined), 'seniors-f-1')).toEqual([]);
+});
+
+test('buteurs du club affichables : stats_joueurs doit valoir exactement true', () => {
+  expect(buteursClubAffichables(sansConfiance('false'))).toEqual([]);
+  expect(buteursClubAffichables(sansConfiance(1))).toEqual([]);
+});
+
 describe('buteursClubAffichables', () => {
   const avec = (equipes: string[]) => ({ ...club, buteurs_club: [{ ...club.buteurs_club[0], equipes }, ...club.buteurs_club.slice(1)] });
 
