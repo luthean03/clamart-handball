@@ -2,11 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Envoyer une notification quand une équipe suivie a joué (et, en option désactivée par défaut, un rappel la veille du match), et l'ouvrir sur la fiche du match dans l'app.
+**Goal:** Envoyer une notification quand une équipe suivie a joué — une banderole écusson – score – écusson — (et, en option désactivée par défaut, un rappel la veille du match), et l'ouvrir sur la fiche du match dans l'app.
 
-**Architecture:** Côté serveur, un module Python `collecteur/notifieur.py` exécuté par GitHub Actions juste après la collecte : il calcule les messages à partir de `site/data/club.json` et d'un registre `collecteur/etat/notifications.json`, puis les envoie par l'API FCM HTTP v1 sur des **sujets** (`resultats-<collectif>`, `rappels-<collectif>`). Côté app, le téléphone s'abonne aux sujets des équipes suivies via `@react-native-firebase/messaging` (ce qui impose désormais un *development build*, plus Expo Go), demande l'autorisation Android 13+, affiche les notifications reçues au premier plan et ouvre la fiche match quand on touche une notification. Toute la logique (messages, registre, sujets attendus, liens) est en fonctions pures testées.
+**Architecture:** Côté serveur, un module Python `collecteur/notifieur.py` exécuté par GitHub Actions juste après la collecte : il calcule les messages à partir de `site/data/club.json` et d'un registre `collecteur/etat/notifications.json`, dessine pour chaque résultat une image « banderole » (Pillow) publiée sur GitHub Pages avant l'envoi, puis les envoie par l'API FCM HTTP v1 sur des **sujets** (`resultats-<collectif>`, `rappels-<collectif>`). Côté app, le téléphone s'abonne aux sujets des équipes suivies via `@react-native-firebase/messaging` (ce qui impose désormais un *development build*, plus Expo Go), demande l'autorisation Android 13+, affiche les notifications reçues au premier plan et ouvre la fiche match quand on touche une notification. Toute la logique (messages, registre, sujets attendus, liens) est en fonctions pures testées.
 
-**Tech Stack:** Python 3.12 (google-auth, requests, tzdata, pytest), GitHub Actions, Firebase Cloud Messaging HTTP v1 ; Expo SDK 57, @react-native-firebase/app + messaging 26.4.0, expo-dev-client, zustand, react-native-paper, Jest + RNTL 13.
+**Tech Stack:** Python 3.12 (google-auth, requests, tzdata, Pillow, pytest), GitHub Actions, Firebase Cloud Messaging HTTP v1 ; Expo SDK 57, @react-native-firebase/app + messaging 26.4.0, expo-dev-client, zustand, react-native-paper, Jest + RNTL 13.
 
 **Spec:** [docs/superpowers/specs/2026-10-14-clamart-handball-app-design.md](../specs/2026-10-14-clamart-handball-app-design.md) (§4, §5.3, §5.4, §5.2 Réglages et premier lancement, §7, §8 étape 3). Décisions du Plan 2 : [2026-10-14-plan-2-journal-execution.md](2026-10-14-plan-2-journal-execution.md).
 
@@ -17,6 +17,7 @@
 - Sujets FCM : `resultats-<collectif>` et `rappels-<collectif>`, `<collectif>` = id de collectif `[a-z0-9-]+`.
 - Rappel la veille : **désactivé par défaut** ; notifications de résultats activées par défaut pour une équipe suivie (si Android l'autorise).
 - Textes résultat, façon banderole (choix de l'utilisateur, 15/10/2026 — pas de phrase) : titre = `<domicile> <score domicile> – <score extérieur> <extérieur>`, Clamart écrit « Clamart », l'adversaire via `nom_lisible` (ex. `Clamart 32 – 22 Ent. Suresnes / Nanterre`, à l'extérieur `Paris SC 1D 17 – 20 Clamart`) ; corps = `<équipe> · <compétition>` (ex. `Seniors F 1 · D1 territoriale`). Rappel : titre `Demain 16:15 · <équipe>`, corps `Contre <adversaire> · <salle> (domicile|extérieur)` (sans salle : `Contre <adversaire> · domicile|extérieur`). Données : `{type, collectif, equipe_id, match_id}` (chaînes).
+- Image de résultat (Android, « grande image ») : banderole 1024 × 512 PNG, équipe qui reçoit à gauche, score au centre, écusson officiel de Clamart (jamais redessiné, détouré en disque), écusson FFHB de l'adversaire (`logo_adversaire`) ou ses initiales ; publiée dans `site/notifs/` sur GitHub Pages **avant** l'envoi ; sans réseau à la réception, le texte suffit. Rappels sans image.
 - **Jamais de nom de joueur** dans une notification ; jamais d'adjectif dévalorisant.
 - Registre : clé `resultat:<collectif>:<match_id>` ou `rappel:<collectif>:<match_id>` → horodatage ISO de l'envoi ; écrite **seulement après un envoi réussi** ; entrées de plus de 60 jours purgées ; registre absent = premier déploiement : les résultats de la fenêtre sont marqués sans rien envoyer.
 - Résultat notifié seulement si le match date de moins de 3 jours ; au plus `max_par_passage` (40) messages par passage ; rappels seulement à partir de `rappels_a_partir_de` (16:30) heure de Paris, pour les matchs du lendemain (date de Paris).
@@ -30,8 +31,8 @@
 1. **Échec FCM ponctuel sur un message** (HTTP 500, délai dépassé) : les autres messages partent, celui-ci n'entre pas au registre et repart au passage suivant. Test : `test_un_echec_n_empeche_pas_les_autres` (Task 3).
 2. **Secret absent** (dépôt forké, Firebase pas encore configuré) : mode essai, registre inchangé, code de sortie 0. Test : `test_main_sans_secret_ne_touche_pas_au_registre` (Task 3).
 3. **Changement d'heure** (fin de l'heure d'été le dim. 25 oct. 2026) et match juste après minuit : le « lendemain » est calculé en heure de Paris. Test : `test_rappel_le_jour_du_changement_d_heure` (Task 2).
-4. **Autorisation refusée dans Android** : les réglages l'indiquent et proposent d'ouvrir les réglages système ; rien ne plante. Test : `notifications bloquées` (Task 7).
-5. **Notification touchée pour un match absent du cache ou en double (derby Clamart contre Clamart)** : la fiche montre le bon côté (équipe passée dans le lien) ou « Match introuvable ». Tests : `matchParId préfère l'équipe du lien` et `lien de notification` (Task 8).
+4. **Autorisation refusée dans Android** : les réglages l'indiquent et proposent d'ouvrir les réglages système ; rien ne plante. Test : `notifications bloquées` (Task 9).
+5. **Notification touchée pour un match absent du cache ou en double (derby Clamart contre Clamart)** : la fiche montre le bon côté (équipe passée dans le lien) ou « Match introuvable ». Tests : `matchParId préfère l'équipe du lien` et `lien de notification` (Task 10).
 
 ---
 
@@ -40,11 +41,17 @@
 ```
 collecteur/
   textes.py                 NOUVEAU : nom_lisible (portage du TS, contrat partage/phrases-cas.json)
-  notifieur.py              NOUVEAU : planification (pur), envoi FCM, CLI
+  notifieur.py              NOUVEAU : planification (pur), images, envoi FCM, CLI
+  banderole.py              NOUVEAU : dessin de l'image écusson – score – écusson (Pillow)
+  polices/Nunito.ttf, OFL.txt NOUVEAU : police de la banderole (licence OFL)
+  collecte.py               + champ logo_adversaire de chaque match
+  cache/logos/              NOUVEAU (écrit par le workflow) : écussons FFHB téléchargés
   etat/notifications.json   NOUVEAU (écrit par le workflow) : registre des envois
-  requirements.txt          + google-auth, tzdata
-  tests/test_textes.py, tests/test_notifieur.py, tests/test_envoi.py   NOUVEAUX
-.github/workflows/mise-a-jour.yml   + passage 15:45 UTC, étape Notifications, entrée test_sujet, commit de collecteur/etat
+  requirements.txt          + google-auth, tzdata, pillow
+  tests/test_textes.py, test_notifieur.py, test_envoi.py, test_logos.py, test_banderole.py, test_images.py   NOUVEAUX
+site/notifs/                NOUVEAU (écrit par le workflow) : images des notifications, purgées après 60 jours
+config.json                 + notifications.url_images
+.github/workflows/mise-a-jour.yml   trois jobs (collecte + images → publication → notifications), passage 15:45 UTC, entrée test_sujet
 README.md                   + section Notifications (mise en place Firebase)
 .gitignore                  + app/google-services.json, app/android/, app/ios/
 app/
@@ -679,14 +686,480 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ---
 
-### Task 4: Workflow, mise en place de Firebase, premier passage
+### Task 4: Écusson de l'adversaire dans les données
+
+**Files:**
+- Modify: `collecteur/collecte.py` (`collecter_competition` : champ `logo_adversaire` de chaque match), `app/src/donnees/types.ts` (`Match.logo_adversaire?: string | null`), `docs/superpowers/specs/2026-10-14-clamart-handball-app-design.md` (§3.1)
+- Create: `collecteur/tests/test_logos.py`
+
+**Interfaces:**
+- Consumes: la liste des rencontres que le collecteur lit déjà (`competitions---rencontre-list`) : chaque rencontre porte `structure1Logo`, `structure2Logo` (nom de fichier, ex. `2024-06-13-a9f3….png`) et `equipe1ShowLogo`, `equipe2ShowLogo` (`'1'` quand la FFHB affiche l'écusson).
+- Produces:
+  - `collecte.URL_LOGOS = "https://media-logos-clubs.ffhandball.fr/128/"`
+  - `collecte.logo_adversaire(r: dict, domicile: bool) -> str | None` — URL `URL_LOGOS + <nom sans extension> + ".webp"` de l'écusson de l'adversaire (côté 2 si Clamart reçoit, côté 1 sinon), `None` si la FFHB ne l'affiche pas ou s'il manque.
+  - Champ `logo_adversaire` (URL ou `null`) sur chaque match de `club.json`. Ajout optionnel : `version_schema` reste `2`.
+
+- [ ] **Step 1: Écrire les tests**
+
+`collecteur/tests/test_logos.py` :
+
+```python
+import collecte
+
+R = {"structure1Logo": "2023-08-30-aaa.png", "equipe1ShowLogo": "1",
+     "structure2Logo": "2024-06-13-bbb.png", "equipe2ShowLogo": "1"}
+
+
+def test_logo_de_l_adversaire_selon_le_cote():
+    assert collecte.logo_adversaire(R, domicile=True) == "https://media-logos-clubs.ffhandball.fr/128/2024-06-13-bbb.webp"
+    assert collecte.logo_adversaire(R, domicile=False) == "https://media-logos-clubs.ffhandball.fr/128/2023-08-30-aaa.webp"
+
+
+def test_pas_de_logo_quand_la_ffhb_ne_l_affiche_pas():
+    assert collecte.logo_adversaire({**R, "equipe2ShowLogo": "0"}, domicile=True) is None
+    assert collecte.logo_adversaire({**R, "structure2Logo": None}, domicile=True) is None
+    assert collecte.logo_adversaire({}, domicile=True) is None
+
+
+def test_valeur_d_affichage_booleenne_acceptee():
+    assert collecte.logo_adversaire({**R, "equipe2ShowLogo": True}, domicile=True) is not None
+```
+
+- [ ] **Step 2: Lancer pour vérifier l'échec**
+
+Run: `.venv/Scripts/python -m pytest collecteur/tests/test_logos.py -q`
+Expected: FAIL, `AttributeError: module 'collecte' has no attribute 'logo_adversaire'`
+
+- [ ] **Step 3: Implémenter**
+
+Dans `collecteur/collecte.py`, sous les constantes (`VERSION_SCHEMA = 2`) :
+
+```python
+URL_LOGOS = "https://media-logos-clubs.ffhandball.fr/128/"
+
+
+def logo_adversaire(r: dict, domicile: bool) -> str | None:
+    """Écusson de l'adversaire publié par la FFHB (128 px, webp), ou None s'il n'est pas affiché."""
+    cote = "2" if domicile else "1"
+    fichier, afficher = r.get(f"structure{cote}Logo"), r.get(f"equipe{cote}ShowLogo")
+    if not fichier or str(afficher).lower() not in ("1", "true"):
+        return None
+    return URL_LOGOS + fichier.rsplit(".", 1)[0] + ".webp"
+```
+
+Dans `collecter_competition`, dans le dictionnaire `m = {...}` de chaque match, ajouter après `"adversaire": ...` :
+
+```python
+                "logo_adversaire": logo_adversaire(r, dom),
+```
+
+Dans `app/src/donnees/types.ts`, interface `Match` : ajouter `/** Écusson FFHB de l'adversaire (URL), absent s'il n'est pas publié. */ logo_adversaire?: string | null;`. Dans la spec §3.1, ajouter `logo_adversaire` à la liste des champs d'un match.
+
+- [ ] **Step 4: Lancer les tests et une collecte réelle**
+
+Run: `.venv/Scripts/python -m pytest collecteur/tests -q && .venv/Scripts/python collecteur/collecte.py`
+Expected: tests PASS ; collecte « OK : … 0 erreur(s) ». Vérifier :
+
+```bash
+.venv/Scripts/python -c "import json; d=json.load(open('site/data/club.json',encoding='utf-8')); ms=[m for e in d['equipes'] for m in e['matchs']]; print(len(ms), sum(1 for m in ms if m.get('logo_adversaire')))"
+```
+
+Expected : `92 <nombre de matchs avec écusson>` (une partie des adversaires n'a pas d'écusson publié : c'est normal). Ouvrir une des URL dans un navigateur : l'image de l'écusson s'affiche.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add collecteur/collecte.py collecteur/tests/test_logos.py app/src/donnees/types.ts docs/superpowers/specs/2026-10-14-clamart-handball-app-design.md site/data collecteur/cache
+git commit -m "Collecteur : écusson FFHB de l'adversaire pour chaque match
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+```
+
+---
+
+### Task 5: Image de la banderole des notifications
+
+**Files:**
+- Create: `collecteur/banderole.py`, `collecteur/polices/Nunito.ttf`, `collecteur/polices/OFL.txt`, `collecteur/tests/test_banderole.py`, `collecteur/tests/test_images.py`
+- Modify: `collecteur/notifieur.py` (champ `image` de `Message`, `corps_requete`, production des images, option `--images`), `collecteur/textes.py` (`initiales`), `collecteur/tests/test_textes.py`, `collecteur/requirements.txt` (+ `pillow`), `config.json` (`notifications.url_images`)
+
+**Interfaces:**
+- Consumes: `Message`, `planifier`, `executer`, `main` (Tasks 2–3) ; champ `logo_adversaire` (Task 4) ; `assets/logo-clamart.png` (écusson officiel, jamais redessiné).
+- Produces:
+  - `textes.initiales(nom: str) -> str` — même règle que `initiales` de `app/src/donnees/phrase.ts` (initiales des deux premiers mots commençant par une majuscule ; un seul mot → ses deux premières lettres).
+  - `banderole.dessiner(gauche, droite, nom_gauche: str, nom_droite: str, score: str, entete: str) -> PIL.Image.Image` (1024 × 512, RGB) ; `banderole.ecusson_club() -> Image` ; `banderole.ecusson_adversaire(url: str | None, nom: str, cache: Path, telecharger=telecharger) -> Image` ; `banderole.ajuster(texte: str, largeur_max: int) -> tuple[str, int]` (texte éventuellement tronqué avec « … » et taille de police, 30 → 22 px).
+  - Dans `notifieur.py` : `Message.image: str | None = None` (dernier champ, avec défaut) ; `corps_requete` ajoute `android.notification.image` quand `m.image` ; `nom_image(m: Message) -> str` (`AAAAMMJJ-<collectif>-<match_id>.png`, ou `test-<collectif>.png` pour un test) ; `produire_images(club, registre, maintenant, dossier: Path, cache: Path, telecharger=...) -> list[Path]` ; `purger_images(dossier: Path, maintenant: datetime) -> list[Path]` ; `avec_images(messages, dossier: Path, url_base: str) -> list[Message]` ; option CLI `--images` (produit et purge les images, n'envoie rien, n'écrit pas le registre ; avec `--test <collectif>`, produit aussi `test-<collectif>.png` d'après le dernier résultat de ce collectif).
+  - Constantes : `DOSSIER_IMAGES = RACINE / "site" / "notifs"`, `CACHE_LOGOS = ICI / "cache" / "logos"`.
+  - `config.json → notifications.url_images = "https://luthean03.github.io/clamart-handball/notifs/"`.
+
+Rendu (repris de l'aperçu validé par l'utilisateur le 15/10/2026, `.superpowers/apercus/`) : fond bleu nuit `#142A3D` ; filet rouge `#DB0000` de 10 px en haut ; en-tête `<ÉQUIPE> · <COMPÉTITION>` en capitales, Nunito 700, 30 px, `#B4C0CC`, centré à y = 62 ; écussons de 220 px sur des disques blancs, à 70 px des bords, y = 120 ; équipe qui reçoit **à gauche** ; score `21 – 22` (tiret demi-cadratin entouré d'espaces) Nunito 800, 120 px, crème `#FFFEF0`, centré à y = 230 ; noms sous les écussons (centrés sur eux, y = 395), Nunito 700, 30 px réduits jusqu'à 22 px puis tronqués avec « … » pour tenir dans 300 px. Écusson de Clamart : `assets/logo-clamart.png` découpé en disque (le fond carré rouge disparaît). Adversaire sans écusson ou téléchargement en échec : disque `#2C4256` avec ses initiales en crème (Nunito 800). Corrige les deux défauts de l'aperçu : fond carré rouge visible, nom long qui touche le bord.
+
+- [ ] **Step 1: Police et dépendance**
+
+```bash
+cd /e/MobileApp
+mkdir -p collecteur/polices
+curl -sL -o collecteur/polices/Nunito.ttf "https://github.com/google/fonts/raw/main/ofl/nunito/Nunito%5Bwght%5D.ttf"
+curl -sL -o collecteur/polices/OFL.txt "https://github.com/google/fonts/raw/main/ofl/nunito/OFL.txt"
+```
+
+Ajouter `pillow>=10` à `collecteur/requirements.txt` et réinstaller. Nunito est sous licence SIL Open Font License (le fichier `OFL.txt` l'accompagne). Ajouter dans `config.json → notifications` la clé `"url_images": "https://luthean03.github.io/clamart-handball/notifs/"`.
+
+- [ ] **Step 2: Écrire les tests**
+
+Ajouter à `collecteur/tests/test_textes.py` :
+
+```python
+from textes import initiales
+
+
+def test_initiales():
+    assert initiales("Ent. Suresnes / Nanterre") == "ES"
+    assert initiales("Levallois SC 1D") == "LS"
+    assert initiales("Martigua SCL") == "MS"
+    assert initiales("Issy") == "IS"
+    assert initiales("") == ""
+```
+
+`collecteur/tests/test_banderole.py` :
+
+```python
+import io
+
+from PIL import Image
+
+import banderole
+
+
+def faux_png(couleur="#00AA00") -> bytes:
+    tampon = io.BytesIO()
+    Image.new("RGBA", (128, 128), couleur).save(tampon, "PNG")
+    return tampon.getvalue()
+
+
+def test_dimensions_et_mode():
+    img = banderole.dessiner(banderole.ecusson_club(), banderole.monogramme("LS"), "Clamart", "Levallois SC 1D",
+                             "21 – 22", "Seniors M · D2 territoriale")
+    assert img.size == (1024, 512) and img.mode == "RGB"
+    assert img.getpixel((512, 5)) == (219, 0, 0)          # filet rouge
+    assert img.getpixel((512, 480)) == (20, 42, 61)       # fond bleu nuit
+
+
+def test_ecusson_du_club_detoure_en_disque():
+    e = banderole.ecusson_club()
+    assert e.mode == "RGBA" and e.getpixel((0, 0))[3] == 0   # coin transparent : plus de carré rouge
+
+
+def test_nom_long_tient_dans_300_px():
+    texte, taille = banderole.ajuster("Association Sportive St-Cyr/Fontenay Handball 78", 300)
+    assert banderole.police(700, taille).getlength(texte) <= 300
+    assert 22 <= taille <= 30
+    assert banderole.ajuster("Clamart", 300) == ("Clamart", 30)
+
+
+def test_ecusson_adversaire_monogramme_sans_logo(tmp_path):
+    appels = []
+    img = banderole.ecusson_adversaire(None, "Ent. Suresnes / Nanterre", tmp_path, telecharger=lambda u: appels.append(u))
+    assert appels == [] and img.size == (256, 256)
+
+
+def test_ecusson_adversaire_echec_de_telechargement(tmp_path):
+    def echoue(url):
+        raise OSError("réseau")
+    img = banderole.ecusson_adversaire("https://x/128/a.webp", "Levallois SC 1D", tmp_path, telecharger=echoue)
+    assert img.size == (256, 256)
+
+
+def test_ecusson_adversaire_mis_en_cache(tmp_path):
+    appels = []
+    def telecharger(url):
+        appels.append(url)
+        return faux_png()
+    for _ in range(2):
+        banderole.ecusson_adversaire("https://x/128/a.webp", "Levallois SC 1D", tmp_path, telecharger=telecharger)
+    assert appels == ["https://x/128/a.webp"]
+    assert (tmp_path / "a.webp").exists()
+```
+
+`collecteur/tests/test_images.py` :
+
+```python
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+from test_banderole import faux_png
+
+import notifieur
+from notifieur import Message, avec_images, corps_requete, nom_image, produire_images, purger_images
+
+LUNDI = datetime(2026, 10, 12, 8, 0, tzinfo=timezone.utc)
+
+
+def club_v2():
+    return json.loads((Path(__file__).resolve().parents[2] / "partage" / "fixtures" / "club-2026-10-13.json")
+                      .read_text(encoding="utf-8"))
+
+
+def test_nom_image():
+    m = next(m for m in notifieur.messages_resultats(club_v2(), LUNDI) if m.cle == "resultat:seniors-f-1:2644292")
+    assert nom_image(m) == "20261011-seniors-f-1-2644292.png"
+
+
+def test_images_pour_les_resultats_en_attente(tmp_path):
+    chemins = produire_images(club_v2(), {}, LUNDI, tmp_path / "notifs", tmp_path / "logos", telecharger=lambda u: faux_png())
+    noms = {p.name for p in chemins}
+    assert "20261011-seniors-f-1-2644292.png" in noms
+    assert all(p.exists() for p in chemins)
+
+
+def test_pas_d_images_au_premier_deploiement(tmp_path):
+    assert produire_images(club_v2(), None, LUNDI, tmp_path / "notifs", tmp_path / "logos", telecharger=lambda u: faux_png()) == []
+
+
+def test_purger_images(tmp_path):
+    (tmp_path / "20260701-u13-f-1.png").write_bytes(b"x")
+    (tmp_path / "20261011-seniors-f-1-2644292.png").write_bytes(b"x")
+    supprimees = purger_images(tmp_path, LUNDI)
+    assert [p.name for p in supprimees] == ["20260701-u13-f-1.png"]
+    assert (tmp_path / "20261011-seniors-f-1-2644292.png").exists()
+
+
+def test_avec_images(tmp_path):
+    m = Message("resultat:seniors-f-1:2644292", "resultats-seniors-f-1", "T", "C",
+                {"type": "resultat", "collectif": "seniors-f-1", "match_id": "2644292"}, "2026-10-11T16:15:00+02:00")
+    assert avec_images([m], tmp_path, "https://h/notifs/")[0].image is None
+    (tmp_path / "20261011-seniors-f-1-2644292.png").write_bytes(b"x")
+    assert avec_images([m], tmp_path, "https://h/notifs/")[0].image == "https://h/notifs/20261011-seniors-f-1-2644292.png"
+
+
+def test_corps_requete_avec_image():
+    m = Message("k", "resultats-a", "T", "C", {}, "x", image="https://h/notifs/i.png")
+    assert corps_requete(m)["message"]["android"] == {"priority": "high", "notification": {"image": "https://h/notifs/i.png"}}
+```
+
+Mettre à jour `test_corps_requete_fcm_v1` (Task 3) : sans image, `android` reste `{"priority": "high"}`.
+
+- [ ] **Step 3: Lancer pour vérifier l'échec**
+
+Run: `.venv/Scripts/python -m pytest collecteur/tests -q`
+Expected: FAIL (`No module named 'banderole'`, `cannot import name 'initiales'`, `cannot import name 'avec_images'`).
+
+- [ ] **Step 4: Implémenter**
+
+`collecteur/textes.py`, ajouter :
+
+```python
+def initiales(nom: str) -> str:
+    """Monogramme d'un club sans écusson : initiales des deux premiers mots en majuscule (comme l'app)."""
+    mots = [m for m in re.split(_SEP, nom or "") if m and m[0].isupper()]
+    if not mots:
+        return ""
+    return (mots[0][:2] if len(mots) == 1 else mots[0][0] + mots[1][0]).upper()
+```
+
+`collecteur/banderole.py` :
+
+```python
+"""Image « banderole » des notifications de résultat : écusson – score – écusson (1024 × 512)."""
+from __future__ import annotations
+
+import io
+import urllib.request
+from pathlib import Path
+
+from PIL import Image, ImageDraw, ImageFont
+
+from textes import initiales
+
+ICI = Path(__file__).resolve().parent
+POLICE = ICI / "polices" / "Nunito.ttf"
+ECUSSON_CLUB = ICI.parent / "assets" / "logo-clamart.png"
+NUIT, CREME, ROUGE, BLANC, GRIS, ARDOISE = "#142A3D", "#FFFEF0", "#DB0000", "#FFFFFF", "#B4C0CC", "#2C4256"
+LARGEUR, HAUTEUR, ECUSSON, MARGE = 1024, 512, 220, 70
+
+
+def police(poids: int, taille: int) -> ImageFont.FreeTypeFont:
+    f = ImageFont.truetype(str(POLICE), taille)
+    f.set_variation_by_axes([poids])
+    return f
+
+
+def telecharger(url: str) -> bytes:
+    requete = urllib.request.Request(url, headers={"User-Agent": "clamart-handball (notifications)"})
+    with urllib.request.urlopen(requete, timeout=20) as r:
+        return r.read()
+
+
+def _disque(taille: int) -> Image.Image:
+    masque = Image.new("L", (taille, taille), 0)
+    ImageDraw.Draw(masque).ellipse((0, 0, taille - 1, taille - 1), fill=255)
+    return masque
+
+
+def ecusson_club() -> Image.Image:
+    """Écusson officiel (assets/logo-clamart.png) détouré en disque : le fond carré rouge disparaît."""
+    img = Image.open(ECUSSON_CLUB).convert("RGBA")
+    c = img.width // 2
+    rayon = int(img.width * 0.38)       # cercle extérieur de l'écusson ; vérifier visuellement sur l'aperçu
+    img = img.crop((c - rayon, c - rayon, c + rayon, c + rayon))
+    img.putalpha(_disque(img.width))
+    return img
+
+
+def monogramme(texte: str, taille: int = 256) -> Image.Image:
+    img = Image.new("RGBA", (taille, taille), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.ellipse((0, 0, taille - 1, taille - 1), fill=ARDOISE)
+    d.text((taille / 2, taille / 2), texte, font=police(800, taille // 3), fill=CREME, anchor="mm")
+    return img
+
+
+def ecusson_adversaire(url: str | None, nom: str, cache: Path, telecharger=telecharger) -> Image.Image:
+    if url:
+        fichier = cache / url.rsplit("/", 1)[-1]
+        try:
+            if not fichier.exists():
+                cache.mkdir(parents=True, exist_ok=True)
+                fichier.write_bytes(telecharger(url))
+            return Image.open(fichier).convert("RGBA").resize((256, 256), Image.LANCZOS)
+        except Exception:
+            fichier.unlink(missing_ok=True)
+    return monogramme(initiales(nom))
+
+
+def _pastille(img: Image.Image, taille: int) -> Image.Image:
+    fond = Image.new("RGBA", (taille, taille), (0, 0, 0, 0))
+    ImageDraw.Draw(fond).ellipse((0, 0, taille - 1, taille - 1), fill=BLANC)
+    marge = int(taille * 0.10)
+    fond.alpha_composite(img.resize((taille - 2 * marge, taille - 2 * marge), Image.LANCZOS), (marge, marge))
+    return fond
+
+
+def ajuster(texte: str, largeur_max: int) -> tuple[str, int]:
+    for taille in range(30, 21, -1):
+        if police(700, taille).getlength(texte) <= largeur_max:
+            return texte, taille
+    f = police(700, 22)
+    while texte and f.getlength(texte + "…") > largeur_max:
+        texte = texte[:-1].rstrip()
+    return texte + "…", 22
+
+
+def dessiner(gauche, droite, nom_gauche: str, nom_droite: str, score: str, entete: str) -> Image.Image:
+    img = Image.new("RGBA", (LARGEUR, HAUTEUR), NUIT)
+    d = ImageDraw.Draw(img)
+    d.rectangle((0, 0, LARGEUR, 9), fill=ROUGE)
+    d.text((LARGEUR / 2, 62), entete.upper(), font=police(700, 30), fill=GRIS, anchor="mm")
+    img.alpha_composite(_pastille(gauche, ECUSSON), (MARGE, 120))
+    img.alpha_composite(_pastille(droite, ECUSSON), (LARGEUR - MARGE - ECUSSON, 120))
+    d.text((LARGEUR / 2, 230), score, font=police(800, 120), fill=CREME, anchor="mm")
+    for x, nom in ((MARGE + ECUSSON / 2, nom_gauche), (LARGEUR - MARGE - ECUSSON / 2, nom_droite)):
+        texte, taille = ajuster(nom, 300)
+        d.text((x, 395), texte, font=police(700, taille), fill=CREME, anchor="mm")
+    return img.convert("RGB")
+```
+
+Le centre des noms est à 180 px du bord : un nom de 300 px dépasse donc la marge de 30 px de chaque côté — c'est voulu, il reste dans l'image (0…1024). Ne pas élargir `largeur_max` au-delà de 300.
+
+Dans `collecteur/notifieur.py` :
+- `Message` : ajouter le dernier champ `image: str | None = None`.
+- `corps_requete` : `android = {"priority": "high"}` ; si `m.image` : `android["notification"] = {"image": m.image}`.
+- Ajouter :
+
+```python
+DOSSIER_IMAGES = RACINE / "site" / "notifs"
+CACHE_LOGOS = ICI / "cache" / "logos"
+
+
+def nom_image(m: Message) -> str:
+    if m.donnees.get("type") == "test":
+        return f"test-{m.donnees['collectif']}.png"
+    return f"{m.instant[:10].replace('-', '')}-{m.donnees['collectif']}-{m.donnees['match_id']}.png"
+
+
+def _image_resultat(club: dict, m: Message, cache: Path, telecharger) -> "Image.Image":
+    import banderole
+    eq = next(e for e in club["equipes"] if e["id"] == m.donnees["equipe_id"])
+    match = next(x for x in eq["matchs"] if str(x["id"]) == m.donnees["match_id"])
+    adversaire = nom_lisible(match["adversaire"])
+    club_img = banderole.ecusson_club()
+    adv_img = banderole.ecusson_adversaire(match.get("logo_adversaire"), adversaire, cache, telecharger=telecharger)
+    if match["domicile"]:
+        return banderole.dessiner(club_img, adv_img, "Clamart", adversaire,
+                                  f"{match['score_nous']} – {match['score_eux']}", f"{eq['nom']} · {eq['detail']}")
+    return banderole.dessiner(adv_img, club_img, adversaire, "Clamart",
+                              f"{match['score_eux']} – {match['score_nous']}", f"{eq['nom']} · {eq['detail']}")
+
+
+def produire_images(club, registre, maintenant, dossier: Path, cache: Path, telecharger=None) -> list[Path]:
+    import banderole
+    telecharger = telecharger or banderole.telecharger
+    if registre is None:          # premier déploiement : rien ne partira, donc aucune image
+        return []
+    deja = purger(registre, maintenant)
+    chemins = []
+    for m in messages_resultats(club, maintenant):
+        if m.cle in deja:
+            continue
+        chemin = dossier / nom_image(m)
+        if not chemin.exists():
+            dossier.mkdir(parents=True, exist_ok=True)
+            _image_resultat(club, m, cache, telecharger).save(chemin, "PNG", optimize=True)
+        chemins.append(chemin)
+    return chemins
+
+
+def purger_images(dossier: Path, maintenant: datetime) -> list[Path]:
+    limite = (maintenant - CONSERVATION).strftime("%Y%m%d")
+    supprimees = [p for p in sorted(dossier.glob("[0-9]*.png")) if p.name[:8] < limite]
+    for p in supprimees:
+        p.unlink()
+    return supprimees
+
+
+def avec_images(messages: list[Message], dossier: Path, url_base: str) -> list[Message]:
+    from dataclasses import replace
+    return [replace(m, image=url_base + nom_image(m)) if (dossier / nom_image(m)).exists() else m for m in messages]
+```
+
+Note : `produire_images` produit les images des résultats que le job suivant va notifier (même registre, mêmes clés) ; un registre absent (premier déploiement) n'en produit aucune. Les rappels n'ont pas d'image.
+
+- `executer(..., habiller=lambda ms: ms)` : nouveau paramètre appliqué à `a_envoyer` juste après `planifier`.
+- `main` : option `--images` → `produire_images(club, registre, maintenant, DOSSIER_IMAGES, CACHE_LOGOS)` puis `purger_images(DOSSIER_IMAGES, maintenant)` ; si `--test X` est aussi donné, produire `test-<X>.png` à partir du dernier résultat de ce collectif (même dessin) ; afficher le nombre d'images et `return 0` sans envoyer ni écrire le registre. Pour l'envoi normal : `executer(..., habiller=lambda ms: avec_images(ms, DOSSIER_IMAGES, config["notifications"]["url_images"]))` ; pour `--test`, `avec_images([message_test(...)], ...)[0]`.
+
+- [ ] **Step 5: Lancer les tests**
+
+Run: `.venv/Scripts/python -m pytest collecteur/tests -q`
+Expected: tous PASS, sortie propre.
+
+- [ ] **Step 6: Vérifier le rendu sur les vraies données**
+
+```bash
+.venv/Scripts/python -c "import sys,json; sys.path.insert(0,'collecteur'); import notifieur as n; from datetime import datetime,timezone; from pathlib import Path; d=json.load(open('partage/fixtures/club-2026-10-13.json',encoding='utf-8')); print(n.produire_images(d, {}, datetime(2026,10,12,8,0,tzinfo=timezone.utc), Path('.superpowers/apercus/notifs'), Path('.superpowers/apercus/logos'))[:3])"
+```
+
+Ouvrir `20261011-seniors-f-1-2644292.png` (adversaire sans écusson → initiales « ES ») et `20261011-seniors-m-2673792.png` (Levallois, écusson FFHB) dans `.superpowers/apercus/notifs/` : écusson de Clamart rond sans carré rouge, noms entiers ou tronqués proprement, score centré. `.superpowers/` est ignoré par git.
+
+- [ ] **Step 7: Commit**
+
+```bash
+git add collecteur/banderole.py collecteur/polices collecteur/textes.py collecteur/notifieur.py collecteur/tests collecteur/requirements.txt config.json
+git commit -m "Notifieur : image banderole écusson – score – écusson
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+```
+
+---
+
+### Task 6: Workflow, mise en place de Firebase, premier passage
 
 **Files:**
 - Modify: `.github/workflows/mise-a-jour.yml`, `README.md`, `.gitignore`
 
 **Interfaces:**
-- Consumes: `collecteur/notifieur.py` (Task 3).
-- Produces: secret GitHub `FIREBASE_SERVICE_ACCOUNT` ; fichier local `app/google-services.json` (non commité) ; registre `collecteur/etat/notifications.json` commité par le workflow ; entrée manuelle `test_sujet` du workflow (utilisée en Task 9).
+- Consumes: `collecteur/notifieur.py` (Tasks 3 et 5).
+- Produces: secret GitHub `FIREBASE_SERVICE_ACCOUNT` ; fichier local `app/google-services.json` (non commité) ; registre `collecteur/etat/notifications.json` commité par le workflow ; entrée manuelle `test_sujet` du workflow (utilisée en Task 11).
 
 - [ ] **Step 1: Ignorer les fichiers natifs et Firebase**
 
@@ -700,7 +1173,9 @@ app/android/
 app/ios/
 ```
 
-- [ ] **Step 2: Étendre le workflow**
+- [ ] **Step 2: Restructurer le workflow en trois jobs**
+
+L'image d'une notification doit être **en ligne avant l'envoi** : Android la télécharge à la réception. Le workflow devient : `collecte` (tests, collecte, images, commit, artefact Pages) → `publication` (déploiement Pages, inchangé) → `notifications` (envoi, commit du registre).
 
 Dans `.github/workflows/mise-a-jour.yml` :
 
@@ -721,11 +1196,47 @@ b) remplacer `workflow_dispatch:` par :
         default: ""
 ```
 
-c) entre l'étape « Récupérer les données sur ffhandball.fr » et « Enregistrer les nouvelles données », ajouter (l'entrée passe par une variable d'environnement, jamais interpolée dans le script) :
+c) dans le job `collecte`, entre « Récupérer les données sur ffhandball.fr » et « Enregistrer les nouvelles données », ajouter (l'entrée passe par une variable d'environnement, jamais interpolée dans le script) :
 
 ```yaml
-      - name: Notifications
+      - name: Images des notifications
         if: github.event_name != 'push'
+        env:
+          TEST_SUJET: ${{ inputs.test_sujet }}
+        run: |
+          if [ -n "$TEST_SUJET" ]; then
+            python collecteur/notifieur.py --images --test "$TEST_SUJET"
+          else
+            python collecteur/notifieur.py --images
+          fi
+```
+
+et dans « Enregistrer les nouvelles données », remplacer `git add site/data collecteur/cache` par `git add site/data site/notifs collecteur/cache`.
+
+d) ajouter à la fin du fichier un troisième job :
+
+```yaml
+  notifications:
+    needs: publication
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}      # la tête de branche, qui contient le commit du job collecte
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            collecteur/requirements.txt
+            collecteur/requirements-dev.txt
+
+      - name: Installer les dépendances
+        run: pip install -r collecteur/requirements.txt
+
+      - name: Envoyer les notifications
         continue-on-error: true
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
@@ -736,13 +1247,21 @@ c) entre l'étape « Récupérer les données sur ffhandball.fr » et « Enregis
           else
             python collecteur/notifieur.py
           fi
+
+      - name: Enregistrer le registre des envois
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add collecteur/etat
+          if git diff --cached --quiet; then
+            echo "Registre inchangé."
+          else
+            git commit -m "Notifications du $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git push
+          fi
 ```
 
-d) dans « Enregistrer les nouvelles données », remplacer `git add site/data collecteur/cache` par :
-
-```yaml
-          git add site/data collecteur/cache collecteur/etat
-```
+Le groupe `concurrency: mise-a-jour` (déjà présent, sans annulation) garantit qu'un passage ne démarre pas pendant qu'un autre pousse ses commits.
 
 - [ ] **Step 3: Documenter dans le README**
 
@@ -770,7 +1289,7 @@ python collecteur/notifieur.py --essai
 
 ```bash
 git add .gitignore .github/workflows/mise-a-jour.yml README.md
-git commit -m "Workflow : notifications après la collecte, passage de 15:45, test manuel
+git commit -m "Workflow : images puis publication puis notifications, passage de 15:45, test manuel
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 git push
@@ -789,7 +1308,7 @@ L'agent ne crée aucun compte et ne manipule aucune clé. Guider l'utilisateur :
 - [ ] **Step 6: Premier passage réel**
 
 Utilisateur : *Actions → Mise à jour des résultats → Run workflow* (sans `test_sujet`).
-Expected : workflow vert ; dans le journal de l'étape « Notifications » : « Notifications : 0 envoyée(s), 0 échec(s), 0 prévue(s) » (premier déploiement : marquage sans envoi) ; un commit du bot ajoute `collecteur/etat/notifications.json`. Vérifier :
+Expected : workflow vert (trois jobs) ; dans le journal de l'étape « Envoyer les notifications » : « Notifications : 0 envoyée(s), 0 échec(s), 0 prévue(s) » (premier déploiement : marquage sans envoi) ; un commit du bot ajoute `collecteur/etat/notifications.json`. Vérifier :
 
 ```bash
 git pull && python -c "import json; print(len(json.load(open('collecteur/etat/notifications.json', encoding='utf-8'))))"
@@ -797,7 +1316,7 @@ git pull && python -c "import json; print(len(json.load(open('collecteur/etat/no
 
 ---
 
-### Task 5: Préférences de notifications et sujets attendus (app, pur)
+### Task 7: Préférences de notifications et sujets attendus (app, pur)
 
 **Files:**
 - Create: `app/src/notifications/sujets.ts`, `app/src/notifications/sujets.test.ts`
@@ -924,14 +1443,14 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ---
 
-### Task 6: Firebase dans l'app et synchronisation des abonnements
+### Task 8: Firebase dans l'app et synchronisation des abonnements
 
 **Files:**
 - Create: `app/src/notifications/fcm.ts`, `app/src/notifications/synchro.ts`, `app/src/notifications/synchro.test.ts`
 - Modify: `app/package.json` (dépendances), `app/app.json`, `app/test/setup.ts`, `app/src/app/(tabs)/_layout.tsx`
 
 **Interfaces:**
-- Consumes: `sujetsAttendus`, `planAbonnements`, store étendu (Task 5) ; `app/google-services.json` (Task 4).
+- Consumes: `sujetsAttendus`, `planAbonnements`, store étendu (Task 7) ; `app/google-services.json` (Task 6).
 - Produces:
   - `interface ClientSujets { abonner(sujet: string): Promise<void>; desabonner(sujet: string): Promise<void> }`
   - `synchroniser(attendus: string[], actuels: string[], client: ClientSujets): Promise<string[]>` — applique le plan ; renvoie les sujets effectivement abonnés (un échec sur un sujet laisse son état précédent : abonné s'il l'était, non abonné sinon).
@@ -1122,7 +1641,7 @@ Expected: tous PASS ; `tsc` propre (si les types de `@react-native-firebase/mess
 
 - [ ] **Step 8: Premier development build sur l'émulateur**
 
-Prérequis : `app/google-services.json` présent (Task 4 Step 5) ; JDK d'Android Studio : `export JAVA_HOME="/c/Program Files/Android/Android Studio/jbr"` ; `export ANDROID_HOME="$LOCALAPPDATA/Android/Sdk"`. L'AVD doit avoir les **services Google Play** (image « Google Play » ou « Google APIs ») : sinon FCM ne fonctionne pas — le vérifier dans Device Manager et, au besoin, créer un AVD *Pixel 8 · API 35 · Google Play* (action de l'utilisateur).
+Prérequis : `app/google-services.json` présent (Task 6 Step 5) ; JDK d'Android Studio : `export JAVA_HOME="/c/Program Files/Android/Android Studio/jbr"` ; `export ANDROID_HOME="$LOCALAPPDATA/Android/Sdk"`. L'AVD doit avoir les **services Google Play** (image « Google Play » ou « Google APIs ») : sinon FCM ne fonctionne pas — le vérifier dans Device Manager et, au besoin, créer un AVD *Pixel 8 · API 35 · Google Play* (action de l'utilisateur).
 
 ```bash
 cd /e/MobileApp/app
@@ -1142,14 +1661,14 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ---
 
-### Task 7: Autorisation au premier lancement et réglages des notifications
+### Task 9: Autorisation au premier lancement et réglages des notifications
 
 **Files:**
 - Create: `app/src/ecrans/VueAutorisation.tsx`, `app/src/ecrans/VueAutorisation.test.tsx`, `app/src/app/autorisation.tsx`
 - Modify: `app/src/app/bienvenue.tsx`, `app/src/ecrans/VueReglages.tsx`, `app/src/ecrans/buteurs-reglages.test.tsx`, `app/src/app/reglages.tsx`
 
 **Interfaces:**
-- Consumes: `demanderAutorisation` (Task 6), store (Task 5), `CONTENU_BOUTON`, `ProtectionBarreEtat` (Plan 2).
+- Consumes: `demanderAutorisation` (Task 8), store (Task 7), `CONTENU_BOUTON`, `ProtectionBarreEtat` (Plan 2).
 - Produces:
   - `<VueAutorisation onActiver={() => void} onPlusTard={() => void} />` ; route `/autorisation`.
   - `VueReglages` : nouvelles props `notifResultats: boolean`, `rappels: boolean`, `autorisation: Autorisation`, `onNotifResultats(b: boolean)`, `onRappels(b: boolean)`, `onOuvrirReglagesSysteme()`.
@@ -1320,14 +1839,14 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ---
 
-### Task 8: Recevoir et ouvrir une notification
+### Task 10: Recevoir et ouvrir une notification
 
 **Files:**
 - Create: `app/src/notifications/liens.ts`, `app/src/notifications/liens.test.ts`, `app/src/notifications/GestionNotifications.tsx`, `app/src/notifications/GestionNotifications.test.tsx`
 - Modify: `app/src/donnees/selecteurs.ts`, `app/src/donnees/selecteurs.test.ts`, `app/src/ecrans/VueMatch.tsx` (prop `equipeId?`), `app/src/app/match/[id].tsx`, `app/src/app/equipe/[collectif].tsx`, `app/src/app/_layout.tsx`
 
 **Interfaces:**
-- Consumes: `ecouterPremierPlan`, `ecouterOuverture`, `notificationInitiale`, `NotifRecue` (Task 6).
+- Consumes: `ecouterPremierPlan`, `ecouterOuverture`, `notificationInitiale`, `NotifRecue` (Task 8).
 - Produces:
   - `parametre(v: string | string[] | undefined): string | undefined` — premier élément d'un paramètre de route.
   - `lienNotification(donnees: Record<string, string>): string | undefined` — `/match/<match_id>?equipe=<equipe_id>` si les deux ids sont `[A-Za-z0-9-]+`, sinon `/equipe/<collectif>` si seul le collectif est valide, sinon `undefined`.
@@ -1505,13 +2024,13 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ---
 
-### Task 9: Vérification de bout en bout
+### Task 11: Vérification de bout en bout
 
 **Files:**
 - Create: `.impeccable/review/phone-android-autorisation.png`, `phone-android-reglages-notifications.png`, `phone-android-notification.png` (non commités)
 
 **Interfaces:**
-- Consumes: tout le plan ; secret GitHub configuré (Task 4) ; development build (Task 6).
+- Consumes: tout le plan ; secret GitHub configuré (Task 6) ; development build (Task 8).
 - Produces: preuve sur appareil qu'une notification envoyée par le workflow arrive et ouvre la bonne fiche.
 
 - [ ] **Step 1: Build et parcours de premier lancement**
@@ -1524,7 +2043,7 @@ Accueil → Réglages : section Notifications, « Résultats de mes équipes » 
 
 - [ ] **Step 3: Notification de test (action de l'utilisateur)**
 
-Mettre l'app en arrière-plan (touche Accueil d'Android). Utilisateur : *Actions → Mise à jour des résultats → Run workflow → test_sujet = `seniors-f-1`*. Expected : en moins d'une minute après l'étape « Notifications », la notification « Test · Clamart Handball » s'affiche sur l'émulateur (capture du volet `phone-android-notification.png`) ; la toucher ouvre la fiche « Seniors F 1 ». App au premier plan pendant un second test : le bandeau en bas de l'app s'affiche.
+Mettre l'app en arrière-plan (touche Accueil d'Android). Utilisateur : *Actions → Mise à jour des résultats → Run workflow → test_sujet = `seniors-f-1`*. Expected : en moins d'une minute après l'étape « Envoyer les notifications », la notification « Test · Clamart Handball » s'affiche sur l'émulateur ; dépliée, elle montre la banderole du dernier résultat de Seniors F 1 (`test-seniors-f-1.png`, publiée par le job collecte) — capture du volet `phone-android-notification.png` ; la toucher ouvre la fiche « Seniors F 1 ». App au premier plan pendant un second test : le bandeau en bas de l'app s'affiche.
 
 - [ ] **Step 4: Bilan**
 

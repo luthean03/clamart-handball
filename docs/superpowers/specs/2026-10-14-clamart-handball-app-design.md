@@ -104,8 +104,10 @@ Après chaque collecte, comparer l'état publié et le registre, puis envoyer :
   `Clamart 32 – 22 Ent. Suresnes / Nanterre` (à l'extérieur : `Paris SC 1D 17 – 20 Clamart`) ;
   corps = catégorie · compétition — `Seniors F 1 · D1 territoriale`.
   Données : `{type:"resultat", collectif, equipe_id, match_id}`.
-  (Une notification FCM s'affiche avec la mise en page du système : pas d'écusson ni de banderole
-  graphique sans une notification native sur mesure.)
+  Image (Android « grande image ») : banderole 1024 × 512 dessinée par le serveur — écusson de
+  l'équipe qui reçoit à gauche, score au centre, écusson de l'autre équipe à droite, en-tête
+  catégorie · compétition ; écusson FFHB de l'adversaire (`logo_adversaire`) ou ses initiales.
+  Publiée sur GitHub Pages (`site/notifs/`) avant l'envoi, purgée après 60 jours.
 - Rappel : titre `Demain 16:15 · Seniors F 1`, corps `Contre Cellois HB · Gymnase Victor Hugo
   (extérieur)`. Données : `{type:"rappel", collectif, equipe_id, match_id}`.
 - Jamais de nom de joueur dans une notification.
@@ -123,6 +125,8 @@ Après chaque collecte, comparer l'état publié et le registre, puis envoyer :
 - Envoi via l'API FCM HTTP v1 (`google-auth` pour le jeton OAuth).
 
 ### 4.4 Workflow GitHub Actions (extension de l'existant)
+Trois jobs successifs : collecte (+ images des notifications) → publication Pages → envoi des
+notifications (l'image doit être en ligne avant l'envoi).
 Horaires (UTC) : existant (5:15 tous les jours ; */30 12–21 h sam. et dim.) **+ 15:45
 tous les jours** (16 h 45 à Paris en hiver, 17 h 45 en été) pour les rappels et les matchs
 de semaine. Étapes : collecte → notifieur → commit de `site/data`, `collecteur/cache`,
