@@ -2,8 +2,7 @@
    Lit data/club.json (produit par collecteur/collecte.py) et affiche :
      #/              ce week-end : prochains matchs + derniers résultats
      #/equipes       toutes les équipes et leur place
-     #/equipe/<id>   fiche équipe : classement, matchs, buteurs, agenda
-     #/buteurs       classement des buteurs du club (seniors)            */
+     #/equipe/<id>   fiche équipe : classement, matchs (avec leurs buteurs), agenda */
 
 "use strict";
 
@@ -179,16 +178,6 @@ function pageEquipe(id) {
   const aVenir = e.matchs.filter((m) => !m.resultat && m.date && m !== prochain && date(m.date) >= maintenant)
     .sort((a, b) => date(a.date) - date(b.date));
 
-  // buteurs de l'équipe (uniquement si les stats joueurs sont publiées pour cette catégorie)
-  const buteurs = new Map();
-  if (e.stats_joueurs) {
-    for (const m of joues) for (const b of m.buteurs || []) {
-      const j = buteurs.get(b.joueur) || { joueur: b.joueur, buts: 0, matchs: 0 };
-      j.buts += b.buts; j.matchs += 1; buteurs.set(b.joueur, j);
-    }
-  }
-  const topButeurs = [...buteurs.values()].sort((a, b) => b.buts - a.buts || a.joueur.localeCompare(b.joueur));
-
   app.innerHTML = `
     <a class="retour" href="#/equipes">Toutes les équipes</a>
     <div class="tete">
@@ -229,17 +218,9 @@ function pageEquipe(id) {
 
     <section class="bloc" aria-labelledby="t-res">
       <h2 id="t-res">Résultats</h2>
-      ${joues.length ? `<div class="liste">${joues.map((m) => detailMatch(m, e)).join("")}</div>`
+      ${joues.length ? `<div class="liste">${joues.map((m) => detailMatch(m)).join("")}</div>`
         : `<p class="vide">Aucun match joué pour l'instant.</p>`}
     </section>
-
-    ${topButeurs.length ? `<section class="bloc" aria-labelledby="t-but">
-      <h2 id="t-but">Buteurs de l'équipe</h2>
-      <div class="table-defile"><table>
-        <thead><tr><th scope="col">#</th><th scope="col" class="equipe">Joueur</th><th scope="col">Buts</th><th scope="col">Matchs</th></tr></thead>
-        <tbody>${topButeurs.map((j, i) => `<tr><td>${i + 1}</td><td class="equipe">${esc(j.joueur)}</td>
-          <td class="pts">${j.buts}</td><td>${j.matchs}</td></tr>`).join("")}</tbody>
-      </table></div></section>` : ""}
 
     ${aVenir.length || sansDate.length ? `<section class="bloc" aria-labelledby="t-cal">
       <h2 id="t-cal">Calendrier</h2>
@@ -251,8 +232,21 @@ function pageEquipe(id) {
     <p class="note" style="margin-top:28px"><a href="${esc(e.url_ffhb)}" rel="noopener">Voir cette équipe sur le site de la FFHB</a></p>`;
 }
 
-function detailMatch(m, e) {
-  const buteurs = (m.buteurs || []).filter((b) => b.buts > 0);
+/* Buteurs d'un côté du match : titre + liste (rien si personne n'a marqué). */
+function listeButeurs(nom, buteurs) {
+  const lignes = (buteurs || []).filter((b) => b.buts > 0);
+  return lignes.length ? `<h4 class="buteurs-titre">${esc(nom)}</h4><ul class="buteurs-match">${lignes.map((b) =>
+    `<li><span>${esc(b.joueur)}</span><span class="num">${b.buts}</span></li>`).join("")}</ul>` : "";
+}
+
+/* Schéma 3 : buteurs (Clamart) et buteurs_adverses ; schéma 2 : buteurs seuls, absents pour les jeunes. */
+function blocButeurs(m) {
+  if (!m.buteurs) return "";
+  const html = listeButeurs("Clamart", m.buteurs) + listeButeurs(titre(m.adversaire), m.buteurs_adverses);
+  return html || `<p class="note">Buteurs pas encore publiés.</p>`;
+}
+
+function detailMatch(m) {
   return `<details class="mj">
     <summary>
       <span class="mj__adv">${esc(titre(m.adversaire))}</span>
@@ -262,9 +256,7 @@ function detailMatch(m, e) {
     <div class="mj__det">
       ${m.mt_nous != null ? `<p>Mi-temps : ${m.mt_nous}–${m.mt_eux}</p>` : ""}
       ${m.salle && m.salle.nom ? `<p>Salle : ${salle(m)}</p>` : ""}
-      ${e.stats_joueurs ? (buteurs.length ? `<ul class="buteurs-match">${buteurs.map((b) =>
-          `<li><span>${esc(b.joueur)}</span><span class="num">${b.buts}</span></li>`).join("")}</ul>`
-          : `<p class="note">Buteurs pas encore publiés.</p>`) : ""}
+      ${blocButeurs(m)}
       <p class="liens">
         <a href="${esc(m.url_ffhb)}" rel="noopener">Page du match (FFHB)</a>
         ${m.feuille_de_match ? `<a href="${esc(m.feuille_de_match)}" rel="noopener">Feuille de match (PDF)</a>` : ""}
@@ -273,29 +265,12 @@ function detailMatch(m, e) {
   </details>`;
 }
 
-function pageButeurs() {
-  marquerNav("buteurs");
-  const liste = DATA.buteurs_club || [];
-  app.innerHTML = `
-    <div class="tete"><h1>Buteurs du club</h1>
-      <p>Toutes équipes seniors confondues, d'après les feuilles de match officielles</p></div>
-    ${liste.length ? `<div class="table-defile"><table>
-      <thead><tr><th scope="col">#</th><th scope="col" class="equipe">Joueur</th><th scope="col" class="equipe">Équipe</th>
-        <th scope="col">Buts</th><th scope="col">Matchs</th><th scope="col">Moy.</th><th scope="col">Record</th></tr></thead>
-      <tbody>${liste.map((j, i) => `<tr><td>${i + 1}</td><td class="equipe">${esc(j.joueur)}</td>
-        <td class="equipe">${j.equipes.map(esc).join(", ")}</td><td class="pts">${j.buts}</td>
-        <td>${j.matchs}</td><td>${String(j.moyenne).replace(".", ",")}</td><td>${j.record}</td></tr>`).join("")}</tbody>
-    </table></div>` : `<p class="vide">Les buteurs apparaîtront après les premiers matchs seniors.</p>`}
-    <p class="note" style="margin-top:14px">Les statistiques individuelles des équipes de jeunes ne sont pas publiées.</p>`;
-}
-
 /* ------------------------------------------------------------------ routeur */
 function router() {
   if (!DATA) return;
   const [page, id] = (location.hash.replace(/^#\/?/, "") || "").split("/");
   if (page === "equipes") pageEquipes();
   else if (page === "equipe" && id) pageEquipe(decodeURIComponent(id));
-  else if (page === "buteurs") pageButeurs();
   else pageAccueil();
   window.scrollTo(0, 0);
 }

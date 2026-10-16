@@ -161,6 +161,7 @@ details.mj[open] summary { background: #f7f9fb; }
 .mj__det { padding: 4px 14px 14px; font-size: .95rem; }
 .mj__det p { margin: 4px 0; }
 .buteurs-match { margin: 6px 0 0; padding: 0; list-style: none; columns: 2 12rem; column-gap: 20px; }
+.buteurs-titre { margin: 10px 0 0; font-size: .85rem; font-weight: 600; color: var(--encre-douce); }
 .buteurs-match li { display: flex; justify-content: space-between; gap: 8px; padding: 2px 0; break-inside: avoid; }
 .liens { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; }
 
