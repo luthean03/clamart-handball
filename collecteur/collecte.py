@@ -2,7 +2,8 @@
 """
 Collecte les données du club sur ffhandball.fr et écrit :
   site/data/club.json          toutes les données affichées par le site
-  site/data/agenda/*.ics       un calendrier par équipe + un pour tout le club
+  site/data/agenda/*.ics       un calendrier par équipe, par collectif et un pour tout le club
+  site/data/agenda/match/*.ics un calendrier par match à venir (un seul événement)
 
 Lancement :  python collecteur/collecte.py
 Réglages  :  config.json à la racine du projet
@@ -17,6 +18,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import shutil
 import sys
 import traceback
 from datetime import datetime, timedelta, timezone
@@ -361,6 +363,27 @@ def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]])
     fichier.write_text("\r\n".join(lignes) + "\r\n", encoding="utf-8")
 
 
+def ecrire_agendas(dossier: Path, equipes: list[dict], collectifs: list[dict]) -> None:
+    """Tous les .ics : par équipe, par collectif (matchs datés, passés et à venir), club.ics et, dans match/,
+    un fichier par match daté sans résultat (match/ est vidé puis réécrit : un match joué disparaît)."""
+    club = CONFIG["club"]["nom"]
+    dossier.mkdir(parents=True, exist_ok=True)
+    for eq in equipes:
+        ecrire_ics(dossier / f"{eq['id']}.ics", f"{club} - {eq['nom']}", [(eq, m) for m in eq["matchs"]])
+    ecrire_ics(dossier / "club.ics", club, [(eq, m) for eq in equipes for m in eq["matchs"]])
+    for col in collectifs:
+        evenements = [(eq, m) for eq in equipes if eq["collectif"] == col["id"] for m in eq["matchs"] if m["date"]]
+        if evenements:
+            ecrire_ics(dossier / f"{col['id']}.ics", f"{club} - {col['nom']}", evenements)
+    par_match = dossier / "match"
+    shutil.rmtree(par_match, ignore_errors=True)
+    par_match.mkdir()
+    for eq in equipes:
+        for m in eq["matchs"]:
+            if m["date"] and not m["resultat"]:
+                ecrire_ics(par_match / f"{eq['id']}-{m['id']}.ics", f"{club} - {eq['nom']}", [(eq, m)])
+
+
 # ============================================================================ main
 
 def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: list[str],
@@ -420,12 +443,7 @@ def main() -> int:
     tmp.write_text(json.dumps(donnees, ensure_ascii=False, indent=1), encoding="utf-8")
     tmp.replace(SORTIE / "club.json")
 
-    agenda = SORTIE / "agenda"
-    agenda.mkdir(exist_ok=True)
-    for eq in equipes:
-        ecrire_ics(agenda / f"{eq['id']}.ics", f"{CONFIG['club']['nom']} - {eq['nom']}",
-                   [(eq, m) for m in eq["matchs"]])
-    ecrire_ics(agenda / "club.ics", CONFIG["club"]["nom"], [(eq, m) for eq in equipes for m in eq["matchs"]])
+    ecrire_agendas(SORTIE / "agenda", equipes, donnees["collectifs"])
 
     duree = (datetime.now(timezone.utc) - debut).seconds
     log(f"OK : {len(equipes)} équipes, {sum(len(e['matchs']) for e in equipes)} matchs, "
