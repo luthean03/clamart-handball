@@ -72,3 +72,9 @@ test('le bandeau de date des cartes d’accueil : rouge du club en clair, rouge 
   expect(clair.bandeau).toEqual({ fond: '#DB0000', texte: '#FFFFFF', doux: '#FFECE8' });
   expect(sombre.bandeau).toEqual({ fond: '#B3261E', texte: '#FFFFFF', doux: '#FFDAD4' });
 });
+
+test('le trait « Aujourd’hui » se détache du fond, en clair comme en sombre', () => {
+  expect(clair.trait).toBe('#CFC6BA');
+  expect(contraste(clair.trait, clair.fond)).toBeGreaterThan(contraste(clair.ligne, clair.fond));
+  expect(contraste(sombre.trait, sombre.fond)).toBeGreaterThan(contraste(sombre.ligne, sombre.fond));
+});

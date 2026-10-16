@@ -1,8 +1,7 @@
 import { club, MAR_SOIR } from '../../test/donnees';
 import {
   buteursClubAffichables, buteursDuCollectif, classementDuMatch, collectifsParCategorie, equipePrincipale, equipesDuCollectif,
-  grouperParCategorie, jourParDefaut, joursAvecMatchs, matchParId, matchsDuCollectif, matchsDuJour,
-  prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours,
+  matchParId, matchsDuCollectif, prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours, tousLesMatchs,
 } from './selecteurs';
 import type { Club } from './types';
 
@@ -12,11 +11,6 @@ test('un collectif regroupe ses compétitions', () => {
   ]);
   expect(equipePrincipale(club, 'seniors-m')?.id).toBe('32546-clamart-handball');
   expect(equipePrincipale(club, 'seniors-f-1')?.place).toBe(3);
-});
-
-test('matchs d’un jour', () => {
-  expect(matchsDuJour(club, '2026-10-11')).toHaveLength(4);
-  expect(matchsDuJour(club, '2026-10-10')).toHaveLength(7);
 });
 
 test('les matchs sans date sont en fin de liste', () => {
@@ -31,7 +25,7 @@ test('match par identifiant', () => {
 });
 
 test('score en attente : match commencé sans résultat', () => {
-  const m = matchsDuJour(club, '2026-10-10').find((x) => x.equipe.collectif === 'u11-mixte-3')!;
+  const m = tousLesMatchs(club).find((x) => x.date?.startsWith('2026-10-10') && x.equipe.collectif === 'u11-mixte-3')!;
   expect(scoreEnAttente(m, MAR_SOIR)).toBe(true);
   expect(scoreEnAttente(m, new Date('2026-10-09T12:00:00+02:00'))).toBe(false);
 });
@@ -42,21 +36,10 @@ test('série en cours', () => {
   expect(serieEnCours(matchsDuCollectif(club, 'u11-mixte-3'))).toBeUndefined();
 });
 
-test('jours avec matchs et jour par défaut', () => {
-  const jours = joursAvecMatchs(club);
-  expect(jours).toHaveLength(18);
-  expect(jours[0]).toBe('2026-09-12');
-  expect(jourParDefaut(jours, '2026-10-11')).toBe('2026-10-11');
-  expect(jourParDefaut(jours, '2026-10-12')).toBe('2026-10-17');
-  expect(jourParDefaut(jours, '2027-06-01')).toBe('2027-02-27');
-  expect(jourParDefaut([], '2026-10-12')).toBeUndefined();
-});
-
-test('collectifs et matchs groupés par catégorie, seniors d’abord', () => {
+test('collectifs groupés par catégorie, seniors d’abord', () => {
   const groupes = collectifsParCategorie(club);
   expect(groupes.map((g) => g.titre)).toEqual(['Seniors', 'U18', 'U15', 'U13', 'U11']);
   expect(groupes[0].collectifs.map((c) => c.id)).toEqual(['seniors-f-1', 'seniors-f-1b', 'seniors-m']);
-  expect(grouperParCategorie(matchsDuJour(club, '2026-10-11')).map((g) => g.titre)).toEqual(['Seniors', 'U13', 'U11']);
 });
 
 test('buteurs d’un collectif : seniors seulement', () => {

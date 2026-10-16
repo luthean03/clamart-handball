@@ -21,22 +21,10 @@ export function tousLesMatchs(club: Club): MatchAvecEquipe[] {
 export const matchsDuCollectif = (club: Club, id: string) =>
   tousLesMatchs(club).filter((m) => m.equipe.collectif === id);
 
-export const matchsDuJour = (club: Club, jour: string) =>
-  tousLesMatchs(club).filter((m) => m.date !== null && jourDuMatch(m.date) === jour);
-
 export const matchParId = (club: Club, id: string, equipeId?: string) => {
   const matchs = tousLesMatchs(club).filter((m) => m.id === id);
   return matchs.find((m) => m.equipe.id === equipeId) ?? matchs[0];
 };
-
-export function joursAvecMatchs(club: Club): string[] {
-  return [...new Set(tousLesMatchs(club).flatMap((m) => (m.date ? [jourDuMatch(m.date)] : [])))].sort();
-}
-
-/** Aujourd'hui s'il y a des matchs, sinon le prochain jour de match, sinon le dernier. */
-export function jourParDefaut(jours: string[], aujourdhui: string): string | undefined {
-  return jours.find((j) => j >= aujourdhui) ?? jours[jours.length - 1];
-}
 
 /** Matchs à venir d'une liste triée : datés, sans résultat, dont le jour (Paris) est aujourd'hui ou après. */
 const aVenir = (matchs: MatchAvecEquipe[], maintenant: Date) => {
@@ -87,17 +75,6 @@ export function collectifsParCategorie(club: Club) {
     categorie,
     titre: libelleCategorie(categorie),
     collectifs: club.collectifs.filter((c): c is Collectif => c.categorie === categorie),
-  }));
-}
-
-export function grouperParCategorie(matchs: MatchAvecEquipe[]) {
-  const categories = [...new Set(matchs.map((m) => m.equipe.categorie))].sort(
-    (a, b) => rangCategorie(a) - rangCategorie(b),
-  );
-  return categories.map((categorie) => ({
-    categorie,
-    titre: libelleCategorie(categorie),
-    matchs: matchs.filter((m) => m.equipe.categorie === categorie),
   }));
 }
 

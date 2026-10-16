@@ -15,6 +15,8 @@ export interface Palette {
   action: string;
   surAction: string;
   ligne: string;
+  /** Trait discret « Aujourd'hui » de la liste Matchs (plus marqué que `ligne`, qui se perd sur le fond). */
+  trait: string;
   indicateur: string;
   surIndicateur: string;
   surligne: string;
@@ -36,6 +38,7 @@ export const clair: Palette = {
   action: '#DB0000',
   surAction: '#FFFFFF',
   ligne: '#EFE7DC',
+  trait: '#CFC6BA',
   indicateur: '#FADAD3',
   surIndicateur: '#7A1005',
   surligne: '#FFF1E0',
@@ -55,6 +58,7 @@ export const sombre: Palette = {
   action: '#FF6B5E',
   surAction: '#2A0A06',
   ligne: '#2C4256',
+  trait: '#4F6579',
   indicateur: '#5A1D18',
   surIndicateur: '#FFDAD4',
   surligne: '#26425A',

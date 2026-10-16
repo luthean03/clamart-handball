@@ -25,12 +25,43 @@ const MOIS_LONGS = [
   'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre',
 ];
 
+/** « Sam. 17 octobre » : en-tête de jour des listes de matchs. */
+export function titreJour(jour: string): string {
+  const d = minuitUTC(jour);
+  return `${JOURS_BANDEAU[d.getUTCDay()]} ${d.getUTCDate()} ${MOIS_LONGS[d.getUTCMonth()]}`;
+}
+
+/** « samedi 7 novembre » : le même jour, en toutes lettres pour les lecteurs d'écran. */
+export function jourLu(jour: string): string {
+  const d = minuitUTC(jour);
+  return `${JOURS_LONGS[d.getUTCDay()]} ${d.getUTCDate()} ${MOIS_LONGS[d.getUTCMonth()]}`;
+}
+
 /** « Dim. 18 octobre · 15:30 », en heure de Paris. */
 export function libelleBandeau(iso: string): string {
-  const jour = jourDuMatch(iso);
-  const d = minuitUTC(jour);
-  return `${JOURS_BANDEAU[d.getUTCDay()]} ${d.getUTCDate()} ${MOIS_LONGS[d.getUTCMonth()]} · ${heureDuMatch(iso)}`;
+  return `${titreJour(jourDuMatch(iso))} · ${heureDuMatch(iso)}`;
 }
+
+/** « Octobre 2026 » pour '2026-10'. */
+export function libelleMois(mois: string): string {
+  const nom = MOIS_LONGS[Number(mois.slice(5, 7)) - 1];
+  return `${nom[0].toUpperCase()}${nom.slice(1)} ${mois.slice(0, 4)}`;
+}
+
+/** '2027-01' pour '2026-12'. */
+export function moisSuivant(mois: string): string {
+  const d = new Date(Date.UTC(Number(mois.slice(0, 4)), Number(mois.slice(5, 7)), 1));
+  return `${d.getUTCFullYear()}-${deux(d.getUTCMonth() + 1)}`;
+}
+
+/** Les 'AAAA-MM-JJ' d'un mois 'AAAA-MM', du 1er au dernier. */
+export function joursDuMois(mois: string): string[] {
+  const nb = new Date(Date.UTC(Number(mois.slice(0, 4)), Number(mois.slice(5, 7)), 0)).getUTCDate();
+  return Array.from({ length: nb }, (_, i) => `${mois}-${deux(i + 1)}`);
+}
+
+/** Place du jour dans la semaine : 0 le lundi, 6 le dimanche. */
+export const rangDansLaSemaine = (jour: string): number => (minuitUTC(jour).getUTCDay() + 6) % 7;
 
 /** « aujourd’hui », « demain » ou « dans N jours » entre deux 'AAAA-MM-JJ'. */
 export function compteARebours(jourMatch: string, aujourdhui: string): string {

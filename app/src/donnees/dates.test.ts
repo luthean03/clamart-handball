@@ -1,6 +1,6 @@
 import {
-  compteARebours, dateCourte, donneesAnciennes, heureDuMatch, jourDuMatch, jourLocal, libelleBandeau,
-  libelleJour, libelleMiseAJour, salutation,
+  compteARebours, dateCourte, donneesAnciennes, heureDuMatch, jourDuMatch, jourLocal, jourLu, joursDuMois, libelleBandeau,
+  libelleJour, libelleMiseAJour, libelleMois, moisSuivant, rangDansLaSemaine, salutation, titreJour,
 } from './dates';
 
 test('jour et heure lus dans le texte FFHB (heure de Paris)', () => {
@@ -52,3 +52,27 @@ test('compte à rebours : sans dérive au changement d’heure', () => {
 });
 
 test('date courte', () => expect(dateCourte('2026-10-17T18:00:00+02:00')).toBe('17/10'));
+
+test('titre de jour des listes et jour lu en toutes lettres', () => {
+  expect(titreJour('2026-10-17')).toBe('Sam. 17 octobre');
+  expect(titreJour('2027-02-01')).toBe('Lun. 1 février');
+  expect(jourLu('2026-11-07')).toBe('samedi 7 novembre');
+});
+
+test('mois : libellé, mois suivant, jours du mois', () => {
+  expect(libelleMois('2026-10')).toBe('Octobre 2026');
+  expect(libelleMois('2027-02')).toBe('Février 2027');
+  expect(moisSuivant('2026-11')).toBe('2026-12');
+  expect(moisSuivant('2026-12')).toBe('2027-01');
+  const novembre = joursDuMois('2026-11');
+  expect(novembre).toHaveLength(30);
+  expect([novembre[0], novembre[29]]).toEqual(['2026-11-01', '2026-11-30']);
+  expect(joursDuMois('2028-02')).toHaveLength(29);
+});
+
+test('rang dans la semaine, du lundi (0) au dimanche (6), sans dérive au changement d’heure', () => {
+  expect(rangDansLaSemaine('2026-10-19')).toBe(0);
+  expect(rangDansLaSemaine('2026-11-01')).toBe(6);
+  expect(rangDansLaSemaine('2026-10-25')).toBe(6);
+  expect(rangDansLaSemaine('2026-03-30')).toBe(0);
+});
