@@ -8,13 +8,6 @@ export const jourDuMatch = (iso: string): string => iso.slice(0, 10);
 export const heureDuMatch = (iso: string): string => iso.slice(11, 16);
 
 const minuitUTC = (jour: string) => new Date(`${jour}T00:00:00Z`);
-export const jourDeSemaine = (jour: string): number => minuitUTC(jour).getUTCDay();
-
-export function decalerJour(jour: string, n: number): string {
-  const d = minuitUTC(jour);
-  d.setUTCDate(d.getUTCDate() + n);
-  return d.toISOString().slice(0, 10);
-}
 
 /** 'AAAA-MM-JJ' de l'instant, à l'heure de l'appareil. */
 export function jourLocal(date: Date): string {

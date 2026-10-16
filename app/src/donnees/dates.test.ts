@@ -1,5 +1,5 @@
 import {
-  compteARebours, dateCourte, decalerJour, donneesAnciennes, heureDuMatch, jourDuMatch, jourLocal, libelleBandeau,
+  compteARebours, dateCourte, donneesAnciennes, heureDuMatch, jourDuMatch, jourLocal, libelleBandeau,
   libelleJour, libelleMiseAJour, salutation,
 } from './dates';
 
@@ -8,10 +8,8 @@ test('jour et heure lus dans le texte FFHB (heure de Paris)', () => {
   expect(heureDuMatch('2026-10-11T16:15:00+02:00')).toBe('16:15');
 });
 
-test('jourLocal et decalerJour', () => {
+test('jourLocal', () => {
   expect(jourLocal(new Date('2026-10-11T23:30:00+02:00'))).toBe('2026-10-11');
-  expect(decalerJour('2026-10-31', 1)).toBe('2026-11-01');
-  expect(decalerJour('2026-10-01', -1)).toBe('2026-09-30');
 });
 
 test('libellés de jours', () => {

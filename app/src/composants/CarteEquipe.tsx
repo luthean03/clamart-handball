@@ -59,7 +59,7 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, onOuvrirEq
               <Text variant="labelLarge" style={[styles.date, { color: bandeau.texte }]}>
                 {libelleBandeau(prochain.date!)}
               </Text>
-              <Text variant="labelMedium" style={{ color: bandeau.doux }}>
+              <Text variant="labelMedium" style={{ color: bandeau.doux, fontWeight: '700' }}>
                 {compte}
               </Text>
             </View>

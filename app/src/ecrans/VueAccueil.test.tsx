@@ -46,6 +46,13 @@ test('carte : le match du lendemain est « demain »', () => {
   expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toHaveProp('numberOfLines', 3);
 });
 
+test('carte : le jour du match, après le coup d’envoi, la carte garde ce match et dit « aujourd’hui »', () => {
+  accueil({ maintenant: new Date('2026-10-17T19:00:00+02:00'), suivis: ['seniors-m'] });
+  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('aujourd’hui')).toBeOnTheScreen();
+  expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
+});
+
 test('carte : pas de classement pour une coupe, classement pour un championnat', () => {
   accueil({ suivis: ['seniors-f-1'] });
   expect(screen.queryByText(/sur \d+/)).toBeNull();
@@ -182,6 +189,7 @@ test('le bandeau de date prend les couleurs du thème, clair puis sombre', () =>
   accueil({ suivis: ['seniors-m'] });
   expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeClair.club.bandeau.fond);
   expect(StyleSheet.flatten(screen.getByText('demain').props.style).color).toBe(themeClair.club.bandeau.doux);
+  expect(StyleSheet.flatten(screen.getByText('demain').props.style).fontWeight).toBe('700');
   screen.unmount();
   rendu(<VueAccueil {...propsAccueil({ suivis: ['seniors-m'] })} />, themeSombre);
   expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeSombre.club.bandeau.fond);

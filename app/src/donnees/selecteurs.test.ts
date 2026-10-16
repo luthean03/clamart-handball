@@ -1,8 +1,8 @@
-import { club, DIM_SOIR, MAR_SOIR } from '../../test/donnees';
+import { club, MAR_SOIR } from '../../test/donnees';
 import {
-  buteursClubAffichables, buteursDuCollectif, classementDuMatch, collectifsParCategorie, dernierResultat, equipePrincipale, equipesDuCollectif,
+  buteursClubAffichables, buteursDuCollectif, classementDuMatch, collectifsParCategorie, equipePrincipale, equipesDuCollectif,
   grouperParCategorie, jourParDefaut, joursAvecMatchs, matchParId, matchsDuCollectif, matchsDuJour,
-  prochainMatch, prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours,
+  prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours,
 } from './selecteurs';
 import type { Club } from './types';
 
@@ -23,14 +23,6 @@ test('les matchs sans date sont en fin de liste', () => {
   const matchs = matchsDuCollectif(club, 'seniors-f-1');
   expect(matchs[0].date).not.toBeNull();
   expect(matchs[matchs.length - 1].date).toBeNull();
-});
-
-test('prochain match et dernier résultat', () => {
-  expect(prochainMatch(club, 'seniors-f-1', DIM_SOIR)?.id).toBe('2729291');
-  expect(prochainMatch(club, 'seniors-m', DIM_SOIR)?.id).toBe('2734038');
-  expect(prochainMatch(club, 'u18-m', DIM_SOIR)).toBeUndefined();
-  expect(dernierResultat(club, 'seniors-f-1')?.id).toBe('2644292');
-  expect(dernierResultat(club, 'u11-mixte-3')).toBeUndefined();
 });
 
 test('match par identifiant', () => {

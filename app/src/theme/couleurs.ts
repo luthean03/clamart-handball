@@ -40,7 +40,7 @@ export const clair: Palette = {
   surIndicateur: '#7A1005',
   surligne: '#FFF1E0',
   inverse: { fond: '#142A3D', texte: '#FFFEF0', accent: '#FFB4A8' },
-  bandeau: { fond: '#DB0000', texte: '#FFFFFF', doux: '#FFE0DB' },
+  bandeau: { fond: '#DB0000', texte: '#FFFFFF', doux: '#FFECE8' },
   victoire: { fond: '#E3F1E8', texte: '#1B5E3B' },
   nul: { fond: '#EBEEF2', texte: '#3D4A57' },
   defaite: { fond: '#F1E9E4', texte: '#6B4A3E' },

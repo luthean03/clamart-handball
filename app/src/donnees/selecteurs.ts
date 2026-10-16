@@ -38,11 +38,6 @@ export function jourParDefaut(jours: string[], aujourdhui: string): string | und
   return jours.find((j) => j >= aujourdhui) ?? jours[jours.length - 1];
 }
 
-export const prochainMatch = (club: Club, id: string, maintenant: Date) =>
-  matchsDuCollectif(club, id).find(
-    (m) => m.resultat === null && m.date !== null && Date.parse(m.date) >= maintenant.getTime(),
-  );
-
 /** Matchs à venir d'une liste triée : datés, sans résultat, dont le jour (Paris) est aujourd'hui ou après. */
 const aVenir = (matchs: MatchAvecEquipe[], maintenant: Date) => {
   const aujourdhui = jourLocal(maintenant);
@@ -62,11 +57,6 @@ export function classementDuMatch(m: MatchAvecEquipe): { place: number; nb: numb
   const { classement, place, nb_equipes } = m.equipe;
   if (!classement?.length || place == null || nb_equipes == null) return undefined;
   return { place, nb: nb_equipes };
-}
-
-export function dernierResultat(club: Club, id: string): MatchAvecEquipe | undefined {
-  const joues = matchsDuCollectif(club, id).filter((m) => m.resultat !== null);
-  return joues[joues.length - 1];
 }
 
 /** Match commencé dont le score n'est pas encore publié sur la FFHB. */
