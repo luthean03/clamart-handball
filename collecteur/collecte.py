@@ -183,14 +183,28 @@ def empreinte_masques() -> str:
     return hashlib.sha1("\n".join(sorted(MASQUES)).encode("utf-8")).hexdigest() if MASQUES else ""
 
 
-def salle_et_buteurs(match_path: str, equipe_interne, joue: bool) -> dict:
-    """Page d'un match : salle + buteurs des deux équipes (match joué). Cache permanent si le match est joué."""
+FENETRE_STATS = timedelta(days=7)   # la FFHB publie parfois les stats après le score
+
+
+def stats_attendues(info: dict, date: str | None, maintenant: datetime | None) -> bool:
+    """Match joué récemment dont le cache n'a aucun buteur : les stats ne sont peut-être pas encore publiées.
+    Passé 7 jours on les croit définitivement absentes (sinon on retélécharge ces matchs à chaque passage)."""
+    if info.get("buteurs") or info.get("buteurs_adverses") or not date or maintenant is None:
+        return False
+    return maintenant - datetime.fromisoformat(date) < FENETRE_STATS
+
+
+def salle_et_buteurs(match_path: str, equipe_interne, joue: bool, date: str | None = None,
+                     maintenant: datetime | None = None) -> dict:
+    """Page d'un match : salle + buteurs des deux équipes (match joué). Cache permanent si le match est joué,
+    sauf s'il n'a aucun buteur et date de moins de 7 jours (`date`, `maintenant` : voir stats_attendues)."""
     rid = match_path.rstrip("/").split("rencontre-")[-1]
     fichier = CACHE / f"{rid}.json"
     if joue and fichier.exists():
         info = json.loads(fichier.read_text(encoding="utf-8"))
-        # ancien cache (avant le schéma 3) ou liste de joueurs masqués modifiée depuis : on retélécharge
-        if info.get("buteurs_adverses") is not None and info.get("masques") == empreinte_masques():
+        # ancien cache (avant le schéma 3), liste de joueurs masqués modifiée depuis ou stats pas encore publiées : on retélécharge
+        if (info.get("buteurs_adverses") is not None and info.get("masques") == empreinte_masques()
+                and not stats_attendues(info, date, maintenant)):
             return info
     d = ff.components(match_path)
     eq = (d.get("competitions---rencontre-salle") or {}).get("equipement") or {}
@@ -307,7 +321,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
             if joue or (a_venir and not prochain_traite):
                 try:
                     nous_id = r.get("equipe1Id") if dom else r.get("equipe2Id")
-                    info = salle_et_buteurs(chemin, nous_id, joue)
+                    info = salle_et_buteurs(chemin, nous_id, joue, r.get("date"), maintenant)
                     m["salle"] = info.get("salle")
                     if joue:
                         m["buteurs"] = info.get("buteurs") or []

@@ -1,3 +1,6 @@
+import json
+from datetime import datetime, timedelta, timezone
+
 import pytest
 
 import collecte
@@ -75,3 +78,43 @@ def test_cache_ancien_sans_buteurs_adverses_retelecharge(cache, monkeypatch):
     info = collecte.salle_et_buteurs("/x/rencontre-42/", 7, True)
     assert len(appels) == 1
     assert [b["joueur"] for b in info["buteurs_adverses"]] == ["A. Kouadio", "M. Dupont"]
+
+
+# --- match joué sans buteurs en cache : la FFHB publie parfois les stats après le score
+
+MAINTENANT = datetime(2026, 10, 16, 12, 0, tzinfo=timezone.utc)
+
+
+def _ecrire_cache(cache, buteurs, buteurs_adverses):
+    info = {"salle": None, "buteurs": buteurs, "buteurs_adverses": buteurs_adverses, "masques": ""}
+    (cache / "42.json").write_text(json.dumps(info), encoding="utf-8")
+
+
+def test_cache_sans_buteurs_retelecharge_dans_les_7_jours(cache, monkeypatch):
+    appels = _telechargements(monkeypatch)
+    monkeypatch.setattr(collecte, "MASQUES", set())
+    _ecrire_cache(cache, [], [])
+    date = (MAINTENANT - timedelta(days=6, hours=23)).isoformat()
+    info = collecte.salle_et_buteurs("/x/rencontre-42/", 7, True, date, MAINTENANT)
+    assert len(appels) == 1
+    assert [b["joueur"] for b in info["buteurs"]] == ["D. Dorilas", "E. Ndiaye"]
+
+
+def test_cache_sans_buteurs_conserve_apres_7_jours(cache, monkeypatch):
+    appels = _telechargements(monkeypatch)
+    monkeypatch.setattr(collecte, "MASQUES", set())
+    _ecrire_cache(cache, [], [])
+    date = (MAINTENANT - timedelta(days=7)).isoformat()
+    info = collecte.salle_et_buteurs("/x/rencontre-42/", 7, True, date, MAINTENANT)
+    assert appels == []
+    assert info["buteurs"] == [] and info["buteurs_adverses"] == []
+
+
+def test_cache_avec_buteurs_conserve_dans_les_7_jours(cache, monkeypatch):
+    appels = _telechargements(monkeypatch)
+    monkeypatch.setattr(collecte, "MASQUES", set())
+    _ecrire_cache(cache, [], [{"joueur": "A. Kouadio", "numero": 5, "buts": 5}])
+    date = (MAINTENANT - timedelta(days=1)).isoformat()
+    info = collecte.salle_et_buteurs("/x/rencontre-42/", 7, True, date, MAINTENANT)
+    assert appels == []
+    assert [b["joueur"] for b in info["buteurs_adverses"]] == ["A. Kouadio"]
