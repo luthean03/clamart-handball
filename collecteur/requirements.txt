@@ -3,4 +3,4 @@ beautifulsoup4>=4.12
 truststore>=0.9 ; python_version >= "3.10"
 tzdata>=2024.1
 google-auth>=2.30
-pillow>=10
+pillow>=12.1,<13
