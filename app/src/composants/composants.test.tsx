@@ -1,5 +1,6 @@
 import { fireEvent, screen, within } from '@testing-library/react-native';
-import { Linking, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { Linking, Pressable, StyleSheet } from 'react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
@@ -220,4 +221,42 @@ test('ligne de match : date au-dessus de l’heure', () => {
 test('ligne de match : pas de date sans afficherDate', () => {
   rendu(<LigneMatch match={m('2734038')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
   expect(screen.queryByText('17/10')).toBeNull();
+});
+
+test('écusson : l’échec d’une image ne colle pas à l’adversaire suivant (nouvelle URL, nouvel essai)', () => {
+  function Liste() {
+    const [uri, setUri] = useState('https://x/a.webp');
+    return (
+      <>
+        <Ecusson uri={uri} nom="Cellois HB" taille={24} />
+        <Pressable testID="suivant" onPress={() => setUri('https://x/b.webp')} />
+      </>
+    );
+  }
+  rendu(<Liste />);
+  fireEvent(screen.getByTestId('ecusson-image'), 'error');
+  expect(screen.queryByTestId('ecusson-image')).toBeNull();
+  fireEvent.press(screen.getByTestId('suivant'));
+  expect(screen.getByTestId('ecusson-image').props.source).toEqual({ uri: 'https://x/b.webp' });
+});
+
+test('écusson : l’image garde ses proportions dans le disque', () => {
+  rendu(<Ecusson uri="https://x/a.webp" nom="Cellois HB" taille={24} />);
+  expect(screen.getByTestId('ecusson-image')).toHaveProp('resizeMode', 'contain');
+});
+
+test('ligne de match : avec afficherDate, la date est aussi dans le libellé lu', () => {
+  rendu(<LigneMatch match={m('2734038')} maintenant={MAR_SOIR} onPress={jest.fn()} afficherDate />);
+  expect(screen.getByLabelText(/, samedi 17 oct\., 18:00$/)).toBeOnTheScreen();
+  screen.unmount();
+  rendu(<LigneMatch match={m('2734038')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  expect(screen.getByTestId('ligne-match').props.accessibilityLabel).not.toContain('oct.');
+});
+
+test('ligne de match : un match sans date n’affiche aucune date avec afficherDate', () => {
+  rendu(<LigneMatch match={{ ...m('2734038'), date: null }} maintenant={MAR_SOIR} onPress={jest.fn()} afficherDate />);
+  const statut = screen.getByTestId('statut');
+  expect(within(statut).getByText('À fixer')).toBeOnTheScreen();
+  expect(within(statut).queryByText(/\d/)).toBeNull();
+  expect(screen.getByTestId('ligne-match').props.accessibilityLabel).toMatch(/, À fixer$/);
 });

@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import { Text, TouchableRipple } from 'react-native-paper';
-import { dateCourte, heureDuMatch } from '../donnees/dates';
+import { dateCourte, heureDuMatch, jourDuMatch, libelleJour } from '../donnees/dates';
 import { lierNumero, nomLisible, permettreCesure } from '../donnees/phrase';
 import { scoreEnAttente } from '../donnees/selecteurs';
 import type { MatchAvecEquipe } from '../donnees/types';
@@ -40,7 +40,9 @@ export function LigneMatch({ match, maintenant, onPress, afficherCompetition = f
   const { dom, ext, sDom, sExt, joue } = campsDuMatch(match);
   const attente = !joue && scoreEnAttente(match, maintenant);
   const statut = joue ? 'Fin' : match.date === null ? 'À fixer' : attente ? 'Attente' : heureDuMatch(match.date);
-  const lu = joue ? libelleScoreLu(match) : `${libelleScoreLu(match)}, ${attente ? 'score pas encore publié' : statut}`;
+  const dateAffichee = afficherDate && !joue && match.date !== null;
+  const jourLu = dateAffichee ? `, ${libelleJour(jourDuMatch(match.date!), 'long')}` : '';
+  const lu = joue ? libelleScoreLu(match) : `${libelleScoreLu(match)}${jourLu}, ${attente ? 'score pas encore publié' : statut}`;
   const domGagne = joue && sDom! > sExt!;
   const extGagne = joue && sExt! > sDom!;
 
@@ -48,9 +50,9 @@ export function LigneMatch({ match, maintenant, onPress, afficherCompetition = f
     <TouchableRipple onPress={onPress} accessibilityRole="button" accessibilityLabel={lu} testID="ligne-match">
       <View style={[styles.ligne, { borderBottomColor: t.colors.outlineVariant }]}>
         <View style={styles.statut} testID="statut">
-          {afficherDate && !joue && match.date ? (
+          {dateAffichee ? (
             <Text variant="labelMedium" numberOfLines={1} style={{ color: t.colors.onSurfaceVariant }}>
-              {dateCourte(match.date)}
+              {dateCourte(match.date!)}
             </Text>
           ) : null}
           <Text variant="labelMedium" numberOfLines={1} style={{ color: t.colors.onSurfaceVariant }}>

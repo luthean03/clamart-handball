@@ -4,16 +4,18 @@ import { Monogramme } from './Monogramme';
 
 const LOGO_ROND = require('../../assets/logo-rond.png');
 
-/** Écusson d'un adversaire : l'image publiée par la FFHB, ou ses initiales sans image ou si elle ne charge pas.
+/** Écusson d'un adversaire : l'image publiée par la FFHB, ou ses initiales sans image ou si elle ne charge pas
+ *  (on retient l'URL en échec : une autre URL pour la même ligne est essayée).
  *  Décoratif : le nom de l'équipe est toujours lu par la ligne ou le bloc qui l'entoure. */
 export function Ecusson({ uri, nom, taille }: { uri: string | null | undefined; nom: string; taille: number }) {
-  const [echec, setEchec] = useState(false);
-  if (!uri || echec) return <Monogramme nom={nom} taille={taille} />;
+  const [echec, setEchec] = useState<string | null>(null);
+  if (!uri || echec === uri) return <Monogramme nom={nom} taille={taille} />;
   return (
     <Image
       testID="ecusson-image"
       source={{ uri }}
-      onError={() => setEchec(true)}
+      resizeMode="contain"
+      onError={() => setEchec(uri)}
       style={{ width: taille, height: taille, borderRadius: taille / 2 }}
       accessibilityIgnoresInvertColors
     />
