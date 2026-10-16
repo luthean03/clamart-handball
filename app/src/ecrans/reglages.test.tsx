@@ -4,32 +4,7 @@ import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import type { Autorisation } from '../notifications/sujets';
-import { VueButeurs } from './VueButeurs';
 import { VueReglages } from './VueReglages';
-
-test('buteurs du club : seniors, meilleur en tête', () => {
-  rendu(<VueButeurs club={club} />);
-  expect(screen.getByText('Diara DORILAS')).toBeOnTheScreen();
-  expect(screen.getByText('38')).toBeOnTheScreen();
-  expect(screen.getByText('Seniors uniquement · 42 joueurs et joueuses')).toBeOnTheScreen();
-});
-
-test('buteurs : aucun en début de saison', () => {
-  rendu(<VueButeurs club={{ ...club, buteurs_club: [] }} />);
-  expect(screen.getByText('Pas encore de buteurs cette saison.')).toBeOnTheScreen();
-});
-
-test('buteurs : jamais un joueur d’une équipe sans statistiques de joueurs', () => {
-  const mineur = { ...club.buteurs_club![0], joueur: 'Élève MINEUR', equipes: ['U18 F'] };
-  rendu(<VueButeurs club={{ ...club, buteurs_club: [mineur, ...club.buteurs_club!] }} />);
-  expect(screen.queryByText('Élève MINEUR')).not.toBeOnTheScreen();
-  expect(screen.getByText('Seniors uniquement · 42 joueurs et joueuses')).toBeOnTheScreen();
-});
-
-test('buteurs : légende au singulier pour un seul joueur', () => {
-  rendu(<VueButeurs club={{ ...club, buteurs_club: [club.buteurs_club![0]] }} />);
-  expect(screen.getByText('Seniors uniquement · 1 joueur ou joueuse')).toBeOnTheScreen();
-});
 
 function reglages(props: Partial<Parameters<typeof VueReglages>[0]> = {}) {
   const p = {

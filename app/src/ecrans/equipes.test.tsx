@@ -127,7 +127,6 @@ test('fiche équipe sans aucun classement (coupe seule) : pas d’onglet Classem
   fiche('seniors-m', { club: sansClassement() });
   expect(screen.queryByText('Classement')).toBeNull();
   expect(screen.getByText('Matchs')).toBeOnTheScreen();
-  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
 });
 
 test('fiche équipe : avec un classement, l’onglet Classement est proposé', () => {
@@ -151,17 +150,11 @@ test('fiche équipe : l’onglet Classement choisi retombe sur Matchs quand le c
   expect(screen.getAllByTestId('ligne-match').length).toBeGreaterThan(0);
 });
 
-test('fiche équipe : buteurs seulement avec stats_joueurs strictement vrai', () => {
-  const douteux: Club = { ...club, equipes: club.equipes.map((e) => ({ ...e, stats_joueurs: 'false' as unknown as boolean })) };
-  fiche('seniors-f-1', { club: douteux });
+test('équipe : onglets Matchs et Classement seulement', () => {
+  fiche('seniors-m');
+  expect(screen.getByText('Matchs')).toBeOnTheScreen();
+  expect(screen.getByText('Classement')).toBeOnTheScreen();
   expect(screen.queryByText('Buteurs')).toBeNull();
-});
-
-test('fiche équipe : buteurs pour les seniors, jamais pour les jeunes', () => {
-  fiche('seniors-f-1');
-  fireEvent.press(screen.getByText('Buteurs'));
-  expect(screen.getByText('Diara DORILAS')).toBeOnTheScreen();
-  expect(screen.getByText('38')).toBeOnTheScreen();
   screen.unmount();
   fiche('u18-f');
   expect(screen.queryByText('Buteurs')).toBeNull();

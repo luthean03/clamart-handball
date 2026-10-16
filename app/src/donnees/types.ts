@@ -71,8 +71,6 @@ export interface Equipe {
   phase: string | null;
   poule: string | null;
   url_ffhb: string;
-  /** Schéma 2 seulement, plus lu : les buteurs sont dans les matchs. */
-  stats_joueurs?: boolean;
   classement: LigneClassement[] | null;
   matchs: Match[];
   bilan: Bilan;
@@ -90,15 +88,6 @@ export interface Collectif {
   equipes: string[];
 }
 
-export interface ButeurClub {
-  joueur: string;
-  equipes: string[];
-  matchs: number;
-  buts: number;
-  record: number;
-  moyenne: number;
-}
-
 export interface Club {
   version_schema: number;
   club: { nom: string; id_ffhb: string };
@@ -108,8 +97,6 @@ export interface Club {
   source: string;
   collectifs: Collectif[];
   equipes: Equipe[];
-  /** Schéma 2 seulement (absent en schéma 3). */
-  buteurs_club?: ButeurClub[];
   erreurs: string[];
 }
 

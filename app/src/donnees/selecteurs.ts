@@ -1,5 +1,5 @@
 import { jourDuMatch, jourLocal } from './dates';
-import type { ButeurClub, Club, Collectif, Equipe, Match, MatchAvecEquipe, Resultat } from './types';
+import type { Club, Collectif, Equipe, Match, MatchAvecEquipe, Resultat } from './types';
 
 const instant = (m: Match) => (m.date ? Date.parse(m.date) : Number.POSITIVE_INFINITY);
 
@@ -76,38 +76,4 @@ export function collectifsParCategorie(club: Club) {
     titre: libelleCategorie(categorie),
     collectifs: club.collectifs.filter((c): c is Collectif => c.categorie === categorie),
   }));
-}
-
-export interface ButeurEquipe {
-  joueur: string;
-  buts: number;
-  matchs: number;
-}
-
-/** Buteurs d'un collectif, toutes compétitions. Vide pour les jeunes (stats_joueurs = false). */
-export function buteursDuCollectif(club: Club, id: string): ButeurEquipe[] {
-  const parJoueur = new Map<string, ButeurEquipe>();
-  for (const m of matchsDuCollectif(club, id)) {
-    if (m.equipe.stats_joueurs !== true) continue;
-    for (const b of m.buteurs ?? []) {
-      const e = parJoueur.get(b.joueur) ?? { joueur: b.joueur, buts: 0, matchs: 0 };
-      e.buts += b.buts;
-      e.matchs += 1;
-      parJoueur.set(b.joueur, e);
-    }
-  }
-  return [...parJoueur.values()]
-    .filter((b) => b.buts > 0)
-    .sort((a, b) => b.buts - a.buts || a.joueur.localeCompare(b.joueur));
-}
-
-/**
- * Buteurs du club à afficher : un joueur n'est gardé que si chaque équipe citée existe dans les données
- * et que toutes les équipes de ce nom ont des statistiques de joueurs (seniors). Garde-fou côté app :
- * les mineurs ne sont jamais nommés, même si la collecte les laisse passer.
- */
-export function buteursClubAffichables(club: Club): ButeurClub[] {
-  const sures = new Set(club.equipes.filter((e) => e.stats_joueurs === true).map((e) => e.nom));
-  for (const e of club.equipes) if (e.stats_joueurs !== true) sures.delete(e.nom);
-  return (club.buteurs_club ?? []).filter((b) => b.equipes.length > 0 && b.equipes.every((nom) => sures.has(nom)));
 }

@@ -1,6 +1,6 @@
 import { club, MAR_SOIR } from '../../test/donnees';
 import {
-  buteursClubAffichables, buteursDuCollectif, classementDuMatch, collectifsParCategorie, equipePrincipale, equipesDuCollectif,
+  classementDuMatch, collectifsParCategorie, equipePrincipale, equipesDuCollectif,
   matchParId, matchsDuCollectif, prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours, tousLesMatchs,
 } from './selecteurs';
 import type { Club } from './types';
@@ -40,57 +40,6 @@ test('collectifs groupés par catégorie, seniors d’abord', () => {
   const groupes = collectifsParCategorie(club);
   expect(groupes.map((g) => g.titre)).toEqual(['Seniors', 'U18', 'U15', 'U13', 'U11']);
   expect(groupes[0].collectifs.map((c) => c.id)).toEqual(['seniors-f-1', 'seniors-f-1b', 'seniors-m']);
-});
-
-test('buteurs d’un collectif : seniors seulement', () => {
-  const buteurs = buteursDuCollectif(club, 'seniors-f-1');
-  expect(buteurs[0]).toEqual({ joueur: 'Diara DORILAS', buts: 38, matchs: 5 });
-  expect(buteursDuCollectif(club, 'u18-f')).toEqual([]);
-});
-
-// Comparaison stricte : seule la valeur booléenne `true` ouvre l'affichage des noms (jamais une valeur « truthy »).
-const sansConfiance = (valeur: unknown) => ({
-  ...club,
-  equipes: club.equipes.map((e) => ({ ...e, stats_joueurs: valeur as boolean })),
-});
-
-test('buteurs d’un collectif : stats_joueurs doit valoir exactement true', () => {
-  expect(buteursDuCollectif(sansConfiance('false'), 'seniors-f-1')).toEqual([]);
-  expect(buteursDuCollectif(sansConfiance(1), 'seniors-f-1')).toEqual([]);
-  expect(buteursDuCollectif(sansConfiance(undefined), 'seniors-f-1')).toEqual([]);
-});
-
-test('buteurs du club affichables : stats_joueurs doit valoir exactement true', () => {
-  expect(buteursClubAffichables(sansConfiance('false'))).toEqual([]);
-  expect(buteursClubAffichables(sansConfiance(1))).toEqual([]);
-});
-
-describe('buteursClubAffichables', () => {
-  const avec = (equipes: string[]) => ({ ...club, buteurs_club: [{ ...club.buteurs_club![0], equipes }, ...club.buteurs_club!.slice(1)] });
-
-  test('données réelles : tous les buteurs du club sont conservés', () => {
-    expect(buteursClubAffichables(club)).toHaveLength(42);
-  });
-
-  test('une équipe sans statistiques de joueurs exclut le buteur', () => {
-    const liste = buteursClubAffichables(avec(['U18 F']));
-    expect(liste).toHaveLength(41);
-    expect(liste.map((b) => b.joueur)).not.toContain(club.buteurs_club![0].joueur);
-  });
-
-  test('une équipe inconnue exclut le buteur', () => {
-    expect(buteursClubAffichables(avec(['Équipe inconnue']))).toHaveLength(41);
-  });
-
-  test('toutes les équipes citées doivent être sûres', () => {
-    expect(buteursClubAffichables(avec(['Seniors M', 'U18 F']))).toHaveLength(41);
-  });
-
-  test('un nom partagé par une équipe sans statistiques n’est pas de confiance', () => {
-    const premiere = club.equipes.findIndex((e) => e.nom === 'Seniors M');
-    const equipes = club.equipes.map((e, i) => (i === premiere ? { ...e, stats_joueurs: false } : e));
-    expect(buteursClubAffichables({ ...club, equipes }).every((b) => !b.equipes.includes('Seniors M'))).toBe(true);
-  });
 });
 
 test('matchParId préfère l’équipe du lien', () => {

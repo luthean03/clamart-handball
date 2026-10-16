@@ -1,11 +1,11 @@
 import { useState, type ReactNode } from 'react';
-import { ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, SegmentedButtons, Surface, Text } from 'react-native-paper';
 import { CONTENU_BOUTON, MARGE_SEGMENT, NOM_SANS_COUPURE } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
 import { lierNumero, nomLisible, ordinal, permettreCesure, rangAffiche } from '../donnees/phrase';
-import { buteursDuCollectif, equipePrincipale, equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
+import { equipePrincipale, equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
 import type { Club } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
 
@@ -21,12 +21,12 @@ interface Props {
   onAgenda: () => void;
 }
 
-type Onglet = 'matchs' | 'classement' | 'buteurs';
+type Onglet = 'matchs' | 'classement';
 
-function Carte({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
+function Carte({ children }: { children: ReactNode }) {
   const t = useThemeClub();
   return (
-    <Surface style={[{ borderRadius: t.rayonCarte }, style]} elevation={1}>
+    <Surface style={{ borderRadius: t.rayonCarte }} elevation={1}>
       <View style={[styles.liste, { borderRadius: t.rayonCarte }]}>{children}</View>
     </Surface>
   );
@@ -54,16 +54,13 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
 
   const equipes = equipesDuCollectif(club, collectifId);
   const principale = equipePrincipale(club, collectifId);
-  const avecButeurs = equipes.some((e) => e.stats_joueurs === true);
   const classements = equipes.filter((e) => (e.classement?.length ?? 0) > 0);
   const avecClassement = classements.length > 0;
   const onglets = [
     { value: 'matchs', label: 'Matchs', hitSlop: MARGE_SEGMENT },
     ...(avecClassement ? [{ value: 'classement', label: 'Classement', hitSlop: MARGE_SEGMENT }] : []),
-    ...(avecButeurs ? [{ value: 'buteurs', label: 'Buteurs', hitSlop: MARGE_SEGMENT }] : []),
   ];
-  const onglet =
-    (ongletChoisi === 'buteurs' && !avecButeurs) || (ongletChoisi === 'classement' && !avecClassement) ? 'matchs' : ongletChoisi;
+  const onglet = ongletChoisi === 'classement' && !avecClassement ? 'matchs' : ongletChoisi;
 
   return (
     <View style={[styles.page, { backgroundColor: t.colors.background }]}>
@@ -133,21 +130,6 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
               </View>
             ))
           : null}
-
-        {onglet === 'buteurs' ? (
-          <Carte style={styles.margeHaut}>
-            {buteursDuCollectif(club, collectifId).map((b, i) => (
-              <View key={b.joueur} style={[styles.rangee, { borderBottomColor: t.colors.outlineVariant }]}>
-                <Text variant="bodyMedium" style={[styles.place, { color: t.colors.onSurfaceVariant }]}>{i + 1}</Text>
-                <View style={styles.nomClassement}>
-                  <Text variant="bodyLarge" style={{ color: t.colors.onSurface }}>{b.joueur}</Text>
-                  <Text variant="bodySmall" style={{ color: t.colors.onSurfaceVariant }}>{`${b.matchs} match${b.matchs > 1 ? 's' : ''}`}</Text>
-                </View>
-                <Text variant="titleMedium" style={[styles.nombre, { color: t.club.titre }]}>{b.buts}</Text>
-              </View>
-            ))}
-          </Carte>
-        ) : null}
       </ScrollView>
     </View>
   );
@@ -159,7 +141,6 @@ const styles = StyleSheet.create({
   onglets: { marginVertical: 12 },
   liste: { overflow: 'hidden' },
   action: { width: 48, height: 48, margin: 0, borderRadius: 24 },
-  margeHaut: { marginTop: 4 },
   abonner: { marginTop: 16 },
   rangee: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: StyleSheet.hairlineWidth },
   place: { minWidth: 24, fontVariant: ['tabular-nums'] },
