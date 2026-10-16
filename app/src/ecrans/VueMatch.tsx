@@ -16,6 +16,7 @@ const LOGO = require('../../assets/logo-clamart.png');
 interface Props {
   club: Club;
   matchId: string;
+  equipeId?: string;
   maintenant: Date;
   onRetour: () => void;
   onItineraire: (salle: Salle) => void;
@@ -32,9 +33,9 @@ function Carte({ children, remplie = true }: { children: ReactNode; remplie?: bo
   );
 }
 
-export function VueMatch({ club, matchId, maintenant, onRetour, onItineraire, onOuvrirLien, onAgenda }: Props) {
+export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItineraire, onOuvrirLien, onAgenda }: Props) {
   const t = useThemeClub();
-  const m = matchParId(club, matchId);
+  const m = matchParId(club, matchId, equipeId);
 
   if (!m) {
     return (
@@ -51,7 +52,7 @@ export function VueMatch({ club, matchId, maintenant, onRetour, onItineraire, on
   }
 
   const tous = matchsDuCollectif(club, m.equipe.collectif);
-  const index = tous.findIndex((x) => x.id === m.id);
+  const index = tous.findIndex((x) => x.id === m.id && x.equipe.id === m.equipe.id);
   const phrase = phraseResultat(m, serieEnCours(tous.slice(0, index + 1)));
   const adversaire = nomLisible(m.adversaire);
   const nous = `Clamart ${m.equipe.nom}`;

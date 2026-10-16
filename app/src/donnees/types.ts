@@ -19,6 +19,8 @@ export interface Match {
   journee: number | null;
   domicile: boolean;
   adversaire: string;
+  /** Écusson FFHB de l'adversaire (URL), absent s'il n'est pas publié. */
+  logo_adversaire?: string | null;
   score_nous: number | null;
   score_eux: number | null;
   mt_nous: number | null;

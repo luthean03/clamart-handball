@@ -31,6 +31,7 @@
   "notifications": {
     "fuseau": "Europe/Paris",
     "max_par_passage": 40,
-    "rappels_a_partir_de": "16:30"
+    "rappels_a_partir_de": "16:30",
+    "url_images": "https://luthean03.github.io/clamart-handball/notifs/"
   }
 }
