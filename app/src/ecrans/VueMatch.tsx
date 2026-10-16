@@ -1,17 +1,15 @@
 import type { ReactNode } from 'react';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, Surface, Text } from 'react-native-paper';
 import { CONTENU_BOUTON, NOM_SANS_COUPURE } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { libelleScoreLu } from '../composants/LigneMatch';
-import { Monogramme } from '../composants/Monogramme';
+import { Ecusson, EcussonClub } from '../composants/Ecusson';
 import { heureDuMatch, jourDuMatch, libelleJour } from '../donnees/dates';
 import { lierNumero, nomLisible, phraseResultat } from '../donnees/phrase';
 import { matchParId, matchsDuCollectif, scoreEnAttente, serieEnCours } from '../donnees/selecteurs';
 import type { Club, MatchAvecEquipe, Salle } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
-
-const LOGO = require('../../assets/logo-clamart.png');
 
 interface Props {
   club: Club;
@@ -78,7 +76,7 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
           <View style={styles.camps} accessible accessibilityLabel={libelleScoreLu(m)}>
             {camps.map((c) => (
               <View key={c.nom} style={styles.camp}>
-                {c.club ? <Image source={LOGO} style={styles.logo} accessibilityIgnoresInvertColors /> : <Monogramme nom={c.nom} taille={28} />}
+                {c.club ? <EcussonClub taille={28} /> : <Ecusson uri={m.logo_adversaire} nom={c.nom} taille={28} />}
                 <Text variant="bodyLarge" numberOfLines={2} {...NOM_SANS_COUPURE} style={[styles.nomCamp, { color: t.colors.onSurface }]}>{lierNumero(c.nom)}</Text>
                 <Text variant="headlineSmall" style={[styles.score, { color: t.club.titre }]}>{c.score ?? '–'}</Text>
               </View>
@@ -141,7 +139,6 @@ const styles = StyleSheet.create({
   carte: { padding: 16, gap: 8 },
   camps: { gap: 10, marginTop: 8 },
   camp: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  logo: { width: 28, height: 28, borderRadius: 14 },
   nomCamp: { flex: 1 },
   score: { fontVariant: ['tabular-nums'], minWidth: 36, textAlign: 'right' },
   salle: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 8 },

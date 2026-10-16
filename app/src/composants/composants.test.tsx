@@ -5,8 +5,9 @@ import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { URL_PLAY_STORE } from '../config';
 import { matchParId } from '../donnees/selecteurs';
-import { themeSombre } from '../theme/theme';
+import { POLICES, themeSombre } from '../theme/theme';
 import { BandeauEtat } from './BandeauEtat';
+import { Ecusson, EcussonClub } from './Ecusson';
 import { EtatSansDonnees } from './EtatSansDonnees';
 import { LigneMatch } from './LigneMatch';
 import { Forme } from './PastilleResultat';
@@ -166,4 +167,57 @@ test('les boutons de l’état sans données ont une zone tactile d’au moins 4
   screen.unmount();
   rendu(<EtatSansDonnees chargement={false} erreur={Object.assign(new Error('x'), { name: 'SchemaInconnu' })} reessayer={jest.fn()} />);
   expect(contenuDuBouton(screen.getByText('Mettre à jour')).minHeight).toBeGreaterThanOrEqual(48);
+});
+
+test('écusson : image de l’adversaire quand la FFHB la publie', () => {
+  rendu(<Ecusson uri="https://media-logos-clubs.ffhandball.fr/128/a.webp" nom="Cellois HB" taille={24} />);
+  const image = screen.getByTestId('ecusson-image');
+  expect(image.props.source).toEqual({ uri: 'https://media-logos-clubs.ffhandball.fr/128/a.webp' });
+  expect(StyleSheet.flatten(image.props.style)).toMatchObject({ width: 24, height: 24, borderRadius: 12 });
+});
+
+test('écusson : retombe sur les initiales si l’image échoue', () => {
+  rendu(<Ecusson uri="https://x/a.webp" nom="Cellois HB" taille={24} />);
+  fireEvent(screen.getByTestId('ecusson-image'), 'error');
+  expect(screen.getByTestId('monogramme', { includeHiddenElements: true })).toBeOnTheScreen();
+  expect(screen.queryByTestId('ecusson-image')).toBeNull();
+});
+
+test('écusson : initiales sans URL', () => {
+  rendu(<Ecusson uri={null} nom="Ent. Suresnes / Nanterre" taille={24} />);
+  expect(screen.getByText('ES', { includeHiddenElements: true })).toBeOnTheScreen();
+  expect(screen.queryByTestId('ecusson-image')).toBeNull();
+});
+
+test('écusson du club : disque rond de la taille demandée, libellé seulement si on le fournit', () => {
+  rendu(<EcussonClub taille={48} libelle="Écusson du Clamart Handball" />);
+  const image = screen.getByTestId('ecusson-club');
+  expect(StyleSheet.flatten(image.props.style)).toMatchObject({ width: 48, height: 48, borderRadius: 24 });
+  expect(screen.getByLabelText('Écusson du Clamart Handball')).toBeOnTheScreen();
+  screen.unmount();
+  rendu(<EcussonClub taille={24} />);
+  expect(screen.getByTestId('ecusson-club').props.accessibilityLabel).toBeUndefined();
+});
+
+test('ligne de match : l’écusson de l’adversaire vient de logo_adversaire', () => {
+  const avec = { ...m('2644292'), logo_adversaire: 'https://media-logos-clubs.ffhandball.fr/128/suresnes.webp' };
+  rendu(<LigneMatch match={avec} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  expect(screen.getByTestId('ecusson-image').props.source).toEqual({ uri: 'https://media-logos-clubs.ffhandball.fr/128/suresnes.webp' });
+  expect(screen.getByTestId('ecusson-club')).toBeOnTheScreen();
+  expect(screen.queryByTestId('monogramme', { includeHiddenElements: true })).toBeNull();
+});
+
+test('ligne de match : date au-dessus de l’heure', () => {
+  rendu(<LigneMatch match={m('2734038')} maintenant={MAR_SOIR} onPress={jest.fn()} afficherDate />);
+  const statut = screen.getByTestId('statut');
+  const date = within(statut).getByText('17/10');
+  const heure = within(statut).getByText('18:00');
+  expect(within(statut).getAllByText(/\d/).map((x) => x.props.children)).toEqual(['17/10', '18:00']);
+  expect(date.props.style).toEqual(heure.props.style);
+  expect(StyleSheet.flatten(date.props.style).fontFamily).not.toBe(POLICES.gras);
+});
+
+test('ligne de match : pas de date sans afficherDate', () => {
+  rendu(<LigneMatch match={m('2734038')} maintenant={MAR_SOIR} onPress={jest.fn()} />);
+  expect(screen.queryByText('17/10')).toBeNull();
 });

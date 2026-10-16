@@ -1,8 +1,9 @@
-import { Image, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, IconButton, Surface, Text } from 'react-native-paper';
 import { BandeauEtat } from '../composants/BandeauEtat';
 import { CarteEquipe } from '../composants/CarteEquipe';
 import { CONTENU_BOUTON } from '../composants/commun';
+import { EcussonClub } from '../composants/Ecusson';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
 import { ProtectionBarreEtat } from '../composants/ProtectionBarreEtat';
@@ -11,8 +12,6 @@ import { resumeCarte } from '../donnees/resume';
 import { equipePrincipale, formeRecente, matchsDuCollectif, matchsDuWeekend } from '../donnees/selecteurs';
 import type { Club, MatchAvecEquipe } from '../donnees/types';
 import { useThemeClub } from '../theme/theme';
-
-const LOGO = require('../../assets/logo-clamart.png');
 
 export interface PropsAccueil {
   club: Club;
@@ -44,7 +43,7 @@ export function VueAccueil(p: PropsAccueil) {
         refreshControl={<RefreshControl refreshing={p.rafraichissement} onRefresh={p.rafraichir} colors={[t.colors.primary]} />}
       >
         <View style={styles.entete}>
-          <Image source={LOGO} style={styles.logo} accessible accessibilityLabel="Écusson du Clamart Handball" accessibilityIgnoresInvertColors />
+          <EcussonClub taille={48} libelle="Écusson du Clamart Handball" />
           <View style={styles.titres}>
             <Text variant="headlineSmall" style={{ color: t.club.titre }} accessibilityRole="header">
               {salutation(p.maintenant)}
@@ -112,7 +111,6 @@ const styles = StyleSheet.create({
   page: { flex: 1 },
   contenu: { paddingHorizontal: 16, paddingTop: 12, paddingBottom: 32 },
   entete: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  logo: { width: 48, height: 48, borderRadius: 24 },
   titres: { flex: 1 },
   reglages: { width: 48, height: 48, margin: 0, borderRadius: 24 },
   invitation: { padding: 16, gap: 6 },
