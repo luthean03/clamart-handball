@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Portal, Snackbar } from 'react-native-paper';
 import { ouvrirExterne } from '../actions/actions';
 import type { MatchAvecEquipe } from '../donnees/types';
-import { useDecalageBandeau } from './commun';
+import { DECALAGE_BANDEAU } from './commun';
 import { PanneauAgenda } from './PanneauAgenda';
 
 interface Cible {
@@ -20,7 +20,6 @@ export function useAgenda({ surOnglets = false }: { surOnglets?: boolean } = {})
   const [cible, setCible] = useState<Cible>({ collectif: '' });
   const [visible, setVisible] = useState(false);
   const [echec, setEchec] = useState(false);
-  const decalage = useDecalageBandeau();
 
   const panneau = (
     <>
@@ -35,7 +34,7 @@ export function useAgenda({ surOnglets = false }: { surOnglets?: boolean } = {})
         }}
       />
       <Portal>
-        <Snackbar visible={echec} onDismiss={() => setEchec(false)} duration={4000} wrapperStyle={surOnglets ? decalage : undefined}>
+        <Snackbar visible={echec} onDismiss={() => setEchec(false)} duration={4000} wrapperStyle={surOnglets ? DECALAGE_BANDEAU : undefined}>
           Impossible d'ouvrir l'agenda
         </Snackbar>
       </Portal>

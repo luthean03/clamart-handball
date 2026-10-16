@@ -15,6 +15,7 @@ jest.mock('expo-router', () => {
     __routeur: routeur,
     useRouter: () => routeur,
     useLocalSearchParams: jest.fn(() => ({})),
+    useSegments: jest.fn(() => []),
     Redirect: Vide,
     Stack: Object.assign(Vide, { Screen: Vide }),
     Tabs: Object.assign(Vide, { Screen: Vide }),

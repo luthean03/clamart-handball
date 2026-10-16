@@ -1,6 +1,7 @@
 import { act, fireEvent, screen } from '@testing-library/react-native';
 import { Text } from 'react-native';
 import { club } from '../../test/donnees';
+import { basDuBandeau } from '../../test/bandeau';
 import { rendu } from '../../test/rendu';
 import { ouvrirExterne, ouvrirItineraire } from '../actions/actions';
 import { lienMatch, lienSaison } from '../actions/agenda';
@@ -110,6 +111,7 @@ test('Accueil : si le téléphone ne peut pas ouvrir le lien, un message le dit'
   expect(screen.queryByText("Impossible d'ouvrir l'agenda")).toBeNull();
   fireEvent.press(screen.getByText('Fichier .ics'));
   expect(await screen.findByText("Impossible d'ouvrir l'agenda")).toBeOnTheScreen();
+  expect(basDuBandeau("Impossible d'ouvrir l'agenda")).toBe(80);   // au-dessus de la barre d'onglets
   await panneauFerme();
 });
 
@@ -155,6 +157,7 @@ test('Le club : si le téléphone ne peut pas ouvrir le lien, un message le dit'
   expect(screen.queryByText("Impossible d'ouvrir le lien")).toBeNull();
   fireEvent.press(screen.getByText('Facebook'));
   expect(await screen.findByText("Impossible d'ouvrir le lien")).toBeOnTheScreen();
+  expect(basDuBandeau("Impossible d'ouvrir le lien")).toBe(80);   // au-dessus de la barre d'onglets
 });
 
 test('Le club : si l’itinéraire ne s’ouvre pas, un message le dit', async () => {
