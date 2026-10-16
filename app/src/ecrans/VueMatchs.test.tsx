@@ -128,6 +128,49 @@ test('quand les données arrivent, la liste s’ouvre sur aujourd’hui', () => 
   expect(data![initialScrollIndex!]).toEqual({ type: 'aujourdhui' });
 });
 
+test('repli : au plus 3 nouveaux essais, le décalage estimé reste à chaque échec', () => {
+  jest.useFakeTimers();
+  const versDecalage = jest.spyOn(FlatList.prototype, 'scrollToOffset').mockImplementation(() => {});
+  const versIndex = jest.spyOn(FlatList.prototype, 'scrollToIndex').mockImplementation(() => {});
+  try {
+    matchs();
+    for (let essai = 0; essai < 5; essai++) {
+      act(() => liste().onScrollToIndexFailed!({ index: 30, averageItemLength: 80, highestMeasuredFrameIndex: 10 }));
+      act(() => jest.runOnlyPendingTimers());
+    }
+    expect(versIndex).toHaveBeenCalledTimes(3);
+    expect(versDecalage).toHaveBeenCalledTimes(5);
+  } finally {
+    versDecalage.mockRestore();
+    versIndex.mockRestore();
+    jest.useRealTimers();
+  }
+});
+
+/** Un seul match daté par équipe : la liste rétrécit nettement. */
+const unMatchParEquipe = (c: Club): Club => ({
+  ...c,
+  equipes: c.equipes.map((e) => ({ ...e, matchs: e.matchs.filter((m) => m.date !== null).slice(0, 1) })),
+});
+
+test('repli : pas de nouvel essai si les données ont rétréci sous l’index', () => {
+  jest.useFakeTimers();
+  const versIndex = jest.spyOn(FlatList.prototype, 'scrollToIndex').mockImplementation(() => {});
+  try {
+    rendu(<Hote avant={club} apres={unMatchParEquipe(club)} />);
+    const ancienne = liste().data!.length;
+    fireEvent.press(screen.getByText('Données reçues'));
+    expect(liste().data!.length).toBeLessThan(ancienne - 1);
+    // Échec sur un index valable avant le rétrécissement, devenu hors de la liste.
+    act(() => liste().onScrollToIndexFailed!({ index: ancienne - 1, averageItemLength: 80, highestMeasuredFrameIndex: 10 }));
+    act(() => jest.runOnlyPendingTimers());
+    expect(versIndex).not.toHaveBeenCalled();
+  } finally {
+    versIndex.mockRestore();
+    jest.useRealTimers();
+  }
+});
+
 // Vue mois
 
 const ouvrirMois = (props: Partial<Parameters<typeof VueMatchs>[0]> = {}) => {

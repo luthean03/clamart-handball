@@ -115,19 +115,31 @@ interface PropsListe {
   refreshControl?: ReactElement<RefreshControlProps>;
 }
 
+const NOUVEAUX_ESSAIS_MAX = 3;
+
 /** Toute la saison, jour par jour, ouverte au niveau du trait « Aujourd'hui ». */
 function ListeSaison({ elements, maintenant, onOuvrirMatch, refreshControl }: PropsListe) {
   const t = useThemeClub();
   const liste = useRef<FlatList<ElementListe>>(null);
   const nouvelEssai = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const essais = useRef(0);
+  // Lue au moment du nouvel essai, pour ne pas viser une ligne qui n'existe plus après un rétrécissement.
+  const nombre = useRef(elements.length);
+  useEffect(() => {
+    nombre.current = elements.length;
+  }, [elements.length]);
   useEffect(() => () => clearTimeout(nouvelEssai.current), []);
 
   // Sans hauteur fixe des lignes, le trait peut être hors des cellules déjà mesurées : on défile d'abord à une
   // position estimée (les cellules voisines se dessinent et se mesurent), puis on vise à nouveau le trait.
   const echec = useCallback((info: { index: number; averageItemLength: number }) => {
     liste.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: false });
+    if (essais.current >= NOUVEAUX_ESSAIS_MAX) return;
+    essais.current += 1;
     clearTimeout(nouvelEssai.current);
-    nouvelEssai.current = setTimeout(() => liste.current?.scrollToIndex({ index: info.index, animated: false }), 100);
+    nouvelEssai.current = setTimeout(() => {
+      if (info.index < nombre.current) liste.current?.scrollToIndex({ index: info.index, animated: false });
+    }, 100);
   }, []);
 
   const rendre: ListRenderItem<ElementListe> = useCallback(
