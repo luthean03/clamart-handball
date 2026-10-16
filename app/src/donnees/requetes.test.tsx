@@ -131,7 +131,7 @@ test('format trop récent avec des données en cache : mise à jour requise, pas
   const client = nouveauClient();
   client.setQueryData(CLE_CLUB, fixtureBrute);
   globalThis.fetch = jest.fn(() =>
-    Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({ ...fixtureBrute, version_schema: 3 }) }),
+    Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({ ...fixtureBrute, version_schema: 4 }) }),
   ) as unknown as typeof fetch;
   const { result } = renderHook(() => useClub(), { wrapper: enveloppe(client) });
   expect(result.current.majRequise).toBe(false);

@@ -49,6 +49,27 @@ export function libelleWeekend(w: Weekend): string {
     : `${s.getUTCDate()} ${MOIS[s.getUTCMonth()]}–${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}`;
 }
 
+const JOURS_BANDEAU = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'];
+const MOIS_LONGS = [
+  'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre',
+];
+
+/** « Dim. 18 octobre · 15:30 », en heure de Paris. */
+export function libelleBandeau(iso: string): string {
+  const jour = jourDuMatch(iso);
+  const d = minuitUTC(jour);
+  return `${JOURS_BANDEAU[d.getUTCDay()]} ${d.getUTCDate()} ${MOIS_LONGS[d.getUTCMonth()]} · ${heureDuMatch(iso)}`;
+}
+
+/** « aujourd’hui », « demain » ou « dans N jours » entre deux 'AAAA-MM-JJ'. */
+export function compteARebours(jourMatch: string, aujourdhui: string): string {
+  const n = Math.round((minuitUTC(jourMatch).getTime() - minuitUTC(aujourdhui).getTime()) / 86_400_000);
+  return n <= 0 ? 'aujourd’hui' : n === 1 ? 'demain' : `dans ${n} jours`;
+}
+
+/** « 17/10 », en heure de Paris. */
+export const dateCourte = (iso: string): string => `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
+
 export function libelleMiseAJour(iso: string, maintenant: Date): string {
   const d = new Date(iso);
   const heure = `${deux(d.getHours())}:${deux(d.getMinutes())}`;

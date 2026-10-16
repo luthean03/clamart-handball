@@ -1,6 +1,6 @@
 import {
-  decalerJour, donneesAnciennes, heureDuMatch, jourDuMatch, jourLocal, libelleJour, libelleMiseAJour,
-  libelleWeekend, salutation, weekendDeReference,
+  compteARebours, dateCourte, decalerJour, donneesAnciennes, heureDuMatch, jourDuMatch, jourLocal, libelleBandeau,
+  libelleJour, libelleMiseAJour, libelleWeekend, salutation, weekendDeReference,
 } from './dates';
 
 const W_10_11 = { vendredi: '2026-10-09', samedi: '2026-10-10', dimanche: '2026-10-11' };
@@ -51,3 +51,22 @@ test('salutation selon l’heure', () => {
   expect(salutation(new Date('2026-10-13T17:59:00+02:00'))).toBe('Bonjour !');
   expect(salutation(new Date('2026-10-13T18:00:00+02:00'))).toBe('Bonsoir !');
 });
+
+test('libellé du bandeau de date', () => {
+  expect(libelleBandeau('2026-10-18T15:30:00+02:00')).toBe('Dim. 18 octobre · 15:30');
+  expect(libelleBandeau('2026-11-07T18:30:00+01:00')).toBe('Sam. 7 novembre · 18:30');
+});
+
+test('compte à rebours', () => {
+  expect(compteARebours('2026-10-16', '2026-10-16')).toBe('aujourd’hui');
+  expect(compteARebours('2026-10-17', '2026-10-16')).toBe('demain');
+  expect(compteARebours('2026-10-18', '2026-10-16')).toBe('dans 2 jours');
+  expect(compteARebours('2026-11-07', '2026-10-16')).toBe('dans 22 jours');
+});
+
+test('compte à rebours : sans dérive au changement d’heure', () => {
+  expect(compteARebours('2026-10-26', '2026-10-24')).toBe('dans 2 jours');
+  expect(compteARebours('2026-03-30', '2026-03-28')).toBe('dans 2 jours');
+});
+
+test('date courte', () => expect(dateCourte('2026-10-17T18:00:00+02:00')).toBe('17/10'));

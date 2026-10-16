@@ -1,4 +1,4 @@
-/** Contrat de club.json, version_schema 2 (produit par collecteur/collecte.py). */
+/** Contrat de club.json, version_schema 3 (produit; le schéma 2 reste lisible) par collecteur/collecte.py). */
 export type Resultat = 'V' | 'N' | 'D';
 
 export interface Salle {
@@ -29,8 +29,10 @@ export interface Match {
   url_ffhb: string;
   feuille_de_match: string | null;
   salle?: Salle | null;
-  /** Seniors uniquement. */
+  /** Nos buteurs (schéma 3 : toutes catégories ; schéma 2 : seniors uniquement). */
   buteurs?: Buteur[];
+  /** Buteurs de l'équipe adverse (schéma 3). */
+  buteurs_adverses?: Buteur[];
 }
 
 export interface LigneClassement {
@@ -69,7 +71,8 @@ export interface Equipe {
   phase: string | null;
   poule: string | null;
   url_ffhb: string;
-  stats_joueurs: boolean;
+  /** Schéma 2 seulement, plus lu : les buteurs sont dans les matchs. */
+  stats_joueurs?: boolean;
   classement: LigneClassement[] | null;
   matchs: Match[];
   bilan: Bilan;
@@ -105,7 +108,8 @@ export interface Club {
   source: string;
   collectifs: Collectif[];
   equipes: Equipe[];
-  buteurs_club: ButeurClub[];
+  /** Schéma 2 seulement (absent en schéma 3). */
+  buteurs_club?: ButeurClub[];
   erreurs: string[];
 }
 
