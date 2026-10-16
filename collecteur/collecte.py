@@ -14,6 +14,7 @@ dans collecteur/cache/ : ils ne sont téléchargés qu'une fois.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
@@ -174,13 +175,20 @@ def buteurs_de_la_rencontre(stats: list[dict], equipe_interne) -> tuple[list[dic
     return tri(nous), tri(eux)
 
 
+def empreinte_masques() -> str:
+    """Empreinte de la liste des joueurs masqués ('' si vide) : le cache ne garde que des noms réduits,
+    il ne peut donc pas être re-masqué, seulement retéléchargé quand la liste change."""
+    return hashlib.sha1("\n".join(sorted(MASQUES)).encode("utf-8")).hexdigest() if MASQUES else ""
+
+
 def salle_et_buteurs(match_path: str, equipe_interne, joue: bool) -> dict:
     """Page d'un match : salle + buteurs des deux équipes (match joué). Cache permanent si le match est joué."""
     rid = match_path.rstrip("/").split("rencontre-")[-1]
     fichier = CACHE / f"{rid}.json"
     if joue and fichier.exists():
         info = json.loads(fichier.read_text(encoding="utf-8"))
-        if info.get("buteurs_adverses") is not None:            # ancien cache (avant le schéma 3) : on retélécharge
+        # ancien cache (avant le schéma 3) ou liste de joueurs masqués modifiée depuis : on retélécharge
+        if info.get("buteurs_adverses") is not None and info.get("masques") == empreinte_masques():
             return info
     d = ff.components(match_path)
     eq = (d.get("competitions---rencontre-salle") or {}).get("equipement") or {}
@@ -190,6 +198,7 @@ def salle_et_buteurs(match_path: str, equipe_interne, joue: bool) -> dict:
     if joue:
         stats = (d.get("competitions---rencontre-liste-joueurs") or {}).get("statsJoueurs") or []
         info["buteurs"], info["buteurs_adverses"] = buteurs_de_la_rencontre(stats, equipe_interne)
+        info["masques"] = empreinte_masques()
         CACHE.mkdir(parents=True, exist_ok=True)
         fichier.write_text(json.dumps(info, ensure_ascii=False), encoding="utf-8")
     return info

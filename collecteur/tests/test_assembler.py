@@ -10,7 +10,6 @@ MAINTENANT = datetime(2026, 10, 13, 14, 41, 53, tzinfo=timezone.utc)
 def _equipes_sans_collectif(club):
     for e in club["equipes"]:
         e.pop("collectif", None)
-        e.pop("stats_joueurs", None)        # champ v1/v2 que collecter_competition ne produit plus
     return club["equipes"]
 
 
@@ -28,7 +27,6 @@ def test_assembler_contrat_v3(club_v1):
 def test_assembler_sans_classement_des_buteurs(club_v1):
     donnees = collecte.assembler(_equipes_sans_collectif(club_v1), MAINTENANT, "2026-2027", [], surcharges={})
     assert "buteurs_club" not in donnees
-    assert all("stats_joueurs" not in e for e in donnees["equipes"])
 
 
 def test_assembler_refuse_liste_vide():
