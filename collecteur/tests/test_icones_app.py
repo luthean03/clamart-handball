@@ -20,11 +20,13 @@ def test_icone_est_un_ecusson_rond_sur_blanc_sans_transparence():
     assert img.getpixel((512, 512 - 400)) != (255, 255, 255)                    # l'écusson occupe le centre (bande rouge à 400 du centre)
 
 
-def test_premier_plan_est_un_disque_de_640_centre_et_transparent_autour():
+def test_premier_plan_est_un_disque_de_640_centre_sur_blanc_opaque():
+    # Opaque : certains lanceurs teintent la couche de fond (anneau rose vu sur l'émulateur), le premier plan la cache.
     img = icones_app.premier_plan()
     assert img.size == (1024, 1024) and img.mode == "RGBA"
-    assert img.getchannel("A").getbbox() == (192, 192, 832, 832)                # diamètre 640, centré : zone sûre adaptative
-    assert img.getpixel((192, 192))[3] == 0 and img.getpixel((512, 512))[3] == 255
+    assert img.getchannel("A").getextrema() == (255, 255)
+    assert img.getpixel((10, 10)) == (255, 255, 255, 255) and img.getpixel((192, 192)) == (255, 255, 255, 255)
+    assert img.getpixel((512, 512 - 300)) != (255, 255, 255, 255)               # diamètre 640, centré : zone sûre adaptative
 
 
 def test_pas_de_halo_rose_au_bord_du_disque():

@@ -3,8 +3,9 @@
 Sorties (app/assets/) :
   - logo-rond.png (512 × 512) : l'écusson détouré en disque sur fond transparent ;
   - icone/icone.png (1024 × 1024) : l'écusson rond sur blanc, sans transparence (icône de l'app, iOS) ;
-  - icone/premier-plan.png (1024 × 1024) : l'écusson rond de 640 de diamètre, centré, sur fond transparent
-    (premier plan de l'icône adaptative Android : le disque tient dans la zone sûre, que le masque du lanceur ne rogne pas) ;
+  - icone/premier-plan.png (1024 × 1024) : l'écusson rond de 640 de diamètre, centré, sur blanc opaque
+    (premier plan de l'icône adaptative Android : le disque tient dans la zone sûre, que le masque du lanceur ne rogne pas ;
+    opaque parce que certains lanceurs teintent la couche de fond, ce qui donnait l'anneau rose) ;
   - icone/monochrome.png (1024 × 1024) : la silhouette blanche du joueur sur fond transparent (icône thématique Android 13).
 Déterministe : mêmes entrées, même fichier.
 """
@@ -48,7 +49,7 @@ def icone() -> Image.Image:
 
 
 def premier_plan() -> Image.Image:
-    return _ecusson_centre(DIAMETRE_PREMIER_PLAN, (0, 0, 0, 0))
+    return _ecusson_centre(DIAMETRE_PREMIER_PLAN, (255, 255, 255, 255))
 
 
 def monochrome() -> Image.Image:
