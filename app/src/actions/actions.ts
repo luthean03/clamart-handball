@@ -1,5 +1,3 @@
-import * as Calendar from 'expo-calendar/legacy';
-import * as Clipboard from 'expo-clipboard';
 import * as WebBrowser from 'expo-web-browser';
 import { Linking, Platform } from 'react-native';
 import { nomLisible } from '../donnees/phrase';
@@ -36,11 +34,9 @@ export function evenementAgenda(m: MatchAvecEquipe) {
   };
 }
 
-/** Ouvre l'écran d'ajout d'événement du téléphone : aucune permission d'agenda n'est demandée. */
-export const ajouterAgenda = (m: MatchAvecEquipe) => Calendar.createEventInCalendarAsync(evenementAgenda(m));
 export const ouvrirLien = (url: string) => WebBrowser.openBrowserAsync(url);
-export const urlAgenda = (base: string, equipeId: string) => `${base}${equipeId}.ics`;
-export const copier = (texte: string) => Clipboard.setStringAsync(texte);
+/** Ouvre une adresse dans l'application qui la gère (Google Agenda, Calendrier, téléchargement du .ics…). */
+export const ouvrirExterne = (url: string) => Linking.openURL(url);
 
 /** Les actions rendent une promesse : un refus (pas de navigateur, pas d'agenda) ne doit jamais devenir une rejection non gérée. */
 export const sansRejet = (action: () => Promise<unknown>) => {

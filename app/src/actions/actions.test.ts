@@ -1,10 +1,7 @@
-import * as Calendar from 'expo-calendar/legacy';
+import { Linking } from 'react-native';
 import { club } from '../../test/donnees';
 import { matchParId } from '../donnees/selecteurs';
-import { ajouterAgenda, evenementAgenda, sansRejet, urlAgenda, urlItineraire } from './actions';
-
-// SDK 57 : l'export racine de expo-calendar lève une erreur à l'exécution ; l'API utilisable est dans /legacy.
-jest.mock('expo-calendar/legacy', () => ({ createEventInCalendarAsync: jest.fn(() => Promise.resolve({ action: 'saved' })) }));
+import { evenementAgenda, ouvrirExterne, sansRejet, urlItineraire } from './actions';
 
 const salle = { nom: 'GYMNASE DU PETIT CLAMART', adresse: '1 RUE DE L’EXEMPLE 92140 CLAMART' };
 
@@ -29,15 +26,11 @@ test('événement d’agenda : match à l’extérieur', () => {
   expect(evenementAgenda(matchParId(club, '2729291')!).title).toBe('Cellois HB – Clamart Seniors F 1');
 });
 
-test('ajouterAgenda ouvre l’écran système', async () => {
-  await ajouterAgenda(matchParId(club, '2729291')!);
-  expect(Calendar.createEventInCalendarAsync).toHaveBeenCalledWith(expect.objectContaining({ title: 'Cellois HB – Clamart Seniors F 1' }));
-});
-
-test('url de l’agenda d’une équipe', () => {
-  expect(urlAgenda('https://x.github.io/clamart-handball/data/agenda/', '32542-clamart-handball-1')).toBe(
-    'https://x.github.io/clamart-handball/data/agenda/32542-clamart-handball-1.ics',
-  );
+test('ouvrirExterne confie l’adresse au système', async () => {
+  const ouvrir = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+  await ouvrirExterne('webcal://exemple.fr/agenda/seniors-f-1.ics');
+  expect(ouvrir).toHaveBeenCalledWith('webcal://exemple.fr/agenda/seniors-f-1.ics');
+  ouvrir.mockRestore();
 });
 
 test('sansRejet : lance l’action et avale son refus (jamais de rejection non gérée)', async () => {

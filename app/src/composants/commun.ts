@@ -14,3 +14,6 @@ export const NOM_SANS_COUPURE: Pick<TextProps, 'android_hyphenationFrequency' | 
   android_hyphenationFrequency: 'none',
   textBreakStrategy: 'simple',
 };
+
+/** Les segments de Paper (40 dp) gagnent 6 dp de marge de toucher de chaque côté : 52 dp. */
+export const MARGE_SEGMENT = { top: 6, bottom: 6 };

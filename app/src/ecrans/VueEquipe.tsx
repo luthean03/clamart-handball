@@ -1,12 +1,12 @@
 import { useState, type ReactNode } from 'react';
 import { ScrollView, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
-import { Appbar, Button, List, SegmentedButtons, Snackbar, Surface, Text } from 'react-native-paper';
-import { CONTENU_BOUTON, NOM_SANS_COUPURE } from '../composants/commun';
+import { Appbar, Button, SegmentedButtons, Surface, Text } from 'react-native-paper';
+import { CONTENU_BOUTON, MARGE_SEGMENT, NOM_SANS_COUPURE } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
 import { lierNumero, nomLisible, ordinal, permettreCesure, rangAffiche } from '../donnees/phrase';
 import { buteursDuCollectif, equipePrincipale, equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
-import type { Club, Equipe } from '../donnees/types';
+import type { Club } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
 
 interface Props {
@@ -17,14 +17,11 @@ interface Props {
   onBasculer: () => void;
   onOuvrirMatch: (id: string) => void;
   onRetour: () => void;
-  onCopierAgenda: (e: Equipe) => Promise<unknown>;
+  /** « S'abonner au calendrier » : ouvre le panneau d'agenda, en mode saison. */
+  onAgenda: () => void;
 }
 
 type Onglet = 'matchs' | 'classement' | 'buteurs';
-type Retour = 'copie' | 'echec';
-
-/** Les segments de Paper (40 dp) gagnent 6 dp de marge de toucher de chaque côté : 52 dp. */
-const MARGE_SEGMENT = { top: 6, bottom: 6 };
 
 function Carte({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
   const t = useThemeClub();
@@ -35,11 +32,10 @@ function Carte({ children, style }: { children: ReactNode; style?: StyleProp<Vie
   );
 }
 
-export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, onOuvrirMatch, onRetour, onCopierAgenda }: Props) {
+export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, onOuvrirMatch, onRetour, onAgenda }: Props) {
   const t = useThemeClub();
   // On ne retient que le choix de l'utilisateur : l'onglet affiché est recalculé depuis les données.
   const [ongletChoisi, setOngletChoisi] = useState<Onglet>('matchs');
-  const [retour, setRetour] = useState<Retour>();
   const collectif = club.collectifs.find((c) => c.id === collectifId);
 
   if (!collectif) {
@@ -68,14 +64,6 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
   ];
   const onglet =
     (ongletChoisi === 'buteurs' && !avecButeurs) || (ongletChoisi === 'classement' && !avecClassement) ? 'matchs' : ongletChoisi;
-  const copier = async (e: Equipe) => {
-    try {
-      await onCopierAgenda(e);
-      setRetour('copie');
-    } catch {
-      setRetour('echec');
-    }
-  };
 
   return (
     <View style={[styles.page, { backgroundColor: t.colors.background }]}>
@@ -104,21 +92,9 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
                 <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={maintenant} afficherCompetition onPress={() => onOuvrirMatch(m.id)} />
               ))}
             </Carte>
-            <EnTeteSection titre="Agendas à ajouter au téléphone" />
-            <Carte>
-              {equipes.map((e) => (
-                <List.Item
-                  key={e.id}
-                  title={e.detail}
-                  description="Lien .ics, à coller dans votre application d'agenda"
-                  right={() => (
-                    <Button mode="text" contentStyle={CONTENU_BOUTON} onPress={() => copier(e)}>
-                      Copier le lien
-                    </Button>
-                  )}
-                />
-              ))}
-            </Carte>
+            <Button mode="contained-tonal" icon="calendar-sync" contentStyle={CONTENU_BOUTON} style={styles.abonner} onPress={onAgenda}>
+              S'abonner au calendrier
+            </Button>
           </>
         ) : null}
 
@@ -173,9 +149,6 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
           </Carte>
         ) : null}
       </ScrollView>
-      <Snackbar visible={retour !== undefined} onDismiss={() => setRetour(undefined)} duration={3000}>
-        {retour === 'echec' ? 'Impossible de copier le lien' : "Lien de l'agenda copié"}
-      </Snackbar>
     </View>
   );
 }
@@ -187,6 +160,7 @@ const styles = StyleSheet.create({
   liste: { overflow: 'hidden' },
   action: { width: 48, height: 48, margin: 0, borderRadius: 24 },
   margeHaut: { marginTop: 4 },
+  abonner: { marginTop: 16 },
   rangee: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: StyleSheet.hairlineWidth },
   place: { minWidth: 24, fontVariant: ['tabular-nums'] },
   nomClassement: { flex: 1 },
