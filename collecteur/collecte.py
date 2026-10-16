@@ -364,7 +364,7 @@ def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]])
 
 
 def ecrire_agendas(dossier: Path, equipes: list[dict], collectifs: list[dict]) -> None:
-    """Tous les .ics : par équipe, par collectif (matchs datés, passés et à venir), club.ics et, dans match/,
+    """Tous les .ics : par équipe, par collectif (matchs datés, passés et à venir ; fichier écrit même sans match), club.ics et, dans match/,
     un fichier par match daté sans résultat (match/ est vidé puis réécrit : un match joué disparaît)."""
     club = CONFIG["club"]["nom"]
     dossier.mkdir(parents=True, exist_ok=True)
@@ -372,12 +372,12 @@ def ecrire_agendas(dossier: Path, equipes: list[dict], collectifs: list[dict]) -
         ecrire_ics(dossier / f"{eq['id']}.ics", f"{club} - {eq['nom']}", [(eq, m) for m in eq["matchs"]])
     ecrire_ics(dossier / "club.ics", club, [(eq, m) for eq in equipes for m in eq["matchs"]])
     for col in collectifs:
-        evenements = [(eq, m) for eq in equipes if eq["collectif"] == col["id"] for m in eq["matchs"] if m["date"]]
-        if evenements:
-            ecrire_ics(dossier / f"{col['id']}.ics", f"{club} - {col['nom']}", evenements)
+        # toujours écrit, même sans match daté : l'app s'abonne à ce fichier pour toute équipe (un 404 casserait l'abonnement)
+        ecrire_ics(dossier / f"{col['id']}.ics", f"{club} - {col['nom']}",
+                   [(eq, m) for eq in equipes if eq["collectif"] == col["id"] for m in eq["matchs"]])
     par_match = dossier / "match"
     shutil.rmtree(par_match, ignore_errors=True)
-    par_match.mkdir()
+    par_match.mkdir(parents=True, exist_ok=True)
     for eq in equipes:
         for m in eq["matchs"]:
             if m["date"] and not m["resultat"]:
