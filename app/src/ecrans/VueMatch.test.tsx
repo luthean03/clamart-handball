@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { fireEvent, screen } from '@testing-library/react-native';
+import { fireEvent, screen, within } from '@testing-library/react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
-import type { Club } from '../donnees/types';
+import type { Buteur, Club } from '../donnees/types';
 import { matchParId } from '../donnees/selecteurs';
 import { VueMatch } from './VueMatch';
 
@@ -19,7 +19,7 @@ test('match joué : phrase, score, mi-temps, salle, feuille de match', () => {
   expect(screen.getByText('Victoire contre Ent. Suresnes / Nanterre')).toBeOnTheScreen();
   expect(screen.getByText('Mi-temps 16–9')).toBeOnTheScreen();
   expect(screen.getByText('dimanche 11 oct. à 16:15')).toBeOnTheScreen();
-  expect(screen.getByText('Gymnase du Petit Clamart')).toBeOnTheScreen();
+  expect(screen.getByText('Gymnase du Petit Clamart · domicile')).toBeOnTheScreen();
   fireEvent.press(screen.getByText('Itinéraire'));
   expect(p.onItineraire).toHaveBeenCalledWith(m.salle);
   fireEvent.press(screen.getByText('Feuille de match'));
@@ -47,16 +47,78 @@ test('match à venir : le score est lu « contre »', () => {
   expect(screen.getByLabelText(`Clamart ${m.equipe.nom} contre Association Sportive St-Cyr/Fontenay Handball 78`)).toBeOnTheScreen();
 });
 
-test('match de jeunes : aucun nom de joueur', () => {
+test('match sans buteurs publiés : pas de section Buteurs', () => {
   vue('2740456');
   expect(screen.getByText('Défaite contre Paris St-Germain HB 3')).toBeOnTheScreen();
   expect(screen.queryByText('Buteurs')).toBeNull();
 });
 
-test('les buteurs ne s’affichent que si les stats joueurs sont strictement activées', () => {
-  const sansStats: Club = { ...club, equipes: club.equipes.map((e) => ({ ...e, stats_joueurs: undefined as unknown as boolean })) };
-  vue('2644292', sansStats);
+/** Le match 2644292 avec nos buteurs et ceux de l'adversaire (schéma 3). */
+function clubAvecButeurs(nous: Buteur[], eux?: Buteur[]): Club {
+  return {
+    ...club,
+    equipes: club.equipes.map((e) => ({
+      ...e,
+      matchs: e.matchs.map((m) => (m.id === '2644292' ? { ...m, buteurs: nous, buteurs_adverses: eux } : m)),
+    })),
+  };
+}
+
+test('fiche : compétition et journée en tête des infos', () => {
+  vue('2644292');
+  expect(screen.getByText('D1 territoriale · journée 5')).toBeOnTheScreen();
+  expect(screen.getByText('dimanche 11 oct. à 16:15')).toBeOnTheScreen();
+  expect(screen.getByText('Gymnase du Petit Clamart · domicile')).toBeOnTheScreen();
+  expect(screen.getByText('56 rue de la bourcilliere 92140 CLAMART')).toBeOnTheScreen();
+});
+
+test('fiche : buteurs des deux équipes, seulement ceux qui ont marqué, triés par buts', () => {
+  const c = clubAvecButeurs(
+    [{ joueur: 'M. Kobzili', numero: 3, buts: 0 }, { joueur: 'L. Ladjel', numero: 64, buts: 4 }, { joueur: 'D. Dorilas', numero: 19, buts: 9 }],
+    [{ joueur: 'A. Kouadio', numero: 7, buts: 5 }],
+  );
+  vue('2644292', c);
+  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
+  expect(screen.getByText('D. Dorilas')).toBeOnTheScreen();
+  expect(screen.getByText('A. Kouadio')).toBeOnTheScreen();
+  expect(screen.queryByText('M. Kobzili')).toBeNull();
+  expect(screen.getByText('Clamart')).toBeOnTheScreen();
+  // le nom de l'adversaire est dans le score et dans le titre de sa colonne
+  expect(screen.getAllByText('Ent. Suresnes / Nanterre')).toHaveLength(2);
+  const noms = screen.getAllByText(/^[A-Z]\. /).map((n) => n.props.children);
+  expect(noms).toEqual(['D. Dorilas', 'L. Ladjel', 'A. Kouadio']);
+  expect(screen.getByLabelText('D. Dorilas, 9 buts')).toBeOnTheScreen();
+});
+
+test('fiche : un but au singulier', () => {
+  vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: 19, buts: 1 }]));
+  expect(screen.getByLabelText('D. Dorilas, 1 but')).toBeOnTheScreen();
+});
+
+test('fiche : aucun buteur ayant marqué, pas de section', () => {
+  vue('2644292', clubAvecButeurs([{ joueur: 'M. Kobzili', numero: 3, buts: 0 }], []));
   expect(screen.queryByText('Buteurs')).toBeNull();
+});
+
+test('fiche : un club.json v2 affiche les buteurs du club seuls', () => {
+  vue('2644292');
+  expect(matchParId(club, '2644292')!.buteurs_adverses).toBeUndefined();
+  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
+  // nom complet d'un fichier v2, affiché tel quel
+  expect(screen.getByText('Diara DORILAS')).toBeOnTheScreen();
+  expect(screen.getByText('Clamart')).toBeOnTheScreen();
+  // pas de colonne adverse : le nom de l'adversaire n'apparaît que dans le score
+  expect(screen.getAllByText('Ent. Suresnes / Nanterre')).toHaveLength(1);
+});
+
+test('fiche : Itinéraire, puis Feuille de match et Voir sur ffhandball.fr séparés en bas', () => {
+  vue('2644292');
+  const libelles = ['Itinéraire', 'Feuille de match', 'Voir sur ffhandball.fr'];
+  const boutons = screen.getAllByTestId('button');
+  expect(boutons.map((b) => libelles.find((l) => within(b).queryByText(l)))).toEqual(libelles);
+  for (const bouton of boutons.slice(1)) {
+    expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
+  }
 });
 
 test('match à venir : ajouter à l’agenda', () => {
