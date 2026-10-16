@@ -26,18 +26,18 @@ ICI = Path(__file__).resolve().parent
 sys.path.insert(0, str(ICI))
 import ffhandball as ff  # noqa: E402
 from collectifs import construire_collectifs  # noqa: E402
+from textes import nom_joueur  # noqa: E402
 
 RACINE = ICI.parent
 CONFIG = json.loads((RACINE / "config.json").read_text(encoding="utf-8"))
 SORTIE = RACINE / "site" / "data"
 CACHE = ICI / "cache"
 CLUB_ID = str(CONFIG["club"]["id_ffhb"])
-CATEGORIES_STATS = set(CONFIG.get("stats_joueurs", {}).get("categories", ["seniors"]))
 NOMS = {k: v for k, v in CONFIG.get("noms_equipes", {}).items() if k not in ("commentaire",) and not k.startswith("exemple")}
 MOTIFS = CONFIG["club"].get("motifs_nom_equipe") or [CONFIG["club"]["recherche_ffhb"]]
 MASQUES = {" ".join(n.upper().split()) for n in CONFIG.get("stats_joueurs", {}).get("joueurs_masques", [])}
 SURCHARGES_COLLECTIFS = {k: v for k, v in CONFIG.get("collectifs", {}).items() if k != "commentaire"}
-VERSION_SCHEMA = 2
+VERSION_SCHEMA = 3
 URL_LOGOS = "https://media-logos-clubs.ffhandball.fr/128/"
 
 
@@ -159,27 +159,37 @@ def competitions_du_club(saison: str) -> list[dict]:
     return out
 
 
-def salle_et_buteurs(match_path: str, equipe_interne, joue: bool, avec_buteurs: bool) -> dict:
-    """Page d'un match : salle + buteurs de NOTRE équipe. Cache permanent si le match est joué."""
+def buteurs_de_la_rencontre(stats: list[dict], equipe_interne) -> tuple[list[dict], list[dict]]:
+    """(nos buteurs, ceux de l'adversaire) d'après `statsJoueurs` : seulement ceux qui ont marqué, nom réduit
+    à 'D. Dorilas'. Les joueurs masqués (config.json) sont écartés d'après leur nom complet, avant réduction."""
+    nous: list[dict] = []
+    eux: list[dict] = []
+    for j in stats:
+        buts = ff._int(j.get("buts")) or 0
+        if buts <= 0 or masque(f"{j.get('prenom') or ''} {j.get('nom') or ''}"):
+            continue
+        (nous if str(j.get("equipeId")) == str(equipe_interne) else eux).append(
+            {"joueur": nom_joueur(j.get("prenom"), j.get("nom")), "numero": ff._int(j.get("numero")), "buts": buts})
+    tri = lambda liste: sorted(liste, key=lambda b: (-b["buts"], b["joueur"]))
+    return tri(nous), tri(eux)
+
+
+def salle_et_buteurs(match_path: str, equipe_interne, joue: bool) -> dict:
+    """Page d'un match : salle + buteurs des deux équipes (match joué). Cache permanent si le match est joué."""
     rid = match_path.rstrip("/").split("rencontre-")[-1]
     fichier = CACHE / f"{rid}.json"
     if joue and fichier.exists():
         info = json.loads(fichier.read_text(encoding="utf-8"))
-        if not avec_buteurs or info.get("buteurs") is not None:
+        if info.get("buteurs_adverses") is not None:            # ancien cache (avant le schéma 3) : on retélécharge
             return info
     d = ff.components(match_path)
     eq = (d.get("competitions---rencontre-salle") or {}).get("equipement") or {}
     info = {"salle": {"nom": eq.get("libelle") or None,
                       "adresse": " ".join(x for x in (eq.get("rue"), eq.get("codePostal"), eq.get("ville")) if x) or None}
             if eq else None}
-    if avec_buteurs:
-        stats = (d.get("competitions---rencontre-liste-joueurs") or {}).get("statsJoueurs") or []
-        info["buteurs"] = sorted(
-            ({"joueur": f"{(j.get('prenom') or '').title()} {(j.get('nom') or '').upper()}".strip(),
-              "numero": ff._int(j.get("numero")), "buts": ff._int(j.get("buts")) or 0}
-             for j in stats if str(j.get("equipeId")) == str(equipe_interne)),
-            key=lambda j: -j["buts"])
     if joue:
+        stats = (d.get("competitions---rencontre-liste-joueurs") or {}).get("statsJoueurs") or []
+        info["buteurs"], info["buteurs_adverses"] = buteurs_de_la_rencontre(stats, equipe_interne)
         CACHE.mkdir(parents=True, exist_ok=True)
         fichier.write_text(json.dumps(info, ensure_ascii=False), encoding="utf-8")
     return info
@@ -201,7 +211,6 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
     poules = {str(p["ext_pouleId"]): p for p in sel.get("poules") or []}
     titre = (page.get("page-header") or {}).get("title") or comp["libelle"]
     categorie = categorie_de(titre)
-    avec_buteurs = (categorie if categorie == "seniors" else "jeunes") in CATEGORIES_STATS
 
     miennes = [e for e in (page.get("competitions---calendar-button") or {}).get("equipes") or []
                if str(e.get("ext_structureId")) == CLUB_ID]
@@ -242,7 +251,6 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
             "phase": phase.get("libelle"),
             "poule": poule.get("libelle"),
             "url_ffhb": f"{ff.BASE}{url_cal}",
-            "stats_joueurs": avec_buteurs,
             "classement": None,
             "matchs": [],
         }
@@ -285,13 +293,14 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
                 "feuille_de_match": ff.url_feuille_de_match(r.get("fdmCode")) if joue else None,
             }
             a_venir = not joue and bool(r.get("date")) and datetime.fromisoformat(r["date"]) >= maintenant
-            if (joue and avec_buteurs) or (a_venir and not prochain_traite):
+            if joue or (a_venir and not prochain_traite):
                 try:
                     nous_id = r.get("equipe1Id") if dom else r.get("equipe2Id")
-                    info = salle_et_buteurs(chemin, nous_id, joue, avec_buteurs and joue)
+                    info = salle_et_buteurs(chemin, nous_id, joue)
                     m["salle"] = info.get("salle")
-                    if joue and avec_buteurs:
-                        m["buteurs"] = [b for b in info.get("buteurs") or [] if not masque(b.get("joueur"))]
+                    if joue:
+                        m["buteurs"] = info.get("buteurs") or []
+                        m["buteurs_adverses"] = info.get("buteurs_adverses") or []
                 except Exception as err:
                     erreur(f"Match {m['id']} ({equipe['nom']}) : {err}")
                 prochain_traite = prochain_traite or a_venir
@@ -312,26 +321,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
     return equipes
 
 
-# ============================================================================ agrégats
-
-def stats_club(equipes: list[dict]) -> list[dict]:
-    joueurs: dict[str, dict] = {}
-    for eq in equipes:
-        for m in eq["matchs"]:
-            for b in m.get("buteurs") or []:
-                cle = ff.slugify(b["joueur"])
-                j = joueurs.setdefault(cle, {"joueur": b["joueur"], "equipes": [], "matchs": 0,
-                                             "buts": 0, "record": 0})
-                if eq["nom"] not in j["equipes"]:
-                    j["equipes"].append(eq["nom"])
-                j["matchs"] += 1
-                j["buts"] += b["buts"]
-                j["record"] = max(j["record"], b["buts"])
-    out = sorted(joueurs.values(), key=lambda j: (-j["buts"], j["joueur"]))
-    for j in out:
-        j["moyenne"] = round(j["buts"] / j["matchs"], 1) if j["matchs"] else 0
-    return out
-
+# ============================================================================ calendriers
 
 def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]]):
     def echapper(t):
@@ -366,7 +356,7 @@ def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]])
 
 def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: list[str],
               surcharges: dict[str, str] | None = None) -> dict:
-    """Contenu complet de club.json (contrat v2). Les équipes reçoivent leur 'collectif'.
+    """Contenu complet de club.json (contrat v3). Les équipes reçoivent leur 'collectif'.
 
     surcharges : par défaut celles de config.json (paramètre explicite pour les tests).
     """
@@ -384,7 +374,6 @@ def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: l
         "source": "https://www.ffhandball.fr",
         "collectifs": collectifs,
         "equipes": equipes,
-        "buteurs_club": stats_club(equipes),
         "erreurs": erreurs,
     }
 
