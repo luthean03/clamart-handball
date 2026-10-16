@@ -2,7 +2,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { Club } from '../donnees/types';
 import { nettoyerSuivis, useSuivi } from './suivi';
 
-beforeEach(() => useSuivi.setState({ suivis: [], bienvenueFaite: false, retires: [], pret: false }));
+beforeEach(() =>
+  useSuivi.setState({
+    suivis: [],
+    bienvenueFaite: false,
+    retires: [],
+    pret: false,
+    notifResultats: true,
+    rappels: false,
+    sujets: [],
+    autorisation: 'inconnue',
+  }),
+);
 const etat = () => useSuivi.getState();
 
 test('basculer ajoute puis retire', () => {
@@ -32,12 +43,36 @@ test('retirerInconnus ne change rien si tout est connu', () => {
   expect(etat().retires).toEqual([]);
 });
 
+test('préférences de notifications : valeurs par défaut et réglages', () => {
+  expect(etat().notifResultats).toBe(true);
+  expect(etat().rappels).toBe(false);
+  etat().setRappels(true);
+  etat().setNotifResultats(false);
+  etat().setAutorisation('refusee');
+  etat().setSujets(['resultats-seniors-m']);
+  expect(etat()).toMatchObject({ rappels: true, notifResultats: false, autorisation: 'refusee', sujets: ['resultats-seniors-m'] });
+});
+
+test('migration depuis la version 1 : les nouvelles préférences prennent leur valeur par défaut', async () => {
+  await AsyncStorage.setItem('clamart-suivi', JSON.stringify({ version: 1, state: { suivis: ['u13-m'], bienvenueFaite: true, retires: [] } }));
+  await useSuivi.persist.rehydrate();
+  expect(etat()).toMatchObject({ suivis: ['u13-m'], bienvenueFaite: true, notifResultats: true, rappels: false, sujets: [] });
+});
+
 test('le premier lancement est mémorisé sur le téléphone', async () => {
   etat().basculer('u13-m');
   etat().terminerBienvenue();
   await new Promise((r) => setTimeout(r, 0));
   const sauve = JSON.parse((await AsyncStorage.getItem('clamart-suivi')) ?? '{}');
-  expect(sauve.state).toEqual({ suivis: ['u13-m'], bienvenueFaite: true, retires: [] });
+  expect(sauve.state).toEqual({
+    suivis: ['u13-m'],
+    bienvenueFaite: true,
+    retires: [],
+    notifResultats: true,
+    rappels: false,
+    sujets: [],
+    autorisation: 'inconnue',
+  });
 });
 
 test('un stockage illisible laisse le store prêt avec l’état par défaut', async () => {

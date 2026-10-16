@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
+import type { Autorisation } from '../notifications/sujets';
 import { VueButeurs } from './VueButeurs';
 import { VueReglages } from './VueReglages';
 
@@ -34,6 +35,8 @@ function reglages(props: Partial<Parameters<typeof VueReglages>[0]> = {}) {
   const p = {
     club, maintenant: MAR_SOIR, suivis: ['seniors-m'], retires: [] as string[], version: '1.0.0',
     onRetirer: jest.fn(), onGererEquipes: jest.fn(), onEffacerRetires: jest.fn(), onOuvrirLien: jest.fn(), onRetour: jest.fn(),
+    notifResultats: true, rappels: false, autorisation: 'accordee' as Autorisation,
+    onNotifResultats: jest.fn(), onRappels: jest.fn(), onOuvrirReglagesSysteme: jest.fn(), onDemanderAutorisation: jest.fn(),
     ...props,
   };
   rendu(<VueReglages {...p} />);
@@ -86,4 +89,35 @@ test('réglages : « Gérer mes équipes » et « OK » ont une cible tactile d�
   for (const bouton of boutons) {
     expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
   }
+});
+
+test('notifications : résultats et rappel la veille (désactivé par défaut)', () => {
+  const p = reglages();
+  const rappel = screen.getByRole('switch', { name: 'Rappel la veille du match' });
+  expect(rappel.props.accessibilityState?.checked ?? rappel.props.value).toBe(false);
+  fireEvent(rappel, 'valueChange', true);
+  expect(p.onRappels).toHaveBeenCalledWith(true);
+  fireEvent(screen.getByRole('switch', { name: 'Résultats de mes équipes' }), 'valueChange', false);
+  expect(p.onNotifResultats).toHaveBeenCalledWith(false);
+});
+
+test('notifications bloquées dans Android', () => {
+  const p = reglages({ autorisation: 'refusee' });
+  expect(screen.getByText('Les notifications sont bloquées dans les réglages d’Android.')).toBeOnTheScreen();
+  fireEvent.press(screen.getByText('Ouvrir les réglages'));
+  expect(p.onOuvrirReglagesSysteme).toHaveBeenCalled();
+});
+
+test('notifications pas encore autorisées : bouton pour demander l’autorisation', () => {
+  const p = reglages({ autorisation: 'inconnue' });
+  expect(screen.getByText('Autorisez les notifications pour recevoir les résultats de vos équipes.')).toBeOnTheScreen();
+  expect(screen.queryByText('Les notifications sont bloquées dans les réglages d’Android.')).not.toBeOnTheScreen();
+  fireEvent.press(screen.getByText('Activer les notifications'));
+  expect(p.onDemanderAutorisation).toHaveBeenCalled();
+});
+
+test('notifications autorisées : aucun message d’autorisation', () => {
+  reglages({ autorisation: 'accordee' });
+  expect(screen.queryByText('Autorisez les notifications pour recevoir les résultats de vos équipes.')).not.toBeOnTheScreen();
+  expect(screen.queryByText('Les notifications sont bloquées dans les réglages d’Android.')).not.toBeOnTheScreen();
 });

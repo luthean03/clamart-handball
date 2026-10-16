@@ -17,3 +17,8 @@ dist/
 .impeccable/config.local.json
 .impeccable/mocks/decision/src/
 .idea/
+# Firebase / builds natifs (CNG)
+app/google-services.json
+app/GoogleService-Info.plist
+app/android/
+app/ios/

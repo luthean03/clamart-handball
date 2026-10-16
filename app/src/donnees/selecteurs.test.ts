@@ -5,6 +5,7 @@ import {
   grouperParCategorie, jourParDefaut, joursAvecMatchs, matchParId, matchsDuCollectif, matchsDuJour,
   matchsDuWeekend, prochainMatch, scoreEnAttente, serieEnCours,
 } from './selecteurs';
+import type { Club } from './types';
 
 const W_10_11 = weekendDeReference('2026-10-13');
 
@@ -126,4 +127,14 @@ describe('buteursClubAffichables', () => {
     const equipes = club.equipes.map((e, i) => (i === premiere ? { ...e, stats_joueurs: false } : e));
     expect(buteursClubAffichables({ ...club, equipes }).every((b) => !b.equipes.includes('Seniors M'))).toBe(true);
   });
+});
+
+test('matchParId préfère l’équipe du lien', () => {
+  const derby: Club = JSON.parse(JSON.stringify(club));
+  const copie = { ...derby.equipes[0].matchs[0] }; // même id et même date : seul l'équipe diffère
+  derby.equipes[1].matchs.push(copie);
+  const id = derby.equipes[0].matchs[0].id;
+  expect(matchParId(derby, id, derby.equipes[1].id)?.equipe.id).toBe(derby.equipes[1].id);
+  expect(matchParId(derby, id)?.equipe.id).toBe(derby.equipes[0].id);
+  expect(matchParId(derby, id, 'equipe-inconnue')?.equipe.id).toBe(derby.equipes[0].id);
 });

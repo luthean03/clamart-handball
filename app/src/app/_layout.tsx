@@ -9,6 +9,7 @@ import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { EcranErreur } from '../composants/EcranErreur';
 import { brancherPremierPlan, creerClientRequetes, persisteur, UN_MOIS } from '../donnees/requetes';
+import { GestionNotifications } from '../notifications/GestionNotifications';
 import { themeClair, themeSombre } from '../theme/theme';
 
 SplashScreen.preventAutoHideAsync();
@@ -35,6 +36,7 @@ export default function Racine() {
         <PaperProvider theme={theme}>
           <StatusBar style={sombre ? 'light' : 'dark'} />
           <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.colors.background } }} />
+          <GestionNotifications />
         </PaperProvider>
       </PersistQueryClientProvider>
     </SafeAreaProvider>

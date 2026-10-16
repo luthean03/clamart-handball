@@ -29,7 +29,10 @@ export const matchsDuWeekend = (club: Club, w: Weekend) =>
     (m) => m.date !== null && jourDuMatch(m.date) >= w.vendredi && jourDuMatch(m.date) <= w.dimanche,
   );
 
-export const matchParId = (club: Club, id: string) => tousLesMatchs(club).find((m) => m.id === id);
+export const matchParId = (club: Club, id: string, equipeId?: string) => {
+  const matchs = tousLesMatchs(club).filter((m) => m.id === id);
+  return matchs.find((m) => m.equipe.id === equipeId) ?? matchs[0];
+};
 
 export function joursAvecMatchs(club: Club): string[] {
   return [...new Set(tousLesMatchs(club).flatMap((m) => (m.date ? [jourDuMatch(m.date)] : [])))].sort();

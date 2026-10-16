@@ -4,6 +4,7 @@ import type { ColorValue } from 'react-native';
 import { Icon } from 'react-native-paper';
 import { BarreOnglets } from '../../composants/BarreOnglets';
 import { useClub } from '../../donnees/requetes';
+import { useSynchroAbonnements } from '../../notifications/synchro';
 import { nettoyerSuivis, useSuivi, useSuiviPret } from '../../suivi/suivi';
 
 const icone = (plein: string, vide: string) =>
@@ -12,6 +13,7 @@ const icone = (plein: string, vide: string) =>
   );
 
 export default function Onglets() {
+  useSynchroAbonnements();
   const pret = useSuiviPret();
   const bienvenueFaite = useSuivi((s) => s.bienvenueFaite);
   const { club } = useClub();

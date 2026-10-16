@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import type { Club } from '../donnees/types';
+import type { Autorisation } from '../notifications/sujets';
 
 interface EtatSuivi {
   /** Ids de collectifs suivis (ex. 'seniors-m'). */
@@ -9,6 +10,14 @@ interface EtatSuivi {
   bienvenueFaite: boolean;
   /** Collectifs retirés car absents des données, à signaler dans Réglages. */
   retires: string[];
+  /** Notifications de résultats des équipes suivies. */
+  notifResultats: boolean;
+  /** Rappels avant match des équipes suivies. */
+  rappels: boolean;
+  /** Sujets FCM réellement abonnés sur ce téléphone. */
+  sujets: string[];
+  /** Autorisation de notifications accordée par Android (ou non encore demandée). */
+  autorisation: Autorisation;
   /** Non persisté : vrai une fois la relecture terminée, succès ou échec. */
   pret: boolean;
   basculer: (id: string) => void;
@@ -16,6 +25,10 @@ interface EtatSuivi {
   terminerBienvenue: () => void;
   retirerInconnus: (valides: string[]) => string[];
   effacerRetires: () => void;
+  setNotifResultats: (b: boolean) => void;
+  setRappels: (b: boolean) => void;
+  setSujets: (s: string[]) => void;
+  setAutorisation: (a: Autorisation) => void;
 }
 
 export const useSuivi = create<EtatSuivi>()(
@@ -24,6 +37,10 @@ export const useSuivi = create<EtatSuivi>()(
       suivis: [],
       bienvenueFaite: false,
       retires: [],
+      notifResultats: true,
+      rappels: false,
+      sujets: [],
+      autorisation: 'inconnue',
       pret: false,
       basculer: (id) =>
         set(({ suivis }) => ({ suivis: suivis.includes(id) ? suivis.filter((s) => s !== id) : [...suivis, id] })),
@@ -36,12 +53,32 @@ export const useSuivi = create<EtatSuivi>()(
         return absents;
       },
       effacerRetires: () => set({ retires: [] }),
+      setNotifResultats: (b) => set({ notifResultats: b }),
+      setRappels: (b) => set({ rappels: b }),
+      setSujets: (s) => set({ sujets: s }),
+      setAutorisation: (a) => set({ autorisation: a }),
     }),
     {
       name: 'clamart-suivi',
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: ({ suivis, bienvenueFaite, retires }) => ({ suivis, bienvenueFaite, retires }),
+      // Version 1 : pas de préférences de notifications, on prend les valeurs par défaut.
+      migrate: (etat) => ({
+        notifResultats: true,
+        rappels: false,
+        sujets: [],
+        autorisation: 'inconnue',
+        ...(etat as object),
+      }),
+      partialize: ({ suivis, bienvenueFaite, retires, notifResultats, rappels, sujets, autorisation }) => ({
+        suivis,
+        bienvenueFaite,
+        retires,
+        notifResultats,
+        rappels,
+        sujets,
+        autorisation,
+      }),
       // Appelé aussi en cas d'échec de lecture (stockage illisible, JSON corrompu) : sans cela, pret resterait faux.
       onRehydrateStorage: () => () => useSuivi.setState({ pret: true }),
     },

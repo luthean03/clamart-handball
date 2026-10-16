@@ -31,7 +31,7 @@ export async function chargerClub(url: string, chercher: typeof fetch = fetch): 
 async function telecharger(url: string, chercher: typeof fetch, signal: AbortSignal): Promise<Club> {
   let reponse: Response;
   try {
-    reponse = await chercher(url, { headers: { Accept: 'application/json' }, signal });
+    reponse = await chercher(url, { headers: { Accept: 'application/json', 'Cache-Control': 'no-cache' }, signal });
   } catch {
     throw erreur('ErreurReseau', 'Pas de connexion');
   }

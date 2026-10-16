@@ -38,6 +38,16 @@ MOTIFS = CONFIG["club"].get("motifs_nom_equipe") or [CONFIG["club"]["recherche_f
 MASQUES = {" ".join(n.upper().split()) for n in CONFIG.get("stats_joueurs", {}).get("joueurs_masques", [])}
 SURCHARGES_COLLECTIFS = {k: v for k, v in CONFIG.get("collectifs", {}).items() if k != "commentaire"}
 VERSION_SCHEMA = 2
+URL_LOGOS = "https://media-logos-clubs.ffhandball.fr/128/"
+
+
+def logo_adversaire(r: dict, domicile: bool) -> str | None:
+    """Écusson de l'adversaire publié par la FFHB (128 px, webp), ou None s'il n'est pas affiché."""
+    cote = "2" if domicile else "1"
+    fichier, afficher = r.get(f"structure{cote}Logo"), r.get(f"equipe{cote}ShowLogo")
+    if not fichier or str(afficher).lower() not in ("1", "true"):
+        return None
+    return URL_LOGOS + fichier.rsplit(".", 1)[0] + ".webp"
 
 
 def masque(nom: str) -> bool:
@@ -266,6 +276,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
                 "journee": ff._int(r.get("journeeNumero")),
                 "domicile": dom,
                 "adversaire": r.get("equipe2Libelle") if dom else r.get("equipe1Libelle"),
+                "logo_adversaire": logo_adversaire(r, dom),
                 "score_nous": nous, "score_eux": eux,
                 "mt_nous": ff._int(r.get("equipe1ScoreMT") if dom else r.get("equipe2ScoreMT")),
                 "mt_eux": ff._int(r.get("equipe2ScoreMT") if dom else r.get("equipe1ScoreMT")),

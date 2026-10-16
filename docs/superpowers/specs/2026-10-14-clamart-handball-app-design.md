@@ -59,7 +59,7 @@ Conservé tel quel : `club`, `site`, `saison`, `mis_a_jour` (ISO UTC), `source`,
 `equipes[]` (id, nom, competition, detail, niveau, categorie, genre, poule, url_ffhb,
 stats_joueurs, classement[], matchs[], bilan, forme, place, nb_equipes), `buteurs_club[]`,
 `erreurs[]`. Un match : id, date (ISO avec fuseau, ou `null` si non programmé), journee,
-domicile, adversaire, score_nous/score_eux, mt_nous/mt_eux, resultat (`V`/`N`/`D`/`null`),
+domicile, adversaire, logo_adversaire (URL de l'écusson FFHB, ou `null`), score_nous/score_eux, mt_nous/mt_eux, resultat (`V`/`N`/`D`/`null`),
 url_ffhb, feuille_de_match, salle {nom, adresse}, buteurs[] (seniors uniquement).
 
 ### 3.2 Ajouts au contrat
@@ -98,16 +98,23 @@ Après chaque collecte, comparer l'état publié et le registre, puis envoyer :
   lendemain (heure de Paris) → sujet `rappels-<collectif>`, envoyé par le premier passage
   à partir de 16 h 30 heure de Paris (`rappels_a_partir_de`).
 
-### 4.2 Textes (signature « le résultat en une phrase », §6.2)
-- Résultat : titre `Seniors F 1 · Victoire 32–22`, corps `Contre Ent. Suresnes / Nanterre ·
-  D1 territoriale`. Données : `{type:"resultat", collectif, equipe_id, match_id}`.
+### 4.2 Textes
+- Résultat, façon banderole (choix de l'utilisateur du 15/10/2026 : pas de phrase, juste le score) :
+  titre = équipe à domicile à gauche, score au centre, équipe à l'extérieur à droite —
+  `Clamart 32 – 22 Ent. Suresnes / Nanterre` (à l'extérieur : `Paris SC 1D 17 – 20 Clamart`) ;
+  corps = catégorie · compétition — `Seniors F 1 · D1 territoriale`.
+  Données : `{type:"resultat", collectif, equipe_id, match_id}`.
+  Image (Android « grande image ») : banderole 1024 × 512 dessinée par le serveur — écusson de
+  l'équipe qui reçoit à gauche, score au centre, écusson de l'autre équipe à droite, en-tête
+  catégorie · compétition ; écusson FFHB de l'adversaire (`logo_adversaire`) ou ses initiales.
+  Publiée sur GitHub Pages (`site/notifs/`) avant l'envoi, purgée après 60 jours.
 - Rappel : titre `Demain 16:15 · Seniors F 1`, corps `Contre Cellois HB · Gymnase Victor Hugo
   (extérieur)`. Données : `{type:"rappel", collectif, equipe_id, match_id}`.
 - Jamais de nom de joueur dans une notification.
 
 ### 4.3 Fiabilité
-- **Registre** `collecteur/etat/notifications.json` : clés `resultat:<match_id>` et
-  `rappel:<match_id>` avec la date d'envoi. Une clé n'est écrite qu'après un envoi réussi →
+- **Registre** `collecteur/etat/notifications.json` : clés `resultat:<collectif>:<match_id>` et
+  `rappel:<collectif>:<match_id>` avec la date d'envoi. Une clé n'est écrite qu'après un envoi réussi →
   pas de doublon, réessai automatique au passage suivant. Entrées purgées après 60 jours.
 - **Premier déploiement** : registre absent → tous les résultats existants sont marqués
   « déjà envoyés » sans rien envoyer (pas de rafale de vieux scores).
@@ -118,6 +125,8 @@ Après chaque collecte, comparer l'état publié et le registre, puis envoyer :
 - Envoi via l'API FCM HTTP v1 (`google-auth` pour le jeton OAuth).
 
 ### 4.4 Workflow GitHub Actions (extension de l'existant)
+Trois jobs successifs : collecte (+ images des notifications) → publication Pages → envoi des
+notifications (l'image doit être en ligne avant l'envoi).
 Horaires (UTC) : existant (5:15 tous les jours ; */30 12–21 h sam. et dim.) **+ 15:45
 tous les jours** (16 h 45 à Paris en hiver, 17 h 45 en été) pour les rappels et les matchs
 de semaine. Étapes : collecte → notifieur → commit de `site/data`, `collecteur/cache`,

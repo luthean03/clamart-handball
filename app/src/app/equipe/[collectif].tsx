@@ -5,10 +5,12 @@ import { URL_AGENDAS } from '../../config';
 import { useMaintenant } from '../../donnees/maintenant';
 import { useClub } from '../../donnees/requetes';
 import { VueEquipe } from '../../ecrans/VueEquipe';
+import { parametre } from '../../notifications/liens';
 import { useSuivi } from '../../suivi/suivi';
 
 export default function Equipe() {
-  const { collectif } = useLocalSearchParams<{ collectif: string }>();
+  const p = useLocalSearchParams<{ collectif: string | string[] }>();
+  const collectif = parametre(p.collectif) ?? '';
   const { club, chargement, erreur, rafraichir } = useClub();
   const maintenant = useMaintenant();
   const suivi = useSuivi((s) => s.suivis.includes(collectif));
