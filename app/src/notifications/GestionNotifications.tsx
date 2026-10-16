@@ -2,7 +2,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Portal, Snackbar } from 'react-native-paper';
-import { CONTENU_BOUTON } from '../composants/commun';
+import { CONTENU_BOUTON, useDecalageBandeau } from '../composants/commun';
 import { CLE_CLUB } from '../donnees/requetes';
 import { ecouterOuverture, ecouterPremierPlan, notificationInitiale, type NotifRecue } from './fcm';
 import { lienNotification } from './liens';
@@ -27,6 +27,7 @@ export function GestionNotifications() {
     return () => { arreterOuverture(); arreterPremierPlan(); };
   }, [routeur, clientRequetes]);
 
+  const decalage = useDecalageBandeau();
   const lien = affichee ? lienNotification(affichee.donnees) : undefined;
   return (
     <Portal>
@@ -34,6 +35,7 @@ export function GestionNotifications() {
         visible={affichee !== null}
         onDismiss={() => setAffichee(null)}
         duration={6000}
+        wrapperStyle={decalage}
         action={lien ? { label: 'Voir', contentStyle: CONTENU_BOUTON, onPress: () => routeur.push(lien as never) } : undefined}
       >
         {affichee ? [affichee.titre, affichee.corps].filter(Boolean).join('\n') : ''}

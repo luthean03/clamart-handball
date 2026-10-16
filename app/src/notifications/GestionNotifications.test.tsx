@@ -1,5 +1,6 @@
 import { QueryClient } from '@tanstack/react-query';
 import { act, fireEvent, screen } from '@testing-library/react-native';
+import { StyleSheet, type ViewStyle } from 'react-native';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { CLE_CLUB } from '../donnees/requetes';
@@ -25,6 +26,26 @@ test('au premier plan : snackbar avec « Voir »', () => {
   expect(screen.getByText(/Clamart 21 – 22 Levallois SC 1D/)).toBeOnTheScreen();
   fireEvent.press(screen.getByText('Voir'));
   expect(__routeur.push).toHaveBeenCalledWith('/match/2673792?equipe=32546-clamart-handball');
+});
+
+// Le bandeau porte son décalage sur le conteneur absolu de Paper : on remonte jusqu'au premier ancêtre qui a un `bottom`.
+function basDuBandeau(texte: RegExp): number | undefined {
+  for (let n = screen.getByText(texte).parent; n; n = n.parent) {
+    const bottom = (StyleSheet.flatten(n.props.style) as ViewStyle | undefined)?.bottom;
+    if (typeof bottom === 'number') return bottom;
+  }
+  return undefined;
+}
+
+test('bandeau au-dessus des onglets', () => {
+  const encarts = jest.spyOn(require('react-native-safe-area-context'), 'useSafeAreaInsets').mockReturnValue({ top: 0, bottom: 24, left: 0, right: 0 });
+  let recevoir: (n: typeof notif) => void = () => {};
+  jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
+  rendu(<GestionNotifications />);
+  act(() => recevoir(notif));
+  // Barre de navigation Material 3 (80 dp) + zone de la barre de gestes.
+  expect(basDuBandeau(/Clamart 21 – 22 Levallois SC 1D/)).toBe(80 + 24);
+  encarts.mockReturnValue({ top: 0, bottom: 0, left: 0, right: 0 });   // la simulation de la zone sûre ne doit pas déborder sur les tests suivants
 });
 
 test('notification touchée : ouvre la fiche du match', () => {

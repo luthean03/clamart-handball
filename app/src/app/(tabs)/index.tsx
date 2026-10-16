@@ -11,7 +11,7 @@ export default function Accueil() {
   const maintenant = useMaintenant();
   const suivis = useSuivi((s) => s.suivis);
   const routeur = useRouter();
-  const agenda = useAgenda();
+  const agenda = useAgenda({ surOnglets: true });
   if (!club) return <EtatSansDonnees chargement={chargement} erreur={erreur} reessayer={rafraichir} />;
   return (
     <>
