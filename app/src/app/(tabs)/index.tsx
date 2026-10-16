@@ -26,6 +26,7 @@ export default function Accueil() {
       onAgenda={(m) => sansRejet(() => ajouterAgenda(m))}
       onReglages={() => routeur.push('/reglages')}
       onChoisirEquipes={() => routeur.push('/gerer-equipes')}
+      onTousLesMatchs={() => routeur.push('/matchs')}
     />
   );
 }

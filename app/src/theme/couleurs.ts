@@ -11,7 +11,7 @@ export interface Palette {
   texteDoux: string;
   /** Scores et titres : bleu nuit de l'écusson. */
   titre: string;
-  /** Rouge du club, réservé à ce qui est actionnable. */
+  /** Rouge du club : boutons et actions (le bandeau de date a sa propre paire, `bandeau`). */
   action: string;
   surAction: string;
   ligne: string;
@@ -20,6 +20,8 @@ export interface Palette {
   surligne: string;
   /** Snackbar : fond, texte et couleur de l'action. */
   inverse: { fond: string; texte: string; accent: string };
+  /** Bandeau de date des cartes d'accueil : fond rouge du club, texte, et mention « dans N jours » plus douce. */
+  bandeau: { fond: string; texte: string; doux: string };
   victoire: Paire;
   nul: Paire;
   defaite: Paire;
@@ -38,6 +40,7 @@ export const clair: Palette = {
   surIndicateur: '#7A1005',
   surligne: '#FFF1E0',
   inverse: { fond: '#142A3D', texte: '#FFFEF0', accent: '#FFB4A8' },
+  bandeau: { fond: '#DB0000', texte: '#FFFFFF', doux: '#FFE0DB' },
   victoire: { fond: '#E3F1E8', texte: '#1B5E3B' },
   nul: { fond: '#EBEEF2', texte: '#3D4A57' },
   defaite: { fond: '#F1E9E4', texte: '#6B4A3E' },
@@ -56,6 +59,7 @@ export const sombre: Palette = {
   surIndicateur: '#FFDAD4',
   surligne: '#26425A',
   inverse: { fond: '#FFFEF0', texte: '#142A3D', accent: '#DB0000' },
+  bandeau: { fond: '#B3261E', texte: '#FFFFFF', doux: '#FFDAD4' },
   victoire: { fond: '#21483A', texte: '#BFE8CF' },
   nul: { fond: '#2C4256', texte: '#D5DCE3' },
   defaite: { fond: '#4A3430', texte: '#F0D2C6' },

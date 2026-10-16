@@ -21,32 +21,10 @@ export function jourLocal(date: Date): string {
   return `${date.getFullYear()}-${deux(date.getMonth() + 1)}-${deux(date.getDate())}`;
 }
 
-export interface Weekend {
-  vendredi: string;
-  samedi: string;
-  dimanche: string;
-}
-
-/** Lundi et mardi : le week-end qui vient de se jouer. Du mercredi au dimanche : celui de la semaine. */
-export function weekendDeReference(aujourdhui: string): Weekend {
-  const js = jourDeSemaine(aujourdhui);
-  const versSamedi = js === 0 ? -1 : js <= 2 ? -(js + 1) : 6 - js;
-  const samedi = decalerJour(aujourdhui, versSamedi);
-  return { vendredi: decalerJour(samedi, -1), samedi, dimanche: decalerJour(samedi, 1) };
-}
-
 export function libelleJour(jour: string, format: 'court' | 'long' = 'court'): string {
   const d = minuitUTC(jour);
   const nom = (format === 'long' ? JOURS_LONGS : JOURS_COURTS)[d.getUTCDay()];
   return `${nom} ${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}`;
-}
-
-export function libelleWeekend(w: Weekend): string {
-  const s = minuitUTC(w.samedi);
-  const d = minuitUTC(w.dimanche);
-  return s.getUTCMonth() === d.getUTCMonth()
-    ? `${s.getUTCDate()}–${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}`
-    : `${s.getUTCDate()} ${MOIS[s.getUTCMonth()]}–${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}`;
 }
 
 const JOURS_BANDEAU = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'];

@@ -1,13 +1,10 @@
 import { club, DIM_SOIR, MAR_SOIR } from '../../test/donnees';
-import { weekendDeReference } from './dates';
 import {
   buteursClubAffichables, buteursDuCollectif, classementDuMatch, collectifsParCategorie, dernierResultat, equipePrincipale, equipesDuCollectif,
   grouperParCategorie, jourParDefaut, joursAvecMatchs, matchParId, matchsDuCollectif, matchsDuJour,
-  matchsDuWeekend, prochainMatch, prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours,
+  prochainMatch, prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours,
 } from './selecteurs';
 import type { Club } from './types';
-
-const W_10_11 = weekendDeReference('2026-10-13');
 
 test('un collectif regroupe ses compétitions', () => {
   expect(equipesDuCollectif(club, 'seniors-m').map((e) => e.id)).toEqual([
@@ -15,14 +12,6 @@ test('un collectif regroupe ses compétitions', () => {
   ]);
   expect(equipePrincipale(club, 'seniors-m')?.id).toBe('32546-clamart-handball');
   expect(equipePrincipale(club, 'seniors-f-1')?.place).toBe(3);
-});
-
-test('matchs du week-end des 10 et 11 octobre', () => {
-  const matchs = matchsDuWeekend(club, W_10_11);
-  expect(matchs).toHaveLength(11);
-  expect(new Set(matchs.map((m) => m.equipe.collectif)).size).toBe(10);
-  const instants = matchs.map((m) => Date.parse(m.date!));
-  expect([...instants].sort((a, b) => a - b)).toEqual(instants);
 });
 
 test('matchs d’un jour', () => {
@@ -50,7 +39,7 @@ test('match par identifiant', () => {
 });
 
 test('score en attente : match commencé sans résultat', () => {
-  const m = matchsDuWeekend(club, W_10_11).find((x) => x.equipe.collectif === 'u11-mixte-3')!;
+  const m = matchsDuJour(club, '2026-10-10').find((x) => x.equipe.collectif === 'u11-mixte-3')!;
   expect(scoreEnAttente(m, MAR_SOIR)).toBe(true);
   expect(scoreEnAttente(m, new Date('2026-10-09T12:00:00+02:00'))).toBe(false);
 });

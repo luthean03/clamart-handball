@@ -1,9 +1,7 @@
 import {
   compteARebours, dateCourte, decalerJour, donneesAnciennes, heureDuMatch, jourDuMatch, jourLocal, libelleBandeau,
-  libelleJour, libelleMiseAJour, libelleWeekend, salutation, weekendDeReference,
+  libelleJour, libelleMiseAJour, salutation,
 } from './dates';
-
-const W_10_11 = { vendredi: '2026-10-09', samedi: '2026-10-10', dimanche: '2026-10-11' };
 
 test('jour et heure lus dans le texte FFHB (heure de Paris)', () => {
   expect(jourDuMatch('2026-10-11T16:15:00+02:00')).toBe('2026-10-11');
@@ -16,23 +14,9 @@ test('jourLocal et decalerJour', () => {
   expect(decalerJour('2026-10-01', -1)).toBe('2026-09-30');
 });
 
-test('week-end de référence : lundi et mardi regardent le week-end passé', () => {
-  expect(weekendDeReference('2026-10-12')).toEqual(W_10_11); // lundi
-  expect(weekendDeReference('2026-10-13')).toEqual(W_10_11); // mardi
-});
-
-test('week-end de référence : du mercredi au dimanche, celui de la semaine', () => {
-  expect(weekendDeReference('2026-10-14').samedi).toBe('2026-10-17'); // mercredi
-  expect(weekendDeReference('2026-10-16').samedi).toBe('2026-10-17'); // vendredi
-  expect(weekendDeReference('2026-10-10')).toEqual(W_10_11); // samedi
-  expect(weekendDeReference('2026-10-11')).toEqual(W_10_11); // dimanche
-});
-
-test('libellés de jours et de week-end', () => {
+test('libellés de jours', () => {
   expect(libelleJour('2026-10-10')).toBe('sam. 10 oct.');
   expect(libelleJour('2026-10-11', 'long')).toBe('dimanche 11 oct.');
-  expect(libelleWeekend(W_10_11)).toBe('10–11 oct.');
-  expect(libelleWeekend(weekendDeReference('2026-10-29'))).toBe('31 oct.–1 nov.');
 });
 
 test('libellé de mise à jour', () => {

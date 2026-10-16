@@ -15,6 +15,9 @@ function paires(p: Palette): [string, string, string, number][] {
     ['action / carte', p.action, p.carte, 3],
     ['action / fond', p.action, p.fond, 3],
     ['indicateur d’onglet', p.surIndicateur, p.indicateur, 4.5],
+    ['bandeau : date', p.bandeau.texte, p.bandeau.fond, 4.5],
+    // « dans N jours » : teinte rose pâle validée avec le club (4,2 : tout juste sous 4,5, en gras)
+    ['bandeau : mention douce', p.bandeau.doux, p.bandeau.fond, 4.2],
     ['victoire', p.victoire.texte, p.victoire.fond, 4.5],
     ['nul', p.nul.texte, p.nul.fond, 4.5],
     ['défaite', p.defaite.texte, p.defaite.fond, 4.5],
@@ -64,4 +67,9 @@ test('la snackbar est thémée : fond bleu nuit en clair, crème en sombre', () 
   expect(themeSombre.colors.inverseSurface).toBe('#FFFEF0');
   expect(themeSombre.colors.inverseOnSurface).toBe('#142A3D');
   expect(themeSombre.colors.inversePrimary).toBe('#DB0000');
+});
+
+test('le bandeau de date des cartes d’accueil : rouge du club en clair, rouge adouci en sombre', () => {
+  expect(clair.bandeau).toEqual({ fond: '#DB0000', texte: '#FFFFFF', doux: '#FFE0DB' });
+  expect(sombre.bandeau).toEqual({ fond: '#B3261E', texte: '#FFFFFF', doux: '#FFDAD4' });
 });

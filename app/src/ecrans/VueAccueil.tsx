@@ -7,9 +7,8 @@ import { EcussonClub } from '../composants/Ecusson';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
 import { ProtectionBarreEtat } from '../composants/ProtectionBarreEtat';
-import { jourLocal, libelleMiseAJour, libelleWeekend, salutation, weekendDeReference } from '../donnees/dates';
-import { resumeCarte } from '../donnees/resume';
-import { equipePrincipale, formeRecente, matchsDuCollectif, matchsDuWeekend } from '../donnees/selecteurs';
+import { jourLocal, libelleMiseAJour, salutation } from '../donnees/dates';
+import { formeRecente, matchsDuCollectif, prochainMatchDate, prochainsMatchsClub } from '../donnees/selecteurs';
 import type { Club, MatchAvecEquipe } from '../donnees/types';
 import { useThemeClub } from '../theme/theme';
 
@@ -26,13 +25,18 @@ export interface PropsAccueil {
   onAgenda: (m: MatchAvecEquipe) => void;
   onReglages: () => void;
   onChoisirEquipes: () => void;
+  /** « Tous les matchs » : ouvre l'onglet Matchs. */
+  onTousLesMatchs: () => void;
 }
+
+/** « mis à jour à 16:41 » → « Mis à jour à 16:41 ». */
+const enCapitale = (texte: string) => texte.charAt(0).toUpperCase() + texte.slice(1);
 
 export function VueAccueil(p: PropsAccueil) {
   const t = useThemeClub();
-  const weekend = weekendDeReference(jourLocal(p.maintenant));
+  const aujourdhui = jourLocal(p.maintenant);
   const miens = p.club.collectifs.filter((c) => p.suivis.includes(c.id));
-  const duClub = matchsDuWeekend(p.club, weekend);
+  const duClub = prochainsMatchsClub(p.club, p.maintenant);
 
   return (
     <View style={[styles.page, { backgroundColor: t.colors.background }]}>
@@ -49,7 +53,7 @@ export function VueAccueil(p: PropsAccueil) {
               {salutation(p.maintenant)}
             </Text>
             <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
-              {`Week-end du ${libelleWeekend(weekend)} · ${libelleMiseAJour(p.club.mis_a_jour, p.maintenant)}`}
+              {enCapitale(libelleMiseAJour(p.club.mis_a_jour, p.maintenant))}
             </Text>
           </View>
           <IconButton icon="cog-outline" accessibilityLabel="Réglages" style={styles.reglages} onPress={p.onReglages} />
@@ -75,31 +79,36 @@ export function VueAccueil(p: PropsAccueil) {
             <CarteEquipe
               key={c.id}
               collectif={c}
-              resume={resumeCarte(p.club, c.id, weekend, p.maintenant)}
-              equipe={equipePrincipale(p.club, c.id)}
+              prochain={prochainMatchDate(p.club, c.id, p.maintenant)}
               forme={formeRecente(matchsDuCollectif(p.club, c.id))}
+              aujourdhui={aujourdhui}
               onOuvrirEquipe={() => p.onOuvrirEquipe(c.id)}
-              onOuvrirMatch={p.onOuvrirMatch}
               onAgenda={p.onAgenda}
             />
           ))
         )}
   
-        <EnTeteSection
-          titre="Tout le club ce week-end"
-          detail={duClub.length ? `${duClub.length} match${duClub.length > 1 ? 's' : ''}` : undefined}
-        />
+        <EnTeteSection titre="Tout le club" />
         <Surface style={{ borderRadius: t.rayonCarte }} elevation={1}>
           <View style={[styles.liste, { borderRadius: t.rayonCarte }]}>
             {duClub.length === 0 ? (
               <Text variant="bodyMedium" style={[styles.vide, { color: t.colors.onSurfaceVariant }]}>
-                Aucun match au club ce week-end.
+                Aucun match à venir au club.
               </Text>
             ) : (
               duClub.map((m) => (
-                <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={p.maintenant} onPress={() => p.onOuvrirMatch(m.id)} />
+                <LigneMatch
+                  key={`${m.equipe.id}-${m.id}`}
+                  match={m}
+                  maintenant={p.maintenant}
+                  afficherDate
+                  onPress={() => p.onOuvrirMatch(m.id)}
+                />
               ))
             )}
+            <Button mode="text" contentStyle={CONTENU_BOUTON} style={styles.tous} onPress={p.onTousLesMatchs}>
+              Tous les matchs
+            </Button>
           </View>
         </Surface>
       </ScrollView>
@@ -117,4 +126,5 @@ const styles = StyleSheet.create({
   bouton: { alignSelf: 'flex-start', marginTop: 8 },
   liste: { overflow: 'hidden' },
   vide: { padding: 16 },
+  tous: { alignSelf: 'center', marginVertical: 4 },
 });

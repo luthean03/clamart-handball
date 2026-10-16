@@ -1,4 +1,4 @@
-import { jourDuMatch, jourLocal, type Weekend } from './dates';
+import { jourDuMatch, jourLocal } from './dates';
 import type { ButeurClub, Club, Collectif, Equipe, Match, MatchAvecEquipe, Resultat } from './types';
 
 const instant = (m: Match) => (m.date ? Date.parse(m.date) : Number.POSITIVE_INFINITY);
@@ -23,11 +23,6 @@ export const matchsDuCollectif = (club: Club, id: string) =>
 
 export const matchsDuJour = (club: Club, jour: string) =>
   tousLesMatchs(club).filter((m) => m.date !== null && jourDuMatch(m.date) === jour);
-
-export const matchsDuWeekend = (club: Club, w: Weekend) =>
-  tousLesMatchs(club).filter(
-    (m) => m.date !== null && jourDuMatch(m.date) >= w.vendredi && jourDuMatch(m.date) <= w.dimanche,
-  );
 
 export const matchParId = (club: Club, id: string, equipeId?: string) => {
   const matchs = tousLesMatchs(club).filter((m) => m.id === id);
