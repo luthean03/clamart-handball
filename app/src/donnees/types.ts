@@ -1,4 +1,4 @@
-/** Contrat de club.json, version_schema 3 (produit; le schéma 2 reste lisible) par collecteur/collecte.py). */
+/** Contrat de club.json, version_schema 3 (produit par collecteur/collecte.py ; le schéma 2 reste lisible). */
 export type Resultat = 'V' | 'N' | 'D';
 
 export interface Salle {
