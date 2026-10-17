@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-17T15:05:47+00:00",
+ "mis_a_jour": "2026-10-17T17:54:42+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2437,11 +2437,7 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-196380/rencontre-2734038/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "GYMNASE DU PETIT CLAMART",
-      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     "feuille_de_match": null
     }
    ],
    "bilan": {
