@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-17T09:21:43+00:00",
+ "mis_a_jour": "2026-10-17T15:05:47+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -956,19 +956,6 @@
     },
     {
      "place": 4,
-     "equipe": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
-     "points": 8,
-     "joues": 4,
-     "gagnes": 2,
-     "nuls": 0,
-     "perdus": 2,
-     "bp": 104,
-     "bc": 87,
-     "diff": 17,
-     "nous": false
-    },
-    {
-     "place": 5,
      "equipe": "CLAMART HANDBALL 1B",
      "points": 9,
      "joues": 5,
@@ -979,6 +966,19 @@
      "bc": 114,
      "diff": -23,
      "nous": true
+    },
+    {
+     "place": 5,
+     "equipe": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 104,
+     "bc": 87,
+     "diff": 17,
+     "nous": false
     },
     {
      "place": 6,
@@ -1478,7 +1478,7 @@
     "bc": 114
    },
    "forme": "VDDDV",
-   "place": 5,
+   "place": 4,
    "nb_equipes": 7,
    "collectif": "seniors-f-1b"
   },
