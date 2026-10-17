@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-17T17:56:31+00:00",
+ "mis_a_jour": "2026-10-17T20:14:09+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2431,24 +2431,85 @@
      "domicile": true,
      "adversaire": "ASSOCIATION SPORTIVE ST-CYR/FONTENAY HANDBALL 78",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-09-04-7fd6134c-5cd6-4ead-a5cf-eb5ee8766aca.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 32,
+     "score_eux": 22,
+     "mt_nous": 17,
+     "mt_eux": 12,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-196380/rencontre-2734038/",
-     "feuille_de_match": null
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXEHO.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "Enzo LEPRETRE SILVA",
+       "numero": 54,
+       "buts": 11
+      },
+      {
+       "joueur": "Cedric MEYER",
+       "numero": 73,
+       "buts": 7
+      },
+      {
+       "joueur": "Samy OULD BRAHAM",
+       "numero": 66,
+       "buts": 4
+      },
+      {
+       "joueur": "Ryad KOUAR",
+       "numero": 31,
+       "buts": 2
+      },
+      {
+       "joueur": "Nourane NIMRI",
+       "numero": 64,
+       "buts": 2
+      },
+      {
+       "joueur": "Raphael ARNAUD",
+       "numero": 65,
+       "buts": 2
+      },
+      {
+       "joueur": "Tivio GANDON-TALOUARN",
+       "numero": 69,
+       "buts": 2
+      },
+      {
+       "joueur": "Ryan NACTO",
+       "numero": 1,
+       "buts": 1
+      },
+      {
+       "joueur": "Alex RIGNAULT",
+       "numero": 12,
+       "buts": 1
+      },
+      {
+       "joueur": "Lucas PONTES",
+       "numero": 70,
+       "buts": 0
+      },
+      {
+       "joueur": "Matheo GRONDIN",
+       "numero": 99,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
-    "joues": 0,
-    "victoires": 0,
+    "joues": 1,
+    "victoires": 1,
     "nuls": 0,
     "defaites": 0,
-    "bp": 0,
-    "bc": 0
+    "bp": 32,
+    "bc": 22
    },
-   "forme": "",
+   "forme": "V",
    "collectif": "seniors-m"
   },
   {
@@ -3857,6 +3918,16 @@
  ],
  "buteurs_club": [
   {
+   "joueur": "Enzo LEPRETRE SILVA",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 5,
+   "buts": 48,
+   "record": 14,
+   "moyenne": 9.6
+  },
+  {
    "joueur": "Diara DORILAS",
    "equipes": [
     "Seniors F 1"
@@ -3867,24 +3938,24 @@
    "moyenne": 7.6
   },
   {
-   "joueur": "Enzo LEPRETRE SILVA",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 4,
-   "buts": 37,
-   "record": 14,
-   "moyenne": 9.2
-  },
-  {
    "joueur": "Cedric MEYER",
    "equipes": [
     "Seniors M"
    ],
-   "matchs": 4,
-   "buts": 24,
+   "matchs": 5,
+   "buts": 31,
    "record": 9,
-   "moyenne": 6.0
+   "moyenne": 6.2
+  },
+  {
+   "joueur": "Samy OULD BRAHAM",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 5,
+   "buts": 22,
+   "record": 9,
+   "moyenne": 4.4
   },
   {
    "joueur": "Lisa LADJEL",
@@ -3929,16 +4000,6 @@
    "moyenne": 3.6
   },
   {
-   "joueur": "Samy OULD BRAHAM",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 4,
-   "buts": 18,
-   "record": 9,
-   "moyenne": 4.5
-  },
-  {
    "joueur": "Aurelie FRUGIER",
    "equipes": [
     "Seniors F 1"
@@ -3970,6 +4031,16 @@
    "moyenne": 2.6
   },
   {
+   "joueur": "Nourane NIMRI",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 4,
+   "buts": 11,
+   "record": 4,
+   "moyenne": 2.8
+  },
+  {
    "joueur": "Zoe GEORGE",
    "equipes": [
     "Seniors F 1",
@@ -3999,16 +4070,6 @@
    "buts": 9,
    "record": 4,
    "moyenne": 2.2
-  },
-  {
-   "joueur": "Nourane NIMRI",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 3,
-   "buts": 9,
-   "record": 4,
-   "moyenne": 3.0
   },
   {
    "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
@@ -4082,6 +4143,16 @@
    "moyenne": 1.0
   },
   {
+   "joueur": "Tivio GANDON-TALOUARN",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 5,
+   "buts": 5,
+   "record": 2,
+   "moyenne": 1.0
+  },
+  {
    "joueur": "Kevin NEVERS",
    "equipes": [
     "Seniors M"
@@ -4109,16 +4180,6 @@
    "matchs": 4,
    "buts": 3,
    "record": 1,
-   "moyenne": 0.8
-  },
-  {
-   "joueur": "Tivio GANDON-TALOUARN",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 4,
-   "buts": 3,
-   "record": 2,
    "moyenne": 0.8
   },
   {
@@ -4156,9 +4217,49 @@
    "equipes": [
     "Seniors M"
    ],
-   "matchs": 4,
+   "matchs": 5,
    "buts": 2,
    "record": 2,
+   "moyenne": 0.4
+  },
+  {
+   "joueur": "Raphael ARNAUD",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 2,
+   "buts": 2,
+   "record": 2,
+   "moyenne": 1.0
+  },
+  {
+   "joueur": "Ryad KOUAR",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 2,
+   "buts": 2,
+   "record": 2,
+   "moyenne": 1.0
+  },
+  {
+   "joueur": "Ryan NACTO",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 5,
+   "buts": 2,
+   "record": 1,
+   "moyenne": 0.4
+  },
+  {
+   "joueur": "Alex RIGNAULT",
+   "equipes": [
+    "Seniors M"
+   ],
+   "matchs": 2,
+   "buts": 1,
+   "record": 1,
    "moyenne": 0.5
   },
   {
@@ -4182,16 +4283,6 @@
    "moyenne": 1.0
   },
   {
-   "joueur": "Ryan NACTO",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 4,
-   "buts": 1,
-   "record": 1,
-   "moyenne": 0.2
-  },
-  {
    "joueur": "Violaine HOUIN",
    "equipes": [
     "Seniors F 1B"
@@ -4200,16 +4291,6 @@
    "buts": 1,
    "record": 1,
    "moyenne": 0.5
-  },
-  {
-   "joueur": "Alex RIGNAULT",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 1,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
   },
   {
    "joueur": "Bisse Marthe MFOULA ESSONO",
@@ -4236,7 +4317,7 @@
    "equipes": [
     "Seniors M"
    ],
-   "matchs": 3,
+   "matchs": 4,
    "buts": 0,
    "record": 0,
    "moyenne": 0.0
@@ -4257,26 +4338,6 @@
     "Seniors F 1"
    ],
    "matchs": 5,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
-  },
-  {
-   "joueur": "Raphael ARNAUD",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 1,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
-  },
-  {
-   "joueur": "Ryad KOUAR",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 1,
    "buts": 0,
    "record": 0,
    "moyenne": 0.0
