@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-18T15:29:01+00:00",
+ "mis_a_jour": "2026-10-18T18:15:47+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2384,24 +2384,90 @@
      "domicile": false,
      "adversaire": "CELLOIS HB",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2024-07-05-1124048a-7abf-4e8c-8316-de8c37847ff8.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 32,
+     "score_eux": 25,
+     "mt_nous": 15,
+     "mt_eux": 10,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-196378/rencontre-2729291/",
-     "feuille_de_match": null
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/W/WAGWWWZ.pdf",
+     "salle": {
+      "nom": "VICTOR HUGO",
+      "adresse": "52 , AVENUE DES ETANGS 78170 LA CELLE ST CLOUD"
+     },
+     "buteurs": [
+      {
+       "joueur": "Diara DORILAS",
+       "numero": 19,
+       "buts": 9
+      },
+      {
+       "joueur": "Zoe GEORGE",
+       "numero": 4,
+       "buts": 4
+      },
+      {
+       "joueur": "Haquima ES-SALEMY",
+       "numero": 8,
+       "buts": 4
+      },
+      {
+       "joueur": "Eva NDIAYE",
+       "numero": 9,
+       "buts": 4
+      },
+      {
+       "joueur": "Azza MSAKNI",
+       "numero": 11,
+       "buts": 4
+      },
+      {
+       "joueur": "Lisa LADJEL",
+       "numero": 64,
+       "buts": 3
+      },
+      {
+       "joueur": "Lisa FERRIER",
+       "numero": 24,
+       "buts": 2
+      },
+      {
+       "joueur": "Aurelie FRUGIER",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "Amelys DEBIOL",
+       "numero": 17,
+       "buts": 1
+      },
+      {
+       "joueur": "Melina KOBZILI",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "Joey ANTONIOS",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "Michelore EDOUARD",
+       "numero": 96,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
-    "joues": 0,
-    "victoires": 0,
+    "joues": 1,
+    "victoires": 1,
     "nuls": 0,
     "defaites": 0,
-    "bp": 0,
-    "bc": 0
+    "bp": 32,
+    "bc": 25
    },
-   "forme": "",
+   "forme": "V",
    "collectif": "seniors-f-1"
   },
   {
@@ -3928,10 +3994,10 @@
    "equipes": [
     "Seniors F 1"
    ],
-   "matchs": 5,
-   "buts": 38,
+   "matchs": 6,
+   "buts": 47,
    "record": 9,
-   "moyenne": 7.6
+   "moyenne": 7.8
   },
   {
    "joueur": "Cedric MEYER",
@@ -3944,6 +4010,26 @@
    "moyenne": 6.2
   },
   {
+   "joueur": "Lisa LADJEL",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 6,
+   "buts": 24,
+   "record": 8,
+   "moyenne": 4.0
+  },
+  {
+   "joueur": "Eva NDIAYE",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 6,
+   "buts": 22,
+   "record": 6,
+   "moyenne": 3.7
+  },
+  {
    "joueur": "Samy OULD BRAHAM",
    "equipes": [
     "Seniors M"
@@ -3952,16 +4038,6 @@
    "buts": 22,
    "record": 9,
    "moyenne": 4.4
-  },
-  {
-   "joueur": "Lisa LADJEL",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 5,
-   "buts": 21,
-   "record": 8,
-   "moyenne": 4.2
   },
   {
    "joueur": "Claire COSTES",
@@ -3975,16 +4051,6 @@
    "moyenne": 3.8
   },
   {
-   "joueur": "Eva NDIAYE",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 5,
-   "buts": 18,
-   "record": 6,
-   "moyenne": 3.6
-  },
-  {
    "joueur": "Hanane ALEXANDRE",
    "equipes": [
     "Seniors F 1",
@@ -3996,24 +4062,35 @@
    "moyenne": 3.6
   },
   {
-   "joueur": "Aurelie FRUGIER",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 5,
-   "buts": 15,
-   "record": 5,
-   "moyenne": 3.0
-  },
-  {
    "joueur": "Haquima ES-SALEMY",
    "equipes": [
     "Seniors F 1"
    ],
-   "matchs": 5,
-   "buts": 13,
+   "matchs": 6,
+   "buts": 17,
    "record": 6,
-   "moyenne": 2.6
+   "moyenne": 2.8
+  },
+  {
+   "joueur": "Aurelie FRUGIER",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 6,
+   "buts": 16,
+   "record": 5,
+   "moyenne": 2.7
+  },
+  {
+   "joueur": "Zoe GEORGE",
+   "equipes": [
+    "Seniors F 1",
+    "Seniors F 1B"
+   ],
+   "matchs": 6,
+   "buts": 15,
+   "record": 5,
+   "moyenne": 2.5
   },
   {
    "joueur": "Juliette AUFFRET",
@@ -4037,15 +4114,25 @@
    "moyenne": 2.8
   },
   {
-   "joueur": "Zoe GEORGE",
+   "joueur": "Amelys DEBIOL",
    "equipes": [
-    "Seniors F 1",
-    "Seniors F 1B"
+    "Seniors F 1B",
+    "Seniors F 1"
    ],
    "matchs": 5,
-   "buts": 11,
-   "record": 5,
-   "moyenne": 2.2
+   "buts": 10,
+   "record": 4,
+   "moyenne": 2.0
+  },
+  {
+   "joueur": "Azza MSAKNI",
+   "equipes": [
+    "Seniors F 1"
+   ],
+   "matchs": 4,
+   "buts": 10,
+   "record": 4,
+   "moyenne": 2.5
   },
   {
    "joueur": "Yohann ESCALA",
@@ -4058,14 +4145,14 @@
    "moyenne": 2.5
   },
   {
-   "joueur": "Amelys DEBIOL",
+   "joueur": "Lisa FERRIER",
    "equipes": [
-    "Seniors F 1B"
+    "Seniors F 1"
    ],
-   "matchs": 4,
-   "buts": 9,
+   "matchs": 3,
+   "buts": 8,
    "record": 4,
-   "moyenne": 2.2
+   "moyenne": 2.7
   },
   {
    "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
@@ -4106,26 +4193,6 @@
    "buts": 7,
    "record": 4,
    "moyenne": 2.3
-  },
-  {
-   "joueur": "Azza MSAKNI",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 3,
-   "buts": 6,
-   "record": 3,
-   "moyenne": 2.0
-  },
-  {
-   "joueur": "Lisa FERRIER",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 2,
-   "buts": 6,
-   "record": 4,
-   "moyenne": 3.0
   },
   {
    "joueur": "Camille LEPRINCE",
@@ -4201,12 +4268,13 @@
   {
    "joueur": "Joey ANTONIOS",
    "equipes": [
-    "Seniors F 1B"
+    "Seniors F 1B",
+    "Seniors F 1"
    ],
-   "matchs": 5,
+   "matchs": 6,
    "buts": 2,
    "record": 1,
-   "moyenne": 0.4
+   "moyenne": 0.3
   },
   {
    "joueur": "Lucas PONTES",
@@ -4323,7 +4391,7 @@
    "equipes": [
     "Seniors F 1"
    ],
-   "matchs": 5,
+   "matchs": 6,
    "buts": 0,
    "record": 0,
    "moyenne": 0.0
@@ -4333,7 +4401,7 @@
    "equipes": [
     "Seniors F 1"
    ],
-   "matchs": 5,
+   "matchs": 6,
    "buts": 0,
    "record": 0,
    "moyenne": 0.0
