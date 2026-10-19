@@ -177,11 +177,12 @@ def _image_resultat(club: dict, m: Message, cache: Path, telecharger) -> "Image.
     adversaire = nom_lisible(match["adversaire"])
     club_img = banderole.ecusson_club()
     adv_img = banderole.ecusson_adversaire(match.get("logo_adversaire"), adversaire, cache, telecharger=telecharger)
+    gagne = match["score_nous"] > match["score_eux"]
     if match["domicile"]:
         return banderole.dessiner(club_img, adv_img, "Clamart", adversaire,
-                                  f"{match['score_nous']} – {match['score_eux']}", f"{eq['nom']} · {eq['detail']}")
+                                  f"{match['score_nous']} – {match['score_eux']}", f"{eq['nom']} · {eq['detail']}", gagne)
     return banderole.dessiner(adv_img, club_img, adversaire, "Clamart",
-                              f"{match['score_eux']} – {match['score_nous']}", f"{eq['nom']} · {eq['detail']}")
+                              f"{match['score_eux']} – {match['score_nous']}", f"{eq['nom']} · {eq['detail']}", gagne)
 
 
 def produire_images(club, registre, maintenant, dossier: Path, cache: Path, telecharger=None) -> list[Path]:
@@ -206,12 +207,10 @@ def image_de_test(club: dict, collectif: str, dossier: Path, cache: Path, telech
     """test-<collectif>.png : même dessin que pour le dernier résultat connu de ce collectif (None s'il n'y en a pas)."""
     import banderole
     telecharger = telecharger or banderole.telecharger
-    candidats = [(eq, m) for eq, m in _matchs(club)
-                 if eq["collectif"] == collectif and m.get("resultat")
-                 and m.get("score_nous") is not None and m.get("score_eux") is not None]
-    if not candidats:
+    trouve = dernier_resultat(club, collectif)
+    if not trouve:
         return None
-    eq, m = max(candidats, key=lambda c: datetime.fromisoformat(c[1]["date"]))
+    eq, m = trouve
     modele = Message(f"test:{collectif}", f"resultats-{collectif}", "", "",
                      {"type": "test", "collectif": collectif, "equipe_id": eq["id"], "match_id": str(m["id"])}, "")
     dossier.mkdir(parents=True, exist_ok=True)
@@ -254,11 +253,23 @@ def executer(club: dict, registre: dict | None, maintenant: datetime, reglages: 
     return registre, rapport
 
 
-def message_test(collectif: str) -> Message:
+def dernier_resultat(club: dict, collectif: str):
+    """(équipe, match) du dernier résultat connu de ce collectif, ou None."""
+    candidats = [(eq, m) for eq, m in _matchs(club)
+                 if eq["collectif"] == collectif and m.get("resultat")
+                 and m.get("score_nous") is not None and m.get("score_eux") is not None]
+    return max(candidats, key=lambda c: datetime.fromisoformat(c[1]["date"])) if candidats else None
+
+
+def message_test(collectif: str, club: dict | None = None) -> Message:
     if not re.fullmatch(r"[a-z0-9-]+", collectif or ""):
         raise ValueError(f"id de collectif invalide : {collectif!r}")
+    donnees = {"type": "test", "collectif": collectif}
+    trouve = dernier_resultat(club, collectif) if club else None
+    if trouve:       # comme un vrai résultat : l'appui ouvre la fiche du match
+        donnees.update(equipe_id=trouve[0]["id"], match_id=str(trouve[1]["id"]))
     return Message(f"test:{collectif}", f"resultats-{collectif}", "Test · Clamart Handball",
-                   "Ceci est une notification de test.", {"type": "test", "collectif": collectif}, "")
+                   "Ceci est une notification de test.", donnees, "")
 
 
 def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime | None = None) -> int:
@@ -294,7 +305,8 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
     url_images = config["notifications"]["url_images"]
 
     if args.test:
-        m = avec_images([message_test(args.test)], DOSSIER_IMAGES, url_images)[0]
+        club = json.loads(DONNEES.read_text(encoding="utf-8")) if DONNEES.exists() else None
+        m = avec_images([message_test(args.test, club)], DOSSIER_IMAGES, url_images)[0]
         if envoyeur:
             envoyeur.envoyer(m)
         log(f"Test {'envoyé' if envoyeur else '(essai)'} : {m.sujet}")

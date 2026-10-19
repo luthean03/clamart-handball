@@ -126,3 +126,24 @@ describe('rafraîchissement des données à la réception d’une notification',
     expect(invalider).toHaveBeenCalledWith({ queryKey: CLE_CLUB });
   });
 });
+
+describe('sans identifiant de match : page de l’équipe (rétrocompatibilité)', () => {
+  const ancienne = { titre: 'Test', corps: 'x', donnees: { type: 'test', collectif: 'seniors-f-1' } };
+
+  test('notification touchée', () => {
+    let ouvrir: (n: typeof ancienne) => void = () => {};
+    jest.mocked(fcm.ecouterOuverture).mockImplementation((cb) => { ouvrir = cb; return () => {}; });
+    rendu(<GestionNotifications />);
+    act(() => ouvrir(ancienne));
+    expect(__routeur.push).toHaveBeenCalledWith('/equipe/seniors-f-1');
+  });
+
+  test('« Voir » du snackbar', () => {
+    let recevoir: (n: typeof ancienne) => void = () => {};
+    jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
+    rendu(<GestionNotifications />);
+    act(() => recevoir(ancienne));
+    fireEvent.press(screen.getByText('Voir'));
+    expect(__routeur.push).toHaveBeenCalledWith('/equipe/seniors-f-1');
+  });
+});

@@ -11,7 +11,9 @@ from textes import initiales
 ICI = Path(__file__).resolve().parent
 POLICE = ICI / "polices" / "Nunito.ttf"
 ECUSSON_CLUB = ICI.parent / "assets" / "logo-clamart.png"
-NUIT, CREME, ROUGE, BLANC, GRIS, ARDOISE = "#142A3D", "#FFFEF0", "#DB0000", "#FFFFFF", "#B4C0CC", "#2C4256"
+# Couleurs de l'app (app/src/theme/couleurs.ts, palette claire)
+FOND, TITRE, ROUGE, BLANC, TRAIT, ARDOISE = "#FAF6E6", "#142A3D", "#DB0000", "#FFFFFF", "#CFC6BA", "#2C4256"
+CREME = "#FFFEF0"   # texte du monogramme sur son disque ardoise
 LARGEUR, HAUTEUR, ECUSSON, MARGE = 1024, 512, 220, 70
 
 
@@ -82,15 +84,20 @@ def ajuster(texte: str, largeur_max: int) -> tuple[str, int]:
     return texte + "…", 22
 
 
-def dessiner(gauche, droite, nom_gauche: str, nom_droite: str, score: str, entete: str) -> Image.Image:
-    img = Image.new("RGBA", (LARGEUR, HAUTEUR), NUIT)
+def dessiner(gauche, droite, nom_gauche: str, nom_droite: str, score: str, entete: str,
+             victoire: bool = False) -> Image.Image:
+    """Carte claire aux couleurs de l'app : bandeau de date rouge, écussons, score bleu nuit ; « Victoire » en rouge."""
+    img = Image.new("RGBA", (LARGEUR, HAUTEUR), FOND)
     d = ImageDraw.Draw(img)
-    d.rectangle((0, 0, LARGEUR, 9), fill=ROUGE)
-    d.text((LARGEUR / 2, 62), entete.upper(), font=police(700, 30), fill=GRIS, anchor="mm")
-    img.alpha_composite(_pastille(gauche, ECUSSON), (MARGE, 120))
-    img.alpha_composite(_pastille(droite, ECUSSON), (LARGEUR - MARGE - ECUSSON, 120))
-    d.text((LARGEUR / 2, 230), score, font=police(800, 120), fill=CREME, anchor="mm")
+    d.rectangle((0, 0, LARGEUR, 84), fill=ROUGE)
+    d.text((LARGEUR / 2, 44), entete.upper(), font=police(700, 30), fill=BLANC, anchor="mm")
+    for x in (MARGE, LARGEUR - MARGE - ECUSSON):
+        d.ellipse((x - 3, 117, x + ECUSSON + 2, 120 + ECUSSON + 2), fill=TRAIT)    # liseré : le disque blanc se détache du fond crème
+        img.alpha_composite(_pastille(gauche if x == MARGE else droite, ECUSSON), (x, 120))
+    d.text((LARGEUR / 2, 230), score, font=police(800, 120), fill=TITRE, anchor="mm")
+    if victoire:
+        d.text((LARGEUR / 2, 322), "VICTOIRE", font=police(800, 34), fill=ROUGE, anchor="mm")
     for x, nom in ((MARGE + ECUSSON / 2, nom_gauche), (LARGEUR - MARGE - ECUSSON / 2, nom_droite)):
         texte, taille = ajuster(nom, 300)
-        d.text((x, 395), texte, font=police(700, taille), fill=CREME, anchor="mm")
+        d.text((x, 395), texte, font=police(700, taille), fill=TITRE, anchor="mm")
     return img.convert("RGB")

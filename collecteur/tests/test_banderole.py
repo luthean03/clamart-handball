@@ -15,8 +15,20 @@ def test_dimensions_et_mode():
     img = banderole.dessiner(banderole.ecusson_club(), banderole.monogramme("LS"), "Clamart", "Levallois SC 1D",
                              "21 – 22", "Seniors M · D2 territoriale")
     assert img.size == (1024, 512) and img.mode == "RGB"
-    assert img.getpixel((512, 5)) == (219, 0, 0)          # filet rouge
-    assert img.getpixel((512, 480)) == (20, 42, 61)       # fond bleu nuit
+    assert img.getpixel((512, 5)) == (219, 0, 0)          # bandeau de date rouge
+    assert img.getpixel((512, 480)) == (250, 246, 230)    # fond crème de l'app
+
+
+def _rouge_sous_le_score(victoire):
+    img = banderole.dessiner(banderole.ecusson_club(), banderole.monogramme("LS"), "Clamart", "Levallois SC 1D",
+                             "25 – 22", "Seniors M · D2 territoriale", victoire)
+    zone = img.crop((380, 300, 644, 345)).convert("RGB")
+    return zone.tobytes().count(bytes((219, 0, 0)))
+
+
+def test_victoire_ajoute_le_libelle_rouge():
+    assert _rouge_sous_le_score(True) > 100
+    assert _rouge_sous_le_score(False) == 0
 
 
 def test_ecusson_du_club_detoure_en_disque():

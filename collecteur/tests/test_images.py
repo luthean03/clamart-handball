@@ -128,3 +128,26 @@ def test_main_test_joint_l_image_de_test(tmp_path, monkeypatch):
     assert notifieur.main(["--test", "seniors-f-1"], environ={"FIREBASE_SERVICE_ACCOUNT": "{\"project_id\": \"p\"}"},
                           maintenant=LUNDI) == 0
     assert faux.envoyes[0].image == "https://luthean03.github.io/clamart-handball/notifs/test-seniors-f-1.png"
+
+
+def test_message_test_porte_le_match_et_l_equipe_du_dernier_resultat():
+    m = notifieur.message_test("seniors-f-1", club_v2())
+    assert m.donnees["type"] == "test" and m.donnees["collectif"] == "seniors-f-1"
+    equipe = next(e for e in club_v2()["equipes"] if e["id"] == m.donnees["equipe_id"])
+    assert equipe["collectif"] == "seniors-f-1"
+    assert any(str(x["id"]) == m.donnees["match_id"] for x in equipe["matchs"])
+    assert corps_requete(m)["message"]["data"]["match_id"] == m.donnees["match_id"]
+
+
+def test_message_test_sans_resultat_garde_la_page_equipe():
+    assert set(notifieur.message_test("seniors-f-1", {"equipes": []}).donnees) == {"type", "collectif"}
+    assert set(notifieur.message_test("seniors-f-1").donnees) == {"type", "collectif"}
+
+
+def test_main_test_envoie_le_match_du_dernier_resultat(tmp_path, monkeypatch):
+    _environnement(tmp_path, monkeypatch)
+    faux = FauxEnvoyeur()
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: faux)
+    notifieur.main(["--test", "seniors-f-1"], environ={"FIREBASE_SERVICE_ACCOUNT": "{\"project_id\": \"p\"}"},
+                   maintenant=LUNDI)
+    assert faux.envoyes[0].donnees["match_id"] and faux.envoyes[0].donnees["equipe_id"]
