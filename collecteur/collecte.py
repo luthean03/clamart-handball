@@ -240,6 +240,13 @@ def salle_et_buteurs(match_path: str, equipe_interne, joue: bool, date: str | No
 
 # ============================================================================ une compétition
 
+def url_equipe(racine: str, miennes: list[dict], libelle: str, ids_internes: set) -> str:
+    """Chemin de la page FFHB propre à une équipe (repérée par son identifiant interne ou son libellé).
+    Sans correspondance, la première équipe du club : cette page liste de toute façon tous les matchs."""
+    choix = next((e for e in miennes if str(e.get("id")) in ids_internes), None)         or next((e for e in miennes if e.get("libelle") == libelle), miennes[0])
+    return f"{racine}equipe-{choix['ext_equipeId']}/"
+
+
 def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[dict]:
     """
     Toutes les équipes du club dans une compétition.
@@ -293,7 +300,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
             "genre": genre_equipe(titre, lib),
             "phase": phase.get("libelle"),
             "poule": poule.get("libelle"),
-            "url_ffhb": f"{ff.BASE}{url_cal}",
+            "url_ffhb": f"{ff.BASE}{url_equipe(racine, miennes, lib, ids_nous)}",
             "classement": None,
             "matchs": [],
         }

@@ -57,3 +57,15 @@ def test_ids_collectifs_inchanges():
     nf = collecte.nom_ffhb
     assert nf("+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75", "CLAMART HANDBALL 1") == "Seniors F 1"
     assert nf("U11 MIXTE", "CLAMART HANDBALL 2 (FILLES)") == "U11 F 2"
+
+
+def test_url_ffhb_propre_a_chaque_equipe():
+    miennes = [{"id": "i1", "ext_equipeId": 2177119, "libelle": "CLAMART HANDBALL 1"},
+               {"id": "i2", "ext_equipeId": 2177120, "libelle": "CLAMART HANDBALL 2 (FILLES)"},
+               {"id": "i3", "ext_equipeId": 2177121, "libelle": "CLAMART HANDBALL 3"}]
+    racine = "/competitions/saison-2026-2027-22/championnat/u11-mixte-33056/"
+    u = collecte.url_equipe
+    assert u(racine, miennes, "CLAMART HANDBALL 1", {"i1"}) == racine + "equipe-2177119/"
+    assert u(racine, miennes, "CLAMART HANDBALL 2 (FILLES)", {"zz"}) == racine + "equipe-2177120/"
+    assert u(racine, miennes, "CLAMART HANDBALL 3", {"i3"}) == racine + "equipe-2177121/"
+    assert u(racine, miennes, "INCONNUE", set()) == racine + "equipe-2177119/"
