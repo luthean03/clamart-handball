@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
-import { PaperProvider } from 'react-native-paper';
+import { Button, PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { themeClair } from '../theme/theme';
 import { club, MAR_SOIR } from '../../test/donnees';
@@ -94,7 +94,7 @@ test('fiche équipe : classement avec la ligne du club', () => {
   expect(screen.getByLabelText(/^3e, Clamart Handball 1, 13 points/)).toBeOnTheScreen();
 });
 
-test('classement : « Voir sur ffhandball.fr » sous chaque tableau ouvre la page FFHB de la compétition', () => {
+test('classement : « Voir sur ffhandball.fr » sous chaque tableau, centré, ouvre la page FFHB de la compétition à défaut de page classement', () => {
   const p = fiche('seniors-f-1');
   fireEvent.press(screen.getByText('Classement'));
   const liens = screen.getAllByText('Voir sur ffhandball.fr');
@@ -103,6 +103,19 @@ test('classement : « Voir sur ffhandball.fr » sous chaque tableau ouvre la pag
   fireEvent.press(liens[0]);
   expect(p.onOuvrirLien).toHaveBeenCalledWith(avec[0].url_ffhb);
   expect(contenuDuBouton(liens[0]).minHeight).toBeGreaterThanOrEqual(48);
+  let bouton = liens[0];
+  while (bouton.parent && bouton.type !== Button) bouton = bouton.parent;
+  expect(StyleSheet.flatten(bouton.props.style).alignSelf).toBe('center');
+});
+
+test('classement : « Voir sur ffhandball.fr » ouvre la page classement de la poule quand elle est connue', () => {
+  const avecUrl: Club = JSON.parse(JSON.stringify(club));
+  const cible = avecUrl.equipes.find((e) => e.collectif === 'seniors-f-1' && (e.classement?.length ?? 0) > 0)!;
+  cible.url_classement = `${cible.url_ffhb.split('/equipe-')[0]}/poule-1/classements/`;
+  const p = fiche('seniors-f-1', { club: avecUrl });
+  fireEvent.press(screen.getByText('Classement'));
+  fireEvent.press(screen.getAllByText('Voir sur ffhandball.fr')[0]);
+  expect(p.onOuvrirLien).toHaveBeenCalledWith(cible.url_classement);
 });
 
 test('classement : les noms d’équipe suivent les règles des lignes de match (pas de coupure en plein mot)', () => {

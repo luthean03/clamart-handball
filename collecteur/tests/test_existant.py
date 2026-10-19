@@ -73,3 +73,16 @@ def test_url_ffhb_propre_a_chaque_equipe():
     assert u(racine, poule_a, "CLAMART HANDBALL 3", {"1841069"}, defaut) == racine + "equipe-2177525/"
     assert u(racine, poule_a, "CLAMART HANDBALL 3", {"autre"}, defaut) == racine + "equipe-2177525/"   # par libellé
     assert u(racine, [], "CLAMART HANDBALL 3", set(), defaut) == racine + "equipe-2177119/"
+
+
+def test_url_classement_de_la_poule_en_cours():
+    racine = "/competitions/saison-2026-2027-22/championnat/u11-mixte-33056/"
+    assert collecte.url_classement(racine, "195628") == (
+        collecte.ff.BASE + "/competitions/saison-2026-2027-22/championnat/u11-mixte-33056/poule-195628/classements/")
+
+
+def test_url_classement_nulle_sans_poule():
+    racine = "/competitions/saison-2026-2027-22/championnat/u11-mixte-33056/"
+    assert collecte.url_classement(racine, None) is None
+    assert collecte.url_classement(racine, "None") is None   # str(None) quand le match n'a pas de poule
+    assert collecte.url_classement(racine, "") is None

@@ -71,6 +71,8 @@ export interface Equipe {
   phase: string | null;
   poule: string | null;
   url_ffhb: string;
+  /** Page « classements » de la poule en cours sur ffhandball.fr (optionnel : absent des anciennes collectes). */
+  url_classement?: string | null;
   classement: LigneClassement[] | null;
   matchs: Match[];
   bilan: Bilan;

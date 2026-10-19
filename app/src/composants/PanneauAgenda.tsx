@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Icon, Modal, Portal, SegmentedButtons, Text, TouchableRipple } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { lienMatch, lienSaison, type Appli } from '../actions/agenda';
+import { lienCompetitionFfhb, lienMatch, type Appli, type Competition } from '../actions/agenda';
 import { URL_AGENDAS } from '../config';
 import type { MatchAvecEquipe } from '../donnees/types';
 import { useThemeClub } from '../theme/theme';
@@ -12,12 +12,16 @@ type Portee = 'match' | 'saison';
 
 interface Props {
   visible: boolean;
-  /** Collectif dont « Toute la saison » abonne le calendrier. */
-  collectif: string;
+  /** Compétitions du collectif : « Toute la saison » abonne leurs calendriers officiels FFHB. */
+  competitions: Competition[];
+  /** Identifiant FFHB du club. */
+  clubId: string;
   /** Avec un match : choix entre « Ce match » et « Toute la saison » ; sans : la saison seule. */
   match?: MatchAvecEquipe;
   onFermer: () => void;
   onOuvrir: (url: string) => void;
+  /** Toute la saison d'un collectif à plusieurs compétitions : le choix des compétitions se fait à part. */
+  onChoisir: (appli: Appli) => void;
 }
 
 const CHOIX: { appli: Appli; titre: string; detail: string; icone: string }[] = [
@@ -32,11 +36,17 @@ const PORTEES = [
 ];
 
 /** Contenu monté à chaque ouverture : la portée choisie repart de « Ce match » sans rien réinitialiser à la main. */
-function Contenu({ collectif, match, onOuvrir }: Pick<Props, 'collectif' | 'match' | 'onOuvrir'>) {
+function Contenu({ competitions, clubId, match, onOuvrir, onChoisir }: Omit<Props, 'visible' | 'onFermer'>) {
   const t = useThemeClub();
   // On ne retient que le choix de l'utilisateur ; sans match, la saison s'impose.
   const [choisie, setChoisie] = useState<Portee>('match');
   const portee: Portee = match ? choisie : 'saison';
+
+  const choisir = (appli: Appli) => {
+    if (portee === 'match' && match) return onOuvrir(lienMatch(appli, match, URL_AGENDAS));
+    if (competitions.length === 1) return onOuvrir(lienCompetitionFfhb(appli, competitions[0].competitionId, clubId));
+    onChoisir(appli);
+  };
 
   return (
     <>
@@ -58,7 +68,7 @@ function Contenu({ collectif, match, onOuvrir }: Pick<Props, 'collectif' | 'matc
         <TouchableRipple
           key={c.appli}
           accessibilityRole="button"
-          onPress={() => onOuvrir(portee === 'match' && match ? lienMatch(c.appli, match, URL_AGENDAS) : lienSaison(c.appli, collectif, URL_AGENDAS))}
+          onPress={() => choisir(c.appli)}
           style={[styles.choix, { borderColor: t.colors.outlineVariant }]}
           borderless
         >
@@ -76,7 +86,7 @@ function Contenu({ collectif, match, onOuvrir }: Pick<Props, 'collectif' | 'matc
 }
 
 /** Panneau du bas « Ajouter à l'agenda » : Google Agenda, Apple Calendrier ou fichier .ics, pour un match ou toute la saison. */
-export function PanneauAgenda({ visible, collectif, match, onFermer, onOuvrir }: Props) {
+export function PanneauAgenda({ visible, onFermer, ...contenu }: Props) {
   const t = useThemeClub();
   const { bottom } = useSafeAreaInsets();
   return (
@@ -91,7 +101,7 @@ export function PanneauAgenda({ visible, collectif, match, onFermer, onOuvrir }:
           { backgroundColor: t.colors.surface, borderTopLeftRadius: 24, borderTopRightRadius: 24, paddingBottom: 22 + bottom },
         ]}
       >
-        <Contenu collectif={collectif} match={match} onOuvrir={onOuvrir} />
+        <Contenu {...contenu} />
       </Modal>
     </Portal>
   );

@@ -28,7 +28,7 @@ export default function Equipe() {
         onBasculer={() => basculer(collectif)}
         onOuvrirMatch={(id) => routeur.push(`/match/${id}`)}
         onRetour={() => (routeur.canGoBack() ? routeur.back() : routeur.replace('/'))}
-        onAgenda={() => agenda.ouvrir(collectif)}
+        onAgenda={() => agenda.ouvrir(club, collectif)}
         onOuvrirLien={(url) => sansRejet(() => ouvrirLien(url))}
       />
       {agenda.panneau}

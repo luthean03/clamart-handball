@@ -1,18 +1,28 @@
 import { club } from '../../test/donnees';
 import { matchParId } from '../donnees/selecteurs';
 import type { MatchAvecEquipe } from '../donnees/types';
-import { lienMatch, lienSaison } from './agenda';
+import { competitionsDuCollectif, lienCompetitionFfhb, lienMatch } from './agenda';
 
 const base = 'https://luthean03.github.io/clamart-handball/data/agenda/';
 /** Seniors F 1 à l'extérieur contre Cellois HB, le dimanche 18 octobre 2026 à 15 h 30. */
 const m: MatchAvecEquipe = { ...matchParId(club, '2729291')!, date: '2026-10-18T15:30:00+02:00', equipe: { ...matchParId(club, '2729291')!.equipe, id: 'E1' } };
 
-test('saison : .ics, Apple en webcal, Google par abonnement', () => {
-  expect(lienSaison('ics', 'seniors-f-1', base)).toBe(`${base}seniors-f-1.ics`);
-  expect(lienSaison('apple', 'seniors-f-1', base)).toBe('webcal://luthean03.github.io/clamart-handball/data/agenda/seniors-f-1.ics');
-  expect(lienSaison('google', 'seniors-f-1', base)).toBe(
-    'https://calendar.google.com/calendar/render?cid=' + encodeURIComponent('webcal://luthean03.github.io/clamart-handball/data/agenda/seniors-f-1.ics'),
+test('compétition FFHB : .ics en https, Apple en webcal, Google par abonnement', () => {
+  const https = 'https://competition-calendar.ffhandball.fr/c-32546/s-3309.ics';
+  expect(lienCompetitionFfhb('ics', '32546', '3309')).toBe(https);
+  expect(lienCompetitionFfhb('apple', '32546', '3309')).toBe('webcal://competition-calendar.ffhandball.fr/c-32546/s-3309.ics');
+  expect(lienCompetitionFfhb('google', '32546', '3309')).toBe(
+    'https://calendar.google.com/calendar/render?cid=' + encodeURIComponent('webcal://competition-calendar.ffhandball.fr/c-32546/s-3309.ics'),
   );
+});
+
+test('compétitions d’un collectif : numéro de compétition tiré de l’identifiant, une entrée par équipe', () => {
+  expect(competitionsDuCollectif(club, 'seniors-m')).toEqual([
+    { competitionId: '32546', detail: 'D2 territoriale' },
+    { competitionId: '33403', detail: 'Coupe de Ligue' },
+    { competitionId: '33244', detail: 'Coupe de France départementale' },
+  ]);
+  expect(competitionsDuCollectif(club, 'u18-f')).toEqual([{ competitionId: '33458', detail: 'Championnat' }]);
 });
 
 test('ce match : fichier .ics du match pour Apple et .ics', () => {

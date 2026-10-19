@@ -42,6 +42,17 @@ test('collectifs groupés par catégorie, seniors d’abord', () => {
   expect(groupes[0].collectifs.map((c) => c.id)).toEqual(['seniors-f-1', 'seniors-f-1b', 'seniors-m']);
 });
 
+test('collectifs triés par nom dans chaque catégorie, chiffres compris (Mixte 2 avant Mixte 10)', () => {
+  const dans = (noms: string[]): Club => ({
+    ...club,
+    collectifs: noms.map((nom, i) => ({ id: `c${i}`, nom, categorie: 'u11', genre: 'mixte', equipes: [] })),
+  });
+  const noms = (c: Club) => collectifsParCategorie(c)[0].collectifs.map((x) => x.nom);
+  expect(noms(dans(['U11 Mixte 10', 'U11 Mixte 2', 'U11 Mixte 1']))).toEqual(['U11 Mixte 1', 'U11 Mixte 2', 'U11 Mixte 10']);
+  const u11 = collectifsParCategorie(club).find((g) => g.titre === 'U11')!;
+  expect(u11.collectifs.map((c) => c.nom)).toEqual(['U11 F 2', 'U11 Mixte 1', 'U11 Mixte 3']);
+});
+
 test('matchParId préfère l’équipe du lien', () => {
   const derby: Club = JSON.parse(JSON.stringify(club));
   const copie = { ...derby.equipes[0].matchs[0] }; // même id et même date : seul l'équipe diffère

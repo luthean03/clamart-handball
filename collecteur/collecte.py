@@ -248,6 +248,13 @@ def url_equipe(racine: str, options: list[dict], libelle: str, ids_internes: set
     return f"{racine}equipe-{choix['ext_equipeId']}/"
 
 
+def url_classement(racine: str, poule_ext) -> str | None:
+    """Page « classements » de la poule en cours sur ffhandball.fr ; None si la poule est inconnue."""
+    if not poule_ext or str(poule_ext) == "None":
+        return None
+    return f"{ff.BASE}{racine}poule-{poule_ext}/classements/"
+
+
 def options_poule(racine: str, poule_ext: str) -> list[dict]:
     """Équipes de la poule d'après sa page (le club n'y apparaît qu'avec l'équipe de cette poule)."""
     try:
@@ -312,6 +319,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
             "phase": phase.get("libelle"),
             "poule": poule.get("libelle"),
             "url_ffhb": f"{ff.BASE}{url_equipe(racine, options_poule(racine, poule_ext), lib, ids_nous, miennes[0])}",
+            "url_classement": url_classement(racine, poule_ext),
             "classement": None,
             "matchs": [],
         }

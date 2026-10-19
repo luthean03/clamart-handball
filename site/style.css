@@ -64,6 +64,7 @@ main { max-width: 960px; margin: 0 auto; padding: 20px var(--gouttiere) 40px; ou
 .bloc { margin-top: 36px; }
 .bloc > h2 { font-size: 1.6rem; margin-bottom: 4px; }
 .bloc > .sous { margin: 0 0 14px; color: var(--encre-douce); font-size: .95rem; }
+.bloc > .lien-ffhb { margin: 10px 0 0; text-align: center; }
 
 /* ------------------------------------------------------------ prochains matchs */
 .jour { margin: 18px 0 6px; font: 600 1.15rem/1.2 var(--titre); color: var(--encre-douce); }
