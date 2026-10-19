@@ -260,3 +260,18 @@ test('ligne de match : un match sans date n’affiche aucune date avec afficherD
   expect(within(statut).queryByText(/\d/)).toBeNull();
   expect(screen.getByTestId('ligne-match').props.accessibilityLabel).toMatch(/, À fixer$/);
 });
+
+test('ligne de match joué avec afficherDate : date et heure, plus de « Fin »', () => {
+  rendu(<LigneMatch match={m('2644292')} maintenant={MAR_SOIR} onPress={jest.fn()} afficherDate />);
+  const statut = screen.getByTestId('statut');
+  expect(within(statut).getAllByText(/\d/).map((x) => x.props.children)).toEqual(['11/10', '16:15']);
+  expect(within(statut).queryByText('Fin')).toBeNull();
+  const date = within(statut).getByText('11/10');
+  expect(date.props.style).toEqual(within(statut).getByText('16:15').props.style);
+  expect(screen.getByLabelText(/^Clamart Seniors F 1 32, Ent\. Suresnes \/ Nanterre 22, victoire, dimanche 11 oct\.$/)).toBeOnTheScreen();
+});
+
+test('ligne de match joué sans date avec afficherDate : « Fin » reste', () => {
+  rendu(<LigneMatch match={{ ...m('2644292'), date: null }} maintenant={MAR_SOIR} onPress={jest.fn()} afficherDate />);
+  expect(within(screen.getByTestId('statut')).getByText('Fin')).toBeOnTheScreen();
+});

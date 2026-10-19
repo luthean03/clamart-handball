@@ -14,7 +14,7 @@ interface Props {
   maintenant: Date;
   onPress: () => void;
   afficherCompetition?: boolean;
-  /** Date courte (17/10) au-dessus de l'heure, pour les listes de matchs à venir de dates différentes. */
+  /** Date courte (17/10) au-dessus de l'heure, pour les listes de matchs de dates différentes, joués ou non. */
   afficherDate?: boolean;
 }
 
@@ -39,10 +39,10 @@ export function LigneMatch({ match, maintenant, onPress, afficherCompetition = f
   const t = useThemeClub();
   const { dom, ext, sDom, sExt, joue } = campsDuMatch(match);
   const attente = !joue && scoreEnAttente(match, maintenant);
-  const statut = joue ? 'Fin' : match.date === null ? 'À fixer' : attente ? 'Attente' : heureDuMatch(match.date);
-  const dateAffichee = afficherDate && !joue && match.date !== null;
+  const dateAffichee = afficherDate && match.date !== null;
+  const statut = joue ? (dateAffichee ? heureDuMatch(match.date!) : 'Fin') : match.date === null ? 'À fixer' : attente ? 'Attente' : heureDuMatch(match.date);
   const jourLu = dateAffichee ? `, ${libelleJour(jourDuMatch(match.date!), 'long')}` : '';
-  const lu = joue ? libelleScoreLu(match) : `${libelleScoreLu(match)}${jourLu}, ${attente ? 'score pas encore publié' : statut}`;
+  const lu = joue ? `${libelleScoreLu(match)}${jourLu}` : `${libelleScoreLu(match)}${jourLu}, ${attente ? 'score pas encore publié' : statut}`;
   const domGagne = joue && sDom! > sExt!;
   const extGagne = joue && sExt! > sDom!;
 
@@ -58,7 +58,7 @@ export function LigneMatch({ match, maintenant, onPress, afficherCompetition = f
           <Text variant="labelMedium" numberOfLines={1} style={{ color: t.colors.onSurfaceVariant }}>
             {statut}
           </Text>
-          {joue && match.date ? (
+          {joue && match.date && !dateAffichee ? (
             <Text variant="labelSmall" numberOfLines={1} style={{ color: t.colors.onSurfaceVariant }}>
               {heureDuMatch(match.date)}
             </Text>
