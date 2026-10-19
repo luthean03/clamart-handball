@@ -1,45 +1,195 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Clamart Handball – Résultats et classements</title>
-  <meta name="description" content="Prochains matchs, résultats, classements de toutes les équipes du Clamart Handball.">
-  <meta name="theme-color" content="#123a6b">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clamart Handball, l'app officielle du club</title>
+<meta name="description" content="L'app officielle de Clamart Handball : résultats, matchs, classements et notifications de vos équipes.">
+<style>
+@font-face{font-family:Nunito;src:url(assets/nunito.ttf) format("truetype");font-weight:200 1000;font-display:swap}
+:root{
+  --fond:#FAF6E6;--carte:#fff;--texte:#2A2622;--doux:#6E655D;--titre:#142A3D;
+  --action:#DB0000;--ligne:#EFE7DC;--trait:#CFC6BA;--indic:#FADAD3;--surindic:#7A1005;
+  --rayon:20px;--ombre:0 1px 2px rgba(20,42,61,.08),0 6px 18px rgba(20,42,61,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fond);color:var(--texte);font:500 1.0625rem/1.55 Nunito,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--titre);font-weight:800;line-height:1.15;margin:0}
+a{color:var(--action);font-weight:700;text-underline-offset:3px}
+a:hover{color:#a80000}
+:focus-visible{outline:3px solid var(--titre);outline-offset:3px;border-radius:6px}
+.wrap{width:min(100% - 32px,1080px);margin-inline:auto}
+section{padding:56px 0}
+h2{font-size:clamp(1.6rem,4vw,2.1rem);margin-bottom:24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--titre);color:#fff;padding:8px 14px;border-radius:999px;z-index:9}
+.skip:focus{left:8px}
+
+.hero{padding:40px 0 24px}
+.hero .wrap{display:grid;gap:40px;align-items:center}
+.marque{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.marque img{width:84px;height:84px;border-radius:50%;box-shadow:var(--ombre);flex:none}
+h1{font-size:clamp(2.2rem,7vw,3.4rem);font-weight:900;letter-spacing:-.01em}
+.devise{display:inline-block;background:var(--action);color:#fff;font-weight:800;font-size:.95rem;padding:6px 16px;border-radius:999px;margin:0 0 20px}
+.hero p.lead{font-size:1.2rem;max-width:34ch;margin:0 0 28px}
+.btn-off{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;background:var(--ligne);color:var(--doux);border:2px dashed var(--trait);font:800 1.05rem Nunito,sans-serif;cursor:not-allowed}
+.btn-off .pt{width:10px;height:10px;border-radius:50%;background:var(--action)}
+.hero-tel{display:flex;justify-content:center}
+
+.tel{position:relative;width:min(100%,260px);background:#1b1b1d;border-radius:34px;padding:8px;box-shadow:0 18px 40px rgba(20,42,61,.25),0 2px 6px rgba(20,42,61,.2);margin:0}
+.tel img{display:block;width:100%;height:auto;border-radius:27px;background:var(--fond)}
+.hero .tel{width:min(100%,290px);transform:rotate(2deg)}
+
+.grille{display:grid;gap:16px;grid-template-columns:1fr}
+.carte{background:var(--carte);border-radius:var(--rayon);padding:22px 22px 24px;box-shadow:var(--ombre)}
+.carte h3{font-size:1.2rem;margin:14px 0 6px}
+.carte p{margin:0;color:var(--doux)}
+.ico{width:48px;height:48px;border-radius:16px;background:var(--indic);color:var(--surindic);display:grid;place-items:center}
+.ico svg{width:26px;height:26px;fill:currentColor}
+
+.captures{background:linear-gradient(var(--fond),#F4EDD3 40%,var(--fond))}
+.rang{display:grid;gap:36px;justify-items:center}
+figure.cap{margin:0;text-align:center;width:100%;display:flex;flex-direction:column;align-items:center}
+figure.cap figcaption{margin-top:16px;font-weight:800;color:var(--titre)}
+figure.cap figcaption span{display:block;font-weight:500;color:var(--doux);font-size:.95rem}
+
+.club{display:grid;gap:16px}
+.liste{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.liste li{display:flex;gap:12px;align-items:flex-start}
+.liste .ico{flex:none;width:40px;height:40px;border-radius:13px}
+.liste .ico svg{width:22px;height:22px}
+.liste small{display:block;color:var(--doux);font-weight:500}
+.bandeau{background:var(--action);color:#fff;border-radius:var(--rayon);padding:22px;box-shadow:var(--ombre)}
+.bandeau h3{color:#fff;margin-bottom:6px}
+.bandeau p{margin:0 0 16px;color:#FFECE8}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:#fff;color:var(--action);font-weight:800;text-decoration:none}
+.btn:hover{background:#FFECE8;color:var(--action)}
+.bandeau :focus-visible{outline-color:#fff}
+
+.conf{background:var(--carte);border-radius:var(--rayon);box-shadow:var(--ombre);padding:26px 22px}
+.conf ul{margin:0;padding-left:1.2em;display:grid;gap:10px}
+.conf li::marker{color:var(--action)}
+#confidentialite{scroll-margin-top:16px}
+
+footer{border-top:1px solid var(--trait);padding:28px 0 40px;color:var(--doux);font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+
+@media(min-width:640px){.grille{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){
+  section{padding:80px 0}
+  .hero{padding:72px 0 40px}
+  .hero .wrap{grid-template-columns:1.1fr .9fr;gap:64px}
+  .hero-tel{justify-content:flex-end}
+  .hero .tel{width:300px}
+  .grille{grid-template-columns:repeat(4,1fr)}
+  .rang{grid-template-columns:repeat(3,1fr);align-items:start}
+  .rang figure:nth-child(2){margin-top:40px}
+  .club{grid-template-columns:1.2fr 1fr;gap:24px;align-items:start}
+  .conf{padding:36px 40px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <a class="evitement" href="#contenu">Aller au contenu</a>
-  <header class="entete">
-    <div class="entete__int">
-      <a class="marque" href="#/">
-        <svg class="marque__ballon" viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2.4"/>
-          <path d="M4 13c6 3 18 3 24 0M5 21c6-3 16-3 22 0M16 2c-5 7-5 21 0 28" fill="none" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <span id="nom-club">Clamart Handball</span>
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="#/" data-nav="accueil">Ce week-end</a>
-        <a href="#/equipes" data-nav="equipes">Équipes</a>
-      </nav>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="hero">
+  <div class="wrap" id="contenu">
+    <div>
+      <div class="marque">
+        <img src="assets/logo-rond.png" alt="Logo de Clamart Handball" width="84" height="84">
+        <h1>Clamart Handball</h1>
+      </div>
+      <p class="devise">Éducation · Plaisir · Compétition · depuis 2006</p>
+      <p class="lead">L'app officielle du club : résultats, matchs, classements et notifications de vos équipes.</p>
+      <span class="btn-off" role="button" aria-disabled="true"><span class="pt" aria-hidden="true"></span>Bientôt sur Google Play</span>
     </div>
-  </header>
-
-  <main id="contenu" tabindex="-1">
-    <div id="app" aria-live="polite">
-      <p class="chargement">Chargement des résultats…</p>
+    <div class="hero-tel">
+      <figure class="tel"><img src="assets/accueil.png" alt="Écran d'accueil de l'app : cartes des équipes suivies avec le prochain match" width="1080" height="2400"></figure>
     </div>
-  </main>
+  </div>
+</header>
 
-  <footer class="pied">
-    <p>Données issues du site de la <a href="https://www.ffhandball.fr/competitions/" rel="noopener">Fédération française de handball</a>.</p>
-    <p id="maj"></p>
-  </footer>
+<main>
+<section aria-labelledby="t-app">
+  <div class="wrap">
+    <h2 id="t-app">Ce que fait l'app</h2>
+    <div class="grille">
+      <article class="carte">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z"/></svg></div>
+        <h3>Vos équipes</h3><p>Suivez celles de vos enfants, en un geste.</p>
+      </article>
+      <article class="carte">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm-2 8h14v10H5V10Z"/></svg></div>
+        <h3>Toute la saison</h3><p>Tous les matchs et le calendrier du club.</p>
+      </article>
+      <article class="carte">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm0 2c-2.3 0-7 1.200-7 3.500V19h14v-2.500C15 14.200 10.300 13 8 13Zm8 0c-.3 0-.6 0-1 .1 1.200.9 2 2 2 3.400V19h6v-2.500c0-2.300-4.700-3.500-7-3.500Z"/></svg></div>
+        <h3>Les joueurs</h3><p>Les buteurs de chaque match.</p>
+      </article>
+      <article class="carte">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2.500 2.500 0 0 0 2.500-2.500h-5A2.500 2.500 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.500-6.800V3.500a1.500 1.500 0 0 0-3 0v.7A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2Z"/></svg></div>
+        <h3>Les résultats</h3><p>Une notification dès la fin du match.</p>
+      </article>
+    </div>
+    <p style="margin:20px 0 0;color:var(--doux)">Et en plus : ajoutez un match à votre agenda en un appui.</p>
+  </div>
+</section>
 
-  <script src="app.js"></script>
+<section class="captures" aria-labelledby="t-cap">
+  <div class="wrap">
+    <h2 id="t-cap">L'app en images</h2>
+    <div class="rang">
+      <figure class="cap"><div class="tel"><img src="assets/accueil.png" alt="Accueil : « Mes équipes » avec prochain match et forme récente" loading="lazy"></div><figcaption>Accueil<span>Le prochain match de chaque équipe</span></figcaption></figure>
+      <figure class="cap"><div class="tel"><img src="assets/matchs.png" alt="Liste des matchs du week-end avec les scores" loading="lazy"></div><figcaption>Matchs<span>Les scores, jour par jour</span></figcaption></figure>
+      <figure class="cap"><div class="tel"><img src="assets/match.png" alt="Fiche d'un match : score, lieu et buteurs" loading="lazy"></div><figcaption>Fiche de match<span>Score, lieu, buteurs</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-club">
+  <div class="wrap">
+    <h2 id="t-club">Le club</h2>
+    <div class="club">
+      <div class="carte">
+        <ul class="liste">
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm5.500-3.500a1.200 1.200 0 1 0 0 2.400 1.200 1.200 0 0 0 0-2.400Z"/></svg></span><div><a href="https://www.instagram.com/clamart_handball/">Instagram @clamart_handball</a></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8V6c0-.9.2-1.500 1.600-1.500H17V1.100C16.600 1 15.600 1 14.500 1 12 1 10 2.600 10 5.700V8H7v3.500h3V23h4V11.500h2.800L17.300 8H14Z"/></svg></span><div><a href="https://www.facebook.com/ClamartHandball/">Facebook Clamart Handball</a></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.900 9h-3a15.600 15.600 0 0 0-1.300-5.600A8 8 0 0 1 18.900 11ZM12 4c.8 1 1.700 3.300 1.900 7h-3.800C10.300 7.300 11.200 5 12 4ZM9.400 5.400A15.600 15.600 0 0 0 8.100 11h-3a8 8 0 0 1 4.300-5.600ZM5.100 13h3c.1 2.100.6 4 1.300 5.600A8 8 0 0 1 5.100 13Zm6.900 7c-.8-1-1.700-3.300-1.900-7h3.800c-.2 3.700-1.100 6-1.900 7Zm2.600-1.400c.7-1.600 1.200-3.500 1.300-5.600h3a8 8 0 0 1-4.300 5.600Z"/></svg></span><div><a href="https://clamart-handball.clubeo.com">clamart-handball.clubeo.com</a><small>Le site du club</small></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.200 7 13 7 13s7-7.800 7-13a7 7 0 0 0-7-7Zm0 9.500A2.500 2.500 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5Z"/></svg></span><div><strong>Gymnase du Petit Clamart</strong><small>56 rue de la Bourcillière, 92140 Clamart</small></div></li>
+        </ul>
+      </div>
+      <div class="bandeau">
+        <h3>Une question ?</h3>
+        <p>Écrivez au club depuis son formulaire de contact.</p>
+        <a class="btn" href="https://clamart-handball.clubeo.com/contact.html">Contacter le club</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="confidentialite" style="padding-top:0">
+  <div class="wrap">
+    <div class="conf">
+      <h2 id="confidentialite">Politique de confidentialité</h2>
+      <ul>
+        <li><strong>Aucun compte</strong> : l'app ne demande ni inscription ni identifiant.</li>
+        <li>Les <strong>équipes que vous suivez</strong> sont stockées sur votre téléphone, nulle part ailleurs.</li>
+        <li>Un <strong>jeton de notification Firebase</strong> sert uniquement à vous envoyer les résultats.</li>
+        <li><strong>Aucune publicité, aucun suivi</strong> de votre activité.</li>
+        <li>Les noms des joueurs viennent des <strong>feuilles de match publiques</strong> de la FFHB.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#confidentialite">Politique de confidentialité</a>
+    <span>Données : ffhandball.fr</span>
+    <span>© Clamart Handball</span>
+  </div>
+</footer>
 </body>
 </html>
