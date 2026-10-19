@@ -1,7 +1,8 @@
 # Clamart Handball — résultats, classements et buteurs
 
-Site statique pour les membres et les supporters du club : prochains matchs, résultats,
-classements de chaque équipe, buteurs, et agenda à ajouter à son téléphone.
+Le dépôt contient l'application mobile du club (dossier `app/`) et le site publié sur GitHub Pages.
+Ce site est une simple page vitrine qui présente l'app, plus l'hébergement des données
+(`data/club.json`, calendriers `.ics`, images de notifications) que l'app lit.
 Les données viennent de ffhandball.fr et sont mises à jour automatiquement.
 
 ```
@@ -11,8 +12,9 @@ collecteur/
   ffhandball.py             bibliothèque de lecture du site FFHB
   cache/                    matchs déjà joués (téléchargés une seule fois)
 site/
-  index.html, style.css, app.js   le site (aucune compilation nécessaire)
-  data/club.json            toutes les données affichées
+  index.html                la page vitrine (statique, sans compilation)
+  assets/                   police, logo et captures d'écran de la page (accueil.png, matchs.png, match.png)
+  data/club.json            toutes les données lues par l'app
   data/agenda/*.ics         un calendrier par équipe + club.ics + un par collectif (<collectif>.ics)
   data/agenda/match/*.ics   un calendrier par match à venir (<équipe>-<match>.ics)
 .github/workflows/mise-a-jour.yml  mise à jour automatique + publication
@@ -49,10 +51,10 @@ installer `truststore` (déjà dans requirements.txt) ou définir
 
 ## Réglages (`config.json`)
 
-- `site.couleur_principale`, `site.couleur_accent` : couleurs du site.
+- `site.couleur_principale`, `site.couleur_accent` : couleurs transmises à l'app dans `club.json`.
 - `stats_joueurs.joueurs_masques` : joueurs à ne jamais afficher (voir « Données et vie privée »).
 - `noms_equipes` : renommer une équipe (`"32542-clamart-handball-1": "Seniors Filles 1"`).
-  Les identifiants sont visibles dans l'adresse des pages équipe (`#/equipe/<id>`).
+  Les identifiants figurent dans `site/data/club.json`.
 - `club.motifs_nom_equipe` : texte qui identifie les équipes du club dans les noms FFHB
   (utile pour les ententes : ajouter par ex. `"ENT. CLAMART"`).
 
