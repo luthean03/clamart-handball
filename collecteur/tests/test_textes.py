@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from textes import initiales, nom_lisible
+from textes import initiales, nom_joueur, nom_lisible
 
 CAS = json.loads((Path(__file__).resolve().parents[2] / "partage" / "phrases-cas.json").read_text(encoding="utf-8"))
 
@@ -19,3 +19,14 @@ def test_initiales():
     assert initiales("Martigua SCL") == "MS"
     assert initiales("Issy") == "IS"
     assert initiales("") == ""
+
+
+def test_nom_joueur():
+    assert nom_joueur("DIARA", "DORILAS") == "D. Dorilas"
+    assert nom_joueur("HAQUIMA", "ES-SALEMY") == "H. Es-Salemy"
+    assert nom_joueur("MATHILDE", "DOS SANTOS UZARRALDE") == "M. Dos Santos Uzarralde"
+    assert nom_joueur("LUCAS FREDERIC MARIE LIV", "CHAUDEAUX") == "L. Chaudeaux"
+    assert nom_joueur("Coralie-Stella", "PORGRONT") == "C. Porgront"
+    assert nom_joueur("AMA", "N'GUESSAN") == "A. N'Guessan"
+    assert nom_joueur("", "NDIAYE") == "Ndiaye"
+    assert nom_joueur(None, None) == ""

@@ -1,17 +1,15 @@
 import type { ReactNode } from 'react';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, Button, Surface, Text } from 'react-native-paper';
 import { CONTENU_BOUTON, NOM_SANS_COUPURE } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { libelleScoreLu } from '../composants/LigneMatch';
-import { Monogramme } from '../composants/Monogramme';
+import { Ecusson, EcussonClub } from '../composants/Ecusson';
 import { heureDuMatch, jourDuMatch, libelleJour } from '../donnees/dates';
 import { lierNumero, nomLisible, phraseResultat } from '../donnees/phrase';
 import { matchParId, matchsDuCollectif, scoreEnAttente, serieEnCours } from '../donnees/selecteurs';
-import type { Club, MatchAvecEquipe, Salle } from '../donnees/types';
+import type { Buteur, Club, MatchAvecEquipe, Salle } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
-
-const LOGO = require('../../assets/logo-clamart.png');
 
 interface Props {
   club: Club;
@@ -24,12 +22,40 @@ interface Props {
   onAgenda: (m: MatchAvecEquipe) => void;
 }
 
-function Carte({ children, remplie = true }: { children: ReactNode; remplie?: boolean }) {
+function Carte({ children }: { children: ReactNode }) {
   const t = useThemeClub();
   return (
     <Surface style={{ borderRadius: t.rayonCarte }} elevation={1}>
-      <View style={[styles.liste, remplie && styles.carte, { borderRadius: t.rayonCarte }]}>{children}</View>
+      <View style={[styles.liste, styles.carte, { borderRadius: t.rayonCarte }]}>{children}</View>
     </Surface>
+  );
+}
+
+/** Tous les joueurs de la feuille, 0 but compris : du meilleur au moins bon, puis par nom. */
+function parButs(liste: Buteur[] | undefined): Buteur[] {
+  return [...(liste ?? [])].sort((a, b) => b.buts - a.buts || a.joueur.localeCompare(b.joueur, 'fr'));
+}
+
+function ColonneJoueurs({ titre, ecusson, joueurs }: { titre: string; ecusson: ReactNode; joueurs: Buteur[] }) {
+  const t = useThemeClub();
+  return (
+    <View style={styles.colonne}>
+      <View style={styles.titreColonne}>
+        {ecusson}
+        <Text variant="labelMedium" numberOfLines={1} style={[styles.nomColonne, { color: t.colors.onSurfaceVariant }]}>{titre}</Text>
+      </View>
+      {joueurs.map((b, i) => (
+        <View
+          key={i}
+          style={[styles.buteur, i > 0 && { borderTopColor: t.colors.outlineVariant, borderTopWidth: StyleSheet.hairlineWidth }]}
+          accessible
+          accessibilityLabel={`${b.joueur}, ${b.buts} ${b.buts > 1 ? 'buts' : 'but'}`}
+        >
+          <Text variant="bodyMedium" style={[styles.joueur, { color: t.colors.onSurface }]}>{b.joueur}</Text>
+          <Text variant="titleSmall" style={{ color: t.club.titre, fontFamily: POLICES.gras }}>{b.buts}</Text>
+        </View>
+      ))}
+    </View>
   );
 }
 
@@ -57,7 +83,8 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
   const adversaire = nomLisible(m.adversaire);
   const nous = `Clamart ${m.equipe.nom}`;
   const aVenir = m.resultat === null && m.date !== null && !scoreEnAttente(m, maintenant);
-  const buteurs = m.equipe.stats_joueurs === true ? (m.buteurs ?? []).filter((b) => b.buts > 0) : [];
+  const joueursNous = parButs(m.buteurs);
+  const joueursEux = parButs(m.buteurs_adverses);
   const camps = m.domicile
     ? [{ nom: nous, score: m.score_nous, club: true }, { nom: adversaire, score: m.score_eux, club: false }]
     : [{ nom: adversaire, score: m.score_eux, club: false }, { nom: nous, score: m.score_nous, club: true }];
@@ -78,7 +105,7 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
           <View style={styles.camps} accessible accessibilityLabel={libelleScoreLu(m)}>
             {camps.map((c) => (
               <View key={c.nom} style={styles.camp}>
-                {c.club ? <Image source={LOGO} style={styles.logo} accessibilityIgnoresInvertColors /> : <Monogramme nom={c.nom} taille={28} />}
+                {c.club ? <EcussonClub taille={28} /> : <Ecusson uri={m.logo_adversaire} nom={c.nom} taille={28} />}
                 <Text variant="bodyLarge" numberOfLines={2} {...NOM_SANS_COUPURE} style={[styles.nomCamp, { color: t.colors.onSurface }]}>{lierNumero(c.nom)}</Text>
                 <Text variant="headlineSmall" style={[styles.score, { color: t.club.titre }]}>{c.score ?? '–'}</Text>
               </View>
@@ -92,43 +119,55 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
 
         <EnTeteSection titre="Infos" />
         <Carte>
+          <Text variant="titleSmall" style={{ color: t.colors.onSurface, fontFamily: POLICES.gras }}>
+            {[m.equipe.detail, m.journee ? `journée ${m.journee}` : null].filter(Boolean).join(' · ')}
+          </Text>
           <Text variant="bodyLarge" style={{ color: t.colors.onSurface }}>
             {m.date ? `${libelleJour(jourDuMatch(m.date), 'long')} à ${heureDuMatch(m.date)}` : 'Date à venir'}
           </Text>
           <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
-            {[m.equipe.detail, m.equipe.poule ? nomLisible(m.equipe.poule) : null, m.journee ? `journée ${m.journee}` : null, m.domicile ? 'domicile' : 'extérieur'].filter(Boolean).join(' · ')}
+            {[m.salle?.nom ? nomLisible(m.salle.nom) : null, m.domicile ? 'domicile' : 'extérieur'].filter(Boolean).join(' · ')}
           </Text>
+          {m.salle?.adresse ? <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>{m.salle.adresse}</Text> : null}
           {m.salle?.nom || m.salle?.adresse ? (
-            <View style={styles.salle}>
-              <View style={styles.texteSalle}>
-                {m.salle.nom ? <Text variant="titleMedium" style={{ color: t.club.titre }}>{nomLisible(m.salle.nom)}</Text> : null}
-                {m.salle.adresse ? <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>{m.salle.adresse}</Text> : null}
-              </View>
-              <Button mode="contained-tonal" icon="map-marker-radius" contentStyle={CONTENU_BOUTON} onPress={() => onItineraire(m.salle!)}>Itinéraire</Button>
-            </View>
+            <Button mode="contained-tonal" icon="map-marker-radius" style={styles.itineraire} contentStyle={CONTENU_BOUTON} onPress={() => onItineraire(m.salle!)}>Itinéraire</Button>
           ) : null}
         </Carte>
 
-        <View style={styles.actions}>
-          {aVenir ? <Button mode="contained" icon="calendar-plus" contentStyle={CONTENU_BOUTON} onPress={() => onAgenda(m)}>Ajouter à l'agenda</Button> : null}
-          {m.feuille_de_match ? <Button mode="outlined" icon="file-document-outline" contentStyle={CONTENU_BOUTON} onPress={() => onOuvrirLien(m.feuille_de_match!)}>Feuille de match</Button> : null}
-          <Button mode="text" icon="open-in-new" contentStyle={CONTENU_BOUTON} onPress={() => onOuvrirLien(m.url_ffhb)}>Voir sur ffhandball.fr</Button>
-        </View>
+        {aVenir ? (
+          <View style={styles.actions}>
+            <Button mode="contained" icon="calendar-plus" contentStyle={CONTENU_BOUTON} onPress={() => onAgenda(m)}>Ajouter à l'agenda</Button>
+          </View>
+        ) : null}
 
-        {buteurs.length ? (
+        {joueursNous.length || joueursEux.length ? (
           <>
-            <EnTeteSection titre="Buteurs" />
-            <Carte remplie={false}>
-              {buteurs.map((b) => (
-                <View key={b.joueur} style={[styles.rangee, { borderBottomColor: t.colors.outlineVariant }]}>
-                  <Text variant="labelLarge" style={[styles.numero, { color: t.colors.onSurfaceVariant }]}>{b.numero ?? ''}</Text>
-                  <Text variant="bodyLarge" style={[styles.joueur, { color: t.colors.onSurface }]}>{b.joueur}</Text>
-                  <Text variant="titleMedium" style={[styles.buts, { color: t.club.titre, fontFamily: POLICES.gras }]}>{b.buts}</Text>
-                </View>
-              ))}
+            <EnTeteSection titre="Match" />
+            <Carte>
+              <View style={styles.colonnes}>
+                {joueursNous.length ? <ColonneJoueurs titre="Clamart" ecusson={<EcussonClub taille={16} />} joueurs={joueursNous} /> : null}
+                {joueursEux.length ? <ColonneJoueurs titre={adversaire} ecusson={<Ecusson uri={m.logo_adversaire} nom={adversaire} taille={16} />} joueurs={joueursEux} /> : null}
+              </View>
             </Carte>
           </>
         ) : null}
+
+        <View style={styles.bas}>
+          {m.feuille_de_match ? (
+            <Button
+              mode="elevated"
+              icon="file-document-outline"
+              buttonColor={t.colors.surface}
+              textColor={t.colors.onSurface}
+              labelStyle={styles.libelleFeuille}
+              contentStyle={CONTENU_BOUTON}
+              onPress={() => onOuvrirLien(m.feuille_de_match!)}
+            >
+              Feuille de match
+            </Button>
+          ) : null}
+          <Button mode="text" icon="open-in-new" labelStyle={styles.libelleLien} contentStyle={CONTENU_BOUTON} onPress={() => onOuvrirLien(m.url_ffhb)}>Voir sur ffhandball.fr</Button>
+        </View>
       </ScrollView>
     </View>
   );
@@ -141,16 +180,19 @@ const styles = StyleSheet.create({
   carte: { padding: 16, gap: 8 },
   camps: { gap: 10, marginTop: 8 },
   camp: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  logo: { width: 28, height: 28, borderRadius: 14 },
   nomCamp: { flex: 1 },
   score: { fontVariant: ['tabular-nums'], minWidth: 36, textAlign: 'right' },
-  salle: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 8 },
-  texteSalle: { flex: 1 },
-  actions: { gap: 8, marginTop: 16 },
+  itineraire: { marginTop: 8 },
+  actions: { marginTop: 16 },
+  bas: { gap: 4, marginTop: 24 },
+  libelleFeuille: { fontSize: 13, fontFamily: POLICES.gras },
+  libelleLien: { fontSize: 12, fontFamily: POLICES.gras },
   liste: { overflow: 'hidden' },
-  rangee: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: StyleSheet.hairlineWidth },
-  numero: { width: 28, fontVariant: ['tabular-nums'] },
+  colonnes: { flexDirection: 'row', gap: 12 },
+  colonne: { flex: 1 },
+  titreColonne: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 },
+  nomColonne: { flex: 1, textTransform: 'uppercase', fontFamily: POLICES.gras },
+  buteur: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, paddingVertical: 4 },
   joueur: { flex: 1 },
-  buts: { fontVariant: ['tabular-nums'] },
   vide: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8, padding: 24 },
 });

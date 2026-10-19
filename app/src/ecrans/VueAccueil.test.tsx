@@ -1,92 +1,162 @@
 import { StyleSheet } from 'react-native';
 import { fireEvent, screen, within } from '@testing-library/react-native';
-import { club, MAR_SOIR } from '../../test/donnees';
+import { club } from '../../test/donnees';
+import { prochainMatchDate } from '../donnees/selecteurs';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { themeClair, themeSombre } from '../theme/theme';
 import { VueAccueil, type PropsAccueil } from './VueAccueil';
 
-function accueil(props: Partial<PropsAccueil> = {}) {
-  const p: PropsAccueil = {
-    club, maintenant: MAR_SOIR, suivis: ['seniors-f-1', 'seniors-m'], horsLigne: false, majRequise: false, rafraichissement: false,
-    rafraichir: jest.fn(), onOuvrirEquipe: jest.fn(), onOuvrirMatch: jest.fn(), onAgenda: jest.fn(),
-    onReglages: jest.fn(), onChoisirEquipes: jest.fn(), ...props,
+/** Vendredi 16 oct. 2026, 11 h 30 : le prochain match de Seniors F 1 est dans deux jours. */
+const VEN_MATIN = new Date('2026-10-16T11:30:00+02:00');
+
+function propsAccueil(props: Partial<PropsAccueil> = {}): PropsAccueil {
+  return {
+    club, maintenant: VEN_MATIN, suivis: ['seniors-f-1', 'seniors-m'], horsLigne: false, majRequise: false, rafraichissement: false,
+    rafraichir: jest.fn(), onOuvrirMatch: jest.fn(), onAgenda: jest.fn(),
+    onReglages: jest.fn(), onChoisirEquipes: jest.fn(), onTousLesMatchs: jest.fn(), ...props,
   };
+}
+
+function accueil(props: Partial<PropsAccueil> = {}) {
+  const p = propsAccueil(props);
   rendu(<VueAccueil {...p} />);
   return p;
 }
 
-test('en-tête : salutation, week-end et heure de mise à jour', () => {
+test('en-tête : salutation et mise à jour, sans week-end', () => {
   accueil();
-  expect(screen.getByText('Bonsoir !')).toBeOnTheScreen();
-  expect(screen.getByText('Week-end du 10–11 oct. · mis à jour à 16:41')).toBeOnTheScreen();
+  expect(screen.getByText('Bonjour !')).toBeOnTheScreen();
+  expect(screen.getByText('Mis à jour mar. 13 oct. à 16:41')).toBeOnTheScreen();
+  expect(screen.queryByText(/Week-end/)).toBeNull();
 });
 
-test('mes équipes : le résultat raconté en une phrase', () => {
-  const p = accueil();
-  expect(screen.getByText('Victoire contre Ent. Suresnes / Nanterre')).toBeOnTheScreen();
-  expect(screen.getByText('3e victoire de suite')).toBeOnTheScreen();
-  expect(screen.getByText("Défaite d'un but contre Levallois SC 1D")).toBeOnTheScreen();
-  expect(screen.getByText('32–22')).toBeOnTheScreen();
-  expect(screen.getByText('3e sur 11')).toBeOnTheScreen();
-  fireEvent.press(screen.getAllByText('Voir le match')[0]);
-  expect(p.onOuvrirMatch).toHaveBeenCalledWith('2644292');
-  fireEvent.press(screen.getByText('Victoire contre Ent. Suresnes / Nanterre'));
-  expect(p.onOuvrirEquipe).toHaveBeenCalledWith('seniors-f-1');
+test('carte : bandeau de date du prochain match et compte à rebours', () => {
+  accueil({ suivis: ['seniors-f-1'] });
+  expect(screen.getByText('Dim. 18 octobre · 15:30')).toBeOnTheScreen();
+  expect(screen.getByText('dans 2 jours')).toBeOnTheScreen();
+  expect(screen.getByText('Coupe de France départementale · J1')).toBeOnTheScreen();
+  expect(screen.getByText('Contre Cellois HB')).toBeOnTheScreen();
+  expect(screen.getByText('Victor Hugo · extérieur')).toBeOnTheScreen();
 });
 
-test('carte d’équipe : le nom de l’équipe en titre, sans surtitre, avec la place à côté', () => {
-  accueil();
-  const nom = screen.getByText('Seniors F 1');
-  expect(nom.props.children).toBe('Seniors F\u00A01');
-  expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
-  expect(nom).toHaveProp('textBreakStrategy', 'simple');
-  expect(screen.queryByText(/Seniors F 1 · /)).toBeNull();
-  expect(screen.getByText('3e sur 11').props.children).toBe('3e\u00A0sur\u00A011');
-  // le titre et le rang sont dans la même rangée d'en-tête, avant la phrase
-  const entete = screen.getAllByTestId('entete-carte')[0];
-  expect(within(entete).getByText('Seniors F 1')).toBeOnTheScreen();
-  expect(within(entete).getByText('3e sur 11')).toBeOnTheScreen();
-  expect(within(entete).queryByText(/Victoire/)).toBeNull();
-});
-
-test('carte d’équipe : date, salle et domicile ou extérieur sous la phrase', () => {
-  accueil();
-  expect(screen.getAllByText(/^dimanche 11 oct\. · .* · domicile$/)).toHaveLength(2); // Seniors F 1 et Seniors M
-});
-
-test('carte d’équipe : le libellé lu contient l’équipe, la phrase, la série, le score et la date', () => {
-  accueil();
-  expect(
-    screen.getByLabelText('Seniors F 1, Victoire contre Ent. Suresnes / Nanterre, 3e victoire de suite, 32 à 22, dimanche 11 oct.'),
-  ).toBeOnTheScreen();
-});
-
-test('carte d’équipe : le nom de l’adversaire peut tenir sur trois lignes', () => {
-  accueil({ maintenant: new Date('2026-10-14T12:00:00+02:00'), suivis: ['seniors-m'] });
+test('carte : le match du lendemain est « demain »', () => {
+  accueil({ suivis: ['seniors-m'] });
+  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('demain')).toBeOnTheScreen();
   expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toHaveProp('numberOfLines', 3);
 });
 
-test('match à venir : le dernier résultat est rappelé sous la date', () => {
-  accueil({ maintenant: new Date('2026-10-14T12:00:00+02:00'), suivis: ['seniors-f-1', 'seniors-m'] });
-  expect(screen.getByText('Dernier match : Victoire contre Ent. Suresnes / Nanterre, 32–22')).toBeOnTheScreen();
-  expect(screen.getByText("Dernier match : Défaite d'un but contre Levallois SC 1D, 21–22")).toBeOnTheScreen();
+test('carte : le jour du match, après le coup d’envoi, la carte garde ce match et dit « aujourd’hui »', () => {
+  accueil({ maintenant: new Date('2026-10-17T19:00:00+02:00'), suivis: ['seniors-m'] });
+  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('aujourd’hui')).toBeOnTheScreen();
+  expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
 });
 
-test('match à venir sans résultat passé : pas de ligne « Dernier match »', () => {
-  accueil({ maintenant: new Date('2026-09-10T12:00:00+02:00'), suivis: ['seniors-f-1'] });
-  expect(screen.queryByText(/Dernier match/)).toBeNull();
+test('carte : pas de classement pour une coupe, classement pour un championnat', () => {
+  accueil({ suivis: ['seniors-f-1'] });
+  expect(screen.queryByText(/sur \d+/)).toBeNull();
+  screen.unmount();
+  accueil({ suivis: ['u18-f'] });
+  expect(screen.getByText('Sam. 7 novembre · 18:30')).toBeOnTheScreen();
+  expect(screen.getByText('dans 22 jours')).toBeOnTheScreen();
+  expect(screen.getByText('4e sur 6').props.children).toBe('4e sur 6');
+  const entete = screen.getByTestId('entete-carte');
+  expect(within(entete).getByText('U18 F')).toBeOnTheScreen();
+  expect(within(entete).getByText('4e sur 6')).toBeOnTheScreen();
 });
 
-test('un résultat déjà affiché n’est pas répété en « Dernier match »', () => {
+test('carte : le nom de l’équipe en titre, sans coupure ni césure', () => {
+  accueil({ suivis: ['seniors-f-1'] });
+  const nom = screen.getByText('Seniors F 1');
+  expect(nom.props.children).toBe('Seniors F 1');
+  expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
+  expect(nom).toHaveProp('textBreakStrategy', 'simple');
+});
+
+test('carte : plus de « Dernier match », la forme reste', () => {
   accueil();
   expect(screen.queryByText(/Dernier match/)).toBeNull();
+  expect(screen.getAllByLabelText(/^Forme : /).length).toBeGreaterThan(0);
+  expect(screen.getByLabelText('Forme : victoire, défaite, victoire, victoire, victoire')).toBeOnTheScreen();
 });
 
-test('tout le club ce week-end : 11 matchs', () => {
+test('carte : le libellé lu contient l’équipe, la date, le compte à rebours, la compétition, l’adversaire et la salle', () => {
+  accueil({ suivis: ['u18-f'] });
+  expect(
+    screen.getByLabelText('U18 F, 4e sur 6, samedi 7 nov. à 18:30, dans 22 jours, Championnat, journée 3, contre Stade Francais, Stade Pierre de Coubertin, extérieur, ouvre le match'),
+  ).toBeOnTheScreen();
+  screen.unmount();
+  accueil({ suivis: ['seniors-f-1'] });
+  expect(
+    screen.getByLabelText('Seniors F 1, dimanche 18 oct. à 15:30, dans 2 jours, Coupe de France départementale, journée 1, contre Cellois HB, Victor Hugo, extérieur, ouvre le match'),
+  ).toBeOnTheScreen();
+});
+
+test('carte : toucher la carte ouvre la fiche du match, avec son équipe', () => {
+  const p = accueil({ suivis: ['seniors-f-1'] });
+  fireEvent.press(screen.getByText('Contre Cellois HB'));
+  const m = prochainMatchDate(club, 'seniors-f-1', VEN_MATIN)!;
+  expect(p.onOuvrirMatch).toHaveBeenCalledWith(m.id, m.equipe.id);
+});
+
+test('carte : l’écusson de l’adversaire est celui de la FFHB, sinon ses initiales', () => {
+  accueil({ suivis: ['seniors-f-1'] });
+  expect(within(screen.getByTestId('adversaire-carte')).getByTestId('monogramme', { includeHiddenElements: true })).toBeOnTheScreen();
+  screen.unmount();
+  const avecLogo = structuredClone(club);
+  for (const m of avecLogo.equipes.flatMap((e) => e.matchs)) m.logo_adversaire = 'https://exemple.test/ecusson.webp';
+  accueil({ club: avecLogo, suivis: ['seniors-f-1'] });
+  expect(within(screen.getByTestId('adversaire-carte')).getByTestId('ecusson-image')).toBeOnTheScreen();
+});
+
+test('sans prochain match daté, l’équipe suivie n’a pas de carte', () => {
+  accueil({ maintenant: new Date('2027-07-01T12:00:00+02:00'), suivis: ['seniors-f-1'] });
+  expect(screen.queryByText('Seniors F 1')).toBeNull();
+  expect(screen.queryByText(/Aucun match programmé/)).toBeNull();
+  expect(screen.queryByLabelText(/^Forme : /)).toBeNull();
+  expect(screen.getByText('Aucun match à venir au club.')).toBeOnTheScreen();
+});
+
+test('sans prochain match pour aucune équipe suivie, toute la section « Mes équipes » disparaît', () => {
+  accueil({ maintenant: new Date('2027-07-01T12:00:00+02:00'), suivis: ['seniors-f-1', 'seniors-m'] });
+  expect(screen.queryByText('Mes équipes')).toBeNull();
+  expect(screen.queryByText('Choisir mes équipes')).toBeNull();
+  expect(screen.getByText('Tout le club')).toBeOnTheScreen();
+});
+
+test('une équipe suivie sans match est omise, les autres gardent leur carte sous l’en-tête', () => {
+  const sansMatch = structuredClone(club);
+  for (const e of sansMatch.equipes.filter((x) => x.collectif === 'seniors-m')) e.matchs = [];
+  accueil({ club: sansMatch, suivis: ['seniors-m', 'seniors-f-1'] });
+  expect(screen.getByText('Mes équipes')).toBeOnTheScreen();
+  expect(screen.getAllByTestId('bandeau-date')).toHaveLength(1);
+  expect(screen.getByText('Seniors F 1')).toBeOnTheScreen();
+  expect(screen.queryByText('Seniors M')).toBeNull();
+});
+
+test('tout le club : 5 prochains matchs avec leur date, puis « Tous les matchs »', () => {
+  const p = accueil({ suivis: [] });
+  expect(screen.getByText('Tout le club')).toBeOnTheScreen();
+  expect(screen.queryByText(/ce week-end/)).toBeNull();
+  expect(screen.getAllByTestId('ligne-match')).toHaveLength(5);
+  expect(screen.getByText('17/10')).toBeOnTheScreen();
+  expect(screen.getByText('18/10')).toBeOnTheScreen();
+  fireEvent.press(screen.getAllByTestId('ligne-match')[0]);
+  expect(p.onOuvrirMatch).toHaveBeenCalledWith('2734038');
+  fireEvent.press(screen.getByText('Tous les matchs'));
+  expect(p.onTousLesMatchs).toHaveBeenCalled();
+});
+
+test('tout le club n’est jamais filtré par les équipes suivies', () => {
+  accueil({ suivis: ['u18-f'] });
+  expect(screen.getAllByTestId('ligne-match')).toHaveLength(5);
+});
+
+test('plus de week-end dans l’en-tête', () => {
   accueil();
-  expect(screen.getByText('11 matchs')).toBeOnTheScreen();
-  expect(screen.getAllByTestId('ligne-match')).toHaveLength(11);
+  expect(screen.queryByText(/Week-end/)).toBeNull();
 });
 
 test('aucune équipe suivie : invitation à choisir', () => {
@@ -97,27 +167,19 @@ test('aucune équipe suivie : invitation à choisir', () => {
 
 test('ignore une équipe suivie absente des données', () => {
   accueil({ suivis: ['equipe-disparue', 'seniors-m'] });
-  expect(screen.getByText("Défaite d'un but contre Levallois SC 1D")).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getAllByTestId('bandeau-date')).toHaveLength(1);
 });
 
 test('match à venir : ajouter à l’agenda', () => {
-  const p = accueil({ maintenant: new Date('2026-10-14T12:00:00+02:00'), suivis: ['seniors-m'] });
-  expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
-  expect(screen.getAllByText('18:00').length).toBeGreaterThan(0); // carte + liste du club
+  const p = accueil({ suivis: ['seniors-m'] });
   fireEvent.press(screen.getByText("Ajouter à l'agenda"));
   expect(p.onAgenda).toHaveBeenCalledWith(expect.objectContaining({ id: '2734038' }));
 });
 
-test('hors saison : pas de match', () => {
-  accueil({ maintenant: new Date('2027-07-01T12:00:00+02:00'), suivis: ['seniors-f-1'] });
-  expect(screen.getByText('Pas de match ce week-end')).toBeOnTheScreen();
-  expect(screen.getByText('Aucun match programmé pour le moment')).toBeOnTheScreen();
-  expect(screen.getByText('Aucun match au club ce week-end.')).toBeOnTheScreen();
-});
-
 test('hors ligne et réglages', () => {
   const p = accueil({ horsLigne: true });
-  expect(screen.getByText('Hors ligne · résultats mis à jour à 16:41')).toBeOnTheScreen();
+  expect(screen.getByText('Hors ligne · résultats mis à jour mar. 13 oct. à 16:41')).toBeOnTheScreen();
   fireEvent.press(screen.getByLabelText('Réglages'));
   expect(p.onReglages).toHaveBeenCalled();
 });
@@ -130,14 +192,23 @@ test('le bouton Réglages a une cible tactile de 48 dp', () => {
 });
 
 test('les boutons de l’Accueil ont une zone tactile d’au moins 48 dp (hauteur minimale sur le contenu)', () => {
-  accueil({ maintenant: new Date('2026-10-14T12:00:00+02:00'), suivis: ['seniors-m'] });
+  accueil({ suivis: ['seniors-m'] });
   expect(contenuDuBouton(screen.getByText("Ajouter à l'agenda")).minHeight).toBeGreaterThanOrEqual(48);
-  screen.unmount();
-  accueil();
-  for (const voir of screen.getAllByText('Voir le match')) expect(contenuDuBouton(voir).minHeight).toBeGreaterThanOrEqual(48);
+  expect(contenuDuBouton(screen.getByText('Tous les matchs')).minHeight).toBeGreaterThanOrEqual(48);
   screen.unmount();
   accueil({ suivis: [] });
   expect(contenuDuBouton(screen.getByText('Choisir mes équipes')).minHeight).toBeGreaterThanOrEqual(48);
+});
+
+test('le bandeau de date prend les couleurs du thème, clair puis sombre', () => {
+  accueil({ suivis: ['seniors-m'] });
+  expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeClair.club.bandeau.fond);
+  expect(StyleSheet.flatten(screen.getByText('demain').props.style).color).toBe(themeClair.club.bandeau.doux);
+  expect(StyleSheet.flatten(screen.getByText('demain').props.style).fontWeight).toBe('700');
+  screen.unmount();
+  rendu(<VueAccueil {...propsAccueil({ suivis: ['seniors-m'] })} />, themeSombre);
+  expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeSombre.club.bandeau.fond);
+  expect(StyleSheet.flatten(screen.getByText('Sam. 17 octobre · 18:00').props.style).color).toBe(themeSombre.club.bandeau.texte);
 });
 
 describe('bord à bord', () => {
@@ -157,7 +228,7 @@ describe('bord à bord', () => {
 
   test('la protection prend la couleur du thème sombre', () => {
     jest.spyOn(require('react-native-safe-area-context'), 'useSafeAreaInsets').mockReturnValue({ top: 24, bottom: 0, left: 0, right: 0 });
-    rendu(<VueAccueil {...({ club, maintenant: MAR_SOIR, suivis: [], horsLigne: false, majRequise: false, rafraichissement: false, rafraichir: jest.fn(), onOuvrirEquipe: jest.fn(), onOuvrirMatch: jest.fn(), onAgenda: jest.fn(), onReglages: jest.fn(), onChoisirEquipes: jest.fn() } as PropsAccueil)} />, themeSombre);
+    rendu(<VueAccueil {...propsAccueil({ suivis: [] })} />, themeSombre);
     expect(StyleSheet.flatten(screen.getByTestId('protection-barre-etat').props.style).backgroundColor).toBe(themeSombre.colors.background);
   });
 });

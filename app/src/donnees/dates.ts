@@ -8,31 +8,10 @@ export const jourDuMatch = (iso: string): string => iso.slice(0, 10);
 export const heureDuMatch = (iso: string): string => iso.slice(11, 16);
 
 const minuitUTC = (jour: string) => new Date(`${jour}T00:00:00Z`);
-export const jourDeSemaine = (jour: string): number => minuitUTC(jour).getUTCDay();
-
-export function decalerJour(jour: string, n: number): string {
-  const d = minuitUTC(jour);
-  d.setUTCDate(d.getUTCDate() + n);
-  return d.toISOString().slice(0, 10);
-}
 
 /** 'AAAA-MM-JJ' de l'instant, à l'heure de l'appareil. */
 export function jourLocal(date: Date): string {
   return `${date.getFullYear()}-${deux(date.getMonth() + 1)}-${deux(date.getDate())}`;
-}
-
-export interface Weekend {
-  vendredi: string;
-  samedi: string;
-  dimanche: string;
-}
-
-/** Lundi et mardi : le week-end qui vient de se jouer. Du mercredi au dimanche : celui de la semaine. */
-export function weekendDeReference(aujourdhui: string): Weekend {
-  const js = jourDeSemaine(aujourdhui);
-  const versSamedi = js === 0 ? -1 : js <= 2 ? -(js + 1) : 6 - js;
-  const samedi = decalerJour(aujourdhui, versSamedi);
-  return { vendredi: decalerJour(samedi, -1), samedi, dimanche: decalerJour(samedi, 1) };
 }
 
 export function libelleJour(jour: string, format: 'court' | 'long' = 'court'): string {
@@ -41,13 +20,57 @@ export function libelleJour(jour: string, format: 'court' | 'long' = 'court'): s
   return `${nom} ${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}`;
 }
 
-export function libelleWeekend(w: Weekend): string {
-  const s = minuitUTC(w.samedi);
-  const d = minuitUTC(w.dimanche);
-  return s.getUTCMonth() === d.getUTCMonth()
-    ? `${s.getUTCDate()}–${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}`
-    : `${s.getUTCDate()} ${MOIS[s.getUTCMonth()]}–${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}`;
+const JOURS_BANDEAU = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'];
+const MOIS_LONGS = [
+  'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre',
+];
+
+/** « Sam. 17 octobre » : en-tête de jour des listes de matchs. */
+export function titreJour(jour: string): string {
+  const d = minuitUTC(jour);
+  return `${JOURS_BANDEAU[d.getUTCDay()]} ${d.getUTCDate()} ${MOIS_LONGS[d.getUTCMonth()]}`;
 }
+
+/** « samedi 7 novembre » : le même jour, en toutes lettres pour les lecteurs d'écran. */
+export function jourLu(jour: string): string {
+  const d = minuitUTC(jour);
+  return `${JOURS_LONGS[d.getUTCDay()]} ${d.getUTCDate()} ${MOIS_LONGS[d.getUTCMonth()]}`;
+}
+
+/** « Dim. 18 octobre · 15:30 », en heure de Paris. */
+export function libelleBandeau(iso: string): string {
+  return `${titreJour(jourDuMatch(iso))} · ${heureDuMatch(iso)}`;
+}
+
+/** « Octobre 2026 » pour '2026-10'. */
+export function libelleMois(mois: string): string {
+  const nom = MOIS_LONGS[Number(mois.slice(5, 7)) - 1];
+  return `${nom[0].toUpperCase()}${nom.slice(1)} ${mois.slice(0, 4)}`;
+}
+
+/** '2027-01' pour '2026-12'. */
+export function moisSuivant(mois: string): string {
+  const d = new Date(Date.UTC(Number(mois.slice(0, 4)), Number(mois.slice(5, 7)), 1));
+  return `${d.getUTCFullYear()}-${deux(d.getUTCMonth() + 1)}`;
+}
+
+/** Les 'AAAA-MM-JJ' d'un mois 'AAAA-MM', du 1er au dernier. */
+export function joursDuMois(mois: string): string[] {
+  const nb = new Date(Date.UTC(Number(mois.slice(0, 4)), Number(mois.slice(5, 7)), 0)).getUTCDate();
+  return Array.from({ length: nb }, (_, i) => `${mois}-${deux(i + 1)}`);
+}
+
+/** Place du jour dans la semaine : 0 le lundi, 6 le dimanche. */
+export const rangDansLaSemaine = (jour: string): number => (minuitUTC(jour).getUTCDay() + 6) % 7;
+
+/** « aujourd’hui », « demain » ou « dans N jours » entre deux 'AAAA-MM-JJ'. */
+export function compteARebours(jourMatch: string, aujourdhui: string): string {
+  const n = Math.round((minuitUTC(jourMatch).getTime() - minuitUTC(aujourdhui).getTime()) / 86_400_000);
+  return n <= 0 ? 'aujourd’hui' : n === 1 ? 'demain' : `dans ${n} jours`;
+}
+
+/** « 17/10 », en heure de Paris. */
+export const dateCourte = (iso: string): string => `${iso.slice(8, 10)}/${iso.slice(5, 7)}`;
 
 export function libelleMiseAJour(iso: string, maintenant: Date): string {
   const d = new Date(iso);

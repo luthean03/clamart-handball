@@ -21,8 +21,13 @@ test('demande une revalidation au serveur (Cache-Control: no-cache) en gardant A
   );
 });
 
+test('accepte les schémas 2 et 3', async () => {
+  await expect(chargerClub('u', reponse({ ...fixtureBrute, version_schema: 2 }))).resolves.toBeDefined();
+  await expect(chargerClub('u', reponse({ ...fixtureBrute, version_schema: 3 }))).resolves.toBeDefined();
+});
+
 test('refuse un schéma plus récent que l’app', async () => {
-  await expect(chargerClub('u', reponse({ ...fixtureBrute, version_schema: 3 }))).rejects.toMatchObject({
+  await expect(chargerClub('u', reponse({ ...fixtureBrute, version_schema: 4 }))).rejects.toMatchObject({
     name: 'SchemaInconnu',
   });
 });

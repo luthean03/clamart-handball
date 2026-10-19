@@ -4,14 +4,15 @@
     "slug": "clamart-handball",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo-clamart.png",
+    "icon": "./assets/icone/icone.png",
     "userInterfaceStyle": "automatic",
     "android": {
       "package": "fr.clamarthandball.app",
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo-clamart.png",
-        "backgroundColor": "#DB0000"
+        "foregroundImage": "./assets/icone/premier-plan.png",
+        "monochromeImage": "./assets/icone/monochrome.png",
+        "backgroundColor": "#FFFFFF"
       },
       "blockedPermissions": [
         "android.permission.READ_CALENDAR",

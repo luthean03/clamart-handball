@@ -5,7 +5,7 @@ classements de chaque équipe, buteurs, et agenda à ajouter à son téléphone.
 Les données viennent de ffhandball.fr et sont mises à jour automatiquement.
 
 ```
-config.json                 réglages du club (nom, couleurs, catégories avec stats joueurs)
+config.json                 réglages du club (nom, couleurs, joueurs masqués)
 collecteur/
   collecte.py               récupère les données sur ffhandball.fr -> site/data/
   ffhandball.py             bibliothèque de lecture du site FFHB
@@ -13,7 +13,8 @@ collecteur/
 site/
   index.html, style.css, app.js   le site (aucune compilation nécessaire)
   data/club.json            toutes les données affichées
-  data/agenda/*.ics         un calendrier par équipe + club.ics
+  data/agenda/*.ics         un calendrier par équipe + club.ics + un par collectif (<collectif>.ics)
+  data/agenda/match/*.ics   un calendrier par match à venir (<équipe>-<match>.ics)
 .github/workflows/mise-a-jour.yml  mise à jour automatique + publication
 ```
 
@@ -49,9 +50,7 @@ installer `truststore` (déjà dans requirements.txt) ou définir
 ## Réglages (`config.json`)
 
 - `site.couleur_principale`, `site.couleur_accent` : couleurs du site.
-- `stats_joueurs.categories` : catégories dont les noms de joueurs et buts sont publiés.
-  Par défaut `["seniors"]` uniquement : **les joueurs des équipes de jeunes (mineurs) ne
-  sont jamais nommés**.
+- `stats_joueurs.joueurs_masques` : joueurs à ne jamais afficher (voir « Données et vie privée »).
 - `noms_equipes` : renommer une équipe (`"32542-clamart-handball-1": "Seniors Filles 1"`).
   Les identifiants sont visibles dans l'adresse des pages équipe (`#/equipe/<id>`).
 - `club.motifs_nom_equipe` : texte qui identifie les équipes du club dans les noms FFHB
@@ -74,9 +73,13 @@ installer `truststore` (déjà dans requirements.txt) ou définir
 
 - Source : ffhandball.fr (données publiques), citée en bas de chaque page.
 - Aucun numéro de licence, aucun nom d'arbitre ou d'officiel n'est repris.
-- Noms des joueurs : seniors uniquement (voir ci-dessus). À faire valider par le bureau
-  de l'association ; un joueur qui le demande est retiré en ajoutant son nom à
-  `stats_joueurs.joueurs_masques`.
+- Joueurs : tous ceux de la feuille de match (y compris à 0 but) sont collectés par match, pour
+  toutes les catégories et les deux équipes, sous la forme initiale + nom (« D. Dorilas ») et
+  nombre de buts ; les joueurs masqués sont exclus. Le site et l'app n'affichent que ceux qui
+  ont marqué. Il n'y a aucun classement des buteurs. À faire valider par
+  le bureau de l'association ; un joueur qui le demande est retiré (quelle que soit sa
+  catégorie) en ajoutant son nom à `stats_joueurs.joueurs_masques`.
+- Les notifications ne nomment jamais un joueur.
 - Le collecteur fait quelques dizaines de requêtes par passage, espacées d'une seconde.
 
 ## App mobile
@@ -84,7 +87,7 @@ installer `truststore` (déjà dans requirements.txt) ou définir
 L'app (`app/`) lit `site/data/club.json` publié sur GitHub Pages :
 `https://<compte>.github.io/clamart-handball/data/club.json`.
 
-Contrat de données : `version_schema` = 2. Chaque équipe FFHB porte un `collectif`
+Contrat de données : `version_schema` = 3. Chaque équipe FFHB porte un `collectif`
 (ex. `seniors-m`) qui regroupe toutes ses compétitions ; la liste est dans `collectifs`.
 L'id d'un collectif vient du nom construit depuis la FFHB : un renommage dans
 `noms_equipes` change le nom affiché, pas l'id (les abonnés aux notifications ne le perdent pas).

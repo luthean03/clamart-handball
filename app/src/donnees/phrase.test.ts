@@ -1,5 +1,5 @@
 import cas from '../../../partage/phrases-cas.json';
-import { initiales, lierNumero, permettreCesure, nomAffiche, nomLisible, ordinal, phraseResultat, rangAffiche, scoreTexte } from './phrase';
+import { initiales, lierNumero, permettreCesure, nomAffiche, nomLisible, ordinal, phraseResultat, rangAffiche } from './phrase';
 import type { Match, Resultat } from './types';
 
 type CasPhrase = {
@@ -21,8 +21,7 @@ test('jamais de vocabulaire dévalorisant, même pour un gros écart', () => {
   expect(p?.titre).toBe('Défaite contre Paris St-Germain HB 3');
 });
 
-test('score et ordinal', () => {
-  expect(scoreTexte({ score_nous: 32, score_eux: 22 })).toBe('32–22');
+test('ordinal', () => {
   expect(ordinal(1)).toBe('1er');
   expect(ordinal(3)).toBe('3e');
 });

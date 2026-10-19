@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CONTENU_BOUTON } from '../composants/commun';
+import { EcussonClub } from '../composants/Ecusson';
 import { PastilleChoix } from '../composants/PastilleChoix';
 import { ProtectionBarreEtat } from '../composants/ProtectionBarreEtat';
 import { collectifsParCategorie } from '../donnees/selecteurs';
 import type { Club } from '../donnees/types';
 import { useThemeClub } from '../theme/theme';
-
-const LOGO = require('../../assets/logo-clamart.png');
 
 interface Props {
   club: Club;
@@ -27,7 +26,9 @@ export function VueBienvenue({ club, onTerminer, onPasser }: Props) {
     <View style={[styles.page, { backgroundColor: t.colors.background, paddingBottom: encarts.bottom + 16 }]}>
       <ProtectionBarreEtat />
       <ScrollView contentContainerStyle={styles.contenu}>
-        <Image source={LOGO} style={styles.logo} accessible accessibilityLabel="Écusson du Clamart Handball" accessibilityIgnoresInvertColors />
+        <View style={styles.logo}>
+          <EcussonClub taille={96} libelle="Écusson du Clamart Handball" />
+        </View>
         <Text variant="headlineSmall" style={[styles.centrer, { color: t.club.titre }]} accessibilityRole="header">
           Bienvenue au Clamart Handball
         </Text>
@@ -60,9 +61,9 @@ export function VueBienvenue({ club, onTerminer, onPasser }: Props) {
 }
 
 const styles = StyleSheet.create({
+  logo: { alignSelf: 'center' },
   page: { flex: 1, paddingHorizontal: 16 },
   contenu: { gap: 16, paddingTop: 24, paddingBottom: 16 },
-  logo: { width: 96, height: 96, borderRadius: 48, alignSelf: 'center' },
   centrer: { textAlign: 'center' },
   groupe: { gap: 8 },
   puces: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 8 },

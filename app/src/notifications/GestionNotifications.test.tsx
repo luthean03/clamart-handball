@@ -1,5 +1,7 @@
 import { QueryClient } from '@tanstack/react-query';
 import { act, fireEvent, screen } from '@testing-library/react-native';
+import { useSegments } from 'expo-router';
+import { basDuBandeau } from '../../test/bandeau';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { CLE_CLUB } from '../donnees/requetes';
@@ -9,7 +11,10 @@ import { GestionNotifications } from './GestionNotifications';
 const { __routeur } = jest.requireMock('expo-router');
 const notif = { titre: 'Clamart 21 – 22 Levallois SC 1D', corps: 'Seniors M · D2 territoriale', donnees: { match_id: '2673792', equipe_id: '32546-clamart-handball' } };
 
-beforeEach(() => jest.clearAllMocks());
+beforeEach(() => {
+  jest.clearAllMocks();
+  jest.mocked(useSegments).mockReturnValue([] as never);
+});
 
 function clientEspionne() {
   const client = new QueryClient();
@@ -25,6 +30,25 @@ test('au premier plan : snackbar avec « Voir »', () => {
   expect(screen.getByText(/Clamart 21 – 22 Levallois SC 1D/)).toBeOnTheScreen();
   fireEvent.press(screen.getByText('Voir'));
   expect(__routeur.push).toHaveBeenCalledWith('/match/2673792?equipe=32546-clamart-handball');
+});
+
+// Barre de navigation Material 3 (80 dp) : Paper ajoute lui-même la zone de la barre de gestes (paddingBottom).
+test('sur un onglet : bandeau au-dessus de la barre d’onglets', () => {
+  jest.mocked(useSegments).mockReturnValue(['(tabs)', 'matchs'] as never);
+  let recevoir: (n: typeof notif) => void = () => {};
+  jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
+  rendu(<GestionNotifications />);
+  act(() => recevoir(notif));
+  expect(basDuBandeau(/Clamart 21 – 22 Levallois SC 1D/)).toBe(80);
+});
+
+test.each([['match', '[id]'], ['equipe', '[collectif]'], ['reglages']])('sur l’écran %s (pas d’onglets) : aucun décalage (bas à 0)', (...segments) => {
+  jest.mocked(useSegments).mockReturnValue(segments as never);
+  let recevoir: (n: typeof notif) => void = () => {};
+  jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
+  rendu(<GestionNotifications />);
+  act(() => recevoir(notif));
+  expect(basDuBandeau(/Clamart 21 – 22 Levallois SC 1D/)).toBe(0);
 });
 
 test('notification touchée : ouvre la fiche du match', () => {

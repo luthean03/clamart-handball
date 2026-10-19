@@ -14,10 +14,6 @@
     "couleur_accent": "#e8b200"
   },
   "stats_joueurs": {
-    "categories": [
-      "seniors"
-    ],
-    "commentaire": "Noms et buts des joueurs publiés uniquement pour ces catégories (pas pour les jeunes, mineurs).",
     "joueurs_masques": [],
     "commentaire_masques": "Joueurs à ne jamais afficher, tel qu'écrit sur le site (ex. \"Marie DUPONT\")."
   },

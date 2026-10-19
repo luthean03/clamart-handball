@@ -15,14 +15,13 @@ jest.mock('expo-router', () => {
     __routeur: routeur,
     useRouter: () => routeur,
     useLocalSearchParams: jest.fn(() => ({})),
+    useSegments: jest.fn(() => []),
     Redirect: Vide,
     Stack: Object.assign(Vide, { Screen: Vide }),
     Tabs: Object.assign(Vide, { Screen: Vide }),
   };
 });
 jest.mock('expo-web-browser', () => ({ openBrowserAsync: jest.fn(() => Promise.resolve({ type: 'opened' })) }));
-jest.mock('expo-calendar', () => ({ createEventInCalendarAsync: jest.fn(() => Promise.resolve({ action: 'saved' })) }));
-jest.mock('expo-clipboard', () => ({ setStringAsync: jest.fn(() => Promise.resolve(true)) }));
 // Les icônes de Paper chargent leur police en asynchrone (mise à jour d'état hors act) : en test, un glyphe synchrone suffit.
 jest.mock('@expo/vector-icons/MaterialCommunityIcons', () => {
   const { createElement } = require('react');

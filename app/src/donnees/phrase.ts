@@ -57,7 +57,6 @@ export function phraseResultat(
   return { titre };
 }
 
-export const scoreTexte = (m: Pick<Match, 'score_nous' | 'score_eux'>) => `${m.score_nous}–${m.score_eux}`;
 export const ordinal = (n: number) => (n === 1 ? '1er' : `${n}e`);
 
 const INSECABLE = ' ';

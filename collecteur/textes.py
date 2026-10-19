@@ -53,3 +53,11 @@ def initiales(nom: str) -> str:
     if not mots:
         return ""
     return (mots[0][:2] if len(mots) == 1 else mots[0][0] + mots[1][0]).upper()
+
+
+def nom_joueur(prenom: str | None, nom: str | None) -> str:
+    """'DIARA', 'DORILAS' -> 'D. Dorilas' : initiale du premier prénom + nom (le prénom complet n'est jamais publié)."""
+    premier = next((m for m in re.split(r"[\s\-]+", (prenom or "").strip()) if m), "")
+    famille = "".join(m if re.fullmatch(r"[\s\-']+", m) else m[:1].upper() + m[1:].lower()
+                      for m in re.split(r"([\s\-']+)", (nom or "").strip()))
+    return f"{premier[:1].upper()}. {famille}".strip() if premier else famille

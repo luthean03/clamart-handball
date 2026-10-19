@@ -1,5 +1,5 @@
-import { jourDuMatch, type Weekend } from './dates';
-import type { ButeurClub, Club, Collectif, Equipe, Match, MatchAvecEquipe, Resultat } from './types';
+import { jourDuMatch, jourLocal } from './dates';
+import type { Club, Collectif, Equipe, Match, MatchAvecEquipe, Resultat } from './types';
 
 const instant = (m: Match) => (m.date ? Date.parse(m.date) : Number.POSITIVE_INFINITY);
 
@@ -21,36 +21,30 @@ export function tousLesMatchs(club: Club): MatchAvecEquipe[] {
 export const matchsDuCollectif = (club: Club, id: string) =>
   tousLesMatchs(club).filter((m) => m.equipe.collectif === id);
 
-export const matchsDuJour = (club: Club, jour: string) =>
-  tousLesMatchs(club).filter((m) => m.date !== null && jourDuMatch(m.date) === jour);
-
-export const matchsDuWeekend = (club: Club, w: Weekend) =>
-  tousLesMatchs(club).filter(
-    (m) => m.date !== null && jourDuMatch(m.date) >= w.vendredi && jourDuMatch(m.date) <= w.dimanche,
-  );
-
 export const matchParId = (club: Club, id: string, equipeId?: string) => {
   const matchs = tousLesMatchs(club).filter((m) => m.id === id);
   return matchs.find((m) => m.equipe.id === equipeId) ?? matchs[0];
 };
 
-export function joursAvecMatchs(club: Club): string[] {
-  return [...new Set(tousLesMatchs(club).flatMap((m) => (m.date ? [jourDuMatch(m.date)] : [])))].sort();
-}
+/** Matchs à venir d'une liste triée : datés, sans résultat, dont le jour (Paris) est aujourd'hui ou après. */
+const aVenir = (matchs: MatchAvecEquipe[], maintenant: Date) => {
+  const aujourdhui = jourLocal(maintenant);
+  return matchs.filter((m) => m.date !== null && m.resultat === null && jourDuMatch(m.date) >= aujourdhui);
+};
 
-/** Aujourd'hui s'il y a des matchs, sinon le prochain jour de match, sinon le dernier. */
-export function jourParDefaut(jours: string[], aujourdhui: string): string | undefined {
-  return jours.find((j) => j >= aujourdhui) ?? jours[jours.length - 1];
-}
+/** Prochain match daté d'un collectif, toutes compétitions : celui du jour reste affiché après son coup d'envoi. */
+export const prochainMatchDate = (club: Club, collectif: string, maintenant: Date): MatchAvecEquipe | undefined =>
+  aVenir(matchsDuCollectif(club, collectif), maintenant)[0];
 
-export const prochainMatch = (club: Club, id: string, maintenant: Date) =>
-  matchsDuCollectif(club, id).find(
-    (m) => m.resultat === null && m.date !== null && Date.parse(m.date) >= maintenant.getTime(),
-  );
+/** Les n prochains matchs du club, toutes équipes, dans l'ordre. */
+export const prochainsMatchsClub = (club: Club, maintenant: Date, n = 5): MatchAvecEquipe[] =>
+  aVenir(tousLesMatchs(club), maintenant).slice(0, n);
 
-export function dernierResultat(club: Club, id: string): MatchAvecEquipe | undefined {
-  const joues = matchsDuCollectif(club, id).filter((m) => m.resultat !== null);
-  return joues[joues.length - 1];
+/** Place au classement de la compétition du match ; absente pour une compétition sans classement (coupe). */
+export function classementDuMatch(m: MatchAvecEquipe): { place: number; nb: number } | undefined {
+  const { classement, place, nb_equipes } = m.equipe;
+  if (!classement?.length || place == null || nb_equipes == null) return undefined;
+  return { place, nb: nb_equipes };
 }
 
 /** Match commencé dont le score n'est pas encore publié sur la FFHB. */
@@ -82,49 +76,4 @@ export function collectifsParCategorie(club: Club) {
     titre: libelleCategorie(categorie),
     collectifs: club.collectifs.filter((c): c is Collectif => c.categorie === categorie),
   }));
-}
-
-export function grouperParCategorie(matchs: MatchAvecEquipe[]) {
-  const categories = [...new Set(matchs.map((m) => m.equipe.categorie))].sort(
-    (a, b) => rangCategorie(a) - rangCategorie(b),
-  );
-  return categories.map((categorie) => ({
-    categorie,
-    titre: libelleCategorie(categorie),
-    matchs: matchs.filter((m) => m.equipe.categorie === categorie),
-  }));
-}
-
-export interface ButeurEquipe {
-  joueur: string;
-  buts: number;
-  matchs: number;
-}
-
-/** Buteurs d'un collectif, toutes compétitions. Vide pour les jeunes (stats_joueurs = false). */
-export function buteursDuCollectif(club: Club, id: string): ButeurEquipe[] {
-  const parJoueur = new Map<string, ButeurEquipe>();
-  for (const m of matchsDuCollectif(club, id)) {
-    if (m.equipe.stats_joueurs !== true) continue;
-    for (const b of m.buteurs ?? []) {
-      const e = parJoueur.get(b.joueur) ?? { joueur: b.joueur, buts: 0, matchs: 0 };
-      e.buts += b.buts;
-      e.matchs += 1;
-      parJoueur.set(b.joueur, e);
-    }
-  }
-  return [...parJoueur.values()]
-    .filter((b) => b.buts > 0)
-    .sort((a, b) => b.buts - a.buts || a.joueur.localeCompare(b.joueur));
-}
-
-/**
- * Buteurs du club à afficher : un joueur n'est gardé que si chaque équipe citée existe dans les données
- * et que toutes les équipes de ce nom ont des statistiques de joueurs (seniors). Garde-fou côté app :
- * les mineurs ne sont jamais nommés, même si la collecte les laisse passer.
- */
-export function buteursClubAffichables(club: Club): ButeurClub[] {
-  const sures = new Set(club.equipes.filter((e) => e.stats_joueurs === true).map((e) => e.nom));
-  for (const e of club.equipes) if (e.stats_joueurs !== true) sures.delete(e.nom);
-  return club.buteurs_club.filter((b) => b.equipes.length > 0 && b.equipes.every((nom) => sures.has(nom)));
 }

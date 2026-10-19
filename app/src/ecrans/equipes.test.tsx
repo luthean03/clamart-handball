@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -75,7 +75,7 @@ test('liste dans l’onglet Équipes : pas de bouton retour', () => {
 function fiche(collectifId: string, props: Partial<Parameters<typeof VueEquipe>[0]> = {}) {
   const p = {
     club, collectifId, maintenant: MAR_SOIR, suivi: false, onBasculer: jest.fn(), onOuvrirMatch: jest.fn(),
-    onRetour: jest.fn(), onCopierAgenda: jest.fn(() => Promise.resolve(true)), ...props,
+    onRetour: jest.fn(), onAgenda: jest.fn(), ...props,
   };
   rendu(<VueEquipe {...p} />);
   return p;
@@ -127,7 +127,6 @@ test('fiche équipe sans aucun classement (coupe seule) : pas d’onglet Classem
   fiche('seniors-m', { club: sansClassement() });
   expect(screen.queryByText('Classement')).toBeNull();
   expect(screen.getByText('Matchs')).toBeOnTheScreen();
-  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
 });
 
 test('fiche équipe : avec un classement, l’onglet Classement est proposé', () => {
@@ -136,7 +135,7 @@ test('fiche équipe : avec un classement, l’onglet Classement est proposé', (
 });
 
 test('fiche équipe : l’onglet Classement choisi retombe sur Matchs quand le classement disparaît', () => {
-  const p = { club, collectifId: 'seniors-m', maintenant: MAR_SOIR, suivi: false, onBasculer: jest.fn(), onOuvrirMatch: jest.fn(), onRetour: jest.fn(), onCopierAgenda: jest.fn(() => Promise.resolve(true)) };
+  const p = { club, collectifId: 'seniors-m', maintenant: MAR_SOIR, suivi: false, onBasculer: jest.fn(), onOuvrirMatch: jest.fn(), onRetour: jest.fn(), onAgenda: jest.fn() };
   const enveloppe = (c: Club) => (
     <SafeAreaProvider>
       <PaperProvider theme={themeClair}>
@@ -151,29 +150,22 @@ test('fiche équipe : l’onglet Classement choisi retombe sur Matchs quand le c
   expect(screen.getAllByTestId('ligne-match').length).toBeGreaterThan(0);
 });
 
-test('fiche équipe : buteurs seulement avec stats_joueurs strictement vrai', () => {
-  const douteux: Club = { ...club, equipes: club.equipes.map((e) => ({ ...e, stats_joueurs: 'false' as unknown as boolean })) };
-  fiche('seniors-f-1', { club: douteux });
+test('équipe : onglets Matchs et Classement seulement', () => {
+  fiche('seniors-m');
+  expect(screen.getByText('Matchs')).toBeOnTheScreen();
+  expect(screen.getByText('Classement')).toBeOnTheScreen();
   expect(screen.queryByText('Buteurs')).toBeNull();
-});
-
-test('fiche équipe : buteurs pour les seniors, jamais pour les jeunes', () => {
-  fiche('seniors-f-1');
-  fireEvent.press(screen.getByText('Buteurs'));
-  expect(screen.getByText('Diara DORILAS')).toBeOnTheScreen();
-  expect(screen.getByText('38')).toBeOnTheScreen();
   screen.unmount();
   fiche('u18-f');
   expect(screen.queryByText('Buteurs')).toBeNull();
 });
 
-test('fiche équipe : suivre, copier l’agenda, retour', async () => {
+test('fiche équipe : suivre, s’abonner au calendrier, retour', () => {
   const p = fiche('seniors-m', { suivi: true });
   fireEvent.press(screen.getByLabelText('Ne plus suivre Seniors M'));
   expect(p.onBasculer).toHaveBeenCalled();
-  fireEvent.press(screen.getAllByText('Copier le lien')[0]);
-  expect(p.onCopierAgenda).toHaveBeenCalledWith(expect.objectContaining({ id: '32546-clamart-handball' }));
-  await waitFor(() => expect(screen.getByText("Lien de l'agenda copié")).toBeOnTheScreen());
+  fireEvent.press(screen.getByText("S'abonner au calendrier"));
+  expect(p.onAgenda).toHaveBeenCalledTimes(1);
   fireEvent.press(screen.getByLabelText('Retour'));
   expect(p.onRetour).toHaveBeenCalled();
 });
@@ -189,13 +181,6 @@ test('fiche équipe : le suivi est une étoile et le rang ne se coupe pas', () =
   expect(screen.getByText('star-outline', { includeHiddenElements: true })).toBeOnTheScreen();
 });
 
-test('fiche équipe : si la copie échoue, on ne dit pas que le lien est copié', async () => {
-  fiche('seniors-m', { onCopierAgenda: jest.fn(() => Promise.reject(new Error('presse-papiers'))) });
-  fireEvent.press(screen.getAllByText('Copier le lien')[0]);
-  await waitFor(() => expect(screen.getByText('Impossible de copier le lien')).toBeOnTheScreen());
-  expect(screen.queryByText("Lien de l'agenda copié")).toBeNull();
-});
-
 test('fiche équipe : retour et cloche ont une cible tactile d’au moins 48 dp', () => {
   fiche('seniors-m');
   const boutons = screen.getAllByTestId('icon-button-container-outer-layer');
@@ -207,15 +192,15 @@ test('fiche équipe : retour et cloche ont une cible tactile d’au moins 48 dp'
   }
 });
 
-test('fiche équipe : onglets et « Copier le lien » ont une cible tactile d’au moins 48 dp', () => {
+test('fiche équipe : onglets et « S’abonner au calendrier » ont une cible tactile d’au moins 48 dp', () => {
   fiche('seniors-m');
   // Les segments de Paper mesurent 40 dp : la marge de toucher complète à 48 dp.
   const segment = screen.getByRole('button', { name: 'Classement' }).props.hitSlop;
   expect(40 + segment.top + segment.bottom).toBeGreaterThanOrEqual(48);
-  // Le bouton texte de Paper mesure 40 dp : la hauteur minimale est sur son contenu, qui porte la zone tactile.
-  const copier = screen.getAllByRole('button', { name: 'Copier le lien' })[0];
-  expect(contenuDuBouton(copier).minHeight).toBeGreaterThanOrEqual(48);
-  expect(copier.props.hitSlop).toBeUndefined();
+  // Le bouton de Paper mesure 40 dp : la hauteur minimale est sur son contenu, qui porte la zone tactile.
+  const abonner = screen.getByRole('button', { name: "S'abonner au calendrier" });
+  expect(contenuDuBouton(abonner).minHeight).toBeGreaterThanOrEqual(48);
+  expect(abonner.props.hitSlop).toBeUndefined();
 });
 
 test('fiche équipe introuvable', () => {

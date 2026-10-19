@@ -2,7 +2,8 @@
 """
 Collecte les données du club sur ffhandball.fr et écrit :
   site/data/club.json          toutes les données affichées par le site
-  site/data/agenda/*.ics       un calendrier par équipe + un pour tout le club
+  site/data/agenda/*.ics       un calendrier par équipe, par collectif et un pour tout le club
+  site/data/agenda/match/*.ics un calendrier par match à venir (un seul événement)
 
 Lancement :  python collecteur/collecte.py
 Réglages  :  config.json à la racine du projet
@@ -14,8 +15,10 @@ dans collecteur/cache/ : ils ne sont téléchargés qu'une fois.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+import shutil
 import sys
 import traceback
 from datetime import datetime, timedelta, timezone
@@ -26,18 +29,18 @@ ICI = Path(__file__).resolve().parent
 sys.path.insert(0, str(ICI))
 import ffhandball as ff  # noqa: E402
 from collectifs import construire_collectifs  # noqa: E402
+from textes import nom_joueur  # noqa: E402
 
 RACINE = ICI.parent
 CONFIG = json.loads((RACINE / "config.json").read_text(encoding="utf-8"))
 SORTIE = RACINE / "site" / "data"
 CACHE = ICI / "cache"
 CLUB_ID = str(CONFIG["club"]["id_ffhb"])
-CATEGORIES_STATS = set(CONFIG.get("stats_joueurs", {}).get("categories", ["seniors"]))
 NOMS = {k: v for k, v in CONFIG.get("noms_equipes", {}).items() if k not in ("commentaire",) and not k.startswith("exemple")}
 MOTIFS = CONFIG["club"].get("motifs_nom_equipe") or [CONFIG["club"]["recherche_ffhb"]]
 MASQUES = {" ".join(n.upper().split()) for n in CONFIG.get("stats_joueurs", {}).get("joueurs_masques", [])}
 SURCHARGES_COLLECTIFS = {k: v for k, v in CONFIG.get("collectifs", {}).items() if k != "commentaire"}
-VERSION_SCHEMA = 2
+VERSION_SCHEMA = 3
 URL_LOGOS = "https://media-logos-clubs.ffhandball.fr/128/"
 
 
@@ -159,27 +162,62 @@ def competitions_du_club(saison: str) -> list[dict]:
     return out
 
 
-def salle_et_buteurs(match_path: str, equipe_interne, joue: bool, avec_buteurs: bool) -> dict:
-    """Page d'un match : salle + buteurs de NOTRE équipe. Cache permanent si le match est joué."""
+def buteurs_de_la_rencontre(stats: list[dict], equipe_interne) -> tuple[list[dict], list[dict]]:
+    """(nos buteurs, ceux de l'adversaire) d'après `statsJoueurs` : tous les joueurs de la feuille de match, y compris
+    ceux à 0 but, nom réduit à 'D. Dorilas'. Les joueurs masqués (config.json) sont écartés d'après leur nom complet, avant réduction."""
+    nous: list[dict] = []
+    eux: list[dict] = []
+    for j in stats:
+        buts = ff._int(j.get("buts")) or 0
+        if masque(f"{j.get('prenom') or ''} {j.get('nom') or ''}"):
+            continue
+        (nous if str(j.get("equipeId")) == str(equipe_interne) else eux).append(
+            {"joueur": nom_joueur(j.get("prenom"), j.get("nom")), "numero": ff._int(j.get("numero")), "buts": buts})
+    tri = lambda liste: sorted(liste, key=lambda b: (-b["buts"], b["joueur"]))
+    return tri(nous), tri(eux)
+
+
+def empreinte_masques() -> str:
+    """Empreinte de la liste des joueurs masqués ('' si vide) : le cache ne garde que des noms réduits,
+    il ne peut donc pas être re-masqué, seulement retéléchargé quand la liste change."""
+    return hashlib.sha1("\n".join(sorted(MASQUES)).encode("utf-8")).hexdigest() if MASQUES else ""
+
+
+MARQUEUR_JOUEURS = "tous"   # entrées de cache qui listent tous les joueurs, pas seulement les buteurs
+FENETRE_STATS = timedelta(days=7)   # la FFHB publie parfois les stats après le score
+
+
+def stats_attendues(info: dict, date: str | None, maintenant: datetime | None) -> bool:
+    """Match joué récemment dont le cache n'a aucun buteur : les stats ne sont peut-être pas encore publiées.
+    Passé 7 jours on les croit définitivement absentes (sinon on retélécharge ces matchs à chaque passage)."""
+    if info.get("buteurs") or info.get("buteurs_adverses") or not date or maintenant is None:
+        return False
+    return maintenant - datetime.fromisoformat(date) < FENETRE_STATS
+
+
+def salle_et_buteurs(match_path: str, equipe_interne, joue: bool, date: str | None = None,
+                     maintenant: datetime | None = None) -> dict:
+    """Page d'un match : salle + buteurs des deux équipes (match joué). Cache permanent si le match est joué,
+    sauf s'il n'a aucun buteur et date de moins de 7 jours (`date`, `maintenant` : voir stats_attendues)."""
     rid = match_path.rstrip("/").split("rencontre-")[-1]
     fichier = CACHE / f"{rid}.json"
     if joue and fichier.exists():
         info = json.loads(fichier.read_text(encoding="utf-8"))
-        if not avec_buteurs or info.get("buteurs") is not None:
+        # ancien cache (avant le schéma 3, ou sans les joueurs à 0 but), liste de joueurs masqués modifiée
+        # depuis ou stats pas encore publiées : on retélécharge
+        if (info.get("buteurs_adverses") is not None and info.get("joueurs") == MARQUEUR_JOUEURS
+                and info.get("masques") == empreinte_masques() and not stats_attendues(info, date, maintenant)):
             return info
     d = ff.components(match_path)
     eq = (d.get("competitions---rencontre-salle") or {}).get("equipement") or {}
     info = {"salle": {"nom": eq.get("libelle") or None,
                       "adresse": " ".join(x for x in (eq.get("rue"), eq.get("codePostal"), eq.get("ville")) if x) or None}
             if eq else None}
-    if avec_buteurs:
-        stats = (d.get("competitions---rencontre-liste-joueurs") or {}).get("statsJoueurs") or []
-        info["buteurs"] = sorted(
-            ({"joueur": f"{(j.get('prenom') or '').title()} {(j.get('nom') or '').upper()}".strip(),
-              "numero": ff._int(j.get("numero")), "buts": ff._int(j.get("buts")) or 0}
-             for j in stats if str(j.get("equipeId")) == str(equipe_interne)),
-            key=lambda j: -j["buts"])
     if joue:
+        stats = (d.get("competitions---rencontre-liste-joueurs") or {}).get("statsJoueurs") or []
+        info["buteurs"], info["buteurs_adverses"] = buteurs_de_la_rencontre(stats, equipe_interne)
+        info["masques"] = empreinte_masques()
+        info["joueurs"] = MARQUEUR_JOUEURS
         CACHE.mkdir(parents=True, exist_ok=True)
         fichier.write_text(json.dumps(info, ensure_ascii=False), encoding="utf-8")
     return info
@@ -201,7 +239,6 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
     poules = {str(p["ext_pouleId"]): p for p in sel.get("poules") or []}
     titre = (page.get("page-header") or {}).get("title") or comp["libelle"]
     categorie = categorie_de(titre)
-    avec_buteurs = (categorie if categorie == "seniors" else "jeunes") in CATEGORIES_STATS
 
     miennes = [e for e in (page.get("competitions---calendar-button") or {}).get("equipes") or []
                if str(e.get("ext_structureId")) == CLUB_ID]
@@ -242,7 +279,6 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
             "phase": phase.get("libelle"),
             "poule": poule.get("libelle"),
             "url_ffhb": f"{ff.BASE}{url_cal}",
-            "stats_joueurs": avec_buteurs,
             "classement": None,
             "matchs": [],
         }
@@ -285,13 +321,14 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
                 "feuille_de_match": ff.url_feuille_de_match(r.get("fdmCode")) if joue else None,
             }
             a_venir = not joue and bool(r.get("date")) and datetime.fromisoformat(r["date"]) >= maintenant
-            if (joue and avec_buteurs) or (a_venir and not prochain_traite):
+            if joue or (a_venir and not prochain_traite):
                 try:
                     nous_id = r.get("equipe1Id") if dom else r.get("equipe2Id")
-                    info = salle_et_buteurs(chemin, nous_id, joue, avec_buteurs and joue)
+                    info = salle_et_buteurs(chemin, nous_id, joue, r.get("date"), maintenant)
                     m["salle"] = info.get("salle")
-                    if joue and avec_buteurs:
-                        m["buteurs"] = [b for b in info.get("buteurs") or [] if not masque(b.get("joueur"))]
+                    if joue:
+                        m["buteurs"] = info.get("buteurs") or []
+                        m["buteurs_adverses"] = info.get("buteurs_adverses") or []
                 except Exception as err:
                     erreur(f"Match {m['id']} ({equipe['nom']}) : {err}")
                 prochain_traite = prochain_traite or a_venir
@@ -312,26 +349,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
     return equipes
 
 
-# ============================================================================ agrégats
-
-def stats_club(equipes: list[dict]) -> list[dict]:
-    joueurs: dict[str, dict] = {}
-    for eq in equipes:
-        for m in eq["matchs"]:
-            for b in m.get("buteurs") or []:
-                cle = ff.slugify(b["joueur"])
-                j = joueurs.setdefault(cle, {"joueur": b["joueur"], "equipes": [], "matchs": 0,
-                                             "buts": 0, "record": 0})
-                if eq["nom"] not in j["equipes"]:
-                    j["equipes"].append(eq["nom"])
-                j["matchs"] += 1
-                j["buts"] += b["buts"]
-                j["record"] = max(j["record"], b["buts"])
-    out = sorted(joueurs.values(), key=lambda j: (-j["buts"], j["joueur"]))
-    for j in out:
-        j["moyenne"] = round(j["buts"] / j["matchs"], 1) if j["matchs"] else 0
-    return out
-
+# ============================================================================ calendriers
 
 def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]]):
     def echapper(t):
@@ -362,11 +380,32 @@ def ecrire_ics(fichier: Path, nom_cal: str, evenements: list[tuple[dict, dict]])
     fichier.write_text("\r\n".join(lignes) + "\r\n", encoding="utf-8")
 
 
+def ecrire_agendas(dossier: Path, equipes: list[dict], collectifs: list[dict]) -> None:
+    """Tous les .ics : par équipe, par collectif (matchs datés, passés et à venir ; fichier écrit même sans match), club.ics et, dans match/,
+    un fichier par match daté sans résultat (match/ est vidé puis réécrit : un match joué disparaît)."""
+    club = CONFIG["club"]["nom"]
+    dossier.mkdir(parents=True, exist_ok=True)
+    for eq in equipes:
+        ecrire_ics(dossier / f"{eq['id']}.ics", f"{club} - {eq['nom']}", [(eq, m) for m in eq["matchs"]])
+    ecrire_ics(dossier / "club.ics", club, [(eq, m) for eq in equipes for m in eq["matchs"]])
+    for col in collectifs:
+        # toujours écrit, même sans match daté : l'app s'abonne à ce fichier pour toute équipe (un 404 casserait l'abonnement)
+        ecrire_ics(dossier / f"{col['id']}.ics", f"{club} - {col['nom']}",
+                   [(eq, m) for eq in equipes if eq["collectif"] == col["id"] for m in eq["matchs"]])
+    par_match = dossier / "match"
+    shutil.rmtree(par_match, ignore_errors=True)
+    par_match.mkdir(parents=True, exist_ok=True)
+    for eq in equipes:
+        for m in eq["matchs"]:
+            if m["date"] and not m["resultat"]:
+                ecrire_ics(par_match / f"{eq['id']}-{m['id']}.ics", f"{club} - {eq['nom']}", [(eq, m)])
+
+
 # ============================================================================ main
 
 def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: list[str],
               surcharges: dict[str, str] | None = None) -> dict:
-    """Contenu complet de club.json (contrat v2). Les équipes reçoivent leur 'collectif'.
+    """Contenu complet de club.json (contrat v3). Les équipes reçoivent leur 'collectif'.
 
     surcharges : par défaut celles de config.json (paramètre explicite pour les tests).
     """
@@ -384,7 +423,6 @@ def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: l
         "source": "https://www.ffhandball.fr",
         "collectifs": collectifs,
         "equipes": equipes,
-        "buteurs_club": stats_club(equipes),
         "erreurs": erreurs,
     }
 
@@ -422,12 +460,7 @@ def main() -> int:
     tmp.write_text(json.dumps(donnees, ensure_ascii=False, indent=1), encoding="utf-8")
     tmp.replace(SORTIE / "club.json")
 
-    agenda = SORTIE / "agenda"
-    agenda.mkdir(exist_ok=True)
-    for eq in equipes:
-        ecrire_ics(agenda / f"{eq['id']}.ics", f"{CONFIG['club']['nom']} - {eq['nom']}",
-                   [(eq, m) for m in eq["matchs"]])
-    ecrire_ics(agenda / "club.ics", CONFIG["club"]["nom"], [(eq, m) for eq in equipes for m in eq["matchs"]])
+    ecrire_agendas(SORTIE / "agenda", equipes, donnees["collectifs"])
 
     duree = (datetime.now(timezone.utc) - debut).seconds
     log(f"OK : {len(equipes)} équipes, {sum(len(e['matchs']) for e in equipes)} matchs, "

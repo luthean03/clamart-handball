@@ -27,7 +27,7 @@ export default function Onglets() {
       <Tabs.Screen name="index" options={{ title: 'Accueil', tabBarIcon: icone('home-variant', 'home-variant-outline') }} />
       <Tabs.Screen name="matchs" options={{ title: 'Matchs', tabBarIcon: icone('calendar-month', 'calendar-month-outline') }} />
       <Tabs.Screen name="equipes" options={{ title: 'Équipes', tabBarIcon: icone('shield-half-full', 'shield-outline') }} />
-      <Tabs.Screen name="buteurs" options={{ title: 'Buteurs', tabBarIcon: icone('handball', 'handball') }} />
+      <Tabs.Screen name="club" options={{ title: 'Le club', tabBarIcon: icone('account-group', 'account-group-outline') }} />
     </Tabs>
   );
 }
