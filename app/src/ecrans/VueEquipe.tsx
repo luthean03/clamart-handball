@@ -19,6 +19,8 @@ interface Props {
   onRetour: () => void;
   /** « S'abonner au calendrier » : ouvre le panneau d'agenda, en mode saison. */
   onAgenda: () => void;
+  /** Ouvre une page externe (le classement sur ffhandball.fr). */
+  onOuvrirLien: (url: string) => void;
 }
 
 type Onglet = 'matchs' | 'classement';
@@ -32,7 +34,7 @@ function Carte({ children }: { children: ReactNode }) {
   );
 }
 
-export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, onOuvrirMatch, onRetour, onAgenda }: Props) {
+export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, onOuvrirMatch, onRetour, onAgenda, onOuvrirLien }: Props) {
   const t = useThemeClub();
   // On ne retient que le choix de l'utilisateur : l'onglet affiché est recalculé depuis les données.
   const [ongletChoisi, setOngletChoisi] = useState<Onglet>('matchs');
@@ -127,6 +129,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
                     );
                   })}
                 </Carte>
+                <Button mode="text" icon="open-in-new" labelStyle={styles.libelleLien} contentStyle={CONTENU_BOUTON} style={styles.lien} onPress={() => onOuvrirLien(e.url_ffhb)}>Voir sur ffhandball.fr</Button>
               </View>
             ))
           : null}
@@ -137,6 +140,8 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
 
 const styles = StyleSheet.create({
   page: { flex: 1 },
+  lien: { alignSelf: 'flex-start' },
+  libelleLien: { fontSize: 12, fontFamily: POLICES.gras },
   contenu: { paddingHorizontal: 16, paddingBottom: 32 },
   onglets: { marginVertical: 12 },
   liste: { overflow: 'hidden' },

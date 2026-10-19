@@ -75,7 +75,7 @@ test('liste dans l’onglet Équipes : pas de bouton retour', () => {
 function fiche(collectifId: string, props: Partial<Parameters<typeof VueEquipe>[0]> = {}) {
   const p = {
     club, collectifId, maintenant: MAR_SOIR, suivi: false, onBasculer: jest.fn(), onOuvrirMatch: jest.fn(),
-    onRetour: jest.fn(), onAgenda: jest.fn(), ...props,
+    onRetour: jest.fn(), onAgenda: jest.fn(), onOuvrirLien: jest.fn(), ...props,
   };
   rendu(<VueEquipe {...p} />);
   return p;
@@ -92,6 +92,17 @@ test('fiche équipe : classement avec la ligne du club', () => {
   fireEvent.press(screen.getByText('Classement'));
   expect(screen.getByText('Martigua SCL')).toBeOnTheScreen();
   expect(screen.getByLabelText(/^3e, Clamart Handball 1, 13 points/)).toBeOnTheScreen();
+});
+
+test('classement : « Voir sur ffhandball.fr » sous chaque tableau ouvre la page FFHB de la compétition', () => {
+  const p = fiche('seniors-f-1');
+  fireEvent.press(screen.getByText('Classement'));
+  const liens = screen.getAllByText('Voir sur ffhandball.fr');
+  const avec = club.equipes.filter((e) => e.collectif === 'seniors-f-1' && (e.classement?.length ?? 0) > 0);
+  expect(liens).toHaveLength(avec.length);
+  fireEvent.press(liens[0]);
+  expect(p.onOuvrirLien).toHaveBeenCalledWith(avec[0].url_ffhb);
+  expect(contenuDuBouton(liens[0]).minHeight).toBeGreaterThanOrEqual(48);
 });
 
 test('classement : les noms d’équipe suivent les règles des lignes de match (pas de coupure en plein mot)', () => {
@@ -135,7 +146,7 @@ test('fiche équipe : avec un classement, l’onglet Classement est proposé', (
 });
 
 test('fiche équipe : l’onglet Classement choisi retombe sur Matchs quand le classement disparaît', () => {
-  const p = { club, collectifId: 'seniors-m', maintenant: MAR_SOIR, suivi: false, onBasculer: jest.fn(), onOuvrirMatch: jest.fn(), onRetour: jest.fn(), onAgenda: jest.fn() };
+  const p = { club, collectifId: 'seniors-m', maintenant: MAR_SOIR, suivi: false, onBasculer: jest.fn(), onOuvrirMatch: jest.fn(), onRetour: jest.fn(), onAgenda: jest.fn(), onOuvrirLien: jest.fn() };
   const enveloppe = (c: Club) => (
     <SafeAreaProvider>
       <PaperProvider theme={themeClair}>
