@@ -65,9 +65,9 @@ function clubAvecButeurs(nous: Buteur[], eux?: Buteur[]): Club {
   };
 }
 
-test('fiche : compétition et journée en tête des infos', () => {
+test('fiche : compétition en tête des infos', () => {
   vue('2644292');
-  expect(screen.getByText('D1 territoriale · journée 5')).toBeOnTheScreen();
+  expect(screen.getByText('D1 territoriale')).toBeOnTheScreen();
   expect(screen.getByText('dimanche 11 oct. à 16:15')).toBeOnTheScreen();
   expect(screen.getByText('Gymnase du Petit Clamart · domicile')).toBeOnTheScreen();
   expect(screen.getByText('56 rue de la bourcilliere 92140 CLAMART')).toBeOnTheScreen();

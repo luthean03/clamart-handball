@@ -35,7 +35,7 @@ test('carte : bandeau de date du prochain match et compte à rebours', () => {
   accueil({ suivis: ['seniors-f-1'] });
   expect(screen.getByText('Dim. 18 octobre · 15:30')).toBeOnTheScreen();
   expect(screen.getByText('dans 2 jours')).toBeOnTheScreen();
-  expect(screen.getByText('Coupe de France départementale · J1')).toBeOnTheScreen();
+  expect(screen.getByText('Coupe de France départementale')).toBeOnTheScreen();
   expect(screen.getByText('Contre Cellois HB')).toBeOnTheScreen();
   expect(screen.getByText('Victor Hugo · extérieur')).toBeOnTheScreen();
 });
@@ -85,12 +85,12 @@ test('carte : plus de « Dernier match », la forme reste', () => {
 test('carte : le libellé lu contient l’équipe, la date, le compte à rebours, la compétition, l’adversaire et la salle', () => {
   accueil({ suivis: ['u18-f'] });
   expect(
-    screen.getByLabelText('U18 F, 4e sur 6, samedi 7 nov. à 18:30, dans 22 jours, Championnat, journée 3, contre Stade Francais, Stade Pierre de Coubertin, extérieur, ouvre le match'),
+    screen.getByLabelText('U18 F, 4e sur 6, samedi 7 nov. à 18:30, dans 22 jours, Championnat, contre Stade Francais, Stade Pierre de Coubertin, extérieur, ouvre le match'),
   ).toBeOnTheScreen();
   screen.unmount();
   accueil({ suivis: ['seniors-f-1'] });
   expect(
-    screen.getByLabelText('Seniors F 1, dimanche 18 oct. à 15:30, dans 2 jours, Coupe de France départementale, journée 1, contre Cellois HB, Victor Hugo, extérieur, ouvre le match'),
+    screen.getByLabelText('Seniors F 1, dimanche 18 oct. à 15:30, dans 2 jours, Coupe de France départementale, contre Cellois HB, Victor Hugo, extérieur, ouvre le match'),
   ).toBeOnTheScreen();
 });
 

@@ -27,14 +27,14 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, onOuvrirMa
   const t = useThemeClub();
   const bandeau = t.club.bandeau;
   const rang = classementDuMatch(prochain);
-  const competition = prochain.journee ? `${prochain.equipe.detail} · J${prochain.journee}` : prochain.equipe.detail;
+  const competition = prochain.equipe.detail;
   const compte = compteARebours(jourDuMatch(prochain.date!), aujourdhui);
   const lu = [
     collectif.nom,
     rang && `${ordinal(rang.place)} sur ${rang.nb}`,
     `${libelleJour(jourDuMatch(prochain.date!), 'long')} à ${heureDuMatch(prochain.date!)}`,
     compte,
-    prochain.journee ? `${prochain.equipe.detail}, journée ${prochain.journee}` : prochain.equipe.detail,
+    prochain.equipe.detail,
     `contre ${nomLisible(prochain.adversaire)}`,
     ...lieu(prochain),
     'ouvre le match',
