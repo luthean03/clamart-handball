@@ -31,7 +31,8 @@ test('match joué : phrase, score, mi-temps, salle, feuille de match', () => {
 test('match joué senior : les buteurs du club', () => {
   vue('2644292');
   const premier = matchParId(club, '2644292')!.buteurs!.find((b) => b.buts > 0)!;
-  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
+  expect(screen.getByText('Match')).toBeOnTheScreen();
+  expect(screen.queryByText('Buteurs')).toBeNull();
   expect(screen.getByText(premier.joueur)).toBeOnTheScreen();
 });
 
@@ -47,10 +48,10 @@ test('match à venir : le score est lu « contre »', () => {
   expect(screen.getByLabelText(`Clamart ${m.equipe.nom} contre Association Sportive St-Cyr/Fontenay Handball 78`)).toBeOnTheScreen();
 });
 
-test('match sans buteurs publiés : pas de section Buteurs', () => {
+test('match sans joueurs publiés : pas de section Match', () => {
   vue('2740456');
   expect(screen.getByText('Défaite contre Paris St-Germain HB 3')).toBeOnTheScreen();
-  expect(screen.queryByText('Buteurs')).toBeNull();
+  expect(screen.queryByText('Match')).toBeNull();
 });
 
 /** Le match 2644292 avec nos buteurs et ceux de l'adversaire (schéma 3). */
@@ -72,22 +73,34 @@ test('fiche : compétition et journée en tête des infos', () => {
   expect(screen.getByText('56 rue de la bourcilliere 92140 CLAMART')).toBeOnTheScreen();
 });
 
-test('fiche : buteurs des deux équipes, seulement ceux qui ont marqué, triés par buts', () => {
+test('fiche : tous les joueurs des deux équipes, buts décroissants puis nom, même à 0 but', () => {
   const c = clubAvecButeurs(
-    [{ joueur: 'M. Kobzili', numero: 3, buts: 0 }, { joueur: 'L. Ladjel', numero: 64, buts: 4 }, { joueur: 'D. Dorilas', numero: 19, buts: 9 }],
-    [{ joueur: 'A. Kouadio', numero: 7, buts: 5 }],
+    [
+      { joueur: 'M. Kobzili', numero: 3, buts: 0 },
+      { joueur: 'L. Ladjel', numero: 64, buts: 4 },
+      { joueur: 'D. Dorilas', numero: 19, buts: 9 },
+      { joueur: 'B. Abdi', numero: 8, buts: 0 },
+      { joueur: 'A. Zidane', numero: 2, buts: 4 },
+    ],
+    [{ joueur: 'A. Kouadio', numero: 7, buts: 5 }, { joueur: 'S. Nguyen', numero: 12, buts: 0 }],
   );
   vue('2644292', c);
-  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
-  expect(screen.getByText('D. Dorilas')).toBeOnTheScreen();
-  expect(screen.getByText('A. Kouadio')).toBeOnTheScreen();
-  expect(screen.queryByText('M. Kobzili')).toBeNull();
+  expect(screen.getByText('Match')).toBeOnTheScreen();
   expect(screen.getByText('Clamart')).toBeOnTheScreen();
   // le nom de l'adversaire est dans le score et dans le titre de sa colonne
   expect(screen.getAllByText('Ent. Suresnes / Nanterre')).toHaveLength(2);
   const noms = screen.getAllByText(/^[A-Z]\. /).map((n) => n.props.children);
-  expect(noms).toEqual(['D. Dorilas', 'L. Ladjel', 'A. Kouadio']);
+  expect(noms).toEqual(['D. Dorilas', 'A. Zidane', 'L. Ladjel', 'B. Abdi', 'M. Kobzili', 'A. Kouadio', 'S. Nguyen']);
   expect(screen.getByLabelText('D. Dorilas, 9 buts')).toBeOnTheScreen();
+  expect(screen.getByLabelText('M. Kobzili, 0 but')).toBeOnTheScreen();
+  expect(screen.getByLabelText('S. Nguyen, 0 but')).toBeOnTheScreen();
+});
+
+test('fiche : le nombre de buts est affiché, y compris 0', () => {
+  vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: 19, buts: 3 }, { joueur: 'M. Kobzili', numero: 3, buts: 0 }]));
+  const ligne = (nom: string) => within(screen.getByLabelText(new RegExp(`^${nom}, `)));
+  expect(ligne('D. Dorilas').getByText('3')).toBeOnTheScreen();
+  expect(ligne('M. Kobzili').getByText('0')).toBeOnTheScreen();
 });
 
 test('fiche : un but au singulier', () => {
@@ -95,15 +108,25 @@ test('fiche : un but au singulier', () => {
   expect(screen.getByLabelText('D. Dorilas, 1 but')).toBeOnTheScreen();
 });
 
-test('fiche : aucun buteur ayant marqué, pas de section', () => {
+test('fiche : des joueurs sans but suffisent pour afficher la section', () => {
   vue('2644292', clubAvecButeurs([{ joueur: 'M. Kobzili', numero: 3, buts: 0 }], []));
-  expect(screen.queryByText('Buteurs')).toBeNull();
+  expect(screen.getByText('Match')).toBeOnTheScreen();
+  expect(screen.getByText('M. Kobzili')).toBeOnTheScreen();
+  screen.unmount();
+  vue('2644292', clubAvecButeurs([], [{ joueur: 'S. Nguyen', numero: 12, buts: 0 }]));
+  expect(screen.getByText('Match')).toBeOnTheScreen();
+  expect(screen.getByText('S. Nguyen')).toBeOnTheScreen();
 });
 
-test('fiche : un club.json v2 affiche les buteurs du club seuls', () => {
+test('fiche : aucune liste, pas de section', () => {
+  vue('2644292', clubAvecButeurs([], []));
+  expect(screen.queryByText('Match')).toBeNull();
+});
+
+test('fiche : un club.json v2 affiche les joueurs du club seuls', () => {
   vue('2644292');
   expect(matchParId(club, '2644292')!.buteurs_adverses).toBeUndefined();
-  expect(screen.getByText('Buteurs')).toBeOnTheScreen();
+  expect(screen.getByText('Match')).toBeOnTheScreen();
   // nom complet d'un fichier v2, affiché tel quel
   expect(screen.getByText('Diara DORILAS')).toBeOnTheScreen();
   expect(screen.getByText('Clamart')).toBeOnTheScreen();

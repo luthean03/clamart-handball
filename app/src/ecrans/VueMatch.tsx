@@ -31,12 +31,12 @@ function Carte({ children }: { children: ReactNode }) {
   );
 }
 
-/** Seulement ceux qui ont marqué, du meilleur au moins bon (le tri est stable : l'ordre de la feuille départage). */
-function ayantMarque(liste: Buteur[] | undefined): Buteur[] {
-  return (liste ?? []).filter((b) => b.buts > 0).sort((a, b) => b.buts - a.buts);
+/** Tous les joueurs de la feuille, 0 but compris : du meilleur au moins bon, puis par nom. */
+function parButs(liste: Buteur[] | undefined): Buteur[] {
+  return [...(liste ?? [])].sort((a, b) => b.buts - a.buts || a.joueur.localeCompare(b.joueur, 'fr'));
 }
 
-function ColonneButeurs({ titre, ecusson, buteurs }: { titre: string; ecusson: ReactNode; buteurs: Buteur[] }) {
+function ColonneJoueurs({ titre, ecusson, joueurs }: { titre: string; ecusson: ReactNode; joueurs: Buteur[] }) {
   const t = useThemeClub();
   return (
     <View style={styles.colonne}>
@@ -44,7 +44,7 @@ function ColonneButeurs({ titre, ecusson, buteurs }: { titre: string; ecusson: R
         {ecusson}
         <Text variant="labelMedium" numberOfLines={1} style={[styles.nomColonne, { color: t.colors.onSurfaceVariant }]}>{titre}</Text>
       </View>
-      {buteurs.map((b, i) => (
+      {joueurs.map((b, i) => (
         <View
           key={i}
           style={[styles.buteur, i > 0 && { borderTopColor: t.colors.outlineVariant, borderTopWidth: StyleSheet.hairlineWidth }]}
@@ -83,8 +83,8 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
   const adversaire = nomLisible(m.adversaire);
   const nous = `Clamart ${m.equipe.nom}`;
   const aVenir = m.resultat === null && m.date !== null && !scoreEnAttente(m, maintenant);
-  const butsNous = ayantMarque(m.buteurs);
-  const butsEux = ayantMarque(m.buteurs_adverses);
+  const joueursNous = parButs(m.buteurs);
+  const joueursEux = parButs(m.buteurs_adverses);
   const camps = m.domicile
     ? [{ nom: nous, score: m.score_nous, club: true }, { nom: adversaire, score: m.score_eux, club: false }]
     : [{ nom: adversaire, score: m.score_eux, club: false }, { nom: nous, score: m.score_nous, club: true }];
@@ -140,13 +140,13 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
           </View>
         ) : null}
 
-        {butsNous.length || butsEux.length ? (
+        {joueursNous.length || joueursEux.length ? (
           <>
-            <EnTeteSection titre="Buteurs" />
+            <EnTeteSection titre="Match" />
             <Carte>
               <View style={styles.colonnes}>
-                {butsNous.length ? <ColonneButeurs titre="Clamart" ecusson={<EcussonClub taille={16} />} buteurs={butsNous} /> : null}
-                {butsEux.length ? <ColonneButeurs titre={adversaire} ecusson={<Ecusson uri={m.logo_adversaire} nom={adversaire} taille={16} />} buteurs={butsEux} /> : null}
+                {joueursNous.length ? <ColonneJoueurs titre="Clamart" ecusson={<EcussonClub taille={16} />} joueurs={joueursNous} /> : null}
+                {joueursEux.length ? <ColonneJoueurs titre={adversaire} ecusson={<Ecusson uri={m.logo_adversaire} nom={adversaire} taille={16} />} joueurs={joueursEux} /> : null}
               </View>
             </Carte>
           </>
