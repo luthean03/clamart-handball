@@ -39,6 +39,7 @@ test('ligne : score pas encore publié, puis match à venir', () => {
   rendu(<LigneMatch match={m('2734038')} maintenant={MAR_SOIR} onPress={jest.fn()} afficherCompetition />);
   expect(screen.getByText('18:00')).toBeOnTheScreen();
   expect(screen.getByText(/Coupe de France départementale/)).toBeOnTheScreen();
+  expect(screen.queryByText(/J1/)).toBeNull();
 });
 
 test('un nom long peut tenir sur trois lignes : le nom de l’équipe ne se perd jamais', () => {

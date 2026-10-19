@@ -102,7 +102,7 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
     <View style={[styles.page, { backgroundColor: t.colors.background }]}>
       <Appbar.Header style={{ backgroundColor: t.colors.background }}>
         <Appbar.BackAction onPress={onRetour} accessibilityLabel="Retour" style={styles.action} />
-        <Appbar.Content title={m.journee ? `${m.equipe.nom} · J${m.journee}` : m.equipe.nom} titleStyle={{ color: t.club.titre }} />
+        <Appbar.Content title={m.equipe.nom} titleStyle={{ color: t.club.titre }} />
       </Appbar.Header>
       <ScrollView contentContainerStyle={styles.contenu}>
         <Carte>
@@ -128,7 +128,7 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
         <EnTeteSection titre="Infos" />
         <Carte>
           <Text variant="titleSmall" style={{ color: t.colors.onSurface, fontFamily: POLICES.gras }}>
-            {[m.equipe.detail, m.journee ? `journée ${m.journee}` : null].filter(Boolean).join(' · ')}
+            {m.equipe.detail}
           </Text>
           <Text variant="bodyLarge" style={{ color: t.colors.onSurface }}>
             {m.date ? `${libelleJour(jourDuMatch(m.date), 'long')} à ${heureDuMatch(m.date)}` : 'Date à venir'}

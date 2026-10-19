@@ -67,7 +67,7 @@ export function LigneMatch({ match, maintenant, onPress, afficherCompetition = f
         <View style={styles.equipes}>
           {afficherCompetition ? (
             <Text variant="labelSmall" numberOfLines={1} style={{ color: t.colors.onSurfaceVariant }}>
-              {match.journee ? `${match.equipe.detail} · J${match.journee}` : match.equipe.detail}
+              {match.equipe.detail}
             </Text>
           ) : null}
           <Nom texte={dom} gras={domGagne} club={match.domicile} logo={match.logo_adversaire} />
