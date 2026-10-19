@@ -1,5 +1,5 @@
 {
- "version_schema": 2,
+ "version_schema": 3,
  "club": {
   "nom": "Clamart Handball",
   "id_ffhb": "3309"
@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-18T22:57:54+00:00",
+ "mis_a_jour": "2026-10-19T07:58:06+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -140,7 +140,6 @@
    "phase": "+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75 / POULE UNIQUE",
    "poule": "POULE UNIQUE",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/equipe-2126402/",
-   "stats_joueurs": true,
    "classement": [
     {
      "place": 1,
@@ -307,58 +306,120 @@
      },
      "buteurs": [
       {
-       "joueur": "Diara DORILAS",
+       "joueur": "D. Dorilas",
        "numero": 41,
        "buts": 8
       },
       {
-       "joueur": "Zoe GEORGE",
+       "joueur": "Z. George",
        "numero": 4,
        "buts": 5
       },
       {
-       "joueur": "Eva NDIAYE",
-       "numero": 9,
-       "buts": 3
-      },
-      {
-       "joueur": "Azza MSAKNI",
+       "joueur": "A. Msakni",
        "numero": 16,
        "buts": 3
       },
       {
-       "joueur": "Lisa LADJEL",
+       "joueur": "E. Ndiaye",
+       "numero": 9,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Ladjel",
        "numero": 46,
        "buts": 3
       },
       {
-       "joueur": "Aurelie FRUGIER",
+       "joueur": "A. Frugier",
        "numero": 5,
        "buts": 2
       },
       {
-       "joueur": "Stephanie BAY",
+       "joueur": "S. Bay",
        "numero": 6,
        "buts": 2
       },
       {
-       "joueur": "Claire COSTES",
+       "joueur": "C. Costes",
        "numero": 10,
        "buts": 1
       },
       {
-       "joueur": "Haquima ES-SALEMY",
+       "joueur": "H. Es-Salemy",
        "numero": 8,
        "buts": 0
       },
       {
-       "joueur": "Michelore EDOUARD",
+       "joueur": "M. Edouard",
        "numero": 92,
        "buts": 0
       },
       {
-       "joueur": "Melina KOBZILI",
+       "joueur": "M. Kobzili",
        "numero": 97,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Delmestre",
+       "numero": 19,
+       "buts": 6
+      },
+      {
+       "joueur": "A. Robert",
+       "numero": 6,
+       "buts": 5
+      },
+      {
+       "joueur": "M. Sissoko",
+       "numero": 2,
+       "buts": 3
+      },
+      {
+       "joueur": "C. Marzouki",
+       "numero": 8,
+       "buts": 2
+      },
+      {
+       "joueur": "J. Deschamps",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "V. Venel",
+       "numero": 7,
+       "buts": 2
+      },
+      {
+       "joueur": "I. Masson",
+       "numero": 9,
+       "buts": 1
+      },
+      {
+       "joueur": "V. Scrofani",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "C. Risse",
+       "numero": 18,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Ibanez Delgado",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Harizi",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Leibovici",
+       "numero": 10,
        "buts": 0
       }
      ]
@@ -383,53 +444,115 @@
      },
      "buteurs": [
       {
-       "joueur": "Eva NDIAYE",
+       "joueur": "E. Ndiaye",
        "numero": 9,
        "buts": 6
       },
       {
-       "joueur": "Diara DORILAS",
+       "joueur": "D. Dorilas",
        "numero": 41,
        "buts": 4
       },
       {
-       "joueur": "Aurelie FRUGIER",
+       "joueur": "A. Frugier",
        "numero": 5,
        "buts": 3
       },
       {
-       "joueur": "Haquima ES-SALEMY",
+       "joueur": "H. Es-Salemy",
        "numero": 8,
        "buts": 3
       },
       {
-       "joueur": "Azza MSAKNI",
+       "joueur": "A. Msakni",
        "numero": 16,
        "buts": 2
       },
       {
-       "joueur": "Lisa LADJEL",
+       "joueur": "L. Ladjel",
        "numero": 46,
        "buts": 2
       },
       {
-       "joueur": "Zoe GEORGE",
-       "numero": 4,
-       "buts": 1
-      },
-      {
-       "joueur": "Hanane ALEXANDRE",
+       "joueur": "H. Alexandre",
        "numero": 12,
        "buts": 1
       },
       {
-       "joueur": "Michelore EDOUARD",
+       "joueur": "Z. George",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Edouard",
        "numero": 92,
        "buts": 0
       },
       {
-       "joueur": "Melina KOBZILI",
+       "joueur": "M. Kobzili",
        "numero": 97,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "M. Traore",
+       "numero": 21,
+       "buts": 8
+      },
+      {
+       "joueur": "N. Casse",
+       "numero": 2,
+       "buts": 7
+      },
+      {
+       "joueur": "M. Marinho Goncalves",
+       "numero": 7,
+       "buts": 5
+      },
+      {
+       "joueur": "P. Boivin",
+       "numero": 18,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Carrard--Draghi",
+       "numero": 41,
+       "buts": 1
+      },
+      {
+       "joueur": "V. Diallo",
+       "numero": 19,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Goumard",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Pepin",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Tamburrino",
+       "numero": 34,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Tholosan",
+       "numero": 26,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Valdevit",
+       "numero": 27,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Royer",
+       "numero": 1,
        "buts": 0
       }
      ]
@@ -454,58 +577,110 @@
      },
      "buteurs": [
       {
-       "joueur": "Diara DORILAS",
+       "joueur": "D. Dorilas",
        "numero": 41,
        "buts": 9
       },
       {
-       "joueur": "Aurelie FRUGIER",
+       "joueur": "A. Frugier",
        "numero": 5,
        "buts": 4
       },
       {
-       "joueur": "Stephanie BAY",
-       "numero": 6,
-       "buts": 4
-      },
-      {
-       "joueur": "Lisa LADJEL",
-       "numero": 46,
-       "buts": 4
-      },
-      {
-       "joueur": "Lisa FERRIER",
+       "joueur": "L. Ferrier",
        "numero": 63,
        "buts": 4
       },
       {
-       "joueur": "Eva NDIAYE",
+       "joueur": "L. Ladjel",
+       "numero": 46,
+       "buts": 4
+      },
+      {
+       "joueur": "S. Bay",
+       "numero": 6,
+       "buts": 4
+      },
+      {
+       "joueur": "E. Ndiaye",
        "numero": 9,
        "buts": 3
       },
       {
-       "joueur": "Haquima ES-SALEMY",
+       "joueur": "H. Es-Salemy",
        "numero": 59,
        "buts": 2
       },
       {
-       "joueur": "Zoe GEORGE",
+       "joueur": "Z. George",
        "numero": 4,
        "buts": 1
       },
       {
-       "joueur": "Camille LEPRINCE",
+       "joueur": "C. Leprince",
        "numero": 2,
        "buts": 0
       },
       {
-       "joueur": "Michelore EDOUARD",
+       "joueur": "M. Edouard",
        "numero": 92,
        "buts": 0
       },
       {
-       "joueur": "Melina KOBZILI",
+       "joueur": "M. Kobzili",
        "numero": 97,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "C. Abbadie",
+       "numero": 9,
+       "buts": 4
+      },
+      {
+       "joueur": "P. Cuguen",
+       "numero": 13,
+       "buts": 4
+      },
+      {
+       "joueur": "S. Bouju",
+       "numero": 8,
+       "buts": 4
+      },
+      {
+       "joueur": "L. Quemener",
+       "numero": 4,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Pennec",
+       "numero": 10,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Belguerras",
+       "numero": 15,
+       "buts": 1
+      },
+      {
+       "joueur": "A. De Bernardy",
+       "numero": 6,
+       "buts": 1
+      },
+      {
+       "joueur": "C. Royere",
+       "numero": 7,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Azemar",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Hamdous",
+       "numero": 2,
        "buts": 0
       }
      ]
@@ -530,58 +705,120 @@
      },
      "buteurs": [
       {
-       "joueur": "Diara DORILAS",
+       "joueur": "D. Dorilas",
        "numero": 2,
        "buts": 8
       },
       {
-       "joueur": "Lisa LADJEL",
+       "joueur": "L. Ladjel",
        "numero": 46,
        "buts": 8
       },
       {
-       "joueur": "Aurelie FRUGIER",
+       "joueur": "A. Frugier",
        "numero": 5,
        "buts": 5
       },
       {
-       "joueur": "Eva NDIAYE",
+       "joueur": "E. Ndiaye",
        "numero": 9,
        "buts": 2
       },
       {
-       "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
-       "numero": 11,
-       "buts": 2
-      },
-      {
-       "joueur": "Haquima ES-SALEMY",
+       "joueur": "H. Es-Salemy",
        "numero": 59,
        "buts": 2
       },
       {
-       "joueur": "Zoe GEORGE",
-       "numero": 4,
-       "buts": 1
+       "joueur": "L. Chaudeaux",
+       "numero": 11,
+       "buts": 2
       },
       {
-       "joueur": "Stephanie BAY",
-       "numero": 6,
-       "buts": 1
-      },
-      {
-       "joueur": "Azza MSAKNI",
+       "joueur": "A. Msakni",
        "numero": 16,
        "buts": 1
       },
       {
-       "joueur": "Michelore EDOUARD",
+       "joueur": "S. Bay",
+       "numero": 6,
+       "buts": 1
+      },
+      {
+       "joueur": "Z. George",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Edouard",
        "numero": 92,
        "buts": 0
       },
       {
-       "joueur": "Melina KOBZILI",
+       "joueur": "M. Kobzili",
        "numero": 97,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Jullien-Lombrage",
+       "numero": 11,
+       "buts": 5
+      },
+      {
+       "joueur": "L. Tollardo",
+       "numero": 14,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Larcher",
+       "numero": 20,
+       "buts": 2
+      },
+      {
+       "joueur": "C. Lacreu",
+       "numero": 19,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Lacreu",
+       "numero": 8,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Masson",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Zouani",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Teinturier",
+       "numero": 60,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Demuynck",
+       "numero": 22,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Frechin",
+       "numero": 74,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Busserolles",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Lhadj Mohand",
+       "numero": 1,
        "buts": 0
       }
      ]
@@ -606,53 +843,110 @@
      },
      "buteurs": [
       {
-       "joueur": "Diara DORILAS",
+       "joueur": "D. Dorilas",
        "numero": 19,
        "buts": 9
       },
       {
-       "joueur": "Haquima ES-SALEMY",
+       "joueur": "H. Es-Salemy",
        "numero": 8,
        "buts": 6
       },
       {
-       "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
+       "joueur": "L. Chaudeaux",
        "numero": 13,
        "buts": 6
       },
       {
-       "joueur": "Eva NDIAYE",
+       "joueur": "E. Ndiaye",
        "numero": 9,
        "buts": 4
       },
       {
-       "joueur": "Lisa LADJEL",
+       "joueur": "L. Ladjel",
        "numero": 64,
        "buts": 4
       },
       {
-       "joueur": "Lisa FERRIER",
+       "joueur": "L. Ferrier",
        "numero": 24,
        "buts": 2
       },
       {
-       "joueur": "Aurelie FRUGIER",
+       "joueur": "A. Frugier",
        "numero": 5,
        "buts": 1
       },
       {
-       "joueur": "Melina KOBZILI",
-       "numero": 7,
-       "buts": 0
-      },
-      {
-       "joueur": "Juliette AUFFRET",
+       "joueur": "J. Auffret",
        "numero": 29,
        "buts": 0
       },
       {
-       "joueur": "Michelore EDOUARD",
+       "joueur": "M. Edouard",
        "numero": 96,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Kobzili",
+       "numero": 7,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Bleunven",
+       "numero": 6,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Kouadio",
+       "numero": 2,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Ahamada",
+       "numero": 26,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Guebli",
+       "numero": 23,
+       "buts": 4
+      },
+      {
+       "joueur": "K. Paulet",
+       "numero": 24,
+       "buts": 2
+      },
+      {
+       "joueur": "Z. Lebouteiller",
+       "numero": 14,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Burtin",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Besnard",
+       "numero": 11,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Porgront",
+       "numero": 47,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Dos Santos Uzarralde",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Nepert",
+       "numero": 69,
        "buts": 0
       }
      ]
@@ -913,7 +1207,6 @@
    "phase": "1RE PHASE",
    "poule": "POULE B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/equipe-2126426/",
-   "stats_joueurs": true,
    "classement": [
     {
      "place": 1,
@@ -1028,43 +1321,80 @@
      },
      "buteurs": [
       {
-       "joueur": "Hanane ALEXANDRE",
+       "joueur": "H. Alexandre",
        "numero": 2,
        "buts": 8
       },
       {
-       "joueur": "Juliette AUFFRET",
+       "joueur": "J. Auffret",
        "numero": 15,
        "buts": 7
       },
       {
-       "joueur": "Amelys DEBIOL",
+       "joueur": "A. Debiol",
        "numero": 17,
        "buts": 3
       },
       {
-       "joueur": "Camille LEPRINCE",
-       "numero": 21,
-       "buts": 2
-      },
-      {
-       "joueur": "Alice GOUBILL",
+       "joueur": "A. Goubill",
        "numero": 22,
        "buts": 2
       },
       {
-       "joueur": "Joey ANTONIOS",
+       "joueur": "C. Leprince",
+       "numero": 21,
+       "buts": 2
+      },
+      {
+       "joueur": "J. Antonios",
        "numero": 14,
        "buts": 1
       },
       {
-       "joueur": "Violaine HOUIN",
+       "joueur": "V. Houin",
        "numero": 19,
        "buts": 1
       },
       {
-       "joueur": "Bisse Marthe MFOULA ESSONO",
+       "joueur": "B. Mfoula Essono",
        "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Paul",
+       "numero": 18,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Bertheau",
+       "numero": 75,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Gotte",
+       "numero": 52,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Telle",
+       "numero": 12,
+       "buts": 1
+      },
+      {
+       "joueur": "S. Leveque",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Alvado",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Voydeville",
+       "numero": 97,
        "buts": 0
       }
      ]
@@ -1089,58 +1419,110 @@
      },
      "buteurs": [
       {
-       "joueur": "Claire COSTES",
+       "joueur": "C. Costes",
        "numero": 10,
        "buts": 6
       },
       {
-       "joueur": "Juliette AUFFRET",
-       "numero": 15,
-       "buts": 4
-      },
-      {
-       "joueur": "Amelys DEBIOL",
+       "joueur": "A. Debiol",
        "numero": 17,
        "buts": 4
       },
       {
-       "joueur": "Camille LEPRINCE",
+       "joueur": "J. Auffret",
+       "numero": 15,
+       "buts": 4
+      },
+      {
+       "joueur": "C. Leprince",
        "numero": 2,
        "buts": 2
       },
       {
-       "joueur": "Clara PASQUIER",
+       "joueur": "C. Pasquier",
        "numero": 78,
        "buts": 1
       },
       {
-       "joueur": "Bisse Marthe MFOULA ESSONO",
-       "numero": 1,
-       "buts": 0
-      },
-      {
-       "joueur": "Claire EUCHER",
-       "numero": 3,
-       "buts": 0
-      },
-      {
-       "joueur": "Joey ANTONIOS",
-       "numero": 14,
-       "buts": 0
-      },
-      {
-       "joueur": "Violaine HOUIN",
-       "numero": 19,
-       "buts": 0
-      },
-      {
-       "joueur": "Alice GOUBILL",
+       "joueur": "A. Goubill",
        "numero": 22,
        "buts": 0
       },
       {
-       "joueur": "Mariam HINI",
+       "joueur": "B. Mfoula Essono",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Eucher",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Antonios",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hini",
        "numero": 69,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Houin",
+       "numero": 19,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "J. Compain",
+       "numero": 4,
+       "buts": 8
+      },
+      {
+       "joueur": "A. Petel",
+       "numero": 13,
+       "buts": 6
+      },
+      {
+       "joueur": "J. Chicaud",
+       "numero": 3,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Buttin",
+       "numero": 5,
+       "buts": 4
+      },
+      {
+       "joueur": "L. Counil",
+       "numero": 89,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Dallet",
+       "numero": 19,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Legiel",
+       "numero": 27,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Robert",
+       "numero": 25,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Anciant",
+       "numero": 73,
+       "buts": 2
+      },
+      {
+       "joueur": "N. Conan",
+       "numero": 16,
        "buts": 0
       }
      ]
@@ -1165,53 +1547,115 @@
      },
      "buteurs": [
       {
-       "joueur": "Hind BAIT",
+       "joueur": "H. Bait",
        "numero": 37,
        "buts": 7
       },
       {
-       "joueur": "Claire COSTES",
+       "joueur": "C. Costes",
        "numero": 10,
        "buts": 3
       },
       {
-       "joueur": "Hanane ALEXANDRE",
+       "joueur": "H. Alexandre",
        "numero": 2,
        "buts": 2
       },
       {
-       "joueur": "Juliette AUFFRET",
+       "joueur": "J. Auffret",
        "numero": 15,
        "buts": 2
       },
       {
-       "joueur": "Claire EUCHER",
-       "numero": 3,
-       "buts": 1
-      },
-      {
-       "joueur": "Alice GOUBILL",
+       "joueur": "A. Goubill",
        "numero": 22,
        "buts": 1
       },
       {
-       "joueur": "Bisse Marthe MFOULA ESSONO",
+       "joueur": "C. Eucher",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "B. Mfoula Essono",
        "numero": 1,
        "buts": 0
       },
       {
-       "joueur": "Joey ANTONIOS",
+       "joueur": "C. Pasquier",
+       "numero": 78,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Antonios",
        "numero": 14,
        "buts": 0
       },
       {
-       "joueur": "Mariam HINI",
+       "joueur": "M. Hini",
        "numero": 20,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Hardy",
+       "numero": 8,
+       "buts": 7
+      },
+      {
+       "joueur": "J. Bulher",
+       "numero": 23,
+       "buts": 5
+      },
+      {
+       "joueur": "J. Kerzazi",
+       "numero": 6,
+       "buts": 5
+      },
+      {
+       "joueur": "L. Le Roux",
+       "numero": 20,
+       "buts": 4
+      },
+      {
+       "joueur": "R. Di Siena",
+       "numero": 19,
+       "buts": 3
+      },
+      {
+       "joueur": "V. Romao",
+       "numero": 38,
+       "buts": 3
+      },
+      {
+       "joueur": "Z. Le Gue",
+       "numero": 11,
+       "buts": 2
+      },
+      {
+       "joueur": "E. Brocardi",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Jourdan",
+       "numero": 42,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Chevet",
+       "numero": 5,
        "buts": 0
       },
       {
-       "joueur": "Clara PASQUIER",
-       "numero": 78,
+       "joueur": "M. Rouzaud",
+       "numero": 37,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Rapaud",
+       "numero": 90,
        "buts": 0
       }
      ]
@@ -1236,58 +1680,120 @@
      },
      "buteurs": [
       {
-       "joueur": "Claire COSTES",
-       "numero": 10,
-       "buts": 4
-      },
-      {
-       "joueur": "Alice GOUBILL",
+       "joueur": "A. Goubill",
        "numero": 22,
        "buts": 4
       },
       {
-       "joueur": "Carla DAELMAN",
+       "joueur": "C. Costes",
+       "numero": 10,
+       "buts": 4
+      },
+      {
+       "joueur": "C. Daelman",
        "numero": 43,
        "buts": 3
       },
       {
-       "joueur": "Hanane ALEXANDRE",
+       "joueur": "H. Alexandre",
        "numero": 2,
        "buts": 2
       },
       {
-       "joueur": "Clara PASQUIER",
+       "joueur": "C. Pasquier",
        "numero": 78,
        "buts": 1
       },
       {
-       "joueur": "Bisse Marthe MFOULA ESSONO",
-       "numero": 1,
-       "buts": 0
-      },
-      {
-       "joueur": "Claire EUCHER",
-       "numero": 3,
-       "buts": 0
-      },
-      {
-       "joueur": "Joey ANTONIOS",
-       "numero": 14,
-       "buts": 0
-      },
-      {
-       "joueur": "Juliette AUFFRET",
-       "numero": 15,
-       "buts": 0
-      },
-      {
-       "joueur": "Amelys DEBIOL",
+       "joueur": "A. Debiol",
        "numero": 17,
        "buts": 0
       },
       {
-       "joueur": "Camille LEPRINCE",
+       "joueur": "B. Mfoula Essono",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Eucher",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Leprince",
        "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Antonios",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Auffret",
+       "numero": 15,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "L. Caramel-Berroyer",
+       "numero": 8,
+       "buts": 6
+      },
+      {
+       "joueur": "L. Ivanov",
+       "numero": 49,
+       "buts": 6
+      },
+      {
+       "joueur": "Z. Pelegry",
+       "numero": 15,
+       "buts": 4
+      },
+      {
+       "joueur": "P. Devichi",
+       "numero": 22,
+       "buts": 2
+      },
+      {
+       "joueur": "E. Moutamalle",
+       "numero": 7,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Dimou",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "Y. Calvez",
+       "numero": 9,
+       "buts": 1
+      },
+      {
+       "joueur": "C. Descorps",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "F. Etienne",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Theret",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Coelho Rodrigues",
+       "numero": 58,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Dutot",
+       "numero": 91,
        "buts": 0
       }
      ]
@@ -1312,53 +1818,95 @@
      },
      "buteurs": [
       {
-       "joueur": "Claire COSTES",
+       "joueur": "C. Costes",
        "numero": 10,
        "buts": 5
       },
       {
-       "joueur": "Hanane ALEXANDRE",
+       "joueur": "H. Alexandre",
        "numero": 12,
        "buts": 5
       },
       {
-       "joueur": "Zoe GEORGE",
+       "joueur": "Z. George",
        "numero": 4,
        "buts": 3
       },
       {
-       "joueur": "Amelys DEBIOL",
+       "joueur": "A. Debiol",
        "numero": 17,
        "buts": 2
       },
       {
-       "joueur": "Alicia TRIPOLI--LONGET",
+       "joueur": "A. Tripoli--Longet",
        "numero": 72,
        "buts": 2
       },
       {
-       "joueur": "Joey ANTONIOS",
-       "numero": 14,
-       "buts": 1
-      },
-      {
-       "joueur": "Camille LEPRINCE",
+       "joueur": "C. Leprince",
        "numero": 70,
        "buts": 1
       },
       {
-       "joueur": "Clara PASQUIER",
+       "joueur": "C. Pasquier",
        "numero": 78,
        "buts": 1
       },
       {
-       "joueur": "Claire EUCHER",
-       "numero": 3,
+       "joueur": "J. Antonios",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "B. Mfoula Essono",
+       "numero": 99,
        "buts": 0
       },
       {
-       "joueur": "Bisse Marthe MFOULA ESSONO",
-       "numero": 99,
+       "joueur": "C. Eucher",
+       "numero": 3,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "J. Legendre",
+       "numero": 25,
+       "buts": 4
+      },
+      {
+       "joueur": "J. Quignon",
+       "numero": 22,
+       "buts": 4
+      },
+      {
+       "joueur": "G. Dujoux",
+       "numero": 66,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Dodson",
+       "numero": 90,
+       "buts": 3
+      },
+      {
+       "joueur": "P. Costeplane",
+       "numero": 12,
+       "buts": 2
+      },
+      {
+       "joueur": "E. Sibo",
+       "numero": 75,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Richetin",
+       "numero": 37,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Mistreanu",
+       "numero": 13,
        "buts": 0
       }
      ]
@@ -1495,7 +2043,6 @@
    "phase": "1RE PHASE",
    "poule": "POULE B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/equipe-2126472/",
-   "stats_joueurs": true,
    "classement": [
     {
      "place": 1,
@@ -1610,43 +2157,105 @@
      },
      "buteurs": [
       {
-       "joueur": "Enzo LEPRETRE SILVA",
+       "joueur": "E. Lepretre Silva",
        "numero": 54,
        "buts": 14
       },
       {
-       "joueur": "Cedric MEYER",
+       "joueur": "C. Meyer",
        "numero": 23,
        "buts": 9
       },
       {
-       "joueur": "Yohann ESCALA",
+       "joueur": "Y. Escala",
        "numero": 97,
        "buts": 4
       },
       {
-       "joueur": "Damien GOMEZ",
+       "joueur": "D. Gomez",
        "numero": 4,
        "buts": 1
       },
       {
-       "joueur": "Samy OULD BRAHAM",
+       "joueur": "S. Ould Braham",
        "numero": 53,
        "buts": 1
       },
       {
-       "joueur": "Lucas PONTES",
+       "joueur": "L. Pontes",
        "numero": 5,
        "buts": 0
       },
       {
-       "joueur": "Ryan NACTO",
+       "joueur": "R. Nacto",
        "numero": 21,
        "buts": 0
       },
       {
-       "joueur": "Tivio GANDON-TALOUARN",
+       "joueur": "T. Gandon-Talouarn",
        "numero": 31,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "P. Thirouin",
+       "numero": 9,
+       "buts": 5
+      },
+      {
+       "joueur": "G. Addad",
+       "numero": 69,
+       "buts": 3
+      },
+      {
+       "joueur": "N. Thirouin",
+       "numero": 6,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Desjardin",
+       "numero": 11,
+       "buts": 2
+      },
+      {
+       "joueur": "T. Coutant",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "H. Grente",
+       "numero": 64,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Vigneras",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Arnaud-Chatelain",
+       "numero": 38,
+       "buts": 1
+      },
+      {
+       "joueur": "R. Pasquier",
+       "numero": 75,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Regne",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "F. Da Mota",
+       "numero": 83,
+       "buts": 0
+      },
+      {
+       "joueur": "P. Merland",
+       "numero": 18,
        "buts": 0
       }
      ]
@@ -1671,53 +2280,115 @@
      },
      "buteurs": [
       {
-       "joueur": "Samy OULD BRAHAM",
+       "joueur": "S. Ould Braham",
        "numero": 53,
        "buts": 9
       },
       {
-       "joueur": "Cedric MEYER",
+       "joueur": "C. Meyer",
        "numero": 23,
        "buts": 8
       },
       {
-       "joueur": "Enzo LEPRETRE SILVA",
+       "joueur": "E. Lepretre Silva",
        "numero": 54,
        "buts": 6
       },
       {
-       "joueur": "Lucas PONTES",
+       "joueur": "L. Pontes",
        "numero": 5,
        "buts": 2
       },
       {
-       "joueur": "Nourane NIMRI",
+       "joueur": "N. Nimri",
        "numero": 17,
        "buts": 2
       },
       {
-       "joueur": "Tivio GANDON-TALOUARN",
+       "joueur": "T. Gandon-Talouarn",
        "numero": 31,
        "buts": 2
       },
       {
-       "joueur": "Yohann ESCALA",
+       "joueur": "Y. Escala",
        "numero": 97,
        "buts": 1
       },
       {
-       "joueur": "Matheo GRONDIN",
+       "joueur": "M. Grondin",
        "numero": 1,
        "buts": 0
       },
       {
-       "joueur": "Ryad KOUAR",
+       "joueur": "R. Kouar",
        "numero": 19,
        "buts": 0
       },
       {
-       "joueur": "Ryan NACTO",
+       "joueur": "R. Nacto",
        "numero": 21,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "P. Alauzen",
+       "numero": 34,
+       "buts": 6
+      },
+      {
+       "joueur": "H. Deshayes",
+       "numero": 8,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Harismendy",
+       "numero": 62,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Anesi",
+       "numero": 9,
+       "buts": 2
+      },
+      {
+       "joueur": "Q. Bermond",
+       "numero": 48,
+       "buts": 2
+      },
+      {
+       "joueur": "S. Blusseau",
+       "numero": 22,
+       "buts": 2
+      },
+      {
+       "joueur": "Y. El Mzandi",
+       "numero": 15,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Mornacco",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Wantellet",
+       "numero": 21,
+       "buts": 1
+      },
+      {
+       "joueur": "B. Pitre",
+       "numero": 12,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Scheiblin",
+       "numero": 42,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Duval",
+       "numero": 78,
        "buts": 0
       }
      ]
@@ -1742,58 +2413,120 @@
      },
      "buteurs": [
       {
-       "joueur": "Samy OULD BRAHAM",
-       "numero": 53,
-       "buts": 6
-      },
-      {
-       "joueur": "Enzo LEPRETRE SILVA",
+       "joueur": "E. Lepretre Silva",
        "numero": 54,
        "buts": 6
       },
       {
-       "joueur": "Cedric MEYER",
+       "joueur": "S. Ould Braham",
+       "numero": 53,
+       "buts": 6
+      },
+      {
+       "joueur": "C. Meyer",
        "numero": 23,
        "buts": 4
       },
       {
-       "joueur": "Nourane NIMRI",
-       "numero": 55,
-       "buts": 4
-      },
-      {
-       "joueur": "Kevin NEVERS",
+       "joueur": "K. Nevers",
        "numero": 60,
        "buts": 4
       },
       {
-       "joueur": "Zineddine STAMBOULI",
-       "numero": 11,
-       "buts": 3
+       "joueur": "N. Nimri",
+       "numero": 55,
+       "buts": 4
       },
       {
-       "joueur": "Yohann ESCALA",
+       "joueur": "Y. Escala",
        "numero": 97,
        "buts": 3
       },
       {
-       "joueur": "Ryan NACTO",
+       "joueur": "Z. Stambouli",
+       "numero": 11,
+       "buts": 3
+      },
+      {
+       "joueur": "R. Nacto",
        "numero": 21,
        "buts": 1
       },
       {
-       "joueur": "Tivio GANDON-TALOUARN",
+       "joueur": "T. Gandon-Talouarn",
        "numero": 31,
        "buts": 1
       },
       {
-       "joueur": "Matheo GRONDIN",
-       "numero": 1,
+       "joueur": "L. Pontes",
+       "numero": 5,
        "buts": 0
       },
       {
-       "joueur": "Lucas PONTES",
-       "numero": 5,
+       "joueur": "M. Grondin",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Quenard",
+       "numero": 26,
+       "buts": 10
+      },
+      {
+       "joueur": "M. Guilhen",
+       "numero": 15,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Billia-Mony",
+       "numero": 99,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Gueho",
+       "numero": 44,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Guibourgeau",
+       "numero": 66,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Brondy",
+       "numero": 36,
+       "buts": 1
+      },
+      {
+       "joueur": "H. Sannie",
+       "numero": 29,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Blasco",
+       "numero": 10,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Sarrazin",
+       "numero": 95,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Guibourgeau",
+       "numero": 17,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Sempe",
+       "numero": 97,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Garnier",
+       "numero": 19,
        "buts": 0
       }
      ]
@@ -1818,58 +2551,115 @@
      },
      "buteurs": [
       {
-       "joueur": "Enzo LEPRETRE SILVA",
+       "joueur": "E. Lepretre Silva",
        "numero": 54,
        "buts": 11
       },
       {
-       "joueur": "Nourane NIMRI",
-       "numero": 66,
-       "buts": 3
-      },
-      {
-       "joueur": "Cedric MEYER",
+       "joueur": "C. Meyer",
        "numero": 73,
        "buts": 3
       },
       {
-       "joueur": "Yohann ESCALA",
-       "numero": 11,
-       "buts": 2
+       "joueur": "N. Nimri",
+       "numero": 66,
+       "buts": 3
       },
       {
-       "joueur": "Samy OULD BRAHAM",
+       "joueur": "S. Ould Braham",
        "numero": 65,
        "buts": 2
       },
       {
-       "joueur": "Ryan NACTO",
-       "numero": 1,
-       "buts": 0
+       "joueur": "Y. Escala",
+       "numero": 11,
+       "buts": 2
       },
       {
-       "joueur": "Alex RIGNAULT",
+       "joueur": "A. Rignault",
        "numero": 12,
        "buts": 0
       },
       {
-       "joueur": "Raphael ARNAUD",
-       "numero": 64,
-       "buts": 0
-      },
-      {
-       "joueur": "Tivio GANDON-TALOUARN",
-       "numero": 69,
-       "buts": 0
-      },
-      {
-       "joueur": "Lucas PONTES",
+       "joueur": "L. Pontes",
        "numero": 70,
        "buts": 0
       },
       {
-       "joueur": "Matheo GRONDIN",
+       "joueur": "M. Grondin",
        "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Arnaud",
+       "numero": 64,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Nacto",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Gandon-Talouarn",
+       "numero": 69,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "B. Dombret",
+       "numero": 47,
+       "buts": 9
+      },
+      {
+       "joueur": "M. Lecouturier",
+       "numero": 6,
+       "buts": 3
+      },
+      {
+       "joueur": "T. Nakache",
+       "numero": 38,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Ogoula Ngano",
+       "numero": 83,
+       "buts": 2
+      },
+      {
+       "joueur": "B. Lombard",
+       "numero": 63,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Chanteur",
+       "numero": 50,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Herbinet",
+       "numero": 71,
+       "buts": 1
+      },
+      {
+       "joueur": "V. Ortega",
+       "numero": 34,
+       "buts": 1
+      },
+      {
+       "joueur": "B. Pouzalgues",
+       "numero": 48,
+       "buts": 0
+      },
+      {
+       "joueur": "F. Kore",
+       "numero": 24,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Girault",
+       "numero": 37,
        "buts": 0
       }
      ]
@@ -2025,7 +2815,6 @@
    "phase": "LOISIRS MIXTES",
    "poule": "LOISIRS MIXTES POULE C",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/equipe-2213376/",
-   "stats_joueurs": true,
    "classement": [
     {
      "place": 1,
@@ -2327,7 +3116,6 @@
    "phase": "1/32 FINALES",
    "poule": "1/32 MASC",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/equipe-2204480/",
-   "stats_joueurs": true,
    "classement": null,
    "matchs": [
     {
@@ -2374,7 +3162,6 @@
    "phase": "CDF DEP FEM (1° TOUR)",
    "poule": "1ER TOUR",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/equipe-2196002/",
-   "stats_joueurs": true,
    "classement": null,
    "matchs": [
     {
@@ -2397,63 +3184,125 @@
      },
      "buteurs": [
       {
-       "joueur": "Diara DORILAS",
+       "joueur": "D. Dorilas",
        "numero": 19,
        "buts": 9
       },
       {
-       "joueur": "Zoe GEORGE",
-       "numero": 4,
-       "buts": 4
-      },
-      {
-       "joueur": "Haquima ES-SALEMY",
-       "numero": 8,
-       "buts": 4
-      },
-      {
-       "joueur": "Eva NDIAYE",
-       "numero": 9,
-       "buts": 4
-      },
-      {
-       "joueur": "Azza MSAKNI",
+       "joueur": "A. Msakni",
        "numero": 11,
        "buts": 4
       },
       {
-       "joueur": "Lisa LADJEL",
+       "joueur": "E. Ndiaye",
+       "numero": 9,
+       "buts": 4
+      },
+      {
+       "joueur": "H. Es-Salemy",
+       "numero": 8,
+       "buts": 4
+      },
+      {
+       "joueur": "Z. George",
+       "numero": 4,
+       "buts": 4
+      },
+      {
+       "joueur": "L. Ladjel",
        "numero": 64,
        "buts": 3
       },
       {
-       "joueur": "Lisa FERRIER",
+       "joueur": "L. Ferrier",
        "numero": 24,
        "buts": 2
       },
       {
-       "joueur": "Aurelie FRUGIER",
-       "numero": 5,
-       "buts": 1
-      },
-      {
-       "joueur": "Amelys DEBIOL",
+       "joueur": "A. Debiol",
        "numero": 17,
        "buts": 1
       },
       {
-       "joueur": "Melina KOBZILI",
-       "numero": 7,
-       "buts": 0
+       "joueur": "A. Frugier",
+       "numero": 5,
+       "buts": 1
       },
       {
-       "joueur": "Joey ANTONIOS",
+       "joueur": "J. Antonios",
        "numero": 14,
        "buts": 0
       },
       {
-       "joueur": "Michelore EDOUARD",
+       "joueur": "M. Edouard",
        "numero": 96,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Kobzili",
+       "numero": 7,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "G. Parlouer",
+       "numero": 23,
+       "buts": 10
+      },
+      {
+       "joueur": "L. Bonnemain",
+       "numero": 27,
+       "buts": 4
+      },
+      {
+       "joueur": "N. Barbery",
+       "numero": 12,
+       "buts": 4
+      },
+      {
+       "joueur": "K. Berard",
+       "numero": 26,
+       "buts": 2
+      },
+      {
+       "joueur": "N. Bonnemain",
+       "numero": 13,
+       "buts": 2
+      },
+      {
+       "joueur": "V. Barrillon",
+       "numero": 7,
+       "buts": 2
+      },
+      {
+       "joueur": "C. Bonnyaud",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "C. Proust",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "D. Guettier",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Prudente",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Vix",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Mercier",
+       "numero": 11,
        "buts": 0
       }
      ]
@@ -2483,7 +3332,6 @@
    "phase": "CDF DEP MAS (1° TOUR)",
    "poule": "1ER TOUR",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/equipe-2203162/",
-   "stats_joueurs": true,
    "classement": null,
    "matchs": [
     {
@@ -2506,58 +3354,110 @@
      },
      "buteurs": [
       {
-       "joueur": "Enzo LEPRETRE SILVA",
+       "joueur": "E. Lepretre Silva",
        "numero": 54,
        "buts": 11
       },
       {
-       "joueur": "Cedric MEYER",
+       "joueur": "C. Meyer",
        "numero": 73,
        "buts": 7
       },
       {
-       "joueur": "Samy OULD BRAHAM",
+       "joueur": "S. Ould Braham",
        "numero": 66,
        "buts": 4
       },
       {
-       "joueur": "Ryad KOUAR",
-       "numero": 31,
-       "buts": 2
-      },
-      {
-       "joueur": "Nourane NIMRI",
+       "joueur": "N. Nimri",
        "numero": 64,
        "buts": 2
       },
       {
-       "joueur": "Raphael ARNAUD",
+       "joueur": "R. Arnaud",
        "numero": 65,
        "buts": 2
       },
       {
-       "joueur": "Tivio GANDON-TALOUARN",
+       "joueur": "R. Kouar",
+       "numero": 31,
+       "buts": 2
+      },
+      {
+       "joueur": "T. Gandon-Talouarn",
        "numero": 69,
        "buts": 2
       },
       {
-       "joueur": "Ryan NACTO",
-       "numero": 1,
-       "buts": 1
-      },
-      {
-       "joueur": "Alex RIGNAULT",
+       "joueur": "A. Rignault",
        "numero": 12,
        "buts": 1
       },
       {
-       "joueur": "Lucas PONTES",
+       "joueur": "R. Nacto",
+       "numero": 1,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Pontes",
        "numero": 70,
        "buts": 0
       },
       {
-       "joueur": "Matheo GRONDIN",
+       "joueur": "M. Grondin",
        "numero": 99,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "C. Steinmetz",
+       "numero": 12,
+       "buts": 5
+      },
+      {
+       "joueur": "E. Perrault",
+       "numero": 26,
+       "buts": 4
+      },
+      {
+       "joueur": "E. Sobral",
+       "numero": 29,
+       "buts": 4
+      },
+      {
+       "joueur": "K. Nanuel",
+       "numero": 24,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Tanang",
+       "numero": 27,
+       "buts": 2
+      },
+      {
+       "joueur": "F. Brady",
+       "numero": 10,
+       "buts": 2
+      },
+      {
+       "joueur": "K. Hardouin",
+       "numero": 23,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Pommier-Renia",
+       "numero": 97,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Vella",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Benamara",
+       "numero": 28,
        "buts": 0
       }
      ]
@@ -2587,7 +3487,6 @@
    "phase": "U18F - 1ERE PHASE 92-75",
    "poule": "POULE B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/equipe-2207050/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -2682,7 +3581,105 @@
      "mt_eux": 28,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739597/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXOBI.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXOBI.pdf",
+     "salle": {
+      "nom": "salle jacques duclos",
+      "adresse": "place de la republique 92240 MALAKOFF"
+     },
+     "buteurs": [
+      {
+       "joueur": "S. Mahi",
+       "numero": 28,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Sahi",
+       "numero": 7,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Hini",
+       "numero": 23,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Defaye",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Labia",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Buquet",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "C. Barreteau",
+       "numero": 27,
+       "buts": 17
+      },
+      {
+       "joueur": "S. Picq",
+       "numero": 12,
+       "buts": 8
+      },
+      {
+       "joueur": "L. Emerique",
+       "numero": 92,
+       "buts": 7
+      },
+      {
+       "joueur": "L. Gasparini",
+       "numero": 10,
+       "buts": 6
+      },
+      {
+       "joueur": "S. Alili",
+       "numero": 17,
+       "buts": 5
+      },
+      {
+       "joueur": "I. Mbumba Aidour",
+       "numero": 13,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Ladet",
+       "numero": 16,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Vincent",
+       "numero": 15,
+       "buts": 2
+      },
+      {
+       "joueur": "N. Ducre",
+       "numero": 20,
+       "buts": 2
+      },
+      {
+       "joueur": "C. Flores Cortes",
+       "numero": 78,
+       "buts": 1
+      },
+      {
+       "joueur": "C. Gilbert--Duchesne",
+       "numero": 32,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Chalal",
+       "numero": 1,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2739601",
@@ -2697,7 +3694,100 @@
      "mt_eux": 11,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739601/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXXMB.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXXMB.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "H. Bait",
+       "numero": 19,
+       "buts": 10
+      },
+      {
+       "joueur": "D. Nkombou",
+       "numero": 26,
+       "buts": 3
+      },
+      {
+       "joueur": "S. Mahi",
+       "numero": 92,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Sahi",
+       "numero": 27,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Defaye",
+       "numero": 10,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Labia",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Buquet",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hini",
+       "numero": 24,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "T. Gamdou",
+       "numero": 5,
+       "buts": 6
+      },
+      {
+       "joueur": "V. Garbaccio",
+       "numero": 8,
+       "buts": 6
+      },
+      {
+       "joueur": "A. Raucoules",
+       "numero": 11,
+       "buts": 3
+      },
+      {
+       "joueur": "E. Semeriva",
+       "numero": 2,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Bonaglia Jaouen",
+       "numero": 7,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Bonnet",
+       "numero": 6,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Blactot",
+       "numero": 20,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Kane",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Chevalier",
+       "numero": 1,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2739604",
@@ -2775,7 +3865,6 @@
    "phase": "U18M - 1RE PHASE - CHAMPIONNAT 92-75",
    "poule": "NIVEAU HAUT - POULE A",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/equipe-2207565/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -2870,7 +3959,100 @@
      "mt_eux": 19,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740452/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPRE.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPRE.pdf",
+     "salle": {
+      "nom": "complexe sportif marie-jose perec",
+      "adresse": "160 boulevard de valmy 92700 COLOMBES"
+     },
+     "buteurs": [
+      {
+       "joueur": "R. Kouar",
+       "numero": 19,
+       "buts": 9
+      },
+      {
+       "joueur": "W. Chahid",
+       "numero": 25,
+       "buts": 8
+      },
+      {
+       "joueur": "A. Pontes",
+       "numero": 21,
+       "buts": 3
+      },
+      {
+       "joueur": "R. Manset",
+       "numero": 10,
+       "buts": 2
+      },
+      {
+       "joueur": "R. Djelalia",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Gouze",
+       "numero": 30,
+       "buts": 1
+      },
+      {
+       "joueur": "G. Le Coguic--Garreau",
+       "numero": 58,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hazebrouck",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Demoniere--Travers",
+       "numero": 57,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Lallemand",
+       "numero": 45,
+       "buts": 9
+      },
+      {
+       "joueur": "T. Dupuis-Cuny",
+       "numero": 6,
+       "buts": 8
+      },
+      {
+       "joueur": "N. Nakache",
+       "numero": 9,
+       "buts": 7
+      },
+      {
+       "joueur": "L. Texier Verdier-Toureau",
+       "numero": 7,
+       "buts": 6
+      },
+      {
+       "joueur": "A. Pencole",
+       "numero": 28,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Ernoult",
+       "numero": 25,
+       "buts": 3
+      },
+      {
+       "joueur": "N. Rocton",
+       "numero": 2,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Depauw",
+       "numero": 44,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2740456",
@@ -2885,7 +4067,120 @@
      "mt_eux": 25,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740456/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPRI.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPRI.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "R. Djelalia",
+       "numero": 35,
+       "buts": 6
+      },
+      {
+       "joueur": "A. Pontes",
+       "numero": 33,
+       "buts": 4
+      },
+      {
+       "joueur": "R. Manset",
+       "numero": 43,
+       "buts": 4
+      },
+      {
+       "joueur": "W. Chahid",
+       "numero": 32,
+       "buts": 4
+      },
+      {
+       "joueur": "R. Kouar",
+       "numero": 34,
+       "buts": 3
+      },
+      {
+       "joueur": "N. Demoniere--Travers",
+       "numero": 36,
+       "buts": 2
+      },
+      {
+       "joueur": "T. Gouze",
+       "numero": 31,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Le Coguic--Garreau",
+       "numero": 38,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Hazebrouck",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "S. Gilabert",
+       "numero": 37,
+       "buts": 11
+      },
+      {
+       "joueur": "J. Lebeau Chomilier",
+       "numero": 10,
+       "buts": 7
+      },
+      {
+       "joueur": "M. Chevrel",
+       "numero": 36,
+       "buts": 7
+      },
+      {
+       "joueur": "H. Philippon",
+       "numero": 31,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Alviz",
+       "numero": 35,
+       "buts": 4
+      },
+      {
+       "joueur": "I. Bouazza",
+       "numero": 45,
+       "buts": 4
+      },
+      {
+       "joueur": "V. Godefroy",
+       "numero": 33,
+       "buts": 4
+      },
+      {
+       "joueur": "L. Duval",
+       "numero": 46,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Martins",
+       "numero": 38,
+       "buts": 0
+      },
+      {
+       "joueur": "M. El Ashrey",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Nassur",
+       "numero": 34,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Zarraa",
+       "numero": 99,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2740459",
@@ -2959,7 +4254,6 @@
    "phase": "U15M - 1RE PHASE - CHAMPIONNAT 92-75",
    "poule": "NIVEAU BAS - POULE A",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/equipe-2207672/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -3054,7 +4348,100 @@
      "mt_eux": 14,
      "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740592/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPXN.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPXN.pdf",
+     "salle": {
+      "nom": "CHARCOT",
+      "adresse": "80 rue du chevaleret 75013 PARIS 13e"
+     },
+     "buteurs": [
+      {
+       "joueur": "H. Abbes",
+       "numero": 11,
+       "buts": 9
+      },
+      {
+       "joueur": "C. Thomas",
+       "numero": 8,
+       "buts": 8
+      },
+      {
+       "joueur": "M. Dumont",
+       "numero": 3,
+       "buts": 7
+      },
+      {
+       "joueur": "A. Hariz",
+       "numero": 92,
+       "buts": 3
+      },
+      {
+       "joueur": "R. Blondeau",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Nortes",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "E. Guffroy",
+       "numero": 9,
+       "buts": 9
+      },
+      {
+       "joueur": "T. Dao",
+       "numero": 17,
+       "buts": 4
+      },
+      {
+       "joueur": "R. Badreau",
+       "numero": 3,
+       "buts": 3
+      },
+      {
+       "joueur": "J. Facorat",
+       "numero": 13,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Barneche",
+       "numero": 6,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Decaudin",
+       "numero": 14,
+       "buts": 2
+      },
+      {
+       "joueur": "P. Ngouma",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Potier",
+       "numero": 64,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Cazettes De Saint Leger",
+       "numero": 36,
+       "buts": 0
+      },
+      {
+       "joueur": "P. Gaul-Berrard",
+       "numero": 39,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Bourahla",
+       "numero": 10,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2740593",
@@ -3147,7 +4534,6 @@
    "phase": "U13F - DELAYAGES J3",
    "poule": "POULE R",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/equipe-2173683/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -3190,7 +4576,115 @@
      "mt_eux": 11,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702666/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVHGJ.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVHGJ.pdf",
+     "salle": {
+      "nom": "JEAN-BLOT",
+      "adresse": "21 RUE PIERRE-BROSSOLETTE 92400 COURBEVOIE"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Belaskri",
+       "numero": 5,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Abbas",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Hamiche",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Bohuon Bobard",
+       "numero": 36,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Aljarab",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Delva",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Kammoun",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Denis",
+       "numero": 40,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Aberkane",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Sissokho",
+       "numero": 23,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "M. Marchand Ducouret",
+       "numero": 15,
+       "buts": 9
+      },
+      {
+       "joueur": "I. Deshayes",
+       "numero": 13,
+       "buts": 5
+      },
+      {
+       "joueur": "C. Caillierez",
+       "numero": 7,
+       "buts": 3
+      },
+      {
+       "joueur": "G. Luneau",
+       "numero": 10,
+       "buts": 1
+      },
+      {
+       "joueur": "R. Baillarguet-Gajic",
+       "numero": 17,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Roche",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Citali",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Forsa",
+       "numero": 9,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Cousin",
+       "numero": 36,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2702667",
@@ -3205,7 +4699,110 @@
      "mt_eux": 4,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-194878/rencontre-2702667/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVHGK.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVHGK.pdf",
+     "salle": {
+      "nom": "JEAN-BLOT",
+      "adresse": "21 RUE PIERRE-BROSSOLETTE 92400 COURBEVOIE"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Belaskri",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Abbas",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Hamiche",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Bohuon Bobard",
+       "numero": 36,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Aljarab",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Delva",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Kammoun",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Denis",
+       "numero": 40,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Aberkane",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Sissokho",
+       "numero": 23,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "O. Nermond",
+       "numero": 15,
+       "buts": 2
+      },
+      {
+       "joueur": "C. Bonnouvrier",
+       "numero": 21,
+       "buts": 1
+      },
+      {
+       "joueur": "C. Sipp",
+       "numero": 99,
+       "buts": 1
+      },
+      {
+       "joueur": "K. Dawwa",
+       "numero": 7,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Odelain",
+       "numero": 25,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Andasse",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Pereira Da Fonte",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Veyssier",
+       "numero": 8,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2739518",
@@ -3220,7 +4817,125 @@
      "mt_eux": 17,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739518/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXNYG.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXNYG.pdf",
+     "salle": {
+      "nom": "SAINT-NICOLAS",
+      "adresse": "11/17 RUE VICTOR-HUGO 92130 ISSY LES MOULINEAUX"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Abbas",
+       "numero": 27,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Belaskri",
+       "numero": 28,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Hamiche",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Aljarab",
+       "numero": 59,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Delva",
+       "numero": 50,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Kammoun",
+       "numero": 23,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 51,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Denis",
+       "numero": 24,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Kraiem",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Sissokho",
+       "numero": 52,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "S. Colombe",
+       "numero": 13,
+       "buts": 7
+      },
+      {
+       "joueur": "S. Khelfaoui",
+       "numero": 17,
+       "buts": 6
+      },
+      {
+       "joueur": "Y. Lambert",
+       "numero": 7,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Rabemiarana Mazzucotelli",
+       "numero": 37,
+       "buts": 3
+      },
+      {
+       "joueur": "B. Mayet Gerardin",
+       "numero": 8,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Cayzac",
+       "numero": 5,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Octavie",
+       "numero": 9,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Peynet",
+       "numero": 18,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Benfodda",
+       "numero": 31,
+       "buts": 1
+      },
+      {
+       "joueur": "G. Maillard",
+       "numero": 26,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Soave",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Cassin",
+       "numero": 93,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2739519",
@@ -3235,7 +4950,125 @@
      "mt_eux": 10,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-197875/rencontre-2739519/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXNYH.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXNYH.pdf",
+     "salle": {
+      "nom": "SAINT-NICOLAS",
+      "adresse": "11/17 RUE VICTOR-HUGO 92130 ISSY LES MOULINEAUX"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Abbas",
+       "numero": 27,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Belaskri",
+       "numero": 28,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Hamiche",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Aljarab",
+       "numero": 59,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Delva",
+       "numero": 50,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Kammoun",
+       "numero": 23,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 51,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Denis",
+       "numero": 24,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Kraiem",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Sissokho",
+       "numero": 52,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "E. Bellon",
+       "numero": 62,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Dedjinou",
+       "numero": 6,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Doare",
+       "numero": 68,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Reber",
+       "numero": 25,
+       "buts": 3
+      },
+      {
+       "joueur": "M. Renault",
+       "numero": 29,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Piotrowska",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "J. France",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Guedegbe",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "D. Pierre",
+       "numero": 28,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Lhote",
+       "numero": 35,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Abdesslam Amiot",
+       "numero": 32,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Viellard",
+       "numero": 47,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2743439",
@@ -3250,7 +5083,130 @@
      "mt_eux": 9,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-198316/rencontre-2743439/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXVUP.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXVUP.pdf",
+     "salle": {
+      "nom": "PAUL-SOURIAU",
+      "adresse": "30 RUE DE SEINE 92100 BOULOGNE BILLANCOURT"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Belaskri",
+       "numero": 62,
+       "buts": 4
+      },
+      {
+       "joueur": "C. Bohuon Bobard",
+       "numero": 57,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Denis",
+       "numero": 59,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Abbas",
+       "numero": 58,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Aljarab",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Kammoun",
+       "numero": 51,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 56,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Rami",
+       "numero": 63,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Aberkane",
+       "numero": 61,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Kraiem",
+       "numero": 55,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Sissokho",
+       "numero": 60,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "N. Albouy",
+       "numero": 26,
+       "buts": 9
+      },
+      {
+       "joueur": "L. Trabelsi",
+       "numero": 48,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Hermite",
+       "numero": 28,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Wallenwein",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "C. Allard",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "S. Apetor",
+       "numero": 32,
+       "buts": 2
+      },
+      {
+       "joueur": "E. Hertelendy",
+       "numero": 21,
+       "buts": 1
+      },
+      {
+       "joueur": "I. Ali",
+       "numero": 62,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Arquier",
+       "numero": 43,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Grapin Charraire",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Thibault-Mendes",
+       "numero": 38,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Wurtz",
+       "numero": 36,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
@@ -3279,7 +5235,6 @@
    "phase": "U13 M - DELAYAGES J4",
    "poule": "POULE N - TOURNOI 1",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/equipe-2175513/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -3335,7 +5290,105 @@
      "mt_eux": 16,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-195205/rencontre-2706480/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSHI.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSHI.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "T. Bigot",
+       "numero": 30,
+       "buts": 11
+      },
+      {
+       "joueur": "G. Gilbert  Duchesne",
+       "numero": 13,
+       "buts": 7
+      },
+      {
+       "joueur": "P. Ollier",
+       "numero": 18,
+       "buts": 5
+      },
+      {
+       "joueur": "O. Barbet Massin",
+       "numero": 5,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 26,
+       "buts": 0
+      },
+      {
+       "joueur": "K. Karodia",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Kwiatek",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "W. Kaddouri",
+       "numero": 4,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "Y. Laouar",
+       "numero": 13,
+       "buts": 13
+      },
+      {
+       "joueur": "A. Quere",
+       "numero": 21,
+       "buts": 6
+      },
+      {
+       "joueur": "E. Jung",
+       "numero": 5,
+       "buts": 6
+      },
+      {
+       "joueur": "J. Betous",
+       "numero": 7,
+       "buts": 4
+      },
+      {
+       "joueur": "C. Agbe",
+       "numero": 14,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Pages",
+       "numero": 26,
+       "buts": 2
+      },
+      {
+       "joueur": "T. Servent Tabellion",
+       "numero": 2,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Le Gallo",
+       "numero": 10,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Royant",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Herrouin",
+       "numero": 12,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2706481",
@@ -3350,7 +5403,115 @@
      "mt_eux": 23,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-195205/rencontre-2706481/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVNFO.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVNFO.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "G. Gilbert  Duchesne",
+       "numero": 13,
+       "buts": 6
+      },
+      {
+       "joueur": "P. Ollier",
+       "numero": 18,
+       "buts": 6
+      },
+      {
+       "joueur": "W. Kaddouri",
+       "numero": 4,
+       "buts": 4
+      },
+      {
+       "joueur": "O. Barbet Massin",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "K. Karodia",
+       "numero": 35,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Onye",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Bigot",
+       "numero": 26,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "C. Coustal",
+       "numero": 31,
+       "buts": 9
+      },
+      {
+       "joueur": "S. Kpodar",
+       "numero": 39,
+       "buts": 9
+      },
+      {
+       "joueur": "J. Makuisavingi Mwenzi",
+       "numero": 58,
+       "buts": 8
+      },
+      {
+       "joueur": "P. Zapalski",
+       "numero": 33,
+       "buts": 7
+      },
+      {
+       "joueur": "M. Mihajlovic-Poissenot",
+       "numero": 52,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Docquier",
+       "numero": 17,
+       "buts": 3
+      },
+      {
+       "joueur": "R. Aucourt",
+       "numero": 59,
+       "buts": 2
+      },
+      {
+       "joueur": "O. Leplu David",
+       "numero": 13,
+       "buts": 1
+      },
+      {
+       "joueur": "P. Philbert",
+       "numero": 30,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Sfar",
+       "numero": 41,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Yiliyaer",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Calvo",
+       "numero": 12,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2706484",
@@ -3365,7 +5526,110 @@
      "mt_eux": 12,
      "resultat": "N",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-195205/rencontre-2706484/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVNFR.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVNFR.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "G. Gilbert  Duchesne",
+       "numero": 4,
+       "buts": 7
+      },
+      {
+       "joueur": "T. Bigot",
+       "numero": 6,
+       "buts": 5
+      },
+      {
+       "joueur": "C. Genet Ardisson",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "P. Ollier",
+       "numero": 2,
+       "buts": 2
+      },
+      {
+       "joueur": "O. Barbet Massin",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Onye",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "W. Kaddouri",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Roggwiller",
+       "numero": 51,
+       "buts": 6
+      },
+      {
+       "joueur": "B. De Gouvion Saint Cyr",
+       "numero": 8,
+       "buts": 4
+      },
+      {
+       "joueur": "J. Larocque",
+       "numero": 27,
+       "buts": 2
+      },
+      {
+       "joueur": "B. Bonneville",
+       "numero": 46,
+       "buts": 1
+      },
+      {
+       "joueur": "E. El Motaraji",
+       "numero": 29,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Calvez",
+       "numero": 34,
+       "buts": 1
+      },
+      {
+       "joueur": "R. Aloisi Guilloux",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "W. Thokagevistk",
+       "numero": 42,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Germain",
+       "numero": 88,
+       "buts": 0
+      },
+      {
+       "joueur": "F. Mortini Low",
+       "numero": 28,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Bernard",
+       "numero": 92,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2743683",
@@ -3380,7 +5644,105 @@
      "mt_eux": 9,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-198384/rencontre-2743683/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXWVJ.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXWVJ.pdf",
+     "salle": {
+      "nom": "RAGUIDELLES",
+      "adresse": "27 RUE DES TOURNEROCHES 92150 SURESNES"
+     },
+     "buteurs": [
+      {
+       "joueur": "C. Genet Ardisson",
+       "numero": 76,
+       "buts": 2
+      },
+      {
+       "joueur": "O. Barbet Massin",
+       "numero": 80,
+       "buts": 2
+      },
+      {
+       "joueur": "O. Salazar",
+       "numero": 74,
+       "buts": 2
+      },
+      {
+       "joueur": "W. Kaddouri",
+       "numero": 73,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Gilbert  Duchesne",
+       "numero": 78,
+       "buts": 1
+      },
+      {
+       "joueur": "P. Ollier",
+       "numero": 82,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Bigot",
+       "numero": 77,
+       "buts": 1
+      },
+      {
+       "joueur": "V. Luas",
+       "numero": 75,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 95,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "H. Colin",
+       "numero": 36,
+       "buts": 6
+      },
+      {
+       "joueur": "T. Viciot",
+       "numero": 3,
+       "buts": 3
+      },
+      {
+       "joueur": "E. Champire",
+       "numero": 58,
+       "buts": 2
+      },
+      {
+       "joueur": "S. Marcelline",
+       "numero": 26,
+       "buts": 2
+      },
+      {
+       "joueur": "H. Vincent",
+       "numero": 25,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Gonzalez",
+       "numero": 8,
+       "buts": 1
+      },
+      {
+       "joueur": "Q. Fahdi",
+       "numero": 2,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Jurkewitz",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Cordier",
+       "numero": 9,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2743684",
@@ -3395,7 +5757,115 @@
      "mt_eux": 8,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-198384/rencontre-2743684/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXWVK.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXWVK.pdf",
+     "salle": {
+      "nom": "RAGUIDELLES",
+      "adresse": "27 RUE DES TOURNEROCHES 92150 SURESNES"
+     },
+     "buteurs": [
+      {
+       "joueur": "T. Bigot",
+       "numero": 77,
+       "buts": 7
+      },
+      {
+       "joueur": "C. Genet Ardisson",
+       "numero": 76,
+       "buts": 3
+      },
+      {
+       "joueur": "P. Ollier",
+       "numero": 82,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Gilbert  Duchesne",
+       "numero": 78,
+       "buts": 1
+      },
+      {
+       "joueur": "O. Barbet Massin",
+       "numero": 80,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 95,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Salazar",
+       "numero": 74,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Luas",
+       "numero": 75,
+       "buts": 0
+      },
+      {
+       "joueur": "W. Kaddouri",
+       "numero": 73,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "R. Picavet",
+       "numero": 7,
+       "buts": 9
+      },
+      {
+       "joueur": "A. Gauthier",
+       "numero": 19,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Passilly",
+       "numero": 12,
+       "buts": 2
+      },
+      {
+       "joueur": "B. Celant",
+       "numero": 17,
+       "buts": 2
+      },
+      {
+       "joueur": "E. Yang",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "O. Portal",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "F. Mercier Griot",
+       "numero": 9,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Mattei",
+       "numero": 36,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Capra",
+       "numero": 26,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Popot",
+       "numero": 50,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Goulet",
+       "numero": 37,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
@@ -3424,7 +5894,6 @@
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -3493,7 +5962,105 @@
      "mt_eux": 5,
      "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710039/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUB.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUB.pdf",
+     "salle": {
+      "nom": "CITE DES SPORTS SALLE 1",
+      "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Pugnet Aupetit",
+       "numero": 29,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Schiellein",
+       "numero": 72,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Wiebach",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "I. Combe",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Bellahsene",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Farhat",
+       "numero": 38,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "S. Rivalland",
+       "numero": 20,
+       "buts": 8
+      },
+      {
+       "joueur": "B. Houdayer Laborde",
+       "numero": 22,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Trentesaux",
+       "numero": 29,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Ben Abdeljelil",
+       "numero": 28,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Buzdugan",
+       "numero": 30,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Douville",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Parrinello",
+       "numero": 27,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Regnier",
+       "numero": 23,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Pinard",
+       "numero": 26,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Kyc",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Tran Ohlmann",
+       "numero": 31,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2710040",
@@ -3597,7 +6164,6 @@
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD C",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -3666,7 +6232,105 @@
      "mt_eux": 1,
      "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710062/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUY.pdf"
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUY.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Chehboun",
+       "numero": 36,
+       "buts": 10
+      },
+      {
+       "joueur": "T. Rioult",
+       "numero": 29,
+       "buts": 6
+      },
+      {
+       "joueur": "N. Bourasseau",
+       "numero": 26,
+       "buts": 4
+      },
+      {
+       "joueur": "Y. Kouar",
+       "numero": 15,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Gueye",
+       "numero": 20,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Monney",
+       "numero": 18,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Rossetto-Dutilleul",
+       "numero": 7,
+       "buts": 2
+      },
+      {
+       "joueur": "D. Schiellein",
+       "numero": 32,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Wiebach",
+       "numero": 23,
+       "buts": 1
+      },
+      {
+       "joueur": "I. Belaskri",
+       "numero": 30,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Bellahsene",
+       "numero": 13,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Raspaud",
+       "numero": 31,
+       "buts": 1
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "J. Capra",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "R. Grondin Tinel",
+       "numero": 13,
+       "buts": 1
+      },
+      {
+       "joueur": "S. Himer",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Kone",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Chanoine",
+       "numero": 28,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Muzard",
+       "numero": 24,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2710070",
@@ -3774,7 +6438,6 @@
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD A",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
-   "stats_joueurs": false,
    "classement": [
     {
      "place": 1,
@@ -3976,435 +6639,6 @@
    "place": 5,
    "nb_equipes": 5,
    "collectif": "u11-mixte-3"
-  }
- ],
- "buteurs_club": [
-  {
-   "joueur": "Enzo LEPRETRE SILVA",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 5,
-   "buts": 48,
-   "record": 14,
-   "moyenne": 9.6
-  },
-  {
-   "joueur": "Diara DORILAS",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 47,
-   "record": 9,
-   "moyenne": 7.8
-  },
-  {
-   "joueur": "Cedric MEYER",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 5,
-   "buts": 31,
-   "record": 9,
-   "moyenne": 6.2
-  },
-  {
-   "joueur": "Lisa LADJEL",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 24,
-   "record": 8,
-   "moyenne": 4.0
-  },
-  {
-   "joueur": "Eva NDIAYE",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 22,
-   "record": 6,
-   "moyenne": 3.7
-  },
-  {
-   "joueur": "Samy OULD BRAHAM",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 5,
-   "buts": 22,
-   "record": 9,
-   "moyenne": 4.4
-  },
-  {
-   "joueur": "Claire COSTES",
-   "equipes": [
-    "Seniors F 1",
-    "Seniors F 1B"
-   ],
-   "matchs": 5,
-   "buts": 19,
-   "record": 6,
-   "moyenne": 3.8
-  },
-  {
-   "joueur": "Hanane ALEXANDRE",
-   "equipes": [
-    "Seniors F 1",
-    "Seniors F 1B"
-   ],
-   "matchs": 5,
-   "buts": 18,
-   "record": 8,
-   "moyenne": 3.6
-  },
-  {
-   "joueur": "Haquima ES-SALEMY",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 17,
-   "record": 6,
-   "moyenne": 2.8
-  },
-  {
-   "joueur": "Aurelie FRUGIER",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 16,
-   "record": 5,
-   "moyenne": 2.7
-  },
-  {
-   "joueur": "Zoe GEORGE",
-   "equipes": [
-    "Seniors F 1",
-    "Seniors F 1B"
-   ],
-   "matchs": 6,
-   "buts": 15,
-   "record": 5,
-   "moyenne": 2.5
-  },
-  {
-   "joueur": "Juliette AUFFRET",
-   "equipes": [
-    "Seniors F 1",
-    "Seniors F 1B"
-   ],
-   "matchs": 5,
-   "buts": 13,
-   "record": 7,
-   "moyenne": 2.6
-  },
-  {
-   "joueur": "Nourane NIMRI",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 4,
-   "buts": 11,
-   "record": 4,
-   "moyenne": 2.8
-  },
-  {
-   "joueur": "Amelys DEBIOL",
-   "equipes": [
-    "Seniors F 1B",
-    "Seniors F 1"
-   ],
-   "matchs": 5,
-   "buts": 10,
-   "record": 4,
-   "moyenne": 2.0
-  },
-  {
-   "joueur": "Azza MSAKNI",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 4,
-   "buts": 10,
-   "record": 4,
-   "moyenne": 2.5
-  },
-  {
-   "joueur": "Yohann ESCALA",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 4,
-   "buts": 10,
-   "record": 4,
-   "moyenne": 2.5
-  },
-  {
-   "joueur": "Lisa FERRIER",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 3,
-   "buts": 8,
-   "record": 4,
-   "moyenne": 2.7
-  },
-  {
-   "joueur": "Lucas Frederic Marie Liv CHAUDEAUX",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 2,
-   "buts": 8,
-   "record": 6,
-   "moyenne": 4.0
-  },
-  {
-   "joueur": "Alice GOUBILL",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 4,
-   "buts": 7,
-   "record": 4,
-   "moyenne": 1.8
-  },
-  {
-   "joueur": "Hind BAIT",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 1,
-   "buts": 7,
-   "record": 7,
-   "moyenne": 7.0
-  },
-  {
-   "joueur": "Stephanie BAY",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 3,
-   "buts": 7,
-   "record": 4,
-   "moyenne": 2.3
-  },
-  {
-   "joueur": "Camille LEPRINCE",
-   "equipes": [
-    "Seniors F 1",
-    "Seniors F 1B"
-   ],
-   "matchs": 5,
-   "buts": 5,
-   "record": 2,
-   "moyenne": 1.0
-  },
-  {
-   "joueur": "Tivio GANDON-TALOUARN",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 5,
-   "buts": 5,
-   "record": 2,
-   "moyenne": 1.0
-  },
-  {
-   "joueur": "Kevin NEVERS",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 1,
-   "buts": 4,
-   "record": 4,
-   "moyenne": 4.0
-  },
-  {
-   "joueur": "Carla DAELMAN",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 1,
-   "buts": 3,
-   "record": 3,
-   "moyenne": 3.0
-  },
-  {
-   "joueur": "Clara PASQUIER",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 4,
-   "buts": 3,
-   "record": 1,
-   "moyenne": 0.8
-  },
-  {
-   "joueur": "Zineddine STAMBOULI",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 1,
-   "buts": 3,
-   "record": 3,
-   "moyenne": 3.0
-  },
-  {
-   "joueur": "Alicia TRIPOLI--LONGET",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 1,
-   "buts": 2,
-   "record": 2,
-   "moyenne": 2.0
-  },
-  {
-   "joueur": "Joey ANTONIOS",
-   "equipes": [
-    "Seniors F 1B",
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 2,
-   "record": 1,
-   "moyenne": 0.3
-  },
-  {
-   "joueur": "Lucas PONTES",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 5,
-   "buts": 2,
-   "record": 2,
-   "moyenne": 0.4
-  },
-  {
-   "joueur": "Raphael ARNAUD",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 2,
-   "buts": 2,
-   "record": 2,
-   "moyenne": 1.0
-  },
-  {
-   "joueur": "Ryad KOUAR",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 2,
-   "buts": 2,
-   "record": 2,
-   "moyenne": 1.0
-  },
-  {
-   "joueur": "Ryan NACTO",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 5,
-   "buts": 2,
-   "record": 1,
-   "moyenne": 0.4
-  },
-  {
-   "joueur": "Alex RIGNAULT",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 2,
-   "buts": 1,
-   "record": 1,
-   "moyenne": 0.5
-  },
-  {
-   "joueur": "Claire EUCHER",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 4,
-   "buts": 1,
-   "record": 1,
-   "moyenne": 0.2
-  },
-  {
-   "joueur": "Damien GOMEZ",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 1,
-   "buts": 1,
-   "record": 1,
-   "moyenne": 1.0
-  },
-  {
-   "joueur": "Violaine HOUIN",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 2,
-   "buts": 1,
-   "record": 1,
-   "moyenne": 0.5
-  },
-  {
-   "joueur": "Bisse Marthe MFOULA ESSONO",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 5,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
-  },
-  {
-   "joueur": "Mariam HINI",
-   "equipes": [
-    "Seniors F 1B"
-   ],
-   "matchs": 2,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
-  },
-  {
-   "joueur": "Matheo GRONDIN",
-   "equipes": [
-    "Seniors M"
-   ],
-   "matchs": 4,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
-  },
-  {
-   "joueur": "Melina KOBZILI",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
-  },
-  {
-   "joueur": "Michelore EDOUARD",
-   "equipes": [
-    "Seniors F 1"
-   ],
-   "matchs": 6,
-   "buts": 0,
-   "record": 0,
-   "moyenne": 0.0
   }
  ],
  "erreurs": []
