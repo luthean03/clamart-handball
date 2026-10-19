@@ -163,13 +163,13 @@ def competitions_du_club(saison: str) -> list[dict]:
 
 
 def buteurs_de_la_rencontre(stats: list[dict], equipe_interne) -> tuple[list[dict], list[dict]]:
-    """(nos buteurs, ceux de l'adversaire) d'après `statsJoueurs` : seulement ceux qui ont marqué, nom réduit
-    à 'D. Dorilas'. Les joueurs masqués (config.json) sont écartés d'après leur nom complet, avant réduction."""
+    """(nos buteurs, ceux de l'adversaire) d'après `statsJoueurs` : tous les joueurs de la feuille de match, y compris
+    ceux à 0 but, nom réduit à 'D. Dorilas'. Les joueurs masqués (config.json) sont écartés d'après leur nom complet, avant réduction."""
     nous: list[dict] = []
     eux: list[dict] = []
     for j in stats:
         buts = ff._int(j.get("buts")) or 0
-        if buts <= 0 or masque(f"{j.get('prenom') or ''} {j.get('nom') or ''}"):
+        if masque(f"{j.get('prenom') or ''} {j.get('nom') or ''}"):
             continue
         (nous if str(j.get("equipeId")) == str(equipe_interne) else eux).append(
             {"joueur": nom_joueur(j.get("prenom"), j.get("nom")), "numero": ff._int(j.get("numero")), "buts": buts})
@@ -183,6 +183,7 @@ def empreinte_masques() -> str:
     return hashlib.sha1("\n".join(sorted(MASQUES)).encode("utf-8")).hexdigest() if MASQUES else ""
 
 
+MARQUEUR_JOUEURS = "tous"   # entrées de cache qui listent tous les joueurs, pas seulement les buteurs
 FENETRE_STATS = timedelta(days=7)   # la FFHB publie parfois les stats après le score
 
 
@@ -202,9 +203,10 @@ def salle_et_buteurs(match_path: str, equipe_interne, joue: bool, date: str | No
     fichier = CACHE / f"{rid}.json"
     if joue and fichier.exists():
         info = json.loads(fichier.read_text(encoding="utf-8"))
-        # ancien cache (avant le schéma 3), liste de joueurs masqués modifiée depuis ou stats pas encore publiées : on retélécharge
-        if (info.get("buteurs_adverses") is not None and info.get("masques") == empreinte_masques()
-                and not stats_attendues(info, date, maintenant)):
+        # ancien cache (avant le schéma 3, ou sans les joueurs à 0 but), liste de joueurs masqués modifiée
+        # depuis ou stats pas encore publiées : on retélécharge
+        if (info.get("buteurs_adverses") is not None and info.get("joueurs") == MARQUEUR_JOUEURS
+                and info.get("masques") == empreinte_masques() and not stats_attendues(info, date, maintenant)):
             return info
     d = ff.components(match_path)
     eq = (d.get("competitions---rencontre-salle") or {}).get("equipement") or {}
@@ -215,6 +217,7 @@ def salle_et_buteurs(match_path: str, equipe_interne, joue: bool, date: str | No
         stats = (d.get("competitions---rencontre-liste-joueurs") or {}).get("statsJoueurs") or []
         info["buteurs"], info["buteurs_adverses"] = buteurs_de_la_rencontre(stats, equipe_interne)
         info["masques"] = empreinte_masques()
+        info["joueurs"] = MARQUEUR_JOUEURS
         CACHE.mkdir(parents=True, exist_ok=True)
         fichier.write_text(json.dumps(info, ensure_ascii=False), encoding="utf-8")
     return info

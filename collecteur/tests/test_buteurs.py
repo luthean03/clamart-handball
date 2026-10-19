@@ -14,10 +14,17 @@ STATS = [
 ]
 
 
-def test_buteurs_des_deux_equipes_seulement_ceux_qui_marquent():
+def test_tous_les_joueurs_des_deux_equipes_y_compris_a_zero_but():
     nous, eux = collecte.buteurs_de_la_rencontre(STATS, 7)
-    assert nous == [{"joueur": "D. Dorilas", "numero": 41, "buts": 9}, {"joueur": "E. Ndiaye", "numero": 9, "buts": 4}]
+    assert nous == [{"joueur": "D. Dorilas", "numero": 41, "buts": 9}, {"joueur": "E. Ndiaye", "numero": 9, "buts": 4},
+                    {"joueur": "M. Kobzili", "numero": 97, "buts": 0}]
     assert [b["joueur"] for b in eux] == ["A. Kouadio", "M. Dupont"]
+
+
+def test_joueur_masque_a_zero_but_ecarte(monkeypatch):
+    monkeypatch.setattr(collecte, "MASQUES", {"MELINA KOBZILI"})
+    nous, _ = collecte.buteurs_de_la_rencontre(STATS, 7)
+    assert [b["joueur"] for b in nous] == ["D. Dorilas", "E. Ndiaye"]
 
 
 def test_joueur_masque_jamais_publie(monkeypatch):
@@ -80,13 +87,28 @@ def test_cache_ancien_sans_buteurs_adverses_retelecharge(cache, monkeypatch):
     assert [b["joueur"] for b in info["buteurs_adverses"]] == ["A. Kouadio", "M. Dupont"]
 
 
+def test_cache_sans_marqueur_joueurs_retelecharge(cache, monkeypatch):
+    appels = _telechargements(monkeypatch)
+    monkeypatch.setattr(collecte, "MASQUES", set())
+    ancien = {"salle": None, "buteurs": [{"joueur": "D. Dorilas", "numero": 41, "buts": 9}], "buteurs_adverses": [],
+              "masques": ""}
+    (cache / "42.json").write_text(json.dumps(ancien), encoding="utf-8")
+    info = collecte.salle_et_buteurs("/x/rencontre-42/", 7, True)
+    assert len(appels) == 1
+    assert "M. Kobzili" in [b["joueur"] for b in info["buteurs"]]
+    assert info["joueurs"] == "tous"
+    collecte.salle_et_buteurs("/x/rencontre-42/", 7, True)
+    assert len(appels) == 1
+
+
 # --- match joué sans buteurs en cache : la FFHB publie parfois les stats après le score
 
 MAINTENANT = datetime(2026, 10, 16, 12, 0, tzinfo=timezone.utc)
 
 
 def _ecrire_cache(cache, buteurs, buteurs_adverses):
-    info = {"salle": None, "buteurs": buteurs, "buteurs_adverses": buteurs_adverses, "masques": ""}
+    info = {"salle": None, "buteurs": buteurs, "buteurs_adverses": buteurs_adverses, "masques": "",
+            "joueurs": "tous"}
     (cache / "42.json").write_text(json.dumps(info), encoding="utf-8")
 
 
@@ -97,7 +119,7 @@ def test_cache_sans_buteurs_retelecharge_dans_les_7_jours(cache, monkeypatch):
     date = (MAINTENANT - timedelta(days=6, hours=23)).isoformat()
     info = collecte.salle_et_buteurs("/x/rencontre-42/", 7, True, date, MAINTENANT)
     assert len(appels) == 1
-    assert [b["joueur"] for b in info["buteurs"]] == ["D. Dorilas", "E. Ndiaye"]
+    assert [b["joueur"] for b in info["buteurs"]] == ["D. Dorilas", "E. Ndiaye", "M. Kobzili"]
 
 
 def test_cache_sans_buteurs_conserve_apres_7_jours(cache, monkeypatch):

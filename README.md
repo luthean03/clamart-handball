@@ -73,8 +73,10 @@ installer `truststore` (déjà dans requirements.txt) ou définir
 
 - Source : ffhandball.fr (données publiques), citée en bas de chaque page.
 - Aucun numéro de licence, aucun nom d'arbitre ou d'officiel n'est repris.
-- Buteurs : publiés par match, pour toutes les catégories et les deux équipes, sous la forme
-  initiale + nom (« D. Dorilas »). Il n'y a aucun classement des buteurs. À faire valider par
+- Joueurs : tous ceux de la feuille de match (y compris à 0 but) sont collectés par match, pour
+  toutes les catégories et les deux équipes, sous la forme initiale + nom (« D. Dorilas ») et
+  nombre de buts ; les joueurs masqués sont exclus. Le site et l'app n'affichent que ceux qui
+  ont marqué. Il n'y a aucun classement des buteurs. À faire valider par
   le bureau de l'association ; un joueur qui le demande est retiré (quelle que soit sa
   catégorie) en ajoutant son nom à `stats_joueurs.joueurs_masques`.
 - Les notifications ne nomment jamais un joueur.
