@@ -177,11 +177,12 @@ def _image_resultat(club: dict, m: Message, cache: Path, telecharger) -> "Image.
     adversaire = nom_lisible(match["adversaire"])
     club_img = banderole.ecusson_club()
     adv_img = banderole.ecusson_adversaire(match.get("logo_adversaire"), adversaire, cache, telecharger=telecharger)
+    gagne = match["score_nous"] > match["score_eux"]
     if match["domicile"]:
         return banderole.dessiner(club_img, adv_img, "Clamart", adversaire,
-                                  f"{match['score_nous']} – {match['score_eux']}", f"{eq['nom']} · {eq['detail']}")
+                                  f"{match['score_nous']} – {match['score_eux']}", f"{eq['nom']} · {eq['detail']}", gagne)
     return banderole.dessiner(adv_img, club_img, adversaire, "Clamart",
-                              f"{match['score_eux']} – {match['score_nous']}", f"{eq['nom']} · {eq['detail']}")
+                              f"{match['score_eux']} – {match['score_nous']}", f"{eq['nom']} · {eq['detail']}", gagne)
 
 
 def produire_images(club, registre, maintenant, dossier: Path, cache: Path, telecharger=None) -> list[Path]:
