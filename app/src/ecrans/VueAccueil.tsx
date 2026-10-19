@@ -41,7 +41,9 @@ export function VueAccueil(p: PropsAccueil) {
     .flatMap((c) => {
       const prochain = prochainMatchDate(p.club, c.id, p.maintenant);
       return prochain ? [{ collectif: c, prochain }] : [];
-    });
+    })
+    // Le match le plus proche en premier ; à date égale, l'ordre des équipes est conservé (tri stable).
+    .sort((a, b) => Date.parse(a.prochain.date!) - Date.parse(b.prochain.date!));
   const duClub = prochainsMatchsClub(p.club, p.maintenant);
 
   return (
