@@ -11,12 +11,12 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-19T07:58:06+00:00",
+ "mis_a_jour": "2026-10-19T10:34:29+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
    "id": "seniors-f-1",
-   "nom": "Seniors F 1",
+   "nom": "Seniors F1",
    "categorie": "seniors",
    "genre": "F",
    "equipes": [
@@ -26,7 +26,7 @@
   },
   {
    "id": "seniors-f-1b",
-   "nom": "Seniors F 1B",
+   "nom": "Seniors F2",
    "categorie": "seniors",
    "genre": "F",
    "equipes": [
@@ -46,7 +46,7 @@
   },
   {
    "id": "seniors-mixte",
-   "nom": "Seniors Mixte",
+   "nom": "Seniors Loisir",
    "categorie": "seniors",
    "genre": "Mixte",
    "equipes": [
@@ -100,7 +100,7 @@
   },
   {
    "id": "u11-f-2",
-   "nom": "U11 F 2",
+   "nom": "U11 Mixte 2",
    "categorie": "U11",
    "genre": "F",
    "equipes": [
@@ -129,10 +129,10 @@
  "equipes": [
   {
    "id": "32542-clamart-handball-1",
-   "nom": "Seniors F 1",
+   "nom": "Seniors F1",
    "libelle_ffhb": "CLAMART HANDBALL 1",
    "competition": "+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75",
-   "detail": "D1 territoriale",
+   "detail": "Division 1 territoriale 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "seniors",
@@ -1196,10 +1196,10 @@
   },
   {
    "id": "32543-clamart-handball-1b",
-   "nom": "Seniors F 1B",
+   "nom": "Seniors F2",
    "libelle_ffhb": "CLAMART HANDBALL 1B",
    "competition": "+16 ANS FEMININES - DIVISION 2 TERRITORIALE 92-75",
-   "detail": "D2 territoriale",
+   "detail": "Division 2 territoriale 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "seniors",
@@ -2035,7 +2035,7 @@
    "nom": "Seniors M",
    "libelle_ffhb": "CLAMART HANDBALL",
    "competition": "+16 ANS MASCULINS - DIVISION 2 TERRITORIALE 92-75",
-   "detail": "D2 territoriale",
+   "detail": "Division 2 territoriale 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "seniors",
@@ -2804,7 +2804,7 @@
   },
   {
    "id": "33562-clamart-hb",
-   "nom": "Seniors Mixte",
+   "nom": "Seniors Loisir",
    "libelle_ffhb": "CLAMART HB",
    "competition": "LOISIRS MIXTES",
    "detail": "Loisirs",
@@ -3108,7 +3108,7 @@
    "nom": "Seniors M",
    "libelle_ffhb": "CLAMART HANDBALL",
    "competition": "COUPE LIGUE MASCULINE",
-   "detail": "Coupe de Ligue",
+   "detail": "Coupe de Ligue masculine",
    "organisateur": "LIGUE ILE-DE-FRANCE",
    "niveau": "regional",
    "categorie": "seniors",
@@ -3151,7 +3151,7 @@
   },
   {
    "id": "33243-clamart-handball-1",
-   "nom": "Seniors F 1",
+   "nom": "Seniors F1",
    "libelle_ffhb": "CLAMART HANDBALL 1",
    "competition": "COUPE DE FRANCE DEPARTEMENTALE FEMININE 2026-2027",
    "detail": "Coupe de France départementale",
@@ -3479,7 +3479,7 @@
    "nom": "U18 F",
    "libelle_ffhb": "CLAMART HB",
    "competition": "U18F CHAMPIONNAT 92-75",
-   "detail": "Championnat",
+   "detail": "Championnat 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "U18",
@@ -3857,7 +3857,7 @@
    "nom": "U18 M",
    "libelle_ffhb": "CLAMART HANDBALL",
    "competition": "U18M CHAMPIONNAT 92-75",
-   "detail": "Championnat",
+   "detail": "Championnat 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "U18",
@@ -4246,7 +4246,7 @@
    "nom": "U15 M",
    "libelle_ffhb": "CLAMART HB",
    "competition": "U15M - CHAMPIONNAT 92-75",
-   "detail": "Championnat",
+   "detail": "Championnat 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "U15",
@@ -4533,7 +4533,7 @@
    "genre": "F",
    "phase": "U13F - DELAYAGES J3",
    "poule": "POULE R",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/equipe-2173683/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/equipe-2209452/",
    "classement": [
     {
      "place": 1,
@@ -5234,7 +5234,7 @@
    "genre": "M",
    "phase": "U13 M - DELAYAGES J4",
    "poule": "POULE N - TOURNOI 1",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/equipe-2175513/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/equipe-2209664/",
    "classement": [
     {
      "place": 1,
@@ -5883,10 +5883,10 @@
   },
   {
    "id": "33056-clamart-handball-2-filles",
-   "nom": "U11 F 2",
+   "nom": "U11 Mixte 2",
    "libelle_ffhb": "CLAMART HANDBALL 2 (FILLES)",
    "competition": "U11 MIXTE",
-   "detail": "Championnat",
+   "detail": "U11 Mixte · Honneur · Sud B",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "U11",
@@ -6156,14 +6156,14 @@
    "nom": "U11 Mixte 1",
    "libelle_ffhb": "CLAMART HANDBALL 1",
    "competition": "U11 MIXTE",
-   "detail": "Championnat",
+   "detail": "U11 Mixte · Honneur · Sud C",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "U11",
    "genre": "Mixte",
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD C",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177123/",
    "classement": [
     {
      "place": 1,
@@ -6430,14 +6430,14 @@
    "nom": "U11 Mixte 3",
    "libelle_ffhb": "CLAMART HANDBALL 3",
    "competition": "U11 MIXTE",
-   "detail": "Championnat",
+   "detail": "U11 Mixte · Honneur · Sud A",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
    "categorie": "U11",
    "genre": "Mixte",
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD A",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177525/",
    "classement": [
     {
      "place": 1,
