@@ -90,27 +90,40 @@ def genre_de(libelle_comp: str) -> str:
     return ""
 
 
-def detail_de(libelle_comp: str) -> str:
-    """Partie 'niveau' du nom : 'D1 territoriale', 'Coupe de France départementale'..."""
+def detail_de(libelle_comp: str, poule: str | None = None) -> str:
+    """Nom de la compétition sans le préfixe de catégorie, en français lisible :
+    'Division 1 territoriale 92-75', 'Coupe de France départementale', 'Championnat 92-75'...
+    `poule` ne sert que si la compétition n'a pas d'autre nom (U11 Mixte : 'U11 Mixte · Honneur · Sud C').
+    Pour détecter une coupe, tester le nom brut de la compétition, pas ce détail."""
     L = libelle_comp.upper()
+    zone = re.search(r"\b\d{2}-\d{2}\b", L)
+    zone = f" {zone.group(0)}" if zone else ""
     if "COUPE DE FRANCE" in L:
         niveau = re.search(r"COUPE DE FRANCE (\w+)", L)
         suffixe = {"DEPARTEMENTALE": " départementale", "REGIONALE": " régionale",
                    "NATIONALE": " nationale", "FEDERALE": " fédérale"}.get(niveau.group(1) if niveau else "", "")
         return "Coupe de France" + suffixe
     if "COUPE" in L:
-        return "Coupe de Ligue" if "LIGUE" in L else "Coupe"
+        genre = " masculine" if "MASCULIN" in L else " féminine" if "FEMININ" in L else ""
+        return ("Coupe de Ligue" if "LIGUE" in L else "Coupe") + genre
+    if "LOISIR" in L:
+        return "Loisirs"
     m = re.search(r"DIVISION\s*(\d)", L)
     if m:
-        return f"D{m.group(1)}" + (" territoriale" if "TERRITORIAL" in L else "")
+        return f"Division {m.group(1)}" + (" territoriale" if "TERRITORIAL" in L else "") + zone
     for mot, texte in (("EXCELLENCE", "Excellence"), ("HONNEUR", "Honneur"), ("PRE-REGION", "Pré-région"),
-                       ("PRENATIONALE", "Prénationale"), ("NATIONALE", "Nationale"), ("CHAMPIONNAT", "Championnat"),
+                       ("PRENATIONALE", "Prénationale"), ("NATIONALE", "Nationale"), ("CHAMPIONNAT", "Championnat" + zone),
                        ("DELAYAGE", "Délayages"), ("BRASSAGE", "Brassage")):
         if mot in L:
             return texte
     reste = re.sub(r"\+16 ANS|\bU\s?\d{1,2}[MF]?\b|-\s?\d{1,2}\b|MIXTES?|MASCULIN\w*|FEMININ\w*|\d{2,4}-\d{2,4}|[-/]",
                    " ", L).strip()
-    return reste.title() if reste else "Championnat"
+    if reste:
+        return reste.title()
+    if poule:
+        niveau, _, groupe = poule.title().partition(" ")
+        return " · ".join(x for x in (" ".join(L.title().split()), niveau, groupe) if x)
+    return "Championnat"
 
 
 def nom_equipe(libelle_comp: str, libelle_equipe: str, equipe_id: str) -> str:
@@ -273,7 +286,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
             "nom": nom_equipe(titre, lib, equipe_id),
             "libelle_ffhb": lib,
             "competition": titre,
-            "detail": detail_de(titre),
+            "detail": detail_de(titre, poule.get("libelle")),
             "organisateur": (page.get("page-header") or {}).get("subTitle") or comp["organisateur"],
             "niveau": comp["niveau"],
             "categorie": categorie,
@@ -287,7 +300,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
 
         # --- classement de la poule en cours (lignes repérées par nom ou identifiant)
         #     pas de classement pour une coupe (tours à élimination directe)
-        est_coupe = "coupe" in detail_de(titre).lower()
+        est_coupe = "coupe" in titre.lower()
         if poule and str(phase.get("classement", "1")) == "1" and not est_coupe:
             cl = ff.components(f"{racine}poule-{poule_ext}/classements/")
             lignes = (cl.get("competitions---classement") or {}).get("classements") or []
@@ -454,7 +467,7 @@ def main() -> int:
     ordre_cat = lambda c: (0, 0) if c == "seniors" else (1, -int(c[1:]))   # seniors, puis U18, U15...
     # ICS : matchs sans date (pas encore programmés) ignorés
     equipes.sort(key=lambda e: (ordre_cat(e["categorie"]), e["niveau"] == "coupe-de-france",
-                                "coupe" in e["detail"].lower(), e["genre"], e["nom"]))
+                                "coupe" in e["competition"].lower(), e["genre"], e["nom"]))
 
     donnees = assembler(equipes, maintenant, annees, ERREURS)
     SORTIE.mkdir(parents=True, exist_ok=True)

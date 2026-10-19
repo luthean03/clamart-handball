@@ -14,8 +14,21 @@ def test_genre_equipe_filles_prime_sur_mixte():
 
 
 def test_detail_de():
-    assert collecte.detail_de("+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75") == "D1 territoriale"
-    assert collecte.detail_de("COUPE DE FRANCE DEPARTEMENTALE FEMININE") == "Coupe de France départementale"
+    d = collecte.detail_de
+    assert d("+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75") == "Division 1 territoriale 92-75"
+    assert d("+16 ANS FEMININES - DIVISION 2 TERRITORIALE 92-75") == "Division 2 territoriale 92-75"
+    assert d("LOISIRS MIXTES") == "Loisirs"
+    assert d("COUPE LIGUE MASCULINE") == "Coupe de Ligue masculine"
+    assert d("COUPE DE FRANCE DEPARTEMENTALE FEMININE 2026-2027") == "Coupe de France départementale"
+    assert d("U18F CHAMPIONNAT 92-75") == "Championnat 92-75"
+    assert d("U15M - CHAMPIONNAT 92-75") == "Championnat 92-75"
+    assert d("U13F - DELAYAGES") == "Délayages"
+    assert d("U13M DELAYAGES") == "Délayages"
+
+
+def test_detail_u11_utilise_la_poule():
+    assert collecte.detail_de("U11 MIXTE", "HONNEUR SUD C") == "U11 Mixte · Honneur · Sud C"
+    assert collecte.detail_de("U11 MIXTE", "HONNEUR SUD B") == "U11 Mixte · Honneur · Sud B"
 
 
 def test_fixture_reelle(club_v1):
