@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-19T10:46:55+00:00",
+ "mis_a_jour": "2026-10-19T11:31:31+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -140,6 +140,7 @@
    "phase": "+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75 / POULE UNIQUE",
    "poule": "POULE UNIQUE",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/equipe-2126402/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/classements/",
    "classement": [
     {
      "place": 1,
@@ -1207,6 +1208,7 @@
    "phase": "1RE PHASE",
    "poule": "POULE B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/equipe-2126426/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/classements/",
    "classement": [
     {
      "place": 1,
@@ -2043,6 +2045,7 @@
    "phase": "1RE PHASE",
    "poule": "POULE B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/equipe-2126472/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/classements/",
    "classement": [
     {
      "place": 1,
@@ -2815,6 +2818,7 @@
    "phase": "LOISIRS MIXTES",
    "poule": "LOISIRS MIXTES POULE C",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/equipe-2213376/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/classements/",
    "classement": [
     {
      "place": 1,
@@ -3116,6 +3120,7 @@
    "phase": "1/32 FINALES",
    "poule": "1/32 MASC",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/equipe-2204480/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/poule-197360/classements/",
    "classement": null,
    "matchs": [
     {
@@ -3162,6 +3167,7 @@
    "phase": "CDF DEP FEM (1° TOUR)",
    "poule": "1ER TOUR",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/equipe-2196002/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-196378/classements/",
    "classement": null,
    "matchs": [
     {
@@ -3332,6 +3338,7 @@
    "phase": "CDF DEP MAS (1° TOUR)",
    "poule": "1ER TOUR",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/equipe-2203162/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-196380/classements/",
    "classement": null,
    "matchs": [
     {
@@ -3487,6 +3494,7 @@
    "phase": "U18F - 1ERE PHASE 92-75",
    "poule": "POULE B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/equipe-2207050/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/classements/",
    "classement": [
     {
      "place": 1,
@@ -3865,6 +3873,7 @@
    "phase": "U18M - 1RE PHASE - CHAMPIONNAT 92-75",
    "poule": "NIVEAU HAUT - POULE A",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/equipe-2207565/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/classements/",
    "classement": [
     {
      "place": 1,
@@ -4254,6 +4263,7 @@
    "phase": "U15M - 1RE PHASE - CHAMPIONNAT 92-75",
    "poule": "NIVEAU BAS - POULE A",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/equipe-2207672/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/classements/",
    "classement": [
     {
      "place": 1,
@@ -4534,6 +4544,7 @@
    "phase": "U13F - DELAYAGES J3",
    "poule": "POULE R",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/equipe-2209452/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-delayages-33004/poule-198316/classements/",
    "classement": [
     {
      "place": 1,
@@ -5235,6 +5246,7 @@
    "phase": "U13 M - DELAYAGES J4",
    "poule": "POULE N - TOURNOI 1",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/equipe-2209664/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-delayages-33052/poule-198384/classements/",
    "classement": [
     {
      "place": 1,
@@ -5894,6 +5906,7 @@
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD B",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/classements/",
    "classement": [
     {
      "place": 1,
@@ -6164,6 +6177,7 @@
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD C",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177123/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/classements/",
    "classement": [
     {
      "place": 1,
@@ -6438,6 +6452,7 @@
    "phase": "1RE PHASE - SECTEUR SUD",
    "poule": "HONNEUR SUD A",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177525/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/classements/",
    "classement": [
     {
      "place": 1,
