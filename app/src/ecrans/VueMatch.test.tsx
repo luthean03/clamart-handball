@@ -223,3 +223,25 @@ test('fiche : libellé d’un joueur sans numéro', () => {
   vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: null, buts: 3 }]));
   expect(screen.getByLabelText('D. Dorilas, 3 buts')).toBeOnTheScreen();
 });
+
+/** Le match 2644292 rejoué à domicile ou à l'extérieur, mi-temps 2–11 en notre faveur (nous–eux). */
+function clubAvecMiTemps(domicile: boolean): Club {
+  return {
+    ...club,
+    equipes: club.equipes.map((e) => ({
+      ...e,
+      matchs: e.matchs.map((m) => (m.id === '2644292' ? { ...m, domicile, mt_nous: 2, mt_eux: 11 } : m)),
+    })),
+  };
+}
+
+test('mi-temps à domicile : notre score d’abord, comme le tableau de score', () => {
+  vue('2644292', clubAvecMiTemps(true));
+  expect(screen.getByText('Mi-temps 2–11')).toBeOnTheScreen();
+});
+
+test('mi-temps à l’extérieur : l’adversaire d’abord, comme le tableau de score', () => {
+  vue('2644292', clubAvecMiTemps(false));
+  expect(screen.getByText('Mi-temps 11–2')).toBeOnTheScreen();
+  expect(screen.queryByText('Mi-temps 2–11')).toBeNull();
+});

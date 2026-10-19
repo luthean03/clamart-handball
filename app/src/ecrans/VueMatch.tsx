@@ -94,7 +94,9 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
   const camps = m.domicile
     ? [{ nom: nous, score: m.score_nous, club: true }, { nom: adversaire, score: m.score_eux, club: false }]
     : [{ nom: adversaire, score: m.score_eux, club: false }, { nom: nous, score: m.score_nous, club: true }];
-  const miTemps = m.mt_nous !== null && m.mt_eux !== null ? `Mi-temps ${m.mt_nous}–${m.mt_eux}` : undefined;
+  const miTemps = m.mt_nous !== null && m.mt_eux !== null
+    ? `Mi-temps ${m.domicile ? m.mt_nous : m.mt_eux}–${m.domicile ? m.mt_eux : m.mt_nous}`
+    : undefined;
 
   return (
     <View style={[styles.page, { backgroundColor: t.colors.background }]}>
