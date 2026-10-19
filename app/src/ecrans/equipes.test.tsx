@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, within } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 import { Button, PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -85,6 +85,14 @@ test('fiche équipe : tous les matchs de la saison', () => {
   fiche('seniors-f-1');
   expect(screen.getByText('Seniors F 1')).toBeOnTheScreen();
   expect(screen.getAllByTestId('ligne-match')).toHaveLength(matchsDuCollectif(club, 'seniors-f-1').length);
+});
+
+test('fiche équipe : chaque ligne de match affiche sa date', () => {
+  fiche('seniors-f-1');
+  const lignes = screen.getAllByTestId('ligne-match');
+  for (const l of lignes) expect(within(l).queryByText('Fin')).toBeNull();
+  const datees = matchsDuCollectif(club, 'seniors-f-1').filter((x) => x.date !== null);
+  expect(screen.getAllByText(/^\d{2}\/\d{2}$/)).toHaveLength(datees.length);
 });
 
 test('fiche équipe : classement avec la ligne du club', () => {
