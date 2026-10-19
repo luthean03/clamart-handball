@@ -4,9 +4,9 @@ import { club } from '../../test/donnees';
 import { basDuBandeau } from '../../test/bandeau';
 import { rendu } from '../../test/rendu';
 import { ouvrirExterne, ouvrirItineraire } from '../actions/actions';
-import { lienMatch, lienSaison } from '../actions/agenda';
+import { lienCompetitionFfhb, lienMatch } from '../actions/agenda';
 import { URL_AGENDAS } from '../config';
-import { matchParId } from '../donnees/selecteurs';
+import { matchParId, tousLesMatchs } from '../donnees/selecteurs';
 import Onglets from '../app/(tabs)/_layout';
 import ClubOnglet from '../app/(tabs)/club';
 import Accueil from '../app/(tabs)/index';
@@ -104,13 +104,42 @@ test('Accueil : « Ajouter à l’agenda » ouvre le panneau du match, puis le l
   await panneauFerme();
 });
 
-test('Accueil : « Toute la saison » abonne le collectif du match', async () => {
+test('Accueil : « Toute la saison » d’un collectif à plusieurs compétitions ouvre le choix des compétitions', async () => {
   rendu(<Accueil />);
   await ouvrir(() => accueil!.onAgenda(m));
   fireEvent.press(screen.getByText('Toute la saison'));
   fireEvent.press(screen.getByText('Apple Calendrier'));
-  expect(ouvrirExterne).toHaveBeenCalledWith(lienSaison('apple', m.equipe.collectif, URL_AGENDAS));
+  await attendre(300);
+  expect(ouvrirExterne).not.toHaveBeenCalled();
+  expect(screen.getByText('Compétitions à ajouter')).toBeOnTheScreen();
+  expect(screen.getByText('Seniors M · calendriers officiels ffhandball.fr')).toBeOnTheScreen();
+  expect(screen.queryByText('Fichier .ics')).toBeNull();      // le panneau s'est fermé
+  fireEvent.press(screen.getByRole('checkbox', { name: 'D2 territoriale' }));
+  await act(async () => fireEvent.press(screen.getByText("S'abonner")));
+  expect(ouvrirExterne).toHaveBeenCalledWith(lienCompetitionFfhb('apple', '33403', '3309'));
+});
+
+test('Accueil : « Toute la saison » d’un collectif à une seule compétition ouvre directement son calendrier FFHB', async () => {
+  rendu(<Accueil />);
+  const u13 = tousLesMatchs(club).find((x) => x.equipe.collectif === 'u13-f')!;
+  await ouvrir(() => accueil!.onAgenda(u13));
+  fireEvent.press(screen.getByText('Toute la saison'));
+  fireEvent.press(screen.getByText('Google Agenda'));
+  expect(ouvrirExterne).toHaveBeenCalledWith(lienCompetitionFfhb('google', '33004', '3309'));
   await panneauFerme();
+  expect(screen.queryByText('Compétitions à ajouter')).toBeNull();
+});
+
+test('Accueil : si le lien d’une compétition ne s’ouvre pas, le message s’affiche et le choix reste', async () => {
+  jest.mocked(ouvrirExterne).mockRejectedValueOnce(new Error('pas d’application'));
+  rendu(<Accueil />);
+  await ouvrir(() => accueil!.onAgenda(m));
+  fireEvent.press(screen.getByText('Toute la saison'));
+  fireEvent.press(screen.getByText('Fichier .ics'));
+  await attendre(300);
+  await act(async () => fireEvent.press(screen.getByText("S'abonner")));
+  expect(await screen.findByText("Impossible d'ouvrir l'agenda")).toBeOnTheScreen();
+  expect(screen.getByText('Compétitions à ajouter')).toBeOnTheScreen();
 });
 
 test('Accueil : si le téléphone ne peut pas ouvrir le lien, un message le dit', async () => {
@@ -132,13 +161,15 @@ test('Fiche match : le panneau s’ouvre pour ce match', async () => {
   await panneauFerme();
 });
 
-test('Page équipe : « S’abonner au calendrier » ouvre le panneau en mode saison, sans sélecteur', async () => {
+test('Page équipe : « S’abonner au calendrier » ouvre le panneau en mode saison, puis le choix des compétitions', async () => {
   rendu(<Equipe />);
   await ouvrir(() => equipe!.onAgenda());
   expect(screen.queryByText('Ce match')).toBeNull();
   fireEvent.press(screen.getByText('Google Agenda'));
-  expect(ouvrirExterne).toHaveBeenCalledWith(lienSaison('google', 'seniors-f-1', URL_AGENDAS));
-  await panneauFerme();
+  await attendre(300);
+  expect(screen.getByText('Seniors F 1 · calendriers officiels ffhandball.fr')).toBeOnTheScreen();
+  await act(async () => fireEvent.press(screen.getByText("S'abonner")));
+  expect(ouvrirExterne).toHaveBeenCalledWith(lienCompetitionFfhb('google', '32542', '3309'));
 });
 
 test('onglets : Accueil, Matchs, Équipes, Le club — plus de Buteurs', () => {

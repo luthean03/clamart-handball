@@ -26,7 +26,7 @@ export default function Match() {
         onRetour={() => (routeur.canGoBack() ? routeur.back() : routeur.replace('/'))}
         onItineraire={(salle) => sansRejet(() => ouvrirItineraire(salle))}
         onOuvrirLien={(url) => sansRejet(() => ouvrirLien(url))}
-        onAgenda={(m) => agenda.ouvrir(m.equipe.collectif, m)}
+        onAgenda={(m) => agenda.ouvrir(club, m.equipe.collectif, m)}
       />
       {agenda.panneau}
     </>

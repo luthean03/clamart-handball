@@ -24,7 +24,7 @@ export default function Accueil() {
         rafraichissement={rafraichissement}
         rafraichir={rafraichir}
         onOuvrirMatch={(id, equipe) => routeur.push(equipe ? `/match/${id}?equipe=${equipe}` : `/match/${id}`)}
-        onAgenda={(m) => agenda.ouvrir(m.equipe.collectif, m)}
+        onAgenda={(m) => agenda.ouvrir(club, m.equipe.collectif, m)}
         onReglages={() => routeur.push('/reglages')}
         onChoisirEquipes={() => routeur.push('/gerer-equipes')}
         onTousLesMatchs={() => routeur.push('/matchs')}
