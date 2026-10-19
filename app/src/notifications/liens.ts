@@ -10,3 +10,10 @@ export function lienNotification(d: Record<string, string>): string | undefined 
   if (d.collectif && ID.test(d.collectif)) return `/equipe/${d.collectif}`;
   return undefined;
 }
+
+/**
+ * Identité d'une fiche match dans la pile (`dangerouslySingular`) : un lien vers un autre match ouvre une nouvelle fiche
+ * au lieu de réutiliser celle qui est déjà ouverte ; le même match deux fois ramène à sa fiche.
+ */
+export const idFicheMatch = (_nom: string, params: Record<string, unknown>): string =>
+  `${parametre(params.id as string | string[] | undefined) ?? ''}|${parametre(params.equipe as string | string[] | undefined) ?? ''}`;
