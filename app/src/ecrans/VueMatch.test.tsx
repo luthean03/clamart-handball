@@ -91,21 +91,21 @@ test('fiche : tous les joueurs des deux équipes, buts décroissants puis nom, m
   expect(screen.getAllByText('Ent. Suresnes / Nanterre')).toHaveLength(2);
   const noms = screen.getAllByText(/^[A-Z]\. /).map((n) => n.props.children);
   expect(noms).toEqual(['D. Dorilas', 'A. Zidane', 'L. Ladjel', 'B. Abdi', 'M. Kobzili', 'A. Kouadio', 'S. Nguyen']);
-  expect(screen.getByLabelText('D. Dorilas, 9 buts')).toBeOnTheScreen();
-  expect(screen.getByLabelText('M. Kobzili, 0 but')).toBeOnTheScreen();
-  expect(screen.getByLabelText('S. Nguyen, 0 but')).toBeOnTheScreen();
+  expect(screen.getByLabelText('numéro 19, D. Dorilas, 9 buts')).toBeOnTheScreen();
+  expect(screen.getByLabelText('numéro 3, M. Kobzili, 0 but')).toBeOnTheScreen();
+  expect(screen.getByLabelText('numéro 12, S. Nguyen, 0 but')).toBeOnTheScreen();
 });
 
 test('fiche : le nombre de buts est affiché, y compris 0', () => {
   vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: 19, buts: 3 }, { joueur: 'M. Kobzili', numero: 3, buts: 0 }]));
-  const ligne = (nom: string) => within(screen.getByLabelText(new RegExp(`^${nom}, `)));
+  const ligne = (nom: string) => within(screen.getByLabelText(new RegExp(`^numéro \\d+, ${nom}, `)));
   expect(ligne('D. Dorilas').getByText('3')).toBeOnTheScreen();
   expect(ligne('M. Kobzili').getByText('0')).toBeOnTheScreen();
 });
 
 test('fiche : un but au singulier', () => {
   vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: 19, buts: 1 }]));
-  expect(screen.getByLabelText('D. Dorilas, 1 but')).toBeOnTheScreen();
+  expect(screen.getByLabelText('numéro 19, D. Dorilas, 1 but')).toBeOnTheScreen();
 });
 
 test('fiche : des joueurs sans but suffisent pour afficher la section', () => {
@@ -202,4 +202,46 @@ test('adversaire sans écusson : un monogramme décoratif', () => {
   const monogramme = screen.getByTestId('monogramme', { includeHiddenElements: true });
   expect(monogramme.props.importantForAccessibility).toBe('no-hide-descendants');
   expect(screen.getByText('Ent. Suresnes / Nanterre')).toHaveProp('android_hyphenationFrequency', 'none');
+});
+
+test('fiche : en-têtes de colonnes N°, Joueur, Buts pour chaque équipe', () => {
+  vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: 19, buts: 3 }], [{ joueur: 'S. Nguyen', numero: 12, buts: 0 }]));
+  expect(screen.getAllByText('N°', { includeHiddenElements: true })).toHaveLength(2);
+  expect(screen.getAllByText('Joueur', { includeHiddenElements: true })).toHaveLength(2);
+  expect(screen.getAllByText('Buts', { includeHiddenElements: true })).toHaveLength(2);
+  // masqués aux lecteurs d'écran : introuvables par défaut
+  expect(screen.queryByText('N°')).toBeNull();
+});
+
+test('fiche : le numéro de maillot est affiché, vide s’il est inconnu', () => {
+  vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: 41, buts: 3 }, { joueur: 'M. Kobzili', numero: null, buts: 1 }]));
+  expect(within(screen.getByLabelText('numéro 41, D. Dorilas, 3 buts')).getByText('41')).toBeOnTheScreen();
+  expect(within(screen.getByLabelText('M. Kobzili, 1 but')).getAllByText(/^\d+$/)).toHaveLength(1);
+});
+
+test('fiche : libellé d’un joueur sans numéro', () => {
+  vue('2644292', clubAvecButeurs([{ joueur: 'D. Dorilas', numero: null, buts: 3 }]));
+  expect(screen.getByLabelText('D. Dorilas, 3 buts')).toBeOnTheScreen();
+});
+
+/** Le match 2644292 rejoué à domicile ou à l'extérieur, mi-temps 2–11 en notre faveur (nous–eux). */
+function clubAvecMiTemps(domicile: boolean): Club {
+  return {
+    ...club,
+    equipes: club.equipes.map((e) => ({
+      ...e,
+      matchs: e.matchs.map((m) => (m.id === '2644292' ? { ...m, domicile, mt_nous: 2, mt_eux: 11 } : m)),
+    })),
+  };
+}
+
+test('mi-temps à domicile : notre score d’abord, comme le tableau de score', () => {
+  vue('2644292', clubAvecMiTemps(true));
+  expect(screen.getByText('Mi-temps 2–11')).toBeOnTheScreen();
+});
+
+test('mi-temps à l’extérieur : l’adversaire d’abord, comme le tableau de score', () => {
+  vue('2644292', clubAvecMiTemps(false));
+  expect(screen.getByText('Mi-temps 11–2')).toBeOnTheScreen();
+  expect(screen.queryByText('Mi-temps 2–11')).toBeNull();
 });

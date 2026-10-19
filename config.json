@@ -18,8 +18,12 @@
     "commentaire_masques": "Joueurs à ne jamais afficher, tel qu'écrit sur le site (ex. \"Marie DUPONT\")."
   },
   "noms_equipes": {
-    "commentaire": "Optionnel : renommer une équipe. Clé = equipe_id (voir site/data/club.json), valeur = nom affiché.",
-    "exemple_2126402": "Seniors Filles 1"
+    "commentaire": "Optionnel : renommer une équipe. Clé = equipe_id (voir site/data/club.json) ou nom FFHB de l'équipe (identique dans toutes ses compétitions), valeur = nom affiché. Les identifiants de collectifs restent ceux du nom FFHB.",
+    "exemple_2126402": "Seniors Filles 1",
+    "Seniors F 1": "Seniors F1",
+    "Seniors F 1B": "Seniors F2",
+    "Seniors Mixte": "Seniors Loisir",
+    "U11 F 2": "U11 Mixte 2"
   },
   "collectifs": {
     "commentaire": "Optionnel : forcer le collectif d'une équipe. Clé = equipe_id, valeur = id de collectif (minuscules, chiffres, tirets)."

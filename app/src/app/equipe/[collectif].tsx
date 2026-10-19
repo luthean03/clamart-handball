@@ -1,4 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { ouvrirLien, sansRejet } from '../../actions/actions';
 import { EtatSansDonnees } from '../../composants/EtatSansDonnees';
 import { useAgenda } from '../../composants/useAgenda';
 import { useMaintenant } from '../../donnees/maintenant';
@@ -28,6 +29,7 @@ export default function Equipe() {
         onOuvrirMatch={(id) => routeur.push(`/match/${id}`)}
         onRetour={() => (routeur.canGoBack() ? routeur.back() : routeur.replace('/'))}
         onAgenda={() => agenda.ouvrir(collectif)}
+        onOuvrirLien={(url) => sansRejet(() => ouvrirLien(url))}
       />
       {agenda.panneau}
     </>

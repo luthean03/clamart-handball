@@ -14,8 +14,21 @@ def test_genre_equipe_filles_prime_sur_mixte():
 
 
 def test_detail_de():
-    assert collecte.detail_de("+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75") == "D1 territoriale"
-    assert collecte.detail_de("COUPE DE FRANCE DEPARTEMENTALE FEMININE") == "Coupe de France départementale"
+    d = collecte.detail_de
+    assert d("+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75") == "Division 1 territoriale 92-75"
+    assert d("+16 ANS FEMININES - DIVISION 2 TERRITORIALE 92-75") == "Division 2 territoriale 92-75"
+    assert d("LOISIRS MIXTES") == "Loisirs"
+    assert d("COUPE LIGUE MASCULINE") == "Coupe de Ligue masculine"
+    assert d("COUPE DE FRANCE DEPARTEMENTALE FEMININE 2026-2027") == "Coupe de France départementale"
+    assert d("U18F CHAMPIONNAT 92-75") == "Championnat 92-75"
+    assert d("U15M - CHAMPIONNAT 92-75") == "Championnat 92-75"
+    assert d("U13F - DELAYAGES") == "Délayages"
+    assert d("U13M DELAYAGES") == "Délayages"
+
+
+def test_detail_u11_utilise_la_poule():
+    assert collecte.detail_de("U11 MIXTE", "HONNEUR SUD C") == "U11 Mixte · Honneur · Sud C"
+    assert collecte.detail_de("U11 MIXTE", "HONNEUR SUD B") == "U11 Mixte · Honneur · Sud B"
 
 
 def test_fixture_reelle(club_v1):
@@ -24,3 +37,39 @@ def test_fixture_reelle(club_v1):
     noms = [e["nom"] for e in club_v1["equipes"]]
     assert noms.count("Seniors M") == 3
     assert "collectif" not in club_v1["equipes"][0]
+
+
+def test_noms_equipes_fideles_ffhb():
+    n = collecte.nom_equipe
+    assert n("+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75", "CLAMART HANDBALL 1", "1-x") == "Seniors F1"
+    assert n("COUPE DE FRANCE DEPARTEMENTALE FEMININE 2026-2027", "CLAMART HANDBALL 1", "2-y") == "Seniors F1"
+    assert n("+16 ANS FEMININES - DIVISION 2 TERRITORIALE 92-75", "CLAMART HANDBALL 1B", "3-z") == "Seniors F2"
+    assert n("+16 ANS MASCULINS - DIVISION 2 TERRITORIALE 92-75", "CLAMART HANDBALL", "4-a") == "Seniors M"
+    assert n("LOISIRS MIXTES", "CLAMART HB", "5-b") == "Seniors Loisir"
+    assert n("U18F CHAMPIONNAT 92-75", "CLAMART HB", "6-c") == "U18 F"
+    assert n("U13M DELAYAGES", "CLAMART HB", "7-d") == "U13 M"
+    assert n("U11 MIXTE", "CLAMART HANDBALL 1", "8-e") == "U11 Mixte 1"
+    assert n("U11 MIXTE", "CLAMART HANDBALL 2 (FILLES)", "8-f") == "U11 Mixte 2"
+    assert n("U11 MIXTE", "CLAMART HANDBALL 3", "8-g") == "U11 Mixte 3"
+
+
+def test_ids_collectifs_inchanges():
+    nf = collecte.nom_ffhb
+    assert nf("+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75", "CLAMART HANDBALL 1") == "Seniors F 1"
+    assert nf("U11 MIXTE", "CLAMART HANDBALL 2 (FILLES)") == "U11 F 2"
+
+
+def test_url_ffhb_propre_a_chaque_equipe():
+    """Forme réelle : `equipe_options` de la page de la poule, où le club n'apparaît qu'avec l'équipe de cette poule."""
+    racine = "/competitions/saison-2026-2027-22/championnat/u11-mixte-33056/"
+    defaut = {"id": "1831979", "ext_equipeId": "2177119", "libelle": "CLAMART HANDBALL 2 (FILLES)"}
+    poule_c = [{"id": "1831981", "ext_equipeId": "2177123", "pouleId": "245776", "libelle": "CLAMART HANDBALL 1"},
+               {"id": "1831944", "ext_equipeId": "2177070", "pouleId": "245776", "libelle": "COURBEVOIE HB 2"}]
+    poule_b = [{"id": "1831979", "ext_equipeId": "2177119", "pouleId": "245775", "libelle": "CLAMART HANDBALL 2 (FILLES)"}]
+    poule_a = [{"id": "1841069", "ext_equipeId": "2177525", "pouleId": "245777", "libelle": "CLAMART HANDBALL 3"}]
+    u = collecte.url_equipe
+    assert u(racine, poule_c, "CLAMART HANDBALL 1", {"1831981"}, defaut) == racine + "equipe-2177123/"
+    assert u(racine, poule_b, "CLAMART HANDBALL 2 (FILLES)", {"1831979"}, defaut) == racine + "equipe-2177119/"
+    assert u(racine, poule_a, "CLAMART HANDBALL 3", {"1841069"}, defaut) == racine + "equipe-2177525/"
+    assert u(racine, poule_a, "CLAMART HANDBALL 3", {"autre"}, defaut) == racine + "equipe-2177525/"   # par libellé
+    assert u(racine, [], "CLAMART HANDBALL 3", set(), defaut) == racine + "equipe-2177119/"

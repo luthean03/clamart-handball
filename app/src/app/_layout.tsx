@@ -10,6 +10,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { EcranErreur } from '../composants/EcranErreur';
 import { brancherPremierPlan, creerClientRequetes, persisteur, UN_MOIS } from '../donnees/requetes';
 import { GestionNotifications } from '../notifications/GestionNotifications';
+import { idFicheMatch } from '../notifications/liens';
 import { themeClair, themeSombre } from '../theme/theme';
 
 SplashScreen.preventAutoHideAsync();
@@ -35,7 +36,9 @@ export default function Racine() {
       <PersistQueryClientProvider client={client} persistOptions={{ persister: persisteur, maxAge: UN_MOIS }}>
         <PaperProvider theme={theme}>
           <StatusBar style={sombre ? 'light' : 'dark'} />
-          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.colors.background } }} />
+          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.colors.background } }}>
+            <Stack.Screen name="match/[id]" dangerouslySingular={idFicheMatch} />
+          </Stack>
           <GestionNotifications />
         </PaperProvider>
       </PersistQueryClientProvider>

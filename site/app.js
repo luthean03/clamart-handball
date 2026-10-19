@@ -214,7 +214,8 @@ function pageEquipe(id) {
           <td>${l.place}</td><td class="equipe">${esc(titre(l.equipe))}</td><td class="pts">${l.points}</td>
           <td>${l.joues}</td><td>${l.gagnes}</td><td>${l.nuls}</td><td>${l.perdus}</td>
           <td>${l.diff > 0 ? "+" : ""}${l.diff}</td></tr>`).join("")}</tbody>
-      </table></div></section>` : ""}
+      </table></div>
+      <p class="sous"><a href="${esc(e.url_ffhb)}" rel="noopener">Voir sur ffhandball.fr</a></p></section>` : ""}
 
     <section class="bloc" aria-labelledby="t-res">
       <h2 id="t-res">Résultats</h2>
