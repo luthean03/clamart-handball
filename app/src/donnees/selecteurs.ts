@@ -74,6 +74,8 @@ export function collectifsParCategorie(club: Club) {
   return categories.map((categorie) => ({
     categorie,
     titre: libelleCategorie(categorie),
-    collectifs: club.collectifs.filter((c): c is Collectif => c.categorie === categorie),
+    collectifs: club.collectifs
+      .filter((c): c is Collectif => c.categorie === categorie)
+      .sort((a, b) => a.nom.localeCompare(b.nom, 'fr', { numeric: true })),
   }));
 }
