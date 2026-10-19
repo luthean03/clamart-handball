@@ -129,7 +129,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
                     );
                   })}
                 </Carte>
-                <Button mode="text" icon="open-in-new" labelStyle={styles.libelleLien} contentStyle={CONTENU_BOUTON} style={styles.lien} onPress={() => onOuvrirLien(e.url_ffhb)}>Voir sur ffhandball.fr</Button>
+                <Button mode="text" icon="open-in-new" labelStyle={styles.libelleLien} contentStyle={CONTENU_BOUTON} style={styles.lien} onPress={() => onOuvrirLien(e.url_classement ?? e.url_ffhb)}>Voir sur ffhandball.fr</Button>
               </View>
             ))
           : null}
@@ -140,7 +140,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
 
 const styles = StyleSheet.create({
   page: { flex: 1 },
-  lien: { alignSelf: 'flex-start' },
+  lien: { alignSelf: 'center' },
   libelleLien: { fontSize: 12, fontFamily: POLICES.gras },
   contenu: { paddingHorizontal: 16, paddingBottom: 32 },
   onglets: { marginVertical: 12 },
