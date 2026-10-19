@@ -44,14 +44,20 @@ function ColonneJoueurs({ titre, ecusson, joueurs }: { titre: string; ecusson: R
         {ecusson}
         <Text variant="labelMedium" numberOfLines={1} style={[styles.nomColonne, { color: t.colors.onSurfaceVariant }]}>{titre}</Text>
       </View>
+      <View style={styles.enteteJoueurs} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        <Text variant="labelSmall" style={[styles.numero, { color: t.colors.onSurfaceVariant }]}>N°</Text>
+        <Text variant="labelSmall" style={[styles.joueur, { color: t.colors.onSurfaceVariant }]}>Joueur</Text>
+        <Text variant="labelSmall" style={{ color: t.colors.onSurfaceVariant }}>Buts</Text>
+      </View>
       {joueurs.map((b, i) => (
         <View
           key={i}
           style={[styles.buteur, i > 0 && { borderTopColor: t.colors.outlineVariant, borderTopWidth: StyleSheet.hairlineWidth }]}
           accessible
-          accessibilityLabel={`${b.joueur}, ${b.buts} ${b.buts > 1 ? 'buts' : 'but'}`}
+          accessibilityLabel={`${b.numero !== null ? `numéro ${b.numero}, ` : ''}${b.joueur}, ${b.buts} ${b.buts > 1 ? 'buts' : 'but'}`}
         >
-          <Text variant="bodyMedium" style={[styles.joueur, { color: t.colors.onSurface }]}>{b.joueur}</Text>
+          <Text variant="bodyMedium" style={[styles.numero, { color: t.colors.onSurfaceVariant }]}>{b.numero ?? ''}</Text>
+          <Text variant="bodyMedium" numberOfLines={1} ellipsizeMode="tail" style={[styles.joueur, { color: t.colors.onSurface }]}>{b.joueur}</Text>
           <Text variant="titleSmall" style={{ color: t.club.titre, fontFamily: POLICES.gras }}>{b.buts}</Text>
         </View>
       ))}
@@ -193,6 +199,8 @@ const styles = StyleSheet.create({
   titreColonne: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 },
   nomColonne: { flex: 1, textTransform: 'uppercase', fontFamily: POLICES.gras },
   buteur: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, paddingVertical: 4 },
+  enteteJoueurs: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingBottom: 2 },
+  numero: { width: 24, textAlign: 'right', fontVariant: ['tabular-nums'] },
   joueur: { flex: 1 },
   vide: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8, padding: 24 },
 });
