@@ -14,12 +14,13 @@ import { useSuivi } from '../suivi/suivi';
 import Equipe from '../app/equipe/[collectif]';
 import Match from '../app/match/[id]';
 
-let accueil: { onAgenda: (m: unknown) => void } | undefined;
+const mockPush = jest.fn();
+let accueil: { onAgenda: (m: unknown) => void; onOuvrirMatch: (id: string, equipe?: string) => void } | undefined;
 let fiche: { onAgenda: (m: unknown) => void } | undefined;
 let equipe: { onAgenda: () => void } | undefined;
 
 jest.mock('expo-router', () => ({
-  useRouter: () => ({ push: jest.fn() }),
+  useRouter: () => ({ push: mockPush }),
   useLocalSearchParams: () => ({ collectif: 'seniors-f-1' }),
   Redirect: () => null,
   // Les onglets se réduisent à leurs titres, dans l'ordre de la barre.
@@ -79,6 +80,14 @@ const panneauFerme = async () => {
 beforeEach(() => {
   jest.mocked(ouvrirExterne).mockClear();
   jest.mocked(ouvrirItineraire).mockClear();
+});
+
+test('Accueil : une carte ouvre la fiche du match avec son équipe', () => {
+  rendu(<Accueil />);
+  accueil!.onOuvrirMatch('2734038', 'seniors-m-1');
+  expect(mockPush).toHaveBeenCalledWith('/match/2734038?equipe=seniors-m-1');
+  accueil!.onOuvrirMatch('2734038');
+  expect(mockPush).toHaveBeenLastCalledWith('/match/2734038');
 });
 
 test('Accueil : transmet majRequise à la vue', () => {

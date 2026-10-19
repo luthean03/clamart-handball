@@ -23,8 +23,7 @@ export default function Accueil() {
         majRequise={majRequise}
         rafraichissement={rafraichissement}
         rafraichir={rafraichir}
-        onOuvrirEquipe={(id) => routeur.push(`/equipe/${id}`)}
-        onOuvrirMatch={(id) => routeur.push(`/match/${id}`)}
+        onOuvrirMatch={(id, equipe) => routeur.push(equipe ? `/match/${id}?equipe=${equipe}` : `/match/${id}`)}
         onAgenda={(m) => agenda.ouvrir(m.equipe.collectif, m)}
         onReglages={() => routeur.push('/reglages')}
         onChoisirEquipes={() => routeur.push('/gerer-equipes')}
