@@ -114,7 +114,9 @@ def detail_de(libelle_comp: str) -> str:
 
 
 def nom_equipe(libelle_comp: str, libelle_equipe: str, equipe_id: str) -> str:
-    return NOMS.get(equipe_id) or nom_ffhb(libelle_comp, libelle_equipe)
+    """Nom affiché : renommage par identifiant, sinon par nom FFHB (config noms_equipes), sinon le nom FFHB."""
+    brut = nom_ffhb(libelle_comp, libelle_equipe)
+    return NOMS.get(equipe_id) or NOMS.get(brut) or brut
 
 
 def nom_ffhb(libelle_comp: str, libelle_equipe: str) -> str:
