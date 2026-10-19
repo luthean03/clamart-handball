@@ -60,12 +60,16 @@ def test_ids_collectifs_inchanges():
 
 
 def test_url_ffhb_propre_a_chaque_equipe():
-    miennes = [{"id": "i1", "ext_equipeId": 2177119, "libelle": "CLAMART HANDBALL 1"},
-               {"id": "i2", "ext_equipeId": 2177120, "libelle": "CLAMART HANDBALL 2 (FILLES)"},
-               {"id": "i3", "ext_equipeId": 2177121, "libelle": "CLAMART HANDBALL 3"}]
+    """Forme réelle : `equipe_options` de la page de la poule, où le club n'apparaît qu'avec l'équipe de cette poule."""
     racine = "/competitions/saison-2026-2027-22/championnat/u11-mixte-33056/"
+    defaut = {"id": "1831979", "ext_equipeId": "2177119", "libelle": "CLAMART HANDBALL 2 (FILLES)"}
+    poule_c = [{"id": "1831981", "ext_equipeId": "2177123", "pouleId": "245776", "libelle": "CLAMART HANDBALL 1"},
+               {"id": "1831944", "ext_equipeId": "2177070", "pouleId": "245776", "libelle": "COURBEVOIE HB 2"}]
+    poule_b = [{"id": "1831979", "ext_equipeId": "2177119", "pouleId": "245775", "libelle": "CLAMART HANDBALL 2 (FILLES)"}]
+    poule_a = [{"id": "1841069", "ext_equipeId": "2177525", "pouleId": "245777", "libelle": "CLAMART HANDBALL 3"}]
     u = collecte.url_equipe
-    assert u(racine, miennes, "CLAMART HANDBALL 1", {"i1"}) == racine + "equipe-2177119/"
-    assert u(racine, miennes, "CLAMART HANDBALL 2 (FILLES)", {"zz"}) == racine + "equipe-2177120/"
-    assert u(racine, miennes, "CLAMART HANDBALL 3", {"i3"}) == racine + "equipe-2177121/"
-    assert u(racine, miennes, "INCONNUE", set()) == racine + "equipe-2177119/"
+    assert u(racine, poule_c, "CLAMART HANDBALL 1", {"1831981"}, defaut) == racine + "equipe-2177123/"
+    assert u(racine, poule_b, "CLAMART HANDBALL 2 (FILLES)", {"1831979"}, defaut) == racine + "equipe-2177119/"
+    assert u(racine, poule_a, "CLAMART HANDBALL 3", {"1841069"}, defaut) == racine + "equipe-2177525/"
+    assert u(racine, poule_a, "CLAMART HANDBALL 3", {"autre"}, defaut) == racine + "equipe-2177525/"   # par libellé
+    assert u(racine, [], "CLAMART HANDBALL 3", set(), defaut) == racine + "equipe-2177119/"
