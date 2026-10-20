@@ -14,9 +14,11 @@
         "monochromeImage": "./assets/icone/monochrome.png",
         "backgroundColor": "#FFFFFF"
       },
+      "allowBackup": false,
       "blockedPermissions": [
         "android.permission.READ_CALENDAR",
-        "android.permission.WRITE_CALENDAR"
+        "android.permission.WRITE_CALENDAR",
+        "android.permission.SYSTEM_ALERT_WINDOW"
       ]
     },
     "plugins": [

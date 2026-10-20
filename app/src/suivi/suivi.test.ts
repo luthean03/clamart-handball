@@ -7,6 +7,7 @@ beforeEach(() =>
     suivis: [],
     bienvenueFaite: false,
     retires: [],
+    saison: null,
     pret: false,
     notifResultats: true,
     rappels: false,
@@ -83,6 +84,7 @@ test('le premier lancement est mémorisé sur le téléphone', async () => {
     suivis: ['u13-m'],
     bienvenueFaite: true,
     retires: [],
+    saison: null,
     notifResultats: true,
     rappels: false,
     sujets: [],
@@ -109,37 +111,46 @@ test('une relecture normale rend le store prêt', async () => {
   expect(etat().suivis).toEqual(['u13-m']);
 });
 
-describe('nettoyerSuivis (garde « collecte complète »)', () => {
-  const complet = { collectifs: [{ id: 'seniors-m' }, { id: 'u18-f' }], erreurs: [] } as unknown as Club;
+describe('nettoyerSuivis (jamais de perte en cours de saison)', () => {
+  const complet = { saison: '2026-2027', collectifs: [{ id: 'seniors-m' }, { id: 'u18-f' }], erreurs: [] } as unknown as Club;
 
-  test('cas nominal : relecture terminée et collecte complète → les collectifs inconnus sont retirés', () => {
-    const retirer = jest.fn(() => []);
-    nettoyerSuivis(complet, true, retirer);
-    expect(retirer).toHaveBeenCalledWith(['seniors-m', 'u18-f']);
-  });
-
-  test('collecte partielle (erreurs non vides) → rien n’est retiré', () => {
-    const retirer = jest.fn(() => []);
-    nettoyerSuivis({ ...complet, erreurs: [{ competition: 'x', message: 'échec' }] } as unknown as Club, true, retirer);
-    expect(retirer).not.toHaveBeenCalled();
-  });
-
-  test('suivis pas encore relus (pret faux) → rien n’est retiré', () => {
-    const retirer = jest.fn(() => []);
-    nettoyerSuivis(complet, false, retirer);
-    expect(retirer).not.toHaveBeenCalled();
-  });
-
-  test('pas de données → rien n’est retiré', () => {
-    const retirer = jest.fn(() => []);
-    nettoyerSuivis(undefined, true, retirer);
-    expect(retirer).not.toHaveBeenCalled();
-  });
-
-  test('par défaut, agit sur le magasin des équipes suivies', () => {
-    useSuivi.setState({ suivis: ['seniors-m', 'disparue'], retires: [] });
+  test('même saison : une équipe suivie absente des données est conservée', () => {
+    useSuivi.setState({ suivis: ['seniors-m', 'disparue'], retires: [], saison: '2026-2027' });
     nettoyerSuivis(complet, true);
-    expect(useSuivi.getState().suivis).toEqual(['seniors-m']);
-    expect(useSuivi.getState().retires).toEqual(['disparue']);
+    expect(etat().suivis).toEqual(['seniors-m', 'disparue']);
+    expect(etat().retires).toEqual([]);
+  });
+
+  test('nouvelle saison : les équipes absentes sont retirées et la saison mémorisée', () => {
+    useSuivi.setState({ suivis: ['seniors-m', 'disparue'], retires: [], saison: '2025-2026' });
+    nettoyerSuivis(complet, true);
+    expect(etat().suivis).toEqual(['seniors-m']);
+    expect(etat().retires).toEqual(['disparue']);
+    expect(etat().saison).toBe('2026-2027');
+  });
+
+  test('première lecture (saison inconnue) : on mémorise la saison sans rien retirer', () => {
+    useSuivi.setState({ suivis: ['seniors-m', 'disparue'], saison: null });
+    nettoyerSuivis(complet, true);
+    expect(etat().suivis).toEqual(['seniors-m', 'disparue']);
+    expect(etat().saison).toBe('2026-2027');
+  });
+
+  test('collecte avec erreurs, suivis pas relus ou pas de données → rien ne change', () => {
+    useSuivi.setState({ suivis: ['disparue'], saison: '2025-2026' });
+    nettoyerSuivis({ ...complet, erreurs: ['échec'] } as unknown as Club, true);
+    nettoyerSuivis(complet, false);
+    nettoyerSuivis(undefined, true);
+    expect(etat().suivis).toEqual(['disparue']);
+    expect(etat().saison).toBe('2025-2026');
+  });
+
+  test('migration depuis la version 3 : saison inconnue, aucun retrait au premier chargement', async () => {
+    await AsyncStorage.setItem('clamart-suivi', JSON.stringify({ version: 3, state: { suivis: ['seniors-m', 'disparue'], bienvenueFaite: true, retires: [], apparence: 'sombre' } }));
+    await useSuivi.persist.rehydrate();
+    expect(etat().saison).toBeNull();
+    nettoyerSuivis(complet, etat().pret);
+    expect(etat().suivis).toEqual(['seniors-m', 'disparue']);
+    expect(etat().saison).toBe('2026-2027');
   });
 });

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { StyleSheet, useColorScheme } from 'react-native';
 import { contenuDuBouton } from '../../test/boutons';
 import { themeClair, themeSombre } from '../theme/theme';
@@ -10,7 +10,7 @@ jest.mock('expo-splash-screen', () => ({ preventAutoHideAsync: jest.fn(), hideAs
 
 const erreur = new Error('boom technique');
 
-test('écran d’erreur : message en français et bouton Réessayer qui relance la route', () => {
+test('écran d’erreur : message en français et bouton Réessayer qui relance la route', async () => {
   const retry = jest.fn(() => Promise.resolve());
   render(<EcranErreur error={erreur} retry={retry} />);
   expect(screen.getByText('Un problème est survenu')).toBeOnTheScreen();
@@ -18,7 +18,7 @@ test('écran d’erreur : message en français et bouton Réessayer qui relance 
   const bouton = screen.getByRole('button', { name: 'Réessayer' });
   expect(contenuDuBouton(bouton).minHeight).toBeGreaterThanOrEqual(48);
   fireEvent.press(screen.getByText('Réessayer'));
-  expect(retry).toHaveBeenCalledTimes(1);
+  await waitFor(() => expect(retry).toHaveBeenCalledTimes(1));
 });
 
 test('écran d’erreur : couleurs du thème clair, puis du thème sombre (hors du fournisseur de thème)', () => {

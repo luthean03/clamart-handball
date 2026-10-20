@@ -113,7 +113,8 @@ jobs:
         run: pip install -r collecteur/requirements.txt
 
       - name: Envoyer les notifications
-        continue-on-error: true
+        # Pas de continue-on-error : un échec d'envoi rend l'exécution rouge (e-mail GitHub au propriétaire).
+        # La publication Pages est un job amont déjà terminé : elle n'est jamais bloquée par cette étape.
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           TEST_SUJET: ${{ inputs.test_sujet }}
@@ -125,6 +126,7 @@ jobs:
           fi
 
       - name: Enregistrer le registre des envois
+        if: always() && github.event_name != 'push'      # même après un échec ou une annulation : les envois réussis restent marqués
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -134,6 +136,10 @@ jobs:
             echo "Registre inchangé."
           else
             git commit -m "Notifications du $(date -u +'%Y-%m-%d %H:%M') UTC"
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push
+            for essai in 1 2 3; do
+              git pull --rebase origin "$GITHUB_REF_NAME" && git push && exit 0
+              sleep $((essai * 5))
+            done
+            echo "::error::Le registre des envois n'a pas pu être poussé (risque de doublons au prochain passage)"
+            exit 1
           fi

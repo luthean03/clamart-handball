@@ -468,6 +468,39 @@ def assembler(equipes: list[dict], maintenant: datetime, annees: str, erreurs: l
     }
 
 
+def collectifs_perdus(ancien: dict | None, nouveau: dict) -> list[str]:
+    """Ids de collectifs publiés auparavant et absents de la collecte, pour une même saison.
+
+    Une nouvelle saison est le seul cas où des équipes peuvent légitimement disparaître.
+    """
+    if not ancien or ancien.get("saison") != nouveau.get("saison"):
+        return []
+    avant = {c["id"] for c in ancien.get("collectifs", [])}
+    apres = {c["id"] for c in nouveau.get("collectifs", [])}
+    return sorted(avant - apres)
+
+
+def ecrire_club(donnees: dict) -> bool:
+    """Écrit club.json (via un fichier temporaire). Refuse, sans rien écrire, une perte de collectifs en cours de saison."""
+    cible = SORTIE / "club.json"
+    ancien = None
+    if cible.exists():
+        try:
+            ancien = json.loads(cible.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            log("club.json précédent illisible : pas de comparaison possible.")
+    perdus = collectifs_perdus(ancien, donnees)
+    if perdus:
+        log(f"ERREUR : saison {donnees['saison']} inchangée mais {len(perdus)} collectif(s) disparu(s) "
+            f"({', '.join(perdus)}). Les fichiers existants ne sont PAS remplacés.")
+        return False
+    SORTIE.mkdir(parents=True, exist_ok=True)
+    tmp = SORTIE / "club.json.tmp"
+    tmp.write_text(json.dumps(donnees, ensure_ascii=False, indent=1), encoding="utf-8")
+    tmp.replace(cible)
+    return True
+
+
 def main() -> int:
     debut = datetime.now(timezone.utc)
     maintenant = datetime.now(timezone.utc)
@@ -496,10 +529,8 @@ def main() -> int:
                                 "coupe" in e["competition"].lower(), e["genre"], e["nom"]))
 
     donnees = assembler(equipes, maintenant, annees, ERREURS)
-    SORTIE.mkdir(parents=True, exist_ok=True)
-    tmp = SORTIE / "club.json.tmp"
-    tmp.write_text(json.dumps(donnees, ensure_ascii=False, indent=1), encoding="utf-8")
-    tmp.replace(SORTIE / "club.json")
+    if not ecrire_club(donnees):
+        return 1
 
     ecrire_agendas(SORTIE / "agenda", equipes, donnees["collectifs"])
 

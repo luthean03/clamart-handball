@@ -49,7 +49,7 @@ def test_avec_images(tmp_path):
 
 def test_corps_requete_avec_image():
     m = Message("k", "resultats-a", "T", "C", {}, "x", image="https://h/notifs/i.png")
-    assert corps_requete(m)["message"]["android"] == {"priority": "high", "notification": {"image": "https://h/notifs/i.png"}}
+    assert corps_requete(m)["message"]["android"] == {"priority": "high", "notification": {"tag": "k", "image": "https://h/notifs/i.png"}}
 
 
 # --- câblage de main() -------------------------------------------------------------------------

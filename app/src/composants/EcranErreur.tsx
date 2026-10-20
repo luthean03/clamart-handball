@@ -1,5 +1,6 @@
 import { StyleSheet, useColorScheme, View } from 'react-native';
 import { Button, PaperProvider, Text } from 'react-native-paper';
+import { reessayerApresErreur } from '../donnees/requetes';
 import { themeClair, themeSombre } from '../theme/theme';
 import { CONTENU_BOUTON } from './commun';
 
@@ -23,7 +24,7 @@ export function EcranErreur({ retry }: Props) {
         <Text variant="bodyMedium" style={[styles.centrer, { color: theme.colors.onSurfaceVariant }]}>
           L'application n'a pas pu afficher cet écran. Vos équipes suivies sont conservées.
         </Text>
-        <Button mode="contained" contentStyle={CONTENU_BOUTON} onPress={() => void retry()}>
+        <Button mode="contained" contentStyle={CONTENU_BOUTON} onPress={() => void reessayerApresErreur(retry)}>
           Réessayer
         </Button>
       </View>
