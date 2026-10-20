@@ -32,7 +32,7 @@ def test_corps_requete_fcm_v1():
         "topic": "resultats-seniors-m",
         "notification": {"title": "T", "body": "C"},
         "data": {"type": "resultat", "match_id": "1"},
-        "android": {"priority": "high"},
+        "android": {"priority": "high", "notification": {"tag": "resultat:seniors-m:1"}},
     }}
 
 
@@ -116,3 +116,106 @@ def test_erreur_http_fcm_conserve_le_corps_de_la_reponse_sans_fuite_du_jeton():
     assert "403" in texte
     assert "JETON-SECRET" not in texte
     assert len(texte) < 600
+
+
+# --- échecs bruyants et registre sans doublon ni oubli -----------------------------------------
+
+SECRET = {"FIREBASE_SERVICE_ACCOUNT": "{\"project_id\": \"p\"}"}
+CLE_KO = "resultat:seniors-f-1:2644292"
+
+
+def _decor(tmp_path, monkeypatch, registre):
+    donnees = tmp_path / "club.json"
+    donnees.write_text(json.dumps(club_v2()), encoding="utf-8")
+    fichier = tmp_path / "etat" / "notifications.json"
+    fichier.parent.mkdir()
+    fichier.write_text(json.dumps(registre), encoding="utf-8")
+    monkeypatch.setattr(notifieur, "DONNEES", donnees)
+    monkeypatch.setattr(notifieur, "REGISTRE", fichier)
+    return fichier
+
+
+def _lire(fichier):
+    return json.loads(fichier.read_text(encoding="utf-8"))
+
+
+def test_envoi_en_echec_sortie_non_nulle_et_resultat_non_marque(tmp_path, monkeypatch, capsys):
+    fichier = _decor(tmp_path, monkeypatch, {})
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: FauxEnvoyeur(echoue_sur=[CLE_KO]))
+    assert notifieur.main([], environ=SECRET, maintenant=LUNDI) == 1
+    assert CLE_KO not in _lire(fichier)
+    err = capsys.readouterr().err
+    assert "échec(s)" in err and "HTTP 500" in err and CLE_KO in err
+
+
+def test_envoi_reussi_marque_et_sortie_nulle(tmp_path, monkeypatch):
+    fichier = _decor(tmp_path, monkeypatch, {})
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: FauxEnvoyeur())
+    assert notifieur.main([], environ=SECRET, maintenant=LUNDI) == 0
+    assert CLE_KO in _lire(fichier)
+
+
+def test_relance_apres_succes_n_envoie_rien(tmp_path, monkeypatch):
+    fichier = _decor(tmp_path, monkeypatch, {})
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: FauxEnvoyeur())
+    notifieur.main([], environ=SECRET, maintenant=LUNDI)
+    deuxieme = FauxEnvoyeur()
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: deuxieme)
+    assert notifieur.main([], environ=SECRET, maintenant=LUNDI) == 0
+    assert deuxieme.envoyes == []
+
+
+def test_relance_apres_echec_retente_seulement_l_echec(tmp_path, monkeypatch):
+    fichier = _decor(tmp_path, monkeypatch, {})
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: FauxEnvoyeur(echoue_sur=[CLE_KO]))
+    assert notifieur.main([], environ=SECRET, maintenant=LUNDI) == 1
+    deuxieme = FauxEnvoyeur()
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: deuxieme)
+    assert notifieur.main([], environ=SECRET, maintenant=LUNDI) == 0
+    assert [m.cle for m in deuxieme.envoyes] == [CLE_KO]
+    assert CLE_KO in _lire(fichier)
+
+
+def test_registre_ecrit_apres_chaque_envoi_meme_si_le_processus_meurt(tmp_path, monkeypatch):
+    fichier = _decor(tmp_path, monkeypatch, {})
+
+    class Meurt(FauxEnvoyeur):
+        def envoyer(self, m):
+            if len(self.envoyes) == 2:
+                raise KeyboardInterrupt        # tuerie du runner : n'est pas une Exception
+            super().envoyer(m)
+
+    envoyeur = Meurt()
+    monkeypatch.setattr(notifieur, "EnvoyeurFCM", lambda compte: envoyeur)
+    with pytest.raises(KeyboardInterrupt):
+        notifieur.main([], environ=SECRET, maintenant=LUNDI)
+    assert {m.cle for m in envoyeur.envoyes} == set(_lire(fichier))
+
+
+def test_initialisation_impossible_sortie_non_nulle(tmp_path, monkeypatch, capsys):
+    _decor(tmp_path, monkeypatch, {})
+    assert notifieur.main([], environ={"FIREBASE_SERVICE_ACCOUNT": "pas du json"}, maintenant=LUNDI) == 1
+    assert "initialisation" in capsys.readouterr().err
+
+
+def test_sujet_sans_abonne_n_est_pas_un_echec():
+    # FCM répond 200 + {"name": "projects/p/messages/..."} même si personne n'est abonné au sujet
+    class Reponse:
+        status_code = 200
+        text = '{"name": "projects/p/messages/123"}'
+
+        def raise_for_status(self):
+            pass
+
+    class Session:
+        def post(self, url, headers=None, json=None, timeout=None):
+            return Reponse()
+
+    class Identifiants:
+        valid = True
+        token = "t"
+
+    envoyeur = object.__new__(notifieur.EnvoyeurFCM)
+    envoyeur.projet, envoyeur._credentials, envoyeur._session = "p", Identifiants(), Session()
+    registre, rapport = executer(club_v2(), {}, LUNDI, REGLAGES, envoyeur)
+    assert rapport["echecs"] == 0 and rapport["envoyes"] > 0

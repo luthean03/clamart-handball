@@ -128,9 +128,10 @@ def log(*a):
 
 
 def corps_requete(m: Message) -> dict:
-    android = {"priority": "high"}
+    # tag = clé du message : un renvoi remplace la notification au lieu de s'empiler
+    android = {"priority": "high", "notification": {"tag": m.cle}}
     if m.image:
-        android["notification"] = {"image": m.image}
+        android["notification"]["image"] = m.image
     return {"message": {
         "topic": m.sujet,
         "notification": {"title": m.titre, "body": m.corps},
@@ -232,11 +233,22 @@ def avec_images(messages: list[Message], dossier: Path, url_base: str) -> list[M
     return [replace(m, image=url_base + nom_image(m)) if (dossier / nom_image(m)).exists() else m for m in messages]
 
 
+def ecrire_registre(registre: dict, chemin: Path | None = None) -> None:
+    """Écriture atomique (fichier temporaire puis remplacement)."""
+    chemin = chemin or REGISTRE
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    tmp = chemin.with_suffix(".tmp")
+    tmp.write_text(json.dumps(registre, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+    tmp.replace(chemin)
+
+
 def executer(club: dict, registre: dict | None, maintenant: datetime, reglages: dict, envoyeur,
-             habiller=lambda messages: messages) -> tuple[dict, dict]:
+             habiller=lambda messages: messages, sauver=None) -> tuple[dict, dict]:
+    """`sauver(registre)` est appelé après chaque envoi réussi : un message n'est marqué qu'une fois parti,
+    et le marquage survit à une interruption du processus."""
     a_envoyer, registre = planifier(club, registre, maintenant, reglages)
     a_envoyer = habiller(a_envoyer)
-    rapport = {"prevus": len(a_envoyer), "envoyes": 0, "echecs": 0}
+    rapport = {"prevus": len(a_envoyer), "envoyes": 0, "echecs": 0, "raisons": []}
     if envoyeur is None:
         for m in a_envoyer:
             log(f"[essai] {m.sujet} : {m.titre} — {m.corps}")
@@ -246,10 +258,13 @@ def executer(club: dict, registre: dict | None, maintenant: datetime, reglages: 
             envoyeur.envoyer(m)
         except Exception as err:  # un échec n'arrête pas les autres ; le message repartira au passage suivant
             rapport["echecs"] += 1
+            rapport["raisons"].append(f"{m.cle} : {err}")
             log(f"[!] {m.cle} : {err}")
             continue
         registre[m.cle] = maintenant.isoformat(timespec="seconds")
         rapport["envoyes"] += 1
+        if sauver:
+            sauver(registre)
     return registre, rapport
 
 
@@ -297,7 +312,13 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
         return 0
 
     secret = environ.get("FIREBASE_SERVICE_ACCOUNT", "").strip()
-    envoyeur = None if args.essai or not secret else EnvoyeurFCM(json.loads(secret))
+    envoyeur = None
+    if not args.essai and secret:
+        try:
+            envoyeur = EnvoyeurFCM(json.loads(secret))
+        except Exception as err:      # secret invalide ou compte révoqué : le dire fort, sans afficher le secret
+            log(f"[!] Notifications : initialisation impossible ({type(err).__name__})")
+            return 1
     if envoyeur is None:
         log("Mode essai : aucun envoi, registre inchangé.")
 
@@ -314,14 +335,18 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
 
     club = json.loads(DONNEES.read_text(encoding="utf-8"))
     registre = json.loads(REGISTRE.read_text(encoding="utf-8")) if REGISTRE.exists() else None
+    # Premier déploiement (registre absent) : on amorce le registre sans rien envoyer.
     final, rapport = executer(club, registre, maintenant, config["notifications"], envoyeur,
-                              habiller=lambda ms: avec_images(ms, DOSSIER_IMAGES, url_images))
+                              habiller=lambda ms: avec_images(ms, DOSSIER_IMAGES, url_images),
+                              sauver=ecrire_registre if envoyeur is not None else None)
     log(f"Notifications : {rapport['envoyes']} envoyée(s), {rapport['echecs']} échec(s), {rapport['prevus']} prévue(s)")
     if envoyeur is not None:
-        REGISTRE.parent.mkdir(parents=True, exist_ok=True)
-        tmp = REGISTRE.with_suffix(".tmp")
-        tmp.write_text(json.dumps(final, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
-        tmp.replace(REGISTRE)
+        ecrire_registre(final)
+    if rapport["echecs"]:
+        log(f"[!] Notifications en échec : envoyées {rapport['envoyes']}, échouées {rapport['echecs']}. Raisons :")
+        for raison in rapport["raisons"]:
+            log(f"    - {raison}")
+        return 1
     return 0
 
 
