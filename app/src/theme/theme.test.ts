@@ -63,14 +63,19 @@ test('la snackbar est thémée : fond bleu nuit en clair, crème en sombre', () 
   expect(themeClair.colors.inverseSurface).toBe('#142A3D');
   expect(themeClair.colors.inverseOnSurface).toBe('#FFFEF0');
   expect(themeClair.colors.inversePrimary).toBe('#FFB4A8');
-  expect(themeSombre.colors.inverseSurface).toBe('#FFFEF0');
-  expect(themeSombre.colors.inverseOnSurface).toBe('#142A3D');
-  expect(themeSombre.colors.inversePrimary).toBe('#DB0000');
+  expect(themeSombre.colors.inverseSurface).toBe('#F4F1EA');
+  expect(themeSombre.colors.inverseOnSurface).toBe('#1A1C20');
+  expect(themeSombre.colors.inversePrimary).toBe('#C8201A');
 });
 
 test('le bandeau de date des cartes d’accueil : rouge du club en clair, rouge adouci en sombre', () => {
   expect(clair.bandeau).toEqual({ fond: '#DB0000', texte: '#FFFFFF', doux: '#FFECE8' });
-  expect(sombre.bandeau).toEqual({ fond: '#B3261E', texte: '#FFFFFF', doux: '#FFDAD4' });
+  expect(sombre.bandeau).toEqual({ fond: '#C8201A', texte: '#FFFFFF', doux: '#FFEDEA' });
+});
+
+test('pastille des écussons : aucune en clair, crème en sombre', () => {
+  expect(clair.pastille).toBeNull();
+  expect(sombre.pastille).toBe('#F4F1EA');
 });
 
 test('le trait « Aujourd’hui » se détache du fond, en clair comme en sombre', () => {
