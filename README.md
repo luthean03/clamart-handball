@@ -81,6 +81,7 @@ installer `truststore` (déjà dans requirements.txt) ou définir
   ont marqué. Il n'y a aucun classement des buteurs. À faire valider par
   le bureau de l'association ; un joueur qui le demande est retiré (quelle que soit sa
   catégorie) en ajoutant son nom à `stats_joueurs.joueurs_masques`.
+- Tout joueur peut demander, via le formulaire de contact du club, à être masqué ; le mainteneur ajoute alors son nom à `stats_joueurs.joueurs_masques` dans `config.json`.
 - Les notifications ne nomment jamais un joueur.
 - Le collecteur fait quelques dizaines de requêtes par passage, espacées d'une seconde.
 
