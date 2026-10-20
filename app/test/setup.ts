@@ -17,6 +17,9 @@ jest.mock('expo-router', () => {
     useLocalSearchParams: jest.fn(() => ({})),
     useSegments: jest.fn(() => []),
     Redirect: Vide,
+    ThemeProvider: ({ children }: { children: unknown }) => children,
+    DarkTheme: { dark: true, colors: {}, fonts: {} },
+    DefaultTheme: { dark: false, colors: {}, fonts: {} },
     Stack: Object.assign(Vide, { Screen: Vide }),
     Tabs: Object.assign(Vide, { Screen: Vide }),
   };

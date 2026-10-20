@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Appbar, Button, IconButton, List, Surface, Switch, Text } from 'react-native-paper';
-import { CONTENU_BOUTON } from '../composants/commun';
+import { Appbar, Button, IconButton, List, SegmentedButtons, Surface, Switch, Text } from 'react-native-paper';
+import { CIBLE, CONTENU_BOUTON, MARGE_SEGMENT } from '../composants/commun';
 import { libelleMiseAJour } from '../donnees/dates';
 import type { Club } from '../donnees/types';
 import type { Autorisation } from '../notifications/sujets';
+import type { Apparence } from '../suivi/suivi';
 import { useThemeClub } from '../theme/theme';
 
 interface Props {
@@ -24,6 +25,8 @@ interface Props {
   onRappels: (b: boolean) => void;
   onOuvrirReglagesSysteme: () => void;
   onDemanderAutorisation: () => void;
+  apparence: Apparence;
+  onApparence: (a: Apparence) => void;
   onRetour: () => void;
 }
 
@@ -37,12 +40,18 @@ function Bloc({ children }: { children: ReactNode }) {
   );
 }
 
+const CHOIX_APPARENCE = [
+  { value: 'auto', label: 'Automatique', accessibilityLabel: 'Automatique', hitSlop: MARGE_SEGMENT, style: { minHeight: CIBLE } },
+  { value: 'clair', label: 'Clair', accessibilityLabel: 'Clair', hitSlop: MARGE_SEGMENT, style: { minHeight: CIBLE } },
+  { value: 'sombre', label: 'Sombre', accessibilityLabel: 'Sombre', hitSlop: MARGE_SEGMENT, style: { minHeight: CIBLE } },
+];
+
 export function VueReglages(p: Props) {
   const t = useThemeClub();
   const miens = p.club.collectifs.filter((c) => p.suivis.includes(c.id));
   const n = p.retires.length;
   return (
-    <View style={[styles.page, { backgroundColor: t.colors.background }]}>
+    <View testID="page-reglages" style={[styles.page, { backgroundColor: t.colors.background }]}>
       <Appbar.Header style={{ backgroundColor: t.colors.background }}>
         <Appbar.BackAction onPress={p.onRetour} accessibilityLabel="Retour" style={styles.action} />
         <Appbar.Content title="Réglages" titleStyle={{ color: t.club.titre }} />
@@ -72,6 +81,17 @@ export function VueReglages(p: Props) {
             />
           ))}
           <Button mode="text" contentStyle={CONTENU_BOUTON} style={styles.gerer} onPress={p.onGererEquipes}>Gérer mes équipes</Button>
+        </Bloc>
+
+        <List.Subheader style={{ color: t.club.titre }}>Apparence</List.Subheader>
+        <Bloc>
+          <View style={styles.bloque}>
+            <SegmentedButtons
+              value={p.apparence}
+              onValueChange={(v) => p.onApparence(v as Apparence)}
+              buttons={CHOIX_APPARENCE}
+            />
+          </View>
         </Bloc>
 
         <List.Subheader style={{ color: t.club.titre }}>Notifications</List.Subheader>

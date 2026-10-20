@@ -1,6 +1,6 @@
 import { contraste } from './contraste';
 import { clair, sombre, type Palette } from './couleurs';
-import { themeClair, themeSombre } from './theme';
+import { themeClair, themePour, themeSombre } from './theme';
 
 function paires(p: Palette): [string, string, string, number][] {
   return [
@@ -82,4 +82,18 @@ test('le trait « Aujourd’hui » se détache du fond, en clair comme en sombre
   expect(clair.trait).toBe('#CFC6BA');
   expect(contraste(clair.trait, clair.fond)).toBeGreaterThan(contraste(clair.ligne, clair.fond));
   expect(contraste(sombre.trait, sombre.fond)).toBeGreaterThan(contraste(sombre.ligne, sombre.fond));
+});
+
+describe('thème choisi par l’utilisateur', () => {
+  test.each([
+    ['auto', 'light', themeClair],
+    ['auto', 'dark', themeSombre],
+    ['auto', undefined, themeClair],
+    ['clair', 'dark', themeClair],
+    ['clair', 'light', themeClair],
+    ['sombre', 'light', themeSombre],
+    ['sombre', 'dark', themeSombre],
+  ] as const)('apparence %s, téléphone %s', (apparence, appareil, attendu) => {
+    expect(themePour(apparence, appareil)).toBe(attendu);
+  });
 });

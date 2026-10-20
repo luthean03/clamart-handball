@@ -4,6 +4,7 @@ import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import type { Autorisation } from '../notifications/sujets';
+import type { Apparence } from '../suivi/suivi';
 import { VueReglages } from './VueReglages';
 
 function reglages(props: Partial<Parameters<typeof VueReglages>[0]> = {}) {
@@ -12,6 +13,7 @@ function reglages(props: Partial<Parameters<typeof VueReglages>[0]> = {}) {
     onRetirer: jest.fn(), onGererEquipes: jest.fn(), onEffacerRetires: jest.fn(), onOuvrirLien: jest.fn(), onRetour: jest.fn(),
     notifResultats: true, rappels: false, autorisation: 'accordee' as Autorisation,
     onNotifResultats: jest.fn(), onRappels: jest.fn(), onOuvrirReglagesSysteme: jest.fn(), onDemanderAutorisation: jest.fn(),
+    apparence: 'auto' as Apparence, onApparence: jest.fn(),
     ...props,
   };
   rendu(<VueReglages {...p} />);
@@ -95,4 +97,30 @@ test('notifications autorisées : aucun message d’autorisation', () => {
   reglages({ autorisation: 'accordee' });
   expect(screen.queryByText('Autorisez les notifications pour recevoir les résultats de vos équipes.')).not.toBeOnTheScreen();
   expect(screen.queryByText('Les notifications sont bloquées dans les réglages d’Android.')).not.toBeOnTheScreen();
+});
+
+test('apparence : section avec trois choix, Automatique par défaut', () => {
+  reglages({ apparence: 'auto' });
+  expect(screen.getByText('Apparence')).toBeOnTheScreen();
+  for (const libelle of ['Automatique', 'Clair', 'Sombre']) {
+    expect(screen.getByLabelText(libelle)).toBeOnTheScreen();
+  }
+  expect(screen.getByLabelText('Automatique').props.accessibilityState?.checked).toBe(true);
+});
+
+test('apparence : choisir Sombre ou Clair remonte le choix', () => {
+  const p = reglages({ apparence: 'auto' });
+  fireEvent.press(screen.getByLabelText('Sombre'));
+  expect(p.onApparence).toHaveBeenLastCalledWith('sombre');
+  fireEvent.press(screen.getByLabelText('Clair'));
+  expect(p.onApparence).toHaveBeenLastCalledWith('clair');
+});
+
+test('apparence : les trois choix ont une cible tactile d’au moins 48 dp', () => {
+  reglages({ apparence: 'clair' });
+  for (const libelle of ['Automatique', 'Clair', 'Sombre']) {
+    const { hitSlop } = screen.getByRole('button', { name: libelle }).props;
+    // Les segments de Paper mesurent 40 dp : la marge de toucher complète à 48 dp.
+    expect(40 + hitSlop.top + hitSlop.bottom).toBeGreaterThanOrEqual(48);
+  }
 });

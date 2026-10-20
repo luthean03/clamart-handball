@@ -4,6 +4,9 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 import type { Club } from '../donnees/types';
 import type { Autorisation } from '../notifications/sujets';
 
+/** Apparence de l'app : suit le téléphone (`auto`) ou force la palette claire ou sombre. */
+export type Apparence = 'auto' | 'clair' | 'sombre';
+
 interface EtatSuivi {
   /** Ids de collectifs suivis (ex. 'seniors-m'). */
   suivis: string[];
@@ -18,6 +21,8 @@ interface EtatSuivi {
   sujets: string[];
   /** Autorisation de notifications accordée par Android (ou non encore demandée). */
   autorisation: Autorisation;
+  /** Thème choisi dans Réglages. */
+  apparence: Apparence;
   /** Non persisté : vrai une fois la relecture terminée, succès ou échec. */
   pret: boolean;
   basculer: (id: string) => void;
@@ -29,6 +34,7 @@ interface EtatSuivi {
   setRappels: (b: boolean) => void;
   setSujets: (s: string[]) => void;
   setAutorisation: (a: Autorisation) => void;
+  setApparence: (a: Apparence) => void;
 }
 
 export const useSuivi = create<EtatSuivi>()(
@@ -41,6 +47,7 @@ export const useSuivi = create<EtatSuivi>()(
       rappels: false,
       sujets: [],
       autorisation: 'inconnue',
+      apparence: 'auto',
       pret: false,
       basculer: (id) =>
         set(({ suivis }) => ({ suivis: suivis.includes(id) ? suivis.filter((s) => s !== id) : [...suivis, id] })),
@@ -57,20 +64,23 @@ export const useSuivi = create<EtatSuivi>()(
       setRappels: (b) => set({ rappels: b }),
       setSujets: (s) => set({ sujets: s }),
       setAutorisation: (a) => set({ autorisation: a }),
+      setApparence: (a) => set({ apparence: a }),
     }),
     {
       name: 'clamart-suivi',
-      version: 2,
+      version: 3,
       storage: createJSONStorage(() => AsyncStorage),
       // Version 1 : pas de préférences de notifications, on prend les valeurs par défaut.
+      // Version 2 → 3 : pas d'apparence choisie, elle reste automatique.
       migrate: (etat) => ({
         notifResultats: true,
         rappels: false,
         sujets: [],
         autorisation: 'inconnue',
+        apparence: 'auto',
         ...(etat as object),
       }),
-      partialize: ({ suivis, bienvenueFaite, retires, notifResultats, rappels, sujets, autorisation }) => ({
+      partialize: ({ suivis, bienvenueFaite, retires, notifResultats, rappels, sujets, autorisation, apparence }) => ({
         suivis,
         bienvenueFaite,
         retires,
@@ -78,6 +88,7 @@ export const useSuivi = create<EtatSuivi>()(
         rappels,
         sujets,
         autorisation,
+        apparence,
       }),
       // Appelé aussi en cas d'échec de lecture (stockage illisible, JSON corrompu) : sans cela, pret resterait faux.
       onRehydrateStorage: () => () => useSuivi.setState({ pret: true }),

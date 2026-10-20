@@ -12,6 +12,7 @@ beforeEach(() =>
     rappels: false,
     sujets: [],
     autorisation: 'inconnue',
+    apparence: 'auto',
   }),
 );
 const etat = () => useSuivi.getState();
@@ -53,7 +54,21 @@ test('préférences de notifications : valeurs par défaut et réglages', () => 
   expect(etat()).toMatchObject({ rappels: true, notifResultats: false, autorisation: 'refusee', sujets: ['resultats-seniors-m'] });
 });
 
-test('migration depuis la version 1 : les nouvelles préférences prennent leur valeur par défaut', async () => {
+test('apparence : automatique par défaut, puis réglable', () => {
+  expect(useSuivi.getInitialState().apparence).toBe('auto');
+  etat().setApparence('sombre');
+  expect(etat().apparence).toBe('sombre');
+  etat().setApparence('clair');
+  expect(etat().apparence).toBe('clair');
+});
+
+test('migration depuis la version 2 : une ancienne sauvegarde sans apparence charge en automatique', async () => {
+  await AsyncStorage.setItem('clamart-suivi', JSON.stringify({ version: 2, state: { suivis: ['u13-m'], bienvenueFaite: true, retires: [], notifResultats: false, rappels: true, sujets: [], autorisation: 'accordee' } }));
+  await useSuivi.persist.rehydrate();
+  expect(etat()).toMatchObject({ suivis: ['u13-m'], notifResultats: false, apparence: 'auto' });
+});
+
+test('migration depuis la version 1  : les nouvelles préférences prennent leur valeur par défaut', async () => {
   await AsyncStorage.setItem('clamart-suivi', JSON.stringify({ version: 1, state: { suivis: ['u13-m'], bienvenueFaite: true, retires: [] } }));
   await useSuivi.persist.rehydrate();
   expect(etat()).toMatchObject({ suivis: ['u13-m'], bienvenueFaite: true, notifResultats: true, rappels: false, sujets: [] });
@@ -72,6 +87,7 @@ test('le premier lancement est mémorisé sur le téléphone', async () => {
     rappels: false,
     sujets: [],
     autorisation: 'inconnue',
+    apparence: 'auto',
   });
 });
 
