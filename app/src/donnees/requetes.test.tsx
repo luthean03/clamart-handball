@@ -1,8 +1,8 @@
-import { dehydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { dehydrate, hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { act, renderHook, waitFor } from '@testing-library/react-native';
 import type { ReactNode } from 'react';
 import { fixtureBrute } from '../../test/donnees';
-import { CLE_CLUB, creerClientRequetes, useClub } from './requetes';
+import { CLE_CLUB, creerClientRequetes, persisteurVerifie, reessayerApresErreur, useClub } from './requetes';
 
 function enveloppe(client: QueryClient) {
   return ({ children }: { children: ReactNode }) => <QueryClientProvider client={client}>{children}</QueryClientProvider>;
@@ -153,4 +153,54 @@ test('une simple erreur réseau ne demande pas de mise à jour', async () => {
   });
   await waitFor(() => expect(result.current.horsLigne).toBe(true));
   expect(result.current.majRequise).toBe(false);
+});
+
+describe('cache persisté corrompu', () => {
+  const sain = { timestamp: 1, buster: '', clientState: { mutations: [], queries: [{ queryKey: ['club'], queryHash: '["club"]', state: { data: fixtureBrute } }, { queryKey: ['autre'], queryHash: '["autre"]', state: { data: 1 } }] } };
+  const corrompu = { ...sain, clientState: { ...sain.clientState, queries: [{ queryKey: ['club'], queryHash: '["club"]', state: { data: { ...fixtureBrute, equipes: 'x' } } }, sain.clientState.queries[1]] } };
+  const base = (restaure: unknown) => ({
+    persistClient: jest.fn(async () => {}),
+    restoreClient: jest.fn(async () => restaure),
+    removeClient: jest.fn(async () => {}),
+  });
+
+  test('un cache valide est restauré tel quel', async () => {
+    const p = persisteurVerifie(base(sain) as never);
+    await expect(p.restoreClient()).resolves.toEqual(sain);
+  });
+
+  test('un club corrompu est écarté du cache restauré, le reste est gardé', async () => {
+    const p = persisteurVerifie(base(corrompu) as never);
+    const restaure = await p.restoreClient();
+    expect(restaure?.clientState.queries.map((q) => q.queryKey[0])).toEqual(['autre']);
+  });
+
+  test('cache corrompu puis réseau rétabli : l’app se récupère avec les données fraîches', async () => {
+    const p = persisteurVerifie(base(corrompu) as never);
+    const client = nouveauClient();
+    const restaure = await p.restoreClient();
+    hydrate(client, restaure!.clientState);
+    expect(client.getQueryData(CLE_CLUB)).toBeUndefined();
+    globalThis.fetch = jest.fn(() =>
+      Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve(fixtureBrute) }),
+    ) as unknown as typeof fetch;
+    const { result } = renderHook(() => useClub(), { wrapper: enveloppe(client) });
+    await waitFor(() => expect(result.current.club?.saison).toBe('2026-2027'));
+  });
+
+  test('« Réessayer » vide le cache persisté avant de relancer l’écran', async () => {
+    const b = base(sain);
+    const retry = jest.fn(async () => {});
+    await reessayerApresErreur(retry, b as never);
+    expect(b.removeClient).toHaveBeenCalled();
+    expect(retry).toHaveBeenCalled();
+  });
+
+  test('« Réessayer » relance même si le cache ne peut pas être vidé', async () => {
+    const b = base(sain);
+    b.removeClient.mockRejectedValueOnce(new Error('stockage'));
+    const retry = jest.fn(async () => {});
+    await reessayerApresErreur(retry, b as never);
+    expect(retry).toHaveBeenCalled();
+  });
 });

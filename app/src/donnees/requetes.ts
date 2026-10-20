@@ -3,7 +3,7 @@ import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persi
 import { focusManager, QueryClient, useQuery } from '@tanstack/react-query';
 import { AppState } from 'react-native';
 import { URL_DONNEES } from '../config';
-import { chargerClub } from './source';
+import { chargerClub, verifierClub } from './source';
 import type { Club } from './types';
 
 export const CLE_CLUB = ['club'] as const;
@@ -23,7 +23,43 @@ export function creerClientRequetes(): QueryClient {
   });
 }
 
-export const persisteur = createAsyncStoragePersister({ storage: AsyncStorage, key: 'clamart-cache-v1' });
+type Persisteur = ReturnType<typeof createAsyncStoragePersister>;
+
+/**
+ * Enveloppe un persisteur : un `club` illisible ou de forme inattendue est écarté à la restauration. L'app le
+ * retélécharge alors au lieu d'afficher (ou de planter sur) un cache corrompu.
+ */
+export function persisteurVerifie(base: Persisteur): Persisteur {
+  return {
+    ...base,
+    restoreClient: async () => {
+      const restaure = await base.restoreClient();
+      if (!restaure) return restaure;
+      const queries = restaure.clientState.queries.filter((q) => {
+        if (q.queryKey[0] !== CLE_CLUB[0]) return true;
+        try {
+          verifierClub(q.state.data);
+          return true;
+        } catch {
+          return false;
+        }
+      });
+      return { ...restaure, clientState: { ...restaure.clientState, queries } };
+    },
+  };
+}
+
+export const persisteur = persisteurVerifie(createAsyncStoragePersister({ storage: AsyncStorage, key: 'clamart-cache-v1' }));
+
+/** « Réessayer » de l'écran d'erreur : repart d'un cache vide, pour ne jamais rejouer un cache corrompu. */
+export async function reessayerApresErreur(retry: () => Promise<void>, p: Pick<Persisteur, 'removeClient'> = persisteur): Promise<void> {
+  try {
+    await p.removeClient();
+  } catch {
+    // Stockage illisible : on relance quand même.
+  }
+  await retry();
+}
 
 /** Rafraîchit les données au retour au premier plan (si elles ont plus de 5 min). */
 export function brancherPremierPlan(): () => void {

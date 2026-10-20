@@ -93,3 +93,49 @@ describe('délai maximal', () => {
     expect(resultat).toMatchObject({ name: 'ErreurReseau', message: 'Délai dépassé' });
   });
 });
+
+describe('forme du fichier (club.json corrompu ou partiel)', () => {
+  const invalide = { name: 'ErreurReseau' };
+
+  test('JSON tronqué : erreur de réseau', async () => {
+    const tronque = jest.fn(() =>
+      Promise.resolve({ ok: true, status: 200, json: () => Promise.reject(new SyntaxError('Unexpected end of JSON input')) } as unknown as Response),
+    ) as unknown as typeof fetch;
+    await expect(chargerClub('u', tronque)).rejects.toMatchObject(invalide);
+  });
+
+  test('equipes qui n’est pas un tableau', async () => {
+    await expect(chargerClub('u', reponse({ ...fixtureBrute, equipes: {} }))).rejects.toMatchObject(invalide);
+  });
+
+  test('equipes absent', async () => {
+    const { equipes: _e, ...sans } = fixtureBrute;
+    await expect(chargerClub('u', reponse(sans))).rejects.toMatchObject(invalide);
+  });
+
+  test('collectifs absent, club absent ou fichier qui n’est pas un objet', async () => {
+    const { collectifs: _c, ...sansCollectifs } = fixtureBrute;
+    const { club: _k, ...sansClub } = fixtureBrute;
+    await expect(chargerClub('u', reponse(sansCollectifs))).rejects.toMatchObject(invalide);
+    await expect(chargerClub('u', reponse(sansClub))).rejects.toMatchObject(invalide);
+    await expect(chargerClub('u', reponse(null))).rejects.toMatchObject({ name: 'SchemaInconnu' });
+  });
+
+  test('équipe sans id, sans collectif ou sans matchs', async () => {
+    const [premiere, ...reste] = fixtureBrute.equipes;
+    for (const mauvaise of [{ ...premiere, id: undefined }, { ...premiere, collectif: 3 }, { ...premiere, matchs: null }]) {
+      await expect(chargerClub('u', reponse({ ...fixtureBrute, equipes: [mauvaise, ...reste] }))).rejects.toMatchObject(invalide);
+    }
+  });
+
+  test('match sans id', async () => {
+    const [premiere, ...reste] = fixtureBrute.equipes;
+    const matchs = [{ ...premiere.matchs[0], id: undefined }, ...premiere.matchs.slice(1)];
+    await expect(chargerClub('u', reponse({ ...fixtureBrute, equipes: [{ ...premiere, matchs }, ...reste] }))).rejects.toMatchObject(invalide);
+  });
+
+  test('erreurs absent : valeur par défaut vide', async () => {
+    const { erreurs: _r, ...sans } = fixtureBrute;
+    await expect(chargerClub('u', reponse(sans))).resolves.toMatchObject({ erreurs: [] });
+  });
+});
