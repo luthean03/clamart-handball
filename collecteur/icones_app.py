@@ -2,8 +2,8 @@
 
 Sorties (app/assets/) :
   - logo-rond.png (512 × 512) : l'écusson détouré en disque sur fond transparent ;
-  - icone/icone.png (1024 × 1024) : l'écusson rond sur blanc, sans transparence (icône de l'app, iOS) ;
-  - icone/premier-plan.png (1024 × 1024) : l'écusson rond de 640 de diamètre, centré, sur blanc opaque
+  - icone/icone.png (1024 × 1024) : l'écusson rond sur le rouge du club, sans transparence (icône de l'app, iOS) ;
+  - icone/premier-plan.png (1024 × 1024) : l'écusson rond de 640 de diamètre, centré, sur le rouge du club, opaque
     (premier plan de l'icône adaptative Android : le disque tient dans la zone sûre, que le masque du lanceur ne rogne pas ;
     opaque parce que certains lanceurs teintent la couche de fond, ce qui donnait l'anneau rose) ;
   - icone/monochrome.png (1024 × 1024) : la silhouette blanche du joueur sur fond transparent (icône thématique Android 13).
@@ -26,7 +26,7 @@ PREMIER_PLAN = ASSETS / "icone" / "premier-plan.png"
 MONOCHROME = ASSETS / "icone" / "monochrome.png"
 TAILLE = 512
 TAILLE_ICONE = 1024
-DIAMETRE_ICONE = 840          # écusson de l'icône carrée : une marge blanche autour, le système arrondit les coins
+DIAMETRE_ICONE = 840          # écusson de l'icône carrée : une marge rouge autour, le système arrondit les coins
 DIAMETRE_PREMIER_PLAN = 640   # zone sûre adaptative : disque de 66/108 de la couche, soit ~626 sur 1024
 DIAGONALE_SILHOUETTE = 600    # la silhouette (son rectangle englobant) tient dans la même zone sûre
 RAYON_DISQUE_BLANC = 95       # disque blanc central de l'écusson (rayon ~101 autour de (250, 250)) : la silhouette seule, sans l'anneau marine
@@ -44,12 +44,15 @@ def _ecusson_centre(diametre: int, fond: tuple[int, int, int, int]) -> Image.Ima
     return toile
 
 
+ROUGE_CLUB = (219, 0, 0, 255)  # #DB0000, fond de l'icône
+
+
 def icone() -> Image.Image:
-    return _ecusson_centre(DIAMETRE_ICONE, (255, 255, 255, 255)).convert("RGB")
+    return _ecusson_centre(DIAMETRE_ICONE, ROUGE_CLUB).convert("RGB")
 
 
 def premier_plan() -> Image.Image:
-    return _ecusson_centre(DIAMETRE_PREMIER_PLAN, (255, 255, 255, 255))
+    return _ecusson_centre(DIAMETRE_PREMIER_PLAN, ROUGE_CLUB)
 
 
 def monochrome() -> Image.Image:
