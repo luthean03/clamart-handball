@@ -1,8 +1,8 @@
-import { readdirSync } from 'fs';
-import { join } from 'path';
+const { readdirSync } = require('fs');
+const { join } = require('path');
 
 // expo-router traite chaque fichier de src/app comme un écran : un test placé là casse le build de l'app.
-function fichiers(dossier: string): string[] {
+function fichiers(dossier) {
   return readdirSync(dossier, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? fichiers(join(dossier, e.name)) : [join(dossier, e.name)],
   );
