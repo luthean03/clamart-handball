@@ -22,3 +22,7 @@ app/google-services.json
 app/GoogleService-Info.plist
 app/android/
 app/ios/
+# Documents de travail gardés en local
+PRODUCT.md
+DESIGN.md
+app/AGENTS.md
