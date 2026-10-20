@@ -14,16 +14,18 @@
         "monochromeImage": "./assets/icone/monochrome.png",
         "backgroundColor": "#FFFFFF"
       },
+      "allowBackup": false,
       "blockedPermissions": [
         "android.permission.READ_CALENDAR",
-        "android.permission.WRITE_CALENDAR"
+        "android.permission.WRITE_CALENDAR",
+        "android.permission.SYSTEM_ALERT_WINDOW"
       ]
     },
     "plugins": [
       "expo-router",
       "expo-font",
       "@react-native-firebase/app",
-      "expo-dev-client",
+      ["expo-dev-client", { "addGeneratedScheme": false }],
       ["expo-build-properties", { "ios": { "useFrameworks": "static" } }],
       ["./plugins/icone-notification", { "dossier": "./assets/notification", "couleur": "#DB0000" }],
       [
