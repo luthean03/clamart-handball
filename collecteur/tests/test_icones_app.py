@@ -12,20 +12,20 @@ def test_logo_rond_est_un_disque_transparent_et_stable():
     assert img.tobytes() == icones_app.logo_rond().tobytes()                    # déterministe
 
 
-def test_icone_est_un_ecusson_rond_sur_blanc_sans_transparence():
+def test_icone_est_un_ecusson_rond_sur_rouge_sans_transparence():
     img = icones_app.icone()
     assert img.size == (1024, 1024) and img.mode == "RGB"                       # iOS refuse la transparence
     for coin in ((0, 0), (1023, 0), (0, 1023), (1023, 1023), (60, 60)):
-        assert img.getpixel(coin) == (255, 255, 255)                            # pas de coin rouge
+        assert img.getpixel(coin) == (219, 0, 0)                                # fond rouge du club
     assert img.getpixel((512, 512 - 400)) != (255, 255, 255)                    # l'écusson occupe le centre (bande rouge à 400 du centre)
 
 
-def test_premier_plan_est_un_disque_de_640_centre_sur_blanc_opaque():
+def test_premier_plan_est_un_disque_de_640_centre_sur_rouge_opaque():
     # Opaque : certains lanceurs teintent la couche de fond (anneau rose vu sur l'émulateur), le premier plan la cache.
     img = icones_app.premier_plan()
     assert img.size == (1024, 1024) and img.mode == "RGBA"
     assert img.getchannel("A").getextrema() == (255, 255)
-    assert img.getpixel((10, 10)) == (255, 255, 255, 255) and img.getpixel((192, 192)) == (255, 255, 255, 255)
+    assert img.getpixel((10, 10)) == (219, 0, 0, 255) and img.getpixel((192, 192)) == (219, 0, 0, 255)
     assert img.getpixel((512, 512 - 300)) != (255, 255, 255, 255)               # diamètre 640, centré : zone sûre adaptative
 
 
@@ -38,7 +38,7 @@ def test_pas_de_halo_rose_au_bord_du_disque():
                 assert alpha >= 240 and not (rouge - vert > 40 and vert > 60), (angle, r, (rouge, vert, bleu, alpha))
             x, y = round(512 + (rayon + 3) * math.cos(math.radians(angle))), round(512 + (rayon + 3) * math.sin(math.radians(angle)))
             *_, alpha = pixel = img.getpixel((x, y))
-            assert alpha == 0 or pixel[:3] == (255, 255, 255)                    # hors du disque : transparent, ou blanc (queue du rééchantillonnage, fond de l'icône)
+            assert alpha == 0 or (pixel[0] > 200 and pixel[1] < 40 and pixel[2] < 40)   # hors du disque : le rouge du club (fond de l'icône), jamais rose ni blanc
 
 
 def test_monochrome_est_une_silhouette_blanche_dans_la_zone_sure():
