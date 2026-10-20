@@ -25,7 +25,7 @@
       "expo-router",
       "expo-font",
       "@react-native-firebase/app",
-      ["expo-dev-client", { "addGeneratedScheme": false }],
+      "expo-dev-client",
       ["expo-build-properties", { "ios": { "useFrameworks": "static" } }],
       ["./plugins/icone-notification", { "dossier": "./assets/notification", "couleur": "#DB0000" }],
       [
