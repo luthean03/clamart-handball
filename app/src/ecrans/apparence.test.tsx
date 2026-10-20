@@ -4,7 +4,7 @@ import { rendu } from '../../test/rendu';
 import { FournisseurTheme } from '../theme/FournisseurTheme';
 import { themeClair, themeSombre } from '../theme/theme';
 import { useSuivi } from '../suivi/suivi';
-import Reglages from './reglages';
+import Reglages from '../app/reglages';
 
 jest.mock('react-native/Libraries/Utilities/useColorScheme', () => ({ __esModule: true, default: jest.fn(() => 'light') }));
 jest.mock('../donnees/maintenant', () => ({ useMaintenant: () => new Date('2026-10-13T19:05:00+02:00') }));
