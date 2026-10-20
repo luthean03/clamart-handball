@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//clamart-handball//FR
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Clamart Handball - U18 M
+X-WR-TIMEZONE:Europe/Paris
+BEGIN:VEVENT
+UID:ffhb-2740462-33470-clamart-handball@clamart-handball
+DTSTAMP:20261020T193931Z
+DTSTART:20261115T150000Z
+DTEND:20261115T163000Z
+SUMMARY:BOIS-COLOMBES SP. 3 - Clamart Handball U18 M
+DESCRIPTION:U18M CHAMPIONNAT 92-75\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740462/
+LOCATION:charles coste\, 35 avenue du reverend pere corentin cloarec 92270 BOIS COLOMBES
+END:VEVENT
+END:VCALENDAR

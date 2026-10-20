@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-20T14:19:21+00:00",
+ "mis_a_jour": "2026-10-20T19:38:30+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -4192,6 +4192,25 @@
      ]
     },
     {
+     "id": "2740462",
+     "date": "2026-11-15T16:00:00+01:00",
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "BOIS-COLOMBES SP. 3",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2024-06-06-65638385-7389-43f9-baa2-c47aa0c97305.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740462/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "charles coste",
+      "adresse": "35 avenue du reverend pere corentin cloarec 92270 BOIS COLOMBES"
+     }
+    },
+    {
      "id": "2740459",
      "date": null,
      "journee": 3,
@@ -4204,21 +4223,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740459/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2740462",
-     "date": null,
-     "journee": 4,
-     "domicile": false,
-     "adversaire": "BOIS-COLOMBES SP. 3",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2024-06-06-65638385-7389-43f9-baa2-c47aa0c97305.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740462/",
      "feuille_de_match": null
     },
     {
