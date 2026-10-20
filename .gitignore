@@ -14,8 +14,8 @@ dist/
 .DS_Store
 # Outils
 .superpowers/
-.impeccable/config.local.json
-.impeccable/mocks/decision/src/
+.impeccable/
+docs/
 .idea/
 # Firebase / builds natifs (CNG)
 app/google-services.json

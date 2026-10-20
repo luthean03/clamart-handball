@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Notifieur : après chaque collecte, envoie les notifications FCM des nouveaux résultats (et des rappels la veille)
-sur des sujets par collectif. Voir docs/superpowers/specs (§4).
+sur des sujets par collectif.
 
   python collecteur/notifieur.py            # envoie (si FIREBASE_SERVICE_ACCOUNT est défini), sinon mode essai
   python collecteur/notifieur.py --essai    # n'envoie rien, n'écrit rien, affiche ce qui partirait
