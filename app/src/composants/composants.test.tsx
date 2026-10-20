@@ -201,6 +201,36 @@ test('écusson du club : disque rond de la taille demandée, libellé seulement 
   expect(screen.getByTestId('ecusson-club').props.accessibilityLabel).toBeUndefined();
 });
 
+test('écusson en mode sombre : l’image est posée sur une pastille claire, avec un anneau de 2 px', () => {
+  rendu(<Ecusson uri="https://x/a.webp" nom="Cellois HB" taille={24} />, themeSombre);
+  const pastille = screen.getByTestId('pastille');
+  expect(StyleSheet.flatten(pastille.props.style)).toMatchObject({ backgroundColor: '#F4F1EA', width: 24, height: 24, borderRadius: 12 });
+  expect(StyleSheet.flatten(within(pastille).getByTestId('ecusson-image').props.style)).toMatchObject({ width: 20, height: 20, borderRadius: 10 });
+});
+
+test('écusson du club en mode sombre : pastille claire autour du logo', () => {
+  rendu(<EcussonClub taille={48} />, themeSombre);
+  const pastille = screen.getByTestId('pastille');
+  expect(StyleSheet.flatten(pastille.props.style)).toMatchObject({ backgroundColor: '#F4F1EA', width: 48, height: 48 });
+  expect(StyleSheet.flatten(within(pastille).getByTestId('ecusson-club').props.style)).toMatchObject({ width: 44, height: 44 });
+});
+
+test('écusson en mode sombre : les initiales restent sans pastille', () => {
+  rendu(<Ecusson uri={null} nom="Ent. Suresnes / Nanterre" taille={24} />, themeSombre);
+  expect(screen.getByText('ES', { includeHiddenElements: true })).toBeOnTheScreen();
+  expect(screen.queryByTestId('pastille')).toBeNull();
+});
+
+test('écusson en mode clair : pas de pastille, image et logo rendus comme avant', () => {
+  rendu(<Ecusson uri="https://x/a.webp" nom="Cellois HB" taille={24} />);
+  expect(screen.queryByTestId('pastille')).toBeNull();
+  expect(StyleSheet.flatten(screen.getByTestId('ecusson-image').props.style)).toMatchObject({ width: 24, height: 24, borderRadius: 12 });
+  screen.unmount();
+  rendu(<EcussonClub taille={48} />);
+  expect(screen.queryByTestId('pastille')).toBeNull();
+  expect(StyleSheet.flatten(screen.getByTestId('ecusson-club').props.style)).toMatchObject({ width: 48, height: 48 });
+});
+
 test('ligne de match : l’écusson de l’adversaire vient de logo_adversaire', () => {
   const avec = { ...m('2644292'), logo_adversaire: 'https://media-logos-clubs.ffhandball.fr/128/suresnes.webp' };
   rendu(<LigneMatch match={avec} maintenant={MAR_SOIR} onPress={jest.fn()} />);

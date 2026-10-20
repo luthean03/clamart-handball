@@ -1,4 +1,6 @@
+import type { ColorSchemeName } from 'react-native';
 import { configureFonts, MD3DarkTheme, MD3LightTheme, useTheme, type MD3Theme } from 'react-native-paper';
+import type { Apparence } from '../suivi/suivi';
 import { clair, sombre, type Palette } from './couleurs';
 
 export const POLICES = {
@@ -53,4 +55,11 @@ function construire(socle: MD3Theme, p: Palette, dark: boolean): ThemeClub {
 
 export const themeClair = construire(MD3LightTheme, clair, false);
 export const themeSombre = construire(MD3DarkTheme, sombre, true);
+/** Le thème à appliquer : le choix explicite l'emporte, « auto » suit le téléphone. */
+export function themePour(apparence: Apparence, schemeAppareil: ColorSchemeName | undefined): ThemeClub {
+  if (apparence === 'sombre') return themeSombre;
+  if (apparence === 'clair') return themeClair;
+  return schemeAppareil === 'dark' ? themeSombre : themeClair;
+}
+
 export const useThemeClub = () => useTheme<ThemeClub>();

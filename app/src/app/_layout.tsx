@@ -2,16 +2,13 @@ import { Nunito_500Medium, Nunito_700Bold, Nunito_800ExtraBold, useFonts } from 
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { useColorScheme } from 'react-native';
-import { PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { EcranErreur } from '../composants/EcranErreur';
 import { brancherPremierPlan, creerClientRequetes, persisteur, UN_MOIS } from '../donnees/requetes';
 import { GestionNotifications } from '../notifications/GestionNotifications';
 import { idFicheMatch } from '../notifications/liens';
-import { themeClair, themeSombre } from '../theme/theme';
+import { FournisseurTheme, useThemeChoisi } from '../theme/FournisseurTheme';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -21,7 +18,7 @@ export const ErrorBoundary = EcranErreur;
 export default function Racine() {
   const [client] = useState(creerClientRequetes);
   const [polices, erreurPolices] = useFonts({ Nunito_500Medium, Nunito_700Bold, Nunito_800ExtraBold });
-  const sombre = useColorScheme() === 'dark';
+  const theme = useThemeChoisi();
   const pret = polices || erreurPolices !== null;
 
   useEffect(() => brancherPremierPlan(), []);
@@ -30,17 +27,15 @@ export default function Racine() {
   }, [pret]);
   if (!pret) return null;
 
-  const theme = sombre ? themeSombre : themeClair;
   return (
     <SafeAreaProvider>
       <PersistQueryClientProvider client={client} persistOptions={{ persister: persisteur, maxAge: UN_MOIS }}>
-        <PaperProvider theme={theme}>
-          <StatusBar style={sombre ? 'light' : 'dark'} />
+        <FournisseurTheme>
           <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.colors.background } }}>
             <Stack.Screen name="match/[id]" dangerouslySingular={idFicheMatch} />
           </Stack>
           <GestionNotifications />
-        </PaperProvider>
+        </FournisseurTheme>
       </PersistQueryClientProvider>
     </SafeAreaProvider>
   );

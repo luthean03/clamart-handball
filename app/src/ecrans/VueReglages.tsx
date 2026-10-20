@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Appbar, Button, IconButton, List, Surface, Switch, Text } from 'react-native-paper';
+import { Appbar, Button, Icon, IconButton, List, RadioButton, Surface, Switch, Text, TouchableRipple } from 'react-native-paper';
 import { CONTENU_BOUTON } from '../composants/commun';
 import { libelleMiseAJour } from '../donnees/dates';
 import type { Club } from '../donnees/types';
 import type { Autorisation } from '../notifications/sujets';
+import type { Apparence } from '../suivi/suivi';
 import { useThemeClub } from '../theme/theme';
 
 interface Props {
@@ -24,6 +25,8 @@ interface Props {
   onRappels: (b: boolean) => void;
   onOuvrirReglagesSysteme: () => void;
   onDemanderAutorisation: () => void;
+  apparence: Apparence;
+  onApparence: (a: Apparence) => void;
   onRetour: () => void;
 }
 
@@ -37,12 +40,20 @@ function Bloc({ children }: { children: ReactNode }) {
   );
 }
 
+const HAUTEUR_CHOIX = 56;
+
+const CHOIX_APPARENCE: { value: Apparence; titre: string; sousTitre?: string; icone: string; libelle: string }[] = [
+  { value: 'auto', titre: 'Appareil', sousTitre: 'Comme le réglage du téléphone', icone: 'cellphone', libelle: 'Appareil, comme le réglage du téléphone' },
+  { value: 'clair', titre: 'Clair', icone: 'white-balance-sunny', libelle: 'Clair' },
+  { value: 'sombre', titre: 'Sombre', icone: 'weather-night', libelle: 'Sombre' },
+];
+
 export function VueReglages(p: Props) {
   const t = useThemeClub();
   const miens = p.club.collectifs.filter((c) => p.suivis.includes(c.id));
   const n = p.retires.length;
   return (
-    <View style={[styles.page, { backgroundColor: t.colors.background }]}>
+    <View testID="page-reglages" style={[styles.page, { backgroundColor: t.colors.background }]}>
       <Appbar.Header style={{ backgroundColor: t.colors.background }}>
         <Appbar.BackAction onPress={p.onRetour} accessibilityLabel="Retour" style={styles.action} />
         <Appbar.Content title="Réglages" titleStyle={{ color: t.club.titre }} />
@@ -72,6 +83,41 @@ export function VueReglages(p: Props) {
             />
           ))}
           <Button mode="text" contentStyle={CONTENU_BOUTON} style={styles.gerer} onPress={p.onGererEquipes}>Gérer mes équipes</Button>
+        </Bloc>
+
+        <List.Subheader style={{ color: t.club.titre }}>Apparence</List.Subheader>
+        <Bloc>
+          <RadioButton.Group value={p.apparence} onValueChange={(v) => p.onApparence(v as Apparence)}>
+            {CHOIX_APPARENCE.map((c, i) => {
+              const coche = p.apparence === c.value;
+              return (
+                <TouchableRipple
+                  key={c.value}
+                  onPress={() => p.onApparence(c.value)}
+                  accessibilityRole="radio"
+                  accessibilityState={{ checked: coche }}
+                  accessibilityLabel={c.libelle}
+                  style={[
+                    styles.choix,
+                    i > 0 && { borderTopColor: t.colors.outlineVariant, borderTopWidth: StyleSheet.hairlineWidth },
+                  ]}
+                >
+                  <View style={styles.choixContenu}>
+                    <Icon source={c.icone} size={24} color={coche ? t.club.action : t.colors.onSurfaceVariant} />
+                    <View style={styles.choixTexte}>
+                      <Text variant="bodyLarge" style={{ color: t.colors.onSurface }}>{c.titre}</Text>
+                      {c.sousTitre ? (
+                        <Text variant="bodySmall" style={{ color: t.colors.onSurfaceVariant }}>{c.sousTitre}</Text>
+                      ) : null}
+                    </View>
+                    <View importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
+                      <RadioButton value={c.value} status={coche ? 'checked' : 'unchecked'} color={t.club.action} />
+                    </View>
+                  </View>
+                </TouchableRipple>
+              );
+            })}
+          </RadioButton.Group>
         </Bloc>
 
         <List.Subheader style={{ color: t.club.titre }}>Notifications</List.Subheader>
@@ -141,4 +187,7 @@ const styles = StyleSheet.create({
   action: { width: 48, height: 48, margin: 0, borderRadius: 24 },
   bloque: { padding: 16, gap: 4 },
   gerer: { alignSelf: 'flex-start', margin: 8 },
+  choix: { minHeight: HAUTEUR_CHOIX, justifyContent: 'center' },
+  choixContenu: { flexDirection: 'row', alignItems: 'center', gap: 16, paddingHorizontal: 16, paddingVertical: 8 },
+  choixTexte: { flex: 1 },
 });

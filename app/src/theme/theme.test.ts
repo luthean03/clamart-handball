@@ -1,6 +1,6 @@
 import { contraste } from './contraste';
 import { clair, sombre, type Palette } from './couleurs';
-import { themeClair, themeSombre } from './theme';
+import { themeClair, themePour, themeSombre } from './theme';
 
 function paires(p: Palette): [string, string, string, number][] {
   return [
@@ -63,18 +63,37 @@ test('la snackbar est thémée : fond bleu nuit en clair, crème en sombre', () 
   expect(themeClair.colors.inverseSurface).toBe('#142A3D');
   expect(themeClair.colors.inverseOnSurface).toBe('#FFFEF0');
   expect(themeClair.colors.inversePrimary).toBe('#FFB4A8');
-  expect(themeSombre.colors.inverseSurface).toBe('#FFFEF0');
-  expect(themeSombre.colors.inverseOnSurface).toBe('#142A3D');
-  expect(themeSombre.colors.inversePrimary).toBe('#DB0000');
+  expect(themeSombre.colors.inverseSurface).toBe('#F4F1EA');
+  expect(themeSombre.colors.inverseOnSurface).toBe('#1A1C20');
+  expect(themeSombre.colors.inversePrimary).toBe('#C8201A');
 });
 
 test('le bandeau de date des cartes d’accueil : rouge du club en clair, rouge adouci en sombre', () => {
   expect(clair.bandeau).toEqual({ fond: '#DB0000', texte: '#FFFFFF', doux: '#FFECE8' });
-  expect(sombre.bandeau).toEqual({ fond: '#B3261E', texte: '#FFFFFF', doux: '#FFDAD4' });
+  expect(sombre.bandeau).toEqual({ fond: '#C8201A', texte: '#FFFFFF', doux: '#FFEDEA' });
+});
+
+test('pastille des écussons : aucune en clair, crème en sombre', () => {
+  expect(clair.pastille).toBeNull();
+  expect(sombre.pastille).toBe('#F4F1EA');
 });
 
 test('le trait « Aujourd’hui » se détache du fond, en clair comme en sombre', () => {
   expect(clair.trait).toBe('#CFC6BA');
   expect(contraste(clair.trait, clair.fond)).toBeGreaterThan(contraste(clair.ligne, clair.fond));
   expect(contraste(sombre.trait, sombre.fond)).toBeGreaterThan(contraste(sombre.ligne, sombre.fond));
+});
+
+describe('thème choisi par l’utilisateur', () => {
+  test.each([
+    ['auto', 'light', themeClair],
+    ['auto', 'dark', themeSombre],
+    ['auto', undefined, themeClair],
+    ['clair', 'dark', themeClair],
+    ['clair', 'light', themeClair],
+    ['sombre', 'light', themeSombre],
+    ['sombre', 'dark', themeSombre],
+  ] as const)('apparence %s, téléphone %s', (apparence, appareil, attendu) => {
+    expect(themePour(apparence, appareil)).toBe(attendu);
+  });
 });
