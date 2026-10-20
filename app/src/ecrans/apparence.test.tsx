@@ -27,22 +27,24 @@ beforeEach(() => useSuivi.setState({ apparence: 'auto' }));
 test('apparence Sombre : palette sombre même si le téléphone est clair', () => {
   ecran('light', 'auto');
   expect(fond()).toBe(themeClair.colors.background);
-  fireEvent.press(screen.getByLabelText('Sombre'));
+  fireEvent.press(screen.getByRole('radio', { name: 'Sombre' }));
   expect(useSuivi.getState().apparence).toBe('sombre');
+  expect(screen.getByRole('radio', { name: 'Sombre' })).toBeChecked();
   expect(fond()).toBe(themeSombre.colors.background);
 });
 
 test('apparence Clair : palette claire même si le téléphone est sombre', () => {
   ecran('dark', 'auto');
   expect(fond()).toBe(themeSombre.colors.background);
-  fireEvent.press(screen.getByLabelText('Clair'));
+  fireEvent.press(screen.getByRole('radio', { name: 'Clair' }));
   expect(useSuivi.getState().apparence).toBe('clair');
   expect(fond()).toBe(themeClair.colors.background);
 });
 
-test('apparence Automatique : suit le téléphone', () => {
+test('apparence Appareil : suit le téléphone', () => {
   ecran('dark', 'clair');
-  fireEvent.press(screen.getByLabelText('Automatique'));
+  fireEvent.press(screen.getByRole('radio', { name: 'Appareil, comme le réglage du téléphone' }));
   expect(useSuivi.getState().apparence).toBe('auto');
+  expect(screen.getByRole('radio', { name: 'Appareil, comme le réglage du téléphone' })).toBeChecked();
   expect(fond()).toBe(themeSombre.colors.background);
 });

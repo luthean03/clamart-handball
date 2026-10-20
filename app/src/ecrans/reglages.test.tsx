@@ -99,28 +99,29 @@ test('notifications autorisées : aucun message d’autorisation', () => {
   expect(screen.queryByText('Les notifications sont bloquées dans les réglages d’Android.')).not.toBeOnTheScreen();
 });
 
-test('apparence : section avec trois choix, Automatique par défaut', () => {
+test('apparence : trois lignes radio, Appareil coché par défaut', () => {
   reglages({ apparence: 'auto' });
   expect(screen.getByText('Apparence')).toBeOnTheScreen();
-  for (const libelle of ['Automatique', 'Clair', 'Sombre']) {
-    expect(screen.getByLabelText(libelle)).toBeOnTheScreen();
+  expect(screen.getByText('Comme le réglage du téléphone')).toBeOnTheScreen();
+  for (const libelle of ['Appareil, comme le réglage du téléphone', 'Clair', 'Sombre']) {
+    expect(screen.getByRole('radio', { name: libelle })).toBeOnTheScreen();
   }
-  expect(screen.getByLabelText('Automatique').props.accessibilityState?.checked).toBe(true);
+  expect(screen.getByRole('radio', { name: 'Appareil, comme le réglage du téléphone' })).toBeChecked();
+  expect(screen.getByRole('radio', { name: 'Sombre' })).not.toBeChecked();
 });
 
 test('apparence : choisir Sombre ou Clair remonte le choix', () => {
   const p = reglages({ apparence: 'auto' });
-  fireEvent.press(screen.getByLabelText('Sombre'));
+  fireEvent.press(screen.getByRole('radio', { name: 'Sombre' }));
   expect(p.onApparence).toHaveBeenLastCalledWith('sombre');
-  fireEvent.press(screen.getByLabelText('Clair'));
+  fireEvent.press(screen.getByRole('radio', { name: 'Clair' }));
   expect(p.onApparence).toHaveBeenLastCalledWith('clair');
 });
 
-test('apparence : les trois choix ont une cible tactile d’au moins 48 dp', () => {
+test('apparence : chaque ligne fait au moins 56 dp de haut', () => {
   reglages({ apparence: 'clair' });
-  for (const libelle of ['Automatique', 'Clair', 'Sombre']) {
-    const { hitSlop } = screen.getByRole('button', { name: libelle }).props;
-    // Les segments de Paper mesurent 40 dp : la marge de toucher complète à 48 dp.
-    expect(40 + hitSlop.top + hitSlop.bottom).toBeGreaterThanOrEqual(48);
+  for (const libelle of ['Appareil, comme le réglage du téléphone', 'Clair', 'Sombre']) {
+    const style = StyleSheet.flatten(screen.getByRole('radio', { name: libelle }).props.style);
+    expect(style.minHeight).toBeGreaterThanOrEqual(56);
   }
 });
