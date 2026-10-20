@@ -41,7 +41,7 @@ function Bloc({ children }: { children: ReactNode }) {
 }
 
 const CHOIX_APPARENCE = [
-  { value: 'auto', label: 'Automatique', accessibilityLabel: 'Automatique', hitSlop: MARGE_SEGMENT, style: { minHeight: CIBLE } },
+  { value: 'auto', label: 'Appareil', accessibilityLabel: 'Automatique', hitSlop: MARGE_SEGMENT, style: { minHeight: CIBLE } },
   { value: 'clair', label: 'Clair', accessibilityLabel: 'Clair', hitSlop: MARGE_SEGMENT, style: { minHeight: CIBLE } },
   { value: 'sombre', label: 'Sombre', accessibilityLabel: 'Sombre', hitSlop: MARGE_SEGMENT, style: { minHeight: CIBLE } },
 ];
