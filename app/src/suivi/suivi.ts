@@ -13,6 +13,8 @@ interface EtatSuivi {
   bienvenueFaite: boolean;
   /** Collectifs retirés car absents des données, à signaler dans Réglages. */
   retires: string[];
+  /** Saison des données à laquelle correspondent les suivis (null tant qu'elle n'est pas connue). */
+  saison: string | null;
   /** Notifications de résultats des équipes suivies. */
   notifResultats: boolean;
   /** Rappels avant match des équipes suivies. */
@@ -29,6 +31,7 @@ interface EtatSuivi {
   definirSuivis: (ids: string[]) => void;
   terminerBienvenue: () => void;
   retirerInconnus: (valides: string[]) => string[];
+  synchroniserSaison: (saison: string, valides: string[]) => string[];
   effacerRetires: () => void;
   setNotifResultats: (b: boolean) => void;
   setRappels: (b: boolean) => void;
@@ -43,6 +46,7 @@ export const useSuivi = create<EtatSuivi>()(
       suivis: [],
       bienvenueFaite: false,
       retires: [],
+      saison: null,
       notifResultats: true,
       rappels: false,
       sujets: [],
@@ -59,6 +63,16 @@ export const useSuivi = create<EtatSuivi>()(
         if (absents.length) set({ suivis: suivis.filter((s) => valides.includes(s)), retires: [...retires, ...absents] });
         return absents;
       },
+      // Seul un changement de saison peut faire disparaître des équipes : dans la même saison, un suivi n'est jamais retiré.
+      synchroniserSaison: (saison, valides) => {
+        const stockee = get().saison;
+        if (stockee === null || stockee === saison) {
+          if (stockee === null) set({ saison });
+          return [];
+        }
+        set({ saison });
+        return get().retirerInconnus(valides);
+      },
       effacerRetires: () => set({ retires: [] }),
       setNotifResultats: (b) => set({ notifResultats: b }),
       setRappels: (b) => set({ rappels: b }),
@@ -68,22 +82,25 @@ export const useSuivi = create<EtatSuivi>()(
     }),
     {
       name: 'clamart-suivi',
-      version: 3,
+      version: 4,
       storage: createJSONStorage(() => AsyncStorage),
       // Version 1 : pas de préférences de notifications, on prend les valeurs par défaut.
       // Version 2 → 3 : pas d'apparence choisie, elle reste automatique.
+      // Version 3 → 4 : saison inconnue (null) ; elle est mémorisée au premier chargement des données, sans rien retirer.
       migrate: (etat) => ({
         notifResultats: true,
         rappels: false,
         sujets: [],
         autorisation: 'inconnue',
         apparence: 'auto',
+        saison: null,
         ...(etat as object),
       }),
-      partialize: ({ suivis, bienvenueFaite, retires, notifResultats, rappels, sujets, autorisation, apparence }) => ({
+      partialize: ({ suivis, bienvenueFaite, retires, saison, notifResultats, rappels, sujets, autorisation, apparence }) => ({
         suivis,
         bienvenueFaite,
         retires,
+        saison,
         notifResultats,
         rappels,
         sujets,
@@ -102,14 +119,16 @@ export function useSuiviPret(): boolean {
 }
 
 /**
- * Retire des équipes suivies celles qui ont disparu des données. N'agit que si les suivis sont relus (`pret`) et que
- * la collecte est complète : avec une compétition en échec, des équipes absentes ne sont pas pour autant disparues.
+ * Rattache les équipes suivies à la saison des données. Elles ne sont retirées que si la saison a changé (une
+ * équipe absente en cours de saison n'a pas disparu pour autant : panne de collecte) ; les écrans ignorent les
+ * suivis absents des données. N'agit que si les suivis sont relus (`pret`) et que la collecte est sans erreur.
  */
 export function nettoyerSuivis(
   club: Club | undefined,
   pret: boolean,
-  retirer: (valides: string[]) => unknown = (valides) => useSuivi.getState().retirerInconnus(valides),
+  synchroniser: (saison: string, valides: string[]) => unknown = (saison, valides) =>
+    useSuivi.getState().synchroniserSaison(saison, valides),
 ): void {
-  if (!club || !pret || club.erreurs.length > 0) return;
-  retirer(club.collectifs.map((c) => c.id));
+  if (!club || !pret || (club.erreurs?.length ?? 0) > 0) return;
+  synchroniser(club.saison, club.collectifs.map((c) => c.id));
 }
