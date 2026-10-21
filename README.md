@@ -140,7 +140,7 @@ Mise en place (une fois) : projet Firebase, app Android `fr.clamarthandball.app`
   et nombre de buts. Seuls ceux qui ont marqué sont affichés ; les joueurs masqués sont exclus.
   Un joueur qui le demande est retiré en ajoutant son nom à `stats_joueurs.joueurs_masques`.
 - Le détail et l'exercice des droits sont dans la politique de confidentialité :
-  https://luthean03.github.io/clamart-handball/#confidentialite
+  https://luthean03.github.io/clamart-handball/confidentialite.html
 - Le collecteur fait quelques dizaines de requêtes par passage, espacées d'une seconde.
 
 ## Si quelque chose ne marche pas
