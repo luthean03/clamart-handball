@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { fireEvent, screen, within } from '@testing-library/react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+import { act, fireEvent, screen, within } from '@testing-library/react-native';
 import { club } from '../../test/donnees';
 import { prochainMatchDate } from '../donnees/selecteurs';
 import { contenuDuBouton } from '../../test/boutons';
@@ -33,25 +33,33 @@ test('en-tête : salutation et mise à jour, sans week-end', () => {
 
 test('carte : bandeau de date du prochain match et compte à rebours', () => {
   accueil({ suivis: ['seniors-f-1'] });
-  expect(screen.getByText('Dim. 18 octobre · 15:30')).toBeOnTheScreen();
+  expect(screen.getByText('Dim. 18 octobre')).toBeOnTheScreen();
+  expect(screen.queryByText('Dim. 18 octobre · 15:30')).toBeNull();
   expect(screen.getByText('dans 2 jours')).toBeOnTheScreen();
   expect(screen.getByText('Coupe de France départementale')).toBeOnTheScreen();
-  expect(screen.getByText('Contre Cellois HB')).toBeOnTheScreen();
+  expect(within(screen.getByTestId('colonne-adversaire')).getByText('Cellois HB')).toBeOnTheScreen();
   expect(screen.getByText('Victor Hugo · extérieur')).toBeOnTheScreen();
+});
+
+test('carte : l’heure du coup d’envoi s’affiche sous le VS, pas dans le bandeau', () => {
+  accueil({ suivis: ['seniors-m'] });
+  expect(screen.getByTestId('heure-match')).toHaveTextContent('18:00');
+  expect(screen.getByText('VS')).toBeOnTheScreen();
+  expect(within(screen.getByTestId('bandeau-date')).queryByText(/18:00/)).toBeNull();
 });
 
 test('carte : le match du lendemain est « demain »', () => {
   accueil({ suivis: ['seniors-m'] });
-  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 17 octobre')).toBeOnTheScreen();
   expect(screen.getByText('demain')).toBeOnTheScreen();
-  expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toHaveProp('numberOfLines', 3);
+  expect(within(screen.getByTestId('colonne-adversaire')).getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toHaveProp('numberOfLines', 2);
 });
 
 test('carte : le jour du match, après le coup d’envoi, la carte garde ce match et dit « aujourd’hui »', () => {
   accueil({ maintenant: new Date('2026-10-17T19:00:00+02:00'), suivis: ['seniors-m'] });
-  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 17 octobre')).toBeOnTheScreen();
   expect(screen.getByText('aujourd’hui')).toBeOnTheScreen();
-  expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
+  expect(within(screen.getByTestId('colonne-adversaire')).getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
 });
 
 test('carte : pas de classement pour une coupe, classement pour un championnat', () => {
@@ -59,18 +67,16 @@ test('carte : pas de classement pour une coupe, classement pour un championnat',
   expect(screen.queryByText(/sur \d+/)).toBeNull();
   screen.unmount();
   accueil({ suivis: ['u18-f'] });
-  expect(screen.getByText('Sam. 7 novembre · 18:30')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 7 novembre')).toBeOnTheScreen();
   expect(screen.getByText('dans 22 jours')).toBeOnTheScreen();
   expect(screen.getByText('4e sur 6').props.children).toBe('4e sur 6');
-  const entete = screen.getByTestId('entete-carte');
-  expect(within(entete).getByText('U18 F')).toBeOnTheScreen();
-  expect(within(entete).getByText('4e sur 6')).toBeOnTheScreen();
+  expect(within(screen.getByTestId('colonne-club')).getByText('Clamart U18 F')).toBeOnTheScreen();
 });
 
-test('carte : le nom de l’équipe en titre, sans coupure ni césure', () => {
+test('carte : le nom de l’équipe sous l’écusson du club, sans coupure ni césure', () => {
   accueil({ suivis: ['seniors-f-1'] });
-  const nom = screen.getByText('Seniors F 1');
-  expect(nom.props.children).toBe('Seniors F 1');
+  const nom = within(screen.getByTestId('colonne-club')).getByText('Clamart Seniors F 1');
+    expect(nom).toHaveProp('numberOfLines', 2);
   expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
   expect(nom).toHaveProp('textBreakStrategy', 'simple');
 });
@@ -82,38 +88,40 @@ test('carte : plus de « Dernier match », la forme reste', () => {
   expect(screen.getByLabelText('Forme : victoire, défaite, victoire, victoire, victoire')).toBeOnTheScreen();
 });
 
-test('carte : le libellé lu contient l’équipe, la date, le compte à rebours, la compétition, l’adversaire et la salle', () => {
+test('carte : le libellé lu contient la date, l’équipe, l’adversaire, la compétition, la salle, le classement, la forme et le rang', () => {
   accueil({ suivis: ['u18-f'] });
   expect(
-    screen.getByLabelText('U18 F, 4e sur 6, samedi 7 nov. à 18:30, dans 22 jours, Championnat, contre Stade Francais, Stade Pierre de Coubertin, extérieur, ouvre le match'),
+    screen.getByLabelText(
+      /^samedi 7 nov\. à 18:30, dans 22 jours, Stade Francais contre Clamart U18 F, Championnat, Stade Pierre de Coubertin, extérieur, 4e sur 6, (forme : [a-zé ,]+, )?carte 1 sur 1, ouvre le match$/,
+    ),
   ).toBeOnTheScreen();
   screen.unmount();
   accueil({ suivis: ['seniors-f-1'] });
   expect(
-    screen.getByLabelText('Seniors F 1, dimanche 18 oct. à 15:30, dans 2 jours, Coupe de France départementale, contre Cellois HB, Victor Hugo, extérieur, ouvre le match'),
+    screen.getByLabelText(/^dimanche 18 oct\. à 15:30, dans 2 jours, Cellois HB contre Clamart Seniors F 1, Coupe de France départementale, Victor Hugo, extérieur, (forme : [a-zé ,]+, )?carte 1 sur 1, ouvre le match$/),
   ).toBeOnTheScreen();
 });
 
 test('carte : toucher la carte ouvre la fiche du match, avec son équipe', () => {
   const p = accueil({ suivis: ['seniors-f-1'] });
-  fireEvent.press(screen.getByText('Contre Cellois HB'));
+  fireEvent.press(within(screen.getByTestId('colonne-adversaire')).getByText('Cellois HB'));
   const m = prochainMatchDate(club, 'seniors-f-1', VEN_MATIN)!;
   expect(p.onOuvrirMatch).toHaveBeenCalledWith(m.id, m.equipe.id);
 });
 
 test('carte : l’écusson de l’adversaire est celui de la FFHB, sinon ses initiales', () => {
   accueil({ suivis: ['seniors-f-1'] });
-  expect(within(screen.getByTestId('adversaire-carte')).getByTestId('monogramme', { includeHiddenElements: true })).toBeOnTheScreen();
+  expect(within(screen.getByTestId('colonne-adversaire')).getByTestId('monogramme', { includeHiddenElements: true })).toBeOnTheScreen();
   screen.unmount();
   const avecLogo = structuredClone(club);
   for (const m of avecLogo.equipes.flatMap((e) => e.matchs)) m.logo_adversaire = 'https://exemple.test/ecusson.webp';
   accueil({ club: avecLogo, suivis: ['seniors-f-1'] });
-  expect(within(screen.getByTestId('adversaire-carte')).getByTestId('ecusson-image')).toBeOnTheScreen();
+  expect(within(screen.getByTestId('colonne-adversaire')).getByTestId('ecusson-image')).toBeOnTheScreen();
 });
 
 test('sans prochain match daté, l’équipe suivie n’a pas de carte', () => {
   accueil({ maintenant: new Date('2027-07-01T12:00:00+02:00'), suivis: ['seniors-f-1'] });
-  expect(screen.queryByText('Seniors F 1')).toBeNull();
+  expect(screen.queryByText('Clamart Seniors F 1')).toBeNull();
   expect(screen.queryByText(/Aucun match programmé/)).toBeNull();
   expect(screen.queryByLabelText(/^Forme : /)).toBeNull();
   expect(screen.getByText('Aucun match à venir au club.')).toBeOnTheScreen();
@@ -132,8 +140,8 @@ test('une équipe suivie sans match est omise, les autres gardent leur carte sou
   accueil({ club: sansMatch, suivis: ['seniors-m', 'seniors-f-1'] });
   expect(screen.getByText('Mes équipes')).toBeOnTheScreen();
   expect(screen.getAllByTestId('bandeau-date')).toHaveLength(1);
-  expect(screen.getByText('Seniors F 1')).toBeOnTheScreen();
-  expect(screen.queryByText('Seniors M')).toBeNull();
+  expect(within(screen.getByTestId('colonne-club')).getByText('Clamart Seniors F 1')).toBeOnTheScreen();
+  expect(screen.queryByTestId('colonne-club')?.props && within(screen.getByTestId('colonne-club')).queryByText('Clamart Seniors M')).toBeNull();
 });
 
 test('tout le club : 5 prochains matchs avec leur date, puis « Tous les matchs »', () => {
@@ -167,7 +175,7 @@ test('aucune équipe suivie : invitation à choisir', () => {
 
 test('ignore une équipe suivie absente des données', () => {
   accueil({ suivis: ['equipe-disparue', 'seniors-m'] });
-  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 17 octobre')).toBeOnTheScreen();
   expect(screen.getAllByTestId('bandeau-date')).toHaveLength(1);
 });
 
@@ -208,7 +216,7 @@ test('le bandeau de date prend les couleurs du thème, clair puis sombre', () =>
   screen.unmount();
   rendu(<VueAccueil {...propsAccueil({ suivis: ['seniors-m'] })} />, themeSombre);
   expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeSombre.club.bandeau.fond);
-  expect(StyleSheet.flatten(screen.getByText('Sam. 17 octobre · 18:00').props.style).color).toBe(themeSombre.club.bandeau.texte);
+  expect(StyleSheet.flatten(screen.getByText('Sam. 17 octobre').props.style).color).toBe(themeSombre.club.bandeau.texte);
 });
 
 describe('bord à bord', () => {
@@ -241,6 +249,106 @@ test('mise à jour requise : le bandeau de l’Accueil demande la mise à jour d
 
 test('Mes équipes : cartes triées par date du prochain match, la plus proche d’abord', () => {
   accueil({ suivis: ['seniors-f-1', 'seniors-m', 'u18-f'] });
-  const dates = screen.getAllByTestId('bandeau-date').map((n) => within(n).getByText(/·/).props.children);
-  expect(dates).toEqual(['Sam. 17 octobre · 18:00', 'Dim. 18 octobre · 15:30', 'Sam. 7 novembre · 18:30']);
+  const dates = screen.getAllByTestId('bandeau-date').map((n) => within(n).getByText(/^[A-Z][a-zé]{2}\. \d/).props.children);
+  expect(dates).toEqual(['Sam. 17 octobre', 'Dim. 18 octobre', 'Sam. 7 novembre']);
+});
+
+describe('carrousel Mes équipes', () => {
+  const TROIS = ['seniors-f-1', 'seniors-m', 'u18-f'];
+  afterEach(() => jest.useRealTimers());
+
+  test('un point par carte, qui suit la carte affichée, hors du parcours d’accessibilité', () => {
+    jest.useFakeTimers();
+    accueil({ suivis: TROIS });
+    const largeur = Dimensions.get('window').width;
+    const pas = Math.round(largeur * 0.85) + 12;
+    const largeurs = () => screen.getAllByTestId('point-carrousel', { includeHiddenElements: true }).map((n) => StyleSheet.flatten(n.props.style).width);
+    expect(screen.getAllByTestId('point-carrousel', { includeHiddenElements: true })).toHaveLength(3);
+    expect(largeurs()[0]).toBeGreaterThan(largeurs()[1]);
+    fireEvent.scroll(screen.getByTestId('carrousel-equipes'), { nativeEvent: { contentOffset: { x: pas, y: 0 }, contentSize: { width: 3 * pas, height: 400 }, layoutMeasurement: { width: largeur, height: 400 } } });
+    // la liste planifie sa mise à jour de cellules : on la purge ici plutôt que d'empiéter sur le test suivant
+    act(() => jest.runOnlyPendingTimers());
+    expect(largeurs()[1]).toBeGreaterThan(largeurs()[0]);
+    expect(largeurs()[1]).toBeGreaterThan(largeurs()[2]);
+    expect(screen.getByTestId('points-carrousel', { includeHiddenElements: true })).toHaveProp('importantForAccessibility', 'no-hide-descendants');
+    expect(screen.getByTestId('points-carrousel', { includeHiddenElements: true })).toHaveProp('accessibilityElementsHidden', true);
+  });
+
+  test('une seule carte : pleine largeur, pas de points', () => {
+    accueil({ suivis: ['seniors-m'] });
+    expect(screen.queryByTestId('points-carrousel', { includeHiddenElements: true })).toBeNull();
+    const largeur = Dimensions.get('window').width;
+    expect(StyleSheet.flatten(screen.getByTestId('carte-equipe').props.style).width).toBe(largeur - 32);
+  });
+
+  test('plusieurs cartes : environ 85 % de la largeur, accroche à chaque carte', () => {
+    accueil({ suivis: TROIS });
+    const largeur = Dimensions.get('window').width;
+    expect(StyleSheet.flatten(screen.getAllByTestId('carte-equipe')[0].props.style).width).toBe(Math.round(largeur * 0.85));
+    const liste = screen.getByTestId('carrousel-equipes');
+    expect(liste).toHaveProp('snapToInterval', Math.round(largeur * 0.85) + 12);
+    expect(liste).toHaveProp('decelerationRate', 'fast');
+    expect(liste).toHaveProp('horizontal', true);
+  });
+
+  test('chaque carte annonce son rang : « carte 1 sur 3 »', () => {
+    accueil({ suivis: TROIS });
+    expect(screen.getByLabelText(/Clamart Seniors M contre .*carte 1 sur 3, ouvre le match$/)).toBeOnTheScreen();
+    expect(screen.getByLabelText(/Cellois HB contre Clamart Seniors F 1, .*carte 2 sur 3, ouvre le match$/)).toBeOnTheScreen();
+    expect(screen.getByLabelText(/Stade Francais contre Clamart U18 F, .*carte 3 sur 3, ouvre le match$/)).toBeOnTheScreen();
+  });
+
+  test('chaque équipe a sa colonne, avec « VS » au centre', () => {
+    accueil({ suivis: ['seniors-f-1'] });
+    expect(within(screen.getByTestId('colonne-club')).getByTestId('ecusson-club')).toBeOnTheScreen();
+    expect(within(screen.getByTestId('colonne-adversaire')).getByText('Cellois HB')).toBeOnTheScreen();
+    expect(screen.getByText('VS')).toBeOnTheScreen();
+  });
+
+  /** Colonnes d'équipe dans l'ordre de rendu : gauche puis droite. */
+  const colonnes = () => screen.getAllByTestId(/^colonne-/);
+
+  test('match à domicile : Clamart à gauche, l’adversaire à droite', () => {
+    accueil({ suivis: ['seniors-m'] });
+    expect(colonnes().map((c) => c.props.testID)).toEqual(['colonne-club', 'colonne-adversaire']);
+    expect(within(colonnes()[0]).getByText('Clamart Seniors M')).toBeOnTheScreen();
+    expect(within(colonnes()[1]).getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
+    expect(screen.getByLabelText(/^samedi 17 oct\. à 18:00, .*Clamart Seniors M contre Association Sportive St-Cyr\/Fontenay Handball 78, /)).toBeOnTheScreen();
+  });
+
+  test('match à l’extérieur : l’adversaire à gauche, Clamart à droite', () => {
+    accueil({ suivis: ['seniors-f-1'] });
+    expect(colonnes().map((c) => c.props.testID)).toEqual(['colonne-adversaire', 'colonne-club']);
+    expect(within(colonnes()[0]).getByText('Cellois HB')).toBeOnTheScreen();
+    expect(within(colonnes()[1]).getByText('Clamart Seniors F 1')).toBeOnTheScreen();
+    expect(screen.getByLabelText(/^dimanche 18 oct\. à 15:30, .*Cellois HB contre Clamart Seniors F 1, /)).toBeOnTheScreen();
+  });
+  test('un long nom d’adversaire tient dans une colonne de largeur fixe, sur 2 lignes au plus', () => {
+    accueil({ suivis: ['seniors-m'] });
+    const nom = within(screen.getByTestId('colonne-adversaire')).getByText('Association Sportive St-Cyr/Fontenay Handball 78');
+    expect(nom).toHaveProp('numberOfLines', 2);
+    expect(nom).toHaveProp('ellipsizeMode', 'tail');
+    const colonne = StyleSheet.flatten(screen.getByTestId('colonne-adversaire').props.style);
+    expect(colonne.width).toBe(StyleSheet.flatten(screen.getByTestId('colonne-club').props.style).width);
+    expect(colonne.width).toBeGreaterThan(0);
+  });
+
+  test('écussons de 56 dp, sur la pastille en mode sombre', () => {
+    accueil({ suivis: ['seniors-f-1'] });
+    expect(StyleSheet.flatten(within(screen.getByTestId('colonne-club')).getByTestId('ecusson-club').props.style).width).toBe(56);
+    screen.unmount();
+    rendu(<VueAccueil {...propsAccueil({ suivis: ['seniors-f-1'] })} />, themeSombre);
+    const pastilles = within(screen.getByTestId('colonne-club')).getAllByTestId('pastille');
+    expect(pastilles.length).toBeGreaterThan(0);
+    expect(StyleSheet.flatten(pastilles[0].props.style).width).toBe(56);
+  });
+
+  test('l’action agenda est un bouton à part qui n’ouvre pas le match', () => {
+    const p = accueil({ suivis: TROIS });
+    expect(screen.getAllByText("Ajouter à l'agenda")).toHaveLength(3);
+    fireEvent.press(screen.getAllByText("Ajouter à l'agenda")[0]);
+    expect(p.onAgenda).toHaveBeenCalledWith(expect.objectContaining({ id: '2734038' }));
+    expect(p.onOuvrirMatch).not.toHaveBeenCalled();
+  });
+
 });

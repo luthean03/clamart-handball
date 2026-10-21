@@ -1,7 +1,7 @@
 import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, IconButton, Surface, Text } from 'react-native-paper';
 import { BandeauEtat } from '../composants/BandeauEtat';
-import { CarteEquipe } from '../composants/CarteEquipe';
+import { CarrouselEquipes } from '../composants/CarrouselEquipes';
 import { CONTENU_BOUTON } from '../composants/commun';
 import { EcussonClub } from '../composants/Ecusson';
 import { EnTeteSection } from '../composants/EnTeteSection';
@@ -83,17 +83,19 @@ export function VueAccueil(p: PropsAccueil) {
             </Button>
           </Surface>
         ) : (
-          cartes.map(({ collectif, prochain }) => (
-            <CarteEquipe
-              key={collectif.id}
-              collectif={collectif}
-              prochain={prochain}
-              forme={formeRecente(matchsDuCollectif(p.club, collectif.id))}
-              aujourdhui={aujourdhui}
-              onOuvrirMatch={() => p.onOuvrirMatch(prochain.id, prochain.equipe.id)}
-              onAgenda={p.onAgenda}
-            />
-          ))
+          <CarrouselEquipes
+            cartes={cartes.map(({ collectif, prochain }) => ({
+              cle: collectif.id,
+              carte: {
+                collectif,
+                prochain,
+                forme: formeRecente(matchsDuCollectif(p.club, collectif.id)),
+                aujourdhui,
+                onOuvrirMatch: () => p.onOuvrirMatch(prochain.id, prochain.equipe.id),
+                onAgenda: p.onAgenda,
+              },
+            }))}
+          />
         )}
   
         <EnTeteSection titre="Tout le club" />

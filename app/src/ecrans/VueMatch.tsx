@@ -142,12 +142,6 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
           ) : null}
         </Carte>
 
-        {aVenir ? (
-          <View style={styles.actions}>
-            <Button mode="contained" icon="calendar-plus" contentStyle={CONTENU_BOUTON} onPress={() => onAgenda(m)}>Ajouter à l'agenda</Button>
-          </View>
-        ) : null}
-
         {joueursNous.length || joueursEux.length ? (
           <>
             <EnTeteSection titre="Match" />
@@ -161,6 +155,19 @@ export function VueMatch({ club, matchId, equipeId, maintenant, onRetour, onItin
         ) : null}
 
         <View style={styles.bas}>
+          {aVenir ? (
+            <Button
+              mode="elevated"
+              icon="calendar-plus"
+              buttonColor={t.colors.surface}
+              textColor={t.colors.onSurface}
+              labelStyle={styles.libelleFeuille}
+              contentStyle={CONTENU_BOUTON}
+              onPress={() => onAgenda(m)}
+            >
+              Ajouter à l'agenda
+            </Button>
+          ) : null}
           {m.feuille_de_match ? (
             <Button
               mode="elevated"
@@ -191,7 +198,6 @@ const styles = StyleSheet.create({
   nomCamp: { flex: 1 },
   score: { fontVariant: ['tabular-nums'], minWidth: 36, textAlign: 'right' },
   itineraire: { marginTop: 8 },
-  actions: { marginTop: 16 },
   bas: { gap: 4, marginTop: 24 },
   libelleFeuille: { fontSize: 13, fontFamily: POLICES.gras },
   libelleLien: { fontSize: 12, fontFamily: POLICES.gras },
