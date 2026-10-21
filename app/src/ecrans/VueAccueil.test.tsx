@@ -92,13 +92,13 @@ test('carte : le libellé lu contient la date, l’équipe, l’adversaire, la c
   accueil({ suivis: ['u18-f'] });
   expect(
     screen.getByLabelText(
-      /^samedi 7 nov\. à 18:30, dans 22 jours, Clamart U18 F contre Stade Francais, Championnat, Stade Pierre de Coubertin, extérieur, 4e sur 6, (forme : [a-zé ,]+, )?carte 1 sur 1, ouvre le match$/,
+      /^samedi 7 nov\. à 18:30, dans 22 jours, Stade Francais contre Clamart U18 F, Championnat, Stade Pierre de Coubertin, extérieur, 4e sur 6, (forme : [a-zé ,]+, )?carte 1 sur 1, ouvre le match$/,
     ),
   ).toBeOnTheScreen();
   screen.unmount();
   accueil({ suivis: ['seniors-f-1'] });
   expect(
-    screen.getByLabelText(/^dimanche 18 oct\. à 15:30, dans 2 jours, Clamart Seniors F 1 contre Cellois HB, Coupe de France départementale, Victor Hugo, extérieur, (forme : [a-zé ,]+, )?carte 1 sur 1, ouvre le match$/),
+    screen.getByLabelText(/^dimanche 18 oct\. à 15:30, dans 2 jours, Cellois HB contre Clamart Seniors F 1, Coupe de France départementale, Victor Hugo, extérieur, (forme : [a-zé ,]+, )?carte 1 sur 1, ouvre le match$/),
   ).toBeOnTheScreen();
 });
 
@@ -294,17 +294,35 @@ describe('carrousel Mes équipes', () => {
   test('chaque carte annonce son rang : « carte 1 sur 3 »', () => {
     accueil({ suivis: TROIS });
     expect(screen.getByLabelText(/Clamart Seniors M contre .*carte 1 sur 3, ouvre le match$/)).toBeOnTheScreen();
-    expect(screen.getByLabelText(/Clamart Seniors F 1 contre .*carte 2 sur 3, ouvre le match$/)).toBeOnTheScreen();
-    expect(screen.getByLabelText(/Clamart U18 F contre .*carte 3 sur 3, ouvre le match$/)).toBeOnTheScreen();
+    expect(screen.getByLabelText(/Cellois HB contre Clamart Seniors F 1, .*carte 2 sur 3, ouvre le match$/)).toBeOnTheScreen();
+    expect(screen.getByLabelText(/Stade Francais contre Clamart U18 F, .*carte 3 sur 3, ouvre le match$/)).toBeOnTheScreen();
   });
 
-  test('le club est toujours à gauche et l’adversaire à droite, avec « VS » au centre', () => {
+  test('chaque équipe a sa colonne, avec « VS » au centre', () => {
     accueil({ suivis: ['seniors-f-1'] });
     expect(within(screen.getByTestId('colonne-club')).getByTestId('ecusson-club')).toBeOnTheScreen();
     expect(within(screen.getByTestId('colonne-adversaire')).getByText('Cellois HB')).toBeOnTheScreen();
     expect(screen.getByText('VS')).toBeOnTheScreen();
   });
 
+  /** Colonnes d'équipe dans l'ordre de rendu : gauche puis droite. */
+  const colonnes = () => screen.getAllByTestId(/^colonne-/);
+
+  test('match à domicile : Clamart à gauche, l’adversaire à droite', () => {
+    accueil({ suivis: ['seniors-m'] });
+    expect(colonnes().map((c) => c.props.testID)).toEqual(['colonne-club', 'colonne-adversaire']);
+    expect(within(colonnes()[0]).getByText('Clamart Seniors M')).toBeOnTheScreen();
+    expect(within(colonnes()[1]).getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
+    expect(screen.getByLabelText(/^samedi 17 oct\. à 18:00, .*Clamart Seniors M contre Association Sportive St-Cyr\/Fontenay Handball 78, /)).toBeOnTheScreen();
+  });
+
+  test('match à l’extérieur : l’adversaire à gauche, Clamart à droite', () => {
+    accueil({ suivis: ['seniors-f-1'] });
+    expect(colonnes().map((c) => c.props.testID)).toEqual(['colonne-adversaire', 'colonne-club']);
+    expect(within(colonnes()[0]).getByText('Cellois HB')).toBeOnTheScreen();
+    expect(within(colonnes()[1]).getByText('Clamart Seniors F 1')).toBeOnTheScreen();
+    expect(screen.getByLabelText(/^dimanche 18 oct\. à 15:30, .*Cellois HB contre Clamart Seniors F 1, /)).toBeOnTheScreen();
+  });
   test('un long nom d’adversaire tient dans une colonne de largeur fixe, sur 2 lignes au plus', () => {
     accueil({ suivis: ['seniors-m'] });
     const nom = within(screen.getByTestId('colonne-adversaire')).getByText('Association Sportive St-Cyr/Fontenay Handball 78');
@@ -332,4 +350,5 @@ describe('carrousel Mes équipes', () => {
     expect(p.onAgenda).toHaveBeenCalledWith(expect.objectContaining({ id: '2734038' }));
     expect(p.onOuvrirMatch).not.toHaveBeenCalled();
   });
+
 });

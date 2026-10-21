@@ -39,10 +39,12 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, rang, tota
   const compte = compteARebours(jourDuMatch(prochain.date!), aujourdhui);
   const nomClub = `Clamart ${collectif.nom}`;
   const adversaire = nomLisible(prochain.adversaire);
+  // Équipe à domicile d'abord, dans le même ordre que l'écran : gauche puis droite.
+  const [domicileNom, exterieurNom] = prochain.domicile ? [nomClub, adversaire] : [adversaire, nomClub];
   const lu = [
     `${libelleJour(jourDuMatch(prochain.date!), 'long')} à ${heureDuMatch(prochain.date!)}`,
     compte,
-    `${nomClub} contre ${adversaire}`,
+    `${domicileNom} contre ${exterieurNom}`,
     competition,
     ...lieu(prochain),
     classement && `${ordinal(classement.place)} sur ${classement.nb}`,
@@ -50,6 +52,26 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, rang, tota
     `carte ${rang} sur ${total}`,
     'ouvre le match',
   ];
+
+  const colonneClub = (
+    <View testID="colonne-club" style={styles.colonne}>
+      <EcussonClub taille={ECUSSON} />
+      <Text variant="labelLarge" numberOfLines={2} ellipsizeMode="tail" {...NOM_SANS_COUPURE} style={[styles.nom, { color: t.club.titre }]}>
+        {lierNumero(nomClub)}
+      </Text>
+    </View>
+  );
+  const colonneAdversaire = (
+    <View testID="colonne-adversaire" style={styles.colonne}>
+      <Ecusson uri={prochain.logo_adversaire} nom={adversaire} taille={ECUSSON} />
+      <Text variant="labelLarge" numberOfLines={2} ellipsizeMode="tail" {...NOM_SANS_COUPURE} style={[styles.nom, { color: t.club.titre }]}>
+        {lierNumero(adversaire)}
+      </Text>
+    </View>
+  );
+  // Clamart à gauche à domicile, à droite à l'extérieur.
+  const gauche = prochain.domicile ? colonneClub : colonneAdversaire;
+  const droite = prochain.domicile ? colonneAdversaire : colonneClub;
 
   return (
     <Surface style={[styles.carte, { borderRadius: t.rayonCarte }]} elevation={1}>
@@ -70,12 +92,7 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, rang, tota
             </Text>
           </View>
           <View style={styles.duel}>
-            <View testID="colonne-club" style={styles.colonne}>
-              <EcussonClub taille={ECUSSON} />
-              <Text variant="labelLarge" numberOfLines={2} ellipsizeMode="tail" {...NOM_SANS_COUPURE} style={[styles.nom, { color: t.club.titre }]}>
-                {lierNumero(nomClub)}
-              </Text>
-            </View>
+            {gauche}
             <View style={styles.centreDuel}>
               <Text variant="labelLarge" style={[styles.vs, { color: t.colors.onSurfaceVariant }]}>
                 VS
@@ -84,12 +101,7 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, rang, tota
                 {heureDuMatch(prochain.date!)}
               </Text>
             </View>
-            <View testID="colonne-adversaire" style={styles.colonne}>
-              <Ecusson uri={prochain.logo_adversaire} nom={adversaire} taille={ECUSSON} />
-              <Text variant="labelLarge" numberOfLines={2} ellipsizeMode="tail" {...NOM_SANS_COUPURE} style={[styles.nom, { color: t.club.titre }]}>
-                {lierNumero(adversaire)}
-              </Text>
-            </View>
+            {droite}
           </View>
           <View style={styles.details}>
             <Text variant="titleMedium" numberOfLines={2} style={[styles.centre, { color: t.club.titre }]}>
