@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { fireEvent, screen, within } from '@testing-library/react-native';
+import { act, fireEvent, screen, within } from '@testing-library/react-native';
 import { club } from '../../test/donnees';
 import { prochainMatchDate } from '../donnees/selecteurs';
 import { contenuDuBouton } from '../../test/boutons';
@@ -247,8 +247,10 @@ test('Mes équipes : cartes triées par date du prochain match, la plus proche d
 
 describe('carrousel Mes équipes', () => {
   const TROIS = ['seniors-f-1', 'seniors-m', 'u18-f'];
+  afterEach(() => jest.useRealTimers());
 
   test('un point par carte, qui suit la carte affichée, hors du parcours d’accessibilité', () => {
+    jest.useFakeTimers();
     accueil({ suivis: TROIS });
     const largeur = Dimensions.get('window').width;
     const pas = Math.round(largeur * 0.85) + 12;
@@ -256,6 +258,8 @@ describe('carrousel Mes équipes', () => {
     expect(screen.getAllByTestId('point-carrousel', { includeHiddenElements: true })).toHaveLength(3);
     expect(largeurs()[0]).toBeGreaterThan(largeurs()[1]);
     fireEvent.scroll(screen.getByTestId('carrousel-equipes'), { nativeEvent: { contentOffset: { x: pas, y: 0 }, contentSize: { width: 3 * pas, height: 400 }, layoutMeasurement: { width: largeur, height: 400 } } });
+    // la liste planifie sa mise à jour de cellules : on la purge ici plutôt que d'empiéter sur le test suivant
+    act(() => jest.runOnlyPendingTimers());
     expect(largeurs()[1]).toBeGreaterThan(largeurs()[0]);
     expect(largeurs()[1]).toBeGreaterThan(largeurs()[2]);
     expect(screen.getByTestId('points-carrousel', { includeHiddenElements: true })).toHaveProp('importantForAccessibility', 'no-hide-descendants');
