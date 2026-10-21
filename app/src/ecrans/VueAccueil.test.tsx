@@ -40,6 +40,12 @@ test('carte : bandeau de date du prochain match et compte à rebours', () => {
   expect(screen.getByText('Victor Hugo · extérieur')).toBeOnTheScreen();
 });
 
+test('carte : l’heure du coup d’envoi s’affiche sous le VS', () => {
+  accueil({ suivis: ['seniors-m'] });
+  expect(screen.getByTestId('heure-match')).toHaveTextContent('18:00');
+  expect(screen.getByText('VS')).toBeOnTheScreen();
+});
+
 test('carte : le match du lendemain est « demain »', () => {
   accueil({ suivis: ['seniors-m'] });
   expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();

@@ -76,9 +76,14 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, rang, tota
                 {lierNumero(nomClub)}
               </Text>
             </View>
-            <Text variant="labelLarge" style={[styles.vs, { color: t.colors.onSurfaceVariant }]}>
-              VS
-            </Text>
+            <View style={styles.centreDuel}>
+              <Text variant="labelLarge" style={[styles.vs, { color: t.colors.onSurfaceVariant }]}>
+                VS
+              </Text>
+              <Text testID="heure-match" variant="labelLarge" style={[styles.heure, { color: t.club.titre }]}>
+                {heureDuMatch(prochain.date!)}
+              </Text>
+            </View>
             <View testID="colonne-adversaire" style={styles.colonne}>
               <Ecusson uri={prochain.logo_adversaire} nom={adversaire} taille={ECUSSON} />
               <Text variant="labelLarge" numberOfLines={2} ellipsizeMode="tail" {...NOM_SANS_COUPURE} style={[styles.nom, { color: t.club.titre }]}>
@@ -122,7 +127,9 @@ const styles = StyleSheet.create({
   duel: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', paddingTop: 16, paddingHorizontal: 8 },
   colonne: { width: COLONNE, alignItems: 'center', gap: 6 },
   nom: { width: COLONNE, textAlign: 'center', fontSize: 13, lineHeight: INTERLIGNE_NOM, minHeight: 2 * INTERLIGNE_NOM },
-  vs: { flex: 1, textAlign: 'center', paddingTop: 18, fontWeight: '900' },
+  centreDuel: { flex: 1, alignItems: 'center', gap: 4, paddingTop: 18 },
+  vs: { textAlign: 'center', fontWeight: '900' },
+  heure: { textAlign: 'center', fontWeight: '700' },
   details: { alignItems: 'center', gap: 4, paddingHorizontal: 16, paddingTop: 8, paddingBottom: 8 },
   centre: { textAlign: 'center' },
   forme: { marginTop: 4, alignItems: 'center' },
