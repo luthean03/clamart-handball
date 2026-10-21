@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { fireEvent, screen, within } from '@testing-library/react-native';
+import { Button } from 'react-native-paper';
+import type { ReactTestInstance } from 'react-test-renderer';
 import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
@@ -144,6 +146,14 @@ test('fiche : Itinéraire, puis Feuille de match et Voir sur ffhandball.fr sépa
   }
 });
 
+/** Le bouton Paper qui contient l'élément : ses props (mode, couleurs…). */
+function propsDuBouton(element: ReactTestInstance) {
+  for (let n: ReactTestInstance | null = element; n; n = n.parent) {
+    if (n.type === Button) return n.props;
+  }
+  throw new Error("L'élément n'est pas dans un bouton Paper");
+}
+
 test('match à venir : ajouter à l’agenda', () => {
   const p = vue('2734038');
   expect(screen.getByText('Contre Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
@@ -151,6 +161,30 @@ test('match à venir : ajouter à l’agenda', () => {
   fireEvent.press(screen.getByText("Ajouter à l'agenda"));
   expect(p.onAgenda).toHaveBeenCalledWith(expect.objectContaining({ id: '2734038' }));
   expect(screen.queryByText('Feuille de match')).toBeNull();
+});
+
+test('match à venir : ajouter à l’agenda en bas, avant Voir sur ffhandball.fr, sans bouton plein rouge', () => {
+  vue('2734038');
+  const libelles = ['Itinéraire', "Ajouter à l'agenda", 'Voir sur ffhandball.fr'];
+  const boutons = screen.getAllByTestId('button');
+  expect(boutons.map((b) => libelles.find((l) => within(b).queryByText(l)))).toEqual(libelles);
+  const agenda = boutons[1];
+  expect(propsDuBouton(agenda).mode).toBe('elevated');
+  expect(contenuDuBouton(agenda).minHeight).toBeGreaterThanOrEqual(48);
+});
+
+test('match à venir avec feuille de match : agenda, feuille, puis lien', () => {
+  const c: Club = {
+    ...club,
+    equipes: club.equipes.map((e) => ({
+      ...e,
+      matchs: e.matchs.map((m) => (m.id === '2734038' ? { ...m, feuille_de_match: 'https://example.test/feuille' } : m)),
+    })),
+  };
+  vue('2734038', c);
+  const libelles = ['Itinéraire', "Ajouter à l'agenda", 'Feuille de match', 'Voir sur ffhandball.fr'];
+  const boutons = screen.getAllByTestId('button');
+  expect(boutons.map((b) => libelles.find((l) => within(b).queryByText(l)))).toEqual(libelles);
 });
 
 test('match sans date : pas d’ajout à l’agenda', () => {
