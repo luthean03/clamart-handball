@@ -34,9 +34,9 @@ test('salutation selon l’heure', () => {
   expect(salutation(new Date('2026-10-13T18:00:00+02:00'))).toBe('Bonsoir !');
 });
 
-test('libellé du bandeau de date', () => {
-  expect(libelleBandeau('2026-10-18T15:30:00+02:00')).toBe('Dim. 18 octobre · 15:30');
-  expect(libelleBandeau('2026-11-07T18:30:00+01:00')).toBe('Sam. 7 novembre · 18:30');
+test('libellé du bandeau de date : le jour seul, sans l’heure', () => {
+  expect(libelleBandeau('2026-10-18T15:30:00+02:00')).toBe('Dim. 18 octobre');
+  expect(libelleBandeau('2026-11-07T18:30:00+01:00')).toBe('Sam. 7 novembre');
 });
 
 test('compte à rebours', () => {

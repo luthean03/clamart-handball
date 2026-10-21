@@ -33,29 +33,31 @@ test('en-tête : salutation et mise à jour, sans week-end', () => {
 
 test('carte : bandeau de date du prochain match et compte à rebours', () => {
   accueil({ suivis: ['seniors-f-1'] });
-  expect(screen.getByText('Dim. 18 octobre · 15:30')).toBeOnTheScreen();
+  expect(screen.getByText('Dim. 18 octobre')).toBeOnTheScreen();
+  expect(screen.queryByText('Dim. 18 octobre · 15:30')).toBeNull();
   expect(screen.getByText('dans 2 jours')).toBeOnTheScreen();
   expect(screen.getByText('Coupe de France départementale')).toBeOnTheScreen();
   expect(within(screen.getByTestId('colonne-adversaire')).getByText('Cellois HB')).toBeOnTheScreen();
   expect(screen.getByText('Victor Hugo · extérieur')).toBeOnTheScreen();
 });
 
-test('carte : l’heure du coup d’envoi s’affiche sous le VS', () => {
+test('carte : l’heure du coup d’envoi s’affiche sous le VS, pas dans le bandeau', () => {
   accueil({ suivis: ['seniors-m'] });
   expect(screen.getByTestId('heure-match')).toHaveTextContent('18:00');
   expect(screen.getByText('VS')).toBeOnTheScreen();
+  expect(within(screen.getByTestId('bandeau-date')).queryByText(/18:00/)).toBeNull();
 });
 
 test('carte : le match du lendemain est « demain »', () => {
   accueil({ suivis: ['seniors-m'] });
-  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 17 octobre')).toBeOnTheScreen();
   expect(screen.getByText('demain')).toBeOnTheScreen();
   expect(within(screen.getByTestId('colonne-adversaire')).getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toHaveProp('numberOfLines', 2);
 });
 
 test('carte : le jour du match, après le coup d’envoi, la carte garde ce match et dit « aujourd’hui »', () => {
   accueil({ maintenant: new Date('2026-10-17T19:00:00+02:00'), suivis: ['seniors-m'] });
-  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 17 octobre')).toBeOnTheScreen();
   expect(screen.getByText('aujourd’hui')).toBeOnTheScreen();
   expect(within(screen.getByTestId('colonne-adversaire')).getByText('Association Sportive St-Cyr/Fontenay Handball 78')).toBeOnTheScreen();
 });
@@ -65,7 +67,7 @@ test('carte : pas de classement pour une coupe, classement pour un championnat',
   expect(screen.queryByText(/sur \d+/)).toBeNull();
   screen.unmount();
   accueil({ suivis: ['u18-f'] });
-  expect(screen.getByText('Sam. 7 novembre · 18:30')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 7 novembre')).toBeOnTheScreen();
   expect(screen.getByText('dans 22 jours')).toBeOnTheScreen();
   expect(screen.getByText('4e sur 6').props.children).toBe('4e sur 6');
   expect(within(screen.getByTestId('colonne-club')).getByText('Clamart U18 F')).toBeOnTheScreen();
@@ -173,7 +175,7 @@ test('aucune équipe suivie : invitation à choisir', () => {
 
 test('ignore une équipe suivie absente des données', () => {
   accueil({ suivis: ['equipe-disparue', 'seniors-m'] });
-  expect(screen.getByText('Sam. 17 octobre · 18:00')).toBeOnTheScreen();
+  expect(screen.getByText('Sam. 17 octobre')).toBeOnTheScreen();
   expect(screen.getAllByTestId('bandeau-date')).toHaveLength(1);
 });
 
@@ -214,7 +216,7 @@ test('le bandeau de date prend les couleurs du thème, clair puis sombre', () =>
   screen.unmount();
   rendu(<VueAccueil {...propsAccueil({ suivis: ['seniors-m'] })} />, themeSombre);
   expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeSombre.club.bandeau.fond);
-  expect(StyleSheet.flatten(screen.getByText('Sam. 17 octobre · 18:00').props.style).color).toBe(themeSombre.club.bandeau.texte);
+  expect(StyleSheet.flatten(screen.getByText('Sam. 17 octobre').props.style).color).toBe(themeSombre.club.bandeau.texte);
 });
 
 describe('bord à bord', () => {
@@ -247,8 +249,8 @@ test('mise à jour requise : le bandeau de l’Accueil demande la mise à jour d
 
 test('Mes équipes : cartes triées par date du prochain match, la plus proche d’abord', () => {
   accueil({ suivis: ['seniors-f-1', 'seniors-m', 'u18-f'] });
-  const dates = screen.getAllByTestId('bandeau-date').map((n) => within(n).getByText(/·/).props.children);
-  expect(dates).toEqual(['Sam. 17 octobre · 18:00', 'Dim. 18 octobre · 15:30', 'Sam. 7 novembre · 18:30']);
+  const dates = screen.getAllByTestId('bandeau-date').map((n) => within(n).getByText(/^[A-Z][a-zé]{2}\. \d/).props.children);
+  expect(dates).toEqual(['Sam. 17 octobre', 'Dim. 18 octobre', 'Sam. 7 novembre']);
 });
 
 describe('carrousel Mes équipes', () => {

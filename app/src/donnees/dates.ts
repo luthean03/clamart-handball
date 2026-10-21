@@ -37,9 +37,9 @@ export function jourLu(jour: string): string {
   return `${JOURS_LONGS[d.getUTCDay()]} ${d.getUTCDate()} ${MOIS_LONGS[d.getUTCMonth()]}`;
 }
 
-/** « Dim. 18 octobre · 15:30 », en heure de Paris. */
+/** « Dim. 18 octobre » : le bandeau rouge ne porte que le jour, l'heure est affichée sous le VS. */
 export function libelleBandeau(iso: string): string {
-  return `${titreJour(jourDuMatch(iso))} · ${heureDuMatch(iso)}`;
+  return titreJour(jourDuMatch(iso));
 }
 
 /** « Octobre 2026 » pour '2026-10'. */
