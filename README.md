@@ -31,7 +31,7 @@ site/                       site publié sur GitHub Pages
   notifs/                   images des banderoles de notification
 partage/                    cas de test partagés (app et collecteur)
 config.json                 réglages du club (nom, couleurs, équipes, joueurs masqués)
-assets/                     logo du club
+assets/                     logo du club ; pictogramme handball (assets/pictogramme-handball.svg), fourni par le responsable du club
 .github/workflows/          mise-à-jour.yml : collecte, notifications, publication
 ```
 
