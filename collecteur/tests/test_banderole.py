@@ -65,3 +65,21 @@ def test_ecusson_adversaire_mis_en_cache(tmp_path):
         banderole.ecusson_adversaire("https://x/128/a.webp", "Levallois SC 1D", tmp_path, telecharger=telecharger)
     assert appels == ["https://x/128/a.webp"]
     assert (tmp_path / "a.webp").exists()
+
+
+def test_ecusson_du_club_bord_lisse_et_anneau_blanc_complet():
+    """Le disque garde l'anneau blanc d'origine sur tout le tour, avec un bord adouci (pas d'escalier de pixels)."""
+    import math
+    e = banderole.ecusson_club()
+    assert e.width >= 1024                                     # grande résolution : les réductions restent nettes
+    c, r = e.width / 2, e.width / 2
+    demi_transparents = 0
+    for angle in range(0, 360, 3):
+        a = math.radians(angle)
+        bord = e.getpixel((round(c + (r - 1.5) * math.cos(a)), round(c + (r - 1.5) * math.sin(a))))
+        anneau = e.getpixel((round(c + r * 0.985 * math.cos(a)), round(c + r * 0.985 * math.sin(a))))
+        assert anneau[3] == 255 and min(anneau[:3]) >= 235, (angle, anneau)   # anneau blanc, jamais rouge ni rose
+        assert not (bord[0] - bord[1] > 60 and bord[3] > 40), (angle, bord)     # pas de liseré rouge au bord
+        if 0 < bord[3] < 255:
+            demi_transparents += 1
+    assert demi_transparents > 30                              # bord anti-crénelé

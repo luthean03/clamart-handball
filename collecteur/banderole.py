@@ -29,19 +29,35 @@ def telecharger(url: str) -> bytes:
         return r.read()
 
 
-def _disque(taille: int) -> Image.Image:
-    masque = Image.new("L", (taille, taille), 0)
-    ImageDraw.Draw(masque).ellipse((0, 0, taille - 1, taille - 1), fill=255)
-    return masque
+CENTRE_ECUSSON = 249.5   # centre de l'écusson dans assets/logo-clamart.png (500 × 500)
+RAYON_ECUSSON = 191.8    # bord extérieur de l'anneau blanc d'origine (mesuré sur le fichier)
+RAYON_ANNEAU = 185.0     # début de l'anneau blanc (après l'anneau noir)
+TAILLE_ECUSSON = 1536    # rendu en grande taille : les réductions ultérieures restent nettes
+SURECHANTILLON = 4       # masque dessiné 4 fois plus grand puis réduit : bord anti-crénelé
 
 
 def ecusson_club() -> Image.Image:
-    """Écusson officiel (assets/logo-clamart.png) détouré en disque : le fond carré rouge disparaît."""
-    img = Image.open(ECUSSON_CLUB).convert("RGBA")
-    c = img.width // 2
-    rayon = int(img.width * 0.38)       # cercle extérieur de l'écusson ; vérifier visuellement sur l'aperçu
-    img = img.crop((c - rayon, c - rayon, c + rayon, c + rayon))
-    img.putalpha(_disque(img.width))
+    """Écusson officiel (assets/logo-clamart.png) détouré en disque, sans le carré rouge.
+
+    L'anneau blanc d'origine est conservé et repeint en blanc pur jusqu'au bord (le fichier source mélange
+    blanc et rouge sur le dernier pixel), puis le disque est découpé avec un masque anti-crénelé."""
+    source = Image.open(ECUSSON_CLUB).convert("RGBA")
+    marge = RAYON_ECUSSON + 1
+    boite = (CENTRE_ECUSSON - marge, CENTRE_ECUSSON - marge, CENTRE_ECUSSON + marge, CENTRE_ECUSSON + marge)
+    echelle = TAILLE_ECUSSON / (2 * marge)
+    img = source.resize((TAILLE_ECUSSON, TAILLE_ECUSSON), Image.LANCZOS, box=boite)
+    c = TAILLE_ECUSSON / 2
+    blanc = Image.new("L", (TAILLE_ECUSSON, TAILLE_ECUSSON), 0)
+    ImageDraw.Draw(blanc).ellipse((c - (RAYON_ECUSSON + 1) * echelle, c - (RAYON_ECUSSON + 1) * echelle,
+                                   c + (RAYON_ECUSSON + 1) * echelle, c + (RAYON_ECUSSON + 1) * echelle), fill=255)
+    ImageDraw.Draw(blanc).ellipse((c - RAYON_ANNEAU * echelle, c - RAYON_ANNEAU * echelle,
+                                   c + RAYON_ANNEAU * echelle, c + RAYON_ANNEAU * echelle), fill=0)
+    img.paste((255, 255, 255, 255), (0, 0), blanc)
+    grand = TAILLE_ECUSSON * SURECHANTILLON
+    masque = Image.new("L", (grand, grand), 0)
+    r = RAYON_ECUSSON * echelle * SURECHANTILLON
+    ImageDraw.Draw(masque).ellipse((grand / 2 - r, grand / 2 - r, grand / 2 + r, grand / 2 + r), fill=255)
+    img.putalpha(masque.resize((TAILLE_ECUSSON, TAILLE_ECUSSON), Image.LANCZOS))
     return img
 
 
