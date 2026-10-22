@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-22T14:06:52+00:00",
+ "mis_a_jour": "2026-10-22T15:42:15+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -87,7 +87,7 @@
    "genre": "F",
    "equipes": [
     "33004-clamart-handball",
-    "33624-clamart-handball"
+    "33624-clamart-hb"
    ]
   },
   {
@@ -106,7 +106,7 @@
    "categorie": "U11",
    "genre": "F",
    "equipes": [
-    "33056-clamart-handball-2-filles"
+    "33056-clamart-hb-2-filles"
    ]
   },
   {
@@ -115,7 +115,7 @@
    "categorie": "U11",
    "genre": "Mixte",
    "equipes": [
-    "33056-clamart-handball-1"
+    "33056-clamart-hb-1"
    ]
   },
   {
@@ -124,7 +124,7 @@
    "categorie": "U11",
    "genre": "Mixte",
    "equipes": [
-    "33056-clamart-handball-3"
+    "33056-clamart-hb-3"
    ]
   }
  ],
@@ -224,7 +224,7 @@
     },
     {
      "place": 7,
-     "equipe": "CLUB OLYMPIQUE MULTISPORT DE BAGNEUX 1",
+     "equipe": "COM BAGNEUX 1",
      "points": 7,
      "joues": 4,
      "gagnes": 1,
@@ -237,7 +237,7 @@
     },
     {
      "place": 8,
-     "equipe": "ENT. SURESNES / NANTERRE",
+     "equipe": "ENT SURESNES / NANTERRE",
      "points": 6,
      "joues": 5,
      "gagnes": 1,
@@ -294,7 +294,7 @@
      "date": "2026-09-13T16:30:00+02:00",
      "journee": 1,
      "domicile": false,
-     "adversaire": "CLUB OLYMPIQUE MULTISPORT DE BAGNEUX 1",
+     "adversaire": "COM BAGNEUX 1",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
      "score_nous": 27,
      "score_eux": 22,
@@ -831,7 +831,7 @@
      "date": "2026-10-11T16:15:00+02:00",
      "journee": 5,
      "domicile": true,
-     "adversaire": "ENT. SURESNES / NANTERRE",
+     "adversaire": "ENT SURESNES / NANTERRE",
      "logo_adversaire": null,
      "score_nous": 32,
      "score_eux": 22,
@@ -1038,7 +1038,7 @@
      "date": null,
      "journee": 12,
      "domicile": true,
-     "adversaire": "CLUB OLYMPIQUE MULTISPORT DE BAGNEUX 1",
+     "adversaire": "COM BAGNEUX 1",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
      "score_nous": null,
      "score_eux": null,
@@ -1098,7 +1098,7 @@
      "date": null,
      "journee": 16,
      "domicile": false,
-     "adversaire": "ENT. SURESNES / NANTERRE",
+     "adversaire": "ENT SURESNES / NANTERRE",
      "logo_adversaire": null,
      "score_nous": null,
      "score_eux": null,
@@ -1214,7 +1214,7 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "LA CLICHOISE HANDBALL",
+     "equipe": "LA CLICHOISE HB",
      "points": 11,
      "joues": 4,
      "gagnes": 3,
@@ -1266,7 +1266,7 @@
     },
     {
      "place": 5,
-     "equipe": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
+     "equipe": "MARTIGUA SCL 1B",
      "points": 8,
      "joues": 4,
      "gagnes": 2,
@@ -1408,7 +1408,7 @@
      "date": "2026-09-20T10:45:00+02:00",
      "journee": 2,
      "domicile": false,
-     "adversaire": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
+     "adversaire": "MARTIGUA SCL 1B",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-70a63cd3-5685-4f61-9ab4-9c79f9fe74a4.webp",
      "score_nous": 17,
      "score_eux": 33,
@@ -1920,7 +1920,7 @@
      "date": null,
      "journee": 7,
      "domicile": false,
-     "adversaire": "LA CLICHOISE HANDBALL",
+     "adversaire": "LA CLICHOISE HB",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-06-22-2f1c6bfd-ad45-41d4-accf-c9ba0908f594.webp",
      "score_nous": null,
      "score_eux": null,
@@ -1950,7 +1950,7 @@
      "date": null,
      "journee": 9,
      "domicile": true,
-     "adversaire": "MARTIGUA SPORTS-CULTURE-LOISIRS 1B",
+     "adversaire": "MARTIGUA SCL 1B",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-70a63cd3-5685-4f61-9ab4-9c79f9fe74a4.webp",
      "score_nous": null,
      "score_eux": null,
@@ -2010,7 +2010,7 @@
      "date": null,
      "journee": 14,
      "domicile": true,
-     "adversaire": "LA CLICHOISE HANDBALL",
+     "adversaire": "LA CLICHOISE HB",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-06-22-2f1c6bfd-ad45-41d4-accf-c9ba0908f594.webp",
      "score_nous": null,
      "score_eux": null,
@@ -5240,9 +5240,9 @@
    "collectif": "u13-f"
   },
   {
-   "id": "33624-clamart-handball",
+   "id": "33624-clamart-hb",
    "nom": "U13 F",
-   "libelle_ffhb": "CLAMART HANDBALL",
+   "libelle_ffhb": "CLAMART HB",
    "competition": "U13F - CHAMPIONNATS",
    "detail": "Championnat",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -5295,7 +5295,7 @@
     },
     {
      "place": 4,
-     "equipe": "CLAMART HANDBALL",
+     "equipe": "CLAMART HB",
      "points": 0,
      "joues": 0,
      "gagnes": 0,
@@ -5308,7 +5308,7 @@
     },
     {
      "place": 5,
-     "equipe": "UNION SPORTIVE MUNICIPALE DE MALAKOFF",
+     "equipe": "USM MALAKOFF",
      "points": 0,
      "joues": 0,
      "gagnes": 0,
@@ -5356,7 +5356,7 @@
      "date": null,
      "journee": 3,
      "domicile": false,
-     "adversaire": "UNION SPORTIVE MUNICIPALE DE MALAKOFF",
+     "adversaire": "USM MALAKOFF",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
      "score_nous": null,
      "score_eux": null,
@@ -5416,7 +5416,7 @@
      "date": null,
      "journee": 8,
      "domicile": true,
-     "adversaire": "UNION SPORTIVE MUNICIPALE DE MALAKOFF",
+     "adversaire": "USM MALAKOFF",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
      "score_nous": null,
      "score_eux": null,
@@ -6375,9 +6375,9 @@
    "collectif": "u13-m"
   },
   {
-   "id": "33056-clamart-handball-2-filles",
+   "id": "33056-clamart-hb-2-filles",
    "nom": "U11 Mixte 2",
-   "libelle_ffhb": "CLAMART HANDBALL 2 (FILLES)",
+   "libelle_ffhb": "CLAMART HB 2 (FILLES)",
    "competition": "U11 MIXTE",
    "detail": "U11 Mixte · Honneur · Sud B",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -6391,7 +6391,7 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "ISSY HANDBALL MASCULIN 2",
+     "equipe": "ISSY HBM 2",
      "points": 6,
      "joues": 2,
      "gagnes": 2,
@@ -6430,7 +6430,7 @@
     },
     {
      "place": 4,
-     "equipe": "CLAMART HANDBALL 2 (FILLES)",
+     "equipe": "CLAMART HB 2 (FILLES)",
      "points": 1,
      "joues": 1,
      "gagnes": 0,
@@ -6461,7 +6461,7 @@
      "date": "2026-10-11T09:00:00+02:00",
      "journee": 3,
      "domicile": false,
-     "adversaire": "ISSY HANDBALL MASCULIN 2",
+     "adversaire": "ISSY HBM 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
      "score_nous": 3,
      "score_eux": 11,
@@ -6634,7 +6634,7 @@
      "date": null,
      "journee": 8,
      "domicile": true,
-     "adversaire": "ISSY HANDBALL MASCULIN 2",
+     "adversaire": "ISSY HBM 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
      "score_nous": null,
      "score_eux": null,
@@ -6689,9 +6689,9 @@
    "collectif": "u11-f-2"
   },
   {
-   "id": "33056-clamart-handball-1",
+   "id": "33056-clamart-hb-1",
    "nom": "U11 Mixte 1",
-   "libelle_ffhb": "CLAMART HANDBALL 1",
+   "libelle_ffhb": "CLAMART HB 1",
    "competition": "U11 MIXTE",
    "detail": "U11 Mixte · Honneur · Sud C",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -6705,7 +6705,7 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "HANDBALL CLUB ANTONY 2",
+     "equipe": "HBC ANTONY 2",
      "points": 6,
      "joues": 2,
      "gagnes": 2,
@@ -6718,7 +6718,7 @@
     },
     {
      "place": 2,
-     "equipe": "CLAMART HANDBALL 1",
+     "equipe": "CLAMART HB 1",
      "points": 3,
      "joues": 1,
      "gagnes": 1,
@@ -6731,7 +6731,7 @@
     },
     {
      "place": 3,
-     "equipe": "STADE DE VANVES HANDBALL 2",
+     "equipe": "STADE DE VANVES 2",
      "points": 2,
      "joues": 2,
      "gagnes": 0,
@@ -6744,7 +6744,7 @@
     },
     {
      "place": 4,
-     "equipe": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 3",
+     "equipe": "USM MALAKOFF 3",
      "points": 1,
      "joues": 1,
      "gagnes": 0,
@@ -6762,7 +6762,7 @@
      "date": "2026-09-27T14:00:00+02:00",
      "journee": 1,
      "domicile": true,
-     "adversaire": "STADE DE VANVES HANDBALL 2",
+     "adversaire": "STADE DE VANVES 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
      "score_nous": 36,
      "score_eux": 3,
@@ -6875,7 +6875,7 @@
      "date": "2026-11-07T14:00:00+01:00",
      "journee": 4,
      "domicile": false,
-     "adversaire": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 3",
+     "adversaire": "USM MALAKOFF 3",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
      "score_nous": null,
      "score_eux": null,
@@ -6894,7 +6894,7 @@
      "date": "2027-01-09T15:00:00+01:00",
      "journee": 10,
      "domicile": false,
-     "adversaire": "HANDBALL CLUB ANTONY 2",
+     "adversaire": "HBC ANTONY 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
      "score_nous": null,
      "score_eux": null,
@@ -6909,7 +6909,7 @@
      "date": null,
      "journee": 5,
      "domicile": true,
-     "adversaire": "HANDBALL CLUB ANTONY 2",
+     "adversaire": "HBC ANTONY 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
      "score_nous": null,
      "score_eux": null,
@@ -6924,7 +6924,7 @@
      "date": null,
      "journee": 6,
      "domicile": false,
-     "adversaire": "STADE DE VANVES HANDBALL 2",
+     "adversaire": "STADE DE VANVES 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
      "score_nous": null,
      "score_eux": null,
@@ -6939,7 +6939,7 @@
      "date": null,
      "journee": 9,
      "domicile": true,
-     "adversaire": "UNION SPORTIVE MUNICIPALE DE MALAKOFF 3",
+     "adversaire": "USM MALAKOFF 3",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
      "score_nous": null,
      "score_eux": null,
@@ -6964,9 +6964,9 @@
    "collectif": "u11-mixte-1"
   },
   {
-   "id": "33056-clamart-handball-3",
+   "id": "33056-clamart-hb-3",
    "nom": "U11 Mixte 3",
-   "libelle_ffhb": "CLAMART HANDBALL 3",
+   "libelle_ffhb": "CLAMART HB 3",
    "competition": "U11 MIXTE",
    "detail": "U11 Mixte · Honneur · Sud A",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -7032,7 +7032,7 @@
     },
     {
      "place": 5,
-     "equipe": "CLAMART HANDBALL 3",
+     "equipe": "CLAMART HB 3",
      "points": 0,
      "joues": 0,
      "gagnes": 0,

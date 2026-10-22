@@ -5,11 +5,11 @@ CALSCALE:GREGORIAN
 X-WR-CALNAME:Clamart Handball - U11 Mixte 2
 X-WR-TIMEZONE:Europe/Paris
 BEGIN:VEVENT
-UID:ffhb-2710039-33056-clamart-handball-2-filles@clamart-handball
-DTSTAMP:20261022T140803Z
+UID:ffhb-2710039-33056-clamart-hb-2-filles@clamart-handball
+DTSTAMP:20261022T154325Z
 DTSTART:20261011T070000Z
 DTEND:20261011T083000Z
-SUMMARY:ISSY HANDBALL MASCULIN 2 - Clamart Handball U11 Mixte 2 (3-11)
+SUMMARY:ISSY HBM 2 - Clamart Handball U11 Mixte 2 (3-11)
 DESCRIPTION:U11 MIXTE\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710039/
 LOCATION:CITE DES SPORTS SALLE 1\, 92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX
 END:VEVENT
