@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-22T23:38:02+00:00",
+ "mis_a_jour": "2026-10-23T10:01:52+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -1916,6 +1916,25 @@
      ]
     },
     {
+     "id": "2644493",
+     "date": "2026-12-12T20:45:00+01:00",
+     "journee": 10,
+     "domicile": false,
+     "adversaire": "STADE DE VANVES 1B",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644493/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "MAURICE-MAGNE",
+      "adresse": "12 RUE DANTON 92170 VANVES"
+     }
+    },
+    {
      "id": "2644483",
      "date": null,
      "journee": 7,
@@ -1958,21 +1977,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644490/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2644493",
-     "date": null,
-     "journee": 10,
-     "domicile": false,
-     "adversaire": "STADE DE VANVES 1B",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644493/",
      "feuille_de_match": null
     },
     {
@@ -5323,7 +5327,7 @@
    "matchs": [
     {
      "id": "2757741",
-     "date": null,
+     "date": "2026-11-07T14:00:00+01:00",
      "journee": 1,
      "domicile": false,
      "adversaire": "STADE DE VANVES",
@@ -5334,7 +5338,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757741/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "MAURICE-MAGNE",
+      "adresse": "12 RUE DANTON 92170 VANVES"
+     }
     },
     {
      "id": "2757744",
@@ -6890,6 +6898,21 @@
      }
     },
     {
+     "id": "2710077",
+     "date": "2026-11-21T14:00:00+01:00",
+     "journee": 6,
+     "domicile": false,
+     "adversaire": "STADE DE VANVES 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710077/",
+     "feuille_de_match": null
+    },
+    {
      "id": "2710088",
      "date": "2027-01-09T15:00:00+01:00",
      "journee": 10,
@@ -6917,21 +6940,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710073/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710077",
-     "date": null,
-     "journee": 6,
-     "domicile": false,
-     "adversaire": "STADE DE VANVES 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710077/",
      "feuille_de_match": null
     },
     {
