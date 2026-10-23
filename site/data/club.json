@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-23T10:01:52+00:00",
+ "mis_a_jour": "2026-10-23T13:49:18+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -6219,6 +6219,25 @@
    ],
    "matchs": [
     {
+     "id": "2758004",
+     "date": "2026-11-28T15:45:00+01:00",
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "AC BOULOGNE-BILLANCOURT 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2023-06-03-e7b37b0d-abbc-4623-9d38-ce7840be40f7.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2758004/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "PAUL-SOURIAU",
+      "adresse": "30 RUE DE SEINE 92100 BOULOGNE BILLANCOURT"
+     }
+    },
+    {
      "id": "2757996",
      "date": null,
      "journee": 1,
@@ -6261,21 +6280,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2758000/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2758004",
-     "date": null,
-     "journee": 4,
-     "domicile": false,
-     "adversaire": "AC BOULOGNE-BILLANCOURT 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2023-06-03-e7b37b0d-abbc-4623-9d38-ce7840be40f7.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2758004/",
      "feuille_de_match": null
     },
     {
