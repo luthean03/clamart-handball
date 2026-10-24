@@ -4,7 +4,7 @@ import { compteARebours, heureDuMatch, jourDuMatch, libelleBandeau, libelleJour 
 import { lierNumero, nomLisible, ordinal, rangAffiche } from '../donnees/phrase';
 import { classementDuMatch } from '../donnees/selecteurs';
 import type { Collectif, MatchAvecEquipe, Resultat } from '../donnees/types';
-import { useThemeClub } from '../theme/theme';
+import { POLICES, useThemeClub } from '../theme/theme';
 import { CONTENU_BOUTON, NOM_SANS_COUPURE } from './commun';
 import { Ecusson, EcussonClub } from './Ecusson';
 import { Forme, LIBELLES } from './PastilleResultat';
@@ -87,7 +87,7 @@ export function CarteEquipe({ collectif, prochain, forme, aujourdhui, rang, tota
             <Text variant="labelLarge" style={[styles.date, { color: bandeau.texte }]}>
               {libelleBandeau(prochain.date!)}
             </Text>
-            <Text variant="labelMedium" style={{ color: bandeau.doux, fontWeight: '700' }}>
+            <Text variant="labelMedium" style={{ color: bandeau.doux, fontFamily: POLICES.gras }}>
               {compte}
             </Text>
           </View>
@@ -140,8 +140,9 @@ const styles = StyleSheet.create({
   colonne: { width: COLONNE, alignItems: 'center', gap: 6 },
   nom: { width: COLONNE, textAlign: 'center', fontSize: 13, lineHeight: INTERLIGNE_NOM, minHeight: 2 * INTERLIGNE_NOM },
   centreDuel: { flex: 1, alignItems: 'center', gap: 4, paddingTop: 18 },
-  vs: { textAlign: 'center', fontWeight: '900' },
-  heure: { textAlign: 'center', fontWeight: '700' },
+  // Poids par la famille Nunito, jamais par fontWeight : sur Android, un poids explicite remplace Nunito par Roboto.
+  vs: { textAlign: 'center', fontFamily: POLICES.titre },
+  heure: { textAlign: 'center', fontFamily: POLICES.gras },
   details: { alignItems: 'center', gap: 4, paddingHorizontal: 16, paddingTop: 8, paddingBottom: 8 },
   centre: { textAlign: 'center' },
   forme: { marginTop: 4, alignItems: 'center' },

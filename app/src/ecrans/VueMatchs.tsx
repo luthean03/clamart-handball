@@ -14,7 +14,8 @@ interface Props {
   club: Club;
   maintenant: Date;
   suivis: string[];
-  onOuvrirMatch: (id: string) => void;
+  /** `equipeId` : l'équipe du club dont c'est le match (un derby figure chez les deux). */
+  onOuvrirMatch: (id: string, equipeId: string) => void;
   rafraichir?: () => void;
   rafraichissement?: boolean;
 }
@@ -111,7 +112,7 @@ export function VueMatchs({ club, maintenant, suivis, onOuvrirMatch, rafraichir,
 interface PropsListe {
   elements: ElementListe[];
   maintenant: Date;
-  onOuvrirMatch: (id: string) => void;
+  onOuvrirMatch: (id: string, equipeId: string) => void;
   refreshControl?: ReactElement<RefreshControlProps>;
 }
 
@@ -168,7 +169,7 @@ function ListeSaison({ elements, maintenant, onOuvrirMatch, refreshControl }: Pr
             dernier && { borderBottomLeftRadius: r, borderBottomRightRadius: r, marginBottom: 8 },
           ]}
         >
-          <LigneMatch match={item.match} maintenant={maintenant} afficherCompetition onPress={() => onOuvrirMatch(item.match.id)} />
+          <LigneMatch match={item.match} maintenant={maintenant} afficherCompetition onPress={() => onOuvrirMatch(item.match.id, item.match.equipe.id)} />
         </View>
       );
     },

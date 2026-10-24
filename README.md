@@ -137,7 +137,8 @@ Mise en place (une fois) : projet Firebase, app Android `fr.clamarthandball.app`
 - Source : ffhandball.fr (données publiques), citée en bas de chaque page.
 - Aucun numéro de licence, aucun nom d'arbitre ou d'officiel n'est repris.
 - Les joueurs de la feuille de match sont collectés par match, sous la forme initiale + nom
-  et nombre de buts. Seuls ceux qui ont marqué sont affichés ; les joueurs masqués sont exclus.
+  numéro de maillot et nombre de buts, pour les deux équipes. La fiche du match les affiche tous (0 but compris),
+  sans aucun classement de joueurs ; les joueurs masqués sont exclus.
   Un joueur qui le demande est retiré en ajoutant son nom à `stats_joueurs.joueurs_masques`.
 - Le détail et l'exercice des droits sont dans la politique de confidentialité :
   https://luthean03.github.io/clamart-handball/confidentialite.html

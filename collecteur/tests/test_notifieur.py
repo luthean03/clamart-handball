@@ -50,7 +50,7 @@ def test_rappels_seulement_a_partir_de_16h30_pour_le_lendemain():
     apres = datetime(2026, 10, 16, 15, 0, tzinfo=timezone.utc)    # ven. 17 h à Paris
     assert messages_rappels(club, avant, "Europe/Paris", "16:30") == []
     rappels = messages_rappels(club, apres, "Europe/Paris", "16:30")
-    m = next(r for r in rappels if r.cle == "rappel:seniors-m:2734038")   # sam. 17 oct. 18:00
+    m = next(r for r in rappels if r.cle == "rappel:seniors-m:2734038:20261017T1800")   # sam. 17 oct. 18:00
     assert m.sujet == "rappels-seniors-m"
     assert m.titre == "Demain 18:00 · Seniors M"
     assert m.corps == "Contre Association Sportive St-Cyr/Fontenay Handball 78 · Gymnase du Petit Clamart (domicile)"
@@ -63,7 +63,7 @@ def test_rappel_le_jour_du_changement_d_heure():
     eq["matchs"].append({**copy.deepcopy(eq["matchs"][-1]), "id": "999", "date": "2026-10-25T00:30:00+02:00",
                          "resultat": None, "score_nous": None, "score_eux": None})
     sam_soir = datetime(2026, 10, 24, 16, 0, tzinfo=timezone.utc)          # sam. 24 oct., 18 h à Paris (UTC+2)
-    assert any(r.cle == f"rappel:{eq['collectif']}:999" for r in messages_rappels(club, sam_soir, "Europe/Paris", "16:30"))
+    assert any(r.cle == f"rappel:{eq['collectif']}:999:20261025T0030" for r in messages_rappels(club, sam_soir, "Europe/Paris", "16:30"))
 
 
 def test_premier_deploiement_marque_sans_envoyer():
@@ -94,3 +94,24 @@ def test_purge_apres_60_jours():
     vieux = (PARIS_LUNDI_MATIN - CONSERVATION - timedelta(days=1)).isoformat()
     recent = PARIS_LUNDI_MATIN.isoformat()
     assert purger({"a": vieux, "b": recent}, PARIS_LUNDI_MATIN) == {"b": recent}
+
+
+VEN_17H = datetime(2026, 10, 16, 15, 0, tzinfo=timezone.utc)    # ven. 16 oct., 17 h à Paris
+
+
+def test_rappel_d_un_match_reprogramme_repart():
+    club = club_v2()
+    deja = {m.cle: VEN_17H.isoformat() for m in messages_rappels(club, VEN_17H, "Europe/Paris", "16:30")}
+    eq = next(e for e in club["equipes"] if any(m["id"] == "2734038" for m in e["matchs"]))
+    match = next(m for m in eq["matchs"] if m["id"] == "2734038")
+    match["date"] = "2026-10-17T20:30:00+02:00"                    # même jour, nouvelle heure
+    a_envoyer, _ = planifier(club, deja, VEN_17H, REGLAGES)
+    assert [m.titre for m in a_envoyer if m.sujet == "rappels-seniors-m"] == ["Demain 20:30 · Seniors M"]
+
+
+def test_rappel_deja_envoye_avec_l_ancienne_cle_sans_date():
+    club = club_v2()
+    rappels = messages_rappels(club, VEN_17H, "Europe/Paris", "16:30")
+    anciennes = {m.cle.rsplit(":", 1)[0]: VEN_17H.isoformat() for m in rappels}
+    a_envoyer, _ = planifier(club, anciennes, VEN_17H, REGLAGES)
+    assert not any(m.cle.startswith("rappel:") for m in a_envoyer)

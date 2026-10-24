@@ -1,9 +1,14 @@
-import { lienNotification, parametre } from './liens';
+import { lienNotification, parametre, routeMatch } from './liens';
 
 test('paramètre de route : chaîne, tableau ou absent', () => {
   expect(parametre('a')).toBe('a');
   expect(parametre(['a', 'b'])).toBe('a');
   expect(parametre(undefined)).toBeUndefined();
+});
+
+test('route de la fiche match : avec l’équipe du club (derby), ou seule', () => {
+  expect(routeMatch('2710070', '33056-clamart-handball-1')).toBe('/match/2710070?equipe=33056-clamart-handball-1');
+  expect(routeMatch('2710070')).toBe('/match/2710070');
 });
 
 test('lien de notification', () => {

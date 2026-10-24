@@ -112,7 +112,7 @@ export function VueAccueil(p: PropsAccueil) {
                   match={m}
                   maintenant={p.maintenant}
                   afficherDate
-                  onPress={() => p.onOuvrirMatch(m.id)}
+                  onPress={() => p.onOuvrirMatch(m.id, m.equipe.id)}
                 />
               ))
             )}

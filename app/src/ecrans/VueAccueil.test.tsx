@@ -4,7 +4,7 @@ import { club } from '../../test/donnees';
 import { prochainMatchDate } from '../donnees/selecteurs';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
-import { themeClair, themeSombre } from '../theme/theme';
+import { POLICES, themeClair, themeSombre } from '../theme/theme';
 import { VueAccueil, type PropsAccueil } from './VueAccueil';
 
 /** Vendredi 16 oct. 2026, 11 h 30 : le prochain match de Seniors F 1 est dans deux jours. */
@@ -152,7 +152,7 @@ test('tout le club : 5 prochains matchs avec leur date, puis « Tous les matchs 
   expect(screen.getByText('17/10')).toBeOnTheScreen();
   expect(screen.getByText('18/10')).toBeOnTheScreen();
   fireEvent.press(screen.getAllByTestId('ligne-match')[0]);
-  expect(p.onOuvrirMatch).toHaveBeenCalledWith('2734038');
+  expect(p.onOuvrirMatch).toHaveBeenCalledWith('2734038', '33244-clamart-handball');
   fireEvent.press(screen.getByText('Tous les matchs'));
   expect(p.onTousLesMatchs).toHaveBeenCalled();
 });
@@ -212,7 +212,7 @@ test('le bandeau de date prend les couleurs du thème, clair puis sombre', () =>
   accueil({ suivis: ['seniors-m'] });
   expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeClair.club.bandeau.fond);
   expect(StyleSheet.flatten(screen.getByText('demain').props.style).color).toBe(themeClair.club.bandeau.doux);
-  expect(StyleSheet.flatten(screen.getByText('demain').props.style).fontWeight).toBe('700');
+  expect(StyleSheet.flatten(screen.getByText('demain').props.style).fontFamily).toBe(POLICES.gras);
   screen.unmount();
   rendu(<VueAccueil {...propsAccueil({ suivis: ['seniors-m'] })} />, themeSombre);
   expect(StyleSheet.flatten(screen.getByTestId('bandeau-date').props.style).backgroundColor).toBe(themeSombre.club.bandeau.fond);

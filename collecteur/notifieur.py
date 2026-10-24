@@ -88,7 +88,7 @@ def messages_rappels(club: dict, maintenant: datetime, fuseau: str, a_partir_de:
         cote = "domicile" if m["domicile"] else "extérieur"
         lieu = f"{nom_lisible(salle)} ({cote})" if salle else cote
         sortie.append(Message(
-            cle=f"rappel:{eq['collectif']}:{m['id']}",
+            cle=cle_rappel(eq["collectif"], m["id"], debut),
             sujet=f"rappels-{eq['collectif']}",
             titre=f"Demain {debut.strftime('%H:%M')} · {eq['nom']}",
             corps=f"Contre {nom_lisible(m['adversaire'])} · {lieu}",
@@ -96,6 +96,16 @@ def messages_rappels(club: dict, maintenant: datetime, fuseau: str, a_partir_de:
             instant=m["date"],
         ))
     return sorted(sortie, key=lambda x: (x.instant, x.cle))
+
+
+def cle_rappel(collectif: str, match_id, debut: datetime) -> str:
+    """La date du coup d'envoi fait partie de la clé : un match reprogrammé après son rappel en reçoit un nouveau."""
+    return f"rappel:{collectif}:{match_id}:{debut.strftime('%Y%m%dT%H%M')}"
+
+
+def deja_envoye(cle: str, registre: dict) -> bool:
+    """Une clé de rappel sans date (avant l'ajout de la date) vaut envoi, le temps que le registre la purge."""
+    return cle in registre or (cle.startswith("rappel:") and cle.rsplit(":", 1)[0] in registre)
 
 
 def purger(registre: dict, maintenant: datetime) -> dict:
@@ -111,7 +121,7 @@ def planifier(club: dict, registre: dict | None, maintenant: datetime, reglages:
         # Premier déploiement : ne pas envoyer une rafale de vieux scores.
         return [], {m.cle: horodatage for m in resultats}
     registre = purger(registre, maintenant)
-    a_envoyer = [m for m in resultats + rappels if m.cle not in registre]
+    a_envoyer = [m for m in resultats + rappels if not deja_envoye(m.cle, registre)]
     return a_envoyer[: reglages["max_par_passage"]], registre
 
 

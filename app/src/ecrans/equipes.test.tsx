@@ -87,6 +87,13 @@ test('fiche équipe : tous les matchs de la saison', () => {
   expect(screen.getAllByTestId('ligne-match')).toHaveLength(matchsDuCollectif(club, 'seniors-f-1').length);
 });
 
+test('fiche équipe : un match s’ouvre avec son équipe (un derby figure chez les deux)', () => {
+  const p = fiche('seniors-m');
+  const premier = matchsDuCollectif(club, 'seniors-m')[0];
+  fireEvent.press(screen.getAllByTestId('ligne-match')[0]);
+  expect(p.onOuvrirMatch).toHaveBeenCalledWith(premier.id, premier.equipe.id);
+});
+
 test('fiche équipe : chaque ligne de match affiche sa date', () => {
   fiche('seniors-f-1');
   const lignes = screen.getAllByTestId('ligne-match');
