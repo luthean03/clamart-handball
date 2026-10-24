@@ -40,6 +40,10 @@ export const prochainMatchDate = (club: Club, collectif: string, maintenant: Dat
 export const prochainsMatchsClub = (club: Club, maintenant: Date, n = 5): MatchAvecEquipe[] =>
   aVenir(tousLesMatchs(club), maintenant).slice(0, n);
 
+/** Les n prochains matchs des équipes suivies, toutes équipes mêlées, dans l'ordre : une carte chacun sur l'accueil. */
+export const prochainsMatchsSuivis = (club: Club, suivis: string[], maintenant: Date, n = 5): MatchAvecEquipe[] =>
+  aVenir(tousLesMatchs(club).filter((m) => suivis.includes(m.equipe.collectif)), maintenant).slice(0, n);
+
 /** Place au classement de la compétition du match ; absente pour une compétition sans classement (coupe). */
 export function classementDuMatch(m: MatchAvecEquipe): { place: number; nb: number } | undefined {
   const { classement, place, nb_equipes } = m.equipe;

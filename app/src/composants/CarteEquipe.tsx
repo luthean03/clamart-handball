@@ -11,7 +11,7 @@ import { Forme, LIBELLES } from './PastilleResultat';
 
 interface Props {
   collectif: Collectif;
-  /** Prochain match daté du collectif : sans lui, l'accueil n'affiche pas de carte. */
+  /** Match à venir que montre la carte (l'accueil en affiche une par match, jusqu'à 5). */
   prochain: MatchAvecEquipe;
   forme: Resultat[];
   /** Jour local, 'AAAA-MM-JJ' : sert au compte à rebours du bandeau. */
