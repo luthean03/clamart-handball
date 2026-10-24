@@ -340,8 +340,8 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
                     "nous": x.get("equipe_libelle") == lib or str(x.get("equipeId")) in ids_nous}
                     for x in lignes]
 
-        # --- matchs
-        prochain_traite = False
+        # --- matchs : salle de tout match joué ou daté (à venir, ou commencé sans score publié) ; les matchs
+        #     pas encore programmés n'ont pas de salle connue, leur page n'est pas téléchargée
         for r, dom in items:
             s1, s2 = ff._int(r.get("equipe1Score")), ff._int(r.get("equipe2Score"))
             joue = s1 is not None and s2 is not None
@@ -361,8 +361,7 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
                 "url_ffhb": f"{ff.BASE}{chemin}",
                 "feuille_de_match": ff.url_feuille_de_match(r.get("fdmCode")) if joue else None,
             }
-            a_venir = not joue and bool(r.get("date")) and datetime.fromisoformat(r["date"]) >= maintenant
-            if joue or (a_venir and not prochain_traite):
+            if joue or r.get("date"):
                 try:
                     nous_id = r.get("equipe1Id") if dom else r.get("equipe2Id")
                     info = salle_et_buteurs(chemin, nous_id, joue, r.get("date"), maintenant)
@@ -372,7 +371,6 @@ def collecter_competition(comp: dict, page: dict, maintenant: datetime) -> list[
                         m["buteurs_adverses"] = info.get("buteurs_adverses") or []
                 except Exception as err:
                     erreur(f"Match {m['id']} ({equipe['nom']}) : {err}")
-                prochain_traite = prochain_traite or a_venir
             equipe["matchs"].append(m)
 
         joues = [m for m in equipe["matchs"] if m["resultat"]]
