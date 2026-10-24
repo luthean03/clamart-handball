@@ -7,7 +7,7 @@ import { club, MAR_SOIR } from '../../test/donnees';
 import { contenuDuBouton } from '../../test/boutons';
 import { rendu } from '../../test/rendu';
 import { nomLisible } from '../donnees/phrase';
-import { matchsDuCollectif } from '../donnees/selecteurs';
+import { equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
 import type { Club } from '../donnees/types';
 import { VueEquipe } from './VueEquipe';
 import { VueEquipes } from './VueEquipes';
@@ -44,13 +44,19 @@ test('le suivi est une étoile, jamais une cloche (pas de notifications avant le
   expect(screen.queryByText(/bell/, icones)).toBeNull();
 });
 
-test('liste des équipes : noms sans coupure en plein mot, rang en espaces insécables', () => {
+test('liste des équipes : les compétitions seules, sans rang (une équipe peut avoir plusieurs classements)', () => {
+  rendu(<VueEquipes club={club} suivis={[]} onBasculer={jest.fn()} onOuvrirEquipe={jest.fn()} />);
+  expect(screen.queryByText(/\d+(e|er)\s+sur\s+\d+/)).toBeNull();
+  const details = [...new Set(equipesDuCollectif(club, 'seniors-f-1').map((e) => e.detail))].join(' · ');
+  expect(screen.getByText(details)).toBeOnTheScreen();
+});
+
+test('liste des équipes : noms sans coupure en plein mot', () => {
   rendu(<VueEquipes club={club} suivis={[]} onBasculer={jest.fn()} onOuvrirEquipe={jest.fn()} />);
   const nom = screen.getByText('Seniors F 1');
   expect(nom).toHaveProp('android_hyphenationFrequency', 'none');
   expect(nom).toHaveProp('textBreakStrategy', 'simple');
   expect(nom.props.children).toBe('Seniors F\u00A01');
-  expect(screen.getByText(/3e sur 11/).props.children).toContain('3e\u00A0sur\u00A011');
 });
 
 test('liste ouverte depuis Réglages ou l’Accueil : bouton retour et titre « Mes équipes »', () => {

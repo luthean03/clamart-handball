@@ -2,8 +2,8 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Appbar, IconButton, List, Surface, Text } from 'react-native-paper';
 import { NOM_SANS_COUPURE } from '../composants/commun';
 import { EnTeteSection } from '../composants/EnTeteSection';
-import { lierNumero, rangAffiche } from '../donnees/phrase';
-import { collectifsParCategorie, equipePrincipale, equipesDuCollectif } from '../donnees/selecteurs';
+import { lierNumero } from '../donnees/phrase';
+import { collectifsParCategorie, equipesDuCollectif } from '../donnees/selecteurs';
 import type { Club } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
 
@@ -32,9 +32,9 @@ export function VueEquipes({ club, suivis, onBasculer, onOuvrirEquipe, onRetour 
               <View style={[styles.liste, { borderRadius: t.rayonCarte }]}>
                 {g.collectifs.map((c) => {
                   const suivi = suivis.includes(c.id);
-                  const principale = equipePrincipale(club, c.id);
+                  // Les compétitions seules : une équipe peut avoir plusieurs classements (U13 : délayages puis championnat),
+                  // un seul rang ici serait trompeur. Les classements sont dans la fiche de l'équipe.
                   const details = [...new Set(equipesDuCollectif(club, c.id).map((e) => e.detail))].join(' · ');
-                  const place = principale?.place && principale.nb_equipes ? `\n${rangAffiche(principale.place, principale.nb_equipes)}` : '';
                   return (
                     <List.Item
                       key={c.id}
@@ -43,7 +43,7 @@ export function VueEquipes({ club, suivis, onBasculer, onOuvrirEquipe, onRetour 
                           {lierNumero(c.nom)}
                         </Text>
                       )}
-                      description={`${details}${place}`}
+                      description={details}
                       descriptionNumberOfLines={3}
                       onPress={() => onOuvrirEquipe(c.id)}
                       right={() => (
