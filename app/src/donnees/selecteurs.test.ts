@@ -1,7 +1,7 @@
 import { club, MAR_SOIR } from '../../test/donnees';
 import {
   classementDuMatch, collectifsParCategorie, equipePrincipale, equipesDuCollectif,
-  matchParId, matchsDuCollectif, prochainMatchDate, prochainsMatchsClub, scoreEnAttente, serieEnCours, tousLesMatchs,
+  matchParId, matchsDuCollectif, prochainMatchDate, prochainsMatchsClub, prochainsMatchsSuivis, scoreEnAttente, serieEnCours, tousLesMatchs,
 } from './selecteurs';
 import type { Club } from './types';
 
@@ -110,4 +110,17 @@ test('prochainsMatchsClub : 5 au plus, datés, sans résultat, dans l’ordre', 
   expect(dates[0]).toBe('2026-10-17T18:00:00+02:00');
   expect(prochainsMatchsClub(club, MAR_SOIR, 2)).toHaveLength(2);
   expect(prochainsMatchsClub(club, new Date('2027-07-01T12:00:00+02:00'))).toEqual([]);
+});
+
+test('prochainsMatchsSuivis : les 5 prochains matchs des équipes suivies, toutes équipes mêlées, par date', () => {
+  const date = (suivis: string[]) => prochainsMatchsSuivis(club, suivis, MAR_SOIR).map((m) => `${m.date!.slice(0, 10)} ${m.equipe.collectif}`);
+  // une seule équipe : tous ses prochains matchs datés, pas seulement le premier
+  expect(date(['seniors-m'])).toEqual(['2026-10-17 seniors-m', '2026-12-06 seniors-m', '2027-02-27 seniors-m']);
+  // plusieurs équipes : les 5 plus proches, la plus lointaine sort
+  expect(date(['seniors-f-1', 'seniors-m', 'u18-f'])).toEqual([
+    '2026-10-17 seniors-m', '2026-10-18 seniors-f-1', '2026-11-07 u18-f', '2026-11-08 seniors-f-1', '2026-12-06 seniors-m',
+  ]);
+  expect(prochainsMatchsSuivis(club, ['seniors-m'], MAR_SOIR, 2)).toHaveLength(2);
+  expect(prochainsMatchsSuivis(club, [], MAR_SOIR)).toEqual([]);
+  expect(prochainsMatchsSuivis(club, ['equipe-disparue'], MAR_SOIR)).toEqual([]);
 });

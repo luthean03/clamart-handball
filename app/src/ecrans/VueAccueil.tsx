@@ -8,7 +8,7 @@ import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
 import { ProtectionBarreEtat } from '../composants/ProtectionBarreEtat';
 import { jourLocal, libelleMiseAJour, salutation } from '../donnees/dates';
-import { formeRecente, matchsDuCollectif, prochainMatchDate, prochainsMatchsClub } from '../donnees/selecteurs';
+import { formeRecente, matchsDuCollectif, prochainsMatchsClub, prochainsMatchsSuivis } from '../donnees/selecteurs';
 import type { Club, MatchAvecEquipe } from '../donnees/types';
 import { useThemeClub } from '../theme/theme';
 
@@ -35,15 +35,12 @@ const enCapitale = (texte: string) => texte.charAt(0).toUpperCase() + texte.slic
 export function VueAccueil(p: PropsAccueil) {
   const t = useThemeClub();
   const aujourdhui = jourLocal(p.maintenant);
-  // Une équipe suivie sans prochain match daté n'a pas de carte.
-  const cartes = p.club.collectifs
-    .filter((c) => p.suivis.includes(c.id))
-    .flatMap((c) => {
-      const prochain = prochainMatchDate(p.club, c.id, p.maintenant);
-      return prochain ? [{ collectif: c, prochain }] : [];
-    })
-    // Le match le plus proche en premier ; à date égale, l'ordre des équipes est conservé (tri stable).
-    .sort((a, b) => Date.parse(a.prochain.date!) - Date.parse(b.prochain.date!));
+  // Une carte par match : les 5 prochains matchs datés des équipes suivies, mêlés par date (une seule équipe suivie
+  // en a donc jusqu'à 5). Une équipe suivie sans match à venir n'a pas de carte.
+  const cartes = prochainsMatchsSuivis(p.club, p.suivis, p.maintenant).flatMap((prochain) => {
+    const collectif = p.club.collectifs.find((c) => c.id === prochain.equipe.collectif);
+    return collectif ? [{ collectif, prochain }] : [];
+  });
   const duClub = prochainsMatchsClub(p.club, p.maintenant);
 
   return (
@@ -85,7 +82,7 @@ export function VueAccueil(p: PropsAccueil) {
         ) : (
           <CarrouselEquipes
             cartes={cartes.map(({ collectif, prochain }) => ({
-              cle: collectif.id,
+              cle: `${prochain.equipe.id}-${prochain.id}`,
               carte: {
                 collectif,
                 prochain,
