@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-24T15:32:44+00:00",
+ "mis_a_jour": "2026-10-24T18:23:13+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3326,6 +3326,21 @@
        "buts": 0
       }
      ]
+    },
+    {
+     "id": "2766739",
+     "date": null,
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "TS VICINOIS 88 HB",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-25-54c7758a-0311-454e-9c73-9d84b1779483.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-199600/rencontre-2766739/",
+     "feuille_de_match": null
     }
    ],
    "bilan": {
@@ -3482,6 +3497,21 @@
        "buts": 0
       }
      ]
+    },
+    {
+     "id": "2766998",
+     "date": null,
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "TU VERRIERES-LE-BUISSON",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-10-28-440b640d-4b72-444f-ac76-feead840a563.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-199601/rencontre-2766998/",
+     "feuille_de_match": null
     }
    ],
    "bilan": {
@@ -6598,6 +6628,25 @@
      ]
     },
     {
+     "id": "2710055",
+     "date": "2026-12-13T12:00:00+01:00",
+     "journee": 9,
+     "domicile": false,
+     "adversaire": "COM BAGNEUX",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710055/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "HENRI-WALLON",
+      "adresse": "1 AVENUE DE STALINGRAD 92220 BAGNEUX"
+     }
+    },
+    {
      "id": "2710033",
      "date": null,
      "journee": 1,
@@ -6670,21 +6719,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710054/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710055",
-     "date": null,
-     "journee": 9,
-     "domicile": false,
-     "adversaire": "COM BAGNEUX",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710055/",
      "feuille_de_match": null
     },
     {
