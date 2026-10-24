@@ -5,7 +5,7 @@ import { useAgenda } from '../../composants/useAgenda';
 import { useMaintenant } from '../../donnees/maintenant';
 import { useClub } from '../../donnees/requetes';
 import { VueEquipe } from '../../ecrans/VueEquipe';
-import { parametre } from '../../notifications/liens';
+import { parametre, routeMatch } from '../../notifications/liens';
 import { useSuivi } from '../../suivi/suivi';
 
 export default function Equipe() {
@@ -26,7 +26,7 @@ export default function Equipe() {
         maintenant={maintenant}
         suivi={suivi}
         onBasculer={() => basculer(collectif)}
-        onOuvrirMatch={(id) => routeur.push(`/match/${id}`)}
+        onOuvrirMatch={(id, equipe) => routeur.push(routeMatch(id, equipe) as never)}
         onRetour={() => (routeur.canGoBack() ? routeur.back() : routeur.replace('/'))}
         onAgenda={() => agenda.ouvrir(club, collectif)}
         onOuvrirLien={(url) => sansRejet(() => ouvrirLien(url))}

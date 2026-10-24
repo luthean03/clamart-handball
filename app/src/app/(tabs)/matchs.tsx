@@ -3,6 +3,7 @@ import { EtatSansDonnees } from '../../composants/EtatSansDonnees';
 import { useMaintenant } from '../../donnees/maintenant';
 import { useClub } from '../../donnees/requetes';
 import { VueMatchs } from '../../ecrans/VueMatchs';
+import { routeMatch } from '../../notifications/liens';
 import { useSuivi } from '../../suivi/suivi';
 
 export default function Matchs() {
@@ -16,7 +17,7 @@ export default function Matchs() {
       club={club}
       maintenant={maintenant}
       suivis={suivis}
-      onOuvrirMatch={(id) => routeur.push(`/match/${id}`)}
+      onOuvrirMatch={(id, equipe) => routeur.push(routeMatch(id, equipe) as never)}
       rafraichir={rafraichir}
       rafraichissement={rafraichissement}
     />

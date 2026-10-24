@@ -15,7 +15,7 @@ interface Props {
   maintenant: Date;
   suivi: boolean;
   onBasculer: () => void;
-  onOuvrirMatch: (id: string) => void;
+  onOuvrirMatch: (id: string, equipeId: string) => void;
   onRetour: () => void;
   /** « S'abonner au calendrier » : ouvre le panneau d'agenda, en mode saison. */
   onAgenda: () => void;
@@ -88,7 +88,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
           <>
             <Carte>
               {matchsDuCollectif(club, collectifId).map((m) => (
-                <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={maintenant} afficherCompetition afficherDate onPress={() => onOuvrirMatch(m.id)} />
+                <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={maintenant} afficherCompetition afficherDate onPress={() => onOuvrirMatch(m.id, m.equipe.id)} />
               ))}
             </Carte>
             <Button mode="contained-tonal" icon="calendar-sync" contentStyle={CONTENU_BOUTON} style={styles.abonner} onPress={onAgenda}>

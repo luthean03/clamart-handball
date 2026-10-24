@@ -152,7 +152,7 @@ test('tout le club : 5 prochains matchs avec leur date, puis « Tous les matchs 
   expect(screen.getByText('17/10')).toBeOnTheScreen();
   expect(screen.getByText('18/10')).toBeOnTheScreen();
   fireEvent.press(screen.getAllByTestId('ligne-match')[0]);
-  expect(p.onOuvrirMatch).toHaveBeenCalledWith('2734038');
+  expect(p.onOuvrirMatch).toHaveBeenCalledWith('2734038', '33244-clamart-handball');
   fireEvent.press(screen.getByText('Tous les matchs'));
   expect(p.onTousLesMatchs).toHaveBeenCalled();
 });

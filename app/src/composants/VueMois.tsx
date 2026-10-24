@@ -18,7 +18,7 @@ interface Props {
   mois: string[];
   moisInitial: string;
   maintenant: Date;
-  onOuvrirMatch: (id: string) => void;
+  onOuvrirMatch: (id: string, equipeId: string) => void;
   /** Affiché sous la grille à la place des matchs quand le filtre n'en laisse aucun de toute la saison. */
   vide?: ReactNode;
   refreshControl?: ReactElement<RefreshControlProps>;
@@ -154,7 +154,7 @@ export function VueMois({ matchs, mois, moisInitial, maintenant, onOuvrirMatch, 
                 <EnTeteJour jour={jour} detail={nbMatchs(duJour.length)} />
                 <View style={[styles.carte, { backgroundColor: t.colors.surface, borderRadius: t.rayonCarte }]}>
                   {duJour.map((m) => (
-                    <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={maintenant} onPress={() => onOuvrirMatch(m.id)} />
+                    <LigneMatch key={`${m.equipe.id}-${m.id}`} match={m} maintenant={maintenant} onPress={() => onOuvrirMatch(m.id, m.equipe.id)} />
                   ))}
                 </View>
               </View>

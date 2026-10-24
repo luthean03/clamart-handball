@@ -71,7 +71,7 @@ test('ouvrir un match', () => {
   const onOuvrirMatch = jest.fn();
   matchs({ onOuvrirMatch });
   fireEvent.press(screen.getAllByTestId('ligne-match')[0]);
-  expect(onOuvrirMatch).toHaveBeenCalledWith(expect.any(String));
+  expect(onOuvrirMatch).toHaveBeenCalledWith(expect.any(String), expect.stringMatching(/clamart/));
 });
 
 test('le filtre a une cible tactile d’au moins 48 dp', () => {
@@ -298,5 +298,5 @@ test('vue mois : ouvrir un match', () => {
   const onOuvrirMatch = jest.fn();
   ouvrirMois({ onOuvrirMatch });
   fireEvent.press(screen.getAllByTestId('ligne-match')[0]);
-  expect(onOuvrirMatch).toHaveBeenCalledWith(expect.any(String));
+  expect(onOuvrirMatch).toHaveBeenCalledWith(expect.any(String), expect.stringMatching(/clamart/));
 });

@@ -4,6 +4,7 @@ import { useAgenda } from '../../composants/useAgenda';
 import { useMaintenant } from '../../donnees/maintenant';
 import { useClub } from '../../donnees/requetes';
 import { VueAccueil } from '../../ecrans/VueAccueil';
+import { routeMatch } from '../../notifications/liens';
 import { useSuivi } from '../../suivi/suivi';
 
 export default function Accueil() {
@@ -23,7 +24,7 @@ export default function Accueil() {
         majRequise={majRequise}
         rafraichissement={rafraichissement}
         rafraichir={rafraichir}
-        onOuvrirMatch={(id, equipe) => routeur.push(equipe ? `/match/${id}?equipe=${equipe}` : `/match/${id}`)}
+        onOuvrirMatch={(id, equipe) => routeur.push(routeMatch(id, equipe) as never)}
         onAgenda={(m) => agenda.ouvrir(club, m.equipe.collectif, m)}
         onReglages={() => routeur.push('/reglages')}
         onChoisirEquipes={() => routeur.push('/gerer-equipes')}
