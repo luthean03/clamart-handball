@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-24T09:31:06+00:00",
+ "mis_a_jour": "2026-10-24T11:59:43+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2705,7 +2705,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673808/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "HAUTPOUL",
+      "adresse": "48 RUE D'HAUTPOUL 75019 PARIS 19e"
+     }
     },
     {
      "id": "2673828",
@@ -2720,7 +2724,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673828/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "MICHELINE OSTERMEYER",
+      "adresse": "4  ESPLANADE NATHALIE SARRAUTE 75018 PARIS 18e"
+     }
     },
     {
      "id": "2673800",
@@ -4229,7 +4237,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18m-championnat-92-75-33470/poule-197951/rencontre-2740462/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "charles coste",
+      "adresse": "35 avenue du reverend pere corentin cloarec 92270 BOIS COLOMBES"
+     }
     },
     {
      "id": "2740465",
@@ -4495,7 +4507,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740588/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
     },
     {
      "id": "2740596",
@@ -6914,7 +6930,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710077/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "MAURICE-MAGNE",
+      "adresse": "12 RUE DANTON 92170 VANVES"
+     }
     },
     {
      "id": "2710088",
@@ -6929,7 +6949,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710088/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LIONEL-TERRAY",
+      "adresse": "164 BIS AVENUE DU PRESIDENT-KENNEDY 92160 ANTONY"
+     }
     },
     {
      "id": "2710073",
@@ -7070,7 +7094,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710993/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
     },
     {
      "id": "2710989",
