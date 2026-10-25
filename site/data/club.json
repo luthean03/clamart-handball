@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-25T18:46:29+00:00",
+ "mis_a_jour": "2026-10-25T21:30:49+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -6628,6 +6628,25 @@
      ]
     },
     {
+     "id": "2710044",
+     "date": "2026-11-14T13:30:00+01:00",
+     "journee": 5,
+     "domicile": false,
+     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2017-07-03-161d0d1a-c15f-4ebf-b0ea-0ef9cca2d027.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710044/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "CITE DES SPORTS SALLE 1",
+      "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
+     }
+    },
+    {
      "id": "2710055",
      "date": "2026-12-13T12:00:00+01:00",
      "journee": 9,
@@ -6674,21 +6693,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710040/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710044",
-     "date": null,
-     "journee": 5,
-     "domicile": false,
-     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2017-07-03-161d0d1a-c15f-4ebf-b0ea-0ef9cca2d027.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710044/",
      "feuille_de_match": null
     },
     {
