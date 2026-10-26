@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-26T15:28:50+00:00",
+ "mis_a_jour": "2026-10-26T17:02:24+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -125,6 +125,24 @@
    "genre": "Mixte",
    "equipes": [
     "33056-clamart-hb-3"
+   ]
+  },
+  {
+   "id": "u9-mixte-1",
+   "nom": "U9 Mixte 1",
+   "categorie": "U9",
+   "genre": "Mixte",
+   "equipes": [
+    "33687-clamart-handball-1"
+   ]
+  },
+  {
+   "id": "u9-mixte-2",
+   "nom": "U9 Mixte 2",
+   "categorie": "U9",
+   "genre": "Mixte",
+   "equipes": [
+    "33687-clamart-handball-2"
    ]
   }
  ],
@@ -7256,6 +7274,206 @@
    "place": 5,
    "nb_equipes": 5,
    "collectif": "u11-mixte-3"
+  },
+  {
+   "id": "33687-clamart-handball-1",
+   "nom": "U9 Mixte 1",
+   "libelle_ffhb": "CLAMART HANDBALL 1",
+   "competition": "TOURNOIS U9 MIXTE",
+   "detail": "Tournois",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U9",
+   "genre": "Mixte",
+   "phase": "TOURNOIS U9 - JOURNEE 1",
+   "poule": "TOURNOI N°2 - POULE A",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/equipe-2227991/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200064/classements/",
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "CLAMART HANDBALL 1",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": true
+    },
+    {
+     "place": 2,
+     "equipe": "ASSOCIATION SPORTIVE DE MEUDON HANDBALL 1",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CHAVILLE HANDBALL 1",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2769369",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "CHAVILLE HANDBALL 1",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200064/rencontre-2769369/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2769371",
+     "date": null,
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "ASSOCIATION SPORTIVE DE MEUDON HANDBALL 1",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-4b2618ab-6b7e-4b00-b55f-5562a44e5e37.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200064/rencontre-2769371/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "place": 1,
+   "nb_equipes": 3,
+   "collectif": "u9-mixte-1"
+  },
+  {
+   "id": "33687-clamart-handball-2",
+   "nom": "U9 Mixte 2",
+   "libelle_ffhb": "CLAMART HANDBALL 2",
+   "competition": "TOURNOIS U9 MIXTE",
+   "detail": "Tournois",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U9",
+   "genre": "Mixte",
+   "phase": "TOURNOIS U9 - JOURNEE 1",
+   "poule": "TOURNOI N°2 - POULE B",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/equipe-2227994/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200065/classements/",
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "CLAMART HANDBALL 2",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": true
+    },
+    {
+     "place": 2,
+     "equipe": "ASSOCIATION SPORTIVE DE MEUDON HANDBALL 2",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CHAVILLE HANDBALL 2",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2769372",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "CHAVILLE HANDBALL 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200065/rencontre-2769372/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2769374",
+     "date": null,
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "ASSOCIATION SPORTIVE DE MEUDON HANDBALL 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-4b2618ab-6b7e-4b00-b55f-5562a44e5e37.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200065/rencontre-2769374/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "place": 1,
+   "nb_equipes": 3,
+   "collectif": "u9-mixte-2"
   }
  ],
  "erreurs": []
