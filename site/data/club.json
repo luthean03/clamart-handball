@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-28T11:19:27+00:00",
+ "mis_a_jour": "2026-10-28T15:27:26+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -5353,7 +5353,7 @@
     },
     {
      "place": 2,
-     "equipe": "STADE DE VANVES",
+     "equipe": "COURBEVOIE HB 2",
      "points": 0,
      "joues": 0,
      "gagnes": 0,
@@ -5366,7 +5366,7 @@
     },
     {
      "place": 3,
-     "equipe": "ENT RUEIL / PUTEAUX",
+     "equipe": "STADE DE VANVES",
      "points": 0,
      "joues": 0,
      "gagnes": 0,
@@ -5379,6 +5379,19 @@
     },
     {
      "place": 4,
+     "equipe": "ENT RUEIL / PUTEAUX",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 5,
      "equipe": "CLAMART HB",
      "points": 0,
      "joues": 0,
@@ -5391,7 +5404,7 @@
      "nous": true
     },
     {
-     "place": 5,
+     "place": 6,
      "equipe": "USM MALAKOFF",
      "points": 0,
      "joues": 0,
@@ -5573,8 +5586,8 @@
     "bc": 0
    },
    "forme": "",
-   "place": 4,
-   "nb_equipes": 5,
+   "place": 5,
+   "nb_equipes": 6,
    "collectif": "u13-f"
   },
   {
