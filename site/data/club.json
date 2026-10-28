@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-27T22:38:44+00:00",
+ "mis_a_jour": "2026-10-28T00:02:57+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -1934,6 +1934,25 @@
      ]
     },
     {
+     "id": "2644483",
+     "date": "2026-11-14T18:00:00+01:00",
+     "journee": 7,
+     "domicile": false,
+     "adversaire": "LA CLICHOISE HB",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-06-22-2f1c6bfd-ad45-41d4-accf-c9ba0908f594.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644483/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEO-LAGRANGE",
+      "adresse": "108 BD DU GENERAL-LECLERC 92110 CLICHY"
+     }
+    },
+    {
      "id": "2644493",
      "date": "2026-12-12T20:45:00+01:00",
      "journee": 10,
@@ -1951,21 +1970,6 @@
       "nom": "MAURICE-MAGNE",
       "adresse": "12 RUE DANTON 92170 VANVES"
      }
-    },
-    {
-     "id": "2644483",
-     "date": null,
-     "journee": 7,
-     "domicile": false,
-     "adversaire": "LA CLICHOISE HB",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-06-22-2f1c6bfd-ad45-41d4-accf-c9ba0908f594.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644483/",
-     "feuille_de_match": null
     },
     {
      "id": "2644487",
