@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-28T15:27:26+00:00",
+ "mis_a_jour": "2026-10-28T16:52:03+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2959,7 +2959,7 @@
    "matchs": [
     {
      "id": "2748867",
-     "date": null,
+     "date": "2026-11-04T20:45:00+01:00",
      "journee": 1,
      "domicile": false,
      "adversaire": "HBC LES LIONS DE LA MAULDRE",
@@ -2970,7 +2970,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748867/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE D. DEMAISON",
+      "adresse": "CHEMIN DU RADET 78580 MAULE"
+     }
     },
     {
      "id": "2748872",
@@ -3036,7 +3040,7 @@
      "id": "2748890",
      "date": null,
      "journee": 7,
-     "domicile": false,
+     "domicile": true,
      "adversaire": "AS ST-CYR/FONTENAY HB 78 (2)",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-933058c6-abc3-4f5a-8935-6bccf88dbea3.webp",
      "score_nous": null,
@@ -3126,7 +3130,7 @@
      "id": "2748918",
      "date": null,
      "journee": 14,
-     "domicile": true,
+     "domicile": false,
      "adversaire": "AS ST-CYR/FONTENAY HB 78 (2)",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-933058c6-abc3-4f5a-8935-6bccf88dbea3.webp",
      "score_nous": null,
