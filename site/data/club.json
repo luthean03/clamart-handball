@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-28T20:35:54+00:00",
+ "mis_a_jour": "2026-10-28T22:52:54+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -7366,7 +7366,7 @@
    "id": "33687-clamart-handball-1",
    "nom": "U9 Mixte 1",
    "libelle_ffhb": "CLAMART HANDBALL 1",
-   "competition": "TOURNOIS U9 MIXTE",
+   "competition": "U9 MIXTE - TOURNOIS",
    "detail": "Tournois",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
@@ -7374,8 +7374,8 @@
    "genre": "Mixte",
    "phase": "TOURNOIS U9 MIXTE - JOURNEE 1",
    "poule": "TOURNOI N°2 - POULE A",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/equipe-2227991/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200064/classements/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/equipe-2227991/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200064/classements/",
    "classement": [
     {
      "place": 1,
@@ -7430,7 +7430,7 @@
      "mt_nous": null,
      "mt_eux": null,
      "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200064/rencontre-2769369/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200064/rencontre-2769369/",
      "feuille_de_match": null
     },
     {
@@ -7445,7 +7445,7 @@
      "mt_nous": null,
      "mt_eux": null,
      "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200064/rencontre-2769371/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200064/rencontre-2769371/",
      "feuille_de_match": null
     }
    ],
@@ -7466,7 +7466,7 @@
    "id": "33687-clamart-handball-2",
    "nom": "U9 Mixte 2",
    "libelle_ffhb": "CLAMART HANDBALL 2",
-   "competition": "TOURNOIS U9 MIXTE",
+   "competition": "U9 MIXTE - TOURNOIS",
    "detail": "Tournois",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
    "niveau": "departemental",
@@ -7474,8 +7474,8 @@
    "genre": "Mixte",
    "phase": "TOURNOIS U9 MIXTE - JOURNEE 1",
    "poule": "TOURNOI N°2 - POULE B",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/equipe-2227994/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200065/classements/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/equipe-2227994/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200065/classements/",
    "classement": [
     {
      "place": 1,
@@ -7530,7 +7530,7 @@
      "mt_nous": null,
      "mt_eux": null,
      "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200065/rencontre-2769372/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200065/rencontre-2769372/",
      "feuille_de_match": null
     },
     {
@@ -7545,7 +7545,7 @@
      "mt_nous": null,
      "mt_eux": null,
      "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/tournois-u9-mixte-33687/poule-200065/rencontre-2769374/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200065/rencontre-2769374/",
      "feuille_de_match": null
     }
    ],
