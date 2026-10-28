@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-28T00:02:57+00:00",
+ "mis_a_jour": "2026-10-28T11:19:27+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -993,7 +993,7 @@
     },
     {
      "id": "2644304",
-     "date": null,
+     "date": "2026-11-14T18:00:00+01:00",
      "journee": 7,
      "domicile": true,
      "adversaire": "ES COLOMBIENNE 1C",
@@ -1004,7 +1004,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-1-territoriale-92-75-32542/poule-191104/rencontre-2644304/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
     },
     {
      "id": "2644310",
@@ -2715,6 +2719,25 @@
      }
     },
     {
+     "id": "2673800",
+     "date": "2026-11-14T20:00:00+01:00",
+     "journee": 7,
+     "domicile": true,
+     "adversaire": "SCUF 1B",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2023-07-11-08471ba5-c58c-4960-be27-1e8461de8914.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673800/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
      "id": "2673808",
      "date": "2026-12-06T14:30:00+01:00",
      "journee": 9,
@@ -2751,21 +2774,6 @@
       "nom": "MICHELINE OSTERMEYER",
       "adresse": "4  ESPLANADE NATHALIE SARRAUTE 75018 PARIS 18e"
      }
-    },
-    {
-     "id": "2673800",
-     "date": null,
-     "journee": 7,
-     "domicile": true,
-     "adversaire": "SCUF 1B",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2023-07-11-08471ba5-c58c-4960-be27-1e8461de8914.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673800/",
-     "feuille_de_match": null
     },
     {
      "id": "2673812",
@@ -4547,6 +4555,25 @@
      }
     },
     {
+     "id": "2740596",
+     "date": "2026-11-14T16:00:00+01:00",
+     "journee": 4,
+     "domicile": true,
+     "adversaire": "ENT FONTENAY / MALAKOFF 3",
+     "logo_adversaire": null,
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740596/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
      "id": "2740588",
      "date": "2026-11-21T14:00:00+01:00",
      "journee": 1,
@@ -4564,21 +4591,6 @@
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
      }
-    },
-    {
-     "id": "2740596",
-     "date": null,
-     "journee": 4,
-     "domicile": true,
-     "adversaire": "ENT FONTENAY / MALAKOFF 3",
-     "logo_adversaire": null,
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740596/",
-     "feuille_de_match": null
     },
     {
      "id": "2740600",
@@ -5414,7 +5426,7 @@
     },
     {
      "id": "2757744",
-     "date": null,
+     "date": "2026-11-15T14:00:00+01:00",
      "journee": 2,
      "domicile": true,
      "adversaire": "ENT RUEIL / PUTEAUX",
@@ -5425,7 +5437,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757744/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
     },
     {
      "id": "2757746",
@@ -5440,6 +5456,21 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757746/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2757751",
+     "date": null,
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "COURBEVOIE HB 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2024-04-01-a7a598a0-8801-4e70-bb52-b662975ff60b.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757751/",
      "feuille_de_match": null
     },
     {
@@ -5500,6 +5531,21 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757761/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2757766",
+     "date": null,
+     "journee": 9,
+     "domicile": true,
+     "adversaire": "COURBEVOIE HB 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2024-04-01-a7a598a0-8801-4e70-bb52-b662975ff60b.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757766/",
      "feuille_de_match": null
     },
     {
@@ -6287,6 +6333,25 @@
    ],
    "matchs": [
     {
+     "id": "2757999",
+     "date": "2026-11-15T11:30:00+01:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "STADE DE VANVES 1",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2757999/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
      "id": "2758004",
      "date": "2026-11-28T15:45:00+01:00",
      "journee": 4,
@@ -6318,21 +6383,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2757996/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2757999",
-     "date": null,
-     "journee": 2,
-     "domicile": true,
-     "adversaire": "STADE DE VANVES 1",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2757999/",
      "feuille_de_match": null
     },
     {
@@ -6982,6 +7032,25 @@
      }
     },
     {
+     "id": "2710073",
+     "date": "2026-11-15T15:30:00+01:00",
+     "journee": 5,
+     "domicile": true,
+     "adversaire": "HBC ANTONY 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710073/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
      "id": "2710077",
      "date": "2026-11-21T14:00:00+01:00",
      "journee": 6,
@@ -7018,21 +7087,6 @@
       "nom": "LIONEL-TERRAY",
       "adresse": "164 BIS AVENUE DU PRESIDENT-KENNEDY 92160 ANTONY"
      }
-    },
-    {
-     "id": "2710073",
-     "date": null,
-     "journee": 5,
-     "domicile": true,
-     "adversaire": "HBC ANTONY 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710073/",
-     "feuille_de_match": null
     },
     {
      "id": "2710085",
@@ -7165,6 +7219,25 @@
      }
     },
     {
+     "id": "2710997",
+     "date": "2026-11-08T09:00:00+01:00",
+     "journee": 4,
+     "domicile": false,
+     "adversaire": "AS FONTENAY-AUX-ROSES 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-09-18-06b4d55f-daab-479d-8a51-95cfca4b6c09.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710997/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "HALLE DU PANORAMA",
+      "adresse": "route du panorama 92260 FONTENAY AUX ROSES"
+     }
+    },
+    {
      "id": "2710989",
      "date": null,
      "journee": 1,
@@ -7192,21 +7265,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710992/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710997",
-     "date": null,
-     "journee": 4,
-     "domicile": false,
-     "adversaire": "AS FONTENAY-AUX-ROSES 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-09-18-06b4d55f-daab-479d-8a51-95cfca4b6c09.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710997/",
      "feuille_de_match": null
     },
     {
