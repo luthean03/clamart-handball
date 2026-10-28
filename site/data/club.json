@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-28T16:52:03+00:00",
+ "mis_a_jour": "2026-10-28T20:35:54+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2977,6 +2977,25 @@
      }
     },
     {
+     "id": "2748918",
+     "date": "2027-05-25T20:45:00+02:00",
+     "journee": 14,
+     "domicile": false,
+     "adversaire": "AS ST-CYR/FONTENAY HB 78 (2)",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-933058c6-abc3-4f5a-8935-6bccf88dbea3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748918/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GERARD PHILIPPE",
+      "adresse": "RUE GERARD PHILIPPE 78210 ST CYR L ECOLE"
+     }
+    },
+    {
      "id": "2748872",
      "date": null,
      "journee": 2,
@@ -3124,21 +3143,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748915/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2748918",
-     "date": null,
-     "journee": 14,
-     "domicile": false,
-     "adversaire": "AS ST-CYR/FONTENAY HB 78 (2)",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-933058c6-abc3-4f5a-8935-6bccf88dbea3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748918/",
      "feuille_de_match": null
     }
    ],
