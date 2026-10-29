@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-29T11:30:08+00:00",
+ "mis_a_jour": "2026-10-29T15:33:34+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -50,8 +50,8 @@
    "categorie": "seniors",
    "genre": "Mixte",
    "equipes": [
-    "33711-clamart-handball",
-    "33562-clamart-hb"
+    "33562-clamart-hb",
+    "33711-clamart-hb"
    ]
   },
   {
@@ -2851,64 +2851,6 @@
    "collectif": "seniors-m"
   },
   {
-   "id": "33711-clamart-handball",
-   "nom": "Seniors Loisir",
-   "libelle_ffhb": "CLAMART HANDBALL",
-   "competition": "LOISIRS + DE 16 ANS MIXTE",
-   "detail": "Loisirs",
-   "organisateur": "COMITE DES HAUTS-DE-SEINE",
-   "niveau": "departemental",
-   "categorie": "seniors",
-   "genre": "Mixte",
-   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
-   "poule": "POULE C",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
-   "classement": null,
-   "matchs": [
-    {
-     "id": "2780043",
-     "date": null,
-     "journee": 1,
-     "domicile": false,
-     "adversaire": "ASV CHATENAY-MALABRY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2780044",
-     "date": null,
-     "journee": 2,
-     "domicile": true,
-     "adversaire": "HANDBALL CLUB ANTONY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
-     "feuille_de_match": null
-    }
-   ],
-   "bilan": {
-    "joues": 0,
-    "victoires": 0,
-    "nuls": 0,
-    "defaites": 0,
-    "bp": 0,
-    "bc": 0
-   },
-   "forme": "",
-   "collectif": "seniors-mixte"
-  },
-  {
    "id": "33562-clamart-hb",
    "nom": "Seniors Loisir",
    "libelle_ffhb": "CLAMART HB",
@@ -3216,6 +3158,64 @@
    "forme": "",
    "place": 5,
    "nb_equipes": 7,
+   "collectif": "seniors-mixte"
+  },
+  {
+   "id": "33711-clamart-hb",
+   "nom": "Seniors Loisir",
+   "libelle_ffhb": "CLAMART HB",
+   "competition": "LOISIRS + DE 16 ANS MIXTE",
+   "detail": "Loisirs",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "seniors",
+   "genre": "Mixte",
+   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
+   "poule": "POULE C",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
+   "classement": null,
+   "matchs": [
+    {
+     "id": "2780043",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "ASV CHATENAY-MALABRY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2780044",
+     "date": null,
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "HBC ANTONY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
    "collectif": "seniors-mixte"
   },
   {
@@ -3959,7 +3959,7 @@
     },
     {
      "id": "2739607",
-     "date": null,
+     "date": "2026-11-15T16:00:00+01:00",
      "journee": 4,
      "domicile": false,
      "adversaire": "ENT PARIS GALAXY NORD 3",
@@ -3970,7 +3970,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739607/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE CHARLES-MILDE (EX SAUSSURE)",
+      "adresse": "38 rue georges-picquart 75017 PARIS 17e"
+     }
     },
     {
      "id": "2739610",
