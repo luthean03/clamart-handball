@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-29T15:33:34+00:00",
+ "mis_a_jour": "2026-10-29T17:07:02+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3181,7 +3181,7 @@
      "date": null,
      "journee": 1,
      "domicile": false,
-     "adversaire": "ASV CHATENAY-MALABRY",
+     "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
      "score_nous": null,
      "score_eux": null,
@@ -4665,7 +4665,7 @@
     },
     {
      "id": "2740600",
-     "date": null,
+     "date": "2026-11-29T14:10:00+01:00",
      "journee": 5,
      "domicile": false,
      "adversaire": "RUEIL AC 3",
@@ -4676,7 +4676,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740600/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "complexe omnisports alain-mimoun",
+      "adresse": "41 rue voltaire 92500 RUEIL MALMAISON"
+     }
     }
    ],
    "bilan": {
