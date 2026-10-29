@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-28T22:52:54+00:00",
+ "mis_a_jour": "2026-10-29T00:27:08+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -6759,6 +6759,25 @@
      }
     },
     {
+     "id": "2710048",
+     "date": "2026-11-22T10:00:00+01:00",
+     "journee": 6,
+     "domicile": false,
+     "adversaire": "CHAVILLE HB 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710048/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEO-LAGRANGE",
+      "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
+     }
+    },
+    {
      "id": "2710055",
      "date": "2026-12-13T12:00:00+01:00",
      "journee": 9,
@@ -6790,21 +6809,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710033/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710048",
-     "date": null,
-     "journee": 6,
-     "domicile": false,
-     "adversaire": "CHAVILLE HB 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710048/",
      "feuille_de_match": null
     },
     {
