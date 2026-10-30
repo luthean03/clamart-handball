@@ -11,6 +11,7 @@ beforeEach(() =>
     pret: false,
     notifResultats: true,
     rappels: false,
+    programme: true,
     sujets: [],
     autorisation: 'inconnue',
     apparence: 'auto',
@@ -55,6 +56,18 @@ test('préférences de notifications : valeurs par défaut et réglages', () => 
   expect(etat()).toMatchObject({ rappels: true, notifResultats: false, autorisation: 'refusee', sujets: ['resultats-seniors-m'] });
 });
 
+test('programme : activé par défaut, puis réglable', () => {
+  expect(useSuivi.getInitialState().programme).toBe(true);
+  etat().setProgramme(false);
+  expect(etat().programme).toBe(false);
+});
+
+test('migration depuis la version 4 : programme activé, autres préférences gardées', async () => {
+  await AsyncStorage.setItem('clamart-suivi', JSON.stringify({ version: 4, state: { suivis: ['u13-m'], bienvenueFaite: true, retires: [], saison: '2026-2027', notifResultats: false, rappels: true, sujets: [], autorisation: 'accordee', apparence: 'sombre' } }));
+  await useSuivi.persist.rehydrate();
+  expect(etat()).toMatchObject({ suivis: ['u13-m'], programme: true, notifResultats: false, rappels: true, apparence: 'sombre', saison: '2026-2027' });
+});
+
 test('apparence : automatique par défaut, puis réglable', () => {
   expect(useSuivi.getInitialState().apparence).toBe('auto');
   etat().setApparence('sombre');
@@ -87,6 +100,7 @@ test('le premier lancement est mémorisé sur le téléphone', async () => {
     saison: null,
     notifResultats: true,
     rappels: false,
+    programme: true,
     sujets: [],
     autorisation: 'inconnue',
     apparence: 'auto',

@@ -16,9 +16,10 @@ export default function Reglages() {
   const retires = useSuivi((s) => s.retires);
   const notifResultats = useSuivi((s) => s.notifResultats);
   const rappels = useSuivi((s) => s.rappels);
+  const programme = useSuivi((s) => s.programme);
   const autorisation = useSuivi((s) => s.autorisation);
   const apparence = useSuivi((s) => s.apparence);
-  const { basculer, effacerRetires, setNotifResultats, setRappels, setApparence } = useSuivi.getState();
+  const { basculer, effacerRetires, setNotifResultats, setRappels, setProgramme, setApparence } = useSuivi.getState();
   const routeur = useRouter();
   if (!club) return <EtatSansDonnees chargement={chargement} erreur={erreur} reessayer={rafraichir} />;
   return (
@@ -30,11 +31,13 @@ export default function Reglages() {
       version={Constants.expoConfig?.version ?? ''}
       notifResultats={notifResultats}
       rappels={rappels}
+      programme={programme}
       autorisation={autorisation}
       apparence={apparence}
       onApparence={setApparence}
       onNotifResultats={setNotifResultats}
       onRappels={setRappels}
+      onProgramme={setProgramme}
       onOuvrirReglagesSysteme={() => sansRejet(() => Linking.openSettings())}
       onDemanderAutorisation={() =>
         sansRejet(() => demanderAutorisation().then((a) => useSuivi.getState().setAutorisation(a)))

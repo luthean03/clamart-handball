@@ -1,6 +1,6 @@
 import { planAbonnements, sujetsAttendus } from './sujets';
 
-const prefs = { notifResultats: true, rappels: false, autorisation: 'accordee' as const };
+const prefs = { notifResultats: true, rappels: false, programme: false, autorisation: 'accordee' as const };
 
 test('résultats seulement par défaut', () => {
   expect(sujetsAttendus(['seniors-m', 'u13-f'], prefs)).toEqual(['resultats-seniors-m', 'resultats-u13-f']);
@@ -8,6 +8,13 @@ test('résultats seulement par défaut', () => {
 
 test('rappels en plus quand l’option est active', () => {
   expect(sujetsAttendus(['seniors-m'], { ...prefs, rappels: true })).toEqual(['resultats-seniors-m', 'rappels-seniors-m']);
+});
+
+test('programme : sujet ajouté après les résultats, absent si désactivé ou refusé', () => {
+  const avec = { notifResultats: true, rappels: false, programme: true, autorisation: 'accordee' as const };
+  expect(sujetsAttendus(['seniors-m'], avec)).toEqual(['resultats-seniors-m', 'programme-seniors-m']);
+  expect(sujetsAttendus(['seniors-m'], { ...avec, programme: false })).toEqual(['resultats-seniors-m']);
+  expect(sujetsAttendus(['seniors-m'], { ...avec, autorisation: 'refusee' })).toEqual([]);
 });
 
 test('aucun sujet si Android refuse les notifications ou si tout est désactivé', () => {

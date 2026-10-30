@@ -3,6 +3,7 @@ export type Autorisation = 'inconnue' | 'accordee' | 'refusee';
 export interface PrefsNotifications {
   notifResultats: boolean;
   rappels: boolean;
+  programme: boolean;
   autorisation: Autorisation;
 }
 
@@ -11,6 +12,7 @@ export function sujetsAttendus(suivis: string[], prefs: PrefsNotifications): str
   if (prefs.autorisation === 'refusee') return [];
   return suivis.flatMap((id) => [
     ...(prefs.notifResultats ? [`resultats-${id}`] : []),
+    ...(prefs.programme ? [`programme-${id}`] : []),
     ...(prefs.rappels ? [`rappels-${id}`] : []),
   ]);
 }

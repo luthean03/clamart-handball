@@ -20,9 +20,11 @@ interface Props {
   onOuvrirLien: (url: string) => void;
   notifResultats: boolean;
   rappels: boolean;
+  programme: boolean;
   autorisation: Autorisation;
   onNotifResultats: (b: boolean) => void;
   onRappels: (b: boolean) => void;
+  onProgramme: (b: boolean) => void;
   onOuvrirReglagesSysteme: () => void;
   onDemanderAutorisation: () => void;
   apparence: Apparence;
@@ -145,6 +147,12 @@ export function VueReglages(p: Props) {
             right={() => (
               <Switch value={p.notifResultats} onValueChange={p.onNotifResultats} accessibilityLabel="Résultats de mes équipes" />
             )}
+          />
+          <List.Item
+            title="Changements de programme"
+            description="Nouveau match, date, heure ou salle modifiée"
+            onPress={() => p.onProgramme(!p.programme)}
+            right={() => <Switch value={p.programme} onValueChange={p.onProgramme} accessibilityLabel="Changements de programme" />}
           />
           <List.Item
             title="Rappel la veille du match"

@@ -31,7 +31,7 @@ test('un échec laisse l’état précédent du sujet', async () => {
 describe('planifierSynchro et useSynchroAbonnements', () => {
   const initial = useSuivi.getState();
   beforeEach(() =>
-    useSuivi.setState({ ...initial, suivis: ['X'], notifResultats: true, rappels: false, autorisation: 'accordee', sujets: [], pret: true }),
+    useSuivi.setState({ ...initial, suivis: ['X'], notifResultats: true, rappels: false, programme: false, autorisation: 'accordee', sujets: [], pret: true }),
   );
 
   test('deux cycles qui se chevauchent : le sujet abonné puis retiré est bien désabonné', async () => {
@@ -50,6 +50,14 @@ describe('planifierSynchro et useSynchroAbonnements', () => {
     await Promise.all([cycle1, cycle2]);
     expect(appels).toEqual(['+resultats-X', '-resultats-X']);
     expect(useSuivi.getState().sujets).toEqual([]);
+  });
+
+  test('le sujet programme est abonné quand la préférence est active', async () => {
+    useSuivi.setState({ programme: true });
+    const client = { abonner: jest.fn(() => Promise.resolve()), desabonner: jest.fn(() => Promise.resolve()) };
+    await planifierSynchro(client);
+    expect(client.abonner).toHaveBeenCalledWith('programme-X');
+    expect(useSuivi.getState().sujets).toEqual(['resultats-X', 'programme-X']);
   });
 
   test('un cycle en échec ne bloque pas la file', async () => {
