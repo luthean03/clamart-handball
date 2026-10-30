@@ -61,3 +61,17 @@ def nom_joueur(prenom: str | None, nom: str | None) -> str:
     famille = "".join(m if re.fullmatch(r"[\s\-']+", m) else m[:1].upper() + m[1:].lower()
                       for m in re.split(r"([\s\-']+)", (nom or "").strip()))
     return f"{premier[:1].upper()}. {famille}".strip() if premier else famille
+
+
+JOURS_COURTS = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."]
+MOIS_COURTS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+
+
+def jour_court(dt) -> str:
+    """datetime (déjà à l'heure de Paris) → 'sam. 7 nov.'."""
+    return f"{JOURS_COURTS[dt.weekday()]} {dt.day} {MOIS_COURTS[dt.month - 1]}"
+
+
+def heure(dt) -> str:
+    """datetime (déjà à l'heure de Paris) → '18:00'."""
+    return f"{dt.hour:02d}:{dt.minute:02d}"
