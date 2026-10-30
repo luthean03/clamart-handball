@@ -19,3 +19,10 @@ _CLUB_V1 = json.loads((FIXTURES / "club-2026-10-13-v1.json").read_text(encoding=
 def club_v1() -> dict:
     """club.json réel du 13/10/2026 (format v1, sans collectifs). Copie neuve à chaque test."""
     return copy.deepcopy(_CLUB_V1)
+
+
+@pytest.fixture(autouse=True)
+def _etat_programme_isole(tmp_path, monkeypatch):
+    """Aucun test ne doit lire ni écrire collecteur/etat/programme.json."""
+    import notifieur
+    monkeypatch.setattr(notifieur, "ETAT_PROGRAMME", tmp_path / "etat_programme.json")

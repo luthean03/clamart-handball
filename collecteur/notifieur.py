@@ -11,6 +11,7 @@ sur des sujets par collectif.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -22,6 +23,8 @@ from zoneinfo import ZoneInfo
 
 ICI = Path(__file__).resolve().parent
 sys.path.insert(0, str(ICI))
+from programme import detecter, etat_apres, etat_du_club  # noqa: E402
+from programme import textes as textes_programme  # noqa: E402
 from textes import nom_lisible  # noqa: E402
 
 FENETRE_RESULTATS = timedelta(days=3)
@@ -128,6 +131,7 @@ def planifier(club: dict, registre: dict | None, maintenant: datetime, reglages:
 RACINE = ICI.parent
 DONNEES = RACINE / "site" / "data" / "club.json"
 REGISTRE = ICI / "etat" / "notifications.json"
+ETAT_PROGRAMME = ICI / "etat" / "programme.json"
 DOSSIER_IMAGES = RACINE / "site" / "notifs"
 CACHE_LOGOS = ICI / "cache" / "logos"
 PORTEE_FCM = "https://www.googleapis.com/auth/firebase.messaging"
@@ -278,6 +282,55 @@ def executer(club: dict, registre: dict | None, maintenant: datetime, reglages: 
     return registre, rapport
 
 
+def messages_programme(club: dict, etat: dict, maintenant: datetime, fuseau: str) -> tuple[list[Message], set[str]]:
+    """Un message par collectif dont le programme a changé, plus les clés d'état à conserver (cf. programme.detecter)."""
+    par_collectif, gardees = detecter(etat, club, maintenant, fuseau)
+    noms = {c["id"]: c["nom"] for c in club["collectifs"]}
+    sortie = []
+    for col, changements in par_collectif.items():
+        titre, corps = textes_programme(noms.get(col, col), changements, fuseau)
+        faits = sorted((c.type, c.match_id, c.avant, c.apres, c.salle_apres) for c in changements)
+        empreinte = hashlib.sha1(repr(faits).encode("utf-8")).hexdigest()[:10]
+        donnees = {"type": "programme", "collectif": col}
+        if len(changements) == 1 and changements[0].type != "retire":
+            donnees.update(equipe_id=changements[0].equipe_id, match_id=changements[0].match_id)
+        premier = changements[0]
+        sortie.append(Message(
+            cle=f"programme:{col}:{empreinte}", sujet=f"programme-{col}", titre=titre, corps=corps,
+            donnees=donnees, instant=premier.apres or premier.avant))
+    return sorted(sortie, key=lambda x: (x.instant, x.cle)), gardees
+
+
+def executer_programme(club: dict, etat: dict | None, maintenant: datetime, reglages: dict, envoyeur,
+                       budget: int) -> tuple[dict, dict]:
+    """Renvoie (nouvel état, rapport). Un collectif dont le message n'est pas parti (échec, plafond) garde son
+    ancien état : le changement sera détecté de nouveau, avec la même clé, au passage suivant."""
+    rapport = {"prevus": 0, "envoyes": 0, "echecs": 0, "raisons": []}
+    if etat is None or etat.get("saison") != club["saison"]:
+        # Premier passage ou nouvelle saison : on amorce l'état sans rien envoyer.
+        return etat_du_club(club), rapport
+    messages, gardees = messages_programme(club, etat, maintenant, reglages["fuseau"])
+    changes = {m.donnees["collectif"] for m in messages}
+    messages = messages[: max(0, budget)]
+    rapport["prevus"] = len(messages)
+    if envoyeur is None:
+        for m in messages:
+            log(f"[essai] {m.sujet} : {m.titre} — {m.corps}")
+        return etat, rapport
+    a_jour = {c["id"] for c in club["collectifs"]} - changes
+    for m in messages:
+        try:
+            envoyeur.envoyer(m)
+        except Exception as err:
+            rapport["echecs"] += 1
+            rapport["raisons"].append(f"{m.cle} : {err}")
+            log(f"[!] {m.cle} : {err}")
+            continue
+        rapport["envoyes"] += 1
+        a_jour.add(m.donnees["collectif"])
+    return etat_apres(etat, club, a_jour, gardees), rapport
+
+
 def dernier_resultat(club: dict, collectif: str):
     """(équipe, match) du dernier résultat connu de ce collectif, ou None."""
     candidats = [(eq, m) for eq, m in _matchs(club)
@@ -338,9 +391,12 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
     if args.test:
         club = json.loads(DONNEES.read_text(encoding="utf-8")) if DONNEES.exists() else None
         m = avec_images([message_test(args.test, club)], DOSSIER_IMAGES, url_images)[0]
-        if envoyeur:
-            envoyeur.envoyer(m)
-        log(f"Test {'envoyé' if envoyeur else '(essai)'} : {m.sujet}")
+        sur_programme = Message(f"test:{args.test}", f"programme-{args.test}", m.titre, m.corps,
+                                {"type": "test", "collectif": args.test}, "")
+        for test in (m, sur_programme):
+            if envoyeur:
+                envoyeur.envoyer(test)
+            log(f"Test {'envoyé' if envoyeur else '(essai)'} : {test.sujet}")
         return 0
 
     club = json.loads(DONNEES.read_text(encoding="utf-8"))
@@ -352,12 +408,23 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
     log(f"Notifications : {rapport['envoyes']} envoyée(s), {rapport['echecs']} échec(s), {rapport['prevus']} prévue(s)")
     if envoyeur is not None:
         ecrire_registre(final)
-    if rapport["echecs"]:
-        log(f"[!] Notifications en échec : envoyées {rapport['envoyes']}, échouées {rapport['echecs']}. Raisons :")
-        for raison in rapport["raisons"]:
-            log(f"    - {raison}")
-        return 1
-    return 0
+
+    budget = max(0, config["notifications"]["max_par_passage"] - rapport["prevus"])
+    etat = json.loads(ETAT_PROGRAMME.read_text(encoding="utf-8")) if ETAT_PROGRAMME.exists() else None
+    etat_final, rapport_programme = executer_programme(club, etat, maintenant, config["notifications"], envoyeur, budget)
+    log(f"Programme : {rapport_programme['envoyes']} envoyée(s), {rapport_programme['echecs']} échec(s), "
+        f"{rapport_programme['prevus']} prévue(s)")
+    if envoyeur is not None:
+        ecrire_registre(etat_final, ETAT_PROGRAMME)
+
+    en_echec = False
+    for nom, r in (("Notifications", rapport), ("Programme", rapport_programme)):
+        if r["echecs"]:
+            en_echec = True
+            log(f"[!] {nom} en échec : envoyées {r['envoyes']}, échouées {r['echecs']}. Raisons :")
+            for raison in r["raisons"]:
+                log(f"    - {raison}")
+    return 1 if en_echec else 0
 
 
 if __name__ == "__main__":
