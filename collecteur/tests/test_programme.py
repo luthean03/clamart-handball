@@ -227,3 +227,14 @@ def test_etat_apres():
     res = etat_apres(ancien, club, tous, {"seniors-m:2673808"})
     assert res["matchs"]["seniors-m:2673808"] == ancien["matchs"]["seniors-m:2673808"]
     assert res["matchs"][CLE] == courant["matchs"][CLE]
+
+
+def test_etat_apres_garde_la_salle_connue_si_elle_devient_inconnue():
+    ancien, club = cas(date="2026-10-17T18:00:00+02:00", salle=None)
+    ancien["matchs"][CLE]["salle"] = "GYMNASE DU PETIT CLAMART"
+    res = etat_apres(ancien, club, {"seniors-m"}, set())
+    assert res["matchs"][CLE]["salle"] == "GYMNASE DU PETIT CLAMART"
+    # si la date change en même temps, on suit le club
+    ancien, club = cas(date="2026-10-18T18:00:00+02:00", salle=None)
+    ancien["matchs"][CLE]["salle"] = "GYMNASE DU PETIT CLAMART"
+    assert etat_apres(ancien, club, {"seniors-m"}, set())["matchs"][CLE]["salle"] is None

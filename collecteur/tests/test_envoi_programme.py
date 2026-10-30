@@ -202,3 +202,14 @@ def test_main_test_envoie_aussi_sur_programme(chemins, monkeypatch):
     p = envoyeur.envoyes[1]
     assert p.donnees == {"type": "test", "collectif": "seniors-m"}
     assert (p.titre, p.corps) == (envoyeur.envoyes[0].titre, envoyeur.envoyes[0].corps)
+
+
+def test_amorcage_differe_si_collecte_incomplete():
+    club, envoyeur = club_v2(), FauxEnvoyeur()
+    club["erreurs"] = ["Compétition X : timeout"]
+    etat, rapport = executer_programme(club, None, LUNDI, REGLAGES, envoyeur, 40)
+    assert etat is None and envoyeur.envoyes == [] and rapport["prevus"] == 0
+    ancien = etat_du_club(club)
+    ancien["saison"] = "2025-2026"
+    etat, _ = executer_programme(club, ancien, LUNDI, REGLAGES, envoyeur, 40)
+    assert etat is ancien and envoyeur.envoyes == []

@@ -124,6 +124,11 @@ def detecter(ancien: dict, club: dict, maintenant: datetime, fuseau: str):
 def etat_apres(ancien: dict, club: dict, a_jour: set[str], gardees: set[str]) -> dict:
     etat = etat_du_club(club)
     matchs = {k: v for k, v in etat["matchs"].items() if _collectif_de(k) in a_jour}
+    for cle, valeur in matchs.items():
+        avant = ancien["matchs"].get(cle)
+        if (avant and avant["salle"] and valeur["salle"] is None and avant["date"] and valeur["date"]
+                and _instant(avant["date"]) == _instant(valeur["date"])):
+            matchs[cle] = {**valeur, "salle": avant["salle"]}      # salle devenue inconnue : on garde la dernière connue
     for cle, valeur in ancien["matchs"].items():
         if _collectif_de(cle) not in a_jour or cle in gardees:
             matchs[cle] = valeur

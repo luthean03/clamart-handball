@@ -302,15 +302,21 @@ def messages_programme(club: dict, etat: dict, maintenant: datetime, fuseau: str
 
 
 def executer_programme(club: dict, etat: dict | None, maintenant: datetime, reglages: dict, envoyeur,
-                       budget: int) -> tuple[dict, dict]:
+                       budget: int) -> tuple[dict | None, dict]:
     """Renvoie (nouvel état, rapport). Un collectif dont le message n'est pas parti (échec, plafond) garde son
     ancien état : le changement sera détecté de nouveau, avec la même clé, au passage suivant."""
     rapport = {"prevus": 0, "envoyes": 0, "echecs": 0, "raisons": []}
     if etat is None or etat.get("saison") != club["saison"]:
-        # Premier passage ou nouvelle saison : on amorce l'état sans rien envoyer.
+        # Premier passage ou nouvelle saison : on amorce l'état sans rien envoyer, mais pas sur une collecte
+        # incomplète (les matchs manquants reviendraient en "nouveau" au passage suivant).
+        if club.get("erreurs"):
+            log("Programme : collecte incomplète, amorçage différé")
+            return etat, rapport
         return etat_du_club(club), rapport
     messages, gardees = messages_programme(club, etat, maintenant, reglages["fuseau"])
     changes = {m.donnees["collectif"] for m in messages}
+    if len(messages) > max(0, budget):
+        log(f"Notifications programme : {len(messages) - max(0, budget)} reportée(s) au passage suivant (plafond)")
     messages = messages[: max(0, budget)]
     rapport["prevus"] = len(messages)
     if envoyeur is None:
@@ -414,7 +420,7 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
     etat_final, rapport_programme = executer_programme(club, etat, maintenant, config["notifications"], envoyeur, budget)
     log(f"Programme : {rapport_programme['envoyes']} envoyée(s), {rapport_programme['echecs']} échec(s), "
         f"{rapport_programme['prevus']} prévue(s)")
-    if envoyeur is not None:
+    if envoyeur is not None and etat_final is not None:
         ecrire_registre(etat_final, ETAT_PROGRAMME)
 
     en_echec = False
