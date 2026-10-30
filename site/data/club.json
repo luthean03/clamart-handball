@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-30T00:25:27+00:00",
+ "mis_a_jour": "2026-10-30T11:23:30+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -51,7 +51,7 @@
    "genre": "Mixte",
    "equipes": [
     "33562-clamart-hb",
-    "33711-clamart-hb"
+    "33711-clamart-handball"
    ]
   },
   {
@@ -3161,9 +3161,9 @@
    "collectif": "seniors-mixte"
   },
   {
-   "id": "33711-clamart-hb",
+   "id": "33711-clamart-handball",
    "nom": "Seniors Loisir",
-   "libelle_ffhb": "CLAMART HB",
+   "libelle_ffhb": "CLAMART HANDBALL",
    "competition": "LOISIRS + DE 16 ANS MIXTE",
    "detail": "Loisirs",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -3174,7 +3174,47 @@
    "poule": "POULE C",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
    "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
-   "classement": null,
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "AS VOLTAIRE CHATENAY-MALABRY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "HBC ANTONY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HANDBALL",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": true
+    }
+   ],
    "matchs": [
     {
      "id": "2780043",
@@ -3216,6 +3256,8 @@
     "bc": 0
    },
    "forme": "",
+   "place": 3,
+   "nb_equipes": 3,
    "collectif": "seniors-mixte"
   },
   {
