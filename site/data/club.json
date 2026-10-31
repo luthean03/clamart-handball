@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-31T15:29:16+00:00",
+ "mis_a_jour": "2026-10-31T19:34:58+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3283,28 +3283,162 @@
      "domicile": true,
      "adversaire": "ENTENTE PLESSEENNE HB 1B",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-07-22-dc48a4da-0b77-4f31-b69d-2713381bd54e.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 18,
+     "score_eux": 40,
+     "mt_nous": 7,
+     "mt_eux": 24,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/poule-197360/rencontre-2735241/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXGLO.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "T. Soenen",
+       "numero": 67,
+       "buts": 7
+      },
+      {
+       "joueur": "C. Meyer",
+       "numero": 73,
+       "buts": 6
+      },
+      {
+       "joueur": "S. Ould Braham",
+       "numero": 66,
+       "buts": 2
+      },
+      {
+       "joueur": "D. Gomez",
+       "numero": 68,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Pontes",
+       "numero": 76,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Nimri",
+       "numero": 64,
+       "buts": 1
+      },
+      {
+       "joueur": "F. Bergeret",
+       "numero": 70,
+       "buts": 0
+      },
+      {
+       "joueur": "K. Nevers",
+       "numero": 65,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Grondin",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Nacto",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Gandon-Talouarn",
+       "numero": 69,
+       "buts": 0
+      },
+      {
+       "joueur": "Y. Escala",
+       "numero": 11,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "H. De Sousa",
+       "numero": 11,
+       "buts": 8
+      },
+      {
+       "joueur": "Q. Guichaoua",
+       "numero": 7,
+       "buts": 8
+      },
+      {
+       "joueur": "T. Lopes",
+       "numero": 2,
+       "buts": 5
+      },
+      {
+       "joueur": "N. Mazue",
+       "numero": 37,
+       "buts": 4
+      },
+      {
+       "joueur": "F. Mestre",
+       "numero": 29,
+       "buts": 3
+      },
+      {
+       "joueur": "V. Baudic",
+       "numero": 70,
+       "buts": 3
+      },
+      {
+       "joueur": "G. Debourse",
+       "numero": 21,
+       "buts": 2
+      },
+      {
+       "joueur": "H. Lejeune",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "J. Leblet",
+       "numero": 41,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Jarrafoux",
+       "numero": 96,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Anselin",
+       "numero": 6,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Silva",
+       "numero": 31,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Silva",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Calcas",
+       "numero": 77,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
-    "joues": 0,
+    "joues": 1,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 0,
-    "bp": 0,
-    "bc": 0
+    "defaites": 1,
+    "bp": 18,
+    "bc": 40
    },
-   "forme": "",
+   "forme": "D",
    "collectif": "seniors-m"
   },
   {
