@@ -70,6 +70,19 @@ def test_icones_de_notification_sont_nettes_et_dans_la_zone_utile():
         assert gauche >= marge - 1 and haut >= marge - 1 and droite <= taille - marge + 1 and bas <= taille - marge + 1, dossier
 
 
+def test_icone_de_notification_est_l_ecusson_complet():
+    img = icones_app.notification(96)
+    alpha = img.getchannel("A")
+    rayon = 40                                                                            # anneaux extérieurs (blanc puis noir)
+    for angle in range(0, 360, 5):
+        x, y = 48 + rayon * math.cos(math.radians(angle)), 48 + rayon * math.sin(math.radians(angle))
+        assert alpha.getpixel((round(x), round(y))) >= 200, angle                         # plein tout autour
+    lettres = [alpha.getpixel((round(48 + 37 * math.cos(math.radians(a))), round(48 + 37 * math.sin(math.radians(a)))))
+               for a in range(200, 340)]                                                  # bande de CLAMART
+    assert min(lettres) < 60 and max(lettres) > 200                                       # lettres en creux dans le plein
+    assert alpha.getpixel((48, 48 + 12)) < 60                                             # fond clair autour du joueur, en creux
+
+
 def test_les_fichiers_livres_correspondent_au_generateur():
     for chemin, genere in (
         (icones_app.LOGO_ROND, icones_app.logo_rond()),
