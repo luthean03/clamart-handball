@@ -15,13 +15,14 @@ import Equipe from '../app/equipe/[collectif]';
 import Match from '../app/match/[id]';
 
 const mockPush = jest.fn();
-let accueil: { onAgenda: (m: unknown) => void; onOuvrirMatch: (id: string, equipe?: string) => void } | undefined;
+let accueil: { onAgenda: (m: unknown) => void; onOuvrirMatch: (id: string, equipe?: string) => void; onTousLesMatchs: () => void } | undefined;
 let fiche: { onAgenda: (m: unknown) => void } | undefined;
 let equipe: { onAgenda: () => void } | undefined;
 
 jest.mock('expo-router', () => ({
   useRouter: () => ({ push: mockPush }),
   useLocalSearchParams: () => ({ collectif: 'seniors-f-1' }),
+  useRoute: () => ({ key: 'onglet' }),
   Redirect: () => null,
   // Les onglets se réduisent à leurs titres, dans l'ordre de la barre.
   Tabs: Object.assign(({ children }: { children: unknown }) => children, {
@@ -88,6 +89,12 @@ test('Accueil : une carte ouvre la fiche du match avec son équipe', () => {
   expect(mockPush).toHaveBeenCalledWith('/match/2734038?equipe=seniors-m-1');
   accueil!.onOuvrirMatch('2734038');
   expect(mockPush).toHaveBeenLastCalledWith('/match/2734038');
+});
+
+test('Accueil : « Voir tous les matchs » ouvre l’onglet Matchs sur Tout le club', () => {
+  rendu(<Accueil />);
+  accueil!.onTousLesMatchs();
+  expect(mockPush).toHaveBeenLastCalledWith({ pathname: '/matchs', params: { filtre: 'tous' } });
 });
 
 test('Accueil : transmet majRequise à la vue', () => {
