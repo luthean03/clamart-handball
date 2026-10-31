@@ -18,10 +18,15 @@ interface Props {
   onOuvrirMatch: (id: string, equipeId: string) => void;
   rafraichir?: () => void;
   rafraichissement?: boolean;
+  /** Filtre à l'ouverture (« Tout le club » depuis l'accueil) ; sinon « Mes équipes » s'il y en a. */
+  filtreInitial?: Filtre;
+  /** Vue à l'ouverture : l'onglet retient le dernier choix liste / calendrier. */
+  vueInitiale?: Vue;
+  onChangerVue?: (vue: Vue) => void;
 }
 
-type Filtre = 'mes' | 'tous';
-type Vue = 'liste' | 'mois';
+export type Filtre = 'mes' | 'tous';
+export type Vue = 'liste' | 'mois';
 
 const SEGMENTS = [
   { value: 'mes', label: 'Mes équipes', hitSlop: MARGE_SEGMENT },
@@ -31,11 +36,17 @@ const SEGMENTS = [
 const cle = (e: ElementListe) =>
   e.type === 'jour' ? `jour-${e.jour}` : e.type === 'match' ? `${e.match.equipe.id}-${e.match.id}` : 'aujourdhui';
 
-export function VueMatchs({ club, maintenant, suivis, onOuvrirMatch, rafraichir, rafraichissement = false }: Props) {
+export function VueMatchs({
+  club, maintenant, suivis, onOuvrirMatch, rafraichir, rafraichissement = false, filtreInitial, vueInitiale = 'liste', onChangerVue,
+}: Props) {
   const t = useThemeClub();
   // On ne retient que les choix de l'utilisateur (filtre, vue) ; tout le reste se déduit des données.
-  const [filtre, setFiltre] = useState<Filtre>(suivis.length ? 'mes' : 'tous');
-  const [vue, setVue] = useState<Vue>('liste');
+  const [filtre, setFiltre] = useState<Filtre>(filtreInitial ?? (suivis.length ? 'mes' : 'tous'));
+  const [vue, setVue] = useState<Vue>(vueInitiale);
+  const changerVue = (v: Vue) => {
+    setVue(v);
+    onChangerVue?.(v);
+  };
   const aujourdhui = jourLocal(maintenant);
   const tous = useMemo(() => tousLesMatchs(club), [club]);
   const mois = useMemo(() => moisDeLaSaison(tous), [tous]);
@@ -72,7 +83,7 @@ export function VueMatchs({ club, maintenant, suivis, onOuvrirMatch, rafraichir,
             containerColor={vue === 'mois' ? t.colors.secondaryContainer : t.colors.surface}
             iconColor={vue === 'mois' ? t.colors.onSecondaryContainer : t.club.titre}
             style={styles.icone}
-            onPress={() => setVue(vue === 'liste' ? 'mois' : 'liste')}
+            onPress={() => changerVue(vue === 'liste' ? 'mois' : 'liste')}
           />
         )}
       </Appbar.Header>

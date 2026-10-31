@@ -16,6 +16,8 @@ jest.mock('expo-router', () => {
     useRouter: () => routeur,
     useLocalSearchParams: jest.fn(() => ({})),
     useSegments: jest.fn(() => []),
+    useRoute: jest.fn(() => ({ key: 'onglet' })),
+    useNavigation: jest.fn(() => ({ setParams: jest.fn() })),
     Redirect: Vide,
     ThemeProvider: ({ children }: { children: unknown }) => children,
     DarkTheme: { dark: true, colors: {}, fonts: {} },
@@ -24,6 +26,11 @@ jest.mock('expo-router', () => {
     Tabs: Object.assign(Vide, { Screen: Vide }),
   };
 });
+// Onglets (useOngletAffiche) : un seul onglet, toujours affiché.
+jest.mock('expo-router/react-navigation', () => ({
+  ...jest.requireActual('expo-router/react-navigation'),
+  useNavigationState: jest.fn((choisir: (etat: unknown) => unknown) => choisir({ index: 0, routes: [{ key: 'onglet' }] })),
+}));
 jest.mock('expo-web-browser', () => ({ openBrowserAsync: jest.fn(() => Promise.resolve({ type: 'opened' })) }));
 // Les icônes de Paper chargent leur police en asynchrone (mise à jour d'état hors act) : en test, un glyphe synchrone suffit.
 jest.mock('@expo/vector-icons/MaterialCommunityIcons', () => {

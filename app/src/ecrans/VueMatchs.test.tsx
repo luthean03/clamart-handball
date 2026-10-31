@@ -50,6 +50,22 @@ test('mes équipes par défaut quand on en suit, tout le club sur demande', () =
   expect(new Set(collectifsListes()).size).toBeGreaterThan(1);
 });
 
+test('depuis l’accueil (« Voir tous les matchs ») : tout le club même quand on suit des équipes', () => {
+  matchs({ suivis: ['seniors-f-1'], filtreInitial: 'tous' });
+  expect(new Set(collectifsListes()).size).toBeGreaterThan(1);
+});
+
+test('la vue choisie (liste / calendrier) est remontée à l’onglet, qui la rouvre', () => {
+  const onChangerVue = jest.fn();
+  ouvrirMois({ onChangerVue });
+  expect(onChangerVue).toHaveBeenLastCalledWith('mois');
+  fireEvent.press(screen.getByLabelText('Vue liste'));
+  expect(onChangerVue).toHaveBeenLastCalledWith('liste');
+  screen.unmount();
+  matchs({ vueInitiale: 'mois' });
+  expect(screen.getByRole('header', { name: 'Octobre 2026' })).toBeOnTheScreen();   // calendrier, mois en cours
+});
+
 test('matchs : mes équipes vide propose tout le club', () => {
   matchs({ suivis: [] });
   fireEvent.press(screen.getByText('Mes équipes'));
