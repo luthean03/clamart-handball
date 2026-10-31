@@ -19,6 +19,8 @@ interface EtatSuivi {
   notifResultats: boolean;
   /** Rappels avant match des équipes suivies. */
   rappels: boolean;
+  /** Changements de programme des équipes suivies (nouveau match, date, heure, salle). */
+  programme: boolean;
   /** Sujets FCM réellement abonnés sur ce téléphone. */
   sujets: string[];
   /** Autorisation de notifications accordée par Android (ou non encore demandée). */
@@ -35,6 +37,7 @@ interface EtatSuivi {
   effacerRetires: () => void;
   setNotifResultats: (b: boolean) => void;
   setRappels: (b: boolean) => void;
+  setProgramme: (b: boolean) => void;
   setSujets: (s: string[]) => void;
   setAutorisation: (a: Autorisation) => void;
   setApparence: (a: Apparence) => void;
@@ -49,6 +52,7 @@ export const useSuivi = create<EtatSuivi>()(
       saison: null,
       notifResultats: true,
       rappels: false,
+      programme: true,
       sujets: [],
       autorisation: 'inconnue',
       apparence: 'auto',
@@ -76,33 +80,37 @@ export const useSuivi = create<EtatSuivi>()(
       effacerRetires: () => set({ retires: [] }),
       setNotifResultats: (b) => set({ notifResultats: b }),
       setRappels: (b) => set({ rappels: b }),
+      setProgramme: (b) => set({ programme: b }),
       setSujets: (s) => set({ sujets: s }),
       setAutorisation: (a) => set({ autorisation: a }),
       setApparence: (a) => set({ apparence: a }),
     }),
     {
       name: 'clamart-suivi',
-      version: 4,
+      version: 5,
       storage: createJSONStorage(() => AsyncStorage),
       // Version 1 : pas de préférences de notifications, on prend les valeurs par défaut.
       // Version 2 → 3 : pas d'apparence choisie, elle reste automatique.
       // Version 3 → 4 : saison inconnue (null) ; elle est mémorisée au premier chargement des données, sans rien retirer.
+      // Version 4 → 5 : changements de programme activés par défaut.
       migrate: (etat) => ({
         notifResultats: true,
         rappels: false,
+        programme: true,
         sujets: [],
         autorisation: 'inconnue',
         apparence: 'auto',
         saison: null,
         ...(etat as object),
       }),
-      partialize: ({ suivis, bienvenueFaite, retires, saison, notifResultats, rappels, sujets, autorisation, apparence }) => ({
+      partialize: ({ suivis, bienvenueFaite, retires, saison, notifResultats, rappels, programme, sujets, autorisation, apparence }) => ({
         suivis,
         bienvenueFaite,
         retires,
         saison,
         notifResultats,
         rappels,
+        programme,
         sujets,
         autorisation,
         apparence,

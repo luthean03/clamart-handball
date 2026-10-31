@@ -11,8 +11,8 @@ function reglages(props: Partial<Parameters<typeof VueReglages>[0]> = {}) {
   const p = {
     club, maintenant: MAR_SOIR, suivis: ['seniors-m'], retires: [] as string[], version: '1.0.0',
     onRetirer: jest.fn(), onGererEquipes: jest.fn(), onEffacerRetires: jest.fn(), onOuvrirLien: jest.fn(), onRetour: jest.fn(),
-    notifResultats: true, rappels: false, autorisation: 'accordee' as Autorisation,
-    onNotifResultats: jest.fn(), onRappels: jest.fn(), onOuvrirReglagesSysteme: jest.fn(), onDemanderAutorisation: jest.fn(),
+    notifResultats: true, rappels: false, programme: true, autorisation: 'accordee' as Autorisation,
+    onNotifResultats: jest.fn(), onRappels: jest.fn(), onProgramme: jest.fn(), onOuvrirReglagesSysteme: jest.fn(), onDemanderAutorisation: jest.fn(),
     apparence: 'auto' as Apparence, onApparence: jest.fn(),
     ...props,
   };
@@ -76,6 +76,17 @@ test('notifications : résultats et rappel la veille (désactivé par défaut)',
   expect(p.onRappels).toHaveBeenCalledWith(true);
   fireEvent(screen.getByRole('switch', { name: 'Résultats de mes équipes' }), 'valueChange', false);
   expect(p.onNotifResultats).toHaveBeenCalledWith(false);
+});
+
+test('notifications : changements de programme, entre résultats et rappel', () => {
+  const p = reglages({ programme: true });
+  const titres = screen.getAllByText(/^(Résultats de mes équipes|Changements de programme|Rappel la veille du match)$/).map((n) => n.props.children);
+  expect(titres).toEqual(['Résultats de mes équipes', 'Changements de programme', 'Rappel la veille du match']);
+  expect(screen.getByText('Nouveau match, date, heure ou salle modifiée')).toBeOnTheScreen();
+  fireEvent(screen.getByRole('switch', { name: 'Changements de programme' }), 'valueChange', false);
+  expect(p.onProgramme).toHaveBeenLastCalledWith(false);
+  fireEvent.press(screen.getByText('Changements de programme'));
+  expect(p.onProgramme).toHaveBeenLastCalledWith(false);
 });
 
 test('notifications bloquées dans Android', () => {

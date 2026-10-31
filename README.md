@@ -123,6 +123,11 @@ au sujet `resultats-<équipe>` quand un résultat est publié, et (rappel la vei
 au sujet `rappels-<équipe>` à partir de 16 h 30. Le registre `collecteur/etat/notifications.json`
 évite les doublons. Les notifications ne nomment jamais un joueur.
 
+Au sujet `programme-<équipe>` (option « Changements de programme » de l'app, activée par défaut), le
+notifieur signale un nouveau match daté, une date, une heure ou une salle modifiée, et un match reporté
+(date retirée) ou retiré du calendrier. Il compare chaque passage à l'état `collecteur/etat/programme.json` ;
+un collectif dont la notification n'est pas partie garde son ancien état et sera ré-annoncé au passage suivant.
+
 Mise en place (une fois) : projet Firebase, app Android `fr.clamarthandball.app`, fichier
 `app/google-services.json`, compte de service → secret GitHub `FIREBASE_SERVICE_ACCOUNT`
 (contenu JSON complet).

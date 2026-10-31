@@ -30,8 +30,8 @@ let file: Promise<unknown> = Promise.resolve();
  */
 export function planifierSynchro(client: ClientSujets = clientFcm): Promise<void> {
   const cycle = file.then(async () => {
-    const { suivis, notifResultats, rappels, autorisation, sujets } = useSuivi.getState();
-    const attendus = sujetsAttendus(suivis, { notifResultats, rappels, autorisation });
+    const { suivis, notifResultats, rappels, programme, autorisation, sujets } = useSuivi.getState();
+    const attendus = sujetsAttendus(suivis, { notifResultats, rappels, programme, autorisation });
     useSuivi.getState().setSujets(await synchroniser(attendus, sujets, client));
   });
   file = cycle.catch(() => {});
@@ -44,6 +44,7 @@ export function useSynchroAbonnements(): void {
   const suivis = useSuivi((s) => s.suivis);
   const notifResultats = useSuivi((s) => s.notifResultats);
   const rappels = useSuivi((s) => s.rappels);
+  const programme = useSuivi((s) => s.programme);
   const autorisation = useSuivi((s) => s.autorisation);
 
   useEffect(() => {
@@ -63,5 +64,5 @@ export function useSynchroAbonnements(): void {
   useEffect(() => {
     if (!pret) return;
     planifierSynchro().catch(() => {});
-  }, [pret, suivis, notifResultats, rappels, autorisation]);
+  }, [pret, suivis, notifResultats, rappels, programme, autorisation]);
 }
