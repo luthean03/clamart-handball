@@ -23,7 +23,7 @@ from zoneinfo import ZoneInfo
 
 ICI = Path(__file__).resolve().parent
 sys.path.insert(0, str(ICI))
-from programme import detecter, etat_apres, etat_du_club  # noqa: E402
+from programme import Changement, _nom_salle, detecter, etat_apres, etat_du_club  # noqa: E402
 from programme import textes as textes_programme  # noqa: E402
 from textes import nom_lisible  # noqa: E402
 
@@ -356,6 +356,25 @@ def message_test(collectif: str, club: dict | None = None) -> Message:
                    "Ceci est une notification de test.", donnees, "")
 
 
+def message_test_programme(collectif: str, club: dict | None, maintenant: datetime, fuseau: str) -> Message:
+    """Test du sujet programme : le texte d'un « Nouveau match » sur le prochain match du collectif (l'appui ouvre
+    sa fiche). Étiquette à part, pour ne pas remplacer le test à bannière envoyé sur le sujet résultats."""
+    message_test(collectif)              # valide l'id du collectif
+    donnees = {"type": "test", "collectif": collectif}
+    titre, corps = "Test · Clamart Handball", "Ceci est une notification de test du programme."
+    a_venir = [(eq, m) for eq, m in _matchs(club or {"equipes": []}) if eq["collectif"] == collectif
+               and not m.get("resultat") and datetime.fromisoformat(m["date"]) > maintenant]
+    if a_venir:
+        eq, m = min(a_venir, key=lambda c: datetime.fromisoformat(c[1]["date"]))
+        noms = {c["id"]: c["nom"] for c in club.get("collectifs", [])}
+        c = Changement("nouveau", collectif, str(m["id"]), eq["id"], m["adversaire"], m["domicile"],
+                       None, m["date"], None, _nom_salle(m))
+        titre, corps = textes_programme(noms.get(collectif, collectif), [c], fuseau)
+        titre = f"Test · {titre}"
+        donnees.update(equipe_id=eq["id"], match_id=str(m["id"]))
+    return Message(f"test-programme:{collectif}", f"programme-{collectif}", titre, corps, donnees, "")
+
+
 def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime | None = None) -> int:
     parseur = argparse.ArgumentParser(description="Notifications FCM du Clamart Handball")
     parseur.add_argument("--essai", action="store_true")
@@ -397,8 +416,7 @@ def main(argv: list[str] | None = None, environ=os.environ, maintenant: datetime
     if args.test:
         club = json.loads(DONNEES.read_text(encoding="utf-8")) if DONNEES.exists() else None
         m = avec_images([message_test(args.test, club)], DOSSIER_IMAGES, url_images)[0]
-        sur_programme = Message(f"test:{args.test}", f"programme-{args.test}", m.titre, m.corps,
-                                {"type": "test", "collectif": args.test}, "")
+        sur_programme = message_test_programme(args.test, club, maintenant, config["notifications"]["fuseau"])
         for test in (m, sur_programme):
             if envoyeur:
                 envoyeur.envoyer(test)
