@@ -144,7 +144,8 @@ const styles = StyleSheet.create({
   vs: { textAlign: 'center', fontFamily: POLICES.titre },
   heure: { textAlign: 'center', fontFamily: POLICES.gras },
   details: { alignItems: 'center', gap: 4, paddingHorizontal: 16, paddingTop: 8, paddingBottom: 8 },
-  centre: { textAlign: 'center' },
+  // Toute la largeur, texte centré : rétréci à sa largeur mesurée, Android coupait « Jean-Blot · extérieur » après « · ».
+  centre: { textAlign: 'center', alignSelf: 'stretch' },
   forme: { marginTop: 4, alignItems: 'center' },
   pied: { borderTopWidth: StyleSheet.hairlineWidth, alignItems: 'center' },
 });
