@@ -47,8 +47,8 @@ assets/                     logo du club ; pictogramme handball (assets/pictogra
    Au bout de 2 à 3 minutes, le site est en ligne à l'adresse
    `https://<compte>.github.io/clamart-handball/` (affichée dans le résumé du workflow).
 
-Ensuite, tout est automatique : mise à jour chaque matin, et toutes les 30 minutes
-le samedi et le dimanche après-midi. Nom de domaine du club (optionnel) :
+Ensuite, tout est automatique : six mises à jour par jour, aux mêmes heures en semaine et le
+week-end (horaires dans `.github/workflows/mise-a-jour.yml`). Nom de domaine du club (optionnel) :
 *Settings → Pages → Custom domain*.
 
 ## Lancer l'app en développement
