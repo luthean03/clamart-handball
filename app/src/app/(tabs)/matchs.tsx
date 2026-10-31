@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { EtatSansDonnees } from '../../composants/EtatSansDonnees';
 import { useOngletAffiche } from '../../composants/useOngletAffiche';
 import { useMaintenant } from '../../donnees/maintenant';
@@ -21,16 +21,21 @@ export default function Matchs() {
   const affiche = useOngletAffiche();
   const [vue, setVue] = useState<Vue>('liste');
 
-  // En quittant l'onglet, le « Tout le club » demandé par l'accueil ne vaut plus : le retour par la barre
-  // d'onglets rouvre le filtre par défaut.
+  // En quittant l'onglet (affiché, puis plus affiché), le « Tout le club » demandé par l'accueil ne vaut plus :
+  // le retour par la barre d'onglets rouvre le filtre par défaut. Pas avant : le paramètre peut arriver un
+  // rendu avant que l'onglet soit affiché, il ne faut pas l'effacer à ce moment-là.
+  const etaitAffiche = useRef(affiche);
   useEffect(() => {
-    if (!affiche && filtre) navigation.setParams({ filtre: undefined } as never);
+    if (etaitAffiche.current && !affiche && filtre) navigation.setParams({ filtre: undefined } as never);
+    etaitAffiche.current = affiche;
   }, [affiche, filtre, navigation]);
 
   if (!affiche) return null;
   if (!club) return <EtatSansDonnees chargement={chargement} erreur={erreur} reessayer={rafraichir} />;
   return (
     <VueMatchs
+      // Le filtre demandé (« Tout le club ») peut arriver un rendu après l'affichage : la vue repart alors de lui.
+      key={filtre ?? ''}
       club={club}
       maintenant={maintenant}
       suivis={suivis}
