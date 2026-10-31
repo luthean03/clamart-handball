@@ -5,7 +5,7 @@ import { CONTENU_BOUTON, MARGE_SEGMENT, NOM_SANS_COUPURE } from '../composants/c
 import { EnTeteSection } from '../composants/EnTeteSection';
 import { LigneMatch } from '../composants/LigneMatch';
 import { lierNumero, nomLisible, ordinal, permettreCesure, rangAffiche } from '../donnees/phrase';
-import { equipePrincipale, equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
+import { equipesDuCollectif, matchsDuCollectif } from '../donnees/selecteurs';
 import type { Club } from '../donnees/types';
 import { POLICES, useThemeClub } from '../theme/theme';
 
@@ -55,9 +55,11 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
   }
 
   const equipes = equipesDuCollectif(club, collectifId);
-  const principale = equipePrincipale(club, collectifId);
   const classements = equipes.filter((e) => (e.classement?.length ?? 0) > 0);
   const avecClassement = classements.length > 0;
+  // Un seul rang en tête : avec plusieurs classements (U13 : délayages puis championnat), il serait ambigu ;
+  // l'onglet Classement les montre tous.
+  const rang = classements.length === 1 ? classements[0] : undefined;
   const onglets = [
     { value: 'matchs', label: 'Matchs', hitSlop: MARGE_SEGMENT },
     ...(avecClassement ? [{ value: 'classement', label: 'Classement', hitSlop: MARGE_SEGMENT }] : []),
@@ -80,7 +82,7 @@ export function VueEquipe({ club, collectifId, maintenant, suivi, onBasculer, on
       <ScrollView contentContainerStyle={styles.contenu}>
         <Text variant="bodyMedium" style={{ color: t.colors.onSurfaceVariant }}>
           {[...new Set(equipes.map((e) => e.detail))].join(' · ')}
-          {principale?.place && principale.nb_equipes ? ` · ${rangAffiche(principale.place, principale.nb_equipes)}` : ''}
+          {rang?.place && rang.nb_equipes ? ` · ${rangAffiche(rang.place, rang.nb_equipes)}` : ''}
         </Text>
         <SegmentedButtons style={styles.onglets} value={onglet} onValueChange={(v) => setOngletChoisi(v as Onglet)} buttons={onglets} />
 
