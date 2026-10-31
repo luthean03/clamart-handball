@@ -7,7 +7,8 @@ Sorties (app/assets/) :
     (premier plan de l'icône adaptative Android : le disque tient dans la zone sûre, que le masque du lanceur ne rogne pas ;
     opaque parce que certains lanceurs teintent la couche de fond, ce qui donnait l'anneau rose) ;
   - icone/monochrome.png (1024 × 1024) : le pictogramme handball blanc sur fond transparent (icône thématique Android 13) ;
-  - notification/{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}.png (24 à 96 px) : le même pictogramme, icône de la barre d'état.
+  - notification/{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}.png (24 à 96 px) : l'écusson complet d'une seule couleur, blanc sur
+    fond transparent (barre d'état ; pastille des notifications jusqu'à Android 15, qui ignore les couleurs).
 Pictogramme handball (assets/pictogramme-handball.svg), fourni par le responsable du club.
 Déterministe : mêmes entrées, même fichier.
 """
@@ -20,7 +21,7 @@ from PIL import Image, ImageChops, ImageDraw
 from svgelements import SVG, Circle, Line, Move, Shape
 from svgelements import Path as TraceSvg
 
-from banderole import ecusson_club
+from banderole import RAYON_ANNEAU, RAYON_ECUSSON, ecusson_club
 
 ICI = Path(__file__).resolve().parent
 ASSETS = ICI.parent / "app" / "assets"
@@ -129,8 +130,29 @@ def monochrome() -> Image.Image:
     return pictogramme(TAILLE_ICONE, (1 - cote / TAILLE_ICONE) / 2)
 
 
+SEUIL_CLAIR = 150   # luminance : en dessous (noir, bleu, rouge), l'écusson est plein ; au-dessus (blanc, crème), en creux
+
+
+def ecusson_une_couleur(taille: int, marge: float = 0) -> Image.Image:
+    """L'écusson complet en blanc sur fond transparent : anneau extérieur, noir, bleu et rouge pleins ; lettres, chiffres
+    et fond du joueur en creux. Seuillé sur l'écusson en grand (1536 px) puis réduit : bords lissés à toutes les tailles."""
+    disque = ecusson_club()
+    cote = disque.width
+    plein = disque.convert("L").point(lambda v: 255 if v < SEUIL_CLAIR else 0)
+    anneau = Image.new("L", (cote, cote), 255)                      # anneau blanc d'origine, gardé plein jusqu'au bord
+    r = RAYON_ANNEAU * cote / (2 * (RAYON_ECUSSON + 1))                # même échelle que ecusson_club
+    ImageDraw.Draw(anneau).ellipse((cote / 2 - r, cote / 2 - r, cote / 2 + r, cote / 2 + r), fill=0)
+    alpha = ImageChops.multiply(ImageChops.lighter(plein, anneau), disque.getchannel("A"))
+    utile = round(taille * (1 - 2 * marge))
+    image = Image.new("RGBA", (taille, taille), (255, 255, 255, 0))
+    reduit = Image.new("RGBA", (utile, utile), (255, 255, 255, 0))
+    reduit.putalpha(alpha.resize((utile, utile), Image.LANCZOS))
+    image.alpha_composite(reduit, ((taille - utile) // 2, (taille - utile) // 2))
+    return image
+
+
 def notification(taille: int) -> Image.Image:
-    return pictogramme(taille, MARGE_NOTIFICATION)
+    return ecusson_une_couleur(taille, MARGE_NOTIFICATION)
 
 
 def main() -> None:

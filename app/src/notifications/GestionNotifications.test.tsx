@@ -82,12 +82,23 @@ test('sans titre, le snackbar affiche le corps', () => {
   expect(screen.getByText('Seniors M · D2 territoriale')).toBeOnTheScreen();
 });
 
-test('titre et corps sont affichés ensemble (on sait de quelle équipe il s’agit)', () => {
+test('titre et corps sont affichés ensemble (on sait de quelle équipe il s’agit), avec le logo du club', () => {
   let recevoir: (n: typeof notif) => void = () => {};
   jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
   rendu(<GestionNotifications />);
   act(() => recevoir(notif));
-  expect(screen.getByText('Clamart 21 – 22 Levallois SC 1D\nSeniors M · D2 territoriale')).toBeOnTheScreen();
+  expect(screen.getByText('Clamart 21 – 22 Levallois SC 1D')).toBeOnTheScreen();
+  expect(screen.getByText('Seniors M · D2 territoriale')).toBeOnTheScreen();
+  expect(screen.getByTestId('ecusson-club')).toBeOnTheScreen();
+});
+
+test('titre et corps tiennent chacun sur une ligne (une notification groupée ne couvre pas l’écran)', () => {
+  let recevoir: (n: { titre: string; corps: string; donnees: Record<string, string> }) => void = () => {};
+  jest.mocked(fcm.ecouterPremierPlan).mockImplementation((cb) => { recevoir = cb; return () => {}; });
+  rendu(<GestionNotifications />);
+  act(() => recevoir({ titre: 'Programme modifié · Seniors M', corps: '2 changements\nHoraire : sam. 31 oct.\nNouveau : dim. 8 nov.', donnees: {} }));
+  expect(screen.getByText('Programme modifié · Seniors M').props.numberOfLines).toBe(1);
+  expect(screen.getByText(/^2 changements/).props.numberOfLines).toBe(1);
 });
 
 test('sans corps, le snackbar affiche le titre seul', () => {

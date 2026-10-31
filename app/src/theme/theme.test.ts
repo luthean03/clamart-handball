@@ -60,9 +60,9 @@ test('le fond clair reprend la teinte du crème du logo (#FFFEF0, ≈ 57°) sans
 });
 
 test('la snackbar est thémée : fond bleu nuit en clair, crème en sombre', () => {
-  expect(themeClair.colors.inverseSurface).toBe('#142A3D');
+  expect(themeClair.colors.inverseSurface).toBe('#1A1C20');
   expect(themeClair.colors.inverseOnSurface).toBe('#FFFEF0');
-  expect(themeClair.colors.inversePrimary).toBe('#FFB4A8');
+  expect(themeClair.colors.inversePrimary).toBe('#FF5A4E');
   expect(themeSombre.colors.inverseSurface).toBe('#F4F1EA');
   expect(themeSombre.colors.inverseOnSurface).toBe('#1A1C20');
   expect(themeSombre.colors.inversePrimary).toBe('#C8201A');

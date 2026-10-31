@@ -38,7 +38,7 @@
         "./plugins/icone-notification",
         {
           "dossier": "./assets/notification",
-          "couleur": "#DB0000"
+          "couleur": "#00000000"
         }
       ],
       [
