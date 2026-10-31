@@ -1,0 +1,705 @@
+{
+ "matchs": {
+  "seniors-f-1:2644298": {
+   "adversaire": "BOIS-COLOMBES SP. 1B",
+   "date": "2026-11-08T16:15:00+01:00",
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": "ALBERT-SMIRLIAN"
+  },
+  "seniors-f-1:2644304": {
+   "adversaire": "ES COLOMBIENNE 1C",
+   "date": "2026-11-14T18:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "seniors-f-1:2644310": {
+   "adversaire": "PARIS UC 1C",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644322": {
+   "adversaire": "PARIS SC 1C",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644328": {
+   "adversaire": "MARTIGUA SCL",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644334": {
+   "adversaire": "COM BAGNEUX 1",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644340": {
+   "adversaire": "AC BOULOGNE-BILLANCOURT 1B",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644346": {
+   "adversaire": "STADE FRANCAIS",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644352": {
+   "adversaire": "PARIS ST-GERMAIN HB",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644358": {
+   "adversaire": "ENT SURESNES / NANTERRE",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644364": {
+   "adversaire": "BOIS-COLOMBES SP. 1B",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644370": {
+   "adversaire": "ES COLOMBIENNE 1C",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644376": {
+   "adversaire": "PARIS UC 1C",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644388": {
+   "adversaire": "PARIS SC 1C",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2644394": {
+   "adversaire": "MARTIGUA SCL",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1:2766739": {
+   "adversaire": "TS VICINOIS 88 HB",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33243-clamart-handball-1",
+   "salle": null
+  },
+  "seniors-f-1b:2644483": {
+   "adversaire": "LA CLICHOISE HB",
+   "date": "2026-11-14T18:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "32543-clamart-handball-1b",
+   "salle": "LEO-LAGRANGE"
+  },
+  "seniors-f-1b:2644487": {
+   "adversaire": "PARIS UC 1D",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32543-clamart-handball-1b",
+   "salle": null
+  },
+  "seniors-f-1b:2644490": {
+   "adversaire": "MARTIGUA SCL 1B",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32543-clamart-handball-1b",
+   "salle": null
+  },
+  "seniors-f-1b:2644493": {
+   "adversaire": "STADE DE VANVES 1B",
+   "date": "2026-12-12T20:45:00+01:00",
+   "domicile": false,
+   "equipe_id": "32543-clamart-handball-1b",
+   "salle": "MAURICE-MAGNE"
+  },
+  "seniors-f-1b:2644496": {
+   "adversaire": "LEVALLOIS SC",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32543-clamart-handball-1b",
+   "salle": null
+  },
+  "seniors-f-1b:2644501": {
+   "adversaire": "PARIS SC 1D",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32543-clamart-handball-1b",
+   "salle": null
+  },
+  "seniors-f-1b:2644511": {
+   "adversaire": "LA CLICHOISE HB",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32543-clamart-handball-1b",
+   "salle": null
+  },
+  "seniors-m:2673796": {
+   "adversaire": "COURBEVOIE HB 1C",
+   "date": "2026-11-08T16:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "32546-clamart-handball",
+   "salle": "JEAN-BLOT"
+  },
+  "seniors-m:2673800": {
+   "adversaire": "SCUF 1B",
+   "date": "2026-11-14T20:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "32546-clamart-handball",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "seniors-m:2673808": {
+   "adversaire": "MARTIGUA SCL 1B",
+   "date": "2026-12-06T14:30:00+01:00",
+   "domicile": false,
+   "equipe_id": "32546-clamart-handball",
+   "salle": "HAUTPOUL"
+  },
+  "seniors-m:2673812": {
+   "adversaire": "PARIS UC 1C",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32546-clamart-handball",
+   "salle": null
+  },
+  "seniors-m:2673816": {
+   "adversaire": "ISSY HBM 1C",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32546-clamart-handball",
+   "salle": null
+  },
+  "seniors-m:2673820": {
+   "adversaire": "LEVALLOIS SC 1D",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32546-clamart-handball",
+   "salle": null
+  },
+  "seniors-m:2673824": {
+   "adversaire": "COURBEVOIE HB 1C",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32546-clamart-handball",
+   "salle": null
+  },
+  "seniors-m:2673828": {
+   "adversaire": "SCUF 1B",
+   "date": "2027-02-27T18:45:00+01:00",
+   "domicile": false,
+   "equipe_id": "32546-clamart-handball",
+   "salle": "MICHELINE OSTERMEYER"
+  },
+  "seniors-m:2766998": {
+   "adversaire": "TU VERRIERES-LE-BUISSON",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33244-clamart-handball",
+   "salle": null
+  },
+  "seniors-mixte:2748867": {
+   "adversaire": "HBC LES LIONS DE LA MAULDRE",
+   "date": "2026-11-04T20:45:00+01:00",
+   "domicile": false,
+   "equipe_id": "33562-clamart-hb",
+   "salle": "GYMNASE D. DEMAISON"
+  },
+  "seniors-mixte:2748872": {
+   "adversaire": "CELLOIS HB",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748877": {
+   "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748884": {
+   "adversaire": "HB BOUGIVAL",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748887": {
+   "adversaire": "VERSAILLES HBC (2)",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748890": {
+   "adversaire": "AS ST-CYR/FONTENAY HB 78 (2)",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748895": {
+   "adversaire": "HBC LES LIONS DE LA MAULDRE",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748900": {
+   "adversaire": "CELLOIS HB",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748905": {
+   "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748912": {
+   "adversaire": "HB BOUGIVAL",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748915": {
+   "adversaire": "VERSAILLES HBC (2)",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33562-clamart-hb",
+   "salle": null
+  },
+  "seniors-mixte:2748918": {
+   "adversaire": "AS ST-CYR/FONTENAY HB 78 (2)",
+   "date": "2027-05-25T20:45:00+02:00",
+   "domicile": false,
+   "equipe_id": "33562-clamart-hb",
+   "salle": "GERARD PHILIPPE"
+  },
+  "seniors-mixte:2780043": {
+   "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33711-clamart-handball",
+   "salle": null
+  },
+  "seniors-mixte:2780044": {
+   "adversaire": "HBC ANTONY",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33711-clamart-handball",
+   "salle": null
+  },
+  "u11-f-2:2710033": {
+   "adversaire": "CHAVILLE HB 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-2-filles",
+   "salle": null
+  },
+  "u11-f-2:2710040": {
+   "adversaire": "COM BAGNEUX",
+   "date": "2026-11-07T16:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-2-filles",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u11-f-2:2710044": {
+   "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
+   "date": "2026-11-14T13:30:00+01:00",
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-2-filles",
+   "salle": "CITE DES SPORTS SALLE 1"
+  },
+  "u11-f-2:2710048": {
+   "adversaire": "CHAVILLE HB 2",
+   "date": "2026-11-22T10:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-2-filles",
+   "salle": "LEO-LAGRANGE"
+  },
+  "u11-f-2:2710054": {
+   "adversaire": "ISSY HBM 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-2-filles",
+   "salle": null
+  },
+  "u11-f-2:2710055": {
+   "adversaire": "COM BAGNEUX",
+   "date": "2026-12-13T12:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-2-filles",
+   "salle": "HENRI-WALLON"
+  },
+  "u11-f-2:2710059": {
+   "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-2-filles",
+   "salle": null
+  },
+  "u11-mixte-1:2710070": {
+   "adversaire": "USM MALAKOFF 3",
+   "date": "2026-11-07T14:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-1",
+   "salle": "salle jacques duclos"
+  },
+  "u11-mixte-1:2710073": {
+   "adversaire": "HBC ANTONY 2",
+   "date": "2026-11-15T15:30:00+01:00",
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-1",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u11-mixte-1:2710077": {
+   "adversaire": "STADE DE VANVES 2",
+   "date": "2026-11-21T14:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-1",
+   "salle": "MAURICE-MAGNE"
+  },
+  "u11-mixte-1:2710085": {
+   "adversaire": "USM MALAKOFF 3",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-1",
+   "salle": null
+  },
+  "u11-mixte-1:2710088": {
+   "adversaire": "HBC ANTONY 2",
+   "date": "2027-01-09T15:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-1",
+   "salle": "LIONEL-TERRAY"
+  },
+  "u11-mixte-3:2710989": {
+   "adversaire": "AC BOULOGNE-BILLANCOURT 3",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": null
+  },
+  "u11-mixte-3:2710992": {
+   "adversaire": "USM MALAKOFF 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": null
+  },
+  "u11-mixte-3:2710993": {
+   "adversaire": "ASV CHATENAY-MALABRY 2",
+   "date": "2026-10-10T14:00:00+02:00",
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u11-mixte-3:2710997": {
+   "adversaire": "AS FONTENAY-AUX-ROSES 2",
+   "date": "2026-11-08T09:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": "HALLE DU PANORAMA"
+  },
+  "u11-mixte-3:2711004": {
+   "adversaire": "AC BOULOGNE-BILLANCOURT 3",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": null
+  },
+  "u11-mixte-3:2711007": {
+   "adversaire": "USM MALAKOFF 2",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": null
+  },
+  "u11-mixte-3:2711008": {
+   "adversaire": "ASV CHATENAY-MALABRY 2",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": null
+  },
+  "u11-mixte-3:2711012": {
+   "adversaire": "AS FONTENAY-AUX-ROSES 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33056-clamart-hb-3",
+   "salle": null
+  },
+  "u13-f:2757741": {
+   "adversaire": "STADE DE VANVES",
+   "date": "2026-11-07T14:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33624-clamart-hb",
+   "salle": "MAURICE-MAGNE"
+  },
+  "u13-f:2757744": {
+   "adversaire": "ENT RUEIL / PUTEAUX",
+   "date": "2026-11-15T14:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "33624-clamart-hb",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u13-f:2757746": {
+   "adversaire": "USM MALAKOFF",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-f:2757751": {
+   "adversaire": "COURBEVOIE HB 2",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-f:2757753": {
+   "adversaire": "ISSY-PARIS HAND 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-f:2757756": {
+   "adversaire": "STADE DE VANVES",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-f:2757759": {
+   "adversaire": "ENT RUEIL / PUTEAUX",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-f:2757761": {
+   "adversaire": "USM MALAKOFF",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-f:2757766": {
+   "adversaire": "COURBEVOIE HB 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-f:2757768": {
+   "adversaire": "ISSY-PARIS HAND 2",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33624-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2757996": {
+   "adversaire": "ES NANTERRE",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2757999": {
+   "adversaire": "STADE DE VANVES 1",
+   "date": "2026-11-15T11:30:00+01:00",
+   "domicile": true,
+   "equipe_id": "33627-clamart-hb",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u13-m:2758000": {
+   "adversaire": "AS MEUDON 1",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2758004": {
+   "adversaire": "AC BOULOGNE-BILLANCOURT 2",
+   "date": "2026-11-28T15:45:00+01:00",
+   "domicile": false,
+   "equipe_id": "33627-clamart-hb",
+   "salle": "PAUL-SOURIAU"
+  },
+  "u13-m:2758008": {
+   "adversaire": "LEVALLOIS SC 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2758011": {
+   "adversaire": "ES NANTERRE",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2758014": {
+   "adversaire": "STADE DE VANVES 1",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2758015": {
+   "adversaire": "AS MEUDON 1",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2758019": {
+   "adversaire": "AC BOULOGNE-BILLANCOURT 2",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u13-m:2758023": {
+   "adversaire": "LEVALLOIS SC 2",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33627-clamart-hb",
+   "salle": null
+  },
+  "u15-m:2740588": {
+   "adversaire": "ASNIERES HBC 3",
+   "date": "2026-11-21T14:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "33472-clamart-hb",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u15-m:2740593": {
+   "adversaire": "PARIS ST-GERMAIN HB 4",
+   "date": "2026-11-08T12:30:00+01:00",
+   "domicile": false,
+   "equipe_id": "33472-clamart-hb",
+   "salle": "GYMNASE ALAIN-MIMOUN"
+  },
+  "u15-m:2740596": {
+   "adversaire": "ENT FONTENAY / MALAKOFF 3",
+   "date": "2026-11-14T16:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "33472-clamart-hb",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u15-m:2740600": {
+   "adversaire": "RUEIL AC 3",
+   "date": "2026-11-29T14:10:00+01:00",
+   "domicile": false,
+   "equipe_id": "33472-clamart-hb",
+   "salle": "complexe omnisports alain-mimoun"
+  },
+  "u18-f:2739604": {
+   "adversaire": "STADE FRANCAIS",
+   "date": "2026-11-07T18:30:00+01:00",
+   "domicile": false,
+   "equipe_id": "33458-clamart-hb",
+   "salle": "STADE PIERRE DE COUBERTIN"
+  },
+  "u18-f:2739607": {
+   "adversaire": "ENT PARIS GALAXY NORD 3",
+   "date": "2026-11-15T16:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33458-clamart-hb",
+   "salle": "GYMNASE CHARLES-MILDE (EX SAUSSURE)"
+  },
+  "u18-f:2739610": {
+   "adversaire": "ENT COLOMBES / ASNIERES",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33458-clamart-hb",
+   "salle": null
+  },
+  "u18-m:2740459": {
+   "adversaire": "LEVALLOIS SC 2",
+   "date": "2026-11-08T16:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33470-clamart-hb",
+   "salle": "JEAN-PHILIPPE-GATIEN"
+  },
+  "u18-m:2740462": {
+   "adversaire": "BOIS-COLOMBES SP. 3",
+   "date": "2026-11-15T16:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33470-clamart-hb",
+   "salle": "charles coste"
+  },
+  "u18-m:2740465": {
+   "adversaire": "COURBEVOIE HB 1",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "33470-clamart-hb",
+   "salle": null
+  },
+  "u9-mixte-1:2769369": {
+   "adversaire": "CHAVILLE HB 1",
+   "date": "2026-11-15T10:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33687-clamart-hb-1",
+   "salle": "LEO-LAGRANGE"
+  },
+  "u9-mixte-1:2769371": {
+   "adversaire": "AS MEUDON 1",
+   "date": "2026-11-15T10:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "33687-clamart-hb-1",
+   "salle": "LEO-LAGRANGE"
+  },
+  "u9-mixte-2:2769372": {
+   "adversaire": "CHAVILLE HB 2",
+   "date": "2026-11-15T10:00:00+01:00",
+   "domicile": false,
+   "equipe_id": "33687-clamart-hb-2",
+   "salle": "LEO-LAGRANGE"
+  },
+  "u9-mixte-2:2769374": {
+   "adversaire": "AS MEUDON 2",
+   "date": "2026-11-15T10:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "33687-clamart-hb-2",
+   "salle": "LEO-LAGRANGE"
+  }
+ },
+ "saison": "2026-2027"
+}
