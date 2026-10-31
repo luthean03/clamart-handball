@@ -199,9 +199,18 @@ def test_main_test_envoie_aussi_sur_programme(chemins, monkeypatch):
     envoyeur = faux_envoyeur(monkeypatch)
     assert notifieur.main(["--test", "seniors-m"], {"FIREBASE_SERVICE_ACCOUNT": "{}"}, LUNDI) == 0
     assert [m.sujet for m in envoyeur.envoyes] == ["resultats-seniors-m", "programme-seniors-m"]
-    p = envoyeur.envoyes[1]
-    assert p.donnees == {"type": "test", "collectif": "seniors-m"}
-    assert (p.titre, p.corps) == (envoyeur.envoyes[0].titre, envoyeur.envoyes[0].corps)
+    r, p = envoyeur.envoyes
+    assert p.cle != r.cle       # étiquette Android distincte : le test programme ne remplace pas la bannière
+    assert p.titre.startswith("Test · Nouveau match · ")
+    assert p.donnees["type"] == "test" and p.donnees["match_id"]
+
+
+def test_message_test_programme_sans_match_a_venir():
+    m = notifieur.message_test_programme("seniors-m", {"equipes": []}, LUNDI, "Europe/Paris")
+    assert (m.sujet, m.cle, m.titre) == ("programme-seniors-m", "test-programme:seniors-m", "Test · Clamart Handball")
+    assert m.donnees == {"type": "test", "collectif": "seniors-m"}
+    with pytest.raises(ValueError):
+        notifieur.message_test_programme("seniors m;", None, LUNDI, "Europe/Paris")
 
 
 def test_amorcage_differe_si_collecte_incomplete():
