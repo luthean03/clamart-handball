@@ -226,6 +226,15 @@ test('fiche équipe : le suivi est une étoile et le rang ne se coupe pas', () =
   expect(screen.getByText('star-outline', { includeHiddenElements: true })).toBeOnTheScreen();
 });
 
+test('fiche équipe : pas de rang en tête quand l’équipe a plusieurs classements (délayages puis championnat)', () => {
+  const [premiere] = club.equipes.filter((e) => e.collectif === 'seniors-f-1' && e.classement?.length);
+  const deux = { ...club, equipes: [...club.equipes, { ...premiere, id: 'seniors-f-1-phase-2', detail: 'Phase 2' }] };
+  rendu(<VueEquipe club={deux} collectifId="seniors-f-1" maintenant={MAR_SOIR} suivi={false} onBasculer={jest.fn()}
+    onOuvrirMatch={jest.fn()} onRetour={jest.fn()} onAgenda={jest.fn()} onOuvrirLien={jest.fn()} />);
+  expect(screen.queryByText(/sur 11/)).toBeNull();
+  expect(screen.getAllByText(/Phase 2/).length).toBeGreaterThan(0);      // la seconde phase est bien là
+});
+
 test('fiche équipe : retour et cloche ont une cible tactile d’au moins 48 dp', () => {
   fiche('seniors-m');
   const boutons = screen.getAllByTestId('icon-button-container-outer-layer');

@@ -3,13 +3,14 @@ name: Mise à jour des résultats
 on:
   schedule:
     # Horaires en UTC (Paris = UTC+1 l'hiver, UTC+2 l'été)
-    - cron: "15 5 * * *"           # tous les jours vers 7 h
-    - cron: "*/30 12-21 * * 6,0"   # samedi et dimanche, toutes les 30 min de ~14 h à ~23 h
-    - cron: "45 15 * * *"         # tous les jours vers 17 h 45 (été) / 16 h 45 (hiver) : rappels et matchs de semaine
-    - cron: "47 8 * * 1-5"         # lundi au vendredi vers 10 h 47 (été) / 9 h 47 (hiver)
-    - cron: "47 10 * * 1-5"        # lundi au vendredi vers 12 h 47 (été) / 11 h 47 (hiver)
-    - cron: "47 18 * * 1-5"        # lundi au vendredi vers 20 h 47 (été) / 19 h 47 (hiver)
-    - cron: "47 20 * * 1-5"        # lundi au vendredi vers 22 h 47 (été) / 21 h 47 (hiver) : résultats des matchs de semaine
+    # Mêmes horaires tous les jours, week-end compris (GitHub ne lançait presque aucune des collectes
+    # « toutes les 30 min » du week-end). Minutes décalées de :00 et :30, les heures les plus chargées chez GitHub.
+    - cron: "15 5 * * *"           # vers 7 h
+    - cron: "47 8 * * *"           # vers 10 h 47 (été) / 9 h 47 (hiver)
+    - cron: "47 10 * * *"          # vers 12 h 47 (été) / 11 h 47 (hiver)
+    - cron: "45 15 * * *"          # vers 17 h 45 (été) / 16 h 45 (hiver) : rappels
+    - cron: "47 18 * * *"          # vers 20 h 47 (été) / 19 h 47 (hiver)
+    - cron: "47 20 * * *"          # vers 22 h 47 (été) / 21 h 47 (hiver) : résultats de la journée
   workflow_dispatch:
     inputs:
       test_sujet:
