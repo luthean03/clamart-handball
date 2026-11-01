@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-10-31T23:46:58+00:00",
+ "mis_a_jour": "2026-11-01T11:49:18+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -6597,6 +6597,25 @@
    ],
    "matchs": [
     {
+     "id": "2757996",
+     "date": "2026-11-08T14:00:00+01:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "ES NANTERRE",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-06-26-ff85f844-9966-4202-99f3-f7a0d88e3514.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2757996/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "MONT-VALERIEN",
+      "adresse": "10 /22, RUE DE SURESNES 92000 NANTERRE"
+     }
+    },
+    {
      "id": "2757999",
      "date": "2026-11-15T11:30:00+01:00",
      "journee": 2,
@@ -6633,21 +6652,6 @@
       "nom": "PAUL-SOURIAU",
       "adresse": "30 RUE DE SEINE 92100 BOULOGNE BILLANCOURT"
      }
-    },
-    {
-     "id": "2757996",
-     "date": null,
-     "journee": 1,
-     "domicile": false,
-     "adversaire": "ES NANTERRE",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-06-26-ff85f844-9966-4202-99f3-f7a0d88e3514.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2757996/",
-     "feuille_de_match": null
     },
     {
      "id": "2758000",
