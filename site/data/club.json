@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-02T13:27:44+00:00",
+ "mis_a_jour": "2026-11-02T18:51:24+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -50,8 +50,8 @@
    "categorie": "seniors",
    "genre": "Mixte",
    "equipes": [
-    "33562-clamart-hb",
-    "33711-clamart-handball"
+    "33711-clamart-handball",
+    "33562-clamart-hb"
    ]
   },
   {
@@ -2851,6 +2851,106 @@
    "collectif": "seniors-m"
   },
   {
+   "id": "33711-clamart-handball",
+   "nom": "Seniors Loisir",
+   "libelle_ffhb": "CLAMART HANDBALL",
+   "competition": "LOISIRS + DE 16 ANS MIXTE",
+   "detail": "Loisirs",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "seniors",
+   "genre": "Mixte",
+   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
+   "poule": "POULE C",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "AS VOLTAIRE CHATENAY-MALABRY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "HBC ANTONY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HANDBALL",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": true
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2780043",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2780044",
+     "date": null,
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "HBC ANTONY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "place": 3,
+   "nb_equipes": 3,
+   "collectif": "seniors-mixte"
+  },
+  {
    "id": "33562-clamart-hb",
    "nom": "Seniors Loisir",
    "libelle_ffhb": "CLAMART HB",
@@ -3161,106 +3261,6 @@
    "collectif": "seniors-mixte"
   },
   {
-   "id": "33711-clamart-handball",
-   "nom": "Seniors Loisir",
-   "libelle_ffhb": "CLAMART HANDBALL",
-   "competition": "LOISIRS + DE 16 ANS MIXTE",
-   "detail": "Loisirs",
-   "organisateur": "COMITE DES HAUTS-DE-SEINE",
-   "niveau": "departemental",
-   "categorie": "seniors",
-   "genre": "Mixte",
-   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
-   "poule": "POULE C",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
-   "classement": [
-    {
-     "place": 1,
-     "equipe": "AS VOLTAIRE CHATENAY-MALABRY",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "HBC ANTONY",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "CLAMART HANDBALL",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": true
-    }
-   ],
-   "matchs": [
-    {
-     "id": "2780043",
-     "date": null,
-     "journee": 1,
-     "domicile": false,
-     "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2780044",
-     "date": null,
-     "journee": 2,
-     "domicile": true,
-     "adversaire": "HBC ANTONY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
-     "feuille_de_match": null
-    }
-   ],
-   "bilan": {
-    "joues": 0,
-    "victoires": 0,
-    "nuls": 0,
-    "defaites": 0,
-    "bp": 0,
-    "bc": 0
-   },
-   "forme": "",
-   "place": 3,
-   "nb_equipes": 3,
-   "collectif": "seniors-mixte"
-  },
-  {
    "id": "33403-clamart-handball",
    "nom": "Seniors M",
    "libelle_ffhb": "CLAMART HANDBALL",
@@ -3445,16 +3445,16 @@
    "id": "33243-clamart-handball-1",
    "nom": "Seniors F1",
    "libelle_ffhb": "CLAMART HANDBALL 1",
-   "competition": "COUPE DE FRANCE DEPARTEMENTALE FEMININE 2026-2027",
-   "detail": "Coupe de France départementale",
+   "competition": "COUPE DE FRANCE CAISSE D'EPARGNE DEPARTEMENTALE FEMININE 2026-2027",
+   "detail": "Coupe de France",
    "organisateur": "FEDERATION FRANCAISE DE HANDBALL",
    "niveau": "coupe-de-france",
    "categorie": "seniors",
    "genre": "F",
    "phase": "CDF DEP FEM (1° TOUR)",
    "poule": "1ER TOUR",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/equipe-2196002/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-196378/classements/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-feminine-2026-2027-33243/equipe-2196002/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-feminine-2026-2027-33243/poule-196378/classements/",
    "classement": null,
    "matchs": [
     {
@@ -3469,7 +3469,7 @@
      "mt_nous": 15,
      "mt_eux": 10,
      "resultat": "V",
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-196378/rencontre-2729291/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-feminine-2026-2027-33243/poule-196378/rencontre-2729291/",
      "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/W/WAGWWWZ.pdf",
      "salle": {
       "nom": "VICTOR HUGO",
@@ -3612,7 +3612,7 @@
      "mt_nous": null,
      "mt_eux": null,
      "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-feminine-2026-2027-33243/poule-199600/rencontre-2766739/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-feminine-2026-2027-33243/poule-199600/rencontre-2766739/",
      "feuille_de_match": null
     }
    ],
@@ -3631,16 +3631,16 @@
    "id": "33244-clamart-handball",
    "nom": "Seniors M",
    "libelle_ffhb": "CLAMART HANDBALL",
-   "competition": "COUPE DE FRANCE DEPARTEMENTALE MASCULINE 2026-2027",
-   "detail": "Coupe de France départementale",
+   "competition": "COUPE DE FRANCE CAISSE D'EPARGNE DEPARTEMENTALE MASCULINE 2026-2027",
+   "detail": "Coupe de France",
    "organisateur": "FEDERATION FRANCAISE DE HANDBALL",
    "niveau": "coupe-de-france",
    "categorie": "seniors",
    "genre": "M",
    "phase": "CDF DEP MAS (1° TOUR)",
    "poule": "1ER TOUR",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/equipe-2203162/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-196380/classements/",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/equipe-2203162/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/poule-196380/classements/",
    "classement": null,
    "matchs": [
     {
@@ -3655,7 +3655,7 @@
      "mt_nous": 17,
      "mt_eux": 12,
      "resultat": "V",
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-196380/rencontre-2734038/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/poule-196380/rencontre-2734038/",
      "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXEHO.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
@@ -3783,7 +3783,7 @@
      "mt_nous": null,
      "mt_eux": null,
      "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-departementale-masculine-2026-2027-33244/poule-199601/rencontre-2766998/",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/poule-199601/rencontre-2766998/",
      "feuille_de_match": null
     }
    ],
