@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-03T02:40:22+00:00",
+ "mis_a_jour": "2026-11-03T12:46:30+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -40,7 +40,7 @@
    "genre": "M",
    "equipes": [
     "32546-clamart-handball",
-    "33403-clamart-handball",
+    "33403-clamart-hb",
     "33244-clamart-handball"
    ]
   },
@@ -3265,16 +3265,16 @@
    "collectif": "seniors-mixte"
   },
   {
-   "id": "33403-clamart-handball",
+   "id": "33403-clamart-hb",
    "nom": "Seniors M",
-   "libelle_ffhb": "CLAMART HANDBALL",
+   "libelle_ffhb": "CLAMART HB",
    "competition": "COUPE LIGUE MASCULINE",
    "detail": "Coupe de Ligue masculine",
    "organisateur": "LIGUE ILE-DE-FRANCE",
    "niveau": "regional",
    "categorie": "seniors",
    "genre": "M",
-   "phase": "1/32 FINALES",
+   "phase": "1/32 FINALE",
    "poule": "1/32 MASC",
    "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/equipe-2204480/",
    "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/regional/coupe-ligue-masculine-33403/poule-197360/classements/",
@@ -3285,7 +3285,7 @@
      "date": "2026-10-31T18:00:00+01:00",
      "journee": 1,
      "domicile": true,
-     "adversaire": "ENTENTE PLESSEENNE HB 1B",
+     "adversaire": "ENT. PLESSEENNE HB 1B",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-07-22-dc48a4da-0b77-4f31-b69d-2713381bd54e.webp",
      "score_nous": 18,
      "score_eux": 40,
@@ -3641,140 +3641,12 @@
    "niveau": "coupe-de-france",
    "categorie": "seniors",
    "genre": "M",
-   "phase": "CDF DEP MAS (1° TOUR)",
-   "poule": "1ER TOUR",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/equipe-2203162/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/poule-196380/classements/",
+   "phase": "CDF DEP MAS (2° TOUR)",
+   "poule": "2° TOUR",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/equipe-2220205/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/poule-199601/classements/",
    "classement": null,
    "matchs": [
-    {
-     "id": "2734038",
-     "date": "2026-10-17T18:00:00+02:00",
-     "journee": 1,
-     "domicile": true,
-     "adversaire": "ASSOCIATION SPORTIVE ST-CYR/FONTENAY HANDBALL 78",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-933058c6-abc3-4f5a-8935-6bccf88dbea3.webp",
-     "score_nous": 32,
-     "score_eux": 22,
-     "mt_nous": 17,
-     "mt_eux": 12,
-     "resultat": "V",
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/poule-196380/rencontre-2734038/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXEHO.pdf",
-     "salle": {
-      "nom": "GYMNASE DU PETIT CLAMART",
-      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     },
-     "buteurs": [
-      {
-       "joueur": "E. Lepretre Silva",
-       "numero": 54,
-       "buts": 11
-      },
-      {
-       "joueur": "C. Meyer",
-       "numero": 73,
-       "buts": 7
-      },
-      {
-       "joueur": "S. Ould Braham",
-       "numero": 66,
-       "buts": 4
-      },
-      {
-       "joueur": "N. Nimri",
-       "numero": 64,
-       "buts": 2
-      },
-      {
-       "joueur": "R. Arnaud",
-       "numero": 65,
-       "buts": 2
-      },
-      {
-       "joueur": "R. Kouar",
-       "numero": 31,
-       "buts": 2
-      },
-      {
-       "joueur": "T. Gandon-Talouarn",
-       "numero": 69,
-       "buts": 2
-      },
-      {
-       "joueur": "A. Rignault",
-       "numero": 12,
-       "buts": 1
-      },
-      {
-       "joueur": "R. Nacto",
-       "numero": 1,
-       "buts": 1
-      },
-      {
-       "joueur": "L. Pontes",
-       "numero": 70,
-       "buts": 0
-      },
-      {
-       "joueur": "M. Grondin",
-       "numero": 99,
-       "buts": 0
-      }
-     ],
-     "buteurs_adverses": [
-      {
-       "joueur": "C. Steinmetz",
-       "numero": 12,
-       "buts": 5
-      },
-      {
-       "joueur": "E. Perrault",
-       "numero": 26,
-       "buts": 4
-      },
-      {
-       "joueur": "E. Sobral",
-       "numero": 29,
-       "buts": 4
-      },
-      {
-       "joueur": "K. Nanuel",
-       "numero": 24,
-       "buts": 4
-      },
-      {
-       "joueur": "A. Tanang",
-       "numero": 27,
-       "buts": 2
-      },
-      {
-       "joueur": "F. Brady",
-       "numero": 10,
-       "buts": 2
-      },
-      {
-       "joueur": "K. Hardouin",
-       "numero": 23,
-       "buts": 1
-      },
-      {
-       "joueur": "D. Pommier-Renia",
-       "numero": 97,
-       "buts": 0
-      },
-      {
-       "joueur": "E. Vella",
-       "numero": 15,
-       "buts": 0
-      },
-      {
-       "joueur": "N. Benamara",
-       "numero": 28,
-       "buts": 0
-      }
-     ]
-    },
     {
      "id": "2766998",
      "date": null,
@@ -3792,14 +3664,14 @@
     }
    ],
    "bilan": {
-    "joues": 1,
-    "victoires": 1,
+    "joues": 0,
+    "victoires": 0,
     "nuls": 0,
     "defaites": 0,
-    "bp": 32,
-    "bc": 22
+    "bp": 0,
+    "bc": 0
    },
-   "forme": "V",
+   "forme": "",
    "collectif": "seniors-m"
   },
   {
