@@ -309,17 +309,17 @@
    "salle": "GERARD PHILIPPE"
   },
   "seniors-mixte:2780043": {
-   "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
+   "adversaire": "ASV CHATENAY-MALABRY",
    "date": null,
    "domicile": false,
-   "equipe_id": "33711-clamart-handball",
+   "equipe_id": "33711-clamart-hb",
    "salle": null
   },
   "seniors-mixte:2780044": {
    "adversaire": "HBC ANTONY",
    "date": "2026-12-11T21:00:00+01:00",
    "domicile": true,
-   "equipe_id": "33711-clamart-handball",
+   "equipe_id": "33711-clamart-hb",
    "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u11-f-2:2710033": {
