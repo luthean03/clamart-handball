@@ -224,13 +224,6 @@
    "equipe_id": "33244-clamart-handball",
    "salle": null
   },
-  "seniors-mixte:2748867": {
-   "adversaire": "HBC LES LIONS DE LA MAULDRE",
-   "date": "2026-11-04T20:45:00+01:00",
-   "domicile": false,
-   "equipe_id": "33562-clamart-hb",
-   "salle": "GYMNASE D. DEMAISON"
-  },
   "seniors-mixte:2748872": {
    "adversaire": "CELLOIS HB",
    "date": null,
@@ -329,13 +322,6 @@
    "equipe_id": "33056-clamart-hb-2-filles",
    "salle": null
   },
-  "u11-f-2:2710040": {
-   "adversaire": "COM BAGNEUX",
-   "date": "2026-11-07T16:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "33056-clamart-hb-2-filles",
-   "salle": "GYMNASE DU PETIT CLAMART"
-  },
   "u11-f-2:2710044": {
    "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
    "date": "2026-11-14T13:30:00+01:00",
@@ -370,13 +356,6 @@
    "domicile": true,
    "equipe_id": "33056-clamart-hb-2-filles",
    "salle": null
-  },
-  "u11-mixte-1:2710070": {
-   "adversaire": "USM MALAKOFF 3",
-   "date": "2026-11-07T14:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33056-clamart-hb-1",
-   "salle": "salle jacques duclos"
   },
   "u11-mixte-1:2710073": {
    "adversaire": "HBC ANTONY 2",
