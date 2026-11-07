@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-07T16:39:33+00:00",
+ "mis_a_jour": "2026-11-07T19:39:35+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3914,14 +3914,14 @@
     {
      "place": 1,
      "equipe": "USM MALAKOFF",
-     "points": 6,
-     "joues": 2,
-     "gagnes": 2,
+     "points": 9,
+     "joues": 3,
+     "gagnes": 3,
      "nuls": 0,
      "perdus": 0,
-     "bp": 95,
-     "bc": 21,
-     "diff": 74,
+     "bp": 130,
+     "bc": 40,
+     "diff": 90,
      "nous": false
     },
     {
@@ -3953,14 +3953,14 @@
     {
      "place": 4,
      "equipe": "ENT PARIS GALAXY NORD 3",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 38,
-     "bc": 72,
-     "diff": -34,
+     "perdus": 3,
+     "bp": 57,
+     "bc": 107,
+     "diff": -50,
      "nous": false
     },
     {
@@ -4219,17 +4219,19 @@
      "domicile": false,
      "adversaire": "STADE FRANCAIS",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-26-e7adcd63-47af-4973-89ef-5e4bc9ff1161.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 11,
+     "score_eux": 14,
+     "mt_nous": 3,
+     "mt_eux": 5,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739604/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXOBP.pdf",
      "salle": {
       "nom": "STADE PIERRE DE COUBERTIN",
       "adresse": "82 AVENUE GEORGES-LAFONT 75016 PARIS 16e"
-     }
+     },
+     "buteurs": [],
+     "buteurs_adverses": []
     },
     {
      "id": "2739607",
@@ -4267,14 +4269,14 @@
     }
    ],
    "bilan": {
-    "joues": 2,
+    "joues": 3,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 2,
-    "bp": 24,
-    "bc": 74
+    "defaites": 3,
+    "bp": 35,
+    "bc": 88
    },
-   "forme": "DD",
+   "forme": "DDD",
    "place": 6,
    "nb_equipes": 6,
    "collectif": "u18-f"
