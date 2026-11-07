@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-07T15:11:59+00:00",
+ "mis_a_jour": "2026-11-07T16:39:33+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3024,27 +3024,27 @@
     {
      "place": 5,
      "equipe": "HBC LES LIONS DE LA MAULDRE",
-     "points": 0,
-     "joues": 0,
+     "points": 1,
+     "joues": 1,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "perdus": 1,
+     "bp": 20,
+     "bc": 29,
+     "diff": -9,
      "nous": false
     },
     {
      "place": 6,
      "equipe": "CLAMART HB",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
      "nuls": 0,
      "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "bp": 29,
+     "bc": 20,
+     "diff": 9,
      "nous": true
     },
     {
@@ -3069,17 +3069,111 @@
      "domicile": false,
      "adversaire": "HBC LES LIONS DE LA MAULDRE",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2024-07-25-61827e2c-73f7-4f15-a997-4b477d2ea618.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 29,
+     "score_eux": 20,
+     "mt_nous": 17,
+     "mt_eux": 12,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748867/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/H/A/WAHAFDX.pdf",
      "salle": {
       "nom": "GYMNASE D. DEMAISON",
       "adresse": "CHEMIN DU RADET 78580 MAULE"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "J. Gouze",
+       "numero": 31,
+       "buts": 9
+      },
+      {
+       "joueur": "J. Petit",
+       "numero": 25,
+       "buts": 9
+      },
+      {
+       "joueur": "J. Rilcy",
+       "numero": 26,
+       "buts": 5
+      },
+      {
+       "joueur": "J. Desroc",
+       "numero": 23,
+       "buts": 3
+      },
+      {
+       "joueur": "C. Rodrigues",
+       "numero": 33,
+       "buts": 2
+      },
+      {
+       "joueur": "N. Abe",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "C. Eucher",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "F. Denis",
+       "numero": 94,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Combe (nee Dierick)",
+       "numero": 22,
+       "buts": 0
+      },
+      {
+       "joueur": "X. Gilbert",
+       "numero": 28,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "S. Lecoeur",
+       "numero": 2,
+       "buts": 10
+      },
+      {
+       "joueur": "J. Daliphard Letang",
+       "numero": 8,
+       "buts": 6
+      },
+      {
+       "joueur": "S. Bailly",
+       "numero": 9,
+       "buts": 3
+      },
+      {
+       "joueur": "C. Martins",
+       "numero": 10,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Fromonteil",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Lion",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Martins Lazard",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "P. Carvalho",
+       "numero": 5,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2748918",
@@ -3252,14 +3346,14 @@
     }
    ],
    "bilan": {
-    "joues": 0,
-    "victoires": 0,
+    "joues": 1,
+    "victoires": 1,
     "nuls": 0,
     "defaites": 0,
-    "bp": 0,
-    "bc": 0
+    "bp": 29,
+    "bc": 20
    },
-   "forme": "",
+   "forme": "V",
    "place": 6,
    "nb_equipes": 7,
    "collectif": "seniors-mixte"
@@ -5595,19 +5689,6 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "COURBEVOIE HB 2",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 1,
-     "bc": 32,
-     "diff": -31,
-     "nous": false
-    },
-    {
-     "place": 2,
      "equipe": "ENT RUEIL / PUTEAUX",
      "points": 3,
      "joues": 1,
@@ -5620,16 +5701,29 @@
      "nous": false
     },
     {
-     "place": 3,
-     "equipe": "ISSY-PARIS HAND 2",
-     "points": 0,
-     "joues": 0,
+     "place": 2,
+     "equipe": "COURBEVOIE HB 2",
+     "points": 1,
+     "joues": 1,
      "gagnes": 0,
      "nuls": 0,
+     "perdus": 1,
+     "bp": 1,
+     "bc": 32,
+     "diff": -31,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "ISSY-PARIS HAND 2",
+     "points": 3,
+     "joues": 1,
+     "gagnes": 1,
+     "nuls": 0,
      "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "bp": 26,
+     "bc": 16,
+     "diff": 10,
      "nous": false
     },
     {
@@ -5648,14 +5742,14 @@
     {
      "place": 5,
      "equipe": "USM MALAKOFF",
-     "points": 0,
-     "joues": 0,
+     "points": 1,
+     "joues": 1,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "perdus": 1,
+     "bp": 16,
+     "bc": 26,
+     "diff": -10,
      "nous": false
     },
     {
@@ -6978,17 +7072,116 @@
      "domicile": true,
      "adversaire": "COM BAGNEUX",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 9,
+     "score_eux": 15,
+     "mt_nous": 6,
+     "mt_eux": 5,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710040/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUC.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "E. Krabaa Silva",
+       "numero": 80,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Monney",
+       "numero": 35,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Pugnet Aupetit",
+       "numero": 26,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Chaouch",
+       "numero": 38,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Lecomte",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Combe",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Le Miere",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Bellahsene",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Farhat",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Toty",
+       "numero": 72,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "M. Verhoeven",
+       "numero": 11,
+       "buts": 5
+      },
+      {
+       "joueur": "L. Alzire",
+       "numero": 18,
+       "buts": 3
+      },
+      {
+       "joueur": "E. Bonnin",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "F. Toure",
+       "numero": 6,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Liot",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Bouzeghoub",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Joubert",
+       "numero": 8,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Vitorino",
+       "numero": 4,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2710044",
@@ -7094,14 +7287,14 @@
     }
    ],
    "bilan": {
-    "joues": 1,
+    "joues": 2,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 1,
-    "bp": 3,
-    "bc": 11
+    "defaites": 2,
+    "bp": 12,
+    "bc": 26
    },
-   "forme": "D",
+   "forme": "DD",
    "place": 4,
    "nb_equipes": 5,
    "collectif": "u11-f-2"
@@ -7295,17 +7488,121 @@
      "domicile": false,
      "adversaire": "USM MALAKOFF 3",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 38,
+     "score_eux": 1,
+     "mt_nous": 19,
+     "mt_eux": 0,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195551/rencontre-2710070/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSVG.pdf",
      "salle": {
       "nom": "salle jacques duclos",
       "adresse": "place de la republique 92240 MALAKOFF"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "Y. Kouar",
+       "numero": 32,
+       "buts": 12
+      },
+      {
+       "joueur": "A. Chehboun",
+       "numero": 44,
+       "buts": 7
+      },
+      {
+       "joueur": "M. Rossetto-Dutilleul",
+       "numero": 42,
+       "buts": 6
+      },
+      {
+       "joueur": "T. Rioult",
+       "numero": 65,
+       "buts": 5
+      },
+      {
+       "joueur": "M. Gueye",
+       "numero": 43,
+       "buts": 3
+      },
+      {
+       "joueur": "N. Bourasseau",
+       "numero": 33,
+       "buts": 3
+      },
+      {
+       "joueur": "K. Dehon Laskri",
+       "numero": 71,
+       "buts": 2
+      },
+      {
+       "joueur": "I. Belaskri",
+       "numero": 30,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Raspaud",
+       "numero": 70,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "E. Ali-Cherif Dairain",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Delanneau",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Villeminot",
+       "numero": 9,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Angotti Luneau",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Labastie Coeyrehourcq",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Baumgartner",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Yahiaoui",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Montaufier",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Yahiaoui",
+       "numero": 11,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Messan",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Muresan",
+       "numero": 2,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2710073",
@@ -7381,14 +7678,14 @@
     }
    ],
    "bilan": {
-    "joues": 1,
-    "victoires": 1,
+    "joues": 2,
+    "victoires": 2,
     "nuls": 0,
     "defaites": 0,
-    "bp": 36,
-    "bc": 3
+    "bp": 74,
+    "bc": 4
    },
-   "forme": "V",
+   "forme": "VV",
    "place": 2,
    "nb_equipes": 4,
    "collectif": "u11-mixte-1"
