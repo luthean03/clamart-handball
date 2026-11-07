@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-07T19:39:35+00:00",
+ "mis_a_jour": "2026-11-07T22:22:32+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3927,27 +3927,27 @@
     {
      "place": 2,
      "equipe": "ENT COLOMBES / ASNIERES",
-     "points": 6,
-     "joues": 2,
-     "gagnes": 2,
+     "points": 9,
+     "joues": 3,
+     "gagnes": 3,
      "nuls": 0,
      "perdus": 0,
-     "bp": 90,
-     "bc": 40,
-     "diff": 50,
+     "bp": 126,
+     "bc": 64,
+     "diff": 62,
      "nous": false
     },
     {
      "place": 3,
      "equipe": "LEVALLOIS SC",
-     "points": 6,
-     "joues": 2,
+     "points": 7,
+     "joues": 3,
      "gagnes": 2,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 47,
-     "bc": 37,
-     "diff": 10,
+     "perdus": 1,
+     "bp": 71,
+     "bc": 73,
+     "diff": -2,
      "nous": false
     },
     {
@@ -4230,8 +4230,95 @@
       "nom": "STADE PIERRE DE COUBERTIN",
       "adresse": "82 AVENUE GEORGES-LAFONT 75016 PARIS 16e"
      },
-     "buteurs": [],
-     "buteurs_adverses": []
+     "buteurs": [
+      {
+       "joueur": "A. Sahi",
+       "numero": 17,
+       "buts": 3
+      },
+      {
+       "joueur": "D. Nkombou",
+       "numero": 25,
+       "buts": 3
+      },
+      {
+       "joueur": "M. Diabate",
+       "numero": 29,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Defaye",
+       "numero": 10,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Hini",
+       "numero": 24,
+       "buts": 1
+      },
+      {
+       "joueur": "S. Mahi",
+       "numero": 92,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Labia",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Buquet",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Abdelouahed",
+       "numero": 27,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "S. Tatang",
+       "numero": 7,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Lazraj",
+       "numero": 12,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Raimbault",
+       "numero": 15,
+       "buts": 3
+      },
+      {
+       "joueur": "C. Amar",
+       "numero": 14,
+       "buts": 2
+      },
+      {
+       "joueur": "I. Joliff",
+       "numero": 19,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Duverney",
+       "numero": 10,
+       "buts": 0
+      },
+      {
+       "joueur": "P. Sokoudjou Zegou",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Dewavrin",
+       "numero": 28,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2739607",
