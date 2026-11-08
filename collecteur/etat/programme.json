@@ -406,13 +406,6 @@
    "equipe_id": "33056-clamart-hb-3",
    "salle": "GYMNASE DU PETIT CLAMART"
   },
-  "u11-mixte-3:2710997": {
-   "adversaire": "AS FONTENAY-AUX-ROSES 2",
-   "date": "2026-11-08T09:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33056-clamart-hb-3",
-   "salle": "HALLE DU PANORAMA"
-  },
   "u11-mixte-3:2711004": {
    "adversaire": "AC BOULOGNE-BILLANCOURT 3",
    "date": null,
@@ -440,13 +433,6 @@
    "domicile": true,
    "equipe_id": "33056-clamart-hb-3",
    "salle": null
-  },
-  "u13-f:2757741": {
-   "adversaire": "STADE DE VANVES",
-   "date": "2026-11-07T14:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33624-clamart-hb",
-   "salle": "MAURICE-MAGNE"
   },
   "u13-f:2757744": {
    "adversaire": "ENT RUEIL / PUTEAUX",
