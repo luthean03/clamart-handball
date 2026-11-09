@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//clamart-handball//FR
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Clamart Handball - Seniors Loisir
+X-WR-TIMEZONE:Europe/Paris
+BEGIN:VEVENT
+UID:ffhb-2748872-33562-clamart-hb@clamart-handball
+DTSTAMP:20261109T191335Z
+DTSTART:20261120T200000Z
+DTEND:20261120T213000Z
+SUMMARY:Clamart Handball Seniors Loisir - CELLOIS HB
+DESCRIPTION:LOISIRS MIXTES\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748872/
+LOCATION:GYMNASE DU PETIT CLAMART\, 56 rue de la bourcilliere 92140 CLAMART
+END:VEVENT
+END:VCALENDAR
