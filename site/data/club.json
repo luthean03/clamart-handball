@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-10T02:56:39+00:00",
+ "mis_a_jour": "2026-11-10T13:27:02+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -6273,32 +6273,6 @@
     },
     {
      "place": 3,
-     "equipe": "USM MALAKOFF",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 16,
-     "bc": 26,
-     "diff": -10,
-     "nous": false
-    },
-    {
-     "place": 4,
-     "equipe": "COURBEVOIE HB 2",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 1,
-     "bc": 32,
-     "diff": -31,
-     "nous": false
-    },
-    {
-     "place": 5,
      "equipe": "STADE DE VANVES",
      "points": 3,
      "joues": 1,
@@ -6311,7 +6285,20 @@
      "nous": false
     },
     {
-     "place": 6,
+     "place": 4,
+     "equipe": "USM MALAKOFF",
+     "points": 1,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 16,
+     "bc": 26,
+     "diff": -10,
+     "nous": false
+    },
+    {
+     "place": 5,
      "equipe": "CLAMART HB",
      "points": 1,
      "joues": 1,
@@ -6322,6 +6309,19 @@
      "bc": 20,
      "diff": -10,
      "nous": true
+    },
+    {
+     "place": 6,
+     "equipe": "COURBEVOIE HB 2",
+     "points": 1,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 1,
+     "bc": 32,
+     "diff": -31,
+     "nous": false
     }
    ],
    "matchs": [
@@ -6473,6 +6473,25 @@
      }
     },
     {
+     "id": "2757746",
+     "date": "2026-11-22T11:00:00+01:00",
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "USM MALAKOFF",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757746/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "salle jacques duclos",
+      "adresse": "place de la republique 92240 MALAKOFF"
+     }
+    },
+    {
      "id": "2757751",
      "date": "2026-11-29T09:30:00+01:00",
      "journee": 4,
@@ -6490,21 +6509,6 @@
       "nom": "JEAN-BLOT",
       "adresse": "21 RUE PIERRE-BROSSOLETTE 92400 COURBEVOIE"
      }
-    },
-    {
-     "id": "2757746",
-     "date": null,
-     "journee": 3,
-     "domicile": false,
-     "adversaire": "USM MALAKOFF",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757746/",
-     "feuille_de_match": null
     },
     {
      "id": "2757753",
@@ -6606,7 +6610,7 @@
     "bc": 20
    },
    "forme": "D",
-   "place": 6,
+   "place": 5,
    "nb_equipes": 6,
    "collectif": "u13-f"
   },
