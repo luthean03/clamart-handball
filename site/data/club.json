@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-11T00:56:06+00:00",
+ "mis_a_jour": "2026-11-11T12:42:25+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -8702,6 +8702,25 @@
      }
     },
     {
+     "id": "2711007",
+     "date": "2026-11-29T11:15:00+01:00",
+     "journee": 7,
+     "domicile": false,
+     "adversaire": "USM MALAKOFF 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711007/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "salle jacques duclos",
+      "adresse": "place de la republique 92240 MALAKOFF"
+     }
+    },
+    {
      "id": "2710989",
      "date": null,
      "journee": 1,
@@ -8729,21 +8748,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710992/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2711007",
-     "date": null,
-     "journee": 7,
-     "domicile": false,
-     "adversaire": "USM MALAKOFF 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711007/",
      "feuille_de_match": null
     },
     {

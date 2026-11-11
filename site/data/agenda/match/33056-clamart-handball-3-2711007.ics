@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//clamart-handball//FR
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Clamart Handball - U11 Mixte 3
+X-WR-TIMEZONE:Europe/Paris
+BEGIN:VEVENT
+UID:ffhb-2711007-33056-clamart-handball-3@clamart-handball
+DTSTAMP:20261111T124418Z
+DTSTART:20261129T101500Z
+DTEND:20261129T114500Z
+SUMMARY:USM MALAKOFF 2 - Clamart Handball U11 Mixte 3
+DESCRIPTION:U11 MIXTE\nhttps://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711007/
+LOCATION:salle jacques duclos\, place de la republique 92240 MALAKOFF
+END:VEVENT
+END:VCALENDAR
