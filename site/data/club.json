@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-12T02:01:10+00:00",
+ "mis_a_jour": "2026-11-12T13:44:15+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -8721,6 +8721,25 @@
      }
     },
     {
+     "id": "2711008",
+     "date": "2026-12-05T16:15:00+01:00",
+     "journee": 8,
+     "domicile": false,
+     "adversaire": "ASV CHATENAY-MALABRY 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711008/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEONARD-DE-VINCI",
+      "adresse": "1 AVENUE LEONARD-DE-VINCI 92290 CHATENAY MALABRY"
+     }
+    },
+    {
      "id": "2710989",
      "date": null,
      "journee": 1,
@@ -8748,21 +8767,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2710992/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2711008",
-     "date": null,
-     "journee": 8,
-     "domicile": false,
-     "adversaire": "ASV CHATENAY-MALABRY 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711008/",
      "feuille_de_match": null
     },
     {
