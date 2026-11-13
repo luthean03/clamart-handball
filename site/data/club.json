@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-13T13:04:15+00:00",
+ "mis_a_jour": "2026-11-13T16:45:16+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3446,6 +3446,25 @@
      }
     },
     {
+     "id": "2748877",
+     "date": "2026-11-25T20:00:00+01:00",
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748877/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEONARD-DE-VINCI",
+      "adresse": "1 AVENUE LEONARD-DE-VINCI 92290 CHATENAY MALABRY"
+     }
+    },
+    {
      "id": "2748918",
      "date": "2027-05-25T20:45:00+02:00",
      "journee": 14,
@@ -3463,21 +3482,6 @@
       "nom": "GERARD PHILIPPE",
       "adresse": "RUE GERARD PHILIPPE 78210 ST CYR L ECOLE"
      }
-    },
-    {
-     "id": "2748877",
-     "date": null,
-     "journee": 3,
-     "domicile": false,
-     "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-mixtes-33562/poule-198945/rencontre-2748877/",
-     "feuille_de_match": null
     },
     {
      "id": "2748884",
