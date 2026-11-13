@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-13T18:08:26+00:00",
+ "mis_a_jour": "2026-11-13T21:40:25+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -1118,7 +1118,7 @@
      "domicile": true,
      "adversaire": "ES COLOMBIENNE 1C",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2018-09-07-8eae32a7-e3da-403b-807a-b56aad9dccaa.webp",
-     "score_nous": null,
+     "score_nous": 20,
      "score_eux": null,
      "mt_nous": null,
      "mt_eux": null,
