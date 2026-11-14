@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-14T01:04:26+00:00",
+ "mis_a_jour": "2026-11-14T12:08:56+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3178,7 +3178,7 @@
     },
     {
      "id": "2780043",
-     "date": null,
+     "date": "2027-02-03T21:15:00+01:00",
      "journee": 1,
      "domicile": false,
      "adversaire": "ASV CHATENAY-MALABRY",
@@ -3189,7 +3189,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEONARD-DE-VINCI",
+      "adresse": "1 AVENUE LEONARD-DE-VINCI 92290 CHATENAY MALABRY"
+     }
     }
    ],
    "bilan": {
