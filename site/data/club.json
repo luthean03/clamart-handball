@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-14T12:08:56+00:00",
+ "mis_a_jour": "2026-11-14T15:22:01+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -7718,27 +7718,27 @@
     {
      "place": 4,
      "equipe": "CLAMART HANDBALL 2 (FILLES)",
-     "points": 2,
-     "joues": 2,
-     "gagnes": 0,
+     "points": 5,
+     "joues": 3,
+     "gagnes": 1,
      "nuls": 0,
      "perdus": 2,
-     "bp": 12,
-     "bc": 26,
-     "diff": -14,
+     "bp": 38,
+     "bc": 30,
+     "diff": 8,
      "nous": true
     },
     {
      "place": 5,
      "equipe": "ISSY-PARIS HAND 2 (FILLES)",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 2,
-     "bc": 51,
-     "diff": -49,
+     "perdus": 3,
+     "bp": 6,
+     "bc": 77,
+     "diff": -71,
      "nous": false
     }
    ],
@@ -7981,17 +7981,126 @@
      "domicile": false,
      "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2017-07-03-161d0d1a-c15f-4ebf-b0ea-0ef9cca2d027.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 26,
+     "score_eux": 4,
+     "mt_nous": 12,
+     "mt_eux": 1,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710044/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUG.pdf",
      "salle": {
       "nom": "CITE DES SPORTS SALLE 1",
       "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "I. Combe",
+       "numero": 2,
+       "buts": 10
+      },
+      {
+       "joueur": "A. Chaouch",
+       "numero": 38,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Pugnet Aupetit",
+       "numero": 35,
+       "buts": 4
+      },
+      {
+       "joueur": "D. Schiellein",
+       "numero": 41,
+       "buts": 4
+      },
+      {
+       "joueur": "J. Le Miere",
+       "numero": 14,
+       "buts": 3
+      },
+      {
+       "joueur": "G. Lecomte",
+       "numero": 28,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Boubaker",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Toty",
+       "numero": 72,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "M. Coatanhay",
+       "numero": 22,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Coulibaly",
+       "numero": 26,
+       "buts": 1
+      },
+      {
+       "joueur": "M. David",
+       "numero": 17,
+       "buts": 1
+      },
+      {
+       "joueur": "R. Giner",
+       "numero": 19,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Guison Caillaud",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Phelep",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Rochon Bocquin",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "B. Zini",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Basin",
+       "numero": 23,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Westley",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Zaoug",
+       "numero": 13,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Azib",
+       "numero": 18,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2710048",
@@ -8078,14 +8187,14 @@
     }
    ],
    "bilan": {
-    "joues": 2,
-    "victoires": 0,
+    "joues": 3,
+    "victoires": 1,
     "nuls": 0,
     "defaites": 2,
-    "bp": 12,
-    "bc": 26
+    "bp": 38,
+    "bc": 30
    },
-   "forme": "DD",
+   "forme": "DDV",
    "place": 4,
    "nb_equipes": 5,
    "collectif": "u11-f-2"
@@ -8147,14 +8256,14 @@
     {
      "place": 4,
      "equipe": "STADE DE VANVES 2",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 5,
-     "bc": 56,
-     "diff": -51,
+     "perdus": 3,
+     "bp": 8,
+     "bc": 69,
+     "diff": -61,
      "nous": false
     }
    ],
