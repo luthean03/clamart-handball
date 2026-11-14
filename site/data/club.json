@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-14T20:07:55+00:00",
+ "mis_a_jour": "2026-11-14T22:47:01+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -166,18 +166,31 @@
     {
      "place": 1,
      "equipe": "MARTIGUA SCL",
-     "points": 18,
-     "joues": 6,
-     "gagnes": 6,
+     "points": 21,
+     "joues": 7,
+     "gagnes": 7,
      "nuls": 0,
      "perdus": 0,
-     "bp": 165,
-     "bc": 107,
-     "diff": 58,
+     "bp": 190,
+     "bc": 120,
+     "diff": 70,
      "nous": false
     },
     {
      "place": 2,
+     "equipe": "CLAMART HANDBALL 1",
+     "points": 17,
+     "joues": 7,
+     "gagnes": 4,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 167,
+     "bc": 126,
+     "diff": 41,
+     "nous": true
+    },
+    {
+     "place": 3,
      "equipe": "AC BOULOGNE-BILLANCOURT 1B",
      "points": 16,
      "joues": 6,
@@ -190,42 +203,29 @@
      "nous": false
     },
     {
-     "place": 3,
-     "equipe": "CLAMART HANDBALL 1",
+     "place": 4,
+     "equipe": "BOIS-COLOMBES SP. 1B",
+     "points": 12,
+     "joues": 6,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 159,
+     "bc": 150,
+     "diff": 9,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "PARIS UC 1C",
      "points": 14,
      "joues": 6,
      "gagnes": 4,
      "nuls": 0,
      "perdus": 2,
-     "bp": 167,
-     "bc": 126,
-     "diff": 41,
-     "nous": true
-    },
-    {
-     "place": 4,
-     "equipe": "PARIS UC 1C",
-     "points": 11,
-     "joues": 5,
-     "gagnes": 3,
-     "nuls": 0,
-     "perdus": 2,
-     "bp": 116,
-     "bc": 90,
-     "diff": 26,
-     "nous": false
-    },
-    {
-     "place": 5,
-     "equipe": "BOIS-COLOMBES SP. 1B",
-     "points": 11,
-     "joues": 5,
-     "gagnes": 3,
-     "nuls": 0,
-     "perdus": 2,
-     "bp": 133,
-     "bc": 122,
-     "diff": 11,
+     "bp": 144,
+     "bc": 116,
+     "diff": 28,
      "nous": false
     },
     {
@@ -245,10 +245,10 @@
      "place": 7,
      "equipe": "ES COLOMBIENNE 1C",
      "points": 8,
-     "joues": 6,
+     "joues": 7,
      "gagnes": 1,
      "nuls": 0,
-     "perdus": 5,
+     "perdus": 6,
      "bp": 126,
      "bc": 154,
      "diff": -28,
@@ -283,14 +283,14 @@
     {
      "place": 10,
      "equipe": "STADE FRANCAIS",
-     "points": 6,
-     "joues": 5,
+     "points": 7,
+     "joues": 6,
      "gagnes": 1,
      "nuls": 0,
-     "perdus": 4,
-     "bp": 75,
-     "bc": 124,
-     "diff": -49,
+     "perdus": 5,
+     "bp": 88,
+     "bc": 149,
+     "diff": -61,
      "nous": false
     },
     {
@@ -1339,7 +1339,7 @@
     "bc": 126
    },
    "forme": "DVVVD",
-   "place": 3,
+   "place": 2,
    "nb_equipes": 11,
    "collectif": "seniors-f-1"
   },
@@ -2068,17 +2068,141 @@
      "domicile": false,
      "adversaire": "LA CLICHOISE HB",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-06-22-2f1c6bfd-ad45-41d4-accf-c9ba0908f594.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 23,
+     "score_eux": 29,
+     "mt_nous": 12,
+     "mt_eux": 14,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644483/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/R/WAGRWEJ.pdf",
      "salle": {
       "nom": "LEO-LAGRANGE",
       "adresse": "108 BD DU GENERAL-LECLERC 92110 CLICHY"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "C. Daelman",
+       "numero": 78,
+       "buts": 7
+      },
+      {
+       "joueur": "H. Alexandre",
+       "numero": 2,
+       "buts": 7
+      },
+      {
+       "joueur": "C. Costes",
+       "numero": 10,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Debiol",
+       "numero": 17,
+       "buts": 2
+      },
+      {
+       "joueur": "C. Leprince",
+       "numero": 70,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Antonios",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Auffret",
+       "numero": 29,
+       "buts": 1
+      },
+      {
+       "joueur": "B. Mfoula Essono",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Eucher",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Pasquier",
+       "numero": 88,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Dieu",
+       "numero": 79,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Kobzili",
+       "numero": 7,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "C. Suzeau",
+       "numero": 5,
+       "buts": 9
+      },
+      {
+       "joueur": "M. Sacko",
+       "numero": 28,
+       "buts": 8
+      },
+      {
+       "joueur": "L. Del Pino",
+       "numero": 10,
+       "buts": 4
+      },
+      {
+       "joueur": "L. Guidani-Fastier",
+       "numero": 11,
+       "buts": 3
+      },
+      {
+       "joueur": "M. Keletaona",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Lefevre",
+       "numero": 18,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Olivier",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Soualem",
+       "numero": 2,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Tine",
+       "numero": 26,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Zivkovic--Guillard",
+       "numero": 12,
+       "buts": 0
+      },
+      {
+       "joueur": "B. Kerouault",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Raucoules",
+       "numero": 1,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2644487",
@@ -2180,14 +2304,14 @@
     }
    ],
    "bilan": {
-    "joues": 5,
+    "joues": 6,
     "victoires": 2,
     "nuls": 0,
-    "defaites": 3,
-    "bp": 91,
-    "bc": 114
+    "defaites": 4,
+    "bp": 114,
+    "bc": 143
    },
-   "forme": "VDDDV",
+   "forme": "DDDVD",
    "place": 5,
    "nb_equipes": 7,
    "collectif": "seniors-f-1b"
@@ -2210,14 +2334,14 @@
     {
      "place": 1,
      "equipe": "COURBEVOIE HB 1C",
-     "points": 13,
-     "joues": 5,
+     "points": 14,
+     "joues": 6,
      "gagnes": 4,
      "nuls": 0,
-     "perdus": 1,
-     "bp": 132,
-     "bc": 113,
-     "diff": 19,
+     "perdus": 2,
+     "bp": 155,
+     "bc": 140,
+     "diff": 15,
      "nous": false
     },
     {
@@ -2236,14 +2360,14 @@
     {
      "place": 3,
      "equipe": "CLAMART HANDBALL",
-     "points": 10,
-     "joues": 4,
-     "gagnes": 3,
+     "points": 13,
+     "joues": 5,
+     "gagnes": 4,
      "nuls": 0,
      "perdus": 1,
-     "bp": 112,
-     "bc": 82,
-     "diff": 30,
+     "bp": 139,
+     "bc": 105,
+     "diff": 34,
      "nous": true
     },
     {
@@ -2977,17 +3101,131 @@
      "domicile": true,
      "adversaire": "SCUF 1B",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2023-07-11-08471ba5-c58c-4960-be27-1e8461de8914.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 30,
+     "score_eux": 25,
+     "mt_nous": 19,
+     "mt_eux": 14,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-masculins-division-2-territoriale-92-75-32546/poule-191113/rencontre-2673800/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/T/WAGTOUB.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "C. Meyer",
+       "numero": 73,
+       "buts": 11
+      },
+      {
+       "joueur": "A. Rignault",
+       "numero": 12,
+       "buts": 4
+      },
+      {
+       "joueur": "E. Lepretre Silva",
+       "numero": 54,
+       "buts": 4
+      },
+      {
+       "joueur": "F. Bergeret",
+       "numero": 68,
+       "buts": 4
+      },
+      {
+       "joueur": "N. Nimri",
+       "numero": 66,
+       "buts": 3
+      },
+      {
+       "joueur": "S. Ould Braham",
+       "numero": 65,
+       "buts": 2
+      },
+      {
+       "joueur": "R. Arnaud",
+       "numero": 64,
+       "buts": 1
+      },
+      {
+       "joueur": "Y. Escala",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "K. Nevers",
+       "numero": 72,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Pontes",
+       "numero": 70,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Grondin",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Nacto",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "S. Ben Bouzid",
+       "numero": 5,
+       "buts": 6
+      },
+      {
+       "joueur": "T. Serror",
+       "numero": 11,
+       "buts": 6
+      },
+      {
+       "joueur": "O. Godino",
+       "numero": 15,
+       "buts": 4
+      },
+      {
+       "joueur": "H. Roux",
+       "numero": 10,
+       "buts": 3
+      },
+      {
+       "joueur": "G. Ladriere-Lopes",
+       "numero": 9,
+       "buts": 2
+      },
+      {
+       "joueur": "U. Andre--Laurens",
+       "numero": 13,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Khiari",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Lefeuvre",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Delouvrier",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Thevenart",
+       "numero": 1,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2673808",
@@ -3089,14 +3327,14 @@
     }
    ],
    "bilan": {
-    "joues": 5,
-    "victoires": 4,
+    "joues": 6,
+    "victoires": 5,
     "nuls": 0,
     "defaites": 1,
-    "bp": 139,
-    "bc": 105
+    "bp": 169,
+    "bc": 130
    },
-   "forme": "VVVDV",
+   "forme": "VVDVV",
    "place": 3,
    "nb_equipes": 7,
    "collectif": "seniors-m"
@@ -5472,17 +5710,121 @@
      "domicile": true,
      "adversaire": "ENT FONTENAY / MALAKOFF 3",
      "logo_adversaire": null,
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 16,
+     "score_eux": 24,
+     "mt_nous": 10,
+     "mt_eux": 12,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740596/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXPXR.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "H. Abbes",
+       "numero": 11,
+       "buts": 7
+      },
+      {
+       "joueur": "C. Thomas",
+       "numero": 8,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Schiano",
+       "numero": 6,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Cuny",
+       "numero": 13,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Hariz",
+       "numero": 92,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Dumont",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Agrinier",
+       "numero": 10,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Blondeau",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Nortes",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "G. Santana",
+       "numero": 7,
+       "buts": 9
+      },
+      {
+       "joueur": "S. Parisio",
+       "numero": 13,
+       "buts": 6
+      },
+      {
+       "joueur": "A. Amis",
+       "numero": 9,
+       "buts": 2
+      },
+      {
+       "joueur": "P. Tahon",
+       "numero": 10,
+       "buts": 2
+      },
+      {
+       "joueur": "S. Banchereau",
+       "numero": 12,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Ducellier",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Colas",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Molines",
+       "numero": 6,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Condat Mekharchi",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Menard",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Houehougbe Herbert",
+       "numero": 5,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2740588",
@@ -5524,14 +5866,14 @@
     }
    ],
    "bilan": {
-    "joues": 2,
+    "joues": 3,
     "victoires": 1,
     "nuls": 0,
-    "defaites": 1,
-    "bp": 48,
-    "bc": 63
+    "defaites": 2,
+    "bp": 64,
+    "bc": 87
    },
-   "forme": "VD",
+   "forme": "VDD",
    "place": 4,
    "nb_equipes": 6,
    "collectif": "u15-m"
