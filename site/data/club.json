@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-15T00:20:16+00:00",
+ "mis_a_jour": "2026-11-15T12:42:57+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -50,8 +50,8 @@
    "categorie": "seniors",
    "genre": "Mixte",
    "equipes": [
-    "33711-clamart-hb",
-    "33562-clamart-hb"
+    "33562-clamart-hb",
+    "33711-clamart-hb"
    ]
   },
   {
@@ -204,19 +204,6 @@
     },
     {
      "place": 4,
-     "equipe": "BOIS-COLOMBES SP. 1B",
-     "points": 12,
-     "joues": 6,
-     "gagnes": 3,
-     "nuls": 0,
-     "perdus": 3,
-     "bp": 159,
-     "bc": 150,
-     "diff": 9,
-     "nous": false
-    },
-    {
-     "place": 5,
      "equipe": "PARIS UC 1C",
      "points": 14,
      "joues": 6,
@@ -226,6 +213,19 @@
      "bp": 144,
      "bc": 116,
      "diff": 28,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "BOIS-COLOMBES SP. 1B",
+     "points": 12,
+     "joues": 6,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 159,
+     "bc": 150,
+     "diff": 9,
      "nous": false
     },
     {
@@ -257,14 +257,14 @@
     {
      "place": 8,
      "equipe": "PARIS SC 1C",
-     "points": 8,
-     "joues": 5,
-     "gagnes": 2,
+     "points": 11,
+     "joues": 6,
+     "gagnes": 3,
      "nuls": 0,
      "perdus": 2,
-     "bp": 100,
-     "bc": 77,
-     "diff": 23,
+     "bp": 128,
+     "bc": 89,
+     "diff": 39,
      "nous": false
     },
     {
@@ -296,14 +296,14 @@
     {
      "place": 11,
      "equipe": "PARIS ST-GERMAIN HB",
-     "points": 5,
-     "joues": 5,
+     "points": 6,
+     "joues": 6,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 5,
-     "bp": 69,
-     "bc": 147,
-     "diff": -78,
+     "perdus": 6,
+     "bp": 81,
+     "bc": 175,
+     "diff": -94,
      "nous": false
     }
    ],
@@ -1360,6 +1360,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "LA CLICHOISE HB",
+     "points": 17,
+     "joues": 6,
+     "gagnes": 5,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 189,
+     "bc": 137,
+     "diff": 52,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "LEVALLOIS SC",
      "points": 17,
      "joues": 6,
@@ -1369,19 +1382,6 @@
      "bp": 146,
      "bc": 122,
      "diff": 24,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "LA CLICHOISE HB",
-     "points": 14,
-     "joues": 5,
-     "gagnes": 4,
-     "nuls": 1,
-     "perdus": 0,
-     "bp": 160,
-     "bc": 114,
-     "diff": 46,
      "nous": false
     },
     {
@@ -1413,14 +1413,14 @@
     {
      "place": 5,
      "equipe": "CLAMART HANDBALL 1B",
-     "points": 9,
-     "joues": 5,
+     "points": 10,
+     "joues": 6,
      "gagnes": 2,
      "nuls": 0,
-     "perdus": 3,
-     "bp": 91,
-     "bc": 114,
-     "diff": -23,
+     "perdus": 4,
+     "bp": 114,
+     "bc": 143,
+     "diff": -29,
      "nous": true
     },
     {
@@ -3340,114 +3340,6 @@
    "collectif": "seniors-m"
   },
   {
-   "id": "33711-clamart-hb",
-   "nom": "Seniors Loisir",
-   "libelle_ffhb": "CLAMART HB",
-   "competition": "LOISIRS + DE 16 ANS MIXTE",
-   "detail": "Loisirs",
-   "organisateur": "COMITE DES HAUTS-DE-SEINE",
-   "niveau": "departemental",
-   "categorie": "seniors",
-   "genre": "Mixte",
-   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
-   "poule": "POULE C",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
-   "classement": [
-    {
-     "place": 1,
-     "equipe": "ASV CHATENAY-MALABRY",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "HBC ANTONY",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "CLAMART HB",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": true
-    }
-   ],
-   "matchs": [
-    {
-     "id": "2780044",
-     "date": "2026-12-04T21:00:00+01:00",
-     "journee": 2,
-     "domicile": true,
-     "adversaire": "HBC ANTONY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "GYMNASE DU PETIT CLAMART",
-      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
-    },
-    {
-     "id": "2780043",
-     "date": "2027-02-03T21:15:00+01:00",
-     "journee": 1,
-     "domicile": false,
-     "adversaire": "ASV CHATENAY-MALABRY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "LEONARD-DE-VINCI",
-      "adresse": "1 AVENUE LEONARD-DE-VINCI 92290 CHATENAY MALABRY"
-     }
-    }
-   ],
-   "bilan": {
-    "joues": 0,
-    "victoires": 0,
-    "nuls": 0,
-    "defaites": 0,
-    "bp": 0,
-    "bc": 0
-   },
-   "forme": "",
-   "place": 3,
-   "nb_equipes": 3,
-   "collectif": "seniors-mixte"
-  },
-  {
    "id": "33562-clamart-hb",
    "nom": "Seniors Loisir",
    "libelle_ffhb": "CLAMART HB",
@@ -3857,6 +3749,114 @@
    "forme": "V",
    "place": 1,
    "nb_equipes": 7,
+   "collectif": "seniors-mixte"
+  },
+  {
+   "id": "33711-clamart-hb",
+   "nom": "Seniors Loisir",
+   "libelle_ffhb": "CLAMART HB",
+   "competition": "LOISIRS + DE 16 ANS MIXTE",
+   "detail": "Loisirs",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "seniors",
+   "genre": "Mixte",
+   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
+   "poule": "POULE C",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "ASV CHATENAY-MALABRY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "HBC ANTONY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HB",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": true
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2780044",
+     "date": "2026-12-04T21:00:00+01:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "HBC ANTONY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
+     "id": "2780043",
+     "date": "2027-02-03T21:15:00+01:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "ASV CHATENAY-MALABRY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEONARD-DE-VINCI",
+      "adresse": "1 AVENUE LEONARD-DE-VINCI 92290 CHATENAY MALABRY"
+     }
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "place": 3,
+   "nb_equipes": 3,
    "collectif": "seniors-mixte"
   },
   {
@@ -4912,27 +4912,27 @@
     {
      "place": 2,
      "equipe": "ENT SEINE NORD 92 1",
-     "points": 9,
-     "joues": 3,
-     "gagnes": 3,
+     "points": 12,
+     "joues": 4,
+     "gagnes": 4,
      "nuls": 0,
      "perdus": 0,
-     "bp": 133,
-     "bc": 77,
-     "diff": 56,
+     "bp": 173,
+     "bc": 105,
+     "diff": 68,
      "nous": false
     },
     {
      "place": 3,
      "equipe": "COURBEVOIE HB 1",
-     "points": 7,
-     "joues": 3,
+     "points": 8,
+     "joues": 4,
      "gagnes": 2,
      "nuls": 0,
-     "perdus": 1,
-     "bp": 105,
-     "bc": 102,
-     "diff": 3,
+     "perdus": 2,
+     "bp": 133,
+     "bc": 142,
+     "diff": -9,
      "nous": false
     },
     {
@@ -5394,6 +5394,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "ENT FONTENAY / MALAKOFF 3",
+     "points": 9,
+     "joues": 3,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 87,
+     "bc": 51,
+     "diff": 36,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "RUEIL AC 3",
      "points": 7,
      "joues": 3,
@@ -5406,7 +5419,7 @@
      "nous": false
     },
     {
-     "place": 2,
+     "place": 3,
      "equipe": "PARIS ST-GERMAIN HB 4",
      "points": 7,
      "joues": 3,
@@ -5419,29 +5432,16 @@
      "nous": false
     },
     {
-     "place": 3,
-     "equipe": "ENT FONTENAY / MALAKOFF 3",
-     "points": 6,
-     "joues": 2,
-     "gagnes": 2,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 63,
-     "bc": 35,
-     "diff": 28,
-     "nous": false
-    },
-    {
      "place": 4,
      "equipe": "CLAMART HB",
-     "points": 4,
-     "joues": 2,
+     "points": 5,
+     "joues": 3,
      "gagnes": 1,
      "nuls": 0,
-     "perdus": 1,
-     "bp": 48,
-     "bc": 63,
-     "diff": -15,
+     "perdus": 2,
+     "bp": 64,
+     "bc": 87,
+     "diff": -23,
      "nous": true
     },
     {
@@ -6597,6 +6597,32 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "USM MALAKOFF",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 38,
+     "bc": 45,
+     "diff": -7,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "STADE DE VANVES",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 39,
+     "bc": 32,
+     "diff": 7,
+     "nous": false
+    },
+    {
+     "place": 3,
      "equipe": "ENT RUEIL / PUTEAUX",
      "points": 3,
      "joues": 1,
@@ -6609,7 +6635,7 @@
      "nous": false
     },
     {
-     "place": 2,
+     "place": 4,
      "equipe": "ISSY-PARIS HAND 2",
      "points": 3,
      "joues": 1,
@@ -6619,32 +6645,6 @@
      "bp": 26,
      "bc": 16,
      "diff": 10,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "STADE DE VANVES",
-     "points": 3,
-     "joues": 1,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 20,
-     "bc": 10,
-     "diff": 10,
-     "nous": false
-    },
-    {
-     "place": 4,
-     "equipe": "USM MALAKOFF",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 16,
-     "bc": 26,
-     "diff": -10,
      "nous": false
     },
     {
@@ -7681,14 +7681,14 @@
     {
      "place": 4,
      "equipe": "LEVALLOIS SC 2",
-     "points": 1,
-     "joues": 1,
+     "points": 2,
+     "joues": 2,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 1,
-     "bp": 20,
-     "bc": 21,
-     "diff": -1,
+     "perdus": 2,
+     "bp": 39,
+     "bc": 42,
+     "diff": -3,
      "nous": false
     },
     {
@@ -7707,14 +7707,14 @@
     {
      "place": 6,
      "equipe": "ES NANTERRE",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
      "nuls": 0,
      "perdus": 1,
-     "bp": 16,
-     "bc": 24,
-     "diff": -8,
+     "bp": 37,
+     "bc": 43,
+     "diff": -6,
      "nous": false
     }
    ],
@@ -8020,45 +8020,32 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "ISSY HBM 2",
-     "points": 8,
+     "equipe": "COM BAGNEUX",
+     "points": 9,
      "joues": 3,
-     "gagnes": 2,
-     "nuls": 1,
+     "gagnes": 3,
+     "nuls": 0,
      "perdus": 0,
-     "bp": 52,
-     "bc": 17,
-     "diff": 35,
+     "bp": 62,
+     "bc": 29,
+     "diff": 33,
      "nous": false
     },
     {
      "place": 2,
-     "equipe": "COM BAGNEUX",
-     "points": 6,
-     "joues": 2,
+     "equipe": "ISSY HBM 2",
+     "points": 9,
+     "joues": 4,
      "gagnes": 2,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 39,
-     "bc": 11,
-     "diff": 28,
+     "nuls": 1,
+     "perdus": 1,
+     "bp": 70,
+     "bc": 40,
+     "diff": 30,
      "nous": false
     },
     {
      "place": 3,
-     "equipe": "CHAVILLE HB 2",
-     "points": 2,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 1,
-     "perdus": 0,
-     "bp": 14,
-     "bc": 14,
-     "diff": 0,
-     "nous": false
-    },
-    {
-     "place": 4,
      "equipe": "CLAMART HANDBALL 2 (FILLES)",
      "points": 5,
      "joues": 3,
@@ -8071,7 +8058,7 @@
      "nous": true
     },
     {
-     "place": 5,
+     "place": 4,
      "equipe": "ISSY-PARIS HAND 2 (FILLES)",
      "points": 3,
      "joues": 3,
@@ -8081,6 +8068,19 @@
      "bp": 6,
      "bc": 77,
      "diff": -71,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "CHAVILLE HB 2",
+     "points": 2,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 14,
+     "bc": 14,
+     "diff": 0,
      "nous": false
     }
    ],
@@ -8537,7 +8537,7 @@
     "bc": 30
    },
    "forme": "DDV",
-   "place": 4,
+   "place": 3,
    "nb_equipes": 5,
    "collectif": "u11-f-2"
   },
@@ -9275,40 +9275,40 @@
     {
      "place": 1,
      "equipe": "CLAMART HB 1",
-     "points": 0,
-     "joues": 0,
+     "points": 2,
+     "joues": 2,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "perdus": 2,
+     "bp": 9,
+     "bc": 32,
+     "diff": -23,
      "nous": true
     },
     {
      "place": 2,
      "equipe": "AS MEUDON 1",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "perdus": 1,
+     "bp": 20,
+     "bc": 15,
+     "diff": 5,
      "nous": false
     },
     {
      "place": 3,
      "equipe": "CHAVILLE HB 1",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
      "nuls": 0,
      "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "bp": 31,
+     "bc": 13,
+     "diff": 18,
      "nous": false
     }
    ],
@@ -9320,17 +9320,91 @@
      "domicile": false,
      "adversaire": "CHAVILLE HB 1",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 5,
+     "score_eux": 20,
+     "mt_nous": 5,
+     "mt_eux": 20,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200064/rencontre-2769369/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Z/WAGZOTG.pdf",
      "salle": {
       "nom": "LEO-LAGRANGE",
       "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "M. Moreau",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 2,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Cospolite",
+       "numero": 1,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Scius Dutilleul",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Mhaoued",
+       "numero": 6,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "B. Delcourt",
+       "numero": 3,
+       "buts": 5
+      },
+      {
+       "joueur": "I. Pinhao Baptista",
+       "numero": 6,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Lanter",
+       "numero": 4,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Marchand Sadoine",
+       "numero": 5,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Buriller",
+       "numero": 2,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Bedoussac",
+       "numero": 1,
+       "buts": 1
+      },
+      {
+       "joueur": "G. Esposito",
+       "numero": 7,
+       "buts": 1
+      }
+     ]
     },
     {
      "id": "2769371",
@@ -9339,28 +9413,92 @@
      "domicile": true,
      "adversaire": "AS MEUDON 1",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-4b2618ab-6b7e-4b00-b55f-5562a44e5e37.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 4,
+     "score_eux": 12,
+     "mt_nous": 4,
+     "mt_eux": 12,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200064/rencontre-2769371/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Z/WAGZOTI.pdf",
      "salle": {
       "nom": "LEO-LAGRANGE",
       "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Chotteau",
+       "numero": 2,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Chotteau",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Moreau",
+       "numero": 4,
+       "buts": 1
+      },
+      {
+       "joueur": "N. Cospolite",
+       "numero": 1,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Scius Dutilleul",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Mhaoued",
+       "numero": 6,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "F. Dailly",
+       "numero": 1,
+       "buts": 3
+      },
+      {
+       "joueur": "J. Wentzo",
+       "numero": 2,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Dayen",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Vergracht",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "J. Treilles",
+       "numero": 3,
+       "buts": 2
+      }
+     ]
     }
    ],
    "bilan": {
-    "joues": 0,
+    "joues": 2,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 0,
-    "bp": 0,
-    "bc": 0
+    "defaites": 2,
+    "bp": 9,
+    "bc": 32
    },
-   "forme": "",
+   "forme": "DD",
    "place": 1,
    "nb_equipes": 3,
    "collectif": "u9-mixte-1"
@@ -9383,40 +9521,40 @@
     {
      "place": 1,
      "equipe": "CLAMART HB 2",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "perdus": 1,
+     "bp": 17,
+     "bc": 11,
+     "diff": 6,
      "nous": true
     },
     {
      "place": 2,
      "equipe": "AS MEUDON 2",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
      "nuls": 0,
      "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "bp": 32,
+     "bc": 5,
+     "diff": 27,
      "nous": false
     },
     {
      "place": 3,
      "equipe": "CHAVILLE HB 2",
-     "points": 0,
-     "joues": 0,
+     "points": 2,
+     "joues": 2,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 0,
+     "perdus": 2,
      "bp": 0,
-     "bc": 0,
-     "diff": 0,
+     "bc": 33,
+     "diff": -33,
      "nous": false
     }
    ],
@@ -9428,17 +9566,101 @@
      "domicile": false,
      "adversaire": "CHAVILLE HB 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 12,
+     "score_eux": 0,
+     "mt_nous": 12,
+     "mt_eux": 0,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200065/rencontre-2769372/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Z/WAGZOTJ.pdf",
      "salle": {
       "nom": "LEO-LAGRANGE",
       "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "C. Scius Dutilleul",
+       "numero": 2,
+       "buts": 2
+      },
+      {
+       "joueur": "I. Wilson",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Clergerie",
+       "numero": 1,
+       "buts": 2
+      },
+      {
+       "joueur": "A. De L'Orne D'Alincourt",
+       "numero": 6,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Palmier",
+       "numero": 5,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Abdelhak",
+       "numero": 8,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Dupouy",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "Y. Tiarti",
+       "numero": 7,
+       "buts": 1
+      },
+      {
+       "joueur": "Z. Elmakloufi Bajzman",
+       "numero": 9,
+       "buts": 1
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Martel De Boissieu",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Hamamouche",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Delmas",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Fontaine Cayre",
+       "numero": 3,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Philippart Veau",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Guesdon",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "Y. Estevao",
+       "numero": 2,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2769374",
@@ -9447,28 +9669,107 @@
      "domicile": true,
      "adversaire": "AS MEUDON 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-4b2618ab-6b7e-4b00-b55f-5562a44e5e37.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 5,
+     "score_eux": 11,
+     "mt_nous": 5,
+     "mt_eux": 11,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-200065/rencontre-2769374/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Z/WAGZOTL.pdf",
      "salle": {
       "nom": "LEO-LAGRANGE",
       "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "E. Dupouy",
+       "numero": 3,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Clergerie",
+       "numero": 2,
+       "buts": 1
+      },
+      {
+       "joueur": "A. De L'Orne D'Alincourt",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Palmier",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Scius Dutilleul",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Abdelhak",
+       "numero": 8,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Wilson",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "Y. Tiarti",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "Z. Elmakloufi Bajzman",
+       "numero": 9,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Portet Ferrari",
+       "numero": 1,
+       "buts": 11
+      },
+      {
+       "joueur": "L. Gradassi",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Jamet",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Petrovic",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Wilhelmy",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "W. Ouahbrache",
+       "numero": 3,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
-    "joues": 0,
-    "victoires": 0,
+    "joues": 2,
+    "victoires": 1,
     "nuls": 0,
-    "defaites": 0,
-    "bp": 0,
-    "bc": 0
+    "defaites": 1,
+    "bp": 17,
+    "bc": 11
    },
-   "forme": "",
+   "forme": "VD",
    "place": 1,
    "nb_equipes": 3,
    "collectif": "u9-mixte-2"
