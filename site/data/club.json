@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-15T12:42:57+00:00",
+ "mis_a_jour": "2026-11-15T15:53:51+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2333,6 +2333,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "CLAMART HANDBALL",
+     "points": 16,
+     "joues": 6,
+     "gagnes": 5,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 169,
+     "bc": 130,
+     "diff": 39,
+     "nous": true
+    },
+    {
+     "place": 2,
      "equipe": "COURBEVOIE HB 1C",
      "points": 14,
      "joues": 6,
@@ -2345,30 +2358,17 @@
      "nous": false
     },
     {
-     "place": 2,
-     "equipe": "SCUF 1B",
-     "points": 13,
-     "joues": 5,
-     "gagnes": 4,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 154,
-     "bc": 113,
-     "diff": 41,
-     "nous": false
-    },
-    {
      "place": 3,
-     "equipe": "CLAMART HANDBALL",
-     "points": 13,
-     "joues": 5,
+     "equipe": "SCUF 1B",
+     "points": 14,
+     "joues": 6,
      "gagnes": 4,
      "nuls": 0,
-     "perdus": 1,
-     "bp": 139,
-     "bc": 105,
-     "diff": 34,
-     "nous": true
+     "perdus": 2,
+     "bp": 179,
+     "bc": 143,
+     "diff": 36,
+     "nous": false
     },
     {
      "place": 4,
@@ -3335,7 +3335,7 @@
     "bc": 130
    },
    "forme": "VVDVV",
-   "place": 3,
+   "place": 1,
    "nb_equipes": 7,
    "collectif": "seniors-m"
   },
@@ -4449,27 +4449,27 @@
     {
      "place": 3,
      "equipe": "LEVALLOIS SC",
-     "points": 7,
-     "joues": 3,
-     "gagnes": 2,
+     "points": 10,
+     "joues": 4,
+     "gagnes": 3,
      "nuls": 0,
      "perdus": 1,
-     "bp": 71,
-     "bc": 73,
-     "diff": -2,
+     "bp": 109,
+     "bc": 82,
+     "diff": 27,
      "nous": false
     },
     {
      "place": 4,
      "equipe": "STADE FRANCAIS",
-     "points": 5,
-     "joues": 3,
+     "points": 6,
+     "joues": 4,
      "gagnes": 1,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 50,
-     "bc": 97,
-     "diff": -47,
+     "perdus": 3,
+     "bp": 59,
+     "bc": 135,
+     "diff": -76,
      "nous": false
     },
     {
@@ -5394,6 +5394,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "RUEIL AC 3",
+     "points": 10,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 127,
+     "bc": 96,
+     "diff": 31,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "ENT FONTENAY / MALAKOFF 3",
      "points": 9,
      "joues": 3,
@@ -5403,19 +5416,6 @@
      "bp": 87,
      "bc": 51,
      "diff": 36,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "RUEIL AC 3",
-     "points": 7,
-     "joues": 3,
-     "gagnes": 2,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 77,
-     "bc": 74,
-     "diff": 3,
      "nous": false
     },
     {
@@ -5447,14 +5447,14 @@
     {
      "place": 5,
      "equipe": "PARIS UC 3",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 44,
-     "bc": 64,
-     "diff": -20,
+     "perdus": 3,
+     "bp": 66,
+     "bc": 114,
+     "diff": -48,
      "nous": false
     },
     {
@@ -6597,6 +6597,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "ENT RUEIL / PUTEAUX",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 52,
+     "bc": 14,
+     "diff": 38,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "USM MALAKOFF",
      "points": 4,
      "joues": 2,
@@ -6609,7 +6622,7 @@
      "nous": false
     },
     {
-     "place": 2,
+     "place": 3,
      "equipe": "STADE DE VANVES",
      "points": 4,
      "joues": 2,
@@ -6619,19 +6632,6 @@
      "bp": 39,
      "bc": 32,
      "diff": 7,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "ENT RUEIL / PUTEAUX",
-     "points": 3,
-     "joues": 1,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 32,
-     "bc": 1,
-     "diff": 31,
      "nous": false
     },
     {
@@ -6650,14 +6650,14 @@
     {
      "place": 5,
      "equipe": "CLAMART HB",
-     "points": 1,
-     "joues": 1,
+     "points": 2,
+     "joues": 2,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 1,
-     "bp": 10,
-     "bc": 20,
-     "diff": -10,
+     "perdus": 2,
+     "bp": 23,
+     "bc": 40,
+     "diff": -17,
      "nous": true
     },
     {
@@ -6810,17 +6810,126 @@
      "domicile": true,
      "adversaire": "ENT RUEIL / PUTEAUX",
      "logo_adversaire": null,
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 13,
+     "score_eux": 20,
+     "mt_nous": 8,
+     "mt_eux": 11,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757744/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Y/WAGYWKD.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Belaskri",
+       "numero": 62,
+       "buts": 7
+      },
+      {
+       "joueur": "L. Kammoun",
+       "numero": 71,
+       "buts": 3
+      },
+      {
+       "joueur": "N. Denis",
+       "numero": 63,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 53,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Abbas",
+       "numero": 61,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Aljarab",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Delva",
+       "numero": 85,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Rami",
+       "numero": 89,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Aberkane",
+       "numero": 60,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Kraiem",
+       "numero": 79,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "N. Campos",
+       "numero": 39,
+       "buts": 8
+      },
+      {
+       "joueur": "R. Meyerhoffer",
+       "numero": 10,
+       "buts": 7
+      },
+      {
+       "joueur": "M. Grandin",
+       "numero": 4,
+       "buts": 4
+      },
+      {
+       "joueur": "D. Bougherra",
+       "numero": 18,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Billaudet",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Brossois",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Audras",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Brossois",
+       "numero": 17,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Iweins",
+       "numero": 40,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Kouam Simo Kemgang",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Sall",
+       "numero": 19,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2757746",
@@ -6952,14 +7061,14 @@
     }
    ],
    "bilan": {
-    "joues": 1,
+    "joues": 2,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 1,
-    "bp": 10,
-    "bc": 20
+    "defaites": 2,
+    "bp": 23,
+    "bc": 40
    },
-   "forme": "D",
+   "forme": "DD",
    "place": 5,
    "nb_equipes": 6,
    "collectif": "u13-f"
@@ -7654,6 +7763,19 @@
     },
     {
      "place": 2,
+     "equipe": "ES NANTERRE",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 37,
+     "bc": 43,
+     "diff": -6,
+     "nous": false
+    },
+    {
+     "place": 3,
      "equipe": "AC BOULOGNE-BILLANCOURT 2",
      "points": 4,
      "joues": 2,
@@ -7666,7 +7788,7 @@
      "nous": false
     },
     {
-     "place": 3,
+     "place": 4,
      "equipe": "CLAMART HB",
      "points": 3,
      "joues": 1,
@@ -7679,7 +7801,7 @@
      "nous": true
     },
     {
-     "place": 4,
+     "place": 5,
      "equipe": "LEVALLOIS SC 2",
      "points": 2,
      "joues": 2,
@@ -7692,7 +7814,7 @@
      "nous": false
     },
     {
-     "place": 5,
+     "place": 6,
      "equipe": "STADE DE VANVES 1",
      "points": 1,
      "joues": 1,
@@ -7702,19 +7824,6 @@
      "bp": 19,
      "bc": 20,
      "diff": -1,
-     "nous": false
-    },
-    {
-     "place": 6,
-     "equipe": "ES NANTERRE",
-     "points": 4,
-     "joues": 2,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 37,
-     "bc": 43,
-     "diff": -6,
      "nous": false
     }
    ],
@@ -7849,17 +7958,111 @@
      "domicile": true,
      "adversaire": "STADE DE VANVES 1",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 17,
+     "score_eux": 23,
+     "mt_nous": 10,
+     "mt_eux": 11,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2757999/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Y/WAGYWUQ.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Chotteau",
+       "numero": 75,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Genet Ardisson",
+       "numero": 77,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Gilbert  Duchesne",
+       "numero": 78,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Salazar",
+       "numero": 66,
+       "buts": 0
+      },
+      {
+       "joueur": "P. Ollier",
+       "numero": 81,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Bigot",
+       "numero": 74,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Luas",
+       "numero": 76,
+       "buts": 0
+      },
+      {
+       "joueur": "W. Kaddouri",
+       "numero": 73,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Gauthier",
+       "numero": 19,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Passilly",
+       "numero": 12,
+       "buts": 0
+      },
+      {
+       "joueur": "B. Celant",
+       "numero": 17,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Yang",
+       "numero": 11,
+       "buts": 0
+      },
+      {
+       "joueur": "F. Mercier Griot",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Lemaire Ellis",
+       "numero": 29,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Mattei",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Capra",
+       "numero": 26,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Portal",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Goulet",
+       "numero": 30,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2758000",
@@ -7991,15 +8194,15 @@
     }
    ],
    "bilan": {
-    "joues": 1,
+    "joues": 2,
     "victoires": 1,
     "nuls": 0,
-    "defaites": 0,
-    "bp": 24,
-    "bc": 16
+    "defaites": 1,
+    "bp": 41,
+    "bc": 39
    },
-   "forme": "V",
-   "place": 3,
+   "forme": "VD",
+   "place": 4,
    "nb_equipes": 6,
    "collectif": "u13-m"
   },
@@ -8949,54 +9152,54 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "AS FONTENAY-AUX-ROSES 2",
-     "points": 7,
+     "equipe": "AC BOULOGNE-BILLANCOURT 3",
+     "points": 8,
      "joues": 3,
      "gagnes": 2,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 34,
-     "bc": 24,
-     "diff": 10,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 74,
+     "bc": 22,
+     "diff": 52,
      "nous": false
     },
     {
      "place": 2,
-     "equipe": "USM MALAKOFF 2",
-     "points": 5,
-     "joues": 2,
-     "gagnes": 1,
-     "nuls": 1,
-     "perdus": 0,
-     "bp": 46,
-     "bc": 19,
-     "diff": 27,
+     "equipe": "AS FONTENAY-AUX-ROSES 2",
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 40,
+     "bc": 49,
+     "diff": -9,
      "nous": false
     },
     {
      "place": 3,
-     "equipe": "AC BOULOGNE-BILLANCOURT 3",
-     "points": 5,
-     "joues": 2,
-     "gagnes": 1,
+     "equipe": "USM MALAKOFF 2",
+     "points": 8,
+     "joues": 3,
+     "gagnes": 2,
      "nuls": 1,
      "perdus": 0,
-     "bp": 35,
-     "bc": 21,
-     "diff": 14,
+     "bp": 71,
+     "bc": 25,
+     "diff": 46,
      "nous": false
     },
     {
      "place": 4,
      "equipe": "ASV CHATENAY-MALABRY 2",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 7,
-     "bc": 40,
-     "diff": -33,
+     "perdus": 3,
+     "bp": 8,
+     "bc": 79,
+     "diff": -71,
      "nous": false
     },
     {
@@ -9274,16 +9477,16 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "CLAMART HB 1",
-     "points": 2,
+     "equipe": "CHAVILLE HB 1",
+     "points": 6,
      "joues": 2,
-     "gagnes": 0,
+     "gagnes": 2,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 9,
-     "bc": 32,
-     "diff": -23,
-     "nous": true
+     "perdus": 0,
+     "bp": 31,
+     "bc": 13,
+     "diff": 18,
+     "nous": false
     },
     {
      "place": 2,
@@ -9300,16 +9503,16 @@
     },
     {
      "place": 3,
-     "equipe": "CHAVILLE HB 1",
-     "points": 6,
+     "equipe": "CLAMART HB 1",
+     "points": 2,
      "joues": 2,
-     "gagnes": 2,
+     "gagnes": 0,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 31,
-     "bc": 13,
-     "diff": 18,
-     "nous": false
+     "perdus": 2,
+     "bp": 9,
+     "bc": 32,
+     "diff": -23,
+     "nous": true
     }
    ],
    "matchs": [
@@ -9499,7 +9702,7 @@
     "bc": 32
    },
    "forme": "DD",
-   "place": 1,
+   "place": 3,
    "nb_equipes": 3,
    "collectif": "u9-mixte-1"
   },
@@ -9520,19 +9723,6 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "CLAMART HB 2",
-     "points": 4,
-     "joues": 2,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 17,
-     "bc": 11,
-     "diff": 6,
-     "nous": true
-    },
-    {
-     "place": 2,
      "equipe": "AS MEUDON 2",
      "points": 6,
      "joues": 2,
@@ -9543,6 +9733,19 @@
      "bc": 5,
      "diff": 27,
      "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "CLAMART HB 2",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 17,
+     "bc": 11,
+     "diff": 6,
+     "nous": true
     },
     {
      "place": 3,
@@ -9770,7 +9973,7 @@
     "bc": 11
    },
    "forme": "VD",
-   "place": 1,
+   "place": 2,
    "nb_equipes": 3,
    "collectif": "u9-mixte-2"
   }
