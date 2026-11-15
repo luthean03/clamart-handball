@@ -399,13 +399,6 @@
    "equipe_id": "33056-clamart-handball-3",
    "salle": null
   },
-  "u13-f:2757744": {
-   "adversaire": "ENT RUEIL / PUTEAUX",
-   "date": "2026-11-15T14:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "33624-clamart-hb",
-   "salle": "GYMNASE DU PETIT CLAMART"
-  },
   "u13-f:2757746": {
    "adversaire": "USM MALAKOFF",
    "date": "2026-11-22T11:00:00+01:00",
@@ -461,13 +454,6 @@
    "domicile": false,
    "equipe_id": "33624-clamart-hb",
    "salle": null
-  },
-  "u13-m:2757999": {
-   "adversaire": "STADE DE VANVES 1",
-   "date": "2026-11-15T11:30:00+01:00",
-   "domicile": true,
-   "equipe_id": "33627-clamart-hb",
-   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u13-m:2758000": {
    "adversaire": "AS MEUDON 1",
