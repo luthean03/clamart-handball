@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-15T17:27:17+00:00",
+ "mis_a_jour": "2026-11-15T20:36:06+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -50,8 +50,8 @@
    "categorie": "seniors",
    "genre": "Mixte",
    "equipes": [
-    "33562-clamart-hb",
-    "33711-clamart-hb"
+    "33711-clamart-hb",
+    "33562-clamart-hb"
    ]
   },
   {
@@ -178,6 +178,19 @@
     },
     {
      "place": 2,
+     "equipe": "AC BOULOGNE-BILLANCOURT 1B",
+     "points": 19,
+     "joues": 7,
+     "gagnes": 6,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 179,
+     "bc": 162,
+     "diff": 17,
+     "nous": false
+    },
+    {
+     "place": 3,
      "equipe": "CLAMART HANDBALL 1",
      "points": 17,
      "joues": 7,
@@ -188,19 +201,6 @@
      "bc": 126,
      "diff": 41,
      "nous": true
-    },
-    {
-     "place": 3,
-     "equipe": "AC BOULOGNE-BILLANCOURT 1B",
-     "points": 16,
-     "joues": 6,
-     "gagnes": 5,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 158,
-     "bc": 142,
-     "diff": 16,
-     "nous": false
     },
     {
      "place": 4,
@@ -256,6 +256,19 @@
     },
     {
      "place": 8,
+     "equipe": "COM BAGNEUX 1",
+     "points": 9,
+     "joues": 6,
+     "gagnes": 1,
+     "nuls": 1,
+     "perdus": 4,
+     "bp": 128,
+     "bc": 140,
+     "diff": -12,
+     "nous": false
+    },
+    {
+     "place": 9,
      "equipe": "ES COLOMBIENNE 1C",
      "points": 8,
      "joues": 7,
@@ -265,19 +278,6 @@
      "bp": 126,
      "bc": 154,
      "diff": -28,
-     "nous": false
-    },
-    {
-     "place": 9,
-     "equipe": "COM BAGNEUX 1",
-     "points": 8,
-     "joues": 5,
-     "gagnes": 1,
-     "nuls": 1,
-     "perdus": 3,
-     "bp": 108,
-     "bc": 119,
-     "diff": -11,
      "nous": false
     },
     {
@@ -1339,7 +1339,7 @@
     "bc": 126
    },
    "forme": "DVVVD",
-   "place": 2,
+   "place": 3,
    "nb_equipes": 11,
    "collectif": "seniors-f-1"
   },
@@ -2372,6 +2372,32 @@
     },
     {
      "place": 4,
+     "equipe": "LEVALLOIS SC 1D",
+     "points": 12,
+     "joues": 6,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 148,
+     "bc": 151,
+     "diff": -3,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "MARTIGUA SCL 1B",
+     "points": 10,
+     "joues": 6,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 4,
+     "bp": 148,
+     "bc": 172,
+     "diff": -24,
+     "nous": false
+    },
+    {
+     "place": 6,
      "equipe": "PARIS UC 1C",
      "points": 9,
      "joues": 5,
@@ -2381,32 +2407,6 @@
      "bp": 126,
      "bc": 139,
      "diff": -13,
-     "nous": false
-    },
-    {
-     "place": 5,
-     "equipe": "MARTIGUA SCL 1B",
-     "points": 9,
-     "joues": 5,
-     "gagnes": 2,
-     "nuls": 0,
-     "perdus": 3,
-     "bp": 123,
-     "bc": 140,
-     "diff": -17,
-     "nous": false
-    },
-    {
-     "place": 6,
-     "equipe": "LEVALLOIS SC 1D",
-     "points": 9,
-     "joues": 5,
-     "gagnes": 2,
-     "nuls": 0,
-     "perdus": 3,
-     "bp": 116,
-     "bc": 126,
-     "diff": -10,
      "nous": false
     },
     {
@@ -3340,6 +3340,114 @@
    "collectif": "seniors-m"
   },
   {
+   "id": "33711-clamart-hb",
+   "nom": "Seniors Loisir",
+   "libelle_ffhb": "CLAMART HB",
+   "competition": "LOISIRS + DE 16 ANS MIXTE",
+   "detail": "Loisirs",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "seniors",
+   "genre": "Mixte",
+   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
+   "poule": "POULE C",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "ASV CHATENAY-MALABRY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "HBC ANTONY",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HB",
+     "points": 0,
+     "joues": 0,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
+     "nous": true
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2780044",
+     "date": "2026-12-04T21:00:00+01:00",
+     "journee": 2,
+     "domicile": true,
+     "adversaire": "HBC ANTONY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
+     "id": "2780043",
+     "date": "2027-02-03T21:15:00+01:00",
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "ASV CHATENAY-MALABRY",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEONARD-DE-VINCI",
+      "adresse": "1 AVENUE LEONARD-DE-VINCI 92290 CHATENAY MALABRY"
+     }
+    }
+   ],
+   "bilan": {
+    "joues": 0,
+    "victoires": 0,
+    "nuls": 0,
+    "defaites": 0,
+    "bp": 0,
+    "bc": 0
+   },
+   "forme": "",
+   "place": 3,
+   "nb_equipes": 3,
+   "collectif": "seniors-mixte"
+  },
+  {
    "id": "33562-clamart-hb",
    "nom": "Seniors Loisir",
    "libelle_ffhb": "CLAMART HB",
@@ -3749,114 +3857,6 @@
    "forme": "V",
    "place": 1,
    "nb_equipes": 7,
-   "collectif": "seniors-mixte"
-  },
-  {
-   "id": "33711-clamart-hb",
-   "nom": "Seniors Loisir",
-   "libelle_ffhb": "CLAMART HB",
-   "competition": "LOISIRS + DE 16 ANS MIXTE",
-   "detail": "Loisirs",
-   "organisateur": "COMITE DES HAUTS-DE-SEINE",
-   "niveau": "departemental",
-   "categorie": "seniors",
-   "genre": "Mixte",
-   "phase": "TOURNOI N°1 - LOISIRS + DE 16 ANS MIXTE",
-   "poule": "POULE C",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/equipe-2229762/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/classements/",
-   "classement": [
-    {
-     "place": 1,
-     "equipe": "ASV CHATENAY-MALABRY",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "HBC ANTONY",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "CLAMART HB",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
-     "nous": true
-    }
-   ],
-   "matchs": [
-    {
-     "id": "2780044",
-     "date": "2026-12-04T21:00:00+01:00",
-     "journee": 2,
-     "domicile": true,
-     "adversaire": "HBC ANTONY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2022-04-07-60ca4fca-c6bc-4816-a6f1-9a8beb1eade5.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780044/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "GYMNASE DU PETIT CLAMART",
-      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
-    },
-    {
-     "id": "2780043",
-     "date": "2027-02-03T21:15:00+01:00",
-     "journee": 1,
-     "domicile": false,
-     "adversaire": "ASV CHATENAY-MALABRY",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-02177cee-189e-43af-b703-2b199cafe7c3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/loisirs-de-16-ans-mixte-33711/poule-200424/rencontre-2780043/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "LEONARD-DE-VINCI",
-      "adresse": "1 AVENUE LEONARD-DE-VINCI 92290 CHATENAY MALABRY"
-     }
-    }
-   ],
-   "bilan": {
-    "joues": 0,
-    "victoires": 0,
-    "nuls": 0,
-    "defaites": 0,
-    "bp": 0,
-    "bc": 0
-   },
-   "forme": "",
-   "place": 3,
-   "nb_equipes": 3,
    "collectif": "seniors-mixte"
   },
   {
@@ -4836,17 +4836,111 @@
      "domicile": false,
      "adversaire": "ENT PARIS GALAXY NORD 3",
      "logo_adversaire": null,
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 21,
+     "score_eux": 33,
+     "mt_nous": 9,
+     "mt_eux": 18,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739607/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXOBS.pdf",
      "salle": {
       "nom": "GYMNASE CHARLES-MILDE (EX SAUSSURE)",
       "adresse": "38 rue georges-picquart 75017 PARIS 17e"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "D. Nkombou",
+       "numero": 26,
+       "buts": 8
+      },
+      {
+       "joueur": "H. Bait",
+       "numero": 23,
+       "buts": 4
+      },
+      {
+       "joueur": "M. Hini",
+       "numero": 27,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Defaye",
+       "numero": 10,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Labia",
+       "numero": 16,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Sahi",
+       "numero": 17,
+       "buts": 1
+      },
+      {
+       "joueur": "S. Mahi",
+       "numero": 92,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Buquet",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Abdelouahed",
+       "numero": 29,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Diabate",
+       "numero": 24,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "F. Sonko",
+       "numero": 43,
+       "buts": 7
+      },
+      {
+       "joueur": "M. Taleb",
+       "numero": 32,
+       "buts": 7
+      },
+      {
+       "joueur": "M. Ines",
+       "numero": 30,
+       "buts": 6
+      },
+      {
+       "joueur": "I. Herraz",
+       "numero": 39,
+       "buts": 5
+      },
+      {
+       "joueur": "N. Samushia",
+       "numero": 49,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Demharter",
+       "numero": 44,
+       "buts": 3
+      },
+      {
+       "joueur": "M. Medjkoune",
+       "numero": 35,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Ducruix",
+       "numero": 26,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2739610",
@@ -4869,14 +4963,14 @@
     }
    ],
    "bilan": {
-    "joues": 3,
+    "joues": 4,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 3,
-    "bp": 35,
-    "bc": 88
+    "defaites": 4,
+    "bp": 56,
+    "bc": 121
    },
-   "forme": "DDD",
+   "forme": "DDDD",
    "place": 6,
    "nb_equipes": 6,
    "collectif": "u18-f"
@@ -4937,19 +5031,32 @@
     },
     {
      "place": 4,
-     "equipe": "CLAMART HB",
-     "points": 5,
-     "joues": 3,
+     "equipe": "BOIS-COLOMBES SP. 3",
+     "points": 6,
+     "joues": 4,
      "gagnes": 1,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 82,
-     "bc": 114,
-     "diff": -32,
-     "nous": true
+     "perdus": 3,
+     "bp": 109,
+     "bc": 131,
+     "diff": -22,
+     "nous": false
     },
     {
      "place": 5,
+     "equipe": "CLAMART HB",
+     "points": 6,
+     "joues": 4,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 101,
+     "bc": 139,
+     "diff": -38,
+     "nous": true
+    },
+    {
+     "place": 6,
      "equipe": "LEVALLOIS SC 2",
      "points": 4,
      "joues": 4,
@@ -4959,19 +5066,6 @@
      "bp": 113,
      "bc": 186,
      "diff": -73,
-     "nous": false
-    },
-    {
-     "place": 6,
-     "equipe": "BOIS-COLOMBES SP. 3",
-     "points": 3,
-     "joues": 3,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 3,
-     "bp": 84,
-     "bc": 112,
-     "diff": -28,
      "nous": false
     }
    ],
@@ -5477,7 +5571,7 @@
     "bc": 139
    },
    "forme": "DDVD",
-   "place": 4,
+   "place": 5,
    "nb_equipes": 6,
    "collectif": "u18-m"
   },
@@ -5511,6 +5605,19 @@
     },
     {
      "place": 2,
+     "equipe": "PARIS ST-GERMAIN HB 4",
+     "points": 10,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 145,
+     "bc": 87,
+     "diff": 58,
+     "nous": false
+    },
+    {
+     "place": 3,
      "equipe": "ENT FONTENAY / MALAKOFF 3",
      "points": 9,
      "joues": 3,
@@ -5520,19 +5627,6 @@
      "bp": 87,
      "bc": 51,
      "diff": 36,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "PARIS ST-GERMAIN HB 4",
-     "points": 7,
-     "joues": 3,
-     "gagnes": 2,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 102,
-     "bc": 68,
-     "diff": 34,
      "nous": false
     },
     {
@@ -5564,14 +5658,14 @@
     {
      "place": 6,
      "equipe": "ASNIERES HBC 3",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 43,
-     "bc": 73,
-     "diff": -30,
+     "perdus": 3,
+     "bp": 62,
+     "bc": 116,
+     "diff": -54,
      "nous": false
     }
    ],
