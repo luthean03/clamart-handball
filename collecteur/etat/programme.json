@@ -322,13 +322,6 @@
    "equipe_id": "33056-clamart-handball-2-filles",
    "salle": null
   },
-  "u11-mixte-1:2710073": {
-   "adversaire": "HBC ANTONY 2",
-   "date": "2026-11-15T15:30:00+01:00",
-   "domicile": true,
-   "equipe_id": "33056-clamart-handball-1",
-   "salle": "GYMNASE DU PETIT CLAMART"
-  },
   "u11-mixte-1:2710077": {
    "adversaire": "STADE DE VANVES 2",
    "date": "2026-11-21T14:00:00+01:00",
@@ -538,13 +531,6 @@
    "domicile": true,
    "equipe_id": "33458-clamart-hb",
    "salle": "GYMNASE DU PETIT CLAMART"
-  },
-  "u18-m:2740462": {
-   "adversaire": "BOIS-COLOMBES SP. 3",
-   "date": "2026-11-15T16:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33470-clamart-hb",
-   "salle": "charles-coste"
   },
   "u18-m:2740465": {
    "adversaire": "COURBEVOIE HB 1",
