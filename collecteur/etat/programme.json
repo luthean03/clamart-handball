@@ -566,34 +566,6 @@
    "domicile": true,
    "equipe_id": "33470-clamart-hb",
    "salle": "GYMNASE DU PETIT CLAMART"
-  },
-  "u9-mixte-1:2769369": {
-   "adversaire": "CHAVILLE HB 1",
-   "date": "2026-11-15T10:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33687-clamart-hb-1",
-   "salle": "LEO-LAGRANGE"
-  },
-  "u9-mixte-1:2769371": {
-   "adversaire": "AS MEUDON 1",
-   "date": "2026-11-15T10:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "33687-clamart-hb-1",
-   "salle": "LEO-LAGRANGE"
-  },
-  "u9-mixte-2:2769372": {
-   "adversaire": "CHAVILLE HB 2",
-   "date": "2026-11-15T10:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33687-clamart-hb-2",
-   "salle": "LEO-LAGRANGE"
-  },
-  "u9-mixte-2:2769374": {
-   "adversaire": "AS MEUDON 2",
-   "date": "2026-11-15T10:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "33687-clamart-hb-2",
-   "salle": "LEO-LAGRANGE"
   }
  },
  "saison": "2026-2027"
