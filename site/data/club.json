@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-16T00:24:04+00:00",
+ "mis_a_jour": "2026-11-16T13:36:43+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -194,12 +194,12 @@
      "equipe": "CLAMART HANDBALL 1",
      "points": 17,
      "joues": 7,
-     "gagnes": 4,
+     "gagnes": 5,
      "nuls": 0,
      "perdus": 2,
-     "bp": 167,
+     "bp": 187,
      "bc": 126,
-     "diff": 41,
+     "diff": 61,
      "nous": true
     },
     {
@@ -276,8 +276,8 @@
      "nuls": 0,
      "perdus": 6,
      "bp": 126,
-     "bc": 154,
-     "diff": -28,
+     "bc": 174,
+     "diff": -48,
      "nous": false
     },
     {
@@ -1386,6 +1386,19 @@
     },
     {
      "place": 3,
+     "equipe": "STADE DE VANVES 1B",
+     "points": 14,
+     "joues": 6,
+     "gagnes": 4,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 151,
+     "bc": 123,
+     "diff": 28,
+     "nous": false
+    },
+    {
+     "place": 4,
      "equipe": "MARTIGUA SCL 1B",
      "points": 12,
      "joues": 6,
@@ -1395,19 +1408,6 @@
      "bp": 151,
      "bc": 125,
      "diff": 26,
-     "nous": false
-    },
-    {
-     "place": 4,
-     "equipe": "STADE DE VANVES 1B",
-     "points": 11,
-     "joues": 5,
-     "gagnes": 3,
-     "nuls": 0,
-     "perdus": 2,
-     "bp": 114,
-     "bc": 105,
-     "diff": 9,
      "nous": false
     },
     {
@@ -1439,14 +1439,14 @@
     {
      "place": 7,
      "equipe": "PARIS UC 1D",
-     "points": 5,
-     "joues": 5,
+     "points": 6,
+     "joues": 6,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 5,
-     "bp": 85,
-     "bc": 150,
-     "diff": -65,
+     "perdus": 6,
+     "bp": 103,
+     "bc": 187,
+     "diff": -84,
      "nous": false
     }
    ],
@@ -4461,6 +4461,19 @@
     },
     {
      "place": 4,
+     "equipe": "ENT PARIS GALAXY NORD 3",
+     "points": 6,
+     "joues": 4,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 90,
+     "bc": 128,
+     "diff": -38,
+     "nous": false
+    },
+    {
+     "place": 5,
      "equipe": "STADE FRANCAIS",
      "points": 6,
      "joues": 4,
@@ -4473,29 +4486,16 @@
      "nous": false
     },
     {
-     "place": 5,
-     "equipe": "ENT PARIS GALAXY NORD 3",
-     "points": 3,
-     "joues": 3,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 3,
-     "bp": 57,
-     "bc": 107,
-     "diff": -50,
-     "nous": false
-    },
-    {
      "place": 6,
      "equipe": "CLAMART HB",
-     "points": 3,
-     "joues": 3,
+     "points": 4,
+     "joues": 4,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 3,
-     "bp": 35,
-     "bc": 88,
-     "diff": -53,
+     "perdus": 4,
+     "bp": 56,
+     "bc": 121,
+     "diff": -65,
      "nous": true
     }
    ],
