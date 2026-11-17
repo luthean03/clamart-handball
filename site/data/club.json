@@ -11,17 +11,16 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-17T03:12:19+00:00",
+ "mis_a_jour": "2026-11-17T14:20:55+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
-   "id": "seniors-f-1",
-   "nom": "Seniors F1",
+   "id": "seniors-f",
+   "nom": "Seniors F",
    "categorie": "seniors",
    "genre": "F",
    "equipes": [
-    "32542-clamart-handball-1",
-    "33243-clamart-handball-1"
+    "32542-clamart-hb"
    ]
   },
   {
@@ -30,7 +29,7 @@
    "categorie": "seniors",
    "genre": "F",
    "equipes": [
-    "32543-clamart-handball-1b"
+    "32543-clamart-hb-1b"
    ]
   },
   {
@@ -39,7 +38,7 @@
    "categorie": "seniors",
    "genre": "M",
    "equipes": [
-    "32546-clamart-handball",
+    "32546-clamart-hb",
     "33403-clamart-handball",
     "33244-clamart-handball"
    ]
@@ -52,6 +51,15 @@
    "equipes": [
     "33711-clamart-hb",
     "33562-clamart-hb"
+   ]
+  },
+  {
+   "id": "seniors-f-1",
+   "nom": "Seniors F1",
+   "categorie": "seniors",
+   "genre": "F",
+   "equipes": [
+    "33243-clamart-handball-1"
    ]
   },
   {
@@ -149,9 +157,9 @@
  ],
  "equipes": [
   {
-   "id": "32542-clamart-handball-1",
-   "nom": "Seniors F1",
-   "libelle_ffhb": "CLAMART HANDBALL 1",
+   "id": "32542-clamart-hb",
+   "nom": "Seniors F",
+   "libelle_ffhb": "CLAMART HB",
    "competition": "+16 ANS FEMININES - DIVISION 1 TERRITORIALE 92-75",
    "detail": "Division 1 territoriale 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -191,7 +199,7 @@
     },
     {
      "place": 3,
-     "equipe": "CLAMART HANDBALL 1",
+     "equipe": "CLAMART HB",
      "points": 17,
      "joues": 7,
      "gagnes": 5,
@@ -243,7 +251,7 @@
     },
     {
      "place": 7,
-     "equipe": "ENT SURESNES / NANTERRE",
+     "equipe": "ENT SURESNES-NANTERRE",
      "points": 9,
      "joues": 6,
      "gagnes": 2,
@@ -256,7 +264,7 @@
     },
     {
      "place": 8,
-     "equipe": "COM BAGNEUX 1",
+     "equipe": "COM BAGNEUX",
      "points": 9,
      "joues": 6,
      "gagnes": 1,
@@ -313,7 +321,7 @@
      "date": "2026-09-13T16:30:00+02:00",
      "journee": 1,
      "domicile": false,
-     "adversaire": "COM BAGNEUX 1",
+     "adversaire": "COM BAGNEUX",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
      "score_nous": 27,
      "score_eux": 22,
@@ -850,7 +858,7 @@
      "date": "2026-10-11T16:15:00+02:00",
      "journee": 5,
      "domicile": true,
-     "adversaire": "ENT SURESNES / NANTERRE",
+     "adversaire": "ENT SURESNES-NANTERRE",
      "logo_adversaire": null,
      "score_nous": 32,
      "score_eux": 22,
@@ -1184,7 +1192,7 @@
      "date": null,
      "journee": 12,
      "domicile": true,
-     "adversaire": "COM BAGNEUX 1",
+     "adversaire": "COM BAGNEUX",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
      "score_nous": null,
      "score_eux": null,
@@ -1244,7 +1252,7 @@
      "date": null,
      "journee": 16,
      "domicile": false,
-     "adversaire": "ENT SURESNES / NANTERRE",
+     "adversaire": "ENT SURESNES-NANTERRE",
      "logo_adversaire": null,
      "score_nous": null,
      "score_eux": null,
@@ -1341,12 +1349,12 @@
    "forme": "DVVVD",
    "place": 3,
    "nb_equipes": 11,
-   "collectif": "seniors-f-1"
+   "collectif": "seniors-f"
   },
   {
-   "id": "32543-clamart-handball-1b",
+   "id": "32543-clamart-hb-1b",
    "nom": "Seniors F2",
-   "libelle_ffhb": "CLAMART HANDBALL 1B",
+   "libelle_ffhb": "CLAMART HB 1B",
    "competition": "+16 ANS FEMININES - DIVISION 2 TERRITORIALE 92-75",
    "detail": "Division 2 territoriale 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -1412,7 +1420,7 @@
     },
     {
      "place": 5,
-     "equipe": "CLAMART HANDBALL 1B",
+     "equipe": "CLAMART HB 1B",
      "points": 10,
      "joues": 6,
      "gagnes": 2,
@@ -2317,9 +2325,9 @@
    "collectif": "seniors-f-1b"
   },
   {
-   "id": "32546-clamart-handball",
+   "id": "32546-clamart-hb",
    "nom": "Seniors M",
-   "libelle_ffhb": "CLAMART HANDBALL",
+   "libelle_ffhb": "CLAMART HB",
    "competition": "+16 ANS MASCULINS - DIVISION 2 TERRITORIALE 92-75",
    "detail": "Division 2 territoriale 92-75",
    "organisateur": "COMITE DES HAUTS-DE-SEINE",
@@ -2333,7 +2341,7 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "CLAMART HANDBALL",
+     "equipe": "CLAMART HB",
      "points": 16,
      "joues": 6,
      "gagnes": 5,
@@ -4422,7 +4430,7 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "ENT COLOMBES / ASNIERES",
+     "equipe": "ENT COLOMBES-ASNIERES",
      "points": 12,
      "joues": 4,
      "gagnes": 4,
@@ -4947,7 +4955,7 @@
      "date": "2026-11-21T17:30:00+01:00",
      "journee": 5,
      "domicile": true,
-     "adversaire": "ENT COLOMBES / ASNIERES",
+     "adversaire": "ENT COLOMBES-ASNIERES",
      "logo_adversaire": null,
      "score_nous": null,
      "score_eux": null,
@@ -5618,7 +5626,7 @@
     },
     {
      "place": 3,
-     "equipe": "ENT FONTENAY / MALAKOFF 3",
+     "equipe": "ENT FONTENAY-MALAKOFF 3",
      "points": 9,
      "joues": 3,
      "gagnes": 3,
@@ -5906,7 +5914,7 @@
      "date": "2026-11-14T16:00:00+01:00",
      "journee": 4,
      "domicile": true,
-     "adversaire": "ENT FONTENAY / MALAKOFF 3",
+     "adversaire": "ENT FONTENAY-MALAKOFF 3",
      "logo_adversaire": null,
      "score_nous": 16,
      "score_eux": 24,
@@ -6795,7 +6803,7 @@
    "classement": [
     {
      "place": 1,
-     "equipe": "ENT RUEIL / PUTEAUX",
+     "equipe": "ENT RUEIL-PUTEAUX",
      "points": 6,
      "joues": 2,
      "gagnes": 2,
@@ -7006,7 +7014,7 @@
      "date": "2026-11-15T14:00:00+01:00",
      "journee": 2,
      "domicile": true,
-     "adversaire": "ENT RUEIL / PUTEAUX",
+     "adversaire": "ENT RUEIL-PUTEAUX",
      "logo_adversaire": null,
      "score_nous": 13,
      "score_eux": 20,
@@ -7202,7 +7210,7 @@
      "date": null,
      "journee": 7,
      "domicile": false,
-     "adversaire": "ENT RUEIL / PUTEAUX",
+     "adversaire": "ENT RUEIL-PUTEAUX",
      "logo_adversaire": null,
      "score_nous": null,
      "score_eux": null,
