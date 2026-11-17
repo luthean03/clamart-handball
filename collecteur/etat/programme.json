@@ -1,102 +1,11 @@
 {
  "matchs": {
-  "seniors-f-1:2644304": {
-   "adversaire": "ES COLOMBIENNE 1C",
-   "date": "2026-11-14T18:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": "GYMNASE DU PETIT CLAMART"
-  },
   "seniors-f-1:2644310": {
    "adversaire": "PARIS UC 1C",
    "date": "2026-11-28T18:30:00+01:00",
    "domicile": false,
    "equipe_id": "32542-clamart-handball-1",
    "salle": "GYMNASE POLIVEAU"
-  },
-  "seniors-f-1:2644322": {
-   "adversaire": "PARIS SC 1C",
-   "date": null,
-   "domicile": false,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644328": {
-   "adversaire": "MARTIGUA SCL",
-   "date": null,
-   "domicile": true,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644334": {
-   "adversaire": "COM BAGNEUX 1",
-   "date": null,
-   "domicile": true,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644340": {
-   "adversaire": "AC BOULOGNE-BILLANCOURT 1B",
-   "date": null,
-   "domicile": false,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644346": {
-   "adversaire": "STADE FRANCAIS",
-   "date": null,
-   "domicile": false,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644352": {
-   "adversaire": "PARIS ST-GERMAIN HB",
-   "date": null,
-   "domicile": true,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644358": {
-   "adversaire": "ENT SURESNES / NANTERRE",
-   "date": null,
-   "domicile": false,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644364": {
-   "adversaire": "BOIS-COLOMBES SP. 1B",
-   "date": null,
-   "domicile": true,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644370": {
-   "adversaire": "ES COLOMBIENNE 1C",
-   "date": null,
-   "domicile": false,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644376": {
-   "adversaire": "PARIS UC 1C",
-   "date": null,
-   "domicile": true,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644388": {
-   "adversaire": "PARIS SC 1C",
-   "date": null,
-   "domicile": true,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
-  },
-  "seniors-f-1:2644394": {
-   "adversaire": "MARTIGUA SCL",
-   "date": null,
-   "domicile": false,
-   "equipe_id": "32542-clamart-handball-1",
-   "salle": null
   },
   "seniors-f-1:2766739": {
    "adversaire": "TS VICINOIS 88 HB",
@@ -109,84 +18,182 @@
    "adversaire": "PARIS UC 1D",
    "date": "2026-11-28T20:30:00+01:00",
    "domicile": false,
-   "equipe_id": "32543-clamart-handball-1b",
+   "equipe_id": "32543-clamart-hb-1b",
    "salle": "GYMNASE POLIVEAU"
   },
   "seniors-f-1b:2644490": {
    "adversaire": "MARTIGUA SCL 1B",
    "date": null,
    "domicile": true,
-   "equipe_id": "32543-clamart-handball-1b",
+   "equipe_id": "32543-clamart-hb-1b",
    "salle": null
   },
   "seniors-f-1b:2644493": {
    "adversaire": "STADE DE VANVES 1B",
    "date": "2026-12-12T20:45:00+01:00",
    "domicile": false,
-   "equipe_id": "32543-clamart-handball-1b",
+   "equipe_id": "32543-clamart-hb-1b",
    "salle": "MAURICE-MAGNE"
   },
   "seniors-f-1b:2644496": {
    "adversaire": "LEVALLOIS SC",
    "date": null,
    "domicile": false,
-   "equipe_id": "32543-clamart-handball-1b",
+   "equipe_id": "32543-clamart-hb-1b",
    "salle": null
   },
   "seniors-f-1b:2644501": {
    "adversaire": "PARIS SC 1D",
    "date": null,
    "domicile": true,
-   "equipe_id": "32543-clamart-handball-1b",
+   "equipe_id": "32543-clamart-hb-1b",
    "salle": null
   },
   "seniors-f-1b:2644511": {
    "adversaire": "LA CLICHOISE HB",
    "date": null,
    "domicile": true,
-   "equipe_id": "32543-clamart-handball-1b",
+   "equipe_id": "32543-clamart-hb-1b",
+   "salle": null
+  },
+  "seniors-f:2644304": {
+   "adversaire": "ES COLOMBIENNE 1C",
+   "date": "2026-11-14T18:00:00+01:00",
+   "domicile": true,
+   "equipe_id": "32542-clamart-hb",
+   "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "seniors-f:2644310": {
+   "adversaire": "PARIS UC 1C",
+   "date": "2026-11-28T18:30:00+01:00",
+   "domicile": false,
+   "equipe_id": "32542-clamart-hb",
+   "salle": "GYMNASE POLIVEAU"
+  },
+  "seniors-f:2644322": {
+   "adversaire": "PARIS SC 1C",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644328": {
+   "adversaire": "MARTIGUA SCL",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644334": {
+   "adversaire": "COM BAGNEUX",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644340": {
+   "adversaire": "AC BOULOGNE-BILLANCOURT 1B",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644346": {
+   "adversaire": "STADE FRANCAIS",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644352": {
+   "adversaire": "PARIS ST-GERMAIN HB",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644358": {
+   "adversaire": "ENT SURESNES-NANTERRE",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644364": {
+   "adversaire": "BOIS-COLOMBES SP. 1B",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644370": {
+   "adversaire": "ES COLOMBIENNE 1C",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644376": {
+   "adversaire": "PARIS UC 1C",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644388": {
+   "adversaire": "PARIS SC 1C",
+   "date": null,
+   "domicile": true,
+   "equipe_id": "32542-clamart-hb",
+   "salle": null
+  },
+  "seniors-f:2644394": {
+   "adversaire": "MARTIGUA SCL",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "32542-clamart-hb",
    "salle": null
   },
   "seniors-m:2673808": {
    "adversaire": "MARTIGUA SCL 1B",
    "date": "2026-12-06T14:30:00+01:00",
    "domicile": false,
-   "equipe_id": "32546-clamart-handball",
+   "equipe_id": "32546-clamart-hb",
    "salle": "HAUTPOUL"
   },
   "seniors-m:2673812": {
    "adversaire": "PARIS UC 1C",
    "date": null,
    "domicile": false,
-   "equipe_id": "32546-clamart-handball",
+   "equipe_id": "32546-clamart-hb",
    "salle": null
   },
   "seniors-m:2673816": {
    "adversaire": "ISSY HBM 1C",
    "date": null,
    "domicile": true,
-   "equipe_id": "32546-clamart-handball",
+   "equipe_id": "32546-clamart-hb",
    "salle": null
   },
   "seniors-m:2673820": {
    "adversaire": "LEVALLOIS SC 1D",
    "date": null,
    "domicile": false,
-   "equipe_id": "32546-clamart-handball",
+   "equipe_id": "32546-clamart-hb",
    "salle": null
   },
   "seniors-m:2673824": {
    "adversaire": "COURBEVOIE HB 1C",
    "date": null,
    "domicile": true,
-   "equipe_id": "32546-clamart-handball",
+   "equipe_id": "32546-clamart-hb",
    "salle": null
   },
   "seniors-m:2673828": {
    "adversaire": "SCUF 1B",
    "date": "2027-02-27T18:45:00+01:00",
    "domicile": false,
-   "equipe_id": "32546-clamart-handball",
+   "equipe_id": "32546-clamart-hb",
    "salle": "MICHELINE OSTERMEYER"
   },
   "seniors-m:2766998": {
@@ -421,7 +428,7 @@
    "salle": null
   },
   "u13-f:2757759": {
-   "adversaire": "ENT RUEIL / PUTEAUX",
+   "adversaire": "ENT RUEIL-PUTEAUX",
    "date": null,
    "domicile": false,
    "equipe_id": "33624-clamart-hb",
@@ -519,7 +526,7 @@
    "salle": "complexe omnisports alain-mimoun"
   },
   "u18-f:2739610": {
-   "adversaire": "ENT COLOMBES / ASNIERES",
+   "adversaire": "ENT COLOMBES-ASNIERES",
    "date": "2026-11-21T17:30:00+01:00",
    "domicile": true,
    "equipe_id": "33458-clamart-hb",
