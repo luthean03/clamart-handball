@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-18T19:08:23+00:00",
+ "mis_a_jour": "2026-11-18T22:43:08+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -2232,6 +2232,25 @@
      }
     },
     {
+     "id": "2644490",
+     "date": "2026-12-06T16:00:00+01:00",
+     "journee": 9,
+     "domicile": true,
+     "adversaire": "MARTIGUA SCL 1B",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-70a63cd3-5685-4f61-9ab4-9c79f9fe74a4.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644490/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
      "id": "2644493",
      "date": "2026-12-12T20:45:00+01:00",
      "journee": 10,
@@ -2249,21 +2268,6 @@
       "nom": "MAURICE-MAGNE",
       "adresse": "12 RUE DANTON 92170 VANVES"
      }
-    },
-    {
-     "id": "2644490",
-     "date": null,
-     "journee": 9,
-     "domicile": true,
-     "adversaire": "MARTIGUA SCL 1B",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-10-21-70a63cd3-5685-4f61-9ab4-9c79f9fe74a4.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/16-ans-feminines-division-2-territoriale-92-75-32543/poule-191106/rencontre-2644490/",
-     "feuille_de_match": null
     },
     {
      "id": "2644496",
@@ -3472,6 +3476,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "AS VOLTAIRE CHATENAY-MALABRY",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 60,
+     "bc": 44,
+     "diff": 16,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "CLAMART HB",
      "points": 3,
      "joues": 1,
@@ -3484,7 +3501,20 @@
      "nous": true
     },
     {
-     "place": 2,
+     "place": 3,
+     "equipe": "HBC LES LIONS DE LA MAULDRE",
+     "points": 3,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 1,
+     "perdus": 1,
+     "bp": 20,
+     "bc": 29,
+     "diff": -9,
+     "nous": false
+    },
+    {
+     "place": 4,
      "equipe": "CELLOIS HB",
      "points": 3,
      "joues": 1,
@@ -3497,20 +3527,33 @@
      "nous": false
     },
     {
-     "place": 3,
-     "equipe": "AS VOLTAIRE CHATENAY-MALABRY",
-     "points": 3,
+     "place": 5,
+     "equipe": "AS ST-CYR/FONTENAY HB 78 (2)",
+     "points": 2,
      "joues": 1,
-     "gagnes": 1,
-     "nuls": 0,
+     "gagnes": 0,
+     "nuls": 1,
      "perdus": 0,
-     "bp": 32,
-     "bc": 25,
-     "diff": 7,
+     "bp": 0,
+     "bc": 0,
+     "diff": 0,
      "nous": false
     },
     {
-     "place": 4,
+     "place": 6,
+     "equipe": "VERSAILLES HBC (2)",
+     "points": 2,
+     "joues": 2,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 38,
+     "bc": 56,
+     "diff": -18,
+     "nous": false
+    },
+    {
+     "place": 7,
      "equipe": "HB BOUGIVAL",
      "points": 1,
      "joues": 1,
@@ -3520,45 +3563,6 @@
      "bp": 25,
      "bc": 32,
      "diff": -7,
-     "nous": false
-    },
-    {
-     "place": 5,
-     "equipe": "HBC LES LIONS DE LA MAULDRE",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 20,
-     "bc": 29,
-     "diff": -9,
-     "nous": false
-    },
-    {
-     "place": 6,
-     "equipe": "VERSAILLES HBC (2)",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 19,
-     "bc": 28,
-     "diff": -9,
-     "nous": false
-    },
-    {
-     "place": 7,
-     "equipe": "AS ST-CYR/FONTENAY HB 78 (2)",
-     "points": 0,
-     "joues": 0,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 0,
-     "bc": 0,
-     "diff": 0,
      "nous": false
     }
    ],
@@ -3863,7 +3867,7 @@
     "bc": 20
    },
    "forme": "V",
-   "place": 1,
+   "place": 2,
    "nb_equipes": 7,
    "collectif": "seniors-mixte"
   },
@@ -7177,7 +7181,7 @@
     },
     {
      "id": "2757753",
-     "date": null,
+     "date": "2026-12-06T14:45:00+01:00",
      "journee": 5,
      "domicile": true,
      "adversaire": "ISSY-PARIS HAND 2",
@@ -7188,7 +7192,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757753/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
     },
     {
      "id": "2757756",
@@ -8310,7 +8318,7 @@
     },
     {
      "id": "2758008",
-     "date": null,
+     "date": "2026-12-06T11:30:00+01:00",
      "journee": 5,
      "domicile": true,
      "adversaire": "LEVALLOIS SC 2",
@@ -8321,7 +8329,11 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13m-championnats-33627/poule-199522/rencontre-2758008/",
-     "feuille_de_match": null
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
     },
     {
      "id": "2758011",
@@ -9378,6 +9390,25 @@
      }
     },
     {
+     "id": "2710054",
+     "date": "2026-12-06T13:30:00+01:00",
+     "journee": 8,
+     "domicile": true,
+     "adversaire": "ISSY HBM 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710054/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     }
+    },
+    {
      "id": "2710055",
      "date": "2026-12-13T12:00:00+01:00",
      "journee": 9,
@@ -9409,21 +9440,6 @@
      "mt_eux": null,
      "resultat": null,
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710033/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710054",
-     "date": null,
-     "journee": 8,
-     "domicile": true,
-     "adversaire": "ISSY HBM 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710054/",
      "feuille_de_match": null
     },
     {
