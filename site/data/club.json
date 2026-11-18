@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-18T02:37:15+00:00",
+ "mis_a_jour": "2026-11-18T17:35:33+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -110,21 +110,21 @@
    ]
   },
   {
-   "id": "u11-f-2",
-   "nom": "U11 Mixte 2",
-   "categorie": "U11",
-   "genre": "F",
-   "equipes": [
-    "33056-clamart-handball-2-filles"
-   ]
-  },
-  {
    "id": "u11-mixte-1",
    "nom": "U11 Mixte 1",
    "categorie": "U11",
    "genre": "Mixte",
    "equipes": [
     "33056-clamart-handball-1"
+   ]
+  },
+  {
+   "id": "u11-f-2",
+   "nom": "U11 Mixte 2",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "equipes": [
+    "33056-clamart-handball-2"
    ]
   },
   {
@@ -212,6 +212,19 @@
     },
     {
      "place": 4,
+     "equipe": "PARIS SC 1C",
+     "points": 14,
+     "joues": 6,
+     "gagnes": 4,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 148,
+     "bc": 89,
+     "diff": 59,
+     "nous": false
+    },
+    {
+     "place": 5,
      "equipe": "PARIS UC 1C",
      "points": 14,
      "joues": 6,
@@ -224,7 +237,7 @@
      "nous": false
     },
     {
-     "place": 5,
+     "place": 6,
      "equipe": "BOIS-COLOMBES SP. 1B",
      "points": 12,
      "joues": 6,
@@ -237,29 +250,16 @@
      "nous": false
     },
     {
-     "place": 6,
-     "equipe": "PARIS SC 1C",
-     "points": 11,
-     "joues": 6,
-     "gagnes": 3,
-     "nuls": 0,
-     "perdus": 2,
-     "bp": 128,
-     "bc": 89,
-     "diff": 39,
-     "nous": false
-    },
-    {
      "place": 7,
      "equipe": "ENT SURESNES-NANTERRE",
      "points": 9,
      "joues": 6,
      "gagnes": 2,
      "nuls": 1,
-     "perdus": 2,
+     "perdus": 3,
      "bp": 108,
-     "bc": 117,
-     "diff": -9,
+     "bc": 137,
+     "diff": -29,
      "nous": false
     },
     {
@@ -8413,544 +8413,6 @@
    "collectif": "u13-m"
   },
   {
-   "id": "33056-clamart-handball-2-filles",
-   "nom": "U11 Mixte 2",
-   "libelle_ffhb": "CLAMART HANDBALL 2 (FILLES)",
-   "competition": "U11 MIXTE",
-   "detail": "U11 Mixte · Honneur · Sud B",
-   "organisateur": "COMITE DES HAUTS-DE-SEINE",
-   "niveau": "departemental",
-   "categorie": "U11",
-   "genre": "F",
-   "phase": "1RE PHASE - SECTEUR SUD",
-   "poule": "HONNEUR SUD B",
-   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
-   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/classements/",
-   "classement": [
-    {
-     "place": 1,
-     "equipe": "COM BAGNEUX",
-     "points": 9,
-     "joues": 3,
-     "gagnes": 3,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 62,
-     "bc": 29,
-     "diff": 33,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "ISSY HBM 2",
-     "points": 9,
-     "joues": 4,
-     "gagnes": 2,
-     "nuls": 1,
-     "perdus": 1,
-     "bp": 70,
-     "bc": 40,
-     "diff": 30,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "CLAMART HANDBALL 2 (FILLES)",
-     "points": 5,
-     "joues": 3,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 2,
-     "bp": 38,
-     "bc": 30,
-     "diff": 8,
-     "nous": true
-    },
-    {
-     "place": 4,
-     "equipe": "ISSY-PARIS HAND 2 (FILLES)",
-     "points": 3,
-     "joues": 3,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 3,
-     "bp": 6,
-     "bc": 77,
-     "diff": -71,
-     "nous": false
-    },
-    {
-     "place": 5,
-     "equipe": "CHAVILLE HB 2",
-     "points": 2,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 1,
-     "perdus": 0,
-     "bp": 14,
-     "bc": 14,
-     "diff": 0,
-     "nous": false
-    }
-   ],
-   "matchs": [
-    {
-     "id": "2710039",
-     "date": "2026-10-11T09:00:00+02:00",
-     "journee": 3,
-     "domicile": false,
-     "adversaire": "ISSY HBM 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
-     "score_nous": 3,
-     "score_eux": 11,
-     "mt_nous": 2,
-     "mt_eux": 5,
-     "resultat": "D",
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710039/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUB.pdf",
-     "salle": {
-      "nom": "CITE DES SPORTS SALLE 1",
-      "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
-     },
-     "buteurs": [
-      {
-       "joueur": "A. Pugnet Aupetit",
-       "numero": 29,
-       "buts": 1
-      },
-      {
-       "joueur": "D. Schiellein",
-       "numero": 72,
-       "buts": 1
-      },
-      {
-       "joueur": "E. Wiebach",
-       "numero": 14,
-       "buts": 1
-      },
-      {
-       "joueur": "I. Combe",
-       "numero": 2,
-       "buts": 0
-      },
-      {
-       "joueur": "M. Khelifa",
-       "numero": 99,
-       "buts": 0
-      },
-      {
-       "joueur": "N. Bellahsene",
-       "numero": 1,
-       "buts": 0
-      },
-      {
-       "joueur": "N. Farhat",
-       "numero": 38,
-       "buts": 0
-      }
-     ],
-     "buteurs_adverses": [
-      {
-       "joueur": "S. Rivalland",
-       "numero": 20,
-       "buts": 8
-      },
-      {
-       "joueur": "B. Houdayer Laborde",
-       "numero": 22,
-       "buts": 1
-      },
-      {
-       "joueur": "D. Trentesaux",
-       "numero": 29,
-       "buts": 1
-      },
-      {
-       "joueur": "J. Ben Abdeljelil",
-       "numero": 28,
-       "buts": 1
-      },
-      {
-       "joueur": "A. Buzdugan",
-       "numero": 30,
-       "buts": 0
-      },
-      {
-       "joueur": "A. Douville",
-       "numero": 21,
-       "buts": 0
-      },
-      {
-       "joueur": "A. Parrinello",
-       "numero": 27,
-       "buts": 0
-      },
-      {
-       "joueur": "G. Regnier",
-       "numero": 23,
-       "buts": 0
-      },
-      {
-       "joueur": "M. Pinard",
-       "numero": 26,
-       "buts": 0
-      },
-      {
-       "joueur": "R. Kyc",
-       "numero": 25,
-       "buts": 0
-      },
-      {
-       "joueur": "R. Tran Ohlmann",
-       "numero": 31,
-       "buts": 0
-      }
-     ]
-    },
-    {
-     "id": "2710040",
-     "date": "2026-11-07T16:00:00+01:00",
-     "journee": 4,
-     "domicile": true,
-     "adversaire": "COM BAGNEUX",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
-     "score_nous": 9,
-     "score_eux": 15,
-     "mt_nous": 6,
-     "mt_eux": 5,
-     "resultat": "D",
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710040/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUC.pdf",
-     "salle": {
-      "nom": "GYMNASE DU PETIT CLAMART",
-      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     },
-     "buteurs": [
-      {
-       "joueur": "E. Krabaa Silva",
-       "numero": 80,
-       "buts": 5
-      },
-      {
-       "joueur": "A. Monney",
-       "numero": 35,
-       "buts": 2
-      },
-      {
-       "joueur": "A. Pugnet Aupetit",
-       "numero": 26,
-       "buts": 2
-      },
-      {
-       "joueur": "A. Chaouch",
-       "numero": 38,
-       "buts": 0
-      },
-      {
-       "joueur": "G. Lecomte",
-       "numero": 21,
-       "buts": 0
-      },
-      {
-       "joueur": "I. Combe",
-       "numero": 2,
-       "buts": 0
-      },
-      {
-       "joueur": "J. Le Miere",
-       "numero": 14,
-       "buts": 0
-      },
-      {
-       "joueur": "M. Khelifa",
-       "numero": 99,
-       "buts": 0
-      },
-      {
-       "joueur": "N. Bellahsene",
-       "numero": 98,
-       "buts": 0
-      },
-      {
-       "joueur": "N. Farhat",
-       "numero": 7,
-       "buts": 0
-      },
-      {
-       "joueur": "T. Toty",
-       "numero": 72,
-       "buts": 0
-      }
-     ],
-     "buteurs_adverses": [
-      {
-       "joueur": "M. Verhoeven",
-       "numero": 11,
-       "buts": 5
-      },
-      {
-       "joueur": "L. Alzire",
-       "numero": 18,
-       "buts": 3
-      },
-      {
-       "joueur": "E. Bonnin",
-       "numero": 5,
-       "buts": 2
-      },
-      {
-       "joueur": "F. Toure",
-       "numero": 6,
-       "buts": 2
-      },
-      {
-       "joueur": "G. Liot",
-       "numero": 14,
-       "buts": 1
-      },
-      {
-       "joueur": "M. Bouzeghoub",
-       "numero": 3,
-       "buts": 1
-      },
-      {
-       "joueur": "T. Joubert",
-       "numero": 8,
-       "buts": 1
-      },
-      {
-       "joueur": "A. Vitorino",
-       "numero": 4,
-       "buts": 0
-      }
-     ]
-    },
-    {
-     "id": "2710044",
-     "date": "2026-11-14T13:30:00+01:00",
-     "journee": 5,
-     "domicile": false,
-     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2017-07-03-161d0d1a-c15f-4ebf-b0ea-0ef9cca2d027.webp",
-     "score_nous": 26,
-     "score_eux": 4,
-     "mt_nous": 12,
-     "mt_eux": 1,
-     "resultat": "V",
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710044/",
-     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUG.pdf",
-     "salle": {
-      "nom": "CITE DES SPORTS SALLE 1",
-      "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
-     },
-     "buteurs": [
-      {
-       "joueur": "I. Combe",
-       "numero": 2,
-       "buts": 10
-      },
-      {
-       "joueur": "A. Chaouch",
-       "numero": 38,
-       "buts": 4
-      },
-      {
-       "joueur": "A. Pugnet Aupetit",
-       "numero": 35,
-       "buts": 4
-      },
-      {
-       "joueur": "D. Schiellein",
-       "numero": 41,
-       "buts": 4
-      },
-      {
-       "joueur": "J. Le Miere",
-       "numero": 14,
-       "buts": 3
-      },
-      {
-       "joueur": "G. Lecomte",
-       "numero": 28,
-       "buts": 1
-      },
-      {
-       "joueur": "A. Boubaker",
-       "numero": 1,
-       "buts": 0
-      },
-      {
-       "joueur": "M. Khelifa",
-       "numero": 99,
-       "buts": 0
-      },
-      {
-       "joueur": "T. Toty",
-       "numero": 72,
-       "buts": 0
-      }
-     ],
-     "buteurs_adverses": [
-      {
-       "joueur": "M. Coatanhay",
-       "numero": 22,
-       "buts": 1
-      },
-      {
-       "joueur": "M. Coulibaly",
-       "numero": 26,
-       "buts": 1
-      },
-      {
-       "joueur": "M. David",
-       "numero": 17,
-       "buts": 1
-      },
-      {
-       "joueur": "R. Giner",
-       "numero": 19,
-       "buts": 1
-      },
-      {
-       "joueur": "A. Guison Caillaud",
-       "numero": 20,
-       "buts": 0
-      },
-      {
-       "joueur": "A. Phelep",
-       "numero": 21,
-       "buts": 0
-      },
-      {
-       "joueur": "A. Rochon Bocquin",
-       "numero": 15,
-       "buts": 0
-      },
-      {
-       "joueur": "B. Zini",
-       "numero": 25,
-       "buts": 0
-      },
-      {
-       "joueur": "L. Basin",
-       "numero": 23,
-       "buts": 0
-      },
-      {
-       "joueur": "L. Westley",
-       "numero": 14,
-       "buts": 0
-      },
-      {
-       "joueur": "L. Zaoug",
-       "numero": 13,
-       "buts": 0
-      },
-      {
-       "joueur": "R. Azib",
-       "numero": 18,
-       "buts": 0
-      }
-     ]
-    },
-    {
-     "id": "2710048",
-     "date": "2026-11-22T10:00:00+01:00",
-     "journee": 6,
-     "domicile": false,
-     "adversaire": "CHAVILLE HB 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710048/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "LEO-LAGRANGE",
-      "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
-     }
-    },
-    {
-     "id": "2710055",
-     "date": "2026-12-13T12:00:00+01:00",
-     "journee": 9,
-     "domicile": false,
-     "adversaire": "COM BAGNEUX",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710055/",
-     "feuille_de_match": null,
-     "salle": {
-      "nom": "HENRI-WALLON",
-      "adresse": "1 AVENUE DE STALINGRAD 92220 BAGNEUX"
-     }
-    },
-    {
-     "id": "2710033",
-     "date": null,
-     "journee": 1,
-     "domicile": true,
-     "adversaire": "CHAVILLE HB 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710033/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710054",
-     "date": null,
-     "journee": 8,
-     "domicile": true,
-     "adversaire": "ISSY HBM 2",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710054/",
-     "feuille_de_match": null
-    },
-    {
-     "id": "2710059",
-     "date": null,
-     "journee": 10,
-     "domicile": true,
-     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
-     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2017-07-03-161d0d1a-c15f-4ebf-b0ea-0ef9cca2d027.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
-     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710059/",
-     "feuille_de_match": null
-    }
-   ],
-   "bilan": {
-    "joues": 3,
-    "victoires": 1,
-    "nuls": 0,
-    "defaites": 2,
-    "bp": 38,
-    "bc": 30
-   },
-   "forme": "DDV",
-   "place": 3,
-   "nb_equipes": 5,
-   "collectif": "u11-f-2"
-  },
-  {
    "id": "33056-clamart-handball-1",
    "nom": "U11 Mixte 1",
    "libelle_ffhb": "CLAMART HANDBALL 1",
@@ -9454,6 +8916,544 @@
    "place": 1,
    "nb_equipes": 4,
    "collectif": "u11-mixte-1"
+  },
+  {
+   "id": "33056-clamart-handball-2",
+   "nom": "U11 Mixte 2",
+   "libelle_ffhb": "CLAMART HANDBALL 2",
+   "competition": "U11 MIXTE",
+   "detail": "U11 Mixte · Honneur · Sud B",
+   "organisateur": "COMITE DES HAUTS-DE-SEINE",
+   "niveau": "departemental",
+   "categorie": "U11",
+   "genre": "Mixte",
+   "phase": "1RE PHASE - SECTEUR SUD",
+   "poule": "HONNEUR SUD B",
+   "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/equipe-2177119/",
+   "url_classement": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/classements/",
+   "classement": [
+    {
+     "place": 1,
+     "equipe": "COM BAGNEUX",
+     "points": 9,
+     "joues": 3,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 62,
+     "bc": 29,
+     "diff": 33,
+     "nous": false
+    },
+    {
+     "place": 2,
+     "equipe": "ISSY HBM 2",
+     "points": 9,
+     "joues": 4,
+     "gagnes": 2,
+     "nuls": 1,
+     "perdus": 1,
+     "bp": 70,
+     "bc": 40,
+     "diff": 30,
+     "nous": false
+    },
+    {
+     "place": 3,
+     "equipe": "CLAMART HANDBALL 2",
+     "points": 5,
+     "joues": 3,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 38,
+     "bc": 30,
+     "diff": 8,
+     "nous": true
+    },
+    {
+     "place": 4,
+     "equipe": "ISSY-PARIS HAND 2 (FILLES)",
+     "points": 3,
+     "joues": 3,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 3,
+     "bp": 6,
+     "bc": 77,
+     "diff": -71,
+     "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "CHAVILLE HB 2",
+     "points": 2,
+     "joues": 1,
+     "gagnes": 0,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 14,
+     "bc": 14,
+     "diff": 0,
+     "nous": false
+    }
+   ],
+   "matchs": [
+    {
+     "id": "2710039",
+     "date": "2026-10-11T09:00:00+02:00",
+     "journee": 3,
+     "domicile": false,
+     "adversaire": "ISSY HBM 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
+     "score_nous": 3,
+     "score_eux": 11,
+     "mt_nous": 2,
+     "mt_eux": 5,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710039/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUB.pdf",
+     "salle": {
+      "nom": "CITE DES SPORTS SALLE 1",
+      "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Pugnet Aupetit",
+       "numero": 29,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Schiellein",
+       "numero": 72,
+       "buts": 1
+      },
+      {
+       "joueur": "E. Wiebach",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "I. Combe",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Bellahsene",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Farhat",
+       "numero": 38,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "S. Rivalland",
+       "numero": 20,
+       "buts": 8
+      },
+      {
+       "joueur": "B. Houdayer Laborde",
+       "numero": 22,
+       "buts": 1
+      },
+      {
+       "joueur": "D. Trentesaux",
+       "numero": 29,
+       "buts": 1
+      },
+      {
+       "joueur": "J. Ben Abdeljelil",
+       "numero": 28,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Buzdugan",
+       "numero": 30,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Douville",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Parrinello",
+       "numero": 27,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Regnier",
+       "numero": 23,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Pinard",
+       "numero": 26,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Kyc",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Tran Ohlmann",
+       "numero": 31,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2710040",
+     "date": "2026-11-07T16:00:00+01:00",
+     "journee": 4,
+     "domicile": true,
+     "adversaire": "COM BAGNEUX",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
+     "score_nous": 9,
+     "score_eux": 15,
+     "mt_nous": 6,
+     "mt_eux": 5,
+     "resultat": "D",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710040/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUC.pdf",
+     "salle": {
+      "nom": "GYMNASE DU PETIT CLAMART",
+      "adresse": "56 rue de la bourcilliere 92140 CLAMART"
+     },
+     "buteurs": [
+      {
+       "joueur": "E. Krabaa Silva",
+       "numero": 80,
+       "buts": 5
+      },
+      {
+       "joueur": "A. Monney",
+       "numero": 35,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Pugnet Aupetit",
+       "numero": 26,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Chaouch",
+       "numero": 38,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Lecomte",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Combe",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Le Miere",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Bellahsene",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Farhat",
+       "numero": 7,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Toty",
+       "numero": 72,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "M. Verhoeven",
+       "numero": 11,
+       "buts": 5
+      },
+      {
+       "joueur": "L. Alzire",
+       "numero": 18,
+       "buts": 3
+      },
+      {
+       "joueur": "E. Bonnin",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "F. Toure",
+       "numero": 6,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Liot",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Bouzeghoub",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Joubert",
+       "numero": 8,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Vitorino",
+       "numero": 4,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2710044",
+     "date": "2026-11-14T13:30:00+01:00",
+     "journee": 5,
+     "domicile": false,
+     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2017-07-03-161d0d1a-c15f-4ebf-b0ea-0ef9cca2d027.webp",
+     "score_nous": 26,
+     "score_eux": 4,
+     "mt_nous": 12,
+     "mt_eux": 1,
+     "resultat": "V",
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710044/",
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUG.pdf",
+     "salle": {
+      "nom": "CITE DES SPORTS SALLE 1",
+      "adresse": "92 rue du gouverneur general eboue 92130 ISSY LES MOULINEAUX"
+     },
+     "buteurs": [
+      {
+       "joueur": "I. Combe",
+       "numero": 2,
+       "buts": 10
+      },
+      {
+       "joueur": "A. Chaouch",
+       "numero": 38,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Pugnet Aupetit",
+       "numero": 35,
+       "buts": 4
+      },
+      {
+       "joueur": "D. Schiellein",
+       "numero": 41,
+       "buts": 4
+      },
+      {
+       "joueur": "J. Le Miere",
+       "numero": 14,
+       "buts": 3
+      },
+      {
+       "joueur": "G. Lecomte",
+       "numero": 28,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Boubaker",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Toty",
+       "numero": 72,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "M. Coatanhay",
+       "numero": 22,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Coulibaly",
+       "numero": 26,
+       "buts": 1
+      },
+      {
+       "joueur": "M. David",
+       "numero": 17,
+       "buts": 1
+      },
+      {
+       "joueur": "R. Giner",
+       "numero": 19,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Guison Caillaud",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Phelep",
+       "numero": 21,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Rochon Bocquin",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "B. Zini",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Basin",
+       "numero": 23,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Westley",
+       "numero": 14,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Zaoug",
+       "numero": 13,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Azib",
+       "numero": 18,
+       "buts": 0
+      }
+     ]
+    },
+    {
+     "id": "2710048",
+     "date": "2026-11-22T10:00:00+01:00",
+     "journee": 6,
+     "domicile": false,
+     "adversaire": "CHAVILLE HB 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710048/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "LEO-LAGRANGE",
+      "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
+     }
+    },
+    {
+     "id": "2710055",
+     "date": "2026-12-13T12:00:00+01:00",
+     "journee": 9,
+     "domicile": false,
+     "adversaire": "COM BAGNEUX",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2025-08-26-8a5e2345-1207-4ede-a709-6adf0ee8ce98.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710055/",
+     "feuille_de_match": null,
+     "salle": {
+      "nom": "HENRI-WALLON",
+      "adresse": "1 AVENUE DE STALINGRAD 92220 BAGNEUX"
+     }
+    },
+    {
+     "id": "2710033",
+     "date": null,
+     "journee": 1,
+     "domicile": true,
+     "adversaire": "CHAVILLE HB 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710033/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710054",
+     "date": null,
+     "journee": 8,
+     "domicile": true,
+     "adversaire": "ISSY HBM 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-04-24-b05ba594-9c4d-4a0d-a5ba-7fbb6f21a3a8.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710054/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2710059",
+     "date": null,
+     "journee": 10,
+     "domicile": true,
+     "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2017-07-03-161d0d1a-c15f-4ebf-b0ea-0ef9cca2d027.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710059/",
+     "feuille_de_match": null
+    }
+   ],
+   "bilan": {
+    "joues": 3,
+    "victoires": 1,
+    "nuls": 0,
+    "defaites": 2,
+    "bp": 38,
+    "bc": 30
+   },
+   "forme": "DDV",
+   "place": 3,
+   "nb_equipes": 5,
+   "collectif": "u11-f-2"
   },
   {
    "id": "33056-clamart-handball-3",
@@ -10011,6 +10011,36 @@
        "buts": 2
       }
      ]
+    },
+    {
+     "id": "2792997",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "STADE DE VANVES",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-24-bcf5748f-5b09-4186-8acb-17c6370edc77.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-201500/rencontre-2792997/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2792998",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "USM MALAKOFF 1",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-201500/rencontre-2792998/",
+     "feuille_de_match": null
     }
    ],
    "bilan": {
@@ -10282,6 +10312,36 @@
        "buts": 0
       }
      ]
+    },
+    {
+     "id": "2793000",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "AS FONTENAY-AUX-ROSES 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2026-09-18-06b4d55f-daab-479d-8a51-95cfca4b6c09.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-201501/rencontre-2793000/",
+     "feuille_de_match": null
+    },
+    {
+     "id": "2793001",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "USM MALAKOFF 2",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u9-mixte-tournois-33687/poule-201501/rencontre-2793001/",
+     "feuille_de_match": null
     }
    ],
    "bilan": {
