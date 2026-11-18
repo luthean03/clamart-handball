@@ -23,10 +23,10 @@
   },
   "seniors-f-1b:2644490": {
    "adversaire": "MARTIGUA SCL 1B",
-   "date": null,
+   "date": "2026-12-06T16:00:00+01:00",
    "domicile": true,
    "equipe_id": "32543-clamart-hb-1b",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "seniors-f-1b:2644493": {
    "adversaire": "STADE DE VANVES 1B",
@@ -310,10 +310,10 @@
   },
   "u11-f-2:2710054": {
    "adversaire": "ISSY HBM 2",
-   "date": null,
+   "date": "2026-12-06T13:30:00+01:00",
    "domicile": true,
    "equipe_id": "33056-clamart-handball-2",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u11-f-2:2710055": {
    "adversaire": "COM BAGNEUX",
@@ -415,10 +415,10 @@
   },
   "u13-f:2757753": {
    "adversaire": "ISSY-PARIS HAND 2",
-   "date": null,
+   "date": "2026-12-06T14:45:00+01:00",
    "domicile": true,
    "equipe_id": "33624-clamart-hb",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u13-f:2757756": {
    "adversaire": "STADE DE VANVES",
@@ -471,10 +471,10 @@
   },
   "u13-m:2758008": {
    "adversaire": "LEVALLOIS SC 2",
-   "date": null,
+   "date": "2026-12-06T11:30:00+01:00",
    "domicile": true,
    "equipe_id": "33627-clamart-hb",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u13-m:2758011": {
    "adversaire": "ES NANTERRE",
