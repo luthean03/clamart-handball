@@ -26,7 +26,8 @@
     "U11 F 2": "U11 Mixte 2"
   },
   "collectifs": {
-    "commentaire": "Optionnel : forcer le collectif d'une équipe. Clé = equipe_id, valeur = id de collectif (minuscules, chiffres, tirets)."
+    "commentaire": "Optionnel : forcer le collectif d'une équipe. Clé = equipe_id, valeur = id de collectif (minuscules, chiffres, tirets).",
+    "33056-clamart-handball-2": "u11-f-2"
   },
   "notifications": {
     "fuseau": "Europe/Paris",
