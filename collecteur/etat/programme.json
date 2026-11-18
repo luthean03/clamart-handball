@@ -298,35 +298,35 @@
    "adversaire": "CHAVILLE HB 2",
    "date": null,
    "domicile": true,
-   "equipe_id": "33056-clamart-handball-2-filles",
+   "equipe_id": "33056-clamart-handball-2",
    "salle": null
   },
   "u11-f-2:2710048": {
    "adversaire": "CHAVILLE HB 2",
    "date": "2026-11-22T10:00:00+01:00",
    "domicile": false,
-   "equipe_id": "33056-clamart-handball-2-filles",
+   "equipe_id": "33056-clamart-handball-2",
    "salle": "LEO-LAGRANGE"
   },
   "u11-f-2:2710054": {
    "adversaire": "ISSY HBM 2",
    "date": null,
    "domicile": true,
-   "equipe_id": "33056-clamart-handball-2-filles",
+   "equipe_id": "33056-clamart-handball-2",
    "salle": null
   },
   "u11-f-2:2710055": {
    "adversaire": "COM BAGNEUX",
    "date": "2026-12-13T12:00:00+01:00",
    "domicile": false,
-   "equipe_id": "33056-clamart-handball-2-filles",
+   "equipe_id": "33056-clamart-handball-2",
    "salle": "HENRI-WALLON"
   },
   "u11-f-2:2710059": {
    "adversaire": "ISSY-PARIS HAND 2 (FILLES)",
    "date": null,
    "domicile": true,
-   "equipe_id": "33056-clamart-handball-2-filles",
+   "equipe_id": "33056-clamart-handball-2",
    "salle": null
   },
   "u11-mixte-1:2710077": {
@@ -538,6 +538,34 @@
    "domicile": true,
    "equipe_id": "33470-clamart-hb",
    "salle": "GYMNASE DU PETIT CLAMART"
+  },
+  "u9-mixte-1:2792997": {
+   "adversaire": "STADE DE VANVES",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33687-clamart-hb-1",
+   "salle": null
+  },
+  "u9-mixte-1:2792998": {
+   "adversaire": "USM MALAKOFF 1",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33687-clamart-hb-1",
+   "salle": null
+  },
+  "u9-mixte-2:2793000": {
+   "adversaire": "AS FONTENAY-AUX-ROSES 2",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33687-clamart-hb-2",
+   "salle": null
+  },
+  "u9-mixte-2:2793001": {
+   "adversaire": "USM MALAKOFF 2",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33687-clamart-hb-2",
+   "salle": null
   }
  },
  "saison": "2026-2027"
