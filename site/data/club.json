@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-20T13:59:12+00:00",
+ "mis_a_jour": "2026-11-20T17:19:17+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -4434,6 +4434,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "USM MALAKOFF",
+     "points": 13,
+     "joues": 5,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 163,
+     "bc": 75,
+     "diff": 88,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "ENT COLOMBES-ASNIERES",
      "points": 12,
      "joues": 4,
@@ -4446,26 +4459,13 @@
      "nous": false
     },
     {
-     "place": 2,
-     "equipe": "USM MALAKOFF",
-     "points": 10,
-     "joues": 4,
-     "gagnes": 3,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 163,
-     "bc": 75,
-     "diff": 88,
-     "nous": false
-    },
-    {
      "place": 3,
      "equipe": "LEVALLOIS SC",
      "points": 10,
-     "joues": 4,
+     "joues": 5,
      "gagnes": 3,
      "nuls": 0,
-     "perdus": 1,
+     "perdus": 2,
      "bp": 109,
      "bc": 82,
      "diff": 27,
@@ -7977,6 +7977,32 @@
     },
     {
      "place": 2,
+     "equipe": "CLAMART HB",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 41,
+     "bc": 39,
+     "diff": 2,
+     "nous": true
+    },
+    {
+     "place": 3,
+     "equipe": "STADE DE VANVES 1",
+     "points": 4,
+     "joues": 2,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 42,
+     "bc": 37,
+     "diff": 5,
+     "nous": false
+    },
+    {
+     "place": 4,
      "equipe": "ES NANTERRE",
      "points": 4,
      "joues": 2,
@@ -7989,7 +8015,7 @@
      "nous": false
     },
     {
-     "place": 3,
+     "place": 5,
      "equipe": "AC BOULOGNE-BILLANCOURT 2",
      "points": 4,
      "joues": 2,
@@ -8002,20 +8028,7 @@
      "nous": false
     },
     {
-     "place": 4,
-     "equipe": "CLAMART HB",
-     "points": 3,
-     "joues": 1,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 24,
-     "bc": 16,
-     "diff": 8,
-     "nous": true
-    },
-    {
-     "place": 5,
+     "place": 6,
      "equipe": "LEVALLOIS SC 2",
      "points": 2,
      "joues": 2,
@@ -8025,19 +8038,6 @@
      "bp": 39,
      "bc": 42,
      "diff": -3,
-     "nous": false
-    },
-    {
-     "place": 6,
-     "equipe": "STADE DE VANVES 1",
-     "points": 1,
-     "joues": 1,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 19,
-     "bc": 20,
-     "diff": -1,
      "nous": false
     }
    ],
@@ -8420,7 +8420,7 @@
     "bc": 39
    },
    "forme": "VD",
-   "place": 4,
+   "place": 2,
    "nb_equipes": 6,
    "collectif": "u13-m"
   },
