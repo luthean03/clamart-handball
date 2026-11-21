@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-20T22:22:53+00:00",
+ "mis_a_jour": "2026-11-21T00:20:08+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -3476,6 +3476,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "CLAMART HB",
+     "points": 6,
+     "joues": 2,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 57,
+     "bc": 36,
+     "diff": 21,
+     "nous": true
+    },
+    {
+     "place": 2,
      "equipe": "AS VOLTAIRE CHATENAY-MALABRY",
      "points": 6,
      "joues": 2,
@@ -3488,20 +3501,20 @@
      "nous": false
     },
     {
-     "place": 2,
-     "equipe": "CLAMART HB",
-     "points": 3,
-     "joues": 1,
+     "place": 3,
+     "equipe": "CELLOIS HB",
+     "points": 4,
+     "joues": 2,
      "gagnes": 1,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 29,
-     "bc": 20,
-     "diff": 9,
-     "nous": true
+     "perdus": 1,
+     "bp": 44,
+     "bc": 47,
+     "diff": -3,
+     "nous": false
     },
     {
-     "place": 3,
+     "place": 4,
      "equipe": "HBC LES LIONS DE LA MAULDRE",
      "points": 3,
      "joues": 2,
@@ -3511,19 +3524,6 @@
      "bp": 20,
      "bc": 29,
      "diff": -9,
-     "nous": false
-    },
-    {
-     "place": 4,
-     "equipe": "CELLOIS HB",
-     "points": 3,
-     "joues": 1,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 28,
-     "bc": 19,
-     "diff": 9,
      "nous": false
     },
     {
@@ -3698,8 +3698,125 @@
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
      },
-     "buteurs": [],
-     "buteurs_adverses": []
+     "buteurs": [
+      {
+       "joueur": "J. Gouze",
+       "numero": 31,
+       "buts": 11
+      },
+      {
+       "joueur": "N. Abe",
+       "numero": 14,
+       "buts": 4
+      },
+      {
+       "joueur": "J. Rilcy",
+       "numero": 29,
+       "buts": 3
+      },
+      {
+       "joueur": "J. Desroc",
+       "numero": 23,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Gabriel",
+       "numero": 28,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Combe (nee Dierick)",
+       "numero": 22,
+       "buts": 2
+      },
+      {
+       "joueur": "C. Rodrigues",
+       "numero": 33,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Bouhrizi",
+       "numero": 36,
+       "buts": 1
+      },
+      {
+       "joueur": "T. Martinez",
+       "numero": 27,
+       "buts": 1
+      },
+      {
+       "joueur": "X. Gilbert",
+       "numero": 26,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Delalande",
+       "numero": 24,
+       "buts": 0
+      },
+      {
+       "joueur": "F. Denis",
+       "numero": 94,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Carre",
+       "numero": 26,
+       "buts": 9
+      },
+      {
+       "joueur": "D. Scoquart",
+       "numero": 20,
+       "buts": 3
+      },
+      {
+       "joueur": "M. Palluau",
+       "numero": 12,
+       "buts": 2
+      },
+      {
+       "joueur": "R. Scoquart",
+       "numero": 27,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Maudet",
+       "numero": 18,
+       "buts": 0
+      },
+      {
+       "joueur": "C. Assier",
+       "numero": 31,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Bornert",
+       "numero": 32,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Sanchez",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Butel",
+       "numero": 64,
+       "buts": 0
+      },
+      {
+       "joueur": "O. Carre",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Proust",
+       "numero": 17,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2748877",
@@ -3869,7 +3986,7 @@
     "bc": 36
    },
    "forme": "VV",
-   "place": 2,
+   "place": 1,
    "nb_equipes": 7,
    "collectif": "seniors-mixte"
   },
