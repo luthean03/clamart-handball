@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-21T17:47:27+00:00",
+ "mis_a_jour": "2026-11-21T21:13:51+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -8083,6 +8083,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "STADE DE VANVES 1",
+     "points": 7,
+     "joues": 3,
+     "gagnes": 2,
+     "nuls": 0,
+     "perdus": 1,
+     "bp": 71,
+     "bc": 64,
+     "diff": 7,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "AS MEUDON 1",
      "points": 6,
      "joues": 2,
@@ -8095,7 +8108,7 @@
      "nous": false
     },
     {
-     "place": 2,
+     "place": 3,
      "equipe": "CLAMART HB",
      "points": 4,
      "joues": 2,
@@ -8106,19 +8119,6 @@
      "bc": 39,
      "diff": 2,
      "nous": true
-    },
-    {
-     "place": 3,
-     "equipe": "STADE DE VANVES 1",
-     "points": 4,
-     "joues": 2,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 42,
-     "bc": 37,
-     "diff": 5,
-     "nous": false
     },
     {
      "place": 4,
@@ -8149,14 +8149,14 @@
     {
      "place": 6,
      "equipe": "LEVALLOIS SC 2",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 39,
-     "bc": 42,
-     "diff": -3,
+     "perdus": 3,
+     "bp": 66,
+     "bc": 71,
+     "diff": -5,
      "nous": false
     }
    ],
@@ -8539,7 +8539,7 @@
     "bc": 39
    },
    "forme": "VD",
-   "place": 2,
+   "place": 3,
    "nb_equipes": 6,
    "collectif": "u13-m"
   },
