@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-21T21:13:51+00:00",
+ "mis_a_jour": "2026-11-21T23:37:20+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -4553,6 +4553,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "ENT COLOMBES-ASNIERES",
+     "points": 15,
+     "joues": 5,
+     "gagnes": 5,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 199,
+     "bc": 107,
+     "diff": 92,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "USM MALAKOFF",
      "points": 13,
      "joues": 5,
@@ -4562,19 +4575,6 @@
      "bp": 163,
      "bc": 75,
      "diff": 88,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "ENT COLOMBES-ASNIERES",
-     "points": 12,
-     "joues": 4,
-     "gagnes": 4,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 161,
-     "bc": 97,
-     "diff": 64,
      "nous": false
     },
     {
@@ -4619,14 +4619,14 @@
     {
      "place": 6,
      "equipe": "CLAMART HB",
-     "points": 4,
-     "joues": 4,
+     "points": 5,
+     "joues": 5,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 4,
-     "bp": 56,
-     "bc": 121,
-     "diff": -65,
+     "perdus": 5,
+     "bp": 66,
+     "bc": 159,
+     "diff": -93,
      "nous": true
     }
    ],
@@ -5080,28 +5080,122 @@
      "domicile": true,
      "adversaire": "ENT COLOMBES-ASNIERES",
      "logo_adversaire": null,
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 10,
+     "score_eux": 38,
+     "mt_nous": 5,
+     "mt_eux": 21,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u18f-championnat-92-75-33458/poule-197900/rencontre-2739610/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/X/WAGXOBV.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "H. Bait",
+       "numero": 19,
+       "buts": 5
+      },
+      {
+       "joueur": "D. Nkombou",
+       "numero": 26,
+       "buts": 3
+      },
+      {
+       "joueur": "M. Diabate",
+       "numero": 29,
+       "buts": 1
+      },
+      {
+       "joueur": "S. Mahi",
+       "numero": 92,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Defaye",
+       "numero": 10,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Labia",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Buquet",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Abdelouahed",
+       "numero": 27,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hini",
+       "numero": 24,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "E. Nicoletto",
+       "numero": 5,
+       "buts": 13
+      },
+      {
+       "joueur": "M. Simon",
+       "numero": 7,
+       "buts": 6
+      },
+      {
+       "joueur": "D. Traore",
+       "numero": 6,
+       "buts": 5
+      },
+      {
+       "joueur": "E. Nkwemi Ntankeu",
+       "numero": 77,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Dos Santos",
+       "numero": 24,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Keita",
+       "numero": 10,
+       "buts": 3
+      },
+      {
+       "joueur": "I. Varacavoudin",
+       "numero": 66,
+       "buts": 2
+      },
+      {
+       "joueur": "K. Joseph",
+       "numero": 15,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Djidel",
+       "numero": 44,
+       "buts": 1
+      }
+     ]
     }
    ],
    "bilan": {
-    "joues": 4,
+    "joues": 5,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 4,
-    "bp": 56,
-    "bc": 121
+    "defaites": 5,
+    "bp": 66,
+    "bc": 159
    },
-   "forme": "DDDD",
+   "forme": "DDDDD",
    "place": 6,
    "nb_equipes": 6,
    "collectif": "u18-f"
