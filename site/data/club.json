@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-22T16:39:40+00:00",
+ "mis_a_jour": "2026-11-22T18:04:34+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -4626,28 +4626,30 @@
      "domicile": true,
      "adversaire": "TU VERRIERES-LE-BUISSON",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-10-28-440b640d-4b72-444f-ac76-feead840a563.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 24,
+     "score_eux": 26,
+     "mt_nous": 13,
+     "mt_eux": 11,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-masculine-2026-2027-33244/poule-199601/rencontre-2766998/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Z/WAGZKSB.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [],
+     "buteurs_adverses": []
     }
    ],
    "bilan": {
-    "joues": 1,
+    "joues": 2,
     "victoires": 1,
     "nuls": 0,
-    "defaites": 0,
-    "bp": 32,
-    "bc": 22
+    "defaites": 1,
+    "bp": 56,
+    "bc": 48
    },
-   "forme": "V",
+   "forme": "VD",
    "collectif": "seniors-m"
   },
   {
@@ -4707,27 +4709,27 @@
     {
      "place": 4,
      "equipe": "ENT PARIS GALAXY NORD 3",
-     "points": 6,
-     "joues": 4,
-     "gagnes": 1,
+     "points": 9,
+     "joues": 5,
+     "gagnes": 2,
      "nuls": 0,
      "perdus": 3,
-     "bp": 90,
-     "bc": 128,
-     "diff": -38,
+     "bp": 122,
+     "bc": 140,
+     "diff": -18,
      "nous": false
     },
     {
      "place": 5,
      "equipe": "STADE FRANCAIS",
-     "points": 6,
-     "joues": 4,
+     "points": 7,
+     "joues": 5,
      "gagnes": 1,
      "nuls": 0,
-     "perdus": 3,
-     "bp": 59,
-     "bc": 135,
-     "diff": -76,
+     "perdus": 4,
+     "bp": 71,
+     "bc": 167,
+     "diff": -96,
      "nous": false
     },
     {
@@ -6370,17 +6372,19 @@
      "domicile": true,
      "adversaire": "ASNIERES HBC 3",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-08-20-9cad56d4-bce0-44f8-ae69-6cd6ebd002cd.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 20,
+     "score_eux": 18,
+     "mt_nous": 12,
+     "mt_eux": 7,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u15m-championnat-92-75-33472/poule-197963/rencontre-2740588/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/H/A/WAHASQQ.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [],
+     "buteurs_adverses": []
     },
     {
      "id": "2740600",
@@ -6403,14 +6407,14 @@
     }
    ],
    "bilan": {
-    "joues": 3,
-    "victoires": 1,
+    "joues": 4,
+    "victoires": 2,
     "nuls": 0,
     "defaites": 2,
-    "bp": 64,
-    "bc": 87
+    "bp": 84,
+    "bc": 105
    },
-   "forme": "VDD",
+   "forme": "VDDV",
    "place": 4,
    "nb_equipes": 6,
    "collectif": "u15-m"
