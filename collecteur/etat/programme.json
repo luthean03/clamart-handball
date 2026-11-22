@@ -189,13 +189,6 @@
    "equipe_id": "32546-clamart-hb",
    "salle": "MICHELINE OSTERMEYER"
   },
-  "seniors-m:2766998": {
-   "adversaire": "TU VERRIERES-LE-BUISSON",
-   "date": "2026-11-22T16:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "33244-clamart-handball",
-   "salle": "GYMNASE DU PETIT CLAMART"
-  },
   "seniors-mixte:2748877": {
    "adversaire": "AS VOLTAIRE CHATENAY-MALABRY",
    "date": "2026-11-25T20:00:00+01:00",
@@ -468,13 +461,6 @@
    "domicile": false,
    "equipe_id": "33627-clamart-hb",
    "salle": null
-  },
-  "u15-m:2740588": {
-   "adversaire": "ASNIERES HBC 3",
-   "date": "2026-11-22T14:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "33472-clamart-hb",
-   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u15-m:2740600": {
    "adversaire": "RUEIL AC 3",
