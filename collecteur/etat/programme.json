@@ -7,13 +7,6 @@
    "equipe_id": "32542-clamart-handball-1",
    "salle": "GYMNASE POLIVEAU"
   },
-  "seniors-f-1:2766739": {
-   "adversaire": "TS VICINOIS 88 HB",
-   "date": "2026-11-21T19:30:00+01:00",
-   "domicile": true,
-   "equipe_id": "33243-clamart-handball-1",
-   "salle": "GYMNASE DU PETIT CLAMART"
-  },
   "seniors-f-1b:2644487": {
    "adversaire": "PARIS UC 1D",
    "date": "2026-11-28T20:30:00+01:00",
@@ -294,13 +287,6 @@
    "equipe_id": "33056-clamart-handball-2",
    "salle": null
   },
-  "u11-f-2:2710048": {
-   "adversaire": "CHAVILLE HB 2",
-   "date": "2026-11-22T10:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33056-clamart-handball-2",
-   "salle": "LEO-LAGRANGE"
-  },
   "u11-f-2:2710054": {
    "adversaire": "ISSY HBM 2",
    "date": "2026-12-06T13:30:00+01:00",
@@ -357,13 +343,6 @@
    "equipe_id": "33056-clamart-handball-3",
    "salle": "GYMNASE DU PETIT CLAMART"
   },
-  "u11-mixte-3:2711004": {
-   "adversaire": "AC BOULOGNE-BILLANCOURT 3",
-   "date": "2026-11-21T16:00:00+01:00",
-   "domicile": true,
-   "equipe_id": "33056-clamart-handball-3",
-   "salle": "GYMNASE DU PETIT CLAMART"
-  },
   "u11-mixte-3:2711007": {
    "adversaire": "USM MALAKOFF 2",
    "date": "2026-11-29T11:15:00+01:00",
@@ -384,13 +363,6 @@
    "domicile": true,
    "equipe_id": "33056-clamart-handball-3",
    "salle": null
-  },
-  "u13-f:2757746": {
-   "adversaire": "USM MALAKOFF",
-   "date": "2026-11-22T11:00:00+01:00",
-   "domicile": false,
-   "equipe_id": "33624-clamart-hb",
-   "salle": "salle jacques duclos"
   },
   "u13-f:2757751": {
    "adversaire": "COURBEVOIE HB 2",
