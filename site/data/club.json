@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-22T18:04:34+00:00",
+ "mis_a_jour": "2026-11-22T21:18:15+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -4637,8 +4637,130 @@
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
      },
-     "buteurs": [],
-     "buteurs_adverses": []
+     "buteurs": [
+      {
+       "joueur": "C. Meyer",
+       "numero": 73,
+       "buts": 7
+      },
+      {
+       "joueur": "F. Bergeret",
+       "numero": 67,
+       "buts": 6
+      },
+      {
+       "joueur": "E. Lepretre Silva",
+       "numero": 54,
+       "buts": 5
+      },
+      {
+       "joueur": "S. Ould Braham",
+       "numero": 64,
+       "buts": 3
+      },
+      {
+       "joueur": "R. Arnaud",
+       "numero": 65,
+       "buts": 2
+      },
+      {
+       "joueur": "D. Gomez",
+       "numero": 68,
+       "buts": 1
+      },
+      {
+       "joueur": "K. Nevers",
+       "numero": 72,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Pontes",
+       "numero": 70,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Grondin",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Nimri",
+       "numero": 66,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Nacto",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Gandon-Talouarn",
+       "numero": 69,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "J. Schmitt",
+       "numero": 7,
+       "buts": 6
+      },
+      {
+       "joueur": "C. Hayrapian",
+       "numero": 6,
+       "buts": 4
+      },
+      {
+       "joueur": "J. Hardy",
+       "numero": 8,
+       "buts": 3
+      },
+      {
+       "joueur": "P. Levy",
+       "numero": 25,
+       "buts": 3
+      },
+      {
+       "joueur": "A. M'Boungou",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "G. George",
+       "numero": 15,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Balvoirat",
+       "numero": 12,
+       "buts": 2
+      },
+      {
+       "joueur": "N. Vagnair",
+       "numero": 14,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Ranchoux",
+       "numero": 11,
+       "buts": 1
+      },
+      {
+       "joueur": "L. Mbemba",
+       "numero": 13,
+       "buts": 1
+      },
+      {
+       "joueur": "G. Rathuy",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "W. Mbongue Elolongue",
+       "numero": 16,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
@@ -5973,18 +6095,31 @@
     {
      "place": 4,
      "equipe": "CLAMART HB",
-     "points": 5,
-     "joues": 3,
-     "gagnes": 1,
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
      "nuls": 0,
      "perdus": 2,
-     "bp": 64,
-     "bc": 87,
-     "diff": -23,
+     "bp": 84,
+     "bc": 105,
+     "diff": -21,
      "nous": true
     },
     {
      "place": 5,
+     "equipe": "ASNIERES HBC 3",
+     "points": 4,
+     "joues": 4,
+     "gagnes": 0,
+     "nuls": 0,
+     "perdus": 4,
+     "bp": 80,
+     "bc": 136,
+     "diff": -56,
+     "nous": false
+    },
+    {
+     "place": 6,
      "equipe": "PARIS UC 3",
      "points": 3,
      "joues": 3,
@@ -5994,19 +6129,6 @@
      "bp": 66,
      "bc": 114,
      "diff": -48,
-     "nous": false
-    },
-    {
-     "place": 6,
-     "equipe": "ASNIERES HBC 3",
-     "points": 3,
-     "joues": 3,
-     "gagnes": 0,
-     "nuls": 0,
-     "perdus": 3,
-     "bp": 62,
-     "bc": 116,
-     "diff": -54,
      "nous": false
     }
    ],
@@ -6383,8 +6505,90 @@
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
      },
-     "buteurs": [],
-     "buteurs_adverses": []
+     "buteurs": [
+      {
+       "joueur": "H. Abbes",
+       "numero": 11,
+       "buts": 9
+      },
+      {
+       "joueur": "M. Schiano",
+       "numero": 7,
+       "buts": 8
+      },
+      {
+       "joueur": "M. Dumont",
+       "numero": 3,
+       "buts": 2
+      },
+      {
+       "joueur": "A. Hariz",
+       "numero": 92,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Cuny",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Agrinier",
+       "numero": 12,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Blondeau",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Nortes",
+       "numero": 1,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Jacopin",
+       "numero": 2,
+       "buts": 8
+      },
+      {
+       "joueur": "D. Narvaez",
+       "numero": 92,
+       "buts": 5
+      },
+      {
+       "joueur": "G. Arcobelli",
+       "numero": 3,
+       "buts": 4
+      },
+      {
+       "joueur": "K. Bhia",
+       "numero": 95,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Clolus",
+       "numero": 1,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Saint Jean",
+       "numero": 9,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Fermon",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Saint Jean",
+       "numero": 27,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2740600",
@@ -10091,6 +10295,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "USM MALAKOFF 2",
+     "points": 11,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 94,
+     "bc": 33,
+     "diff": 61,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "AC BOULOGNE-BILLANCOURT 3",
      "points": 11,
      "joues": 4,
@@ -10100,19 +10317,6 @@
      "bp": 101,
      "bc": 31,
      "diff": 70,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "USM MALAKOFF 2",
-     "points": 8,
-     "joues": 3,
-     "gagnes": 2,
-     "nuls": 1,
-     "perdus": 0,
-     "bp": 71,
-     "bc": 25,
-     "diff": 46,
      "nous": false
     },
     {
@@ -10131,14 +10335,14 @@
     {
      "place": 4,
      "equipe": "ASV CHATENAY-MALABRY 2",
-     "points": 3,
-     "joues": 3,
+     "points": 4,
+     "joues": 4,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 3,
-     "bp": 8,
-     "bc": 79,
-     "diff": -71,
+     "perdus": 4,
+     "bp": 16,
+     "bc": 102,
+     "diff": -86,
      "nous": false
     },
     {
