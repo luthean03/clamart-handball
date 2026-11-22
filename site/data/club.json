@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-21T23:37:20+00:00",
+ "mis_a_jour": "2026-11-22T00:42:18+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -9780,6 +9780,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "USM MALAKOFF 2",
+     "points": 8,
+     "joues": 3,
+     "gagnes": 2,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 71,
+     "bc": 25,
+     "diff": 46,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "AC BOULOGNE-BILLANCOURT 3",
      "points": 8,
      "joues": 3,
@@ -9792,7 +9805,7 @@
      "nous": false
     },
     {
-     "place": 2,
+     "place": 3,
      "equipe": "AS FONTENAY-AUX-ROSES 2",
      "points": 8,
      "joues": 4,
@@ -9802,19 +9815,6 @@
      "bp": 40,
      "bc": 49,
      "diff": -9,
-     "nous": false
-    },
-    {
-     "place": 3,
-     "equipe": "USM MALAKOFF 2",
-     "points": 8,
-     "joues": 3,
-     "gagnes": 2,
-     "nuls": 1,
-     "perdus": 0,
-     "bp": 71,
-     "bc": 25,
-     "diff": 46,
      "nous": false
     },
     {
