@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-22T00:42:18+00:00",
+ "mis_a_jour": "2026-11-22T13:18:44+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -4337,28 +4337,142 @@
      "domicile": true,
      "adversaire": "TS VICINOIS 88 HB",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2015-06-25-54c7758a-0311-454e-9c73-9d84b1779483.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 38,
+     "score_eux": 19,
+     "mt_nous": 15,
+     "mt_eux": 10,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-feminine-2026-2027-33243/poule-199600/rencontre-2766739/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/Z/WAGZKIC.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Msakni",
+       "numero": 11,
+       "buts": 8
+      },
+      {
+       "joueur": "C. Daelman",
+       "numero": 78,
+       "buts": 6
+      },
+      {
+       "joueur": "L. Chaudeaux",
+       "numero": 13,
+       "buts": 5
+      },
+      {
+       "joueur": "H. Es-Salemy",
+       "numero": 8,
+       "buts": 4
+      },
+      {
+       "joueur": "L. Ladjel",
+       "numero": 64,
+       "buts": 4
+      },
+      {
+       "joueur": "D. Dorilas",
+       "numero": 19,
+       "buts": 3
+      },
+      {
+       "joueur": "L. Ferrier",
+       "numero": 24,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Frugier",
+       "numero": 5,
+       "buts": 2
+      },
+      {
+       "joueur": "E. Ndiaye",
+       "numero": 9,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Edouard",
+       "numero": 96,
+       "buts": 1
+      },
+      {
+       "joueur": "S. Bay",
+       "numero": 71,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Kobzili",
+       "numero": 7,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "A. Haubourdin",
+       "numero": 7,
+       "buts": 4
+      },
+      {
+       "joueur": "A. Vabois",
+       "numero": 19,
+       "buts": 4
+      },
+      {
+       "joueur": "C. Sabot",
+       "numero": 14,
+       "buts": 3
+      },
+      {
+       "joueur": "D. Diallo",
+       "numero": 2,
+       "buts": 3
+      },
+      {
+       "joueur": "W. Sankhare",
+       "numero": 11,
+       "buts": 3
+      },
+      {
+       "joueur": "A. Bras",
+       "numero": 3,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Perin",
+       "numero": 8,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Messager",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Godeau",
+       "numero": 4,
+       "buts": 0
+      },
+      {
+       "joueur": "U. Belcou",
+       "numero": 12,
+       "buts": 0
+      }
+     ]
     }
    ],
    "bilan": {
-    "joues": 1,
-    "victoires": 1,
+    "joues": 2,
+    "victoires": 2,
     "nuls": 0,
     "defaites": 0,
-    "bp": 32,
-    "bc": 25
+    "bp": 70,
+    "bc": 44
    },
-   "forme": "V",
+   "forme": "VV",
    "collectif": "seniors-f-1"
   },
   {
@@ -7021,79 +7135,79 @@
     {
      "place": 1,
      "equipe": "ENT RUEIL-PUTEAUX",
-     "points": 6,
-     "joues": 2,
-     "gagnes": 2,
+     "points": 9,
+     "joues": 3,
+     "gagnes": 3,
      "nuls": 0,
      "perdus": 0,
-     "bp": 52,
-     "bc": 14,
-     "diff": 38,
+     "bp": 72,
+     "bc": 30,
+     "diff": 42,
      "nous": false
     },
     {
      "place": 2,
-     "equipe": "ISSY-PARIS HAND 2",
-     "points": 6,
-     "joues": 2,
+     "equipe": "USM MALAKOFF",
+     "points": 7,
+     "joues": 3,
      "gagnes": 2,
      "nuls": 0,
-     "perdus": 0,
-     "bp": 51,
-     "bc": 24,
-     "diff": 27,
+     "perdus": 1,
+     "bp": 59,
+     "bc": 52,
+     "diff": 7,
      "nous": false
     },
     {
      "place": 3,
-     "equipe": "USM MALAKOFF",
-     "points": 4,
-     "joues": 2,
-     "gagnes": 1,
+     "equipe": "ISSY-PARIS HAND 2",
+     "points": 7,
+     "joues": 3,
+     "gagnes": 2,
      "nuls": 0,
      "perdus": 1,
-     "bp": 38,
-     "bc": 45,
-     "diff": -7,
+     "bp": 67,
+     "bc": 44,
+     "diff": 23,
      "nous": false
     },
     {
      "place": 4,
      "equipe": "STADE DE VANVES",
-     "points": 4,
-     "joues": 2,
-     "gagnes": 1,
+     "points": 7,
+     "joues": 3,
+     "gagnes": 2,
      "nuls": 0,
      "perdus": 1,
-     "bp": 39,
-     "bc": 32,
-     "diff": 7,
+     "bp": 67,
+     "bc": 36,
+     "diff": 31,
      "nous": false
     },
     {
      "place": 5,
      "equipe": "CLAMART HB",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 23,
-     "bc": 40,
-     "diff": -17,
+     "perdus": 3,
+     "bp": 30,
+     "bc": 61,
+     "diff": -31,
      "nous": true
     },
     {
      "place": 6,
      "equipe": "COURBEVOIE HB 2",
-     "points": 2,
-     "joues": 2,
+     "points": 3,
+     "joues": 3,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 2,
-     "bp": 9,
-     "bc": 57,
-     "diff": -48,
+     "perdus": 3,
+     "bp": 13,
+     "bc": 85,
+     "diff": -72,
      "nous": false
     }
    ],
@@ -7361,17 +7475,111 @@
      "domicile": false,
      "adversaire": "USM MALAKOFF",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-02-09-98c8e193-a76e-49c7-9931-22d0a362cdbc.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 7,
+     "score_eux": 21,
+     "mt_nous": 5,
+     "mt_eux": 11,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u13f-championnats-33624/poule-199511/rencontre-2757746/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/H/A/WAHAWIZ.pdf",
      "salle": {
       "nom": "salle jacques duclos",
       "adresse": "place de la republique 92240 MALAKOFF"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Belaskri",
+       "numero": 62,
+       "buts": 5
+      },
+      {
+       "joueur": "N. Denis",
+       "numero": 85,
+       "buts": 1
+      },
+      {
+       "joueur": "S. Sissokho",
+       "numero": 89,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Abbas",
+       "numero": 79,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Hamiche",
+       "numero": 60,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Kammoun",
+       "numero": 63,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 86,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Rami",
+       "numero": 71,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Aberkane",
+       "numero": 61,
+       "buts": 0
+      },
+      {
+       "joueur": "S. Kraiem",
+       "numero": 53,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "D. Coulibaly",
+       "numero": 16,
+       "buts": 10
+      },
+      {
+       "joueur": "A. Tauthui",
+       "numero": 23,
+       "buts": 7
+      },
+      {
+       "joueur": "F. Benachour",
+       "numero": 26,
+       "buts": 2
+      },
+      {
+       "joueur": "M. Carluccio-Dupeyroux",
+       "numero": 24,
+       "buts": 2
+      },
+      {
+       "joueur": "L. Chasles Bienaime",
+       "numero": 12,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Bendahmane",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Faux",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hughes Bassil",
+       "numero": 21,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2757751",
@@ -7488,14 +7696,14 @@
     }
    ],
    "bilan": {
-    "joues": 2,
+    "joues": 3,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 2,
-    "bp": 23,
-    "bc": 40
+    "defaites": 3,
+    "bp": 30,
+    "bc": 61
    },
-   "forme": "DD",
+   "forme": "DDD",
    "place": 5,
    "nb_equipes": 6,
    "collectif": "u13-f"
@@ -8177,6 +8385,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "AS MEUDON 1",
+     "points": 9,
+     "joues": 3,
+     "gagnes": 3,
+     "nuls": 0,
+     "perdus": 0,
+     "bp": 80,
+     "bc": 44,
+     "diff": 36,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "STADE DE VANVES 1",
      "points": 7,
      "joues": 3,
@@ -8189,56 +8410,43 @@
      "nous": false
     },
     {
-     "place": 2,
-     "equipe": "AS MEUDON 1",
-     "points": 6,
-     "joues": 2,
-     "gagnes": 2,
-     "nuls": 0,
-     "perdus": 0,
-     "bp": 50,
-     "bc": 34,
-     "diff": 16,
-     "nous": false
-    },
-    {
      "place": 3,
-     "equipe": "CLAMART HB",
-     "points": 4,
-     "joues": 2,
-     "gagnes": 1,
-     "nuls": 0,
-     "perdus": 1,
-     "bp": 41,
-     "bc": 39,
-     "diff": 2,
-     "nous": true
-    },
-    {
-     "place": 4,
      "equipe": "ES NANTERRE",
-     "points": 4,
-     "joues": 2,
+     "points": 6,
+     "joues": 3,
      "gagnes": 1,
-     "nuls": 0,
+     "nuls": 1,
      "perdus": 1,
-     "bp": 37,
-     "bc": 43,
+     "bp": 60,
+     "bc": 66,
      "diff": -6,
      "nous": false
     },
     {
-     "place": 5,
+     "place": 4,
      "equipe": "AC BOULOGNE-BILLANCOURT 2",
-     "points": 4,
-     "joues": 2,
+     "points": 6,
+     "joues": 3,
      "gagnes": 1,
-     "nuls": 0,
+     "nuls": 1,
      "perdus": 1,
-     "bp": 36,
-     "bc": 50,
+     "bp": 59,
+     "bc": 73,
      "diff": -14,
      "nous": false
+    },
+    {
+     "place": 5,
+     "equipe": "CLAMART HB",
+     "points": 5,
+     "joues": 3,
+     "gagnes": 1,
+     "nuls": 0,
+     "perdus": 2,
+     "bp": 51,
+     "bc": 69,
+     "diff": -18,
+     "nous": true
     },
     {
      "place": 6,
@@ -8633,7 +8841,7 @@
     "bc": 39
    },
    "forme": "VD",
-   "place": 3,
+   "place": 5,
    "nb_equipes": 6,
    "collectif": "u13-m"
   },
@@ -9265,14 +9473,14 @@
     {
      "place": 3,
      "equipe": "CLAMART HANDBALL 2",
-     "points": 5,
-     "joues": 3,
-     "gagnes": 1,
+     "points": 8,
+     "joues": 4,
+     "gagnes": 2,
      "nuls": 0,
      "perdus": 2,
-     "bp": 38,
-     "bc": 30,
-     "diff": 8,
+     "bp": 56,
+     "bc": 47,
+     "diff": 9,
      "nous": true
     },
     {
@@ -9291,14 +9499,14 @@
     {
      "place": 5,
      "equipe": "CHAVILLE HB 2",
-     "points": 2,
-     "joues": 1,
+     "points": 3,
+     "joues": 2,
      "gagnes": 0,
      "nuls": 1,
-     "perdus": 0,
-     "bp": 14,
-     "bc": 14,
-     "diff": 0,
+     "perdus": 1,
+     "bp": 31,
+     "bc": 32,
+     "diff": -1,
      "nous": false
     }
    ],
@@ -9669,17 +9877,116 @@
      "domicile": false,
      "adversaire": "CHAVILLE HB 2",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2021-01-29-a6059403-17bc-4740-bf36-5a8c058927b3.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 18,
+     "score_eux": 17,
+     "mt_nous": 9,
+     "mt_eux": 7,
+     "resultat": "V",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195550/rencontre-2710048/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVSUK.pdf",
      "salle": {
       "nom": "LEO-LAGRANGE",
       "adresse": "2 RUE JEAN-JAURES 92370 CHAVILLE"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "Y. Kouar",
+       "numero": 28,
+       "buts": 9
+      },
+      {
+       "joueur": "A. Chehboun",
+       "numero": 38,
+       "buts": 5
+      },
+      {
+       "joueur": "I. Combe",
+       "numero": 2,
+       "buts": 2
+      },
+      {
+       "joueur": "G. Lecomte",
+       "numero": 14,
+       "buts": 1
+      },
+      {
+       "joueur": "M. Sorlet",
+       "numero": 23,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Boubaker",
+       "numero": 98,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Wiebach",
+       "numero": 35,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Khelifa",
+       "numero": 99,
+       "buts": 0
+      },
+      {
+       "joueur": "R. Merimi",
+       "numero": 41,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "G. Minois",
+       "numero": 7,
+       "buts": 9
+      },
+      {
+       "joueur": "E. Macaux",
+       "numero": 21,
+       "buts": 5
+      },
+      {
+       "joueur": "J. Bouquet",
+       "numero": 4,
+       "buts": 2
+      },
+      {
+       "joueur": "R. Bondoux",
+       "numero": 8,
+       "buts": 1
+      },
+      {
+       "joueur": "A. Perigaud",
+       "numero": 16,
+       "buts": 0
+      },
+      {
+       "joueur": "E. Arlot",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "G. Brignon",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Nacfer Almonte",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Charrier",
+       "numero": 6,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Gueret",
+       "numero": 19,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2710054",
@@ -9751,14 +10058,14 @@
     }
    ],
    "bilan": {
-    "joues": 3,
-    "victoires": 1,
+    "joues": 4,
+    "victoires": 2,
     "nuls": 0,
     "defaites": 2,
-    "bp": 38,
-    "bc": 30
+    "bp": 56,
+    "bc": 47
    },
-   "forme": "DDV",
+   "forme": "DDVV",
    "place": 3,
    "nb_equipes": 5,
    "collectif": "u11-f-2"
@@ -9780,6 +10087,19 @@
    "classement": [
     {
      "place": 1,
+     "equipe": "AC BOULOGNE-BILLANCOURT 3",
+     "points": 11,
+     "joues": 4,
+     "gagnes": 3,
+     "nuls": 1,
+     "perdus": 0,
+     "bp": 101,
+     "bc": 31,
+     "diff": 70,
+     "nous": false
+    },
+    {
+     "place": 2,
      "equipe": "USM MALAKOFF 2",
      "points": 8,
      "joues": 3,
@@ -9789,19 +10109,6 @@
      "bp": 71,
      "bc": 25,
      "diff": 46,
-     "nous": false
-    },
-    {
-     "place": 2,
-     "equipe": "AC BOULOGNE-BILLANCOURT 3",
-     "points": 8,
-     "joues": 3,
-     "gagnes": 2,
-     "nuls": 1,
-     "perdus": 0,
-     "bp": 74,
-     "bc": 22,
-     "diff": 52,
      "nous": false
     },
     {
@@ -9833,14 +10140,14 @@
     {
      "place": 5,
      "equipe": "CLAMART HANDBALL 3",
-     "points": 1,
-     "joues": 1,
+     "points": 2,
+     "joues": 2,
      "gagnes": 0,
      "nuls": 0,
-     "perdus": 1,
-     "bp": 1,
-     "bc": 19,
-     "diff": -18,
+     "perdus": 2,
+     "bp": 10,
+     "bc": 46,
+     "diff": -36,
      "nous": true
     }
    ],
@@ -9979,17 +10286,126 @@
      "domicile": true,
      "adversaire": "AC BOULOGNE-BILLANCOURT 3",
      "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2023-06-03-e7b37b0d-abbc-4623-9d38-ce7840be40f7.webp",
-     "score_nous": null,
-     "score_eux": null,
-     "mt_nous": null,
-     "mt_eux": null,
-     "resultat": null,
+     "score_nous": 9,
+     "score_eux": 27,
+     "mt_nous": 0,
+     "mt_eux": 0,
+     "resultat": "D",
      "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/departemental/u11-mixte-33056/poule-195628/rencontre-2711004/",
-     "feuille_de_match": null,
+     "feuille_de_match": "https://fdm.fdme.ffhandball.fr/W/A/G/V/WAGVUGM.pdf",
      "salle": {
       "nom": "GYMNASE DU PETIT CLAMART",
       "adresse": "56 rue de la bourcilliere 92140 CLAMART"
-     }
+     },
+     "buteurs": [
+      {
+       "joueur": "A. Aberkane",
+       "numero": 36,
+       "buts": 0
+      },
+      {
+       "joueur": "A. Pugnet Aupetit",
+       "numero": 88,
+       "buts": 0
+      },
+      {
+       "joueur": "D. Schiellein",
+       "numero": 37,
+       "buts": 0
+      },
+      {
+       "joueur": "I. Seraline",
+       "numero": 39,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Hsaini",
+       "numero": 84,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Zarrad",
+       "numero": 64,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Bellahsene",
+       "numero": 18,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Farhat",
+       "numero": 20,
+       "buts": 0
+      },
+      {
+       "joueur": "T. Plotton",
+       "numero": 21,
+       "buts": 0
+      }
+     ],
+     "buteurs_adverses": [
+      {
+       "joueur": "G. Pageix",
+       "numero": 56,
+       "buts": 0
+      },
+      {
+       "joueur": "H. Degres Chenevoy",
+       "numero": 25,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Garcia",
+       "numero": 27,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Lager",
+       "numero": 17,
+       "buts": 0
+      },
+      {
+       "joueur": "J. Wallenwein",
+       "numero": 9,
+       "buts": 0
+      },
+      {
+       "joueur": "L. Desbouis",
+       "numero": 2,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Dumont Prot",
+       "numero": 52,
+       "buts": 0
+      },
+      {
+       "joueur": "M. Monin-Methe De Fonremis",
+       "numero": 53,
+       "buts": 0
+      },
+      {
+       "joueur": "N. Herrmann Petrova",
+       "numero": 5,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Lager",
+       "numero": 15,
+       "buts": 0
+      },
+      {
+       "joueur": "V. Serot Almeras Latour",
+       "numero": 54,
+       "buts": 0
+      },
+      {
+       "joueur": "Y. El Moueddani",
+       "numero": 40,
+       "buts": 0
+      }
+     ]
     },
     {
      "id": "2711007",
@@ -10076,14 +10492,14 @@
     }
    ],
    "bilan": {
-    "joues": 1,
+    "joues": 2,
     "victoires": 0,
     "nuls": 0,
-    "defaites": 1,
-    "bp": 1,
-    "bc": 19
+    "defaites": 2,
+    "bp": 10,
+    "bc": 46
    },
-   "forme": "D",
+   "forme": "DD",
    "place": 5,
    "nb_equipes": 5,
    "collectif": "u11-mixte-3"
