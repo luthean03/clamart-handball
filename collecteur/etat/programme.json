@@ -65,10 +65,10 @@
   },
   "seniors-f:2644322": {
    "adversaire": "PARIS SC 1C",
-   "date": null,
+   "date": "2026-12-13T16:10:00+01:00",
    "domicile": false,
    "equipe_id": "32542-clamart-hb",
-   "salle": null
+   "salle": "VIGNOLES"
   },
   "seniors-f:2644328": {
    "adversaire": "MARTIGUA SCL",
@@ -156,10 +156,10 @@
   },
   "seniors-m:2673812": {
    "adversaire": "PARIS UC 1C",
-   "date": null,
+   "date": "2026-12-13T16:00:00+01:00",
    "domicile": false,
    "equipe_id": "32546-clamart-hb",
-   "salle": null
+   "salle": "CHARCOT"
   },
   "seniors-m:2673816": {
    "adversaire": "ISSY HBM 1C",
@@ -478,31 +478,31 @@
   },
   "u9-mixte-1:2792997": {
    "adversaire": "STADE DE VANVES",
-   "date": null,
+   "date": "2026-12-05T15:00:00+01:00",
    "domicile": false,
    "equipe_id": "33687-clamart-hb-1",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u9-mixte-1:2792998": {
    "adversaire": "USM MALAKOFF 1",
-   "date": null,
+   "date": "2026-12-05T15:00:00+01:00",
    "domicile": false,
    "equipe_id": "33687-clamart-hb-1",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u9-mixte-2:2793000": {
    "adversaire": "AS FONTENAY-AUX-ROSES 2",
-   "date": null,
+   "date": "2026-12-05T15:00:00+01:00",
    "domicile": false,
    "equipe_id": "33687-clamart-hb-2",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   },
   "u9-mixte-2:2793001": {
    "adversaire": "USM MALAKOFF 2",
-   "date": null,
+   "date": "2026-12-05T15:00:00+01:00",
    "domicile": false,
    "equipe_id": "33687-clamart-hb-2",
-   "salle": null
+   "salle": "GYMNASE DU PETIT CLAMART"
   }
  },
  "saison": "2026-2027"
