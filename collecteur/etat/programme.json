@@ -7,6 +7,13 @@
    "equipe_id": "32542-clamart-handball-1",
    "salle": "GYMNASE POLIVEAU"
   },
+  "seniors-f-1:2797244": {
+   "adversaire": "AS POISSY HB",
+   "date": null,
+   "domicile": false,
+   "equipe_id": "33243-clamart-handball-1",
+   "salle": null
+  },
   "seniors-f-1b:2644487": {
    "adversaire": "PARIS UC 1D",
    "date": "2026-11-28T20:30:00+01:00",
