@@ -11,7 +11,7 @@
   "couleur_accent": "#e8b200"
  },
  "saison": "2026-2027",
- "mis_a_jour": "2026-11-27T15:00:33+00:00",
+ "mis_a_jour": "2026-11-27T18:28:40+00:00",
  "source": "https://www.ffhandball.fr",
  "collectifs": [
   {
@@ -4584,6 +4584,21 @@
        "buts": 0
       }
      ]
+    },
+    {
+     "id": "2797244",
+     "date": null,
+     "journee": 1,
+     "domicile": false,
+     "adversaire": "AS POISSY HB",
+     "logo_adversaire": "https://media-logos-clubs.ffhandball.fr/128/2024-07-05-1b2896f4-0bc5-49d9-ae52-3e2b0f811457.webp",
+     "score_nous": null,
+     "score_eux": null,
+     "mt_nous": null,
+     "mt_eux": null,
+     "resultat": null,
+     "url_ffhb": "https://www.ffhandball.fr/competitions/saison-2026-2027-22/coupe-de-france/coupe-de-france-caisse-d-epargne-departementale-feminine-2026-2027-33243/poule-201972/rencontre-2797244/",
+     "feuille_de_match": null
     }
    ],
    "bilan": {
